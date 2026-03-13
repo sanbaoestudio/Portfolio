@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Bao Estudio — Luca Gazzola</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --blanco: #F8F7F4;
+    --negro: #0E0E0E;
+    --gris: #6B6B6B;
+    --gris-light: #D8D6D0;
+    --acento: #E8622A;
+    --acento-suave: #FDF0EA;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    cursor: none;
+    overflow-x: hidden;
+  }
+
+  /* CURSOR CUSTOM */
+  .cursor {
+    position: fixed;
+    width: 8px; height: 8px;
+    background: var(--negro);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.15s ease, background 0.2s;
+    transform: translate(-50%, -50%);
+  }
+  .cursor-ring {
+    position: fixed;
+    width: 32px; height: 32px;
+    border: 1px solid var(--acento);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1), opacity 0.3s;
+    transform: translate(-50%, -50%);
+    opacity: 0.6;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28px 52px;
+    mix-blend-mode: multiply;
+  }
+
+  .nav-logo img {
+    height: 36px;
+    width: auto;
+    /* El logo es negro sobre negro — lo invertimos para que se vea sobre fondo blanco */
+    filter: invert(1);
+    transition: opacity 0.2s;
+  }
+  .nav-logo:hover img { opacity: 0.7; }
+
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gris);
+    text-decoration: none;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--negro); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: end;
+    padding: 0 52px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    padding-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 1.1s cubic-bezier(.16,1,.3,1) 0.2s forwards;
+  }
+
+  .hero-logo {
+    margin-bottom: 36px;
+  }
+  .hero-logo img {
+    height: 90px;
+    width: auto;
+    filter: invert(1);
+  }
+
+  .hero-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--acento);
+  }
+
+  .hero-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(4rem, 7.5vw, 8.5rem);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--negro);
+    margin-bottom: 40px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--acento);
+  }
+
+  .hero-sub {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--gris);
+    line-height: 1.9;
+    max-width: 340px;
+  }
+
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    opacity: 0;
+    animation: fadeUp 1.1s cubic-bezier(.16,1,.3,1) 0.5s forwards;
+  }
+
+  .hero-services {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .service-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris);
+    padding: 6px 14px;
+    border: 1px solid var(--gris-light);
+    transition: all 0.3s;
+  }
+  .service-tag:hover {
+    border-color: var(--acento);
+    color: var(--negro);
+    background: var(--acento-suave);
+  }
+
+  .hero-scroll {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gris-light);
+    writing-mode: vertical-rl;
+    position: absolute;
+    right: 52px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  /* SHOWREEL */
+  .showreel {
+    padding: 0 52px 120px;
+    opacity: 0;
+    animation: fadeUp 1s cubic-bezier(.16,1,.3,1) 0.8s forwards;
+  }
+
+  .section-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gris-light);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--gris-light);
+  }
+
+  .showreel-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--negro);
+    overflow: hidden;
+  }
+
+  .showreel-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .showreel-placeholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: var(--negro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .showreel-placeholder:hover { background: #1a1a1a; }
+
+  .play-btn {
+    width: 72px; height: 72px;
+    border: 1.5px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  .play-btn svg { margin-left: 4px; }
+  .showreel-placeholder:hover .play-btn {
+    border-color: var(--acento);
+    transform: scale(1.1);
+  }
+
+  .showreel-placeholder span {
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* PROYECTOS */
+  .proyectos {
+    padding: 0 52px 120px;
+  }
+
+  .proyectos-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 52px;
+  }
+
+  .section-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gris);
+    background: none;
+    border: 1px solid var(--gris-light);
+    padding: 7px 16px;
+    cursor: none;
+    transition: all 0.25s;
+  }
+  .filter-btn.active, .filter-btn:hover {
+    background: var(--negro);
+    color: var(--blanco);
+    border-color: var(--negro);
+  }
+
+  /* GRID PROYECTOS */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+
+  .proyecto {
+    position: relative;
+    overflow: hidden;
+    background: #EEEDE9;
+    cursor: none;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+  }
+  .proyecto:hover { transform: translateY(-4px); }
+
+  .proyecto.wide { grid-column: span 7; }
+  .proyecto.narrow { grid-column: span 5; }
+  .proyecto.half { grid-column: span 6; }
+  .proyecto.vertical { grid-column: span 4; }
+
+  .video-thumb {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .proyecto.wide .video-thumb { padding-bottom: 56.25%; }
+  .proyecto.narrow .video-thumb { padding-bottom: 75%; }
+  .proyecto.half .video-thumb { padding-bottom: 56.25%; }
+  .proyecto.vertical .video-thumb { padding-bottom: 177.78%; }
+
+  .video-thumb iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    pointer-events: none;
+  }
+
+  .thumb-placeholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #E8E6E0 0%, #D4D2CC 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .thumb-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--gris-light);
+    letter-spacing: 0.05em;
+  }
+
+  /* OVERLAY AL HOVER */
+  .proyecto-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(14,14,14,0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+  .proyecto:hover .proyecto-overlay { opacity: 1; }
+
+  .overlay-cat {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 8px;
+  }
+
+  .overlay-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--blanco);
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+    margin-bottom: 12px;
+  }
+
+  .overlay-desc {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .overlay-link {
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acento);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.2s;
+  }
+  .overlay-link:hover { gap: 14px; }
+  .overlay-link::after { content: '→'; }
+
+  /* MODAL VIDEO */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(14,14,14,0.96);
+    z-index: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .modal.open { opacity: 1; pointer-events: all; }
+
+  .modal-inner {
+    width: 90vw;
+    max-width: 1000px;
+    position: relative;
+  }
+
+  .modal-video-wrap {
+    position: relative;
+    width: 100%;
+  }
+  .modal-video-wrap.horizontal { padding-bottom: 56.25%; }
+  .modal-video-wrap.vertical {
+    max-width: 400px;
+    margin: 0 auto;
+    padding-bottom: 0;
+    height: 71vh;
+  }
+
+  .modal-video-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .modal-video-wrap.vertical iframe { position: static; width: 100%; height: 100%; }
+
+  .modal-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    cursor: none;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: white; }
+
+  /* CONTACTO */
+  .contacto {
+    padding: 100px 52px 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    border-top: 1px solid var(--gris-light);
+  }
+
+  .contacto-left h2 {
+    font-family: 'Barlow', sans-serif;
+    font-size: clamp(2.5rem, 4.5vw, 4.5rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .contacto-left h2 em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--acento);
+  }
+
+  .contacto-left p {
+    font-size: 0.7rem;
+    color: var(--gris);
+    line-height: 1.9;
+    max-width: 360px;
+  }
+
+  .contacto-right {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--gris-light);
+  }
+
+  .contact-item:last-child { border-bottom: none; }
+
+  .contact-label {
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gris-light);
+  }
+
+  .contact-value {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--negro);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-value:hover { color: var(--acento); }
+
+  /* FOOTER */
+  footer {
+    padding: 28px 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gris-light);
+  }
+
+  footer span {
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    color: var(--gris-light);
+  }
+
+  /* ANIMACIONES */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* REVEAL ON SCROLL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 22px 24px; }
+    .hero { grid-template-columns: 1fr; padding: 0 24px 64px; padding-top: 100px; }
+    .hero-right { align-items: flex-start; margin-top: 40px; }
+    .hero-scroll { display: none; }
+    .showreel { padding: 0 24px 80px; }
+    .proyectos { padding: 0 24px 80px; }
+    .proyectos-header { flex-direction: column; gap: 20px; }
+    .proyecto.wide, .proyecto.narrow, .proyecto.half, .proyecto.vertical { grid-column: span 12; }
+    .contacto { grid-template-columns: 1fr; padding: 60px 24px 80px; gap: 40px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo"><img src="logo.png" alt="San Bao Estudio"></a>
+  <ul class="nav-links">
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-logo">
+      <img src="logo.png" alt="San Bao Estudio">
+    </div>
+    <div class="hero-tag">Buenos Aires · Argentina</div>
+    <h1 class="hero-title">
+      Luca<br>
+      <em>Gazzola</em>
+    </h1>
+    <p class="hero-sub">
+      Filmmaker · Diseñador audiovisual · Fotografía<br>
+      Motion graphics · SFX / Diseño sonoro<br>
+      Equipo propio — producción integral
+    </p>
+  </div>
+  <div class="hero-right">
+    <div class="hero-services">
+      <span class="service-tag">Edición de video</span>
+      <span class="service-tag">Diseño gráfico</span>
+      <span class="service-tag">Motion graphics</span>
+      <span class="service-tag">Fotografía</span>
+    </div>
+  </div>
+  <span class="hero-scroll">Scroll</span>
+</section>
+
+<!-- SHOWREEL -->
+<section class="showreel" id="showreel">
+  <div class="section-label">Showreel</div>
+  <div class="showreel-container">
+    <!--
+      INSTRUCCIONES SHOWREEL:
+      Reemplazá el div.showreel-placeholder por un iframe de YouTube:
+      <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID?autoplay=1&mute=1" allowfullscreen allow="autoplay"></iframe>
+    -->
+    <div class="showreel-placeholder" onclick="alert('Pegá tu link de YouTube aquí. Ver instrucciones en el código.')">
+      <div class="play-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <span>Ver Showreel</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="proyectos reveal" id="proyectos">
+  <div class="proyectos-header">
+    <h2 class="section-title">Proyectos</h2>
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
+      <button class="filter-btn" onclick="filtrar('video', this)">Video</button>
+      <button class="filter-btn" onclick="filtrar('foto', this)">Foto</button>
+      <button class="filter-btn" onclick="filtrar('motion', this)">Motion</button>
+    </div>
+  </div>
+
+  <div class="grid" id="grid-proyectos">
+
+    <!-- PROYECTO 1 — UBA Odontología (horizontal, grande) -->
+    <div class="proyecto wide" data-cat="video" onclick="abrirModal('UBA_VIDEO_ID', 'horizontal')">
+      <div class="video-thumb">
+        <!--
+          Reemplazá UBA_VIDEO_ID con el ID de YouTube.
+          Ej: si tu link es youtube.com/watch?v=abc123, el ID es abc123
+          <img src="https://img.youtube.com/vi/UBA_VIDEO_ID/maxresdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+        -->
+        <div class="thumb-placeholder">
+          <span class="thumb-label">UBA</span>
+        </div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Filmación · Edición</span>
+        <h3 class="overlay-title">Reel Posgrado UBA<br>Odontología</h3>
+        <p class="overlay-desc">Video promocional institucional. Producción completa: dirección, cámara y postproducción.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 2 — Bajista (horizontal) -->
+    <div class="proyecto narrow" data-cat="video" onclick="abrirModal('BAJISTA_VIDEO_ID', 'horizontal')">
+      <div class="video-thumb">
+        <div class="thumb-placeholder">
+          <span class="thumb-label">Sesión</span>
+        </div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Filmación · Edición</span>
+        <h3 class="overlay-title">Sesión Musical<br>Bajista</h3>
+        <p class="overlay-desc">Producción audiovisual de sesión en vivo. Registro multiángulo con edición rítmica.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 3 — Motion Vóley (vertical) -->
+    <div class="proyecto vertical" data-cat="motion" onclick="abrirModal('VOLEY_VIDEO_ID', 'vertical')">
+      <div class="video-thumb">
+        <div class="thumb-placeholder">
+          <span class="thumb-label">Motion</span>
+        </div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Motion graphics</span>
+        <h3 class="overlay-title">Villa Luro Vóley<br>Convocatoria 2026</h3>
+        <p class="overlay-desc">Reel animado para redes. Identidad visual en movimiento.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 4 — Foto Fútsal -->
+    <div class="proyecto half" data-cat="foto">
+      <div class="video-thumb">
+        <!--
+          Para fotos, reemplazá el thumb-placeholder por:
+          <img src="URL_DE_TU_FOTO" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
+        -->
+        <div class="thumb-placeholder">
+          <span class="thumb-label">Fútsal</span>
+        </div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Fotografía deportiva</span>
+        <h3 class="overlay-title">Fotografía<br>Fútsal</h3>
+        <p class="overlay-desc">Registro de acción en tiempo real. Edición profesional.</p>
+        <span class="overlay-link">Ver galería</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 5 — Foto Vóley -->
+    <div class="proyecto half" data-cat="foto">
+      <div class="video-thumb">
+        <div class="thumb-placeholder">
+          <span class="thumb-label">Vóley</span>
+        </div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Fotografía deportiva</span>
+        <h3 class="overlay-title">Fotografía<br>Vóley</h3>
+        <p class="overlay-desc">Cobertura de eventos deportivos femeninos.</p>
+        <span class="overlay-link">Ver galería</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto reveal" id="contacto">
+  <div class="contacto-left">
+    <h2>Trabajemos<br><em>juntos</em></h2>
+    <p>Estoy disponible para proyectos audiovisuales, colaboraciones y trabajo en relación de dependencia. Buenos Aires y remoto.</p>
+  </div>
+  <div class="contacto-right">
+    <div class="contact-item">
+      <span class="contact-label">Instagram</span>
+      <a href="https://instagram.com/sanbao.estudio" target="_blank" class="contact-value">@sanbao.estudio</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">TikTok</span>
+      <a href="https://tiktok.com/@sanbao.estudio" target="_blank" class="contact-value">@sanbao.estudio</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">YouTube</span>
+      <a href="https://youtube.com/@sanbaoestudio" target="_blank" class="contact-value">San Bao Estudio</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Ubicación</span>
+      <span class="contact-value" style="cursor:default">Buenos Aires, Argentina</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 San Bao Estudio — Luca Gazzola</span>
+  <span>Buenos Aires, Argentina</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="cerrarModal(event)">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="cerrarModal()">[ cerrar ]</button>
+    <div class="modal-video-wrap horizontal" id="modalWrap">
+      <iframe id="modalIframe" src="" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  // CURSOR
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      ring.style.left = e.clientX + 'px';
+      ring.style.top = e.clientY + 'px';
+    }, 80);
+  });
+
+  // SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FILTRO PROYECTOS
+  function filtrar(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.proyecto').forEach(p => {
+      if (cat === 'todos' || p.dataset.cat === cat) {
+        p.style.display = 'block';
+      } else {
+        p.style.display = 'none';
+      }
+    });
+  }
+
+  // MODAL VIDEO
+  function abrirModal(videoId, tipo) {
+    if (!videoId || videoId.includes('_VIDEO_ID')) {
+      alert('Reemplazá el ID del video en el código HTML con el ID de tu video de YouTube.');
+      return;
+    }
+    const wrap = document.getElementById('modalWrap');
+    const iframe = document.getElementById('modalIframe');
+    wrap.className = 'modal-video-wrap ' + tipo;
+    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+    document.getElementById('modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarModal(e) {
+    if (e && e.target !== document.getElementById('modal') && !e.target.classList.contains('modal-close')) return;
+    document.getElementById('modalIframe').src = '';
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') cerrarModal({target: document.getElementById('modal')});
+  });
+</script>
+</body>
+</html>
