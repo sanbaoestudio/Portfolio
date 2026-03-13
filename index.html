@@ -108,15 +108,6 @@
     animation: fadeUp 1.1s cubic-bezier(.16,1,.3,1) 0.2s forwards;
   }
 
-  .hero-logo {
-    margin-bottom: 36px;
-  }
-  .hero-logo img {
-    height: 90px;
-    width: auto;
-    filter: invert(1);
-  }
-
   .hero-tag {
     font-size: 0.6rem;
     letter-spacing: 0.22em;
@@ -324,11 +315,11 @@
     border-color: var(--negro);
   }
 
-  /* GRID PROYECTOS */
+  /* GRID PROYECTOS — formato 9:16 Reels */
   .grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
 
   .proyecto {
@@ -338,23 +329,36 @@
     cursor: none;
     transition: transform 0.4s cubic-bezier(.16,1,.3,1);
   }
-  .proyecto:hover { transform: translateY(-4px); }
+  .proyecto:hover { transform: translateY(-6px); }
 
-  .proyecto.wide { grid-column: span 7; }
-  .proyecto.narrow { grid-column: span 5; }
-  .proyecto.half { grid-column: span 6; }
-  .proyecto.vertical { grid-column: span 4; }
+  /* Todos los proyectos ocupan 1 columna por defecto */
+  .proyecto.wide,
+  .proyecto.narrow,
+  .proyecto.half,
+  .proyecto.vertical { grid-column: span 1; }
+
+  /* Proyecto destacado ocupa 2 columnas */
+  .proyecto.featured { grid-column: span 2; }
 
   .video-thumb {
     position: relative;
     width: 100%;
     overflow: hidden;
+    /* 9:16 = padding-bottom 177.78% */
+    padding-bottom: 177.78%;
   }
 
-  .proyecto.wide .video-thumb { padding-bottom: 56.25%; }
-  .proyecto.narrow .video-thumb { padding-bottom: 75%; }
-  .proyecto.half .video-thumb { padding-bottom: 56.25%; }
-  .proyecto.vertical .video-thumb { padding-bottom: 177.78%; }
+  /* El destacado mantiene 9:16 también */
+  .proyecto.featured .video-thumb { padding-bottom: 177.78%; }
+
+  .proyecto {
+    position: relative;
+    overflow: hidden;
+    background: #EEEDE9;
+    cursor: none;
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1);
+  }
+  .proyecto:hover { transform: translateY(-4px); }
 
   .video-thumb iframe {
     position: absolute;
@@ -375,11 +379,12 @@
   }
 
   .thumb-label {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.8rem;
-    font-weight: 300;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
     color: var(--gris-light);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
 
   /* OVERLAY AL HOVER */
@@ -452,21 +457,15 @@
   .modal.open { opacity: 1; pointer-events: all; }
 
   .modal-inner {
-    width: 90vw;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 420px;
     position: relative;
   }
 
   .modal-video-wrap {
     position: relative;
     width: 100%;
-  }
-  .modal-video-wrap.horizontal { padding-bottom: 56.25%; }
-  .modal-video-wrap.vertical {
-    max-width: 400px;
-    margin: 0 auto;
-    padding-bottom: 0;
-    height: 71vh;
+    padding-bottom: 177.78%; /* 9:16 siempre */
   }
 
   .modal-video-wrap iframe {
@@ -475,7 +474,6 @@
     width: 100%; height: 100%;
     border: none;
   }
-  .modal-video-wrap.vertical iframe { position: static; width: 100%; height: 100%; }
 
   .modal-close {
     position: absolute;
@@ -593,6 +591,11 @@
   .reveal.visible { opacity: 1; transform: none; }
 
   /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    .proyecto.featured { grid-column: span 2; }
+  }
+
   @media (max-width: 768px) {
     nav { padding: 22px 24px; }
     .hero { grid-template-columns: 1fr; padding: 0 24px 64px; padding-top: 100px; }
@@ -601,7 +604,8 @@
     .showreel { padding: 0 24px 80px; }
     .proyectos { padding: 0 24px 80px; }
     .proyectos-header { flex-direction: column; gap: 20px; }
-    .proyecto.wide, .proyecto.narrow, .proyecto.half, .proyecto.vertical { grid-column: span 12; }
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .proyecto.featured { grid-column: span 2; }
     .contacto { grid-template-columns: 1fr; padding: 60px 24px 80px; gap: 40px; }
     footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
   }
@@ -624,9 +628,6 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
-    <div class="hero-logo">
-      <img src="logo.png" alt="San Bao Estudio">
-    </div>
     <div class="hero-tag">Buenos Aires · Argentina</div>
     <h1 class="hero-title">
       Luca<br>
@@ -681,17 +682,10 @@
 
   <div class="grid" id="grid-proyectos">
 
-    <!-- PROYECTO 1 — UBA Odontología (horizontal, grande) -->
-    <div class="proyecto wide" data-cat="video" onclick="abrirModal('UBA_VIDEO_ID', 'horizontal')">
+    <!-- PROYECTO 1 — UBA Odontología (destacado, 2 cols) -->
+    <div class="proyecto featured" data-cat="video" onclick="abrirModal('UBA_VIDEO_ID', 'youtube')">
       <div class="video-thumb">
-        <!--
-          Reemplazá UBA_VIDEO_ID con el ID de YouTube.
-          Ej: si tu link es youtube.com/watch?v=abc123, el ID es abc123
-          <img src="https://img.youtube.com/vi/UBA_VIDEO_ID/maxresdefault.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
-        -->
-        <div class="thumb-placeholder">
-          <span class="thumb-label">UBA</span>
-        </div>
+        <div class="thumb-placeholder"><span class="thumb-label">UBA</span></div>
       </div>
       <div class="proyecto-overlay">
         <span class="overlay-cat">Filmación · Edición</span>
@@ -701,12 +695,10 @@
       </div>
     </div>
 
-    <!-- PROYECTO 2 — Bajista (horizontal) -->
-    <div class="proyecto narrow" data-cat="video" onclick="abrirModal('BAJISTA_VIDEO_ID', 'horizontal')">
+    <!-- PROYECTO 2 — Bajista -->
+    <div class="proyecto" data-cat="video" onclick="abrirModal('BAJISTA_VIDEO_ID', 'youtube')">
       <div class="video-thumb">
-        <div class="thumb-placeholder">
-          <span class="thumb-label">Sesión</span>
-        </div>
+        <div class="thumb-placeholder"><span class="thumb-label">Sesión</span></div>
       </div>
       <div class="proyecto-overlay">
         <span class="overlay-cat">Filmación · Edición</span>
@@ -716,12 +708,10 @@
       </div>
     </div>
 
-    <!-- PROYECTO 3 — Motion Vóley (vertical) -->
-    <div class="proyecto vertical" data-cat="motion" onclick="abrirModal('VOLEY_VIDEO_ID', 'vertical')">
+    <!-- PROYECTO 3 — Motion Vóley (Vimeo) -->
+    <div class="proyecto" data-cat="motion" onclick="abrirModal('VOLEY_VIMEO_ID', 'vimeo')">
       <div class="video-thumb">
-        <div class="thumb-placeholder">
-          <span class="thumb-label">Motion</span>
-        </div>
+        <div class="thumb-placeholder"><span class="thumb-label">Motion</span></div>
       </div>
       <div class="proyecto-overlay">
         <span class="overlay-cat">Motion graphics</span>
@@ -732,15 +722,9 @@
     </div>
 
     <!-- PROYECTO 4 — Foto Fútsal -->
-    <div class="proyecto half" data-cat="foto">
+    <div class="proyecto" data-cat="foto">
       <div class="video-thumb">
-        <!--
-          Para fotos, reemplazá el thumb-placeholder por:
-          <img src="URL_DE_TU_FOTO" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
-        -->
-        <div class="thumb-placeholder">
-          <span class="thumb-label">Fútsal</span>
-        </div>
+        <div class="thumb-placeholder"><span class="thumb-label">Fútsal</span></div>
       </div>
       <div class="proyecto-overlay">
         <span class="overlay-cat">Fotografía deportiva</span>
@@ -751,11 +735,9 @@
     </div>
 
     <!-- PROYECTO 5 — Foto Vóley -->
-    <div class="proyecto half" data-cat="foto">
+    <div class="proyecto" data-cat="foto">
       <div class="video-thumb">
-        <div class="thumb-placeholder">
-          <span class="thumb-label">Vóley</span>
-        </div>
+        <div class="thumb-placeholder"><span class="thumb-label">Vóley</span></div>
       </div>
       <div class="proyecto-overlay">
         <span class="overlay-cat">Fotografía deportiva</span>
@@ -845,16 +827,18 @@
     });
   }
 
-  // MODAL VIDEO
-  function abrirModal(videoId, tipo) {
-    if (!videoId || videoId.includes('_VIDEO_ID')) {
-      alert('Reemplazá el ID del video en el código HTML con el ID de tu video de YouTube.');
+  // MODAL VIDEO — YouTube + Vimeo
+  function abrirModal(videoId, fuente) {
+    if (!videoId || videoId.includes('_VIDEO_ID') || videoId.includes('_VIMEO_ID')) {
+      alert('Reemplazá el ID del video en el código HTML.\n\nYouTube: el ID está al final del link → youtube.com/watch?v=ID_ACÁ\nVimeo: el número en el link → vimeo.com/NÚMERO_ACÁ');
       return;
     }
-    const wrap = document.getElementById('modalWrap');
     const iframe = document.getElementById('modalIframe');
-    wrap.className = 'modal-video-wrap ' + tipo;
-    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+    if (fuente === 'vimeo') {
+      iframe.src = 'https://player.vimeo.com/video/' + videoId + '?autoplay=1&loop=0&title=0&byline=0&portrait=0';
+    } else {
+      iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+    }
     document.getElementById('modal').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
