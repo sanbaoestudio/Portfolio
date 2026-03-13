@@ -441,6 +441,79 @@
   .overlay-link:hover { gap: 14px; }
   .overlay-link::after { content: '→'; }
 
+  /* LIGHTBOX FOTOS */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(14,14,14,0.97);
+    z-index: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .lightbox.open { opacity: 1; pointer-events: all; }
+
+  .lightbox-inner {
+    position: relative;
+    max-width: 92vw;
+    max-height: 92vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox-inner img {
+    max-width: 92vw;
+    max-height: 88vh;
+    object-fit: contain;
+    display: block;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: -44px;
+    right: 0;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    cursor: none;
+    transition: color 0.2s;
+  }
+  .lightbox-close:hover { color: white; }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    padding: 12px 16px;
+    cursor: none;
+    transition: all 0.2s;
+  }
+  .lightbox-nav:hover { border-color: var(--acento); color: var(--acento); }
+  .lightbox-prev { left: -64px; }
+  .lightbox-next { right: -64px; }
+
+  .lightbox-counter {
+    position: absolute;
+    bottom: -36px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.55rem;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+  }
+
   /* MODAL VIDEO */
   .modal {
     position: fixed;
@@ -650,23 +723,7 @@
   <span class="hero-scroll">Scroll</span>
 </section>
 
-<!-- SHOWREEL -->
-<section class="showreel" id="showreel">
-  <div class="section-label">Showreel</div>
-  <div class="showreel-container">
-    <!--
-      INSTRUCCIONES SHOWREEL:
-      Reemplazá el div.showreel-placeholder por un iframe de YouTube:
-      <iframe src="https://www.youtube.com/embed/TU_VIDEO_ID?autoplay=1&mute=1" allowfullscreen allow="autoplay"></iframe>
-    -->
-    <div class="showreel-placeholder" onclick="alert('Pegá tu link de YouTube aquí. Ver instrucciones en el código.')">
-      <div class="play-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
-      <span>Ver Showreel</span>
-    </div>
-  </div>
-</section>
+
 
 <!-- PROYECTOS -->
 <section class="proyectos reveal" id="proyectos">
@@ -682,7 +739,7 @@
 
   <div class="grid" id="grid-proyectos">
 
-    <!-- PROYECTO 1 — UBA Odontología (destacado, 2 cols) -->
+    <!-- PROYECTO 1 — UBA Odontología -->
     <div class="proyecto featured" data-cat="video" onclick="abrirModal('1173295192', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">UBA</span></div>
@@ -695,7 +752,7 @@
       </div>
     </div>
 
-    <!-- PROYECTO 2 — Bajista -->
+    <!-- PROYECTO 2 — Bajo -->
     <div class="proyecto" data-cat="video" onclick="abrirModal('1173295320', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Sesión</span></div>
@@ -708,7 +765,7 @@
       </div>
     </div>
 
-    <!-- PROYECTO 3 — Motion Vóley (Vimeo) -->
+    <!-- PROYECTO 3 — Motion Vóley -->
     <div class="proyecto" data-cat="motion" onclick="abrirModal('1166459428', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Motion</span></div>
@@ -721,27 +778,101 @@
       </div>
     </div>
 
-    <!-- PROYECTO 4 — Foto Fútsal -->
-    <div class="proyecto" data-cat="foto">
+    <!-- PROYECTO 4 — Reel Desafío 30 días -->
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1163783614', 'vimeo')">
       <div class="video-thumb">
+        <div class="thumb-placeholder"><span class="thumb-label">Reel</span></div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Edición · Reel</span>
+        <h3 class="overlay-title">Reel<br>Desafío 30 días</h3>
+        <p class="overlay-desc">Compilado del desafío de contenido. Edición y dirección propia.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 5 — Reel Cervecería -->
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1166457016', 'vimeo')">
+      <div class="video-thumb">
+        <div class="thumb-placeholder"><span class="thumb-label">Cervecería</span></div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Filmación · Edición</span>
+        <h3 class="overlay-title">Reel<br>Cervecería</h3>
+        <p class="overlay-desc">Reel de producto para marca gastronómica.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 6 — TikTok -->
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1166458799', 'vimeo')">
+      <div class="video-thumb">
+        <div class="thumb-placeholder"><span class="thumb-label">TikTok</span></div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Edición · Redes</span>
+        <h3 class="overlay-title">Contenido<br>TikTok</h3>
+        <p class="overlay-desc">Edición de contenido vertical para redes sociales.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 7 — Reel Bajo Desafío -->
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1173318150', 'vimeo')">
+      <div class="video-thumb">
+        <div class="thumb-placeholder"><span class="thumb-label">Bajo</span></div>
+      </div>
+      <div class="proyecto-overlay">
+        <span class="overlay-cat">Edición · Reel</span>
+        <h3 class="overlay-title">Reel Bajo<br>Desafío 30 días</h3>
+        <p class="overlay-desc">Reel musical del desafío de contenido.</p>
+        <span class="overlay-link">Ver proyecto</span>
+      </div>
+    </div>
+
+    <!-- PROYECTO 8 — Foto Fútsal -->
+    <div class="proyecto featured" data-cat="foto" onclick="abrirFotos([
+      'https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg',
+      'https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg',
+      'https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg',
+      'https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg',
+      'https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg',
+      'https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg',
+      'https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg',
+      'https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg',
+      'https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg',
+      'https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg',
+      'https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'
+    ], 0)">
+      <div class="video-thumb">
+        <img src="https://i.imgur.com/lWBEh17.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">Fútsal</span></div>
       </div>
       <div class="proyecto-overlay">
-        <span class="overlay-cat">Fotografía deportiva</span>
+        <span class="overlay-cat">Fotografía deportiva · 33 fotos</span>
         <h3 class="overlay-title">Fotografía<br>Fútsal</h3>
         <p class="overlay-desc">Registro de acción en tiempo real. Edición profesional.</p>
         <span class="overlay-link">Ver galería</span>
       </div>
     </div>
 
-    <!-- PROYECTO 5 — Foto Vóley -->
-    <div class="proyecto" data-cat="foto">
+    <!-- PROYECTO 9 — Foto Vóley Femenino -->
+    <div class="proyecto featured" data-cat="foto" onclick="abrirFotos([
+      'https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg',
+      'https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg',
+      'https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg',
+      'https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg',
+      'https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg',
+      'https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg',
+      'https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'
+    ], 0)">
       <div class="video-thumb">
+        <img src="https://i.imgur.com/xAZuMo2.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">Vóley</span></div>
       </div>
       <div class="proyecto-overlay">
-        <span class="overlay-cat">Fotografía deportiva</span>
-        <h3 class="overlay-title">Fotografía<br>Vóley</h3>
+        <span class="overlay-cat">Fotografía deportiva · 21 fotos</span>
+        <h3 class="overlay-title">Fotografía<br>Vóley Femenino</h3>
         <p class="overlay-desc">Cobertura de eventos deportivos femeninos.</p>
         <span class="overlay-link">Ver galería</span>
       </div>
@@ -782,7 +913,18 @@
   <span>Buenos Aires, Argentina</span>
 </footer>
 
-<!-- MODAL -->
+<!-- LIGHTBOX FOTOS -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox(event)">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" onclick="cerrarLightbox()">[ cerrar ]</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navFoto(-1)">←</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="navFoto(1)">→</button>
+    <span class="lightbox-counter" id="lightboxCounter"></span>
+  </div>
+</div>
+
+<!-- MODAL VIDEO -->
 <div class="modal" id="modal" onclick="cerrarModal(event)">
   <div class="modal-inner">
     <button class="modal-close" onclick="cerrarModal()">[ cerrar ]</button>
@@ -826,6 +968,48 @@
       }
     });
   }
+
+  // LIGHTBOX FOTOS
+  let fotosActuales = [];
+  let fotoIndex = 0;
+
+  function abrirFotos(fotos, index) {
+    fotosActuales = fotos;
+    fotoIndex = index;
+    mostrarFoto();
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function mostrarFoto() {
+    const img = document.getElementById('lightboxImg');
+    const counter = document.getElementById('lightboxCounter');
+    img.src = fotosActuales[fotoIndex];
+    counter.textContent = (fotoIndex + 1) + ' / ' + fotosActuales.length;
+    // Ocultar flechas si hay una sola foto
+    document.querySelector('.lightbox-prev').style.display = fotosActuales.length > 1 ? 'block' : 'none';
+    document.querySelector('.lightbox-next').style.display = fotosActuales.length > 1 ? 'block' : 'none';
+  }
+
+  function navFoto(dir) {
+    fotoIndex = (fotoIndex + dir + fotosActuales.length) % fotosActuales.length;
+    mostrarFoto();
+  }
+
+  function cerrarLightbox(e) {
+    if (e && e.target !== document.getElementById('lightbox') && !e.target.classList.contains('lightbox-close')) return;
+    document.getElementById('lightbox').classList.remove('open');
+    document.getElementById('lightboxImg').src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (document.getElementById('lightbox').classList.contains('open')) {
+      if (e.key === 'ArrowLeft') navFoto(-1);
+      if (e.key === 'ArrowRight') navFoto(1);
+      if (e.key === 'Escape') cerrarLightbox({ target: document.getElementById('lightbox') });
+    }
+  });
 
   // MODAL VIDEO — YouTube + Vimeo
   function abrirModal(videoId, fuente) {
