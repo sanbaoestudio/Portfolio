@@ -66,14 +66,17 @@
     mix-blend-mode: multiply;
   }
 
-  .nav-logo img {
-    height: 36px;
-    width: auto;
-    /* El logo es negro sobre negro — lo invertimos para que se vea sobre fondo blanco */
-    filter: invert(1);
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--negro);
+    text-decoration: none;
     transition: opacity 0.2s;
   }
-  .nav-logo:hover img { opacity: 0.7; }
+  .nav-logo:hover { opacity: 0.6; }
 
   .nav-links {
     display: flex;
@@ -647,21 +650,97 @@
 
   /* ANIMACIONES */
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(40px); }
     to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes slideLeft {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
   }
   @keyframes pulse {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.8; }
   }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to   { opacity: 1; transform: scale(1); }
+  }
 
-  /* REVEAL ON SCROLL */
+  /* NAV fade in al cargar */
+  nav {
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  /* HERO animaciones escalonadas */
+  .hero-left {
+    opacity: 0;
+    animation: fadeUp 1.1s cubic-bezier(.16,1,.3,1) 0.2s forwards;
+  }
+  .hero-right {
+    opacity: 0;
+    animation: slideLeft 1.1s cubic-bezier(.16,1,.3,1) 0.5s forwards;
+  }
+
+  /* SCROLL REVEAL — clases base */
   .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(.16,1,.3,1), transform 0.8s cubic-bezier(.16,1,.3,1);
+    transform: translateY(50px);
+    transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
   }
-  .reveal.visible { opacity: 1; transform: none; }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Variantes de dirección */
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal-left.visible { opacity: 1; transform: none; }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal-right.visible { opacity: 1; transform: none; }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 0.9s cubic-bezier(.16,1,.3,1), transform 0.9s cubic-bezier(.16,1,.3,1);
+  }
+  .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+  /* Stagger para items de contacto y grilla */
+  .stagger > * {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(.16,1,.3,1), transform 0.6s cubic-bezier(.16,1,.3,1);
+  }
+  .stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+  .stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.08s; }
+  .stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.16s; }
+  .stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.24s; }
+  .stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.32s; }
+  .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+  .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: 0.48s; }
+  .stagger.visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: 0.56s; }
+  .stagger.visible > *:nth-child(9) { opacity: 1; transform: none; transition-delay: 0.64s; }
+
+  /* Parallax nav al hacer scroll */
+  nav.scrolled {
+    background: rgba(248,247,244,0.92);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--gris-light);
+    transition: background 0.4s, box-shadow 0.4s;
+  }
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
@@ -691,7 +770,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo"><img src="logo.png" alt="San Bao Estudio"></a>
+  <a href="#" class="nav-logo">San Bao Estudio</a>
   <ul class="nav-links">
     <li><a href="#proyectos">Proyectos</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -727,7 +806,7 @@
 
 <!-- PROYECTOS -->
 <section class="proyectos reveal" id="proyectos">
-  <div class="proyectos-header">
+  <div class="proyectos-header reveal-left">
     <h2 class="section-title">Proyectos</h2>
     <div class="filter-tabs">
       <button class="filter-btn active" onclick="filtrar('todos', this)">Todos</button>
@@ -737,10 +816,10 @@
     </div>
   </div>
 
-  <div class="grid" id="grid-proyectos">
+  <div class="grid stagger" id="grid-proyectos">
 
     <!-- PROYECTO 1 — UBA Odontología -->
-    <div class="proyecto featured" data-cat="video" onclick="abrirModal('1173295192', 'vimeo')">
+    <div class="proyecto featured" data-cat="video" data-vimeo-id="1173295192" onclick="abrirModal('1173295192', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">UBA</span></div>
       </div>
@@ -753,7 +832,7 @@
     </div>
 
     <!-- PROYECTO 2 — Bajo -->
-    <div class="proyecto" data-cat="video" onclick="abrirModal('1173295320', 'vimeo')">
+    <div class="proyecto" data-cat="video" data-vimeo-id="1173295320" onclick="abrirModal('1173295320', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Sesión</span></div>
       </div>
@@ -766,7 +845,7 @@
     </div>
 
     <!-- PROYECTO 3 — Motion Vóley -->
-    <div class="proyecto" data-cat="motion" onclick="abrirModal('1166459428', 'vimeo')">
+    <div class="proyecto" data-cat="motion" data-vimeo-id="1166459428" onclick="abrirModal('1166459428', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Motion</span></div>
       </div>
@@ -779,7 +858,7 @@
     </div>
 
     <!-- PROYECTO 4 — Reel Desafío 30 días -->
-    <div class="proyecto" data-cat="video" onclick="abrirModal('1163783614', 'vimeo')">
+    <div class="proyecto" data-cat="video" data-vimeo-id="1163783614" onclick="abrirModal('1163783614', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Reel</span></div>
       </div>
@@ -792,7 +871,7 @@
     </div>
 
     <!-- PROYECTO 5 — Reel Cervecería -->
-    <div class="proyecto" data-cat="video" onclick="abrirModal('1166457016', 'vimeo')">
+    <div class="proyecto" data-cat="video" data-vimeo-id="1166457016" onclick="abrirModal('1166457016', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Cervecería</span></div>
       </div>
@@ -805,7 +884,7 @@
     </div>
 
     <!-- PROYECTO 6 — TikTok -->
-    <div class="proyecto" data-cat="video" onclick="abrirModal('1166458799', 'vimeo')">
+    <div class="proyecto" data-cat="video" data-vimeo-id="1166458799" onclick="abrirModal('1166458799', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">TikTok</span></div>
       </div>
@@ -818,7 +897,7 @@
     </div>
 
     <!-- PROYECTO 7 — Reel Bajo Desafío -->
-    <div class="proyecto" data-cat="video" onclick="abrirModal('1173318150', 'vimeo')">
+    <div class="proyecto" data-cat="video" data-vimeo-id="1173318150" onclick="abrirModal('1173318150', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Bajo</span></div>
       </div>
@@ -882,33 +961,37 @@
 </section>
 
 <!-- CONTACTO -->
-<section class="contacto reveal" id="contacto">
-  <div class="contacto-left">
+<section class="contacto" id="contacto">
+  <div class="contacto-left reveal-left">
     <h2>Trabajemos<br><em>juntos</em></h2>
     <p>Estoy disponible para proyectos audiovisuales, colaboraciones y trabajo en relación de dependencia. Buenos Aires y remoto.</p>
   </div>
-  <div class="contacto-right">
+  <div class="contacto-right stagger">
     <div class="contact-item">
       <span class="contact-label">Instagram</span>
-      <a href="https://instagram.com/sanbao.estudio" target="_blank" class="contact-value">@sanbao.estudio</a>
+      <a href="https://www.instagram.com/sanbaoestudio" target="_blank" class="contact-value">@sanbaoestudio</a>
     </div>
     <div class="contact-item">
       <span class="contact-label">TikTok</span>
-      <a href="https://tiktok.com/@sanbao.estudio" target="_blank" class="contact-value">@sanbao.estudio</a>
+      <a href="https://www.tiktok.com/sanbaoestudio" target="_blank" class="contact-value">@sanbaoestudio</a>
     </div>
     <div class="contact-item">
       <span class="contact-label">YouTube</span>
       <a href="https://youtube.com/@sanbaoestudio" target="_blank" class="contact-value">San Bao Estudio</a>
     </div>
     <div class="contact-item">
-      <span class="contact-label">Ubicación</span>
-      <span class="contact-value" style="cursor:default">Buenos Aires, Argentina</span>
+      <span class="contact-label">WhatsApp</span>
+      <a href="https://wa.me/5491130203625" target="_blank" class="contact-value">+54 9 11 3020 3625</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Email</span>
+      <a href="mailto:sanbaoestudio@gmail.com" class="contact-value">sanbaoestudio@gmail.com</a>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="reveal">
   <span>© 2025 San Bao Estudio — Luca Gazzola</span>
   <span>Buenos Aires, Argentina</span>
 </footer>
@@ -935,6 +1018,25 @@
 </div>
 
 <script>
+  // THUMBNAILS VIMEO — carga automática via oEmbed
+  document.querySelectorAll('.proyecto[data-vimeo-id]').forEach(el => {
+    const id = el.dataset.vimeoId;
+    const thumb = el.querySelector('.video-thumb');
+    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}&width=640`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.thumbnail_url) {
+          // Usar imagen de mayor resolución reemplazando el tamaño
+          const imgUrl = data.thumbnail_url.replace(/_\d+x\d+/, '_640');
+          const img = document.createElement('img');
+          img.src = imgUrl;
+          img.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;';
+          thumb.insertBefore(img, thumb.firstChild);
+        }
+      })
+      .catch(() => {}); // Si falla, queda el placeholder gris
+  });
+
   // CURSOR
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
@@ -947,14 +1049,33 @@
     }, 80);
   });
 
-  // SCROLL REVEAL
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
+  // SCROLL REVEAL — maneja reveal, reveal-left, reveal-right, stagger
+  const allReveal = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger');
+  const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
     });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  allReveal.forEach(el => revealObserver.observe(el));
+
+  // NAV — blur al hacer scroll
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // PARALLAX suave en hero al hacer scroll
+  const heroLeft = document.querySelector('.hero-left');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight && heroLeft) {
+      heroLeft.style.transform = `translateY(${y * 0.18}px)`;
+      heroLeft.style.opacity = Math.max(0, 1 - (y / (window.innerHeight * 0.7)));
+    }
+  }, { passive: true });
 
   // FILTRO PROYECTOS
   function filtrar(cat, btn) {
