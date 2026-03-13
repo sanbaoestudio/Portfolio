@@ -63,8 +63,10 @@
     justify-content: space-between;
     align-items: center;
     padding: 28px 52px;
-    mix-blend-mode: multiply;
+    opacity: 0.5;
+    transition: opacity 0.3s;
   }
+  nav:hover { opacity: 1; }
 
   .nav-logo {
     font-family: 'Barlow Condensed', sans-serif;
@@ -819,8 +821,9 @@
   <div class="grid stagger" id="grid-proyectos">
 
     <!-- PROYECTO 1 — UBA Odontología -->
-    <div class="proyecto featured" data-cat="video" data-vimeo-id="1173295192" onclick="abrirModal('1173295192', 'vimeo')">
+    <div class="proyecto featured" data-cat="video" onclick="abrirModal('1173295192', 'vimeo')">
       <div class="video-thumb">
+        <img src="https://i.imgur.com/LH1JHdB.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">UBA</span></div>
       </div>
       <div class="proyecto-overlay">
@@ -832,7 +835,7 @@
     </div>
 
     <!-- PROYECTO 2 — Bajo -->
-    <div class="proyecto" data-cat="video" data-vimeo-id="1173295320" onclick="abrirModal('1173295320', 'vimeo')">
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1173295320', 'vimeo')">
       <div class="video-thumb">
         <div class="thumb-placeholder"><span class="thumb-label">Sesión</span></div>
       </div>
@@ -845,8 +848,9 @@
     </div>
 
     <!-- PROYECTO 3 — Motion Vóley -->
-    <div class="proyecto" data-cat="motion" data-vimeo-id="1166459428" onclick="abrirModal('1166459428', 'vimeo')">
+    <div class="proyecto" data-cat="motion" onclick="abrirModal('1166459428', 'vimeo')">
       <div class="video-thumb">
+        <img src="https://i.imgur.com/O8D9FcE.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">Motion</span></div>
       </div>
       <div class="proyecto-overlay">
@@ -858,8 +862,9 @@
     </div>
 
     <!-- PROYECTO 4 — Reel Desafío 30 días -->
-    <div class="proyecto" data-cat="video" data-vimeo-id="1163783614" onclick="abrirModal('1163783614', 'vimeo')">
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1163783614', 'vimeo')">
       <div class="video-thumb">
+        <img src="https://i.imgur.com/4SmM3FR.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">Reel</span></div>
       </div>
       <div class="proyecto-overlay">
@@ -871,8 +876,9 @@
     </div>
 
     <!-- PROYECTO 5 — Reel Cervecería -->
-    <div class="proyecto" data-cat="video" data-vimeo-id="1166457016" onclick="abrirModal('1166457016', 'vimeo')">
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1166457016', 'vimeo')">
       <div class="video-thumb">
+        <img src="https://i.imgur.com/lp1JW2F.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">Cervecería</span></div>
       </div>
       <div class="proyecto-overlay">
@@ -883,22 +889,10 @@
       </div>
     </div>
 
-    <!-- PROYECTO 6 — TikTok -->
-    <div class="proyecto" data-cat="video" data-vimeo-id="1166458799" onclick="abrirModal('1166458799', 'vimeo')">
+    <!-- PROYECTO 6 — Reel Bajo Desafío -->
+    <div class="proyecto" data-cat="video" onclick="abrirModal('1173318150', 'vimeo')">
       <div class="video-thumb">
-        <div class="thumb-placeholder"><span class="thumb-label">TikTok</span></div>
-      </div>
-      <div class="proyecto-overlay">
-        <span class="overlay-cat">Edición · Redes</span>
-        <h3 class="overlay-title">Contenido<br>TikTok</h3>
-        <p class="overlay-desc">Edición de contenido vertical para redes sociales.</p>
-        <span class="overlay-link">Ver proyecto</span>
-      </div>
-    </div>
-
-    <!-- PROYECTO 7 — Reel Bajo Desafío -->
-    <div class="proyecto" data-cat="video" data-vimeo-id="1173318150" onclick="abrirModal('1173318150', 'vimeo')">
-      <div class="video-thumb">
+        <img src="https://i.imgur.com/Bw5pPvP.jpg" style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;">
         <div class="thumb-placeholder"><span class="thumb-label">Bajo</span></div>
       </div>
       <div class="proyecto-overlay">
@@ -985,7 +979,7 @@
     </div>
     <div class="contact-item">
       <span class="contact-label">Email</span>
-      <a href="mailto:sanbaoestudio@gmail.com" class="contact-value">sanbaoestudio@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#087b69666a69676d7b7c7d6c6167486f65696164266b6765" class="contact-value"><span class="__cf_email__" data-cfemail="4132202f23202e2432353425282e01262c20282d6f222e2c">[email&#160;protected]</span></a>
     </div>
   </div>
 </section>
@@ -1017,24 +1011,26 @@
   </div>
 </div>
 
-<script>
-  // THUMBNAILS VIMEO — carga automática via oEmbed
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // THUMBNAILS — portadas personalizadas
+  const vimeoThumbs = {
+    '1173295192': 'https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/UBA.jpg',
+    '1173295320': 'https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/BAJO.jpg',
+    '1166457016': 'https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/CERVECERIA.jpg',
+    '1163783614': 'https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/dia%202%20tiktoka.png',
+    '1173318150': 'https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/DIA%2020%20BAJO.jpg',
+    '1166459428': 'https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/MOTION.jpg'
+  };
+
   document.querySelectorAll('.proyecto[data-vimeo-id]').forEach(el => {
     const id = el.dataset.vimeoId;
     const thumb = el.querySelector('.video-thumb');
-    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${id}&width=640`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.thumbnail_url) {
-          // Usar imagen de mayor resolución reemplazando el tamaño
-          const imgUrl = data.thumbnail_url.replace(/_\d+x\d+/, '_640');
-          const img = document.createElement('img');
-          img.src = imgUrl;
-          img.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;';
-          thumb.insertBefore(img, thumb.firstChild);
-        }
-      })
-      .catch(() => {}); // Si falla, queda el placeholder gris
+    if (vimeoThumbs[id]) {
+      const img = document.createElement('img');
+      img.src = vimeoThumbs[id];
+      img.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1;';
+      thumb.insertBefore(img, thumb.firstChild);
+    }
   });
 
   // CURSOR
@@ -1156,8 +1152,12 @@
   }
 
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') cerrarModal({target: document.getElementById('modal')});
+    if (e.key === 'Escape') {
+      cerrarModal({ target: document.getElementById('modal') });
+      cerrarLightbox({ target: document.getElementById('lightbox') });
+    }
   });
+
 </script>
 </body>
 </html>
