@@ -73,11 +73,11 @@ nav.scrolled {
 
 /* ===================== HERO ===================== */
 .hero {
-  min-height: 100vh;
+  min-height: 60vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: end;
-  padding: 120px 48px 80px;
+  padding: 120px 48px 40px;
   gap: 40px;
 }
 .hero-tag {
@@ -103,7 +103,7 @@ nav.scrolled {
   letter-spacing: -0.03em;
   text-transform: uppercase;
   color: #2A2A2A;
-  margin-bottom: 36px;
+  margin-bottom: 16px;
 }
 .hero-title em {
   font-style: italic;
@@ -135,7 +135,9 @@ nav.scrolled {
 .tag:hover { border-color: var(--acento); color: var(--negro); }
 
 /* ===================== SECCIÓN GENÉRICA ===================== */
-section { padding: 0 48px 100px; }
+section { padding: 0 48px 60px; }
+
+#proyectos { padding-top: 0; }
 
 .sec-label {
   font-size: 0.55rem;
@@ -185,7 +187,7 @@ section { padding: 0 48px 100px; }
 /* ===================== GRILLA ===================== */
 .grilla {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 14px;
 }
 
@@ -200,11 +202,11 @@ section { padding: 0 48px 100px; }
 .card:hover { transform: translateY(-5px); }
 .card.doble { grid-column: span 2; }
 
-/* Ratio 9:16 */
+/* Ratio ~3:4 — más armónico, menos agresivo */
 .card-thumb {
   position: relative;
   width: 100%;
-  padding-bottom: 177.78%;
+  padding-bottom: 133%;
   overflow: hidden;
 }
 .card-thumb img {
@@ -278,6 +280,28 @@ section { padding: 0 48px 100px; }
 }
 .card-link::after { content: '→'; transition: margin 0.2s; }
 .card:hover .card-link::after { margin-left: 4px; }
+
+/* Info debajo de la imagen */
+.card-info {
+  padding: 12px 4px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.card-info-cat {
+  font-size: 0.5rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--acento);
+}
+.card-info-titulo {
+  font-family: var(--cond);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--negro);
+  line-height: 1.2;
+}
 
 /* ===================== MODAL VIDEO ===================== */
 .modal-video {
@@ -515,7 +539,7 @@ footer {
     <h1 class="hero-title">Luca<br><em>Gazzola</em></h1>
     <p class="hero-sub">
       Filmmaker · Diseñador audiovisual · Fotografía<br>
-      Motion graphics · Equipo propio
+      Motion graphics
     </p>
   </div>
   <div class="hero-right">
@@ -540,7 +564,6 @@ footer {
     <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')">
       <div class="card-thumb">
         <img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA Odontología">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Filmación · Edición</span>
@@ -548,13 +571,16 @@ footer {
         <p class="card-desc">Video promocional institucional. Producción completa.</p>
         <span class="card-link">Ver proyecto</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Filmación · Edición</span>
+        <span class="card-info-titulo">Reel Posgrado UBA Odontología</span>
+      </div>
     </div>
 
     <!-- VIDEO — Bajo -->
     <div class="card" data-cat="video" onclick="abrirVideo('1173295320')">
       <div class="card-thumb">
         <img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Sesión Bajista">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Filmación · Edición</span>
@@ -562,13 +588,16 @@ footer {
         <p class="card-desc">Sesión en vivo. Registro multiángulo y edición rítmica.</p>
         <span class="card-link">Ver proyecto</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Filmación · Edición</span>
+        <span class="card-info-titulo">Sesión Musical Bajista</span>
+      </div>
     </div>
 
     <!-- MOTION — Villa Luro Vóley -->
     <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')">
       <div class="card-thumb">
         <img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion Vóley">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Motion graphics</span>
@@ -576,13 +605,16 @@ footer {
         <p class="card-desc">Reel animado para redes. Identidad visual en movimiento.</p>
         <span class="card-link">Ver proyecto</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Motion graphics</span>
+        <span class="card-info-titulo">Villa Luro Vóley — Convocatoria 2026</span>
+      </div>
     </div>
 
     <!-- VIDEO — Reel 30 días -->
     <div class="card" data-cat="video" onclick="abrirVideo('1163783614')">
       <div class="card-thumb">
         <img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 30 días">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Edición · Reel</span>
@@ -590,13 +622,16 @@ footer {
         <p class="card-desc">Compilado del desafío de contenido.</p>
         <span class="card-link">Ver proyecto</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Edición · Reel</span>
+        <span class="card-info-titulo">Reel Desafío 30 días</span>
+      </div>
     </div>
 
     <!-- VIDEO — Cervecería -->
     <div class="card" data-cat="video" onclick="abrirVideo('1166457016')">
       <div class="card-thumb">
         <img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Filmación · Edición</span>
@@ -604,13 +639,16 @@ footer {
         <p class="card-desc">Reel de producto para marca gastronómica.</p>
         <span class="card-link">Ver proyecto</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Filmación · Edición</span>
+        <span class="card-info-titulo">Reel Cervecería</span>
+      </div>
     </div>
 
     <!-- VIDEO — Reel Bajo Desafío -->
     <div class="card" data-cat="video" onclick="abrirVideo('1173318150')">
       <div class="card-thumb">
         <img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel Bajo">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Edición · Reel</span>
@@ -618,13 +656,16 @@ footer {
         <p class="card-desc">Reel musical del desafío de contenido.</p>
         <span class="card-link">Ver proyecto</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Edición · Reel</span>
+        <span class="card-info-titulo">Reel Bajo — Desafío 30 días</span>
+      </div>
     </div>
 
     <!-- FOTO — Fútsal (doble ancho) -->
     <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_FUTSAL, 0)">
       <div class="card-thumb">
         <img src="https://i.imgur.com/lWBEh17.jpg" alt="Fútsal">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Fotografía deportiva · 33 fotos</span>
@@ -632,19 +673,26 @@ footer {
         <p class="card-desc">Registro de acción en tiempo real.</p>
         <span class="card-link">Ver galería</span>
       </div>
+      <div class="card-info">
+        <span class="card-info-cat">Fotografía deportiva · 33 fotos</span>
+        <span class="card-info-titulo">Fotografía Fútsal</span>
+      </div>
     </div>
 
     <!-- FOTO — Vóley Femenino -->
     <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_VOLEY, 0)">
       <div class="card-thumb">
         <img src="https://i.imgur.com/xAZuMo2.jpg" alt="Vóley Femenino">
-        
       </div>
       <div class="card-overlay">
         <span class="card-cat">Fotografía deportiva · 21 fotos</span>
         <h3 class="card-titulo">Fotografía<br>Vóley Femenino</h3>
         <p class="card-desc">Cobertura de eventos deportivos femeninos.</p>
         <span class="card-link">Ver galería</span>
+      </div>
+      <div class="card-info">
+        <span class="card-info-cat">Fotografía deportiva · 21 fotos</span>
+        <span class="card-info-titulo">Fotografía Vóley Femenino</span>
       </div>
     </div>
 
