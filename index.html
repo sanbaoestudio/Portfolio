@@ -8,33 +8,82 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-
 :root{
-  --bg:#F8F7F4;
+  --bg:#F0EDE6;
   --negro:#0E0E0E;
   --gris:#6B6B6B;
-  --linea:#E0DED8;
+  --linea:rgba(14,14,14,0.12);
   --acento:#E8622A;
+  --glass:rgba(255,255,255,0.55);
+  --glass-border:rgba(255,255,255,0.7);
   --mono:'DM Mono',monospace;
   --display:'Barlow',sans-serif;
   --cond:'Barlow Condensed',sans-serif;
 }
 
-/* ---- BASE ---- */
-body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:300;overflow-x:hidden;transition:background 0.8s,color 0.8s}
-body.dark{--bg:#0E0E0E;--negro:#F8F7F4;--gris:#9A9A9A;--linea:#2A2A2A;background:#0E0E0E;color:#F8F7F4}
+/* ---- BASE + FONDO ---- */
+body{
+  background:var(--bg);
+  color:var(--negro);
+  font-family:var(--mono);
+  font-weight:300;
+  overflow-x:hidden;
+  position:relative;
+}
+/* Orbs de fondo */
+body::before,body::after{
+  content:'';
+  position:fixed;
+  border-radius:50%;
+  pointer-events:none;
+  z-index:0;
+  filter:blur(80px);
+  opacity:0.35;
+}
+body::before{
+  width:600px;height:600px;
+  background:radial-gradient(circle,#E8622A 0%,transparent 70%);
+  top:-100px;right:-100px;
+  animation:float1 12s ease-in-out infinite;
+}
+body::after{
+  width:500px;height:500px;
+  background:radial-gradient(circle,#F5A06A 0%,transparent 70%);
+  bottom:-100px;left:-100px;
+  animation:float2 15s ease-in-out infinite;
+}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
 
-/* ---- CURSOR ---- */
-.cursor{position:fixed;width:10px;height:10px;background:var(--acento);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.3s,height 0.3s,opacity 0.3s}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--acento);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.18s ease-out,width 0.3s,height 0.3s,opacity 0.3s;opacity:0.5}
+/* Noise texture overlay */
+body>.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px}
+
+/* ---- GLASS MIXIN ---- */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(18px) saturate(180%);
+  -webkit-backdrop-filter:blur(18px) saturate(180%);
+  border:1px solid var(--glass-border);
+  box-shadow:0 8px 32px rgba(14,14,14,0.08),inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+/* Ensure content above bg */
+nav,section,footer,.modal-video,.lightbox{position:relative;z-index:2}
 
 /* ---- NAV ---- */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:24px 48px;transition:background 0.4s,box-shadow 0.3s,color 0.4s}
-nav.scrolled{background:rgba(14,14,14,0.88);backdrop-filter:blur(14px);box-shadow:0 1px 0 rgba(255,255,255,0.06)}
-body:not(.dark) nav.scrolled{background:rgba(248,247,244,0.93);box-shadow:0 1px 0 var(--linea)}
-.nav-logo{font-family:var(--cond);font-size:0.95rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--negro);text-decoration:none;opacity:0.6;transition:opacity 0.2s,color 0.4s}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 48px;
+  background:rgba(240,237,230,0.5);
+  backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid rgba(255,255,255,0.6);
+  transition:background 0.3s;
+}
+.nav-logo{font-family:var(--cond);font-size:0.95rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--negro);text-decoration:none;opacity:0.7;transition:opacity 0.2s}
 .nav-logo:hover{opacity:1}
-.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--acento)}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:200}
@@ -44,91 +93,115 @@ body:not(.dark) nav.scrolled{background:rgba(248,247,244,0.93);box-shadow:0 1px 
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* ---- HERO ---- */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 60px;position:relative;overflow:hidden}
-.hero-bg-text{position:absolute;top:50%;left:-2%;transform:translateY(-50%);font-family:var(--display);font-size:clamp(12rem,22vw,28rem);font-weight:900;text-transform:uppercase;color:transparent;-webkit-text-stroke:1px rgba(232,98,42,0.08);white-space:nowrap;pointer-events:none;letter-spacing:-0.04em;line-height:1;user-select:none}
-.hero-eyebrow{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px;margin-bottom:20px;opacity:0;transform:translateY(20px)}
+.hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:end;
+  padding:130px 48px 60px;
+  gap:40px;
+}
+.hero-eyebrow{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px;margin-bottom:20px}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--acento)}
-.hero-title{font-family:var(--display);font-weight:900;line-height:0.85;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);margin-bottom:24px;overflow:hidden;transition:color 0.8s}
-.hero-title .line{display:block;overflow:hidden}
-.hero-title .word{display:inline-block;transform:translateY(110%);opacity:0}
-.hero-title em{font-style:italic;font-weight:700;color:var(--acento)}
-.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
-.hero-sub{max-width:420px;opacity:0;transform:translateY(20px)}
-.hero-tagline{display:block;font-family:var(--cond);font-size:1.1rem;font-weight:600;color:var(--negro);margin-bottom:8px;line-height:1.3;transition:color 0.8s}
-.hero-descriptor{display:block;font-size:0.6rem;letter-spacing:0.1em;color:var(--gris);transition:color 0.8s}
-.hero-tags{display:flex;flex-direction:column;align-items:flex-end;gap:8px;opacity:0;transform:translateY(20px)}
-.tag{font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris);border:1px solid var(--linea);padding:6px 14px;transition:all 0.25s}
-.tag:hover{border-color:var(--acento);color:var(--negro)}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;margin-top:20px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:13px 26px;transition:background 0.2s,transform 0.2s;opacity:0}
-.cta-btn:hover{background:#c94e1e;transform:translateY(-2px)}
+.hero-title{font-family:var(--display);font-size:clamp(4.5rem,9vw,11rem);font-weight:900;line-height:0.85;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);margin-bottom:24px}
+.hero-title em{font-style:italic;color:var(--acento)}
+.hero-sub{font-family:var(--cond);font-size:1rem;color:var(--negro);line-height:1.5;max-width:380px}
+.hero-tagline{display:block;font-size:1.1rem;font-weight:600;margin-bottom:8px}
+.hero-descriptor{display:block;font-size:0.62rem;color:var(--gris);letter-spacing:0.08em;margin-bottom:20px}
+.cta-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--acento);color:white;
+  font-family:var(--cond);font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  text-decoration:none;padding:13px 26px;
+  transition:background 0.2s,transform 0.2s,box-shadow 0.3s;
+  position:relative;
+}
+.cta-btn:hover{background:#c94e1e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,98,42,0.4)}
 .cta-btn::after{content:'→';margin-left:4px}
+/* Glow pulsante en el CTA */
+.cta-btn.glow{animation:glow 2.5s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 rgba(232,98,42,0)}50%{box-shadow:0 0 24px rgba(232,98,42,0.5)}}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.tag{
+  font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--gris);
+  padding:7px 16px;
+  transition:all 0.25s;
+}
+.tag.glass{border:1px solid var(--glass-border)}
+.tag:hover{border-color:var(--acento);color:var(--negro);background:rgba(255,255,255,0.7)}
 
-/* ---- SECCIÓN GENÉRICA ---- */
-section{padding:0 48px 80px;transition:background 0.8s,color 0.8s}
-.sec-label{font-size:0.55rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--linea);display:flex;align-items:center;gap:16px;margin-bottom:40px;transition:color 0.8s}
+/* ---- SECCIÓN ---- */
+section{padding:0 48px 80px}
+.sec-label{font-size:0.55rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(14,14,14,0.3);display:flex;align-items:center;gap:16px;margin-bottom:40px}
 .sec-label::after{content:'';flex:1;height:1px;background:var(--linea)}
-.sec-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:40px;transition:color 0.8s}
-
-/* ---- DARK SECTION MARKER ---- */
-.dark-section{background:transparent}
+.sec-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:40px}
 
 /* ---- SERVICIOS ---- */
 #servicios{padding-top:20px}
-.servicios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--linea);transition:border-color 0.8s}
-.servicio-card{padding:32px 28px;border-right:1px solid var(--linea);transition:background 0.25s,border-color 0.8s}
-.servicio-card:last-child{border-right:none}
-.servicio-card:hover{background:rgba(232,98,42,0.06)}
-.servicio-num{font-family:var(--display);font-size:3rem;font-weight:900;color:var(--linea);line-height:1;margin-bottom:16px;transition:color 0.25s,color 0.8s}
+.servicios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.servicio-card{
+  padding:32px 28px;
+  border-radius:2px;
+  transition:transform 0.3s,box-shadow 0.3s;
+}
+.servicio-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(14,14,14,0.12)}
+.servicio-num{font-family:var(--display);font-size:3rem;font-weight:900;color:rgba(232,98,42,0.2);line-height:1;margin-bottom:16px;transition:color 0.25s}
 .servicio-card:hover .servicio-num{color:var(--acento)}
-.servicio-nombre{font-family:var(--cond);font-size:1.15rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--negro);margin-bottom:10px;line-height:1.2;transition:color 0.8s}
-.servicio-desc{font-size:0.6rem;color:var(--gris);line-height:1.8;margin-bottom:18px;transition:color 0.8s}
-.servicio-precio{font-family:var(--display);font-size:0.85rem;font-weight:800;color:var(--acento);letter-spacing:-0.01em}
+.servicio-nombre{font-family:var(--cond);font-size:1.15rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--negro);margin-bottom:10px;line-height:1.2}
+.servicio-desc{font-size:0.6rem;color:var(--gris);line-height:1.8;margin-bottom:18px}
+.servicio-precio{font-family:var(--display);font-size:0.85rem;font-weight:800;color:var(--acento)}
 .servicio-precio span{font-family:var(--mono);font-size:0.52rem;font-weight:300;color:var(--gris);letter-spacing:0.1em;margin-left:4px;text-transform:uppercase}
 
 /* ---- COTIZADOR ---- */
 #cotizador{padding-top:20px;padding-bottom:80px}
-.cotizador-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:1px solid var(--linea);transition:border-color 0.8s}
-.cotizador-form-col{padding:40px;border-right:1px solid var(--linea);transition:border-color 0.8s}
-.cotizador-result-col{padding:40px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(232,98,42,0.05);min-height:460px}
+.cotizador-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cotizador-form-col{padding:40px;border-radius:2px}
+.cotizador-result-col{
+  padding:40px;border-radius:2px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  min-height:460px;
+  background:rgba(232,98,42,0.06);
+  border:1px solid rgba(232,98,42,0.15);
+}
 .campo-grupo{margin-bottom:24px}
-.campo-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gris);display:block;margin-bottom:8px;transition:color 0.8s}
+.campo-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gris);display:block;margin-bottom:8px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris);border:1px solid var(--linea);padding:7px 14px;cursor:pointer;background:none;transition:all 0.2s;user-select:none}
+.chip{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris);padding:7px 14px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s;user-select:none}
 .chip.sel{background:var(--acento);color:white;border-color:var(--acento)}
-.chip:hover{border-color:var(--acento);color:var(--negro)}
+.chip:hover{background:rgba(255,255,255,0.8);color:var(--negro)}
 .slider-wrap{display:flex;align-items:center;gap:16px}
 .slider-wrap input[type=range]{-webkit-appearance:none;flex:1;height:2px;background:var(--linea);outline:none;cursor:pointer}
-.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--acento);border-radius:50%;cursor:pointer}
-.slider-val{font-family:var(--display);font-size:1.1rem;font-weight:900;color:var(--negro);min-width:28px;text-align:right;transition:color 0.8s}
-.campo-select{width:100%;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--negro);background:var(--bg);border:1px solid var(--linea);padding:10px 14px;appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s,background 0.8s,color 0.8s}
+.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--acento);border-radius:50%;cursor:pointer;box-shadow:0 0 8px rgba(232,98,42,0.5)}
+.slider-val{font-family:var(--display);font-size:1.1rem;font-weight:900;color:var(--negro);min-width:28px;text-align:right}
+.campo-select{width:100%;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);backdrop-filter:blur(8px);padding:10px 14px;appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s}
 .campo-select:focus{border-color:var(--acento)}
 .result-estado{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gris);margin-bottom:12px}
 .result-precio{font-family:var(--display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;color:var(--negro);line-height:1;letter-spacing:-0.03em;margin-bottom:8px;transition:color 0.3s}
-.result-precio.calculado{color:var(--acento)}
+.result-precio.calculado{color:var(--acento);text-shadow:0 0 30px rgba(232,98,42,0.3)}
 .result-precio em{font-style:normal;font-size:1.2rem;font-weight:400;color:var(--gris);margin-right:4px}
 .result-detalle{font-size:0.6rem;color:var(--gris);line-height:1.8;min-height:80px}
 .result-detalle strong{color:var(--negro);font-weight:400}
 .result-note{font-size:0.52rem;color:var(--gris);letter-spacing:0.08em;font-style:italic;margin-bottom:20px}
-.cotizador-cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:14px 24px;transition:background 0.2s,transform 0.2s;cursor:pointer;border:none;width:100%;justify-content:center}
-.cotizador-cta:hover{background:#c94e1e;transform:translateY(-2px)}
+.cotizador-cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:14px 24px;transition:all 0.2s;cursor:pointer;border:none;width:100%;justify-content:center}
+.cotizador-cta:hover{background:#c94e1e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,98,42,0.4)}
 .cotizador-cta::after{content:'→'}
-.cotizador-cta:disabled{background:var(--linea);color:var(--gris);cursor:not-allowed;transform:none}
+.cotizador-cta:disabled{background:rgba(14,14,14,0.1);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
 
 /* ---- FILTROS ---- */
 .filtros{display:flex;gap:8px;margin-bottom:32px}
-.filtro{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris);background:none;border:1px solid var(--linea);padding:7px 16px;cursor:pointer;transition:all 0.2s}
-.filtro.activo,.filtro:hover{background:var(--negro);color:var(--bg);border-color:var(--negro)}
+.filtro{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris);padding:7px 16px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s}
+.filtro.activo,.filtro:hover{background:var(--negro);color:white;border-color:var(--negro)}
 
 /* ---- GRILLA ---- */
 .grilla{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
-.card{position:relative;overflow:hidden;background:#ECEAE5;cursor:pointer;transition:transform 0.4s cubic-bezier(.16,1,.3,1)}
-body.dark .card{background:#1A1A1A}
-.card:hover{transform:translateY(-5px)}
+.card{position:relative;overflow:hidden;cursor:pointer;transition:transform 0.4s cubic-bezier(.16,1,.3,1),box-shadow 0.4s;border-radius:2px}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(14,14,14,0.15)}
 .card.doble{grid-column:span 2}
 .card-thumb{position:relative;width:100%;padding-bottom:133%;overflow:hidden}
-.card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s cubic-bezier(.16,1,.3,1)}
-.card:hover .card-thumb img{transform:scale(1.04)}
-.card-overlay{position:absolute;inset:0;background:rgba(14,14,14,0.88);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;opacity:0;transition:opacity 0.3s}
+.card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
+.card:hover .card-thumb img{transform:scale(1.05)}
+.card-overlay{position:absolute;inset:0;background:rgba(14,14,14,0.82);backdrop-filter:blur(4px);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;opacity:0;transition:opacity 0.35s}
 .card:hover .card-overlay{opacity:1}
 .card-cat{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento);margin-bottom:6px}
 .card-titulo{font-family:var(--cond);font-size:1.3rem;font-weight:600;text-transform:uppercase;color:#F8F7F4;line-height:1.1;margin-bottom:8px}
@@ -136,60 +209,59 @@ body.dark .card{background:#1A1A1A}
 .card-link{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:8px}
 .card-link::after{content:'→';transition:margin 0.2s}
 .card:hover .card-link::after{margin-left:4px}
-.card-info{padding:12px 4px 4px;display:flex;flex-direction:column;gap:3px}
+.card-info{padding:12px 4px 4px;display:flex;flex-direction:column;gap:3px;background:rgba(255,255,255,0.4)}
 .card-info-cat{font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento)}
-.card-info-titulo{font-family:var(--cond);font-size:0.95rem;font-weight:600;text-transform:uppercase;color:var(--negro);line-height:1.2;transition:color 0.8s}
+.card-info-titulo{font-family:var(--cond);font-size:0.95rem;font-weight:600;text-transform:uppercase;color:var(--negro);line-height:1.2}
 
 /* ---- TESTIMONIOS ---- */
 #testimonios{padding-top:20px;padding-bottom:80px}
-.testimonios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.testimonio{border:1px solid var(--linea);padding:32px 28px;display:flex;flex-direction:column;gap:20px;transition:background 0.25s,border-color 0.8s}
-.testimonio:hover{background:rgba(232,98,42,0.05)}
+.testimonios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testimonio{padding:32px 28px;display:flex;flex-direction:column;gap:20px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s}
+.testimonio:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,14,14,0.1)}
 .testimonio-quote{font-family:var(--display);font-size:2.5rem;font-weight:900;color:var(--acento);line-height:1}
-.testimonio-text{font-size:0.66rem;color:var(--gris);line-height:1.9;font-style:italic;flex:1;transition:color 0.8s}
-.testimonio-autor{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--linea);padding-top:16px;transition:border-color 0.8s}
-.testimonio-nombre{font-family:var(--cond);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--negro);transition:color 0.8s}
+.testimonio-text{font-size:0.66rem;color:var(--gris);line-height:1.9;font-style:italic;flex:1}
+.testimonio-autor{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--linea);padding-top:16px}
+.testimonio-nombre{font-family:var(--cond);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--negro)}
 .testimonio-cargo{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris)}
 
 /* ---- CONTACTO ---- */
-.contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;border-top:1px solid var(--linea);padding-top:80px;transition:border-color 0.8s}
-.contacto-titulo{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:24px;transition:color 0.8s}
-.contacto-titulo em{font-style:italic;font-weight:700;color:var(--acento)}
-.contacto-desc{font-size:0.68rem;color:var(--gris);line-height:1.9;transition:color 0.8s}
+.contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;border-top:1px solid var(--linea);padding-top:80px}
+.contacto-titulo{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:24px}
+.contacto-titulo em{font-style:italic;color:var(--acento)}
+.contacto-desc{font-size:0.68rem;color:var(--gris);line-height:1.9}
 .contacto-items{display:flex;flex-direction:column}
-.contacto-item{display:flex;flex-direction:column;gap:3px;padding:18px 0;border-bottom:1px solid var(--linea);transition:border-color 0.8s}
+.contacto-item{display:flex;flex-direction:column;gap:3px;padding:18px 0;border-bottom:1px solid var(--linea)}
 .contacto-item:first-child{padding-top:0}
 .contacto-item:last-child{border-bottom:none}
-.ci-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--linea)}
-.ci-valor{font-family:var(--display);font-size:1.1rem;font-weight:800;letter-spacing:-0.01em;color:var(--negro);text-decoration:none;transition:color 0.2s}
+.ci-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(14,14,14,0.3)}
+.ci-valor{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--negro);text-decoration:none;transition:color 0.2s}
 .ci-valor:hover{color:var(--acento)}
 
-/* ---- MODAL ---- */
-.modal-video{position:fixed;inset:0;background:rgba(14,14,14,0.97);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+/* ---- MODALS ---- */
+.modal-video{position:fixed;inset:0;background:rgba(14,14,14,0.92);backdrop-filter:blur(20px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .modal-video.abierto{opacity:1;pointer-events:all}
 .modal-video-inner{position:relative;width:min(420px,92vw)}
 .modal-video-wrap{position:relative;width:100%;padding-bottom:177.78%}
 .modal-video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.modal-cerrar{position:absolute;top:-40px;right:0;background:none;border:none;color:rgba(255,255,255,0.4);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;cursor:pointer;transition:color 0.2s}
-.modal-cerrar:hover{color:white}
-.lightbox{position:fixed;inset:0;background:rgba(14,14,14,0.97);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.modal-cerrar{position:absolute;top:-40px;right:0;background:none;border:none;color:rgba(255,255,255,0.4);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;cursor:pointer}
+.lightbox{position:fixed;inset:0;background:rgba(14,14,14,0.92);backdrop-filter:blur(20px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .lightbox.abierto{opacity:1;pointer-events:all}
 .lightbox-inner{position:relative;max-width:92vw;max-height:92vh}
 .lightbox-inner img{max-width:92vw;max-height:88vh;object-fit:contain;display:block}
 .lb-cerrar{position:absolute;top:-40px;right:0;background:none;border:none;color:rgba(255,255,255,0.4);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;cursor:pointer}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.4);font-size:0.8rem;padding:12px 16px;cursor:pointer;transition:all 0.2s}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);font-size:0.8rem;padding:12px 16px;cursor:pointer;transition:all 0.2s}
 .lb-nav:hover{border-color:var(--acento);color:var(--acento)}
 .lb-prev{left:-60px}
 .lb-next{right:-60px}
 .lb-counter{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:0.52rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3)}
 
 /* ---- FOOTER ---- */
-footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1px solid var(--linea);font-size:0.55rem;letter-spacing:0.14em;color:var(--linea);transition:border-color 0.8s}
+footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1px solid var(--linea);font-size:0.55rem;letter-spacing:0.14em;color:var(--gris)}
 
-/* ---- ANIMACIONES ---- */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
+/* ---- ANIMACIONES REVEAL ---- */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:none}
-.grilla .card{opacity:0;transform:translateY(30px)}
+.grilla .card{opacity:0;transform:translateY(28px)}
 .grilla.visible .card{opacity:1;transform:none;transition:opacity 0.5s cubic-bezier(.16,1,.3,1),transform 0.5s cubic-bezier(.16,1,.3,1)}
 .grilla.visible .card:nth-child(1){transition-delay:0.00s}
 .grilla.visible .card:nth-child(2){transition-delay:0.07s}
@@ -199,36 +271,28 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 .grilla.visible .card:nth-child(6){transition-delay:0.35s}
 .grilla.visible .card:nth-child(7){transition-delay:0.42s}
 .grilla.visible .card:nth-child(8){transition-delay:0.49s}
-.servicios-grid .servicio-card,.testimonios-grid .testimonio{opacity:0;transform:translateY(30px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1),background 0.25s,border-color 0.8s}
+.servicios-grid .servicio-card,.testimonios-grid .testimonio{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1)}
 .servicios-grid.visible .servicio-card,.testimonios-grid.visible .testimonio{opacity:1;transform:none}
 .servicios-grid.visible .servicio-card:nth-child(1),.testimonios-grid.visible .testimonio:nth-child(1){transition-delay:0.0s}
 .servicios-grid.visible .servicio-card:nth-child(2),.testimonios-grid.visible .testimonio:nth-child(2){transition-delay:0.1s}
 .servicios-grid.visible .servicio-card:nth-child(3),.testimonios-grid.visible .testimonio:nth-child(3){transition-delay:0.2s}
 
-/* ---- PROGRESS BAR ---- */
-.progress-bar{position:fixed;top:0;left:0;height:2px;background:var(--acento);z-index:200;width:0%;transition:width 0.1s linear}
-
 /* ---- RESPONSIVE ---- */
 @media(max-width:900px){
-  .cursor,.cursor-ring{display:none}
   nav{padding:16px 20px}
   .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:rgba(14,14,14,0.97);z-index:99;justify-content:center;align-items:center;gap:0}
-  .nav-links.open li{border-bottom:1px solid rgba(255,255,255,0.08);width:100%;text-align:center}
-  .nav-links.open a{font-size:1.2rem;letter-spacing:0.14em;padding:20px 0;display:block;color:white}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;z-index:99;justify-content:center;align-items:center;gap:0;background:rgba(240,237,230,0.97);backdrop-filter:blur(20px)}
+  .nav-links.open li{border-bottom:1px solid var(--linea);width:100%;text-align:center}
+  .nav-links.open a{font-size:1.2rem;letter-spacing:0.14em;padding:20px 0;display:block;color:var(--negro)}
   .nav-hamburger{display:flex}
-  .nav-hamburger span{background:var(--negro)}
-  .hero{padding:100px 20px 48px;min-height:auto}
-  .hero-bg-text{display:none}
-  .hero-bottom{flex-direction:column;align-items:flex-start;gap:16px}
-  .hero-tags{display:none}
+  .hero{grid-template-columns:1fr;padding:100px 20px 48px;min-height:auto}
+  .hero-right{display:none}
   section{padding:0 20px 60px}
   .grilla{grid-template-columns:repeat(2,1fr)}
   .card.doble{grid-column:span 2}
   .servicios-grid,.testimonios-grid,.cotizador-wrap,.contacto-wrap{grid-template-columns:1fr}
-  .servicio-card{border-right:none;border-bottom:1px solid var(--linea)}
-  .cotizador-form-col{border-right:none;border-bottom:1px solid var(--linea);padding:28px 20px}
-  .cotizador-result-col{padding:28px 20px;min-height:auto}
+  .cotizador-form-col,.cotizador-result-col{padding:24px 20px}
+  .cotizador-result-col{min-height:auto}
   footer{flex-direction:column;gap:6px;padding:20px}
   .lb-prev{left:-8px}
   .lb-next{right:-8px}
@@ -236,10 +300,7 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 </style>
 </head>
 <body>
-
-<div class="progress-bar" id="progressBar"></div>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div class="noise"></div>
 
 <!-- NAV -->
 <nav id="nav">
@@ -257,27 +318,21 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg-text">SAN BAO</div>
-  <div>
-    <div class="hero-eyebrow" id="heroEyebrow">Buenos Aires · Argentina</div>
-    <h1 class="hero-title" id="heroTitle" style="font-size:clamp(5rem,12vw,14rem)">
-      <span class="line"><span class="word">Luca</span></span>
-      <span class="line"><em class="word">Gazzola</em></span>
-    </h1>
-    <div class="hero-bottom">
-      <div class="hero-sub" id="heroSub">
-        <strong class="hero-tagline">Transformo tu marca en contenido visual que vende.</strong>
-        <span class="hero-descriptor">+15 años · Video · Motion Graphics · Diseño · Fotografía</span>
-        <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" id="heroCta">Hablemos</a>
-      </div>
-      <div class="hero-tags" id="heroTags">
-        <span class="tag">Reels & Short-form</span>
-        <span class="tag">Motion Graphics</span>
-        <span class="tag">Video Corporativo</span>
-        <span class="tag">Fotografía Deportiva</span>
-        <span class="tag">Producción Integral</span>
-      </div>
-    </div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Buenos Aires · Argentina</div>
+    <h1 class="hero-title">Luca<br><em>Gazzola</em></h1>
+    <p class="hero-sub">
+      <strong class="hero-tagline">Transformo tu marca en contenido visual que vende.</strong>
+      <span class="hero-descriptor">+15 años · Video · Motion Graphics · Diseño · Fotografía</span>
+    </p>
+    <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn glow">Hablemos</a>
+  </div>
+  <div class="hero-right">
+    <span class="tag glass">Reels & Short-form</span>
+    <span class="tag glass">Motion Graphics</span>
+    <span class="tag glass">Video Corporativo</span>
+    <span class="tag glass">Fotografía Deportiva</span>
+    <span class="tag glass">Producción Integral</span>
   </div>
 </section>
 
@@ -286,24 +341,9 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <div class="sec-label reveal">Lo que hago</div>
   <div class="sec-title reveal">Servicios</div>
   <div class="servicios-grid" id="serviciosGrid">
-    <div class="servicio-card">
-      <div class="servicio-num">01</div>
-      <div class="servicio-nombre">Reels & Short-form<br>para marcas</div>
-      <p class="servicio-desc">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p>
-      <div class="servicio-precio">desde USD 10 <span>/ video</span></div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">02</div>
-      <div class="servicio-nombre">Motion Graphics<br>& VFX</div>
-      <p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p>
-      <div class="servicio-precio">desde USD 10 <span>/ pieza</span></div>
-    </div>
-    <div class="servicio-card">
-      <div class="servicio-num">03</div>
-      <div class="servicio-nombre">Producción Integral<br>& Eventos</div>
-      <p class="servicio-desc">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p>
-      <div class="servicio-precio">desde USD 10 <span>/ proyecto</span></div>
-    </div>
+    <div class="servicio-card glass"><div class="servicio-num">01</div><div class="servicio-nombre">Reels & Short-form<br>para marcas</div><p class="servicio-desc">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="servicio-precio">desde USD 10 <span>/ video</span></div></div>
+    <div class="servicio-card glass"><div class="servicio-num">02</div><div class="servicio-nombre">Motion Graphics<br>& VFX</div><p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 10 <span>/ pieza</span></div></div>
+    <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre">Producción Integral<br>& Eventos</div><p class="servicio-desc">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p><div class="servicio-precio">desde USD 10 <span>/ proyecto</span></div></div>
   </div>
 </section>
 
@@ -312,53 +352,15 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <div class="sec-label reveal">Precios transparentes</div>
   <div class="sec-title reveal">Cotizá tu proyecto</div>
   <div class="cotizador-wrap reveal">
-    <div class="cotizador-form-col">
-      <div class="campo-grupo">
-        <span class="campo-label">¿Qué tipo de servicio necesitás?</span>
-        <div class="chips" id="chips-servicio">
-          <button class="chip" data-val="reel" onclick="selChip(this,'servicio')">Reels / Short-form</button>
-          <button class="chip" data-val="motion" onclick="selChip(this,'servicio')">Motion Graphics</button>
-          <button class="chip" data-val="corporativo" onclick="selChip(this,'servicio')">Video Corporativo</button>
-          <button class="chip" data-val="foto" onclick="selChip(this,'servicio')">Fotografía</button>
-          <button class="chip" data-val="pack" onclick="selChip(this,'servicio')">Pack Completo</button>
-        </div>
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label">¿Cuántas piezas / videos?</span>
-        <div class="slider-wrap">
-          <input type="range" id="slider-cantidad" min="1" max="20" value="1" oninput="document.getElementById('val-cantidad').textContent=this.value;calcular()">
-          <span class="slider-val" id="val-cantidad">1</span>
-        </div>
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label">Plazo de entrega</span>
-        <div class="chips" id="chips-plazo">
-          <button class="chip" data-val="urgente" onclick="selChip(this,'plazo')">Urgente (48 hs)</button>
-          <button class="chip" data-val="normal" onclick="selChip(this,'plazo')">Normal (1 semana)</button>
-          <button class="chip" data-val="flexible" onclick="selChip(this,'plazo')">Flexible (+2 semanas)</button>
-        </div>
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label">Presupuesto estimado (USD)</span>
-        <select class="campo-select" id="sel-presupuesto" onchange="calcular()">
-          <option value="">— Seleccioná un rango —</option>
-          <option value="bajo">Menos de USD 50</option>
-          <option value="medio">USD 50 – 200</option>
-          <option value="alto">USD 200 – 500</option>
-          <option value="premium">Más de USD 500</option>
-        </select>
-      </div>
+    <div class="cotizador-form-col glass">
+      <div class="campo-grupo"><span class="campo-label">¿Qué tipo de servicio necesitás?</span><div class="chips" id="chips-servicio"><button class="chip" data-val="reel" onclick="selChip(this,'servicio')">Reels / Short-form</button><button class="chip" data-val="motion" onclick="selChip(this,'servicio')">Motion Graphics</button><button class="chip" data-val="corporativo" onclick="selChip(this,'servicio')">Video Corporativo</button><button class="chip" data-val="foto" onclick="selChip(this,'servicio')">Fotografía</button><button class="chip" data-val="pack" onclick="selChip(this,'servicio')">Pack Completo</button></div></div>
+      <div class="campo-grupo"><span class="campo-label">¿Cuántas piezas / videos?</span><div class="slider-wrap"><input type="range" id="slider-cantidad" min="1" max="20" value="1" oninput="document.getElementById('val-cantidad').textContent=this.value;calcular()"><span class="slider-val" id="val-cantidad">1</span></div></div>
+      <div class="campo-grupo"><span class="campo-label">Plazo de entrega</span><div class="chips" id="chips-plazo"><button class="chip" data-val="urgente" onclick="selChip(this,'plazo')">Urgente (48 hs)</button><button class="chip" data-val="normal" onclick="selChip(this,'plazo')">Normal (1 semana)</button><button class="chip" data-val="flexible" onclick="selChip(this,'plazo')">Flexible (+2 semanas)</button></div></div>
+      <div class="campo-grupo"><span class="campo-label">Presupuesto estimado (USD)</span><select class="campo-select" id="sel-presupuesto" onchange="calcular()"><option value="">— Seleccioná un rango —</option><option value="bajo">Menos de USD 50</option><option value="medio">USD 50 – 200</option><option value="alto">USD 200 – 500</option><option value="premium">Más de USD 500</option></select></div>
     </div>
     <div class="cotizador-result-col">
-      <div>
-        <p class="result-estado" id="result-estado">Completá el formulario para ver la cotización</p>
-        <div class="result-precio" id="result-precio">—</div>
-        <p class="result-detalle" id="result-detalle">Seleccioná el tipo de servicio, cantidad y plazo para obtener una estimación personalizada.</p>
-      </div>
-      <div>
-        <p class="result-note" id="result-note">* El precio final puede variar según el detalle del proyecto.</p>
-        <button class="cotizador-cta" id="cta-cotizador" disabled onclick="enviarWA()">Consultar por WhatsApp</button>
-      </div>
+      <div><p class="result-estado" id="result-estado">Completá el formulario</p><div class="result-precio" id="result-precio">—</div><p class="result-detalle" id="result-detalle">Seleccioná el tipo de servicio, cantidad y plazo.</p></div>
+      <div><p class="result-note" id="result-note">* El precio final puede variar según el detalle del proyecto.</p><button class="cotizador-cta" id="cta-cotizador" disabled onclick="enviarWA()">Consultar por WhatsApp</button></div>
     </div>
   </div>
 </section>
@@ -374,46 +376,14 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <button class="filtro" onclick="filtrar('foto',this)">Foto</button>
   </div>
   <div class="grilla" id="grilla">
-    <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')">
-      <div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div>
-      <div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc">Video promocional institucional. Producción completa.</p><span class="card-link">Ver proyecto</span></div>
-      <div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div>
-    </div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173295320')">
-      <div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"></div>
-      <div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Sesión Musical<br>Bajista</h3><p class="card-desc">Sesión en vivo. Registro multiángulo y edición rítmica.</p><span class="card-link">Ver proyecto</span></div>
-      <div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Sesión Musical Bajista</span></div>
-    </div>
-    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')">
-      <div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"></div>
-      <div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>Convocatoria 2026</h3><p class="card-desc">Reel animado para redes. Identidad visual en movimiento.</p><span class="card-link">Ver proyecto</span></div>
-      <div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — Convocatoria 2026</span></div>
-    </div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')">
-      <div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel"></div>
-      <div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Reel<br>Desafío 30 días</h3><p class="card-desc">Compilado del desafío de contenido.</p><span class="card-link">Ver proyecto</span></div>
-      <div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Reel Desafío 30 días</span></div>
-    </div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1166457016')">
-      <div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"></div>
-      <div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel<br>Cervecería</h3><p class="card-desc">Reel de producto para marca gastronómica.</p><span class="card-link">Ver proyecto</span></div>
-      <div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Cervecería</span></div>
-    </div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')">
-      <div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel Bajo"></div>
-      <div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Reel Bajo<br>Desafío 30 días</h3><p class="card-desc">Reel musical del desafío de contenido.</p><span class="card-link">Ver proyecto</span></div>
-      <div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Reel Bajo — Desafío 30 días</span></div>
-    </div>
-    <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_FUTSAL,0)">
-      <div class="card-thumb"><img src="https://i.imgur.com/lWBEh17.jpg" alt="Fútsal"></div>
-      <div class="card-overlay"><span class="card-cat">Fotografía deportiva · 33 fotos</span><h3 class="card-titulo">Fotografía<br>Fútsal</h3><p class="card-desc">Registro de acción en tiempo real.</p><span class="card-link">Ver galería</span></div>
-      <div class="card-info"><span class="card-info-cat">Fotografía deportiva · 33 fotos</span><span class="card-info-titulo">Fotografía Fútsal</span></div>
-    </div>
-    <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_VOLEY,0)">
-      <div class="card-thumb"><img src="https://i.imgur.com/xAZuMo2.jpg" alt="Vóley"></div>
-      <div class="card-overlay"><span class="card-cat">Fotografía deportiva · 21 fotos</span><h3 class="card-titulo">Fotografía<br>Vóley Femenino</h3><p class="card-desc">Cobertura de eventos deportivos femeninos.</p><span class="card-link">Ver galería</span></div>
-      <div class="card-info"><span class="card-info-cat">Fotografía deportiva · 21 fotos</span><span class="card-info-titulo">Fotografía Vóley Femenino</span></div>
-    </div>
+    <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc">Video promocional institucional. Producción completa.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Sesión Musical<br>Bajista</h3><p class="card-desc">Sesión en vivo.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Sesión Musical Bajista</span></div></div>
+    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc">Reel animado para redes.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Reel<br>Desafío 30 días</h3><p class="card-desc">Compilado del desafío.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Reel Desafío 30 días</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel<br>Cervecería</h3><p class="card-desc">Reel de producto gastronómico.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Cervecería</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel Bajo"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Reel Bajo<br>Desafío 30 días</h3><p class="card-desc">Reel musical.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Reel Bajo — Desafío 30 días</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_FUTSAL,0)"><div class="card-thumb"><img src="https://i.imgur.com/lWBEh17.jpg" alt="Fútsal"></div><div class="card-overlay"><span class="card-cat">Fotografía deportiva · 33 fotos</span><h3 class="card-titulo">Fotografía<br>Fútsal</h3><p class="card-desc">Registro de acción en tiempo real.</p><span class="card-link">Ver galería</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 33 fotos</span><span class="card-info-titulo">Fotografía Fútsal</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_VOLEY,0)"><div class="card-thumb"><img src="https://i.imgur.com/xAZuMo2.jpg" alt="Vóley"></div><div class="card-overlay"><span class="card-cat">Fotografía deportiva · 21 fotos</span><h3 class="card-titulo">Fotografía<br>Vóley Femenino</h3><p class="card-desc">Cobertura de eventos deportivos femeninos.</p><span class="card-link">Ver galería</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 21 fotos</span><span class="card-info-titulo">Fotografía Vóley Femenino</span></div></div>
   </div>
 </section>
 
@@ -422,20 +392,16 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <div class="sec-label reveal">Lo que dicen</div>
   <div class="sec-title reveal">Clientes</div>
   <div class="testimonios-grid" id="testimoniosGrid">
-    <div class="testimonio"><div class="testimonio-quote">"</div><p class="testimonio-text">Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo.</p><div class="testimonio-autor"><span class="testimonio-nombre">UBA Odontología</span><span class="testimonio-cargo">Facultad de Odontología — Posgrado</span></div></div>
-    <div class="testimonio"><div class="testimonio-quote">"</div><p class="testimonio-text">El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido.</p><div class="testimonio-autor"><span class="testimonio-nombre">Club AVL Vóley</span><span class="testimonio-cargo">Dirección de Comunicación</span></div></div>
-    <div class="testimonio"><div class="testimonio-quote">"</div><p class="testimonio-text">No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor.</p><div class="testimonio-autor"><span class="testimonio-nombre">Músico / Creador de contenido</span><span class="testimonio-cargo">Cliente frecuente</span></div></div>
+    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text">Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo.</p><div class="testimonio-autor"><span class="testimonio-nombre">UBA Odontología</span><span class="testimonio-cargo">Facultad de Odontología — Posgrado</span></div></div>
+    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text">El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido.</p><div class="testimonio-autor"><span class="testimonio-nombre">Club AVL Vóley</span><span class="testimonio-cargo">Dirección de Comunicación</span></div></div>
+    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text">No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor.</p><div class="testimonio-autor"><span class="testimonio-nombre">Músico / Creador</span><span class="testimonio-cargo">Cliente frecuente</span></div></div>
   </div>
 </section>
 
 <!-- CONTACTO -->
 <section id="contacto">
   <div class="contacto-wrap reveal">
-    <div>
-      <h2 class="contacto-titulo">Trabajemos<br><em>juntos</em></h2>
-      <p class="contacto-desc">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto · USD</p>
-      <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" style="opacity:1;margin-top:28px">Contactar por WhatsApp</a>
-    </div>
+    <div><h2 class="contacto-titulo">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto · USD</p><a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" style="margin-top:28px">Contactar por WhatsApp</a></div>
     <div class="contacto-items">
       <div class="contacto-item"><span class="ci-label">Instagram</span><a href="https://instagram.com/sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
@@ -448,96 +414,25 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 
 <footer><span>© 2026 San Bao Estudio — Luca Gazzola</span><span>Buenos Aires, Argentina</span></footer>
 
-<div class="modal-video" id="modalVideo" onclick="cerrarVideo(event)">
-  <div class="modal-video-inner">
-    <button class="modal-cerrar" onclick="cerrarVideo()">[ cerrar ]</button>
-    <div class="modal-video-wrap"><iframe id="iframeVideo" src="" allowfullscreen allow="autoplay"></iframe></div>
-  </div>
-</div>
-<div class="lightbox" id="lightbox" onclick="cerrarFotos(event)">
-  <div class="lightbox-inner">
-    <button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button>
-    <button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button>
-    <img id="lbImg" src="" alt="">
-    <button class="lb-nav lb-next" onclick="navFoto(1)">→</button>
-    <span class="lb-counter" id="lbCounter"></span>
-  </div>
-</div>
+<div class="modal-video" id="modalVideo" onclick="cerrarVideo(event)"><div class="modal-video-inner"><button class="modal-cerrar" onclick="cerrarVideo()">[ cerrar ]</button><div class="modal-video-wrap"><iframe id="iframeVideo" src="" allowfullscreen allow="autoplay"></iframe></div></div></div>
+<div class="lightbox" id="lightbox" onclick="cerrarFotos(event)"><div class="lightbox-inner"><button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button><button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button><img id="lbImg" src="" alt=""><button class="lb-nav lb-next" onclick="navFoto(1)">→</button><span class="lb-counter" id="lbCounter"></span></div></div>
 
 <script>
-// DATOS FOTOS
 const FOTOS_FUTSAL=['https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg','https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg','https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg','https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg','https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg','https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg','https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg','https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg','https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg','https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg','https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'];
 const FOTOS_VOLEY=['https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg','https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg','https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg','https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg','https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg','https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg','https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'];
-
-// HERO REVEAL
-window.addEventListener('load',()=>{
-  const ey=document.getElementById('heroEyebrow');
-  const words=document.querySelectorAll('.hero-title .word');
-  const sub=document.getElementById('heroSub');
-  const tags=document.getElementById('heroTags');
-  const cta=document.getElementById('heroCta');
-  setTimeout(()=>{ey.style.transition='opacity 0.8s,transform 0.8s';ey.style.opacity='1';ey.style.transform='none'},200);
-  words.forEach((w,i)=>{setTimeout(()=>{w.style.transition='transform 0.9s cubic-bezier(.16,1,.3,1),opacity 0.9s';w.style.transform='none';w.style.opacity='1'},400+i*150)});
-  setTimeout(()=>{sub.style.transition='opacity 0.8s,transform 0.8s';sub.style.opacity='1';sub.style.transform='none'},800);
-  setTimeout(()=>{tags.style.transition='opacity 0.8s,transform 0.8s';tags.style.opacity='1';tags.style.transform='none'},1000);
-  setTimeout(()=>{cta.style.transition='opacity 0.8s,transform 0.8s';cta.style.opacity='1';cta.style.transform='none'},1100);
-});
-
-// SCROLL: dark mode + progress bar
-const darkTrigger=document.getElementById('proyectos');
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY;
-  const h=document.body.scrollHeight-window.innerHeight;
-  document.getElementById('progressBar').style.width=(y/h*100)+'%';
-  document.getElementById('nav').classList.toggle('scrolled',y>50);
-  if(darkTrigger){
-    const rect=darkTrigger.getBoundingClientRect();
-    document.body.classList.toggle('dark',rect.top<window.innerHeight*0.5);
-  }
-},{passive:true});
-
-// SCROLL REVEAL
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal,.grilla,.servicios-grid,.testimonios-grid').forEach(el=>obs.observe(el));
-
-// CURSOR
-const cur=document.getElementById('cursor');
-const ring=document.getElementById('cursorRing');
-if(cur){
-  document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px'},60)});
-  document.querySelectorAll('a,button,.card,.chip,.filtro').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';ring.style.width='56px';ring.style.height='56px'});el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px'})});
-}
-
-// NAV
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
 function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
-
-// FILTRO
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal,.grilla,.servicios-grid,.testimonios-grid').forEach(el=>obs.observe(el));
 function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
-
-// COTIZADOR
 const estado={servicio:null,plazo:null};
 const PRECIOS={reel:{label:'Reels / Short-form',base:10,unidad:'video'},motion:{label:'Motion Graphics',base:20,unidad:'pieza'},corporativo:{label:'Video Corporativo',base:40,unidad:'video'},foto:{label:'Fotografía',base:15,unidad:'sesión'},pack:{label:'Pack Completo',base:60,unidad:'pack'}};
 const MULT={urgente:1.5,normal:1.0,flexible:0.85};
 const LPLAZO={urgente:'urgente (+50%)',normal:'plazo normal',flexible:'flexible (−15%)'};
 function selChip(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');estado[g]=el.dataset.val;calcular()}
-function calcular(){
-  const cant=parseInt(document.getElementById('slider-cantidad').value);
-  const pres=document.getElementById('sel-presupuesto').value;
-  const {servicio,plazo}=estado;
-  if(!servicio||!plazo||!pres){document.getElementById('result-precio').textContent='—';document.getElementById('result-precio').classList.remove('calculado');document.getElementById('result-detalle').textContent='Completá todos los campos.';document.getElementById('cta-cotizador').disabled=true;return}
-  const s=PRECIOS[servicio];const precio=Math.round(s.base*cant*MULT[plazo]);
-  document.getElementById('result-precio').innerHTML=`<em>~</em>USD ${precio}`;
-  document.getElementById('result-precio').classList.add('calculado');
-  document.getElementById('result-estado').textContent='Cotización estimada';
-  document.getElementById('result-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> de ${s.label}<br>Plazo <strong>${LPLAZO[plazo]}</strong>`;
-  document.getElementById('result-note').textContent=pres==='bajo'&&precio>50?'⚠️ Tu presupuesto puede ser ajustado. Igual escribime.':'* Estimación base. El precio final se confirma en la consulta.';
-  const btn=document.getElementById('cta-cotizador');btn.disabled=false;
-  btn.dataset.resumen=`Hola Luca! Usé el cotizador:\n📌 ${s.label}\n🎬 ${cant} ${s.unidad}${cant>1?'s':''}\n⏱ ${LPLAZO[plazo]}\n📊 ~USD ${precio}\n¿Podemos hablar?`;
-}
+function calcular(){const cant=parseInt(document.getElementById('slider-cantidad').value);const pres=document.getElementById('sel-presupuesto').value;const{servicio,plazo}=estado;if(!servicio||!plazo||!pres){document.getElementById('result-precio').textContent='—';document.getElementById('result-precio').classList.remove('calculado');document.getElementById('cta-cotizador').disabled=true;return}const s=PRECIOS[servicio];const precio=Math.round(s.base*cant*MULT[plazo]);document.getElementById('result-precio').innerHTML=`<em>~</em>USD ${precio}`;document.getElementById('result-precio').classList.add('calculado');document.getElementById('result-estado').textContent='Cotización estimada';document.getElementById('result-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> de ${s.label}<br>Plazo <strong>${LPLAZO[plazo]}</strong>`;document.getElementById('result-note').textContent=pres==='bajo'&&precio>50?'⚠️ Tu presupuesto puede ser ajustado.':'* Estimación base.';const btn=document.getElementById('cta-cotizador');btn.disabled=false;btn.dataset.resumen=`Hola Luca! Cotizador:\n📌 ${s.label}\n🎬 ${cant} ${s.unidad}${cant>1?'s':''}\n⏱ ${LPLAZO[plazo]}\n📊 ~USD ${precio}\n¿Podemos hablar?`}
 function enviarWA(){const r=document.getElementById('cta-cotizador').dataset.resumen;if(r)window.open('https://wa.me/5491130203625?text='+encodeURIComponent(r),'_blank')}
-
-// VIDEO / LIGHTBOX
 function abrirVideo(id){document.getElementById('iframeVideo').src='https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0';document.getElementById('modalVideo').classList.add('abierto');document.body.style.overflow='hidden'}
 function cerrarVideo(e){if(e&&e.target!==document.getElementById('modalVideo')&&!e.target.classList.contains('modal-cerrar'))return;document.getElementById('iframeVideo').src='';document.getElementById('modalVideo').classList.remove('abierto');document.body.style.overflow=''}
 let fotosActual=[],fotoIdx=0;
