@@ -677,6 +677,185 @@ transform: none;
 .servicios-grid.visible .servicio-card:nth-child(3),
 .testimonios-grid.visible .testimonio:nth-child(3) { transition-delay: 0.2s; }
 
+/* ===================== COTIZADOR ===================== */
+#cotizador { padding-top: 20px; padding-bottom: 80px; }
+
+.cotizador-wrap {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 2px;
+border: 1px solid var(–linea);
+}
+
+.cotizador-form-col {
+padding: 40px;
+border-right: 1px solid var(–linea);
+}
+
+.cotizador-result-col {
+padding: 40px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: #F0EEE9;
+min-height: 460px;
+}
+
+/* Grupo de campo */
+.campo-grupo {
+margin-bottom: 24px;
+}
+.campo-label {
+font-size: 0.52rem;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: var(–gris);
+display: block;
+margin-bottom: 8px;
+}
+
+/* Opciones tipo chip */
+.chips {
+display: flex;
+flex-wrap: wrap;
+gap: 8px;
+}
+.chip {
+font-family: var(–mono);
+font-size: 0.58rem;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–gris);
+border: 1px solid var(–linea);
+padding: 7px 14px;
+cursor: pointer;
+background: none;
+transition: all 0.2s;
+user-select: none;
+}
+.chip.sel {
+background: var(–negro);
+color: var(–bg);
+border-color: var(–negro);
+}
+
+/* Slider cantidad */
+.slider-wrap {
+display: flex;
+align-items: center;
+gap: 16px;
+}
+.slider-wrap input[type=range] {
+-webkit-appearance: none;
+flex: 1;
+height: 2px;
+background: var(–linea);
+outline: none;
+cursor: pointer;
+}
+.slider-wrap input[type=range]::-webkit-slider-thumb {
+-webkit-appearance: none;
+width: 16px; height: 16px;
+background: var(–acento);
+border-radius: 50%;
+cursor: pointer;
+}
+.slider-val {
+font-family: var(–display);
+font-size: 1.1rem;
+font-weight: 900;
+color: var(–negro);
+min-width: 28px;
+text-align: right;
+}
+
+/* Presupuesto select */
+.campo-select {
+width: 100%;
+font-family: var(–mono);
+font-size: 0.62rem;
+letter-spacing: 0.1em;
+color: var(–negro);
+background: var(–bg);
+border: 1px solid var(–linea);
+padding: 10px 14px;
+appearance: none;
+cursor: pointer;
+outline: none;
+transition: border-color 0.2s;
+}
+.campo-select:focus { border-color: var(–acento); }
+
+/* Resultado */
+.result-estado {
+font-size: 0.52rem;
+letter-spacing: 0.22em;
+text-transform: uppercase;
+color: var(–gris);
+margin-bottom: 12px;
+}
+.result-precio {
+font-family: var(–display);
+font-size: clamp(2.8rem, 5vw, 4.5rem);
+font-weight: 900;
+color: var(–negro);
+line-height: 1;
+letter-spacing: -0.03em;
+margin-bottom: 8px;
+transition: color 0.3s;
+}
+.result-precio.calculado { color: var(–acento); }
+.result-precio em {
+font-style: normal;
+font-size: 1.2rem;
+font-weight: 400;
+color: var(–gris);
+margin-right: 4px;
+}
+.result-detalle {
+font-size: 0.6rem;
+color: var(–gris);
+line-height: 1.8;
+min-height: 80px;
+}
+.result-detalle strong { color: var(–negro); font-weight: 400; }
+
+.result-note {
+font-size: 0.52rem;
+color: var(–gris);
+letter-spacing: 0.08em;
+font-style: italic;
+margin-bottom: 20px;
+}
+
+.cotizador-cta {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+background: var(–acento);
+color: white;
+font-family: var(–cond);
+font-size: 0.72rem;
+font-weight: 600;
+letter-spacing: 0.14em;
+text-transform: uppercase;
+text-decoration: none;
+padding: 14px 24px;
+transition: background 0.2s, transform 0.2s;
+cursor: pointer;
+border: none;
+width: 100%;
+justify-content: center;
+}
+.cotizador-cta:hover { background: #c94e1e; transform: translateY(-2px); }
+.cotizador-cta::after { content: ‘→’; }
+.cotizador-cta:disabled {
+background: var(–linea);
+color: var(–gris);
+cursor: not-allowed;
+transform: none;
+}
+
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 900px) {
 nav { padding: 20px 24px; }
@@ -688,7 +867,10 @@ section { padding: 0 24px 80px; }
 .servicios-grid { grid-template-columns: 1fr; }
 .servicio-card { border-right: none; border-bottom: 1px solid var(–linea); }
 .testimonios-grid { grid-template-columns: 1fr; }
-.contacto-wrap { grid-template-columns: 1fr; gap: 40px; }
+.cotizador-wrap { grid-template-columns: 1fr; }
+.cotizador-form-col { border-right: none; border-bottom: 1px solid var(–linea); padding: 28px 20px; }
+.cotizador-result-col { padding: 28px 20px; min-height: auto; }
+
 footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
 .lb-prev { left: -8px; }
 .lb-next { right: -8px; }
@@ -704,6 +886,7 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
   <a href="#" class="nav-logo">San Bao Estudio</a>
   <ul class="nav-links">
     <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#cotizador">Cotizá</a></li>
     <li><a href="#proyectos">Proyectos</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -746,7 +929,7 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
     Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts.
     Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.
   </p>
-  <div class="servicio-precio">desde USD 30 <span>/ video</span></div>
+  <div class="servicio-precio">desde USD 10 <span>/ video</span></div>
 </div>
 
 <div class="servicio-card">
@@ -756,7 +939,7 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
     Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects.
     Ideal para intros de YouTube, identidad de marca animada y video corporativo.
   </p>
-  <div class="servicio-precio">desde USD 80 <span>/ pieza</span></div>
+  <div class="servicio-precio">desde USD 10 <span>/ pieza</span></div>
 </div>
 
 <div class="servicio-card">
@@ -767,7 +950,82 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
     Cobertura fotográfica con Sony Alpha + estabilizador DJI.
     Para músicos, clubes, instituciones y empresas.
   </p>
-  <div class="servicio-precio">desde USD 150 <span>/ proyecto</span></div>
+  <div class="servicio-precio">desde USD 10 <span>/ proyecto</span></div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- COTIZADOR -->
+
+<section id="cotizador">
+  <div class="sec-label animar">Precios transparentes</div>
+  <div class="sec-title animar">Cotizá tu proyecto</div>
+
+  <div class="cotizador-wrap animar">
+
+```
+<!-- FORM -->
+<div class="cotizador-form-col">
+
+  <div class="campo-grupo">
+    <span class="campo-label">¿Qué tipo de servicio necesitás?</span>
+    <div class="chips" id="chips-servicio">
+      <button class="chip" data-val="reel" onclick="selChip(this,'servicio')">Reels / Short-form</button>
+      <button class="chip" data-val="motion" onclick="selChip(this,'servicio')">Motion Graphics</button>
+      <button class="chip" data-val="corporativo" onclick="selChip(this,'servicio')">Video Corporativo</button>
+      <button class="chip" data-val="foto" onclick="selChip(this,'servicio')">Fotografía</button>
+      <button class="chip" data-val="pack" onclick="selChip(this,'servicio')">Pack Completo</button>
+    </div>
+  </div>
+
+  <div class="campo-grupo">
+    <span class="campo-label">¿Cuántas piezas / videos?</span>
+    <div class="slider-wrap">
+      <input type="range" id="slider-cantidad" min="1" max="20" value="1"
+        oninput="document.getElementById('val-cantidad').textContent=this.value; calcular()">
+      <span class="slider-val" id="val-cantidad">1</span>
+    </div>
+  </div>
+
+  <div class="campo-grupo">
+    <span class="campo-label">Plazo de entrega</span>
+    <div class="chips" id="chips-plazo">
+      <button class="chip" data-val="urgente" onclick="selChip(this,'plazo')">Urgente (48 hs)</button>
+      <button class="chip" data-val="normal" onclick="selChip(this,'plazo')">Normal (1 semana)</button>
+      <button class="chip" data-val="flexible" onclick="selChip(this,'plazo')">Flexible (+2 semanas)</button>
+    </div>
+  </div>
+
+  <div class="campo-grupo">
+    <span class="campo-label">Presupuesto estimado (USD)</span>
+    <select class="campo-select" id="sel-presupuesto" onchange="calcular()">
+      <option value="">— Seleccioná un rango —</option>
+      <option value="bajo">Menos de USD 50</option>
+      <option value="medio">USD 50 – 200</option>
+      <option value="alto">USD 200 – 500</option>
+      <option value="premium">Más de USD 500</option>
+    </select>
+  </div>
+
+</div>
+
+<!-- RESULTADO -->
+<div class="cotizador-result-col">
+  <div>
+    <p class="result-estado" id="result-estado">Completá el formulario para ver la cotización</p>
+    <div class="result-precio" id="result-precio">—</div>
+    <p class="result-detalle" id="result-detalle">
+      Seleccioná el tipo de servicio, cantidad y plazo para obtener una estimación personalizada.
+    </p>
+  </div>
+  <div>
+    <p class="result-note" id="result-note">* El precio final puede variar según el detalle del proyecto.</p>
+    <button class="cotizador-cta" id="cta-cotizador" disabled onclick="enviarWA()">
+      Consultar por WhatsApp
+    </button>
+  </div>
 </div>
 ```
 
@@ -1010,7 +1268,7 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
       </div>
       <div class="contacto-item">
         <span class="ci-label">Email</span>
-        <a href="mailto:sanbaoestudio@gmail.com" class="ci-valor">sanbaoestudio@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#d6a5b7b8b4b7b9b3a5a2a3b2bfb996b1bbb7bfbaf8b5b9bb" class="ci-valor"><span class="__cf_email__" data-cfemail="d5a6b4bbb7b4bab0a6a1a0b1bcba95b2b8b4bcb9fbb6bab8">[email&#160;protected]</span></a>
       </div>
     </div>
   </div>
@@ -1046,117 +1304,178 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+
 // ===================== DATOS FOTOS =====================
 const FOTOS_FUTSAL = [
-  'https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg',
-  'https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg',
-  'https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg',
-  'https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg',
-  'https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg',
-  'https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg',
-  'https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg',
-  'https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg',
-  'https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg',
-  'https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg',
-  'https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'
+‘https://i.imgur.com/lWBEh17.jpg’,‘https://i.imgur.com/ebXlKEn.jpg’,‘https://i.imgur.com/T4TB0Hg.jpg’,
+‘https://i.imgur.com/7h3rKkK.jpg’,‘https://i.imgur.com/kc8nMbc.jpg’,‘https://i.imgur.com/VAGLmag.jpg’,
+‘https://i.imgur.com/yKgTJeB.jpg’,‘https://i.imgur.com/IPVbcJb.jpg’,‘https://i.imgur.com/IH06W7E.jpg’,
+‘https://i.imgur.com/T9g4ziP.jpg’,‘https://i.imgur.com/VNgBHNv.jpg’,‘https://i.imgur.com/BDtloyM.jpg’,
+‘https://i.imgur.com/OeqxOl8.jpg’,‘https://i.imgur.com/DZbRu5a.jpg’,‘https://i.imgur.com/l0owgIh.jpg’,
+‘https://i.imgur.com/n6luECJ.jpg’,‘https://i.imgur.com/Rdu6AL5.jpg’,‘https://i.imgur.com/HHQDrdY.jpg’,
+‘https://i.imgur.com/AKGsMpq.jpg’,‘https://i.imgur.com/cPJX3up.jpg’,‘https://i.imgur.com/HfI9jqZ.jpg’,
+‘https://i.imgur.com/O7r3qlW.jpg’,‘https://i.imgur.com/neyhV6v.jpg’,‘https://i.imgur.com/jA8Rnnb.jpg’,
+‘https://i.imgur.com/jpoAhab.jpg’,‘https://i.imgur.com/CNAtc3V.jpg’,‘https://i.imgur.com/MlvpOI0.jpg’,
+‘https://i.imgur.com/fdGiCJQ.jpg’,‘https://i.imgur.com/YeWyz1M.jpg’,‘https://i.imgur.com/fwhYTfT.jpg’,
+‘https://i.imgur.com/5VY4JFs.jpg’,‘https://i.imgur.com/2Y6yKQ2.jpg’,‘https://i.imgur.com/tfG12zW.jpg’
 ];
 
 const FOTOS_VOLEY = [
-  'https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg',
-  'https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg',
-  'https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg',
-  'https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg',
-  'https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg',
-  'https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg',
-  'https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'
+‘https://i.imgur.com/xAZuMo2.jpg’,‘https://i.imgur.com/U1t032K.jpg’,‘https://i.imgur.com/WReWXcM.jpg’,
+‘https://i.imgur.com/CziZdqf.jpg’,‘https://i.imgur.com/bYLVCMw.jpg’,‘https://i.imgur.com/RGoUFeS.jpg’,
+‘https://i.imgur.com/NzT6gUz.jpg’,‘https://i.imgur.com/XcNpmh9.jpg’,‘https://i.imgur.com/1dz7l3l.jpg’,
+‘https://i.imgur.com/VPS5TR0.jpg’,‘https://i.imgur.com/YYQZorg.jpg’,‘https://i.imgur.com/Y6JW0tq.jpg’,
+‘https://i.imgur.com/NCPQUmZ.jpg’,‘https://i.imgur.com/E0WBMZT.jpg’,‘https://i.imgur.com/6p76wHh.jpg’,
+‘https://i.imgur.com/2xVX1AX.jpg’,‘https://i.imgur.com/YqBdRMi.jpg’,‘https://i.imgur.com/R0DPnem.jpg’,
+‘https://i.imgur.com/F9seHDt.jpg’,‘https://i.imgur.com/kCrRlKJ.jpg’,‘https://i.imgur.com/jXzB4AB.jpg’
 ];
 
-// ===================== NAV SCROLL =====================
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 50);
+// ===================== COTIZADOR =====================
+const estado = { servicio: null, plazo: null };
+
+const PRECIOS_BASE = {
+reel:        { label: ‘Reels / Short-form’,   base: 10, unidad: ‘video’ },
+motion:      { label: ‘Motion Graphics’,       base: 20, unidad: ‘pieza’ },
+corporativo: { label: ‘Video Corporativo’,     base: 40, unidad: ‘video’ },
+foto:        { label: ‘Fotografía’,            base: 15, unidad: ‘sesión’ },
+pack:        { label: ‘Pack Completo’,         base: 60, unidad: ‘pack’  },
+};
+
+const MULT_PLAZO = { urgente: 1.5, normal: 1.0, flexible: 0.85 };
+const LABEL_PLAZO = { urgente: ‘urgente (+50%)’, normal: ‘plazo normal’, flexible: ‘flexible (−15%)’ };
+
+function selChip(el, grupo) {
+document.querySelectorAll(`#chips-${grupo} .chip`).forEach(c => c.classList.remove(‘sel’));
+el.classList.add(‘sel’);
+estado[grupo] = el.dataset.val;
+calcular();
+}
+
+function calcular() {
+const cantidad   = parseInt(document.getElementById(‘slider-cantidad’).value);
+const presupuesto = document.getElementById(‘sel-presupuesto’).value;
+const { servicio, plazo } = estado;
+
+if (!servicio || !plazo || !presupuesto) {
+document.getElementById(‘result-precio’).textContent = ‘—’;
+document.getElementById(‘result-precio’).classList.remove(‘calculado’);
+document.getElementById(‘result-detalle’).innerHTML = ‘Completá todos los campos para obtener tu cotización.’;
+document.getElementById(‘result-estado’).textContent = ‘Completá el formulario’;
+document.getElementById(‘cta-cotizador’).disabled = true;
+return;
+}
+
+const s    = PRECIOS_BASE[servicio];
+const mult = MULT_PLAZO[plazo];
+let precio = Math.round(s.base * cantidad * mult);
+
+// Ajuste si presupuesto no alcanza
+let nota = ‘* Estimación base. El precio final se confirma en la consulta.’;
+if (presupuesto === ‘bajo’ && precio > 50) {
+nota = ‘⚠️ Tu presupuesto puede ser ajustado. Igual escribime, encontramos la forma.’;
+}
+
+const total = `USD ${precio}`;
+document.getElementById(‘result-precio’).innerHTML = `<em>~</em>${total}`;
+document.getElementById(‘result-precio’).classList.add(‘calculado’);
+document.getElementById(‘result-estado’).textContent = ‘Cotización estimada’;
+document.getElementById(‘result-detalle’).innerHTML =
+`<strong>${cantidad} ${s.unidad}${cantidad > 1 ? 's' : ''}</strong> de ${s.label}<br>` +
+`Plazo <strong>${LABEL_PLAZO[plazo]}</strong><br>` +
+`Precio base: USD ${s.base} × ${cantidad} piezas × multiplicador de plazo`;
+document.getElementById(‘result-note’).textContent = nota;
+document.getElementById(‘cta-cotizador’).disabled = false;
+document.getElementById(‘cta-cotizador’).dataset.resumen =
+`Hola Luca! Usé el cotizador de tu web y me interesa contratar:\n\n` +
+`📌 Servicio: ${s.label}\n` +
+`🎬 Cantidad: ${cantidad} ${s.unidad}${cantidad > 1 ? 's' : ''}\n` +
+`⏱ Plazo: ${LABEL_PLAZO[plazo]}\n` +
+`💰 Presupuesto: ${document.getElementById('sel-presupuesto').options[document.getElementById('sel-presupuesto').selectedIndex].text}\n` +
+`📊 Cotización estimada: ${total}\n\n` +
+`¿Podemos hablar?`;
+}
+
+function enviarWA() {
+const resumen = document.getElementById(‘cta-cotizador’).dataset.resumen;
+if (!resumen) return;
+window.open(‘https://wa.me/5491130203625?text=’ + encodeURIComponent(resumen), ‘_blank’);
+}
+
+const nav = document.getElementById(‘nav’);
+window.addEventListener(‘scroll’, () => {
+nav.classList.toggle(‘scrolled’, window.scrollY > 50);
 }, { passive: true });
 
 // ===================== SCROLL REVEAL =====================
 const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
+entries.forEach(e => {
+if (e.isIntersecting) {
+e.target.classList.add(‘visible’);
+observer.unobserve(e.target);
+}
+});
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.animar, .grilla, .servicios-grid, .testimonios-grid').forEach(el => observer.observe(el));
+document.querySelectorAll(’.animar, .grilla, .servicios-grid, .testimonios-grid’).forEach(el => observer.observe(el));
 
 // ===================== FILTRO =====================
 function filtrar(cat, btn) {
-  document.querySelectorAll('.filtro').forEach(b => b.classList.remove('activo'));
-  btn.classList.add('activo');
-  document.querySelectorAll('.card').forEach(c => {
-    const mostrar = cat === 'todos' || c.dataset.cat === cat;
-    c.style.display = mostrar ? '' : 'none';
-  });
+document.querySelectorAll(’.filtro’).forEach(b => b.classList.remove(‘activo’));
+btn.classList.add(‘activo’);
+document.querySelectorAll(’.card’).forEach(c => {
+const mostrar = cat === ‘todos’ || c.dataset.cat === cat;
+c.style.display = mostrar ? ‘’ : ‘none’;
+});
 }
 
 // ===================== MODAL VIDEO =====================
 function abrirVideo(id) {
-  document.getElementById('iframeVideo').src =
-    'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0';
-  document.getElementById('modalVideo').classList.add('abierto');
-  document.body.style.overflow = 'hidden';
+document.getElementById(‘iframeVideo’).src =
+‘https://player.vimeo.com/video/’ + id + ‘?autoplay=1&title=0&byline=0&portrait=0’;
+document.getElementById(‘modalVideo’).classList.add(‘abierto’);
+document.body.style.overflow = ‘hidden’;
 }
 
 function cerrarVideo(e) {
-  if (e && e.target !== document.getElementById('modalVideo') &&
-      !e.target.classList.contains('modal-cerrar')) return;
-  document.getElementById('iframeVideo').src = '';
-  document.getElementById('modalVideo').classList.remove('abierto');
-  document.body.style.overflow = '';
+if (e && e.target !== document.getElementById(‘modalVideo’) &&
+!e.target.classList.contains(‘modal-cerrar’)) return;
+document.getElementById(‘iframeVideo’).src = ‘’;
+document.getElementById(‘modalVideo’).classList.remove(‘abierto’);
+document.body.style.overflow = ‘’;
 }
 
 // ===================== LIGHTBOX FOTOS =====================
 let fotosActual = [], fotoIdx = 0;
 
 function abrirFotos(fotos, idx) {
-  fotosActual = fotos;
-  fotoIdx = idx;
-  mostrarFoto();
-  document.getElementById('lightbox').classList.add('abierto');
-  document.body.style.overflow = 'hidden';
+fotosActual = fotos;
+fotoIdx = idx;
+mostrarFoto();
+document.getElementById(‘lightbox’).classList.add(‘abierto’);
+document.body.style.overflow = ‘hidden’;
 }
 
 function mostrarFoto() {
-  document.getElementById('lbImg').src = fotosActual[fotoIdx];
-  document.getElementById('lbCounter').textContent = (fotoIdx + 1) + ' / ' + fotosActual.length;
+document.getElementById(‘lbImg’).src = fotosActual[fotoIdx];
+document.getElementById(‘lbCounter’).textContent = (fotoIdx + 1) + ’ / ’ + fotosActual.length;
 }
 
 function navFoto(dir) {
-  fotoIdx = (fotoIdx + dir + fotosActual.length) % fotosActual.length;
-  mostrarFoto();
+fotoIdx = (fotoIdx + dir + fotosActual.length) % fotosActual.length;
+mostrarFoto();
 }
 
 function cerrarFotos(e) {
-  if (e && e.target !== document.getElementById('lightbox') &&
-      !e.target.classList.contains('lb-cerrar')) return;
-  document.getElementById('lightbox').classList.remove('abierto');
-  document.getElementById('lbImg').src = '';
-  document.body.style.overflow = '';
+if (e && e.target !== document.getElementById(‘lightbox’) &&
+!e.target.classList.contains(‘lb-cerrar’)) return;
+document.getElementById(‘lightbox’).classList.remove(‘abierto’);
+document.getElementById(‘lbImg’).src = ‘’;
+document.body.style.overflow = ‘’;
 }
 
 // ===================== TECLADO =====================
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    cerrarVideo({ target: document.getElementById('modalVideo') });
-    cerrarFotos({ target: document.getElementById('lightbox') });
-  }
-  if (document.getElementById('lightbox').classList.contains('abierto')) {
-    if (e.key === 'ArrowLeft')  navFoto(-1);
-    if (e.key === 'ArrowRight') navFoto(1);
-  }
-});
-</script>
-
-</body>
-</html>
+document.addEventListener(‘keydown’, e => {
+if (e.key === ‘Escape’) {
+cerrarVideo({ target: document.getElementById(‘modalVideo’) });
+cerrarFotos({
