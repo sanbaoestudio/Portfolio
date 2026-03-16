@@ -677,6 +677,8 @@ transform: none;
 .servicios-grid.visible .servicio-card:nth-child(3),
 .testimonios-grid.visible .testimonio:nth-child(3) { transition-delay: 0.2s; }
 
+.nav-hamburger { display: none; }
+
 /* ===================== COTIZADOR ===================== */
 #cotizador { padding-top: 20px; padding-bottom: 80px; }
 
@@ -858,10 +860,56 @@ transform: none;
 
 /* ===================== RESPONSIVE ===================== */
 @media (max-width: 900px) {
-nav { padding: 20px 24px; }
-.hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
-.hero-right { align-items: flex-start; }
-section { padding: 0 24px 80px; }
+/* NAV mobile: hamburger */
+nav { padding: 16px 20px; }
+.nav-links { display: none; }
+.nav-links.open {
+display: flex;
+flex-direction: column;
+gap: 0;
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background: rgba(248,247,244,0.98);
+backdrop-filter: blur(12px);
+z-index: 99;
+justify-content: center;
+align-items: center;
+padding: 40px;
+}
+.nav-links.open li { border-bottom: 1px solid var(–linea); width: 100%; text-align: center; }
+.nav-links.open a { font-size: 1.2rem; letter-spacing: 0.14em; padding: 20px 0; display: block; color: var(–negro); }
+.nav-hamburger {
+display: flex;
+flex-direction: column;
+gap: 5px;
+cursor: pointer;
+background: none;
+border: none;
+padding: 4px;
+z-index: 200;
+position: relative;
+}
+.nav-hamburger span {
+display: block;
+width: 24px; height: 2px;
+background: var(–negro);
+transition: all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* HERO mobile */
+.hero {
+grid-template-columns: 1fr;
+padding: 90px 20px 40px;
+min-height: auto;
+gap: 24px;
+}
+.hero-title { font-size: clamp(3.5rem, 15vw, 6rem); }
+.hero-right { display: none; } /* Los tags se ocultan en mobile, sobran espacio */
+
+section { padding: 0 20px 60px; }
 .grilla { grid-template-columns: repeat(2, 1fr); }
 .card.doble { grid-column: span 2; }
 .servicios-grid { grid-template-columns: 1fr; }
@@ -870,10 +918,12 @@ section { padding: 0 24px 80px; }
 .cotizador-wrap { grid-template-columns: 1fr; }
 .cotizador-form-col { border-right: none; border-bottom: 1px solid var(–linea); padding: 28px 20px; }
 .cotizador-result-col { padding: 28px 20px; min-height: auto; }
-
-footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
+.contacto-wrap { grid-template-columns: 1fr; gap: 40px; }
+footer { flex-direction: column; gap: 6px; padding: 20px; }
 .lb-prev { left: -8px; }
 .lb-next { right: -8px; }
+.chips { gap: 6px; }
+.chip { font-size: 0.52rem; padding: 6px 10px; }
 }
 
 </style>
@@ -884,12 +934,15 @@ footer { flex-direction: column; gap: 6px; padding: 20px 24px; }
 
 <nav id="nav">
   <a href="#" class="nav-logo">San Bao Estudio</a>
-  <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
-    <li><a href="#cotizador">Cotizá</a></li>
-    <li><a href="#proyectos">Proyectos</a></li>
-    <li><a href="#contacto">Contacto</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#servicios" onclick="cerrarNav()">Servicios</a></li>
+    <li><a href="#cotizador" onclick="cerrarNav()">Cotizá</a></li>
+    <li><a href="#proyectos" onclick="cerrarNav()">Proyectos</a></li>
+    <li><a href="#contacto" onclick="cerrarNav()">Contacto</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1330,6 +1383,16 @@ const FOTOS_VOLEY = [
 ‘https://i.imgur.com/2xVX1AX.jpg’,‘https://i.imgur.com/YqBdRMi.jpg’,‘https://i.imgur.com/R0DPnem.jpg’,
 ‘https://i.imgur.com/F9seHDt.jpg’,‘https://i.imgur.com/kCrRlKJ.jpg’,‘https://i.imgur.com/jXzB4AB.jpg’
 ];
+
+// ===================== NAV HAMBURGER =====================
+function toggleNav() {
+document.getElementById(‘navLinks’).classList.toggle(‘open’);
+document.getElementById(‘hamburger’).classList.toggle(‘open’);
+}
+function cerrarNav() {
+document.getElementById(‘navLinks’).classList.remove(‘open’);
+document.getElementById(‘hamburger’).classList.remove(‘open’);
+}
 
 // ===================== COTIZADOR =====================
 const estado = { servicio: null, plazo: null };
