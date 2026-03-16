@@ -177,6 +177,33 @@ section{padding:0 48px 80px}
 .ci-valor{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--secundario);text-decoration:none;transition:color 0.2s}
 .ci-valor:hover{color:var(--acento)}
 
+
+/* GALERÍA GRILLA */
+.galeria{position:fixed;inset:0;background:rgba(10,10,10,0.98);z-index:510;opacity:0;pointer-events:none;transition:opacity 0.3s;overflow-y:auto}
+.galeria.abierta{opacity:1;pointer-events:all}
+.galeria-header{position:sticky;top:0;z-index:10;background:rgba(10,10,10,0.95);backdrop-filter:blur(12px);padding:18px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08)}
+.galeria-titulo{font-family:var(--cond);font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:white}
+.galeria-header-btns{display:flex;align-items:center;gap:16px}
+.galeria-cerrar{background:none;border:none;color:rgba(255,255,255,0.4);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;cursor:pointer;transition:color 0.2s}
+.galeria-cerrar:hover{color:white}
+.galeria-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:3px}
+.galeria-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer}
+.galeria-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s,opacity 0.3s}
+.galeria-item:hover img{transform:scale(1.04);opacity:0.75}
+.galeria-item-num{position:absolute;bottom:6px;right:8px;font-size:0.5rem;letter-spacing:0.12em;color:rgba(255,255,255,0.35);font-family:var(--mono)}
+
+/* Botón grilla en lightbox */
+.lb-grilla-btn{position:absolute;top:-40px;left:0;background:none;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.4);font-family:var(--mono);font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;padding:5px 10px;cursor:pointer;transition:all 0.2s}
+.lb-grilla-btn:hover{border-color:var(--acento);color:var(--acento)}
+
+@media(max-width:900px){
+  .galeria-grid{grid-template-columns:repeat(3,1fr)}
+  .galeria-header{padding:14px 16px}
+}
+@media(max-width:500px){
+  .galeria-grid{grid-template-columns:repeat(2,1fr)}
+}
+
 /* MODALS */
 .modal-video{position:fixed;inset:0;background:rgba(14,14,14,0.92);backdrop-filter:blur(20px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .modal-video.abierto{opacity:1;pointer-events:all}
@@ -354,7 +381,19 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 <div class="modal-video" id="modalVideo" onclick="cerrarVideo(event)"><div class="modal-video-inner"><button class="modal-cerrar" onclick="cerrarVideo()">[ cerrar ]</button><div class="modal-video-wrap"><iframe id="iframeVideo" src="" allowfullscreen allow="autoplay"></iframe></div></div></div>
 
 <!-- LIGHTBOX FOTOS -->
-<div class="lightbox" id="lightbox" onclick="cerrarFotos(event)"><div class="lightbox-inner"><button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button><button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button><img id="lbImg" src="" alt=""><button class="lb-nav lb-next" onclick="navFoto(1)">→</button><span class="lb-counter" id="lbCounter"></span></div></div>
+<div class="lightbox" id="lightbox" onclick="cerrarFotos(event)"><div class="lightbox-inner"><button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button><button class="lb-grilla-btn" onclick="abrirGaleriaDesdeSlider()">⊞ ver grilla</button><button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button><img id="lbImg" src="" alt=""><button class="lb-nav lb-next" onclick="navFoto(1)">→</button><span class="lb-counter" id="lbCounter"></span></div></div>
+
+<!-- GALERÍA GRILLA -->
+<div class="galeria" id="galeria">
+  <div class="galeria-header">
+    <span class="galeria-titulo" id="galeriaTitulo"></span>
+    <div class="galeria-header-btns">
+      <span style="font-size:0.55rem;letter-spacing:0.16em;color:rgba(255,255,255,0.3);font-family:var(--mono)" id="galeriaContador"></span>
+      <button class="galeria-cerrar" onclick="cerrarGaleria()">[ cerrar ]</button>
+    </div>
+  </div>
+  <div class="galeria-grid" id="galeriaGrid"></div>
+</div>
 
 
 <!-- SELECTOR DEPORTIVA -->
@@ -364,11 +403,11 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="lb-selector-titulo">Fotografía Deportiva</div>
     <div class="lb-selector-sub">Seleccioná un álbum</div>
     <div class="lb-albums">
-      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorDeportiva', FOTOS_VOLEY)">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorDeportiva', FOTOS_VOLEY, 'Vóley Femenino — Inferiores FMV')">
         <span class="lb-album-nombre">Vóley Femenino</span>
         <span class="lb-album-count">Inferiores FMV · 21 fotos</span>
       </button>
-      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorDeportiva', FOTOS_FUTSAL)">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorDeportiva', FOTOS_FUTSAL, 'Fútsal Femenino — Futsala')">
         <span class="lb-album-nombre">Fútsal Femenino</span>
         <span class="lb-album-count">Futsala · 33 fotos</span>
       </button>
@@ -383,11 +422,11 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="lb-selector-titulo">Fotografía para Eventos</div>
     <div class="lb-selector-sub">Seleccioná un álbum</div>
     <div class="lb-albums">
-      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorEventos', FOTOS_XV)">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorEventos', FOTOS_XV, 'XV — Cumpleaños')">
         <span class="lb-album-nombre">XV — Cumpleaños</span>
         <span class="lb-album-count">11 fotos</span>
       </button>
-      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorEventos', FOTOS_CERVECERIA)">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorEventos', FOTOS_CERVECERIA, 'Evento Cervecería')">
         <span class="lb-album-nombre">Evento Cervecería</span>
         <span class="lb-album-count">17 fotos</span>
       </button>
@@ -475,11 +514,39 @@ function abrirSelectorMusica(){document.getElementById('selectorMusica').classLi
 function abrirSelectorEventos(){document.getElementById('selectorEventos').classList.add('abierto');document.body.style.overflow='hidden'}
 function abrirSelectorDeportiva(){document.getElementById('selectorDeportiva').classList.add('abierto');document.body.style.overflow='hidden'}
 function cerrarSelector(id){document.getElementById(id).classList.remove('abierto');document.body.style.overflow=''}
-function abrirDesdeSelector(selectorId,fotos){cerrarSelector(selectorId);if(fotos&&fotos.length>0){abrirFotos(fotos,0)}else{alert('Próximamente — pronto vas a poder ver este álbum.')}}
+function abrirDesdeSelector(selectorId,fotos,titulo){cerrarSelector(selectorId);if(fotos&&fotos.length>0){abrirGaleria(fotos,titulo||'')}else{alert('Próximamente — pronto vas a poder ver este álbum.')}}
+
+// GALERÍA GRILLA
+let galeriaFotos=[];
+function abrirGaleria(fotos,titulo){
+  galeriaFotos=fotos;
+  document.getElementById('galeriaTitulo').textContent=titulo;
+  document.getElementById('galeriaContador').textContent=fotos.length+' fotos';
+  const grid=document.getElementById('galeriaGrid');
+  grid.innerHTML='';
+  fotos.forEach((src,i)=>{
+    const item=document.createElement('div');
+    item.className='galeria-item';
+    item.innerHTML=`<img src="${src}" loading="lazy" alt="foto ${i+1}"><span class="galeria-item-num">${i+1}</span>`;
+    item.onclick=()=>{cerrarGaleria();abrirFotos(fotos,i)};
+    grid.appendChild(item);
+  });
+  document.getElementById('galeria').classList.add('abierta');
+  document.body.style.overflow='hidden';
+}
+function cerrarGaleria(){
+  document.getElementById('galeria').classList.remove('abierta');
+  document.body.style.overflow='';
+}
+function abrirGaleriaDesdeSlider(){
+  cerrarFotos({target:document.getElementById('lightbox')});
+  abrirGaleria(fotosActual,'');
+}
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     cerrarVideo({target:document.getElementById('modalVideo')});
     cerrarFotos({target:document.getElementById('lightbox')});
+    cerrarGaleria();
     cerrarSelector('selectorMusica');
     cerrarSelector('selectorEventos');
     cerrarSelector('selectorDeportiva');
