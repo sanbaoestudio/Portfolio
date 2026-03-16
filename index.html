@@ -10,10 +10,12 @@
 html{scroll-behavior:smooth}
 :root{
   --bg:#F0EDE6;
-  --negro:#0E0E0E;
-  --gris:#6B6B6B;
-  --linea:rgba(14,14,14,0.12);
+  --negro:#1a1a1a;
+  --gris:#354259;
+  --linea:rgba(53,66,89,0.18);
   --acento:#E8622A;
+  --primario:#005f73;
+  --secundario:#354259;
   --glass:rgba(255,255,255,0.55);
   --glass-border:rgba(255,255,255,0.7);
   --mono:'DM Mono',monospace;
@@ -21,223 +23,161 @@ html{scroll-behavior:smooth}
   --cond:'Barlow Condensed',sans-serif;
 }
 
-/* ---- BASE + FONDO ---- */
-body{
-  background:var(--bg);
-  color:var(--negro);
-  font-family:var(--mono);
-  font-weight:300;
-  overflow-x:hidden;
-  position:relative;
-}
-/* Orbs de fondo */
-body::before,body::after{
-  content:'';
-  position:fixed;
-  border-radius:50%;
-  pointer-events:none;
-  z-index:0;
-  filter:blur(80px);
-  opacity:0.35;
-}
-body::before{
-  width:600px;height:600px;
-  background:radial-gradient(circle,#E8622A 0%,transparent 70%);
-  top:-100px;right:-100px;
-  animation:float1 12s ease-in-out infinite;
-}
-body::after{
-  width:500px;height:500px;
-  background:radial-gradient(circle,#F5A06A 0%,transparent 70%);
-  bottom:-100px;left:-100px;
-  animation:float2 15s ease-in-out infinite;
-}
+body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:400;overflow-x:hidden;position:relative;}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.25;}
+body::before{width:600px;height:600px;background:radial-gradient(circle,#005f73 0%,transparent 70%);top:-100px;right:-100px;animation:float1 12s ease-in-out infinite;}
+body::after{width:500px;height:500px;background:radial-gradient(circle,#354259 0%,transparent 70%);bottom:-100px;left:-100px;animation:float2 15s ease-in-out infinite;}
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
-
-/* Noise texture overlay */
 body>.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px}
 
-/* ---- GLASS MIXIN ---- */
-.glass{
-  background:var(--glass);
-  backdrop-filter:blur(18px) saturate(180%);
-  -webkit-backdrop-filter:blur(18px) saturate(180%);
-  border:1px solid var(--glass-border);
-  box-shadow:0 8px 32px rgba(14,14,14,0.08),inset 0 1px 0 rgba(255,255,255,0.8);
-}
+.glass{background:var(--glass);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid var(--glass-border);box-shadow:0 8px 32px rgba(14,14,14,0.08),inset 0 1px 0 rgba(255,255,255,0.8);}
+nav,section,footer,.modal-video,.lightbox,.lb-selector{position:relative;z-index:2}
 
-/* Ensure content above bg */
-nav,section,footer,.modal-video,.lightbox{position:relative;z-index:2}
-
-/* ---- NAV ---- */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:20px 48px;
-  background:rgba(240,237,230,0.5);
-  backdrop-filter:blur(20px) saturate(180%);
-  -webkit-backdrop-filter:blur(20px) saturate(180%);
-  border-bottom:1px solid rgba(255,255,255,0.6);
-  transition:background 0.3s;
-}
-.nav-logo{font-family:var(--cond);font-size:0.95rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--negro);text-decoration:none;opacity:0.7;transition:opacity 0.2s}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:160;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(240,237,230,0.5);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.6);transition:background 0.3s;}
+.nav-logo{font-family:var(--cond);font-size:1rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--secundario);text-decoration:none;opacity:0.85;transition:opacity 0.2s}
 .nav-logo:hover{opacity:1}
 .nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color 0.2s}
+.nav-links a{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--secundario);font-weight:400;text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--acento)}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:200}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:200;position:relative}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--negro);transition:all 0.3s}
+.nav-hamburger.open span{background:white}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ---- HERO ---- */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:end;
-  padding:130px 48px 60px;
-  gap:40px;
-}
-.hero-eyebrow{font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px;margin-bottom:20px}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--acento)}
-.hero-title{font-family:var(--display);font-size:clamp(4.5rem,9vw,11rem);font-weight:900;line-height:0.85;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);margin-bottom:24px}
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:end;padding:130px 48px 60px;gap:40px;}
+.hero-eyebrow{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--primario);display:flex;align-items:center;gap:12px;margin-bottom:20px;font-weight:400}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--primario)}
+.hero-title{font-family:var(--display);font-size:clamp(4.5rem,9vw,11rem);font-weight:900;line-height:0.85;letter-spacing:-0.04em;text-transform:uppercase;color:var(--secundario);margin-bottom:24px}
 .hero-title em{font-style:italic;color:var(--acento)}
-.hero-sub{font-family:var(--cond);font-size:1rem;color:var(--negro);line-height:1.5;max-width:380px}
-.hero-tagline{display:block;font-size:1.1rem;font-weight:600;margin-bottom:8px}
-.hero-descriptor{display:block;font-size:0.62rem;color:var(--gris);letter-spacing:0.08em;margin-bottom:20px}
-.cta-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--acento);color:white;
-  font-family:var(--cond);font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
-  text-decoration:none;padding:13px 26px;
-  transition:background 0.2s,transform 0.2s,box-shadow 0.3s;
-  position:relative;
-}
+.hero-sub{font-family:var(--cond);font-size:1.05rem;color:var(--negro);line-height:1.5;max-width:380px}
+.hero-tagline{display:block;font-size:1.2rem;font-weight:600;margin-bottom:8px;color:var(--negro)}
+.hero-descriptor{display:block;font-size:0.72rem;color:var(--secundario);letter-spacing:0.08em;margin-bottom:20px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:13px 26px;transition:background 0.2s,transform 0.2s,box-shadow 0.3s;position:relative;}
 .cta-btn:hover{background:#c94e1e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,98,42,0.4)}
 .cta-btn::after{content:'→';margin-left:4px}
-/* Glow pulsante en el CTA */
 .cta-btn.glow{animation:glow 2.5s ease-in-out infinite}
 @keyframes glow{0%,100%{box-shadow:0 0 0 rgba(232,98,42,0)}50%{box-shadow:0 0 24px rgba(232,98,42,0.5)}}
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-.tag{
-  font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;
-  color:var(--gris);
-  padding:7px 16px;
-  transition:all 0.25s;
-}
+.tag{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--secundario);padding:7px 16px;transition:all 0.25s;}
 .tag.glass{border:1px solid var(--glass-border)}
-.tag:hover{border-color:var(--acento);color:var(--negro);background:rgba(255,255,255,0.7)}
+.tag:hover{border-color:var(--primario);color:var(--primario);background:rgba(255,255,255,0.7)}
 
-/* ---- SECCIÓN ---- */
+/* SECCIÓN */
 section{padding:0 48px 80px}
-.sec-label{font-size:0.55rem;letter-spacing:0.26em;text-transform:uppercase;color:rgba(14,14,14,0.3);display:flex;align-items:center;gap:16px;margin-bottom:40px}
+.sec-label{font-size:0.62rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--primario);display:flex;align-items:center;gap:16px;margin-bottom:40px;font-weight:400}
 .sec-label::after{content:'';flex:1;height:1px;background:var(--linea)}
-.sec-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:40px}
+.sec-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;color:var(--secundario);margin-bottom:40px}
 
-/* ---- SERVICIOS ---- */
+/* SERVICIOS */
 #servicios{padding-top:20px}
 .servicios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.servicio-card{
-  padding:32px 28px;
-  border-radius:2px;
-  transition:transform 0.3s,box-shadow 0.3s;
-}
-.servicio-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(14,14,14,0.12)}
-.servicio-num{font-family:var(--display);font-size:3rem;font-weight:900;color:rgba(232,98,42,0.2);line-height:1;margin-bottom:16px;transition:color 0.25s}
-.servicio-card:hover .servicio-num{color:var(--acento)}
-.servicio-nombre{font-family:var(--cond);font-size:1.15rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--negro);margin-bottom:10px;line-height:1.2}
-.servicio-desc{font-size:0.6rem;color:var(--gris);line-height:1.8;margin-bottom:18px}
-.servicio-precio{font-family:var(--display);font-size:0.85rem;font-weight:800;color:var(--acento)}
-.servicio-precio span{font-family:var(--mono);font-size:0.52rem;font-weight:300;color:var(--gris);letter-spacing:0.1em;margin-left:4px;text-transform:uppercase}
+.servicio-card{padding:32px 28px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s;}
+.servicio-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(53,66,89,0.14)}
+.servicio-num{font-family:var(--display);font-size:3rem;font-weight:900;color:rgba(0,95,115,0.2);line-height:1;margin-bottom:16px;transition:color 0.25s}
+.servicio-card:hover .servicio-num{color:var(--primario)}
+.servicio-nombre{font-family:var(--cond);font-size:1.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--secundario);margin-bottom:10px;line-height:1.2}
+.servicio-desc{font-size:0.68rem;color:var(--gris);line-height:1.8;margin-bottom:18px}
+.servicio-precio{font-family:var(--display);font-size:0.9rem;font-weight:800;color:var(--acento)}
+.servicio-precio span{font-family:var(--mono);font-size:0.55rem;font-weight:400;color:var(--gris);letter-spacing:0.1em;margin-left:4px;text-transform:uppercase}
 
-/* ---- COTIZADOR ---- */
+/* COTIZADOR */
 #cotizador{padding-top:20px;padding-bottom:80px}
 .cotizador-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .cotizador-form-col{padding:40px;border-radius:2px}
-.cotizador-result-col{
-  padding:40px;border-radius:2px;
-  display:flex;flex-direction:column;justify-content:space-between;
-  min-height:460px;
-  background:rgba(232,98,42,0.06);
-  border:1px solid rgba(232,98,42,0.15);
-}
+.cotizador-result-col{padding:40px;border-radius:2px;display:flex;flex-direction:column;justify-content:space-between;min-height:460px;background:rgba(0,95,115,0.06);border:1px solid rgba(0,95,115,0.2);}
 .campo-grupo{margin-bottom:24px}
-.campo-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gris);display:block;margin-bottom:8px}
+.campo-label{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--secundario);display:block;margin-bottom:8px;font-weight:400}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris);padding:7px 14px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s;user-select:none}
-.chip.sel{background:var(--acento);color:white;border-color:var(--acento)}
+.chip{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--secundario);padding:7px 14px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s;user-select:none}
+.chip.sel{background:var(--primario);color:white;border-color:var(--primario)}
 .chip:hover{background:rgba(255,255,255,0.8);color:var(--negro)}
 .slider-wrap{display:flex;align-items:center;gap:16px}
 .slider-wrap input[type=range]{-webkit-appearance:none;flex:1;height:2px;background:var(--linea);outline:none;cursor:pointer}
-.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--acento);border-radius:50%;cursor:pointer;box-shadow:0 0 8px rgba(232,98,42,0.5)}
+.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--primario);border-radius:50%;cursor:pointer;box-shadow:0 0 8px rgba(0,95,115,0.4)}
 .slider-val{font-family:var(--display);font-size:1.1rem;font-weight:900;color:var(--negro);min-width:28px;text-align:right}
-.campo-select{width:100%;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);backdrop-filter:blur(8px);padding:10px 14px;appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s}
-.campo-select:focus{border-color:var(--acento)}
-.result-estado{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gris);margin-bottom:12px}
+.campo-select{width:100%;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);backdrop-filter:blur(8px);padding:10px 14px;appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s}
+.campo-select:focus{border-color:var(--primario)}
+.result-estado{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--secundario);margin-bottom:12px;font-weight:600}
 .result-precio{font-family:var(--display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;color:var(--negro);line-height:1;letter-spacing:-0.03em;margin-bottom:8px;transition:color 0.3s}
-.result-precio.calculado{color:var(--acento);text-shadow:0 0 30px rgba(232,98,42,0.3)}
+.result-precio.calculado{color:var(--primario)}
 .result-precio em{font-style:normal;font-size:1.2rem;font-weight:400;color:var(--gris);margin-right:4px}
-.result-detalle{font-size:0.6rem;color:var(--gris);line-height:1.8;min-height:80px}
-.result-detalle strong{color:var(--negro);font-weight:400}
-.result-note{font-size:0.52rem;color:var(--gris);letter-spacing:0.08em;font-style:italic;margin-bottom:20px}
-.cotizador-cta{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.72rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:14px 24px;transition:all 0.2s;cursor:pointer;border:none;width:100%;justify-content:center}
-.cotizador-cta:hover{background:#c94e1e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,98,42,0.4)}
+.result-detalle{font-size:0.72rem;color:var(--secundario);line-height:1.8;min-height:80px;font-weight:500}
+.result-detalle strong{color:var(--negro);font-weight:700}
+.result-note{font-size:0.62rem;color:var(--gris);letter-spacing:0.08em;font-style:italic;margin-bottom:20px}
+.cotizador-cta{display:inline-flex;align-items:center;gap:10px;background:var(--primario);color:white;font-family:var(--cond);font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:14px 24px;transition:all 0.2s;cursor:pointer;border:none;width:100%;justify-content:center}
+.cotizador-cta:hover{background:#004d5e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,95,115,0.3)}
 .cotizador-cta::after{content:'→'}
 .cotizador-cta:disabled{background:rgba(14,14,14,0.1);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
 
-/* ---- FILTROS ---- */
+/* FILTROS */
 .filtros{display:flex;gap:8px;margin-bottom:32px}
-.filtro{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris);padding:7px 16px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s}
-.filtro.activo,.filtro:hover{background:var(--negro);color:white;border-color:var(--negro)}
+.filtro{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--secundario);padding:7px 16px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s}
+.filtro.activo,.filtro:hover{background:var(--secundario);color:white;border-color:var(--secundario)}
 
-/* ---- GRILLA ---- */
+/* GRILLA */
 .grilla{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
 .card{position:relative;overflow:hidden;cursor:pointer;transition:transform 0.4s cubic-bezier(.16,1,.3,1),box-shadow 0.4s;border-radius:2px}
-.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(14,14,14,0.15)}
+.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(53,66,89,0.18)}
 .card.doble{grid-column:span 2}
 .card-thumb{position:relative;width:100%;padding-bottom:133%;overflow:hidden}
 .card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
 .card:hover .card-thumb img{transform:scale(1.05)}
 .card-overlay{position:absolute;inset:0;background:rgba(14,14,14,0.82);backdrop-filter:blur(4px);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;opacity:0;transition:opacity 0.35s}
 .card:hover .card-overlay{opacity:1}
-.card-cat{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento);margin-bottom:6px}
+.card-cat{font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento);margin-bottom:6px}
 .card-titulo{font-family:var(--cond);font-size:1.3rem;font-weight:600;text-transform:uppercase;color:#F8F7F4;line-height:1.1;margin-bottom:8px}
-.card-desc{font-size:0.6rem;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:14px}
-.card-link{font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:8px}
+.card-desc{font-size:0.65rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:14px}
+.card-link{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:8px}
 .card-link::after{content:'→';transition:margin 0.2s}
 .card:hover .card-link::after{margin-left:4px}
-.card-info{padding:12px 4px 4px;display:flex;flex-direction:column;gap:3px;background:rgba(255,255,255,0.4)}
-.card-info-cat{font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento)}
-.card-info-titulo{font-family:var(--cond);font-size:0.95rem;font-weight:600;text-transform:uppercase;color:var(--negro);line-height:1.2}
+.card-info{padding:12px 6px 6px;display:flex;flex-direction:column;gap:3px;background:rgba(255,255,255,0.45)}
+.card-info-cat{font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--primario);font-weight:400}
+.card-info-titulo{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;color:var(--secundario);line-height:1.2}
 
-/* ---- TESTIMONIOS ---- */
+/* ALBUM SELECTOR (para álbumes con sub-carpetas) */
+.lb-selector{position:fixed;inset:0;background:rgba(14,14,14,0.95);backdrop-filter:blur(20px);z-index:499;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.lb-selector.abierto{opacity:1;pointer-events:all}
+.lb-selector-inner{width:min(700px,92vw);padding:48px}
+.lb-selector-titulo{font-family:var(--display);font-size:1.8rem;font-weight:900;text-transform:uppercase;color:white;letter-spacing:-0.02em;margin-bottom:8px}
+.lb-selector-sub{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:36px}
+.lb-selector-cerrar{position:absolute;top:24px;right:32px;background:none;border:none;color:rgba(255,255,255,0.4);font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;cursor:pointer;transition:color 0.2s}
+.lb-selector-cerrar:hover{color:white}
+.lb-albums{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.lb-album-btn{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);padding:24px 20px;cursor:pointer;text-align:left;transition:all 0.25s;color:white}
+.lb-album-btn:hover{background:rgba(0,95,115,0.3);border-color:var(--primario)}
+.lb-album-nombre{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;display:block;margin-bottom:4px}
+.lb-album-count{font-size:0.54rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.4)}
+
+/* TESTIMONIOS */
 #testimonios{padding-top:20px;padding-bottom:80px}
 .testimonios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .testimonio{padding:32px 28px;display:flex;flex-direction:column;gap:20px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s}
-.testimonio:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(14,14,14,0.1)}
-.testimonio-quote{font-family:var(--display);font-size:2.5rem;font-weight:900;color:var(--acento);line-height:1}
-.testimonio-text{font-size:0.66rem;color:var(--gris);line-height:1.9;font-style:italic;flex:1}
+.testimonio:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(53,66,89,0.12)}
+.testimonio-quote{font-family:var(--display);font-size:2.5rem;font-weight:900;color:var(--primario);line-height:1}
+.testimonio-text{font-size:0.7rem;color:var(--gris);line-height:1.9;font-style:italic;flex:1}
 .testimonio-autor{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--linea);padding-top:16px}
-.testimonio-nombre{font-family:var(--cond);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--negro)}
-.testimonio-cargo{font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris)}
+.testimonio-nombre{font-family:var(--cond);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--secundario)}
+.testimonio-cargo{font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris)}
 
-/* ---- CONTACTO ---- */
+/* CONTACTO */
 .contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;border-top:1px solid var(--linea);padding-top:80px}
-.contacto-titulo{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;margin-bottom:24px}
+.contacto-titulo{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;color:var(--secundario);margin-bottom:24px}
 .contacto-titulo em{font-style:italic;color:var(--acento)}
-.contacto-desc{font-size:0.68rem;color:var(--gris);line-height:1.9}
+.contacto-desc{font-size:0.72rem;color:var(--gris);line-height:1.9}
 .contacto-items{display:flex;flex-direction:column}
 .contacto-item{display:flex;flex-direction:column;gap:3px;padding:18px 0;border-bottom:1px solid var(--linea)}
 .contacto-item:first-child{padding-top:0}
 .contacto-item:last-child{border-bottom:none}
-.ci-label{font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(14,14,14,0.3)}
-.ci-valor{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--negro);text-decoration:none;transition:color 0.2s}
+.ci-label{font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario);font-weight:400}
+.ci-valor{font-family:var(--display);font-size:1.1rem;font-weight:800;color:var(--secundario);text-decoration:none;transition:color 0.2s}
 .ci-valor:hover{color:var(--acento)}
 
-/* ---- MODALS ---- */
+/* MODALS */
 .modal-video{position:fixed;inset:0;background:rgba(14,14,14,0.92);backdrop-filter:blur(20px);z-index:500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
 .modal-video.abierto{opacity:1;pointer-events:all}
 .modal-video-inner{position:relative;width:min(420px,92vw)}
@@ -255,10 +195,10 @@ section{padding:0 48px 80px}
 .lb-next{right:-60px}
 .lb-counter{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:0.52rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3)}
 
-/* ---- FOOTER ---- */
-footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1px solid var(--linea);font-size:0.55rem;letter-spacing:0.14em;color:var(--gris)}
+/* FOOTER */
+footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1px solid var(--linea);font-size:0.6rem;letter-spacing:0.14em;color:var(--gris)}
 
-/* ---- ANIMACIONES REVEAL ---- */
+/* REVEAL */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
 .reveal.visible{opacity:1;transform:none}
 .grilla .card{opacity:0;transform:translateY(28px)}
@@ -271,19 +211,21 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 .grilla.visible .card:nth-child(6){transition-delay:0.35s}
 .grilla.visible .card:nth-child(7){transition-delay:0.42s}
 .grilla.visible .card:nth-child(8){transition-delay:0.49s}
+.grilla.visible .card:nth-child(9){transition-delay:0.56s}
+.grilla.visible .card:nth-child(10){transition-delay:0.63s}
 .servicios-grid .servicio-card,.testimonios-grid .testimonio{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1)}
 .servicios-grid.visible .servicio-card,.testimonios-grid.visible .testimonio{opacity:1;transform:none}
 .servicios-grid.visible .servicio-card:nth-child(1),.testimonios-grid.visible .testimonio:nth-child(1){transition-delay:0.0s}
 .servicios-grid.visible .servicio-card:nth-child(2),.testimonios-grid.visible .testimonio:nth-child(2){transition-delay:0.1s}
 .servicios-grid.visible .servicio-card:nth-child(3),.testimonios-grid.visible .testimonio:nth-child(3){transition-delay:0.2s}
 
-/* ---- RESPONSIVE ---- */
+/* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:16px 20px}
   .nav-links{display:none}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;z-index:99;justify-content:center;align-items:center;gap:0;background:rgba(240,237,230,0.97);backdrop-filter:blur(20px)}
-  .nav-links.open li{border-bottom:1px solid var(--linea);width:100%;text-align:center}
-  .nav-links.open a{font-size:1.2rem;letter-spacing:0.14em;padding:20px 0;display:block;color:var(--negro)}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;z-index:150;justify-content:center;align-items:center;gap:0;background:rgba(14,14,14,0.99);backdrop-filter:blur(20px)}
+  .nav-links.open li{border-bottom:1px solid rgba(255,255,255,0.1);width:100%;text-align:center}
+  .nav-links.open a{font-size:1.2rem;letter-spacing:0.14em;padding:20px 0;display:block;color:white}
   .nav-hamburger{display:flex}
   .hero{grid-template-columns:1fr;padding:100px 20px 48px;min-height:auto}
   .hero-right{display:none}
@@ -296,13 +238,13 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   footer{flex-direction:column;gap:6px;padding:20px}
   .lb-prev{left:-8px}
   .lb-next{right:-8px}
+  .lb-albums{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 <div class="noise"></div>
 
-<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo">San Bao Estudio</a>
   <ul class="nav-links" id="navLinks">
@@ -316,14 +258,13 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   </button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Buenos Aires · Argentina</div>
     <h1 class="hero-title">Luca<br><em>Gazzola</em></h1>
     <p class="hero-sub">
       <strong class="hero-tagline">Transformo tu marca en contenido visual que vende.</strong>
-      <span class="hero-descriptor">+15 años · Video · Motion Graphics · Diseño · Fotografía</span>
+      <span class="hero-descriptor">Video · Motion Graphics · Diseño · Fotografía</span>
     </p>
     <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn glow">Hablemos</a>
   </div>
@@ -336,27 +277,24 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   </div>
 </section>
 
-<!-- SERVICIOS -->
 <section id="servicios">
   <div class="sec-label reveal">Lo que hago</div>
   <div class="sec-title reveal">Servicios</div>
   <div class="servicios-grid" id="serviciosGrid">
     <div class="servicio-card glass"><div class="servicio-num">01</div><div class="servicio-nombre">Reels & Short-form<br>para marcas</div><p class="servicio-desc">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="servicio-precio">desde USD 10 <span>/ video</span></div></div>
-    <div class="servicio-card glass"><div class="servicio-num">02</div><div class="servicio-nombre">Motion Graphics<br>& VFX</div><p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 10 <span>/ pieza</span></div></div>
-    <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre">Producción Integral<br>& Eventos</div><p class="servicio-desc">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p><div class="servicio-precio">desde USD 10 <span>/ proyecto</span></div></div>
+    <div class="servicio-card glass"><div class="servicio-num">02</div><div class="servicio-nombre">Motion Graphics<br>& VFX</div><p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 15 <span>/ pieza</span></div></div>
+    <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre">Producción Integral<br>& Eventos</div><p class="servicio-desc">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">Cada proyecto es único — <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">hablemos y lo armamos a medida</span></div></div>
   </div>
 </section>
 
-<!-- COTIZADOR -->
 <section id="cotizador">
   <div class="sec-label reveal">Precios transparentes</div>
   <div class="sec-title reveal">Cotizá tu proyecto</div>
   <div class="cotizador-wrap reveal">
     <div class="cotizador-form-col glass">
-      <div class="campo-grupo"><span class="campo-label">¿Qué tipo de servicio necesitás?</span><div class="chips" id="chips-servicio"><button class="chip" data-val="reel" onclick="selChip(this,'servicio')">Reels / Short-form</button><button class="chip" data-val="motion" onclick="selChip(this,'servicio')">Motion Graphics</button><button class="chip" data-val="corporativo" onclick="selChip(this,'servicio')">Video Corporativo</button><button class="chip" data-val="foto" onclick="selChip(this,'servicio')">Fotografía</button><button class="chip" data-val="pack" onclick="selChip(this,'servicio')">Pack Completo</button></div></div>
+      <div class="campo-grupo"><span class="campo-label">¿Qué tipo de servicio necesitás?</span><div class="chips" id="chips-servicio"><button class="chip" data-val="reel" onclick="selChip(this,'servicio')">Reels / Short-form</button><button class="chip" data-val="motion" onclick="selChip(this,'servicio')">Motion Graphics</button><button class="chip" data-val="corporativo" onclick="selChip(this,'servicio')">Producción Integral</button><button class="chip" data-val="foto" onclick="selChip(this,'servicio')">Fotografía</button></div></div>
       <div class="campo-grupo"><span class="campo-label">¿Cuántas piezas / videos?</span><div class="slider-wrap"><input type="range" id="slider-cantidad" min="1" max="20" value="1" oninput="document.getElementById('val-cantidad').textContent=this.value;calcular()"><span class="slider-val" id="val-cantidad">1</span></div></div>
       <div class="campo-grupo"><span class="campo-label">Plazo de entrega</span><div class="chips" id="chips-plazo"><button class="chip" data-val="urgente" onclick="selChip(this,'plazo')">Urgente (48 hs)</button><button class="chip" data-val="normal" onclick="selChip(this,'plazo')">Normal (1 semana)</button><button class="chip" data-val="flexible" onclick="selChip(this,'plazo')">Flexible (+2 semanas)</button></div></div>
-      <div class="campo-grupo"><span class="campo-label">Presupuesto estimado (USD)</span><select class="campo-select" id="sel-presupuesto" onchange="calcular()"><option value="">— Seleccioná un rango —</option><option value="bajo">Menos de USD 50</option><option value="medio">USD 50 – 200</option><option value="alto">USD 200 – 500</option><option value="premium">Más de USD 500</option></select></div>
     </div>
     <div class="cotizador-result-col">
       <div><p class="result-estado" id="result-estado">Completá el formulario</p><div class="result-precio" id="result-precio">—</div><p class="result-detalle" id="result-detalle">Seleccioná el tipo de servicio, cantidad y plazo.</p></div>
@@ -365,7 +303,6 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   </div>
 </section>
 
-<!-- PROYECTOS -->
 <section id="proyectos">
   <div class="sec-label reveal">Trabajos</div>
   <div class="sec-title reveal">Proyectos</div>
@@ -379,15 +316,15 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc">Video promocional institucional. Producción completa.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
     <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Sesión Musical<br>Bajista</h3><p class="card-desc">Sesión en vivo.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Sesión Musical Bajista</span></div></div>
     <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc">Reel animado para redes.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Reel<br>Desafío 30 días</h3><p class="card-desc">Compilado del desafío.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Reel Desafío 30 días</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 1"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Edición formato<br>Reel 1</h3><p class="card-desc">Compilado del desafío.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Edición formato Reel 1</span></div></div>
     <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel<br>Cervecería</h3><p class="card-desc">Reel de producto gastronómico.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Cervecería</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel Bajo"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Reel Bajo<br>Desafío 30 días</h3><p class="card-desc">Reel musical.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Reel Bajo — Desafío 30 días</span></div></div>
-    <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_FUTSAL,0)"><div class="card-thumb"><img src="https://i.imgur.com/lWBEh17.jpg" alt="Fútsal"></div><div class="card-overlay"><span class="card-cat">Fotografía deportiva · 33 fotos</span><h3 class="card-titulo">Fotografía<br>Fútsal</h3><p class="card-desc">Registro de acción en tiempo real.</p><span class="card-link">Ver galería</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 33 fotos</span><span class="card-info-titulo">Fotografía Fútsal</span></div></div>
-    <div class="card doble" data-cat="foto" onclick="abrirFotos(FOTOS_VOLEY,0)"><div class="card-thumb"><img src="https://i.imgur.com/xAZuMo2.jpg" alt="Vóley"></div><div class="card-overlay"><span class="card-cat">Fotografía deportiva · 21 fotos</span><h3 class="card-titulo">Fotografía<br>Vóley Femenino</h3><p class="card-desc">Cobertura de eventos deportivos femeninos.</p><span class="card-link">Ver galería</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 21 fotos</span><span class="card-info-titulo">Fotografía Vóley Femenino</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Edición formato<br>Reel 2</h3><p class="card-desc">Reel musical.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Edición formato Reel 2</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Fotografía<br>Deportiva</h3><p class="card-desc">Vóley Femenino · Fútsal Femenino</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo">Fotografía Deportiva</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Fotografía<br>para Eventos</h3><p class="card-desc">XV Cumpleaños · Evento Cervecería</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo">Fotografía para Eventos</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://i.imgur.com/AXGt0dN.jpg" alt="Música"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Música<br>en Vivo</h3><p class="card-desc">Tinkuy · Folklore</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía · Música · 2 álbumes</span><span class="card-info-titulo">Música en Vivo</span></div></div>
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
 <section id="testimonios">
   <div class="sec-label reveal">Lo que dicen</div>
   <div class="sec-title reveal">Clientes</div>
@@ -398,7 +335,6 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   </div>
 </section>
 
-<!-- CONTACTO -->
 <section id="contacto">
   <div class="contacto-wrap reveal">
     <div><h2 class="contacto-titulo">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto · USD</p><a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" style="margin-top:28px">Contactar por WhatsApp</a></div>
@@ -407,19 +343,85 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">YouTube</span><a href="https://youtube.com/@sanbaoestudio" target="_blank" class="ci-valor">San Bao Estudio</a></div>
       <div class="contacto-item"><span class="ci-label">WhatsApp</span><a href="https://wa.me/5491130203625" target="_blank" class="ci-valor">+54 9 11 3020 3625</a></div>
-      <div class="contacto-item"><span class="ci-label">Email</span><a href="mailto:sanbaoestudio@gmail.com" class="ci-valor">sanbaoestudio@gmail.com</a></div>
+      <div class="contacto-item"><span class="ci-label">Email</span><a href="/cdn-cgi/l/email-protection#6e1d0f000c0f010b1d1a1b0a07012e09030f0702400d0103" class="ci-valor"><span class="__cf_email__" data-cfemail="b5c6d4dbd7d4dad0c6c1c0d1dcdaf5d2d8d4dcd99bd6dad8">[email&#160;protected]</span></a></div>
     </div>
   </div>
 </section>
 
 <footer><span>© 2026 San Bao Estudio — Luca Gazzola</span><span>Buenos Aires, Argentina</span></footer>
 
+<!-- MODAL VIDEO -->
 <div class="modal-video" id="modalVideo" onclick="cerrarVideo(event)"><div class="modal-video-inner"><button class="modal-cerrar" onclick="cerrarVideo()">[ cerrar ]</button><div class="modal-video-wrap"><iframe id="iframeVideo" src="" allowfullscreen allow="autoplay"></iframe></div></div></div>
+
+<!-- LIGHTBOX FOTOS -->
 <div class="lightbox" id="lightbox" onclick="cerrarFotos(event)"><div class="lightbox-inner"><button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button><button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button><img id="lbImg" src="" alt=""><button class="lb-nav lb-next" onclick="navFoto(1)">→</button><span class="lb-counter" id="lbCounter"></span></div></div>
 
-<script>
+
+<!-- SELECTOR DEPORTIVA -->
+<div class="lb-selector" id="selectorDeportiva">
+  <div class="lb-selector-inner">
+    <button class="lb-selector-cerrar" onclick="cerrarSelector('selectorDeportiva')">[ cerrar ]</button>
+    <div class="lb-selector-titulo">Fotografía Deportiva</div>
+    <div class="lb-selector-sub">Seleccioná un álbum</div>
+    <div class="lb-albums">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorDeportiva', FOTOS_VOLEY)">
+        <span class="lb-album-nombre">Vóley Femenino</span>
+        <span class="lb-album-count">Inferiores FMV · 21 fotos</span>
+      </button>
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorDeportiva', FOTOS_FUTSAL)">
+        <span class="lb-album-nombre">Fútsal Femenino</span>
+        <span class="lb-album-count">Futsala · 33 fotos</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SELECTOR EVENTOS -->
+<div class="lb-selector" id="selectorEventos">
+  <div class="lb-selector-inner">
+    <button class="lb-selector-cerrar" onclick="cerrarSelector('selectorEventos')">[ cerrar ]</button>
+    <div class="lb-selector-titulo">Fotografía para Eventos</div>
+    <div class="lb-selector-sub">Seleccioná un álbum</div>
+    <div class="lb-albums">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorEventos', FOTOS_XV)">
+        <span class="lb-album-nombre">XV — Cumpleaños</span>
+        <span class="lb-album-count">11 fotos</span>
+      </button>
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorEventos', FOTOS_CERVECERIA)">
+        <span class="lb-album-nombre">Evento Cervecería</span>
+        <span class="lb-album-count">17 fotos</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- SELECTOR MÚSICA -->
+<div class="lb-selector" id="selectorMusica">
+  <div class="lb-selector-inner">
+    <button class="lb-selector-cerrar" onclick="cerrarSelector('selectorMusica')">[ cerrar ]</button>
+    <div class="lb-selector-titulo">Música en Vivo</div>
+    <div class="lb-selector-sub">Seleccioná un álbum</div>
+    <div class="lb-albums">
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorMusica', FOTOS_TINKUY)">
+        <span class="lb-album-nombre">Tinkuy</span>
+        <span class="lb-album-count">Ciclo Música Popular · 19 fotos</span>
+      </button>
+      <button class="lb-album-btn" onclick="abrirDesdeSelector('selectorMusica', FOTOS_FOLKLORE)">
+        <span class="lb-album-nombre">Folklore</span>
+        <span class="lb-album-count">48 fotos</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const FOTOS_FUTSAL=['https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg','https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg','https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg','https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg','https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg','https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg','https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg','https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg','https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg','https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg','https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'];
 const FOTOS_VOLEY=['https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg','https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg','https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg','https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg','https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg','https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg','https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'];
+const FOTOS_XV=['https://i.imgur.com/tszLcVK.jpg','https://i.imgur.com/03AyAyj.jpg','https://i.imgur.com/P71DeJ1.jpg','https://i.imgur.com/FaUCTFl.jpg','https://i.imgur.com/LnPy43d.jpg','https://i.imgur.com/Fdy2vHc.jpg','https://i.imgur.com/7UTIsFQ.jpg','https://i.imgur.com/WSjwUpx.jpg','https://i.imgur.com/14u1uOD.jpg','https://i.imgur.com/KB6qcey.jpg','https://i.imgur.com/E6OSnQZ.jpg'];
+const FOTOS_TINKUY=['https://i.imgur.com/AXGt0dN.jpg','https://i.imgur.com/30pdGb9.jpg','https://i.imgur.com/gTgM5Yf.jpg','https://i.imgur.com/Gm8YHmI.jpg','https://i.imgur.com/stIImNw.jpg','https://i.imgur.com/jT6gKY0.jpg','https://i.imgur.com/bTZSpdI.jpg','https://i.imgur.com/cVoHVf4.jpg','https://i.imgur.com/xZmgkRQ.jpg','https://i.imgur.com/rd5ojKJ.jpg','https://i.imgur.com/H3dgkMP.jpg','https://i.imgur.com/z7xE6ec.jpg','https://i.imgur.com/ti8LTn8.jpg','https://i.imgur.com/AhaPBMp.jpg','https://i.imgur.com/4RQMxxQ.jpg','https://i.imgur.com/I30ukbu.jpg','https://i.imgur.com/0vsuUS0.jpg','https://i.imgur.com/OJ63bwJ.jpg','https://i.imgur.com/QxIqnIE.jpg'];
+const FOTOS_FOLKLORE=['https://i.imgur.com/7b0Xsu2.jpg','https://i.imgur.com/JjNgjmK.jpg','https://i.imgur.com/QB326fN.jpg','https://i.imgur.com/b68tExc.jpg','https://i.imgur.com/1kfkcQ3.jpg','https://i.imgur.com/pSQx5aJ.jpg','https://i.imgur.com/AXYUOPt.jpg','https://i.imgur.com/DfPPgIz.jpg','https://i.imgur.com/pKz8wyb.jpg','https://i.imgur.com/jtET1Vt.jpg','https://i.imgur.com/9iZyGn5.jpg','https://i.imgur.com/YZ9ZAox.jpg','https://i.imgur.com/hGrRax1.jpg','https://i.imgur.com/9dcPvzU.jpg','https://i.imgur.com/m5F8R5o.jpg','https://i.imgur.com/iROY8tz.jpg','https://i.imgur.com/J50WITS.jpg','https://i.imgur.com/n7hNpdN.jpg','https://i.imgur.com/AnS8n9E.jpg','https://i.imgur.com/adFt2EW.jpg','https://i.imgur.com/bOqK9OQ.jpg','https://i.imgur.com/tQoaBSl.jpg','https://i.imgur.com/4gMlq7w.jpg','https://i.imgur.com/IoDLvTR.jpg','https://i.imgur.com/15X2eWG.jpg','https://i.imgur.com/0jrqLeC.jpg','https://i.imgur.com/xTLPTiP.jpg','https://i.imgur.com/TdkKGWW.jpg','https://i.imgur.com/fnzcPUt.jpg','https://i.imgur.com/VRC5mQa.jpg','https://i.imgur.com/zDrggrE.jpg','https://i.imgur.com/IlZKtEB.jpg','https://i.imgur.com/Zrpale4.jpg','https://i.imgur.com/0xfhkoX.jpg','https://i.imgur.com/QzanwIf.jpg','https://i.imgur.com/guxyNTa.jpg','https://i.imgur.com/QHCeN6C.jpg','https://i.imgur.com/azk5iVx.jpg','https://i.imgur.com/BDVgzkW.jpg','https://i.imgur.com/BbUP0Js.jpg','https://i.imgur.com/Pi5Obc9.jpg','https://i.imgur.com/d5SWGCG.jpg','https://i.imgur.com/cqSctC9.jpg','https://i.imgur.com/2KAG0gg.jpg','https://i.imgur.com/TxgyTJM.jpg','https://i.imgur.com/ZcniWXD.jpg','https://i.imgur.com/7LJBjrD.jpg'];
+const FOTOS_CERVECERIA=['https://i.imgur.com/2PYu7DF.jpg','https://i.imgur.com/6ckaaej.jpg','https://i.imgur.com/fc7GxHW.jpg','https://i.imgur.com/oVbRK8I.jpg','https://i.imgur.com/7THHuCx.jpg','https://i.imgur.com/qP7jacn.jpg','https://i.imgur.com/QMS6m9u.jpg','https://i.imgur.com/IoBqBZQ.jpg','https://i.imgur.com/kIw9dtQ.jpg','https://i.imgur.com/KUSAhDX.jpg','https://i.imgur.com/hHVnrAn.jpg','https://i.imgur.com/woQRQQF.jpg','https://i.imgur.com/m8pPMNi.jpg','https://i.imgur.com/HtodOu5.jpg','https://i.imgur.com/AD21Qne.jpg','https://i.imgur.com/006TVR0.jpg','https://i.imgur.com/LOmkVg8.jpg'];
+
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
 function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
@@ -427,11 +429,40 @@ const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.targ
 document.querySelectorAll('.reveal,.grilla,.servicios-grid,.testimonios-grid').forEach(el=>obs.observe(el));
 function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
 const estado={servicio:null,plazo:null};
-const PRECIOS={reel:{label:'Reels / Short-form',base:10,unidad:'video'},motion:{label:'Motion Graphics',base:20,unidad:'pieza'},corporativo:{label:'Video Corporativo',base:40,unidad:'video'},foto:{label:'Fotografía',base:15,unidad:'sesión'},pack:{label:'Pack Completo',base:60,unidad:'pack'}};
+const PRECIOS={reel:{label:'Reels / Short-form',base:10,unidad:'video'},motion:{label:'Motion Graphics',base:15,unidad:'pieza'},foto:{label:'Fotografía',base:15,unidad:'sesión'},pack:{label:'Pack Completo',base:60,unidad:'pack'}};
 const MULT={urgente:1.5,normal:1.0,flexible:0.85};
 const LPLAZO={urgente:'urgente (+50%)',normal:'plazo normal',flexible:'flexible (−15%)'};
 function selChip(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');estado[g]=el.dataset.val;calcular()}
-function calcular(){const cant=parseInt(document.getElementById('slider-cantidad').value);const pres=document.getElementById('sel-presupuesto').value;const{servicio,plazo}=estado;if(!servicio||!plazo||!pres){document.getElementById('result-precio').textContent='—';document.getElementById('result-precio').classList.remove('calculado');document.getElementById('cta-cotizador').disabled=true;return}const s=PRECIOS[servicio];const precio=Math.round(s.base*cant*MULT[plazo]);document.getElementById('result-precio').innerHTML=`<em>~</em>USD ${precio}`;document.getElementById('result-precio').classList.add('calculado');document.getElementById('result-estado').textContent='Cotización estimada';document.getElementById('result-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> de ${s.label}<br>Plazo <strong>${LPLAZO[plazo]}</strong>`;document.getElementById('result-note').textContent=pres==='bajo'&&precio>50?'⚠️ Tu presupuesto puede ser ajustado.':'* Estimación base.';const btn=document.getElementById('cta-cotizador');btn.disabled=false;btn.dataset.resumen=`Hola Luca! Cotizador:\n📌 ${s.label}\n🎬 ${cant} ${s.unidad}${cant>1?'s':''}\n⏱ ${LPLAZO[plazo]}\n📊 ~USD ${precio}\n¿Podemos hablar?`}
+function calcular(){
+  const cant=parseInt(document.getElementById('slider-cantidad').value);
+  const{servicio,plazo}=estado;
+  const btn=document.getElementById('cta-cotizador');
+  if(servicio==='corporativo'){
+    document.getElementById('result-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
+    document.getElementById('result-precio').classList.remove('calculado');
+    document.getElementById('result-estado').textContent='Producción integral';
+    document.getElementById('result-detalle').innerHTML='Este servicio varía mucho según el proyecto.<br><strong>Hablemos</strong> y armo una propuesta para vos.';
+    document.getElementById('result-note').textContent='Sin costo ni compromiso — solo una charla.';
+    btn.disabled=false;
+    btn.dataset.resumen='Hola Luca! Me interesa consultar sobre Producción Integral & Eventos. ¿Podemos hablar?';
+    return;
+  }
+  if(!servicio||!plazo){
+    document.getElementById('result-precio').textContent='—';
+    document.getElementById('result-precio').classList.remove('calculado');
+    document.getElementById('cta-cotizador').disabled=true;
+    return;
+  }
+  const s=PRECIOS[servicio];
+  const precio=Math.round(s.base*cant*MULT[plazo]);
+  document.getElementById('result-precio').innerHTML=`<em>~</em>USD ${precio}`;
+  document.getElementById('result-precio').classList.add('calculado');
+  document.getElementById('result-estado').textContent='Cotización estimada';
+  document.getElementById('result-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> de ${s.label}<br>Plazo <strong>${LPLAZO[plazo]}</strong>`;
+  document.getElementById('result-note').textContent='* Estimación base. El precio final puede variar.';
+  btn.disabled=false;
+  btn.dataset.resumen=`Hola Luca! Cotizador:\n📌 ${s.label}\n🎬 ${cant} ${s.unidad}${cant>1?'s':''}\n⏱ ${LPLAZO[plazo]}\n📊 ~USD ${precio}\n¿Podemos hablar?`;
+}
 function enviarWA(){const r=document.getElementById('cta-cotizador').dataset.resumen;if(r)window.open('https://wa.me/5491130203625?text='+encodeURIComponent(r),'_blank')}
 function abrirVideo(id){document.getElementById('iframeVideo').src='https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0';document.getElementById('modalVideo').classList.add('abierto');document.body.style.overflow='hidden'}
 function cerrarVideo(e){if(e&&e.target!==document.getElementById('modalVideo')&&!e.target.classList.contains('modal-cerrar'))return;document.getElementById('iframeVideo').src='';document.getElementById('modalVideo').classList.remove('abierto');document.body.style.overflow=''}
@@ -440,7 +471,23 @@ function abrirFotos(f,i){fotosActual=f;fotoIdx=i;mostrarFoto();document.getEleme
 function mostrarFoto(){document.getElementById('lbImg').src=fotosActual[fotoIdx];document.getElementById('lbCounter').textContent=(fotoIdx+1)+' / '+fotosActual.length}
 function navFoto(d){fotoIdx=(fotoIdx+d+fotosActual.length)%fotosActual.length;mostrarFoto()}
 function cerrarFotos(e){if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lb-cerrar'))return;document.getElementById('lightbox').classList.remove('abierto');document.getElementById('lbImg').src='';document.body.style.overflow=''}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){cerrarVideo({target:document.getElementById('modalVideo')});cerrarFotos({target:document.getElementById('lightbox')})}if(document.getElementById('lightbox').classList.contains('abierto')){if(e.key==='ArrowLeft')navFoto(-1);if(e.key==='ArrowRight')navFoto(1)}});
+function abrirSelectorMusica(){document.getElementById('selectorMusica').classList.add('abierto');document.body.style.overflow='hidden'}
+function abrirSelectorEventos(){document.getElementById('selectorEventos').classList.add('abierto');document.body.style.overflow='hidden'}
+function cerrarSelector(id){document.getElementById(id).classList.remove('abierto');document.body.style.overflow=''}
+function abrirDesdeSelector(selectorId,fotos){cerrarSelector(selectorId);if(fotos&&fotos.length>0){abrirFotos(fotos,0)}else{alert('Próximamente — Agregá los links de las fotos.')}}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    cerrarVideo({target:document.getElementById('modalVideo')});
+    cerrarFotos({target:document.getElementById('lightbox')});
+    cerrarSelector('selectorMusica');
+    cerrarSelector('selectorEventos');
+    document.body.style.overflow='';
+  }
+  if(document.getElementById('lightbox').classList.contains('abierto')){
+    if(e.key==='ArrowLeft')navFoto(-1);
+    if(e.key==='ArrowRight')navFoto(1);
+  }
+});
 </script>
 </body>
 </html>
