@@ -74,7 +74,8 @@ section{padding:0 48px 80px}
 .sec-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;color:var(--secundario);margin-bottom:40px}
 
 /* SERVICIOS */
-#servicios{padding-top:20px}
+.servicios-grid-foto{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.servicios-grid-foto{grid-template-columns:repeat(1,1fr)}}
 .servicios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .servicio-card{padding:32px 28px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s;}
 .servicio-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(53,66,89,0.14)}
@@ -84,6 +85,15 @@ section{padding:0 48px 80px}
 .servicio-desc{font-size:0.68rem;color:var(--gris);line-height:1.8;margin-bottom:18px}
 .servicio-precio{font-family:var(--display);font-size:0.9rem;font-weight:800;color:var(--acento)}
 .servicio-precio span{font-family:var(--mono);font-size:0.55rem;font-weight:400;color:var(--gris);letter-spacing:0.1em;margin-left:4px;text-transform:uppercase}
+
+/* COTIZADOR TABS */
+.cot-tabs{display:flex;gap:8px;margin-bottom:32px}
+.cot-tab{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:10px 28px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);transition:all 0.2s;color:var(--secundario)}
+.cot-tab.activo,.cot-tab:hover{background:var(--secundario);color:white;border-color:var(--secundario)}
+.campo-texto{width:100%;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);padding:10px 14px;outline:none;transition:border-color 0.2s}
+.campo-texto:focus{border-color:var(--primario)}
+.campo-texto::placeholder{color:rgba(107,107,107,0.5)}
+.chips .chip small{display:block;font-size:0.5rem;opacity:0.7;margin-top:2px;letter-spacing:0.08em}
 
 /* COTIZADOR */
 #cotizador{padding-top:20px;padding-bottom:80px}
@@ -241,7 +251,13 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 .grilla.visible .card:nth-child(9){transition-delay:0.56s}
 .grilla.visible .card:nth-child(10){transition-delay:0.63s}
 .servicios-grid .servicio-card,.testimonios-grid .testimonio{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1)}
-.servicios-grid.visible .servicio-card,.testimonios-grid.visible .testimonio{opacity:1;transform:none}
+.servicios-grid.visible .servicio-card,.testimonios-grid.visible .testimonio,.servicios-grid-foto.visible .servicio-card{opacity:1;transform:none}
+.servicios-grid-foto .servicio-card{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1)}
+.servicios-grid-foto.visible .servicio-card:nth-child(1){transition-delay:0.0s}
+.servicios-grid-foto.visible .servicio-card:nth-child(2){transition-delay:0.08s}
+.servicios-grid-foto.visible .servicio-card:nth-child(3){transition-delay:0.16s}
+.servicios-grid-foto.visible .servicio-card:nth-child(4){transition-delay:0.24s}
+.servicios-grid-foto.visible .servicio-card:nth-child(5){transition-delay:0.32s}
 .servicios-grid.visible .servicio-card:nth-child(1),.testimonios-grid.visible .testimonio:nth-child(1){transition-delay:0.0s}
 .servicios-grid.visible .servicio-card:nth-child(2),.testimonios-grid.visible .testimonio:nth-child(2){transition-delay:0.1s}
 .servicios-grid.visible .servicio-card:nth-child(3),.testimonios-grid.visible .testimonio:nth-child(3){transition-delay:0.2s}
@@ -308,24 +324,117 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <div class="sec-label reveal">Lo que hago</div>
   <div class="sec-title reveal">Servicios</div>
   <div class="servicios-grid" id="serviciosGrid">
-    <div class="servicio-card glass"><div class="servicio-num">01</div><div class="servicio-nombre">Reels & Short-form<br>para marcas</div><p class="servicio-desc">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="servicio-precio">desde USD 10 <span>/ video</span></div></div>
-    <div class="servicio-card glass"><div class="servicio-num">02</div><div class="servicio-nombre">Motion Graphics<br>& VFX</div><p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 15 <span>/ pieza</span></div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('video',document.getElementById('filtro-video'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">01</div><div class="servicio-nombre">Reels & Short-form<br>para marcas</div><p class="servicio-desc">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="servicio-precio">desde USD 10 <span>/ video</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver proyectos →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('motion',document.getElementById('filtro-motion'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">02</div><div class="servicio-nombre">Motion Graphics<br>& VFX</div><p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 15 <span>/ pieza</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver proyectos →</div></div>
     <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre">Producción Integral<br>& Eventos</div><p class="servicio-desc">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">Cada proyecto es único — <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">hablemos y lo armamos a medida</span></div></div>
+  </div>
+
+  <div class="sec-label reveal" style="margin-top:48px">Fotografía</div>
+  <div class="servicios-grid servicios-grid-foto" id="serviciosGridFoto">
+    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorDeportiva()"><div class="servicio-num">01</div><div class="servicio-nombre">Deportiva</div><p class="servicio-desc">Cobertura de partidos, torneos y eventos deportivos. Registro de acción en tiempo real con equipamiento profesional.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">A medida <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">/ consultá</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver galería →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorEventos()"><div class="servicio-num">02</div><div class="servicio-nombre">Eventos</div><p class="servicio-desc">Cobertura completa de eventos sociales. XV años, cumpleaños, fiestas y celebraciones con edición incluida.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">A medida <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">/ consultá</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver galería →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="servicio-num">03</div><div class="servicio-nombre">Retratos</div><p class="servicio-desc">Sesiones de retrato individual o grupal. Fotografía profesional para redes, CV y uso personal.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">A medida <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">/ consultá</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver galería →</div></div>
   </div>
 </section>
 
 <section id="cotizador">
   <div class="sec-label reveal">Precios transparentes</div>
   <div class="sec-title reveal">Cotizá tu proyecto</div>
-  <div class="cotizador-wrap reveal">
+
+  <!-- TABS -->
+  <div class="cot-tabs reveal">
+    <button class="cot-tab activo" onclick="switchTab('video',this)">Video</button>
+    <button class="cot-tab" onclick="switchTab('foto',this)">Fotografía</button>
+  </div>
+
+  <!-- FORMULARIO VIDEO -->
+  <div class="cotizador-wrap reveal" id="form-video">
     <div class="cotizador-form-col glass">
-      <div class="campo-grupo"><span class="campo-label">¿Qué tipo de servicio necesitás?</span><div class="chips" id="chips-servicio"><button class="chip" data-val="reel" onclick="selChip(this,'servicio')">Reels / Short-form</button><button class="chip" data-val="motion" onclick="selChip(this,'servicio')">Motion Graphics</button><button class="chip" data-val="corporativo" onclick="selChip(this,'servicio')">Producción Integral</button><button class="chip" data-val="foto" onclick="selChip(this,'servicio')">Fotografía</button></div></div>
-      <div class="campo-grupo"><span class="campo-label">¿Cuántas piezas / videos?</span><div class="slider-wrap"><input type="range" id="slider-cantidad" min="1" max="20" value="1" oninput="document.getElementById('val-cantidad').textContent=this.value;calcular()"><span class="slider-val" id="val-cantidad">1</span></div></div>
-      <div class="campo-grupo"><span class="campo-label">Plazo de entrega</span><div class="chips" id="chips-plazo"><button class="chip" data-val="urgente" onclick="selChip(this,'plazo')">Urgente (48 hs)</button><button class="chip" data-val="normal" onclick="selChip(this,'plazo')">Normal (1 semana)</button><button class="chip" data-val="flexible" onclick="selChip(this,'plazo')">Flexible (+2 semanas)</button></div></div>
+      <div class="campo-grupo">
+        <span class="campo-label">Tipo de servicio</span>
+        <div class="chips" id="chips-vservicio">
+          <button class="chip" data-val="corto" onclick="selChipV(this,'vservicio')">Formato Corto<br><small>Reels · TikTok · YT Shorts</small></button>
+          <button class="chip" data-val="largo" onclick="selChipV(this,'vservicio')">Formato Largo</button>
+          <button class="chip" data-val="motion" onclick="selChipV(this,'vservicio')">Motion Graphics</button>
+          <button class="chip" data-val="integral" onclick="selChipV(this,'vservicio')">Producción Integral</button>
+        </div>
+      </div>
+      <div class="campo-grupo" id="vg-cantidad">
+        <span class="campo-label">Cantidad de videos</span>
+        <div class="slider-wrap"><input type="range" id="v-cantidad" min="1" max="20" value="1" oninput="document.getElementById('v-cant-val').textContent=this.value;calcularVideo()"><span class="slider-val" id="v-cant-val">1</span></div>
+      </div>
+      <div class="campo-grupo" id="vg-plazo">
+        <span class="campo-label">Tiempo de entrega</span>
+        <div class="chips" id="chips-vplazo">
+          <button class="chip" data-val="urgente" onclick="selChipV(this,'vplazo')">Urgente (48 hs)</button>
+          <button class="chip" data-val="normal" onclick="selChipV(this,'vplazo')">Normal (1 semana)</button>
+          <button class="chip" data-val="flexible" onclick="selChipV(this,'vplazo')">Flexible (+2 semanas)</button>
+        </div>
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Tu nombre</span>
+        <input type="text" class="campo-texto" id="v-nombre" placeholder="Ej: Martín García" oninput="calcularVideo()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Tu cuenta de redes</span>
+        <input type="text" class="campo-texto" id="v-cuenta" placeholder="@tucuenta" oninput="calcularVideo()">
+      </div>
     </div>
     <div class="cotizador-result-col">
-      <div><p class="result-estado" id="result-estado">Completá el formulario</p><div class="result-precio" id="result-precio">—</div><p class="result-detalle" id="result-detalle">Seleccioná el tipo de servicio, cantidad y plazo.</p></div>
-      <div><p class="result-note" id="result-note">* El precio final puede variar según el detalle del proyecto.</p><button class="cotizador-cta" id="cta-cotizador" disabled onclick="enviarWA()">Consultar por WhatsApp</button></div>
+      <div>
+        <p class="result-estado" id="v-estado">Completá el formulario</p>
+        <div class="result-precio" id="v-precio">—</div>
+        <p class="result-detalle" id="v-detalle">Seleccioná el tipo de servicio, cantidad y plazo.</p>
+      </div>
+      <div>
+        <p class="result-note" id="v-note">* El precio final puede variar según el detalle del proyecto.</p>
+        <button class="cotizador-cta" id="cta-video" disabled onclick="enviarWAVideo()">Consultar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FORMULARIO FOTOGRAFÍA -->
+  <div class="cotizador-wrap reveal" id="form-foto" style="display:none">
+    <div class="cotizador-form-col glass">
+      <div class="campo-grupo">
+        <span class="campo-label">Tipo de fotografía</span>
+        <div class="chips" id="chips-fservicio">
+          <button class="chip" data-val="deportiva" onclick="selChipF(this,'fservicio')">Deportiva</button>
+          <button class="chip" data-val="eventos" onclick="selChipF(this,'fservicio')">Eventos</button>
+          <button class="chip" data-val="profesionales" onclick="selChipF(this,'fservicio')">Profesionales</button>
+        </div>
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Tipo de evento / detalle</span>
+        <input type="text" class="campo-texto" id="f-evento" placeholder="Ej: Partido de fútbol, cumpleaños XV..." oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Ubicación</span>
+        <input type="text" class="campo-texto" id="f-ubicacion" placeholder="Ej: Buenos Aires, CABA..." oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Fecha estimada</span>
+        <input type="text" class="campo-texto" id="f-fecha" placeholder="Ej: Julio 2025, a confirmar..." oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Tu nombre</span>
+        <input type="text" class="campo-texto" id="f-nombre" placeholder="Ej: Martín García" oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label">Tu cuenta de redes</span>
+        <input type="text" class="campo-texto" id="f-cuenta" placeholder="@tucuenta" oninput="calcularFoto()">
+      </div>
+    </div>
+    <div class="cotizador-result-col">
+      <div>
+        <p class="result-estado" id="f-estado">Completá el formulario</p>
+        <div class="result-precio" id="f-precio">—</div>
+        <p class="result-detalle" id="f-detalle">Seleccioná el tipo de fotografía.</p>
+      </div>
+      <div>
+        <p class="result-note" id="f-note">* El precio final puede variar según el detalle del evento.</p>
+        <button class="cotizador-cta" id="cta-foto" disabled onclick="enviarWAFoto()">Consultar por WhatsApp</button>
+      </div>
     </div>
   </div>
 </section>
@@ -334,10 +443,10 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <div class="sec-label reveal">Trabajos</div>
   <div class="sec-title reveal">Proyectos</div>
   <div class="filtros reveal">
-    <button class="filtro activo" onclick="filtrar('todos',this)">Todos</button>
-    <button class="filtro" onclick="filtrar('video',this)">Video</button>
-    <button class="filtro" onclick="filtrar('motion',this)">Motion</button>
-    <button class="filtro" onclick="filtrar('foto',this)">Foto</button>
+    <button class="filtro activo" id="filtro-todos" onclick="filtrar('todos',this)">Todos</button>
+    <button class="filtro" id="filtro-video" onclick="filtrar('video',this)">Video</button>
+    <button class="filtro" id="filtro-motion" onclick="filtrar('motion',this)">Motion</button>
+    <button class="filtro" id="filtro-foto" onclick="filtrar('foto',this)">Foto</button>
   </div>
   <div class="grilla" id="grilla">
     <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc">Video promocional institucional. Producción completa.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
@@ -348,6 +457,7 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Edición formato<br>Reel 2</h3><p class="card-desc">Reel musical.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Edición formato Reel 2</span></div></div>
     <div class="card doble" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Fotografía<br>Deportiva</h3><p class="card-desc">Vóley Femenino · Fútsal Femenino</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo">Fotografía Deportiva</span></div></div>
     <div class="card doble" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Fotografía<br>para Eventos</h3><p class="card-desc">XV Cumpleaños · Evento Cervecería</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo">Fotografía para Eventos</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="card-thumb"><img src="https://i.imgur.com/sMafXdN.jpg" alt="Profesionales"></div><div class="card-overlay"><span class="card-cat">Fotografía · 14 fotos</span><h3 class="card-titulo">Fotografía<br>Profesional</h3><p class="card-desc">Retratos y fotografía corporativa.</p><span class="card-link">Ver galería</span></div><div class="card-info"><span class="card-info-cat">Fotografía · 14 fotos</span><span class="card-info-titulo">Profesionales</span></div></div>
     <div class="card doble" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://i.imgur.com/AXGt0dN.jpg" alt="Música"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Música<br>en Vivo</h3><p class="card-desc">Tinkuy · Folklore</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía · Música · 2 álbumes</span><span class="card-info-titulo">Música en Vivo</span></div></div>
   </div>
 </section>
@@ -457,52 +567,139 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 const FOTOS_FUTSAL=['https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg','https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg','https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg','https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg','https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg','https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg','https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg','https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg','https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg','https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg','https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'];
 const FOTOS_VOLEY=['https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg','https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg','https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg','https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg','https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg','https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg','https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'];
 const FOTOS_XV=['https://i.imgur.com/tszLcVK.jpg','https://i.imgur.com/03AyAyj.jpg','https://i.imgur.com/P71DeJ1.jpg','https://i.imgur.com/FaUCTFl.jpg','https://i.imgur.com/LnPy43d.jpg','https://i.imgur.com/Fdy2vHc.jpg','https://i.imgur.com/7UTIsFQ.jpg','https://i.imgur.com/WSjwUpx.jpg','https://i.imgur.com/14u1uOD.jpg','https://i.imgur.com/KB6qcey.jpg','https://i.imgur.com/E6OSnQZ.jpg'];
-const FOTOS_TINKUY=['https://i.imgur.com/AXGt0dN.jpg','https://i.imgur.com/30pdGb9.jpg','https://i.imgur.com/gTgM5Yf.jpg','https://i.imgur.com/Gm8YHmI.jpg','https://i.imgur.com/stIImNw.jpg','https://i.imgur.com/jT6gKY0.jpg','https://i.imgur.com/bTZSpdI.jpg','https://i.imgur.com/cVoHVf4.jpg','https://i.imgur.com/xZmgkRQ.jpg','https://i.imgur.com/rd5ojKJ.jpg','https://i.imgur.com/H3dgkMP.jpg','https://i.imgur.com/z7xE6ec.jpg','https://i.imgur.com/ti8LTn8.jpg','https://i.imgur.com/AhaPBMp.jpg','https://i.imgur.com/4RQMxxQ.jpg','https://i.imgur.com/I30ukbu.jpg','https://i.imgur.com/0vsuUS0.jpg','https://i.imgur.com/OJ63bwJ.jpg','https://i.imgur.com/QxIqnIE.jpg'];
+const FOTOS_TINKUY=['https://i.imgur.com/yL5vRRk.jpg','https://i.imgur.com/i0TYy2O.jpg','https://i.imgur.com/Zk46Q8V.jpg','https://i.imgur.com/PMxaaSV.jpg','https://i.imgur.com/kk7600F.jpg','https://i.imgur.com/RHpXkak.jpg','https://i.imgur.com/OA0FUra.jpg','https://i.imgur.com/swXOUpy.jpg','https://i.imgur.com/AXGt0dN.jpg','https://i.imgur.com/RAUqEcE.jpg','https://i.imgur.com/7ZIRdnr.jpg','https://i.imgur.com/EbiqpEj.jpg','https://i.imgur.com/ttodDN7.jpg','https://i.imgur.com/eRiKBdw.jpg','https://i.imgur.com/pBdvpDR.jpg','https://i.imgur.com/E2N0R0t.jpg'];
 const FOTOS_FOLKLORE=['https://i.imgur.com/7b0Xsu2.jpg','https://i.imgur.com/JjNgjmK.jpg','https://i.imgur.com/QB326fN.jpg','https://i.imgur.com/b68tExc.jpg','https://i.imgur.com/1kfkcQ3.jpg','https://i.imgur.com/pSQx5aJ.jpg','https://i.imgur.com/AXYUOPt.jpg','https://i.imgur.com/DfPPgIz.jpg','https://i.imgur.com/pKz8wyb.jpg','https://i.imgur.com/jtET1Vt.jpg','https://i.imgur.com/9iZyGn5.jpg','https://i.imgur.com/YZ9ZAox.jpg','https://i.imgur.com/hGrRax1.jpg','https://i.imgur.com/9dcPvzU.jpg','https://i.imgur.com/m5F8R5o.jpg','https://i.imgur.com/iROY8tz.jpg','https://i.imgur.com/J50WITS.jpg','https://i.imgur.com/n7hNpdN.jpg','https://i.imgur.com/AnS8n9E.jpg','https://i.imgur.com/adFt2EW.jpg','https://i.imgur.com/bOqK9OQ.jpg','https://i.imgur.com/tQoaBSl.jpg','https://i.imgur.com/4gMlq7w.jpg','https://i.imgur.com/IoDLvTR.jpg','https://i.imgur.com/15X2eWG.jpg','https://i.imgur.com/0jrqLeC.jpg','https://i.imgur.com/xTLPTiP.jpg','https://i.imgur.com/TdkKGWW.jpg','https://i.imgur.com/fnzcPUt.jpg','https://i.imgur.com/VRC5mQa.jpg','https://i.imgur.com/zDrggrE.jpg','https://i.imgur.com/IlZKtEB.jpg','https://i.imgur.com/Zrpale4.jpg','https://i.imgur.com/0xfhkoX.jpg','https://i.imgur.com/QzanwIf.jpg','https://i.imgur.com/guxyNTa.jpg','https://i.imgur.com/QHCeN6C.jpg','https://i.imgur.com/azk5iVx.jpg','https://i.imgur.com/BDVgzkW.jpg','https://i.imgur.com/BbUP0Js.jpg','https://i.imgur.com/Pi5Obc9.jpg','https://i.imgur.com/d5SWGCG.jpg','https://i.imgur.com/cqSctC9.jpg','https://i.imgur.com/2KAG0gg.jpg','https://i.imgur.com/TxgyTJM.jpg','https://i.imgur.com/ZcniWXD.jpg','https://i.imgur.com/7LJBjrD.jpg'];
 const FOTOS_CERVECERIA=['https://i.imgur.com/2PYu7DF.jpg','https://i.imgur.com/6ckaaej.jpg','https://i.imgur.com/fc7GxHW.jpg','https://i.imgur.com/oVbRK8I.jpg','https://i.imgur.com/7THHuCx.jpg','https://i.imgur.com/qP7jacn.jpg','https://i.imgur.com/QMS6m9u.jpg','https://i.imgur.com/IoBqBZQ.jpg','https://i.imgur.com/kIw9dtQ.jpg','https://i.imgur.com/KUSAhDX.jpg','https://i.imgur.com/hHVnrAn.jpg','https://i.imgur.com/woQRQQF.jpg','https://i.imgur.com/m8pPMNi.jpg','https://i.imgur.com/HtodOu5.jpg','https://i.imgur.com/AD21Qne.jpg','https://i.imgur.com/006TVR0.jpg','https://i.imgur.com/LOmkVg8.jpg'];
+const FOTOS_PROFESIONALES=['https://i.imgur.com/sMafXdN.jpg','https://i.imgur.com/FB5BD3u.jpg','https://i.imgur.com/sFsIRDM.jpg','https://i.imgur.com/HMj0Wqr.jpg','https://i.imgur.com/yTcZHkC.jpg','https://i.imgur.com/hS5XjFz.jpg','https://i.imgur.com/6I18aCO.jpg','https://i.imgur.com/qPoajAu.jpg','https://i.imgur.com/uNe00Le.jpg','https://i.imgur.com/HRQ7FfR.jpg','https://i.imgur.com/ahqo0MR.jpg','https://i.imgur.com/RXUnQB3.jpg','https://i.imgur.com/NYHlyDl.jpg','https://i.imgur.com/kB84cHv.jpg'];
 
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
 function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal,.grilla,.servicios-grid,.testimonios-grid').forEach(el=>obs.observe(el));
+document.querySelectorAll('.reveal,.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid').forEach(el=>obs.observe(el));
 function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
-const estado={servicio:null,plazo:null};
-const PRECIOS={reel:{label:'Reels / Short-form',base:10,unidad:'video'},motion:{label:'Motion Graphics',base:15,unidad:'pieza'},foto:{label:'Fotografía',base:15,unidad:'sesión'},pack:{label:'Pack Completo',base:60,unidad:'pack'}};
-const MULT={urgente:1.5,normal:1.0,flexible:0.85};
-const LPLAZO={urgente:'urgente (+50%)',normal:'plazo normal',flexible:'flexible (−15%)'};
-function selChip(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');estado[g]=el.dataset.val;calcular()}
-function calcular(){
-  const cant=parseInt(document.getElementById('slider-cantidad').value);
-  const{servicio,plazo}=estado;
-  const btn=document.getElementById('cta-cotizador');
-  if(servicio==='corporativo'){
-    document.getElementById('result-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
-    document.getElementById('result-precio').classList.remove('calculado');
-    document.getElementById('result-estado').textContent='Producción integral';
-    document.getElementById('result-detalle').innerHTML='Este servicio varía mucho según el proyecto.<br><strong>Hablemos</strong> y armo una propuesta para vos.';
-    document.getElementById('result-note').textContent='Sin costo ni compromiso — solo una charla.';
-    btn.disabled=false;
-    btn.dataset.resumen='Hola Luca! Me interesa consultar sobre Producción Integral & Eventos. ¿Podemos hablar?';
-    return;
-  }
-  if(!servicio||!plazo){
-    document.getElementById('result-precio').textContent='—';
-    document.getElementById('result-precio').classList.remove('calculado');
-    document.getElementById('cta-cotizador').disabled=true;
-    return;
-  }
-  const s=PRECIOS[servicio];
-  const precio=Math.round(s.base*cant*MULT[plazo]);
-  document.getElementById('result-precio').innerHTML=`<em>~</em>USD ${precio}`;
-  document.getElementById('result-precio').classList.add('calculado');
-  document.getElementById('result-estado').textContent='Cotización estimada';
-  document.getElementById('result-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> de ${s.label}<br>Plazo <strong>${LPLAZO[plazo]}</strong>`;
-  document.getElementById('result-note').textContent='* Estimación base. El precio final puede variar.';
-  btn.disabled=false;
-  btn.dataset.resumen=`Hola Luca! Cotizador:\n📌 ${s.label}\n🎬 ${cant} ${s.unidad}${cant>1?'s':''}\n⏱ ${LPLAZO[plazo]}\n📊 ~USD ${precio}\n¿Podemos hablar?`;
+// ---- COTIZADOR ----
+const VMULT={urgente:1.5,normal:1.0,flexible:0.85};
+const VLPLAZO={urgente:'Urgente (48 hs)',normal:'Normal (1 semana)',flexible:'Flexible (+2 semanas)'};
+const VPRECIOS={corto:{label:'Edición Formato Corto (Reels · TikTok · YT Shorts)',base:10,unidad:'video'},largo:{label:'Edición Formato Largo',base:20,unidad:'video'},motion:{label:'Edición Motion Graphics',base:15,unidad:'pieza'},integral:{label:'Producción Integral',base:0,unidad:''}};
+const FPRECIOS={deportiva:{label:'Fotografía Deportiva',base:40},eventos:{label:'Fotografía para Eventos',base:50},profesionales:{label:'Fotografía Profesional',base:35}};
+const vestado={vservicio:null,vplazo:null};
+const festado={fservicio:null};
+
+function switchTab(tab,btn){
+  document.querySelectorAll('.cot-tab').forEach(b=>b.classList.remove('activo'));
+  btn.classList.add('activo');
+  document.getElementById('form-video').style.display=tab==='video'?'':'none';
+  document.getElementById('form-foto').style.display=tab==='foto'?'':'none';
 }
-function enviarWA(){const r=document.getElementById('cta-cotizador').dataset.resumen;if(r)window.open('https://wa.me/5491130203625?text='+encodeURIComponent(r),'_blank')}
+
+function selChipV(el,g){
+  document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  vestado[g]=el.dataset.val;
+  const esIntegral=vestado.vservicio==='integral';
+  document.getElementById('vg-cantidad').style.display=esIntegral?'none':'';
+  document.getElementById('vg-plazo').style.display=esIntegral?'none':'';
+  calcularVideo();
+}
+
+function selChipF(el,g){
+  document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));
+  el.classList.add('sel');
+  festado[g]=el.dataset.val;
+  calcularFoto();
+}
+
+function calcularVideo(){
+  const servicio=vestado.vservicio;
+  const plazo=vestado.vplazo;
+  const cant=parseInt(document.getElementById('v-cantidad').value);
+  const nombre=document.getElementById('v-nombre').value.trim();
+  const cuenta=document.getElementById('v-cuenta').value.trim();
+  const btn=document.getElementById('cta-video');
+
+  if(!servicio){
+    document.getElementById('v-precio').textContent='—';
+    document.getElementById('v-precio').classList.remove('calculado');
+    document.getElementById('v-estado').textContent='Completá el formulario';
+    document.getElementById('v-detalle').textContent='Seleccioná el tipo de servicio.';
+    btn.disabled=true; return;
+  }
+
+  if(servicio==='integral'){
+    document.getElementById('v-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
+    document.getElementById('v-precio').classList.remove('calculado');
+    document.getElementById('v-estado').textContent='Producción Integral';
+    document.getElementById('v-detalle').innerHTML='Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta.';
+    document.getElementById('v-note').textContent='Sin costo ni compromiso — solo una charla.';
+    btn.disabled=false;
+    return;
+  }
+
+  if(!plazo){
+    document.getElementById('v-precio').textContent='—';
+    document.getElementById('v-precio').classList.remove('calculado');
+    document.getElementById('v-estado').textContent='Falta el plazo de entrega';
+    document.getElementById('v-detalle').textContent='Seleccioná el tiempo de entrega.';
+    btn.disabled=true; return;
+  }
+
+  const s=VPRECIOS[servicio];
+  const precio=Math.round(s.base*cant*VMULT[plazo]);
+  document.getElementById('v-precio').innerHTML=`<em>~</em>USD ${precio}`;
+  document.getElementById('v-precio').classList.add('calculado');
+  document.getElementById('v-estado').textContent='Cotización estimada';
+  document.getElementById('v-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> — ${s.label}<br>Plazo: <strong>${VLPLAZO[plazo]}</strong>`;
+  document.getElementById('v-note').textContent='* Estimación base. El precio final puede variar.';
+  btn.disabled=false;
+}
+
+function calcularFoto(){
+  const servicio=festado.fservicio;
+  const btn=document.getElementById('cta-foto');
+  if(!servicio){
+    document.getElementById('f-precio').textContent='—';
+    document.getElementById('f-precio').classList.remove('calculado');
+    document.getElementById('f-estado').textContent='Completá el formulario';
+    btn.disabled=true; return;
+  }
+  const s=FPRECIOS[servicio];
+  document.getElementById('f-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
+  document.getElementById('f-precio').classList.remove('calculado');
+  document.getElementById('f-estado').textContent=s.label;
+  document.getElementById('f-detalle').innerHTML='Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta para vos.';
+  document.getElementById('f-note').textContent='Sin costo ni compromiso — solo una charla.';
+  btn.disabled=false;
+}
+
+function enviarWAVideo(){
+  const servicio=vestado.vservicio;
+  const plazo=vestado.vplazo;
+  const cant=document.getElementById('v-cantidad').value;
+  const nombre=document.getElementById('v-nombre').value.trim()||'(no indicado)';
+  const cuenta=document.getElementById('v-cuenta').value.trim()||'(no indicada)';
+  const s=VPRECIOS[servicio];
+  let msg='';
+  if(servicio==='integral'){
+    msg=`Hola Luca! Vengo de tu web, me interesa consultar sobre Producción Integral.\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuenta}`;
+  } else {
+    const precio=Math.round(s.base*parseInt(cant)*VMULT[plazo]);
+    msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nFormato de edición: ${s.label}\nCantidad de videos: ${cant}\nTiempo de entrega: ${VLPLAZO[plazo]}\nValor estimado: ~USD ${precio}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuenta}`;
+  }
+  window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
+}
+
+function enviarWAFoto(){
+  const servicio=festado.fservicio;
+  const s=FPRECIOS[servicio];
+  const evento=document.getElementById('f-evento').value.trim()||'(no indicado)';
+  const ubicacion=document.getElementById('f-ubicacion').value.trim()||'(no indicada)';
+  const fecha=document.getElementById('f-fecha').value.trim()||'(no indicada)';
+  const nombre=document.getElementById('f-nombre').value.trim()||'(no indicado)';
+  const cuenta=document.getElementById('f-cuenta').value.trim()||'(no indicada)';
+  const msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nTipo de Evento: ${evento}\nUbicación: ${ubicacion}\nFecha estimada: ${fecha}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuenta}`;
+  window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
+}
 function abrirVideo(id){document.getElementById('iframeVideo').src='https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0';document.getElementById('modalVideo').classList.add('abierto');document.body.style.overflow='hidden'}
 function cerrarVideo(e){if(e&&e.target!==document.getElementById('modalVideo')&&!e.target.classList.contains('modal-cerrar'))return;document.getElementById('iframeVideo').src='';document.getElementById('modalVideo').classList.remove('abierto');document.body.style.overflow=''}
 let fotosActual=[],fotoIdx=0;
