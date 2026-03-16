@@ -473,14 +473,16 @@ function navFoto(d){fotoIdx=(fotoIdx+d+fotosActual.length)%fotosActual.length;mo
 function cerrarFotos(e){if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lb-cerrar'))return;document.getElementById('lightbox').classList.remove('abierto');document.getElementById('lbImg').src='';document.body.style.overflow=''}
 function abrirSelectorMusica(){document.getElementById('selectorMusica').classList.add('abierto');document.body.style.overflow='hidden'}
 function abrirSelectorEventos(){document.getElementById('selectorEventos').classList.add('abierto');document.body.style.overflow='hidden'}
+function abrirSelectorDeportiva(){document.getElementById('selectorDeportiva').classList.add('abierto');document.body.style.overflow='hidden'}
 function cerrarSelector(id){document.getElementById(id).classList.remove('abierto');document.body.style.overflow=''}
-function abrirDesdeSelector(selectorId,fotos){cerrarSelector(selectorId);if(fotos&&fotos.length>0){abrirFotos(fotos,0)}else{alert('Próximamente — Agregá los links de las fotos.')}}
+function abrirDesdeSelector(selectorId,fotos){cerrarSelector(selectorId);if(fotos&&fotos.length>0){abrirFotos(fotos,0)}else{alert('Próximamente — pronto vas a poder ver este álbum.')}}
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){
     cerrarVideo({target:document.getElementById('modalVideo')});
     cerrarFotos({target:document.getElementById('lightbox')});
     cerrarSelector('selectorMusica');
     cerrarSelector('selectorEventos');
+    cerrarSelector('selectorDeportiva');
     document.body.style.overflow='';
   }
   if(document.getElementById('lightbox').classList.contains('abierto')){
