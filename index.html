@@ -41,7 +41,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:160;display:flex;justify-content
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--secundario);font-weight:400;text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--acento)}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:200;position:relative}
+.lang-btn{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;background:none;border:1px solid var(--linea);color:var(--secundario);padding:5px 10px;cursor:pointer;transition:all 0.2s;margin-left:16px}
+.lang-btn:hover{border-color:var(--primario);color:var(--primario)}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--negro);transition:all 0.3s}
 .nav-hamburger.open span{background:white}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -291,14 +292,17 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 <nav id="nav">
   <a href="#" class="nav-logo">San Bao Estudio</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="#servicios" onclick="cerrarNav()">Servicios</a></li>
-    <li><a href="#cotizador" onclick="cerrarNav()">Cotizá</a></li>
-    <li><a href="#proyectos" onclick="cerrarNav()">Proyectos</a></li>
-    <li><a href="#contacto" onclick="cerrarNav()">Contacto</a></li>
+    <li><a href="#servicios" onclick="cerrarNav()" data-es="Servicios" data-en="Services">Servicios</a></li>
+    <li><a href="#cotizador" onclick="cerrarNav()" data-es="Cotizá" data-en="Quote">Cotizá</a></li>
+    <li><a href="#proyectos" onclick="cerrarNav()" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+    <li><a href="#contacto" onclick="cerrarNav()" data-es="Contacto" data-en="Contact">Contacto</a></li>
   </ul>
-  <button class="nav-hamburger" id="hamburger" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </button>
+  <div style="display:flex;align-items:center;gap:8px">
+    <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
 
 <section class="hero">
@@ -306,186 +310,196 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="hero-eyebrow">Buenos Aires · Argentina</div>
     <h1 class="hero-title">Luca<br><em>Gazzola</em></h1>
     <p class="hero-sub">
-      <strong class="hero-tagline">Transformo tu marca en contenido visual que vende.</strong>
-      <span class="hero-descriptor">Video · Motion Graphics · Diseño · Fotografía</span>
+      <strong class="hero-tagline" data-es="Transformo tu marca en contenido visual que vende." data-en="I turn your brand into visual content that sells.">Transformo tu marca en contenido visual que vende.</strong>
+      <span class="hero-descriptor">Video · Motion Graphics · Design · Photography</span>
     </p>
-    <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn glow">Hablemos</a>
+    <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn glow" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
   </div>
   <div class="hero-right">
     <span class="tag glass">Reels & Short-form</span>
     <span class="tag glass">Motion Graphics</span>
-    <span class="tag glass">Video Corporativo</span>
-    <span class="tag glass">Fotografía Deportiva</span>
-    <span class="tag glass">Producción Integral</span>
+    <span class="tag glass">Corporate Video</span>
+    <span class="tag glass">Sports Photography</span>
+    <span class="tag glass">Full Production</span>
   </div>
 </section>
 
 <section id="servicios">
-  <div class="sec-label reveal">Lo que hago</div>
-  <div class="sec-title reveal">Servicios</div>
+  <div class="sec-label reveal" data-es="Lo que hago" data-en="What I do">Lo que hago</div>
+  <div class="sec-title reveal" data-es="Servicios" data-en="Services">Servicios</div>
   <div class="servicios-grid" id="serviciosGrid">
-    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('video',document.getElementById('filtro-video'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">01</div><div class="servicio-nombre">Reels & Short-form<br>para marcas</div><p class="servicio-desc">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="servicio-precio">desde USD 10 <span>/ video</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver proyectos →</div></div>
-    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('motion',document.getElementById('filtro-motion'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">02</div><div class="servicio-nombre">Motion Graphics<br>& VFX</div><p class="servicio-desc">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 15 <span>/ pieza</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver proyectos →</div></div>
-    <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre">Producción Integral<br>& Eventos</div><p class="servicio-desc">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">Cada proyecto es único — <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">hablemos y lo armamos a medida</span></div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('video',document.getElementById('filtro-video'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">01</div><div class="servicio-nombre" data-es="Reels & Short-form<br>para marcas" data-en="Reels & Short-form<br>for brands">Reels & Short-form<br>para marcas</div><p class="servicio-desc" data-es="Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor." data-en="Vertical content editing optimized for Instagram, TikTok and YouTube Shorts. Hooks, rhythm and retention to make the algorithm work in your favor.">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="servicio-precio">desde USD 10 <span>/ video</span></div><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver proyectos →" data-en="See projects →">Ver proyectos →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('motion',document.getElementById('filtro-motion'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">02</div><div class="servicio-nombre" data-es="Motion Graphics<br>& VFX" data-en="Motion Graphics<br>& VFX">Motion Graphics<br>& VFX</div><p class="servicio-desc" data-es="Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo." data-en="Animated titles, motion graphics and visual effects with Adobe After Effects. Ideal for YouTube intros, animated brand identity and corporate video.">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="servicio-precio">desde USD 15 <span>/ pieza</span></div><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver proyectos →" data-en="See projects →">Ver proyectos →</div></div>
+    <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre" data-es="Producción Integral<br>& Eventos" data-en="Full Production<br>& Events">Producción Integral<br>& Eventos</div><p class="servicio-desc" data-es="Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI." data-en="Multi-angle filming, full editing, sound design and post-production. Photo coverage with Sony Alpha + DJI stabilizer.">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem"><span data-es="Cada proyecto es único — " data-en="Every project is unique — ">Cada proyecto es único — </span><span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em" data-es="hablemos y lo armamos a medida" data-en="let's talk and build it together">hablemos y lo armamos a medida</span></div></div>
   </div>
 
-  <div class="sec-label reveal" style="margin-top:48px">Fotografía</div>
+  <div class="sec-label reveal" style="margin-top:48px" data-es="Fotografía" data-en="Photography">Fotografía</div>
   <div class="servicios-grid servicios-grid-foto" id="serviciosGridFoto">
-    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorDeportiva()"><div class="servicio-num">01</div><div class="servicio-nombre">Deportiva</div><p class="servicio-desc">Cobertura de partidos, torneos y eventos deportivos. Registro de acción en tiempo real con equipamiento profesional.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">A medida <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">/ consultá</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver galería →</div></div>
-    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorEventos()"><div class="servicio-num">02</div><div class="servicio-nombre">Eventos</div><p class="servicio-desc">Cobertura completa de eventos sociales. XV años, cumpleaños, fiestas y celebraciones con edición incluida.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">A medida <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">/ consultá</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver galería →</div></div>
-    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="servicio-num">03</div><div class="servicio-nombre">Retratos</div><p class="servicio-desc">Sesiones de retrato individual o grupal. Fotografía profesional para redes, CV y uso personal.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem">A medida <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em">/ consultá</span></div><div style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)">Ver galería →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorDeportiva()"><div class="servicio-num">01</div><div class="servicio-nombre" data-es="Deportiva" data-en="Sports">Deportiva</div><p class="servicio-desc" data-es="Cobertura de partidos, torneos y eventos deportivos. Registro de acción en tiempo real con equipamiento profesional." data-en="Coverage of matches, tournaments and sports events. Real-time action shots with professional equipment.">Cobertura de partidos, torneos y eventos deportivos. Registro de acción en tiempo real con equipamiento profesional.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem"><span data-es="A medida" data-en="Custom quote">A medida</span> <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em" data-es="/ consultá" data-en="/ contact me">/ consultá</span></div><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver galería →" data-en="See gallery →">Ver galería →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorEventos()"><div class="servicio-num">02</div><div class="servicio-nombre" data-es="Eventos" data-en="Events">Eventos</div><p class="servicio-desc" data-es="Cobertura completa de eventos sociales. XV años, cumpleaños, fiestas y celebraciones con edición incluida." data-en="Full coverage of social events. Sweet 16s, birthdays, parties and celebrations including editing.">Cobertura completa de eventos sociales. XV años, cumpleaños, fiestas y celebraciones con edición incluida.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem"><span data-es="A medida" data-en="Custom quote">A medida</span> <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em" data-es="/ consultá" data-en="/ contact me">/ consultá</span></div><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver galería →" data-en="See gallery →">Ver galería →</div></div>
+    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="servicio-num">03</div><div class="servicio-nombre" data-es="Retratos" data-en="Portraits">Retratos</div><p class="servicio-desc" data-es="Sesiones de retrato individual o grupal. Fotografía profesional para redes, CV y uso personal." data-en="Individual or group portrait sessions. Professional photography for social media, CV and personal use.">Sesiones de retrato individual o grupal. Fotografía profesional para redes, CV y uso personal.</p><div class="servicio-precio" style="color:var(--primario);font-size:0.78rem"><span data-es="A medida" data-en="Custom quote">A medida</span> <span style="color:var(--gris);font-size:0.6rem;letter-spacing:0.08em" data-es="/ consultá" data-en="/ contact me">/ consultá</span></div><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver galería →" data-en="See gallery →">Ver galería →</div></div>
   </div>
 </section>
 
 <section id="cotizador">
-  <div class="sec-label reveal">Precios transparentes</div>
-  <div class="sec-title reveal">Cotizá tu proyecto</div>
-
-  <!-- TABS -->
+  <div class="sec-label reveal" data-es="Precios transparentes" data-en="Transparent pricing">Precios transparentes</div>
+  <div class="sec-title reveal" data-es="Cotizá tu proyecto" data-en="Quote your project">Cotizá tu proyecto</div>
   <div class="cot-tabs reveal">
-    <button class="cot-tab activo" onclick="switchTab('video',this)">Video</button>
-    <button class="cot-tab" onclick="switchTab('foto',this)">Fotografía</button>
+    <button class="cot-tab activo" onclick="switchTab('video',this)" data-es="Video" data-en="Video">Video</button>
+    <button class="cot-tab" onclick="switchTab('foto',this)" data-es="Fotografía" data-en="Photography">Fotografía</button>
   </div>
-
-  <!-- FORMULARIO VIDEO -->
   <div class="cotizador-wrap reveal" id="form-video">
     <div class="cotizador-form-col glass">
       <div class="campo-grupo">
-        <span class="campo-label">Tipo de servicio</span>
+        <span class="campo-label" data-es="Tipo de servicio" data-en="Service type">Tipo de servicio</span>
         <div class="chips" id="chips-vservicio">
-          <button class="chip" data-val="corto" onclick="selChipV(this,'vservicio')">Formato Corto<br><small>Reels · TikTok · YT Shorts</small></button>
-          <button class="chip" data-val="largo" onclick="selChipV(this,'vservicio')">Formato Largo</button>
+          <button class="chip" data-val="corto" onclick="selChipV(this,'vservicio')" data-es="Formato Corto" data-en="Short Format">Formato Corto<br><small>Reels · TikTok · YT Shorts</small></button>
+          <button class="chip" data-val="largo" onclick="selChipV(this,'vservicio')" data-es="Formato Largo" data-en="Long Format">Formato Largo</button>
           <button class="chip" data-val="motion" onclick="selChipV(this,'vservicio')">Motion Graphics</button>
-          <button class="chip" data-val="integral" onclick="selChipV(this,'vservicio')">Producción Integral</button>
+          <button class="chip" data-val="integral" onclick="selChipV(this,'vservicio')" data-es="Producción Integral" data-en="Full Production">Producción Integral</button>
         </div>
       </div>
       <div class="campo-grupo" id="vg-cantidad">
-        <span class="campo-label">Cantidad de videos</span>
+        <span class="campo-label" data-es="Cantidad de videos" data-en="Number of videos">Cantidad de videos</span>
         <div class="slider-wrap"><input type="range" id="v-cantidad" min="1" max="20" value="1" oninput="document.getElementById('v-cant-val').textContent=this.value;calcularVideo()"><span class="slider-val" id="v-cant-val">1</span></div>
       </div>
       <div class="campo-grupo" id="vg-plazo">
-        <span class="campo-label">Tiempo de entrega</span>
+        <span class="campo-label" data-es="Tiempo de entrega" data-en="Delivery time">Tiempo de entrega</span>
         <div class="chips" id="chips-vplazo">
-          <button class="chip" data-val="urgente" onclick="selChipV(this,'vplazo')">Urgente (48 hs)</button>
-          <button class="chip" data-val="normal" onclick="selChipV(this,'vplazo')">Normal (1 semana)</button>
-          <button class="chip" data-val="flexible" onclick="selChipV(this,'vplazo')">Flexible (+2 semanas)</button>
+          <button class="chip" data-val="urgente" onclick="selChipV(this,'vplazo')" data-es="Urgente (48 hs)" data-en="Urgent (48 hs)">Urgente (48 hs)</button>
+          <button class="chip" data-val="normal" onclick="selChipV(this,'vplazo')" data-es="Normal (1 semana)" data-en="Normal (1 week)">Normal (1 semana)</button>
+          <button class="chip" data-val="flexible" onclick="selChipV(this,'vplazo')" data-es="Flexible (+2 semanas)" data-en="Flexible (+2 weeks)">Flexible (+2 semanas)</button>
         </div>
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Tu nombre</span>
+        <span class="campo-label" data-es="Tu nombre" data-en="Your name">Tu nombre</span>
         <input type="text" class="campo-texto" id="v-nombre" placeholder="Ej: Martín García" oninput="calcularVideo()">
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Tu cuenta de redes</span>
-        <input type="text" class="campo-texto" id="v-cuenta" placeholder="@tucuenta" oninput="calcularVideo()">
+        <span class="campo-label" data-es="Nombre de Cuenta" data-en="Account Name">Nombre de Cuenta</span>
+        <div style="display:flex;gap:8px">
+          <select class="campo-select" id="v-red" style="width:auto;min-width:130px" onchange="calcularVideo()">
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="X">X</option>
+          </select>
+          <input type="text" class="campo-texto" id="v-cuenta" placeholder="@tucuenta" style="flex:1" oninput="calcularVideo()">
+        </div>
       </div>
     </div>
     <div class="cotizador-result-col">
       <div>
-        <p class="result-estado" id="v-estado">Completá el formulario</p>
+        <p class="result-estado" id="v-estado" data-es="Completá el formulario" data-en="Fill in the form">Completá el formulario</p>
         <div class="result-precio" id="v-precio">—</div>
-        <p class="result-detalle" id="v-detalle">Seleccioná el tipo de servicio, cantidad y plazo.</p>
+        <p class="result-detalle" id="v-detalle" data-es="Seleccioná el tipo de servicio, cantidad y plazo." data-en="Select the service type, quantity and deadline.">Seleccioná el tipo de servicio, cantidad y plazo.</p>
       </div>
       <div>
-        <p class="result-note" id="v-note">* El precio final puede variar según el detalle del proyecto.</p>
-        <button class="cotizador-cta" id="cta-video" disabled onclick="enviarWAVideo()">Consultar por WhatsApp</button>
+        <p class="result-note" id="v-note" data-es="* El precio final puede variar según el detalle del proyecto." data-en="* Final price may vary depending on project details.">* El precio final puede variar según el detalle del proyecto.</p>
+        <button class="cotizador-cta" id="cta-video" disabled onclick="enviarWAVideo()" data-es="Consultar por WhatsApp" data-en="Contact via WhatsApp">Consultar por WhatsApp</button>
       </div>
     </div>
   </div>
-
-  <!-- FORMULARIO FOTOGRAFÍA -->
   <div class="cotizador-wrap reveal" id="form-foto" style="display:none">
     <div class="cotizador-form-col glass">
       <div class="campo-grupo">
-        <span class="campo-label">Tipo de fotografía</span>
+        <span class="campo-label" data-es="Tipo de fotografía" data-en="Photography type">Tipo de fotografía</span>
         <div class="chips" id="chips-fservicio">
-          <button class="chip" data-val="deportiva" onclick="selChipF(this,'fservicio')">Deportiva</button>
-          <button class="chip" data-val="eventos" onclick="selChipF(this,'fservicio')">Eventos</button>
-          <button class="chip" data-val="profesionales" onclick="selChipF(this,'fservicio')">Profesionales</button>
+          <button class="chip" data-val="deportiva" onclick="selChipF(this,'fservicio')" data-es="Deportiva" data-en="Sports">Deportiva</button>
+          <button class="chip" data-val="eventos" onclick="selChipF(this,'fservicio')" data-es="Eventos" data-en="Events">Eventos</button>
+          <button class="chip" data-val="profesionales" onclick="selChipF(this,'fservicio')" data-es="Profesionales" data-en="Portraits">Profesionales</button>
         </div>
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Tipo de evento / detalle</span>
+        <span class="campo-label" data-es="Tipo de evento / detalle" data-en="Event type / details">Tipo de evento / detalle</span>
         <input type="text" class="campo-texto" id="f-evento" placeholder="Ej: Partido de fútbol, cumpleaños XV..." oninput="calcularFoto()">
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Ubicación</span>
+        <span class="campo-label" data-es="Ubicación" data-en="Location">Ubicación</span>
         <input type="text" class="campo-texto" id="f-ubicacion" placeholder="Ej: Buenos Aires, CABA..." oninput="calcularFoto()">
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Fecha estimada</span>
+        <span class="campo-label" data-es="Fecha estimada" data-en="Estimated date">Fecha estimada</span>
         <input type="text" class="campo-texto" id="f-fecha" placeholder="Ej: Julio 2025, a confirmar..." oninput="calcularFoto()">
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Tu nombre</span>
+        <span class="campo-label" data-es="Tu nombre" data-en="Your name">Tu nombre</span>
         <input type="text" class="campo-texto" id="f-nombre" placeholder="Ej: Martín García" oninput="calcularFoto()">
       </div>
       <div class="campo-grupo">
-        <span class="campo-label">Tu cuenta de redes</span>
-        <input type="text" class="campo-texto" id="f-cuenta" placeholder="@tucuenta" oninput="calcularFoto()">
+        <span class="campo-label" data-es="Nombre de Cuenta" data-en="Account Name">Nombre de Cuenta</span>
+        <div style="display:flex;gap:8px">
+          <select class="campo-select" id="f-red" style="width:auto;min-width:130px" onchange="calcularFoto()">
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="X">X</option>
+          </select>
+          <input type="text" class="campo-texto" id="f-cuenta" placeholder="@tucuenta" style="flex:1" oninput="calcularFoto()">
+        </div>
       </div>
     </div>
     <div class="cotizador-result-col">
       <div>
-        <p class="result-estado" id="f-estado">Completá el formulario</p>
+        <p class="result-estado" id="f-estado" data-es="Completá el formulario" data-en="Fill in the form">Completá el formulario</p>
         <div class="result-precio" id="f-precio">—</div>
-        <p class="result-detalle" id="f-detalle">Seleccioná el tipo de fotografía.</p>
+        <p class="result-detalle" id="f-detalle" data-es="Seleccioná el tipo de fotografía." data-en="Select the photography type.">Seleccioná el tipo de fotografía.</p>
       </div>
       <div>
-        <p class="result-note" id="f-note">* El precio final puede variar según el detalle del evento.</p>
-        <button class="cotizador-cta" id="cta-foto" disabled onclick="enviarWAFoto()">Consultar por WhatsApp</button>
+        <p class="result-note" id="f-note" data-es="* El precio final puede variar según el detalle del evento." data-en="* Final price may vary depending on event details.">* El precio final puede variar según el detalle del evento.</p>
+        <button class="cotizador-cta" id="cta-foto" disabled onclick="enviarWAFoto()" data-es="Consultar por WhatsApp" data-en="Contact via WhatsApp">Consultar por WhatsApp</button>
       </div>
     </div>
   </div>
 </section>
 
 <section id="proyectos">
-  <div class="sec-label reveal">Trabajos</div>
-  <div class="sec-title reveal">Proyectos</div>
+  <div class="sec-label reveal" data-es="Trabajos" data-en="Work">Trabajos</div>
+  <div class="sec-title reveal" data-es="Proyectos" data-en="Projects">Proyectos</div>
   <div class="filtros reveal">
-    <button class="filtro activo" id="filtro-todos" onclick="filtrar('todos',this)">Todos</button>
-    <button class="filtro" id="filtro-video" onclick="filtrar('video',this)">Video</button>
-    <button class="filtro" id="filtro-motion" onclick="filtrar('motion',this)">Motion</button>
-    <button class="filtro" id="filtro-foto" onclick="filtrar('foto',this)">Foto</button>
+    <button class="filtro activo" id="filtro-todos" onclick="filtrar('todos',this)" data-es="Todos" data-en="All">Todos</button>
+    <button class="filtro" id="filtro-video" onclick="filtrar('video',this)" data-es="Video" data-en="Video">Video</button>
+    <button class="filtro" id="filtro-motion" onclick="filtrar('motion',this)" data-es="Motion" data-en="Motion">Motion</button>
+    <button class="filtro" id="filtro-foto" onclick="filtrar('foto',this)" data-es="Foto" data-en="Photo">Foto</button>
   </div>
   <div class="grilla" id="grilla">
-    <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc">Video promocional institucional. Producción completa.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Sesión Musical<br>Bajista</h3><p class="card-desc">Sesión en vivo.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Sesión Musical Bajista</span></div></div>
-    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc">Reel animado para redes.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 1"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Edición formato<br>Reel 1</h3><p class="card-desc">Compilado del desafío.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Edición formato Reel 1</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"></div><div class="card-overlay"><span class="card-cat">Filmación · Edición</span><h3 class="card-titulo">Reel<br>Cervecería</h3><p class="card-desc">Reel de producto gastronómico.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Filmación · Edición</span><span class="card-info-titulo">Reel Cervecería</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"></div><div class="card-overlay"><span class="card-cat">Edición · Reel</span><h3 class="card-titulo">Edición formato<br>Reel 2</h3><p class="card-desc">Reel musical.</p><span class="card-link">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Edición · Reel</span><span class="card-info-titulo">Edición formato Reel 2</span></div></div>
-    <div class="card doble" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Fotografía<br>Deportiva</h3><p class="card-desc">Vóley Femenino · Fútsal Femenino</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo">Fotografía Deportiva</span></div></div>
-    <div class="card doble" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Fotografía<br>para Eventos</h3><p class="card-desc">XV Cumpleaños · Evento Cervecería</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo">Fotografía para Eventos</span></div></div>
-    <div class="card doble" data-cat="foto" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="card-thumb"><img src="https://i.imgur.com/sMafXdN.jpg" alt="Profesionales"></div><div class="card-overlay"><span class="card-cat">Fotografía · 14 fotos</span><h3 class="card-titulo">Fotografía<br>Profesional</h3><p class="card-desc">Retratos y fotografía corporativa.</p><span class="card-link">Ver galería</span></div><div class="card-info"><span class="card-info-cat">Fotografía · 14 fotos</span><span class="card-info-titulo">Profesionales</span></div></div>
-    <div class="card doble" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://i.imgur.com/AXGt0dN.jpg" alt="Música"></div><div class="card-overlay"><span class="card-cat">Fotografía · 2 álbumes</span><h3 class="card-titulo">Música<br>en Vivo</h3><p class="card-desc">Tinkuy · Folklore</p><span class="card-link">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat">Fotografía · Música · 2 álbumes</span><span class="card-info-titulo">Música en Vivo</span></div></div>
+    <div class="card doble" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat">Filming · Editing</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc" data-es="Video promocional institucional. Producción completa." data-en="Institutional promotional video. Full production.">Video promocional institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Sesión Musical<br>Bajista" data-en="Musical Session<br>Bassist">Sesión Musical<br>Bajista</h3><p class="card-desc" data-es="Sesión en vivo." data-en="Live session.">Sesión en vivo.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Sesión Musical Bajista" data-en="Bassist Musical Session">Sesión Musical Bajista</span></div></div>
+    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc" data-es="Reel animado para redes." data-en="Animated reel for social media.">Reel animado para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 1"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 1" data-en="Reel format<br>Edit 1">Edición formato<br>Reel 1</h3><p class="card-desc" data-es="Compilado del desafío." data-en="Challenge compilation.">Compilado del desafío.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 1" data-en="Reel format Edit 1">Edición formato Reel 1</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Reel<br>Cervecería" data-en="Reel<br>Brewery">Reel<br>Cervecería</h3><p class="card-desc" data-es="Reel de producto gastronómico." data-en="Gastronomic product reel.">Reel de producto gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Reel Cervecería" data-en="Brewery Reel">Reel Cervecería</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 2" data-en="Reel format<br>Edit 2">Edición formato<br>Reel 2</h3><p class="card-desc" data-es="Reel musical." data-en="Musical reel.">Reel musical.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 2" data-en="Reel format Edit 2">Edición formato Reel 2</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>Deportiva" data-en="Sports<br>Photography">Fotografía<br>Deportiva</h3><p class="card-desc" data-es="Vóley Femenino · Fútsal Femenino" data-en="Women's Volleyball · Women's Futsal">Vóley Femenino · Fútsal Femenino</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía deportiva · 2 álbumes" data-en="Sports photography · 2 albums">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía Deportiva" data-en="Sports Photography">Fotografía Deportiva</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>para Eventos" data-en="Event<br>Photography">Fotografía<br>para Eventos</h3><p class="card-desc" data-es="XV Cumpleaños · Evento Cervecería" data-en="Sweet 16 · Brewery Event">XV Cumpleaños · Evento Cervecería</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Eventos · 2 álbumes" data-en="Photography · Events · 2 albums">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía para Eventos" data-en="Event Photography">Fotografía para Eventos</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="card-thumb"><img src="https://i.imgur.com/sMafXdN.jpg" alt="Profesionales"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><h3 class="card-titulo" data-es="Fotografía<br>Profesional" data-en="Professional<br>Photography">Fotografía<br>Profesional</h3><p class="card-desc" data-es="Retratos y fotografía corporativa." data-en="Portraits and corporate photography.">Retratos y fotografía corporativa.</p><span class="card-link" data-es="Ver galería" data-en="View gallery">Ver galería</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><span class="card-info-titulo" data-es="Profesionales" data-en="Professionals">Profesionales</span></div></div>
+    <div class="card doble" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://i.imgur.com/AXGt0dN.jpg" alt="Música"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Música<br>en Vivo" data-en="Live<br>Music">Música<br>en Vivo</h3><p class="card-desc" data-es="Tinkuy · Folklore" data-en="Tinkuy · Folklore">Tinkuy · Folklore</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Música · 2 álbumes" data-en="Photography · Music · 2 albums">Fotografía · Música · 2 álbumes</span><span class="card-info-titulo" data-es="Música en Vivo" data-en="Live Music">Música en Vivo</span></div></div>
   </div>
 </section>
 
 <section id="testimonios">
-  <div class="sec-label reveal">Lo que dicen</div>
-  <div class="sec-title reveal">Clientes</div>
+  <div class="sec-label reveal" data-es="Lo que dicen" data-en="What they say">Lo que dicen</div>
+  <div class="sec-title reveal" data-es="Clientes" data-en="Clients">Clientes</div>
   <div class="testimonios-grid" id="testimoniosGrid">
-    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text">Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo.</p><div class="testimonio-autor"><span class="testimonio-nombre">UBA Odontología</span><span class="testimonio-cargo">Facultad de Odontología — Posgrado</span></div></div>
-    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text">El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido.</p><div class="testimonio-autor"><span class="testimonio-nombre">Club AVL Vóley</span><span class="testimonio-cargo">Dirección de Comunicación</span></div></div>
-    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text">No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor.</p><div class="testimonio-autor"><span class="testimonio-nombre">Músico / Creador</span><span class="testimonio-cargo">Cliente frecuente</span></div></div>
+    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text" data-es="Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo." data-en="Luca understood exactly the identity we wanted to project. The institutional reel exceeded all our expectations in reach and professionalism.">Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo.</p><div class="testimonio-autor"><span class="testimonio-nombre">UBA Odontología</span><span class="testimonio-cargo" data-es="Facultad de Odontología — Posgrado" data-en="School of Dentistry — Postgraduate">Facultad de Odontología — Posgrado</span></div></div>
+    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text" data-es="El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido." data-en="The content he produced for the club transformed our social media presence. The photo coverage has a cinematic level we'd never had before.">El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido.</p><div class="testimonio-autor"><span class="testimonio-nombre">Club AVL Vóley</span><span class="testimonio-cargo" data-es="Dirección de Comunicación" data-en="Communications Department">Dirección de Comunicación</span></div></div>
+    <div class="testimonio glass"><div class="testimonio-quote">"</div><p class="testimonio-text" data-es="No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor." data-en="He doesn't just edit: he understands rhythm, sound and narrative. Every piece has its own identity. He's the editor you send an idea to and get back something better.">No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor.</p><div class="testimonio-autor"><span class="testimonio-nombre" data-es="Músico / Creador" data-en="Musician / Creator">Músico / Creador</span><span class="testimonio-cargo" data-es="Cliente frecuente" data-en="Frequent client">Cliente frecuente</span></div></div>
   </div>
 </section>
 
 <section id="contacto">
   <div class="contacto-wrap reveal">
-    <div><h2 class="contacto-titulo">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto · USD</p><a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" style="margin-top:28px">Contactar por WhatsApp</a></div>
+    <div><h2 class="contacto-titulo" data-es="Trabajemos<br><em>juntos</em>" data-en="Let's work<br><em>together</em>">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc" data-es="Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto · USD" data-en="Available for audiovisual projects, remote and international collaborations.<br>Buenos Aires · Remote · USD">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto · USD</p><a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" style="margin-top:28px" data-es="Contactar por WhatsApp" data-en="Contact via WhatsApp">Contactar por WhatsApp</a></div>
     <div class="contacto-items">
       <div class="contacto-item"><span class="ci-label">Instagram</span><a href="https://instagram.com/sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">YouTube</span><a href="https://youtube.com/@sanbaoestudio" target="_blank" class="ci-valor">San Bao Estudio</a></div>
       <div class="contacto-item"><span class="ci-label">WhatsApp</span><a href="https://wa.me/5491130203625" target="_blank" class="ci-valor">+54 9 11 3020 3625</a></div>
-      <div class="contacto-item"><span class="ci-label">Email</span><a href="/cdn-cgi/l/email-protection#6e1d0f000c0f010b1d1a1b0a07012e09030f0702400d0103" class="ci-valor"><span class="__cf_email__" data-cfemail="b5c6d4dbd7d4dad0c6c1c0d1dcdaf5d2d8d4dcd99bd6dad8">[email&#160;protected]</span></a></div>
+      <div class="contacto-item"><span class="ci-label">Email</span><a href="mailto:sanbaoestudio@gmail.com" class="ci-valor">sanbaoestudio@gmail.com</a></div>
     </div>
   </div>
 </section>
 
-<footer><span>© 2026 San Bao Estudio — Luca Gazzola</span><span>Buenos Aires, Argentina</span></footer>
+<footer><span>© 2026 San Bao Estudio — Luca Gazzola</span><span data-es="Buenos Aires, Argentina" data-en="Buenos Aires, Argentina">Buenos Aires, Argentina</span></footer>
 
 <!-- MODAL VIDEO -->
 <div class="modal-video" id="modalVideo" onclick="cerrarVideo(event)"><div class="modal-video-inner"><button class="modal-cerrar" onclick="cerrarVideo()">[ cerrar ]</button><div class="modal-video-wrap"><iframe id="iframeVideo" src="" allowfullscreen allow="autoplay"></iframe></div></div></div>
@@ -572,13 +586,50 @@ const FOTOS_FOLKLORE=['https://i.imgur.com/7b0Xsu2.jpg','https://i.imgur.com/JjN
 const FOTOS_CERVECERIA=['https://i.imgur.com/2PYu7DF.jpg','https://i.imgur.com/6ckaaej.jpg','https://i.imgur.com/fc7GxHW.jpg','https://i.imgur.com/oVbRK8I.jpg','https://i.imgur.com/7THHuCx.jpg','https://i.imgur.com/qP7jacn.jpg','https://i.imgur.com/QMS6m9u.jpg','https://i.imgur.com/IoBqBZQ.jpg','https://i.imgur.com/kIw9dtQ.jpg','https://i.imgur.com/KUSAhDX.jpg','https://i.imgur.com/hHVnrAn.jpg','https://i.imgur.com/woQRQQF.jpg','https://i.imgur.com/m8pPMNi.jpg','https://i.imgur.com/HtodOu5.jpg','https://i.imgur.com/AD21Qne.jpg','https://i.imgur.com/006TVR0.jpg','https://i.imgur.com/LOmkVg8.jpg'];
 const FOTOS_PROFESIONALES=['https://i.imgur.com/sMafXdN.jpg','https://i.imgur.com/FB5BD3u.jpg','https://i.imgur.com/sFsIRDM.jpg','https://i.imgur.com/HMj0Wqr.jpg','https://i.imgur.com/yTcZHkC.jpg','https://i.imgur.com/hS5XjFz.jpg','https://i.imgur.com/6I18aCO.jpg','https://i.imgur.com/qPoajAu.jpg','https://i.imgur.com/uNe00Le.jpg','https://i.imgur.com/HRQ7FfR.jpg','https://i.imgur.com/ahqo0MR.jpg','https://i.imgur.com/RXUnQB3.jpg','https://i.imgur.com/NYHlyDl.jpg','https://i.imgur.com/kB84cHv.jpg'];
 
+// ---- IDIOMA ----
+let langActual='es';
+function toggleLang(){
+  langActual=langActual==='es'?'en':'es';
+  document.getElementById('langBtn').textContent=langActual==='es'?'EN':'ES';
+  document.querySelectorAll('[data-es][data-en]').forEach(el=>{
+    const txt=langActual==='es'?el.dataset.es:el.dataset.en;
+    if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){
+      el.placeholder=txt;
+    } else {
+      el.innerHTML=txt;
+    }
+  });
+  // Recalcular para actualizar moneda
+  calcularVideo();
+}
 function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
 function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
 document.querySelectorAll('.reveal,.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid').forEach(el=>obs.observe(el));
 function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
-// ---- COTIZADOR ----
+// ---- TIPO DE CAMBIO ----
+let dolarBlue=1425; // fallback valor actual
+let tcCargado=false;
+async function fetchDolar(){
+  try {
+    const r=await fetch('https://dolarapi.com/v1/dolares/blue');
+    const d=await r.json();
+    if(d.venta){dolarBlue=d.venta;tcCargado=true;}
+  } catch(e){
+    dolarBlue=1425; // fallback si falla la API
+  }
+}
+fetchDolar();
+
+function formatPrecio(usd){
+  if(langActual==='es'){
+    const pesos=Math.round(usd*dolarBlue);
+    return `<em>~</em>$${pesos.toLocaleString('es-AR')}`;
+  } else {
+    return `<em>~</em>USD ${usd}`;
+  }
+}
 const VMULT={urgente:1.5,normal:1.0,flexible:0.85};
 const VLPLAZO={urgente:'Urgente (48 hs)',normal:'Normal (1 semana)',flexible:'Flexible (+2 semanas)'};
 const VPRECIOS={corto:{label:'Edición Formato Corto (Reels · TikTok · YT Shorts)',base:10,unidad:'video'},largo:{label:'Edición Formato Largo',base:20,unidad:'video'},motion:{label:'Edición Motion Graphics',base:15,unidad:'pieza'},integral:{label:'Producción Integral',base:0,unidad:''}};
@@ -646,11 +697,11 @@ function calcularVideo(){
 
   const s=VPRECIOS[servicio];
   const precio=Math.round(s.base*cant*VMULT[plazo]);
-  document.getElementById('v-precio').innerHTML=`<em>~</em>USD ${precio}`;
+  document.getElementById('v-precio').innerHTML=formatPrecio(precio);
   document.getElementById('v-precio').classList.add('calculado');
-  document.getElementById('v-estado').textContent='Cotización estimada';
+  document.getElementById('v-estado').textContent=langActual==='es'?'Cotización estimada':'Estimated quote';
   document.getElementById('v-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> — ${s.label}<br>Plazo: <strong>${VLPLAZO[plazo]}</strong>`;
-  document.getElementById('v-note').textContent='* Estimación base. El precio final puede variar.';
+  document.getElementById('v-note').textContent=langActual==='es'?'* Estimación base. El precio final puede variar.':'* Base estimate. Final price may vary.';
   btn.disabled=false;
 }
 
@@ -677,14 +728,16 @@ function enviarWAVideo(){
   const plazo=vestado.vplazo;
   const cant=document.getElementById('v-cantidad').value;
   const nombre=document.getElementById('v-nombre').value.trim()||'(no indicado)';
+  const red=document.getElementById('v-red').value;
   const cuenta=document.getElementById('v-cuenta').value.trim()||'(no indicada)';
+  const cuentaCompleta=`${red}: ${cuenta}`;
   const s=VPRECIOS[servicio];
   let msg='';
   if(servicio==='integral'){
-    msg=`Hola Luca! Vengo de tu web, me interesa consultar sobre Producción Integral.\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuenta}`;
+    msg=`Hola Luca! Vengo de tu web, me interesa consultar sobre Producción Integral.\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
   } else {
     const precio=Math.round(s.base*parseInt(cant)*VMULT[plazo]);
-    msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nFormato de edición: ${s.label}\nCantidad de videos: ${cant}\nTiempo de entrega: ${VLPLAZO[plazo]}\nValor estimado: ~USD ${precio}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuenta}`;
+    msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nFormato de edición: ${s.label}\nCantidad de videos: ${cant}\nTiempo de entrega: ${VLPLAZO[plazo]}\nValor estimado: ~USD ${precio}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
   }
   window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
 }
@@ -696,8 +749,10 @@ function enviarWAFoto(){
   const ubicacion=document.getElementById('f-ubicacion').value.trim()||'(no indicada)';
   const fecha=document.getElementById('f-fecha').value.trim()||'(no indicada)';
   const nombre=document.getElementById('f-nombre').value.trim()||'(no indicado)';
+  const red=document.getElementById('f-red').value;
   const cuenta=document.getElementById('f-cuenta').value.trim()||'(no indicada)';
-  const msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nTipo de Evento: ${evento}\nUbicación: ${ubicacion}\nFecha estimada: ${fecha}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuenta}`;
+  const cuentaCompleta=`${red}: ${cuenta}`;
+  const msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nTipo de Evento: ${evento}\nUbicación: ${ubicacion}\nFecha estimada: ${fecha}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
   window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
 }
 function abrirVideo(id){document.getElementById('iframeVideo').src='https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0';document.getElementById('modalVideo').classList.add('abierto');document.body.style.overflow='hidden'}
