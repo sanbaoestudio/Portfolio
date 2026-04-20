@@ -23,7 +23,7 @@ html{scroll-behavior:smooth}
   --cond:'Barlow Condensed',sans-serif;
 }
 
-body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:400;overflow-x:hidden;position:relative;}
+body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:400;overflow-x:hidden;position:relative;font-size:16px;}
 body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.25;}
 body::before{width:600px;height:600px;background:radial-gradient(circle,#005f73 0%,transparent 70%);top:-100px;right:-100px;animation:float1 12s ease-in-out infinite;}
 body::after{width:500px;height:500px;background:radial-gradient(circle,#354259 0%,transparent 70%);bottom:-100px;left:-100px;animation:float2 15s ease-in-out infinite;}
@@ -43,6 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:160;display:flex;justify-content
 .nav-links a:hover{color:var(--acento)}
 .lang-btn{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;background:none;border:1px solid var(--linea);color:var(--secundario);padding:5px 10px;cursor:pointer;transition:all 0.2s;margin-left:16px}
 .lang-btn:hover{border-color:var(--primario);color:var(--primario)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:200;position:relative}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--negro);transition:all 0.3s}
 .nav-hamburger.open span{background:white}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -50,44 +51,44 @@ nav{position:fixed;top:0;left:0;right:0;z-index:160;display:flex;justify-content
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
 /* HERO */
-.hero{min-height:auto;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:110px 48px 48px;gap:40px;}
-.hero-eyebrow{font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--primario);display:flex;align-items:center;gap:12px;margin-bottom:16px;font-weight:400}
-.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--primario)}
-.hero-title{font-family:var(--display);font-size:clamp(3.5rem,6vw,7.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--secundario);margin-bottom:18px}
+.hero{min-height:92vh;display:grid;grid-template-columns:1.2fr 0.8fr;align-items:center;padding:120px 48px 60px;gap:60px;}
+.hero-eyebrow{font-size:0.62rem;letter-spacing:0.34em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:14px;margin-bottom:20px;font-weight:600}
+.hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--acento)}
+.hero-title{font-family:var(--display);font-size:clamp(4rem,7.5vw,10rem);font-weight:900;line-height:0.85;letter-spacing:-0.05em;text-transform:uppercase;color:var(--negro);margin-bottom:24px}
 .hero-title em{font-style:italic;color:var(--acento)}
 .hero-sub{font-family:var(--cond);font-size:1.05rem;color:var(--negro);line-height:1.5;max-width:380px}
-.hero-tagline{display:block;font-size:1.2rem;font-weight:600;margin-bottom:8px;color:var(--negro)}
-.hero-descriptor{display:block;font-size:0.72rem;color:var(--secundario);letter-spacing:0.08em;margin-bottom:20px}
-.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.78rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;text-decoration:none;padding:13px 26px;transition:background 0.2s,transform 0.2s,box-shadow 0.3s;position:relative;}
+.hero-tagline{display:block;font-size:1.35rem;font-weight:600;margin-bottom:10px;color:var(--negro);line-height:1.3}
+.hero-descriptor{display:block;font-size:0.75rem;color:var(--gris);letter-spacing:0.12em;margin-bottom:28px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:var(--acento);color:white;font-family:var(--cond);font-size:0.82rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;padding:16px 32px;transition:background 0.2s,transform 0.2s,box-shadow 0.3s;position:relative;}
 .cta-btn:hover{background:#c94e1e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,98,42,0.4)}
 .cta-btn::after{content:'→';margin-left:4px}
 .cta-btn.glow{animation:glow 2.5s ease-in-out infinite}
 @keyframes glow{0%,100%{box-shadow:0 0 0 rgba(232,98,42,0)}50%{box-shadow:0 0 24px rgba(232,98,42,0.5)}}
 .hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
-.tag{font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--secundario);padding:7px 16px;transition:all 0.25s;}
+.tag{font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--secundario);padding:9px 18px;transition:all 0.25s;}
 .tag.glass{border:1px solid var(--glass-border)}
 .tag:hover{border-color:var(--primario);color:var(--primario);background:rgba(255,255,255,0.7)}
 
 /* SECCIÓN */
-section{padding:0 48px 80px}
-.sec-label{font-size:0.62rem;letter-spacing:0.26em;text-transform:uppercase;color:var(--primario);display:flex;align-items:center;gap:16px;margin-bottom:40px;font-weight:400}
+section{padding:0 48px 100px}
+.sec-label{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--primario);display:flex;align-items:center;gap:16px;margin-bottom:20px;font-weight:600}
 .sec-label::after{content:'';flex:1;height:1px;background:var(--linea)}
-.sec-title{font-family:var(--display);font-size:clamp(2.4rem,4vw,3.5rem);font-weight:900;letter-spacing:-0.03em;text-transform:uppercase;color:var(--secundario);margin-bottom:40px}
+.sec-title{font-family:var(--display);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:900;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);margin-bottom:48px}
 
 /* SERVICIOS */
 .servicios-grid-foto{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.servicios-grid-foto{grid-template-columns:repeat(1,1fr)}}
-.servicios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.servicio-card{padding:32px 28px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s;}
+.servicios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.servicio-card{padding:40px 32px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s;}
 .servicio-card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(53,66,89,0.14)}
 .servicio-num{font-family:var(--display);font-size:3rem;font-weight:900;color:rgba(0,95,115,0.2);line-height:1;margin-bottom:16px;transition:color 0.25s}
 .servicio-card:hover .servicio-num{color:var(--primario)}
-.servicio-nombre{font-family:var(--cond);font-size:1.2rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--secundario);margin-bottom:10px;line-height:1.2}
-.servicio-desc{font-size:0.68rem;color:var(--gris);line-height:1.8;margin-bottom:18px}
+.servicio-nombre{font-family:var(--cond);font-size:1.3rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--negro);margin-bottom:12px;line-height:1.2}
+.servicio-desc{font-size:0.72rem;color:var(--gris);line-height:1.9;margin-bottom:20px}
 .servicio-precio{font-family:var(--display);font-size:0.9rem;font-weight:800;color:var(--acento)}
 .servicio-precio span{font-family:var(--mono);font-size:0.55rem;font-weight:400;color:var(--gris);letter-spacing:0.1em;margin-left:4px;text-transform:uppercase}
 
-.proj-sublabel{font-family:var(--display);font-size:1.4rem;font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;color:var(--secundario);margin:40px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--linea);}
+.proj-sublabel{font-family:var(--display);font-size:1.6rem;font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;color:var(--secundario);margin:40px 0 20px;padding-bottom:12px;border-bottom:2px solid var(--acento);}
 .grilla+.proj-sublabel{margin-top:56px}
 .cot-tabs{display:flex;gap:8px;margin-bottom:32px}
 .cot-tab{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:10px 28px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);transition:all 0.2s;color:var(--secundario)}
@@ -132,14 +133,14 @@ section{padding:0 48px 80px}
 .filtro.activo,.filtro:hover{background:var(--secundario);color:white;border-color:var(--secundario)}
 
 /* GRILLA */
-.grilla{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.grilla{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .card{position:relative;overflow:hidden;cursor:pointer;transition:transform 0.4s cubic-bezier(.16,1,.3,1),box-shadow 0.4s;border-radius:2px}
-.card:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(53,66,89,0.18)}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(53,66,89,0.14)}
 .card.doble{grid-column:span 2}
 .card-thumb{position:relative;width:100%;padding-bottom:133%;overflow:hidden}
 .card-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s cubic-bezier(.16,1,.3,1)}
 .card:hover .card-thumb img{transform:scale(1.05)}
-.card-overlay{position:absolute;inset:0;background:rgba(14,14,14,0.82);backdrop-filter:blur(4px);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;opacity:0;transition:opacity 0.35s}
+.card-overlay{position:absolute;inset:0;background:rgba(14,14,14,0.88);backdrop-filter:blur(6px);display:flex;flex-direction:column;justify-content:flex-end;padding:22px;opacity:0;transition:opacity 0.35s}
 .card:hover .card-overlay{opacity:1}
 .card-cat{font-size:0.56rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento);margin-bottom:6px}
 .card-titulo{font-family:var(--cond);font-size:1.3rem;font-weight:600;text-transform:uppercase;color:#F8F7F4;line-height:1.1;margin-bottom:8px}
@@ -147,9 +148,9 @@ section{padding:0 48px 80px}
 .card-link{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:8px}
 .card-link::after{content:'→';transition:margin 0.2s}
 .card:hover .card-link::after{margin-left:4px}
-.card-info{padding:12px 6px 6px;display:flex;flex-direction:column;gap:3px;background:rgba(255,255,255,0.45)}
+.card-info{padding:14px 10px 10px;display:flex;flex-direction:column;gap:4px;background:rgba(255,255,255,0.6)}
 .card-info-cat{font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--primario);font-weight:400}
-.card-info-titulo{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;color:var(--secundario);line-height:1.2}
+.card-info-titulo{font-family:var(--cond);font-size:1.05rem;font-weight:600;text-transform:uppercase;color:var(--negro);line-height:1.2}
 
 /* ALBUM SELECTOR (para álbumes con sub-carpetas) */
 .lb-selector{position:fixed;inset:0;background:rgba(14,14,14,0.95);backdrop-filter:blur(20px);z-index:499;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s}
@@ -171,16 +172,16 @@ section{padding:0 48px 80px}
 .testimonio{padding:32px 28px;display:flex;flex-direction:column;gap:20px;border-radius:2px;transition:transform 0.3s,box-shadow 0.3s}
 .testimonio:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(53,66,89,0.12)}
 .testimonio-quote{font-family:var(--display);font-size:2.5rem;font-weight:900;color:var(--primario);line-height:1}
-.testimonio-text{font-size:0.7rem;color:var(--gris);line-height:1.9;font-style:italic;flex:1}
+.testimonio-text{font-size:0.75rem;color:var(--gris);line-height:2;font-style:italic;flex:1}
 .testimonio-autor{display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--linea);padding-top:16px}
 .testimonio-nombre{font-family:var(--cond);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--secundario)}
 .testimonio-cargo{font-size:0.56rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris)}
 
 /* CONTACTO */
 .contacto-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;border-top:1px solid var(--linea);padding-top:80px}
-.contacto-titulo{font-family:var(--display);font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:0.9;letter-spacing:-0.03em;text-transform:uppercase;color:var(--secundario);margin-bottom:24px}
+.contacto-titulo{font-family:var(--display);font-size:clamp(2.8rem,5.5vw,6rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);margin-bottom:28px}
 .contacto-titulo em{font-style:italic;color:var(--acento)}
-.contacto-desc{font-size:0.72rem;color:var(--gris);line-height:1.9}
+.contacto-desc{font-size:0.78rem;color:var(--gris);line-height:2}
 .contacto-items{display:flex;flex-direction:column}
 .contacto-item{display:flex;flex-direction:column;gap:3px;padding:18px 0;border-bottom:1px solid var(--linea)}
 .contacto-item:first-child{padding-top:0}
@@ -235,7 +236,7 @@ section{padding:0 48px 80px}
 .lb-counter{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:0.52rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3)}
 
 /* FOOTER */
-footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1px solid var(--linea);font-size:0.6rem;letter-spacing:0.14em;color:var(--gris)}
+footer{padding:28px 48px;display:flex;justify-content:space-between;border-top:1px solid var(--linea);font-size:0.62rem;letter-spacing:0.14em;color:var(--gris)}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(32px);transition:opacity 0.8s cubic-bezier(.16,1,.3,1),transform 0.8s cubic-bezier(.16,1,.3,1)}
@@ -252,6 +253,11 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 .grilla.visible .card:nth-child(8){transition-delay:0.49s}
 .grilla.visible .card:nth-child(9){transition-delay:0.56s}
 .grilla.visible .card:nth-child(10){transition-delay:0.63s}
+.grilla.visible .card:nth-child(11){transition-delay:0.70s}
+.grilla.visible .card:nth-child(12){transition-delay:0.77s}
+.grilla.visible .card:nth-child(13){transition-delay:0.84s}
+.grilla.visible .card:nth-child(14){transition-delay:0.91s}
+.grilla.visible .card:nth-child(15){transition-delay:0.98s}
 .servicios-grid .servicio-card,.testimonios-grid .testimonio{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1)}
 .servicios-grid.visible .servicio-card,.testimonios-grid.visible .testimonio,.servicios-grid-foto.visible .servicio-card{opacity:1;transform:none}
 .servicios-grid-foto .servicio-card{opacity:0;transform:translateY(28px);transition:opacity 0.6s cubic-bezier(.16,1,.3,1),transform 0.6s cubic-bezier(.16,1,.3,1)}
@@ -285,6 +291,19 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   .lb-next{right:-8px}
   .lb-albums{grid-template-columns:1fr}
 }
+
+/* SERVICIOS TEXTO */
+.servicios-texto{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px;align-items:start;border-top:1px solid var(--linea);padding-top:48px}
+.srv-bloque{}
+.srv-bloque-titulo{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--acento);margin-bottom:12px}
+.srv-bloque-desc{font-size:0.72rem;color:var(--gris);line-height:1.9}
+.srv-contacto{display:flex;flex-direction:column;justify-content:space-between;gap:24px;border-left:1px solid var(--linea);padding-left:40px}
+.srv-contacto-links{display:flex;flex-direction:column;gap:12px}
+.srv-contacto-item{text-decoration:none;display:flex;flex-direction:column;gap:2px;transition:opacity 0.2s}
+.srv-contacto-item:hover{opacity:0.7}
+.srv-contacto-label{font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario)}
+.srv-contacto-val{font-family:var(--cond);font-size:0.95rem;font-weight:600;color:var(--negro)}
+@media(max-width:900px){.servicios-texto{grid-template-columns:1fr;gap:32px}.srv-contacto{border-left:none;border-top:1px solid var(--linea);padding-left:0;padding-top:24px}}
 </style>
 </head>
 <body>
@@ -295,6 +314,7 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <ul class="nav-links" id="navLinks">
     <li><a href="#servicios" onclick="cerrarNav()" data-es="Servicios" data-en="Services">Servicios</a></li>
     <li><a href="#proyectos" onclick="cerrarNav()" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
+    <li><a href="#cotizador" onclick="cerrarNav()" data-es="Cotizá" data-en="Quote">Cotizá</a></li>
     <li><a href="#contacto" onclick="cerrarNav()" data-es="Contacto" data-en="Contact">Contacto</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:8px">
@@ -310,8 +330,8 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="hero-eyebrow">Buenos Aires · Argentina</div>
     <h1 class="hero-title">Luca<br><em>Gazzola</em></h1>
     <p class="hero-sub">
-      <strong class="hero-tagline" data-es="Transformo tu marca en contenido visual que vende." data-en="I turn your brand into visual content that sells.">Transformo tu marca en contenido visual que vende.</strong>
-      <span class="hero-descriptor">Video · Motion Graphics · Design · Photography</span>
+      <strong class="hero-tagline" data-es="Transformo ideas en contenido visual que conecta." data-en="I turn ideas into visual content that connects.">Transformo ideas en contenido visual que conecta.</strong>
+      <span class="hero-descriptor" data-es="Video · Motion Graphics · Fotografía · Buenos Aires" data-en="Video · Motion Graphics · Photography · Buenos Aires">Video · Motion Graphics · Fotografía · Buenos Aires</span>
     </p>
     <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn glow" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
   </div>
@@ -327,20 +347,30 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
 <section id="servicios">
   <div class="sec-label reveal" data-es="Lo que hago" data-en="What I do">Lo que hago</div>
   <div class="sec-title reveal" data-es="Servicios" data-en="Services">Servicios</div>
-  <div class="servicios-grid" id="serviciosGrid">
-    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('video',document.getElementById('filtro-video'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">01</div><div class="servicio-nombre" data-es="Reels & Short-form<br>para marcas" data-en="Reels & Short-form<br>for brands">Reels & Short-form<br>para marcas</div><p class="servicio-desc" data-es="Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor." data-en="Vertical content editing optimized for Instagram, TikTok and YouTube Shorts. Hooks, rhythm and retention to make the algorithm work in your favor.">Edición de contenido vertical optimizado para Instagram, TikTok y YouTube Shorts. Hooks, ritmo y retención para que el algoritmo trabaje a tu favor.</p><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver proyectos →" data-en="See projects →">Ver proyectos →</div></div>
-    <div class="servicio-card glass" style="cursor:pointer" onclick="filtrar('motion',document.getElementById('filtro-motion'));document.getElementById('proyectos').scrollIntoView({behavior:'smooth'})"><div class="servicio-num">02</div><div class="servicio-nombre" data-es="Motion Graphics<br>& VFX" data-en="Motion Graphics<br>& VFX">Motion Graphics<br>& VFX</div><p class="servicio-desc" data-es="Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo." data-en="Animated titles, motion graphics and visual effects with Adobe After Effects. Ideal for YouTube intros, animated brand identity and corporate video.">Títulos animados, gráficos en movimiento y efectos visuales con Adobe After Effects. Ideal para intros de YouTube, identidad de marca animada y video corporativo.</p><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver proyectos →" data-en="See projects →">Ver proyectos →</div></div>
-    <div class="servicio-card glass"><div class="servicio-num">03</div><div class="servicio-nombre" data-es="Producción Integral<br>& Eventos" data-en="Full Production<br>& Events">Producción Integral<br>& Eventos</div><p class="servicio-desc" data-es="Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI." data-en="Multi-angle filming, full editing, sound design and post-production. Photo coverage with Sony Alpha + DJI stabilizer.">Filmación multiángulo, edición completa, diseño sonoro y postproducción. Cobertura fotográfica con Sony Alpha + estabilizador DJI.</p></div>
-  </div>
-
-  <div class="sec-label reveal" style="margin-top:48px" data-es="Fotografía" data-en="Photography">Fotografía</div>
-  <div class="servicios-grid servicios-grid-foto" id="serviciosGridFoto">
-    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorDeportiva()"><div class="servicio-num">01</div><div class="servicio-nombre" data-es="Deportiva" data-en="Sports">Deportiva</div><p class="servicio-desc" data-es="Cobertura de partidos, torneos y eventos deportivos. Registro de acción en tiempo real con equipamiento profesional." data-en="Coverage of matches, tournaments and sports events. Real-time action shots with professional equipment.">Cobertura de partidos, torneos y eventos deportivos. Registro de acción en tiempo real con equipamiento profesional.</p><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver galería →" data-en="See gallery →">Ver galería →</div></div>
-    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirSelectorEventos()"><div class="servicio-num">02</div><div class="servicio-nombre" data-es="Eventos" data-en="Events">Eventos</div><p class="servicio-desc" data-es="Cobertura completa de eventos sociales. XV años, cumpleaños, fiestas y celebraciones con edición incluida." data-en="Full coverage of social events. Sweet 16s, birthdays, parties and celebrations including editing.">Cobertura completa de eventos sociales. XV años, cumpleaños, fiestas y celebraciones con edición incluida.</p><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver galería →" data-en="See gallery →">Ver galería →</div></div>
-    <div class="servicio-card glass" style="cursor:pointer" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="servicio-num">03</div><div class="servicio-nombre" data-es="Retratos" data-en="Portraits">Retratos</div><p class="servicio-desc" data-es="Sesiones de retrato individual o grupal. Fotografía profesional para redes, CV y uso personal." data-en="Individual or group portrait sessions. Professional photography for social media, CV and personal use.">Sesiones de retrato individual o grupal. Fotografía profesional para redes, CV y uso personal.</p><div class="srv-link" style="margin-top:12px;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)" data-es="Ver galería →" data-en="See gallery →">Ver galería →</div></div>
+  <div class="servicios-texto reveal">
+    <div class="srv-bloque">
+      <h3 class="srv-bloque-titulo" data-es="Video &amp; Edición" data-en="Video &amp; Editing">Video &amp; Edición</h3>
+      <p class="srv-bloque-desc" data-es="Edición de Reels, TikTok y YouTube Shorts con hooks y ritmo pensados para retención. Edición de videos largos, documentales y contenido institucional. Motion graphics y VFX con After Effects para marcas, intros y piezas animadas." data-en="Editing Reels, TikTok and YouTube Shorts with hooks and rhythm designed for retention. Long-form video editing, documentaries and institutional content. Motion graphics and VFX with After Effects for brands, intros and animated pieces.">Edición de Reels, TikTok y YouTube Shorts con hooks y ritmo pensados para retención. Edición de videos largos, documentales y contenido institucional. Motion graphics y VFX con After Effects para marcas, intros y piezas animadas.</p>
+    </div>
+    <div class="srv-bloque">
+      <h3 class="srv-bloque-titulo" data-es="Producción Integral" data-en="Full Production">Producción Integral</h3>
+      <p class="srv-bloque-desc" data-es="Filmación multiángulo, diseño sonoro y postproducción completa. Cobertura de eventos, sesiones musicales y contenido para marcas. Equipo propio: Sony Alpha + estabilizador DJI." data-en="Multi-angle filming, sound design and full post-production. Event coverage, musical sessions and brand content. Own equipment: Sony Alpha + DJI stabilizer.">Filmación multiángulo, diseño sonoro y postproducción completa. Cobertura de eventos, sesiones musicales y contenido para marcas. Equipo propio: Sony Alpha + estabilizador DJI.</p>
+    </div>
+    <div class="srv-bloque">
+      <h3 class="srv-bloque-titulo" data-es="Fotografía" data-en="Photography">Fotografía</h3>
+      <p class="srv-bloque-desc" data-es="Deportiva, eventos sociales, retratos profesionales. Cobertura de torneos, cumpleaños, sesiones de marca y ciclos culturales. Edición incluida." data-en="Sports, social events, professional portraits. Coverage of tournaments, birthdays, brand sessions and cultural events. Editing included.">Deportiva, eventos sociales, retratos profesionales. Cobertura de torneos, cumpleaños, sesiones de marca y ciclos culturales. Edición incluida.</p>
+    </div>
+    <div class="srv-contacto">
+      <div class="srv-contacto-links">
+        <a href="https://instagram.com/sanbaoestudio" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">Instagram</span><span class="srv-contacto-val">@sanbaoestudio</span></a>
+        <a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">TikTok</span><span class="srv-contacto-val">@sanbaoestudio</span></a>
+        <a href="https://wa.me/5491130203625" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">WhatsApp</span><span class="srv-contacto-val">+54 9 11 3020 3625</span></a>
+        <a href="mailto:sanbaoestudio@gmail.com" class="srv-contacto-item"><span class="srv-contacto-label">Email</span><span class="srv-contacto-val">sanbaoestudio@gmail.com</span></a>
+      </div>
+      <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" data-es="Hablemos →" data-en="Let's talk →">Hablemos →</a>
+    </div>
   </div>
 </section>
-
 <section id="proyectos">
   <div class="sec-label reveal" data-es="Trabajos" data-en="Work">Trabajos</div>
   <div class="sec-title reveal" data-es="Proyectos" data-en="Projects">Proyectos</div>
@@ -348,24 +378,23 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   <!-- VIDEO -->
   <div class="proj-sublabel reveal" data-es="Video" data-en="Video">Video</div>
   <div class="grilla reveal" id="grilla-video">
-    <div class="card" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc" data-es="Video promocional institucional. Producción completa." data-en="Institutional promotional video. Full production.">Video promocional institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
+<div class="card" data-cat="video" onclick="abrirVideo('1181674980')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/Icorporativo.jpg?raw=true" alt="Inglés Corporativo BA"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Inglés Corporativo BA<br>Reel Institucional</h3><p class="card-desc" data-es="Reel institucional. Producción completa." data-en="Institutional reel. Full production.">Reel institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Inglés Corporativo BA — Reel Institucional</span></div></div>
+        <div class="card" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc" data-es="Video promocional institucional. Producción completa." data-en="Institutional promotional video. Full production.">Video promocional institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
     <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Sesión Musical<br>Bajista" data-en="Musical Session<br>Bassist">Sesión Musical<br>Bajista</h3><p class="card-desc" data-es="Sesión en vivo." data-en="Live session.">Sesión en vivo.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Sesión Musical Bajista" data-en="Bassist Musical Session">Sesión Musical Bajista</span></div></div>
     <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 1"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 1" data-en="Reel format<br>Edit 1">Edición formato<br>Reel 1</h3><p class="card-desc" data-es="Compilado del desafío." data-en="Challenge compilation.">Compilado del desafío.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 1" data-en="Reel format Edit 1">Edición formato Reel 1</span></div></div>
     <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Reel<br>Cervecería" data-en="Reel<br>Brewery">Reel<br>Cervecería</h3><p class="card-desc" data-es="Reel de producto gastronómico." data-en="Gastronomic product reel.">Reel de producto gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Reel Cervecería" data-en="Brewery Reel">Reel Cervecería</span></div></div>
     <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 2" data-en="Reel format<br>Edit 2">Edición formato<br>Reel 2</h3><p class="card-desc" data-es="Reel musical." data-en="Musical reel.">Reel musical.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 2" data-en="Reel format Edit 2">Edición formato Reel 2</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177044935')"><div class="card-thumb"><img src="portadas/img_003.jpg" alt="Como hablarle a la camara"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Cómo hablarle<br>a la cámara" data-en="How to talk<br>to the camera">Cómo hablarle<br>a la cámara</h3><p class="card-desc" data-es="Consejo para creadores de contenido." data-en="Tip for content creators.">Consejo para creadores de contenido.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Cómo hablarle a la cámara" data-en="How to talk to the camera">Cómo hablarle a la cámara</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177043105')"><div class="card-thumb"><img src="portadas/img_006.jpg" alt="Sindrome del Impostor"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Formato largo" data-en="Editing · Long format">Edición · Formato largo</span><h3 class="card-titulo" data-es="Síndrome del<br>Impostor" data-en="Impostor<br>Syndrome">Síndrome del<br>Impostor</h3><p class="card-desc" data-es="Contenido educativo formato horizontal." data-en="Educational content, horizontal format.">Contenido educativo formato horizontal.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Formato largo" data-en="Editing · Long format">Edición · Formato largo</span><span class="card-info-titulo" data-es="Síndrome del Impostor" data-en="Impostor Syndrome">Síndrome del Impostor</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177045538')"><div class="card-thumb"><img src="portadas/img_002.jpg" alt="Mascaras edicion"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Máscaras<br>Edición" data-en="Masks<br>Edit">Máscaras<br>Edición</h3><p class="card-desc" data-es="Técnica de máscaras en edición." data-en="Masks technique in editing.">Técnica de máscaras en edición.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Máscaras Edición" data-en="Masks Edit">Máscaras Edición</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177046446')"><div class="card-thumb"><img src="portadas/img_005.jpg" alt="Vino y Folklore"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Vino y<br>Folklore" data-en="Wine &amp;<br>Folklore">Vino y<br>Folklore</h3><p class="card-desc" data-es="Cobertura de evento cultural." data-en="Cultural event coverage.">Cobertura de evento cultural.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Vino y Folklore" data-en="Wine & Folklore">Vino y Folklore</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177046092')"><div class="card-thumb"><img src="portadas/img_001.jpg" alt="Foto Local gastronomico"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Foto Local<br>Gastronómico" data-en="Gastronomic<br>Venue">Foto Local<br>Gastronómico</h3><p class="card-desc" data-es="Producción para local gastronómico." data-en="Production for gastronomic venue.">Producción para local gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Foto Local Gastronómico" data-en="Gastronomic Venue">Foto Local Gastronómico</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177043795')"><div class="card-thumb"><img src="portadas/img_000.jpg" alt="Presupuesto cliente"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><h3 class="card-titulo" data-es="Presupuesto<br>Cliente #Humor" data-en="Client<br>Budget #Humor">Presupuesto<br>Cliente #Humor</h3><p class="card-desc" data-es="Contenido de humor para redes." data-en="Humor content for social media.">Contenido de humor para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><span class="card-info-titulo" data-es="Presupuesto Cliente #Humor" data-en="Client Budget #Humor">Presupuesto Cliente #Humor</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177044935')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_003.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Como hablarle a la camara"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Cómo hablarle<br>a la cámara" data-en="How to talk<br>to the camera">Cómo hablarle<br>a la cámara</h3><p class="card-desc" data-es="Consejo para creadores de contenido." data-en="Tip for content creators.">Consejo para creadores de contenido.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Cómo hablarle a la cámara" data-en="How to talk to the camera">Cómo hablarle a la cámara</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177045538')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_002.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Mascaras edicion"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Máscaras<br>Edición" data-en="Masks<br>Edit">Máscaras<br>Edición</h3><p class="card-desc" data-es="Técnica de máscaras en edición." data-en="Masks technique in editing.">Técnica de máscaras en edición.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Máscaras Edición" data-en="Masks Edit">Máscaras Edición</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177046446')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_005.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Vino y Folklore"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Vino y<br>Folklore" data-en="Wine &amp;<br>Folklore">Vino y<br>Folklore</h3><p class="card-desc" data-es="Cobertura de evento cultural." data-en="Cultural event coverage.">Cobertura de evento cultural.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Vino y Folklore" data-en="Wine & Folklore">Vino y Folklore</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177046092')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_001.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Foto Local gastronomico"></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Foto Local<br>Gastronómico" data-en="Gastronomic<br>Venue">Foto Local<br>Gastronómico</h3><p class="card-desc" data-es="Producción para local gastronómico." data-en="Production for gastronomic venue.">Producción para local gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Foto Local Gastronómico" data-en="Gastronomic Venue">Foto Local Gastronómico</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177043795')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_000.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Presupuesto cliente"></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><h3 class="card-titulo" data-es="Presupuesto<br>Cliente #Humor" data-en="Client<br>Budget #Humor">Presupuesto<br>Cliente #Humor</h3><p class="card-desc" data-es="Contenido de humor para redes." data-en="Humor content for social media.">Contenido de humor para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><span class="card-info-titulo" data-es="Presupuesto Cliente #Humor" data-en="Client Budget #Humor">Presupuesto Cliente #Humor</span></div></div>
   </div>
 
   <!-- MOTION -->
   <div class="proj-sublabel reveal" data-es="Motion" data-en="Motion">Motion</div>
   <div class="grilla reveal" id="grilla-motion">
     <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc" data-es="Reel animado para redes." data-en="Animated reel for social media.">Reel animado para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
-    <div class="card" data-cat="motion" onclick="abrirVideo('1177045638')"><div class="card-thumb"><img src="portadas/img_004.jpg" alt="Speed Ramp"></div><div class="card-overlay"><span class="card-cat">Motion · Speed Ramp</span><h3 class="card-titulo">Speed<br>Ramp</h3><p class="card-desc" data-es="Técnica de speed ramp en edición." data-en="Speed ramp technique in editing.">Técnica de speed ramp en edición.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion · Speed Ramp</span><span class="card-info-titulo">Speed Ramp</span></div></div>
   </div>
 
   <!-- FOTOS -->
@@ -374,7 +403,119 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
     <div class="card" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>Deportiva" data-en="Sports<br>Photography">Fotografía<br>Deportiva</h3><p class="card-desc" data-es="Vóley Femenino · Fútsal Femenino" data-en="Women's Volleyball · Women's Futsal">Vóley Femenino · Fútsal Femenino</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía deportiva · 2 álbumes" data-en="Sports photography · 2 albums">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía Deportiva" data-en="Sports Photography">Fotografía Deportiva</span></div></div>
     <div class="card" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>para Eventos" data-en="Event<br>Photography">Fotografía<br>para Eventos</h3><p class="card-desc" data-es="XV Cumpleaños · Evento Cervecería" data-en="Sweet 16 · Brewery Event">XV Cumpleaños · Evento Cervecería</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Eventos · 2 álbumes" data-en="Photography · Events · 2 albums">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía para Eventos" data-en="Event Photography">Fotografía para Eventos</span></div></div>
     <div class="card" data-cat="foto" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="card-thumb"><img src="https://i.imgur.com/sMafXdN.jpg" alt="Profesionales"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><h3 class="card-titulo" data-es="Fotografía<br>Profesional" data-en="Professional<br>Photography">Fotografía<br>Profesional</h3><p class="card-desc" data-es="Retratos y fotografía corporativa." data-en="Portraits and corporate photography.">Retratos y fotografía corporativa.</p><span class="card-link" data-es="Ver galería" data-en="View gallery">Ver galería</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><span class="card-info-titulo" data-es="Profesionales" data-en="Professionals">Profesionales</span></div></div>
-    <div class="card" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://i.imgur.com/AXGt0dN.jpg" alt="Música"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Música<br>en Vivo" data-en="Live<br>Music">Música<br>en Vivo</h3><p class="card-desc" data-es="Tinkuy · Folklore" data-en="Tinkuy · Folklore">Tinkuy · Folklore</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Música · 2 álbumes" data-en="Photography · Music · 2 albums">Fotografía · Música · 2 álbumes</span><span class="card-info-titulo" data-es="Música en Vivo" data-en="Live Music">Música en Vivo</span></div></div>
+    <div class="card" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_005.png?raw=true" alt="Música"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Música<br>en Vivo" data-en="Live<br>Music">Música<br>en Vivo</h3><p class="card-desc" data-es="Tinkuy · Folklore" data-en="Tinkuy · Folklore">Tinkuy · Folklore</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Música · 2 álbumes" data-en="Photography · Music · 2 albums">Fotografía · Música · 2 álbumes</span><span class="card-info-titulo" data-es="Música en Vivo" data-en="Live Music">Música en Vivo</span></div></div>
+  </div>
+</section>
+
+<section id="cotizador">
+  <div class="sec-label reveal" data-es="Trabajemos juntos" data-en="Let's work together">Trabajemos juntos</div>
+  <div class="sec-title reveal" data-es="Cotizá tu proyecto" data-en="Quote your project">Cotizá tu proyecto</div>
+  <div class="cot-tabs reveal">
+    <button class="cot-tab activo" onclick="switchTab('video',this)" data-es="Video" data-en="Video">Video</button>
+    <button class="cot-tab" onclick="switchTab('foto',this)" data-es="Fotografía" data-en="Photography">Fotografía</button>
+  </div>
+  <div class="cotizador-wrap reveal" id="form-video">
+    <div class="cotizador-form-col glass">
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Tipo de servicio" data-en="Service type">Tipo de servicio</span>
+        <div class="chips" id="chips-vservicio">
+          <button class="chip" data-val="corto" onclick="selChipV(this,'vservicio')" data-es="Formato Corto" data-en="Short Format">Formato Corto<br><small>Reels · TikTok · YT Shorts</small></button>
+          <button class="chip" data-val="largo" onclick="selChipV(this,'vservicio')" data-es="Formato Largo" data-en="Long Format">Formato Largo</button>
+          <button class="chip" data-val="motion" onclick="selChipV(this,'vservicio')">Motion Graphics</button>
+          <button class="chip" data-val="integral" onclick="selChipV(this,'vservicio')" data-es="Producción Integral" data-en="Full Production">Producción Integral</button>
+        </div>
+      </div>
+      <div class="campo-grupo" id="vg-cantidad">
+        <span class="campo-label" data-es="Cantidad de videos" data-en="Number of videos">Cantidad de videos</span>
+        <div class="slider-wrap"><input type="range" id="v-cantidad" min="1" max="20" value="1" oninput="document.getElementById('v-cant-val').textContent=this.value;calcularVideo()"><span class="slider-val" id="v-cant-val">1</span></div>
+      </div>
+      <div class="campo-grupo" id="vg-plazo">
+        <span class="campo-label" data-es="Tiempo de entrega" data-en="Delivery time">Tiempo de entrega</span>
+        <div class="chips" id="chips-vplazo">
+          <button class="chip" data-val="urgente" onclick="selChipV(this,'vplazo')" data-es="Urgente (48 hs)" data-en="Urgent (48 hs)">Urgente (48 hs)</button>
+          <button class="chip" data-val="normal" onclick="selChipV(this,'vplazo')" data-es="Normal (1 semana)" data-en="Normal (1 week)">Normal (1 semana)</button>
+          <button class="chip" data-val="flexible" onclick="selChipV(this,'vplazo')" data-es="Flexible (+2 semanas)" data-en="Flexible (+2 weeks)">Flexible (+2 semanas)</button>
+        </div>
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Tu nombre" data-en="Your name">Tu nombre</span>
+        <input type="text" class="campo-texto" id="v-nombre" placeholder="Ej: Martín García" oninput="calcularVideo()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Nombre de Cuenta" data-en="Account Name">Nombre de Cuenta</span>
+        <div style="display:flex;gap:8px">
+          <select class="campo-select" id="v-red" style="width:auto;min-width:130px" onchange="calcularVideo()">
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="X">X</option>
+          </select>
+          <input type="text" class="campo-texto" id="v-cuenta" placeholder="@tucuenta" style="flex:1" oninput="calcularVideo()">
+        </div>
+      </div>
+    </div>
+    <div class="cotizador-result-col">
+      <div>
+        <p class="result-estado" id="v-estado" data-es="Completá el formulario" data-en="Fill in the form">Completá el formulario</p>
+        <div class="result-precio" id="v-precio">—</div>
+        <p class="result-detalle" id="v-detalle" data-es="Seleccioná el tipo de servicio, cantidad y plazo." data-en="Select the service type, quantity and deadline.">Seleccioná el tipo de servicio, cantidad y plazo.</p>
+      </div>
+      <div>
+        <p class="result-note" id="v-note" data-es="* El precio final puede variar según el detalle del proyecto." data-en="* Final price may vary depending on project details.">* El precio final puede variar según el detalle del proyecto.</p>
+        <button class="cotizador-cta" id="cta-video" disabled onclick="enviarWAVideo()" data-es="Consultar por WhatsApp" data-en="Contact via WhatsApp">Consultar por WhatsApp</button>
+      </div>
+    </div>
+  </div>
+  <div class="cotizador-wrap reveal" id="form-foto" style="display:none">
+    <div class="cotizador-form-col glass">
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Tipo de fotografía" data-en="Photography type">Tipo de fotografía</span>
+        <div class="chips" id="chips-fservicio">
+          <button class="chip" data-val="deportiva" onclick="selChipF(this,'fservicio')" data-es="Deportiva" data-en="Sports">Deportiva</button>
+          <button class="chip" data-val="eventos" onclick="selChipF(this,'fservicio')" data-es="Eventos" data-en="Events">Eventos</button>
+          <button class="chip" data-val="profesionales" onclick="selChipF(this,'fservicio')" data-es="Profesionales" data-en="Portraits">Profesionales</button>
+        </div>
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Tipo de evento / detalle" data-en="Event type / details">Tipo de evento / detalle</span>
+        <input type="text" class="campo-texto" id="f-evento" placeholder="Ej: Partido de fútbol, cumpleaños XV..." oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Ubicación" data-en="Location">Ubicación</span>
+        <input type="text" class="campo-texto" id="f-ubicacion" placeholder="Ej: Buenos Aires, CABA..." oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Fecha estimada" data-en="Estimated date">Fecha estimada</span>
+        <input type="text" class="campo-texto" id="f-fecha" placeholder="Ej: Julio 2025, a confirmar..." oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Tu nombre" data-en="Your name">Tu nombre</span>
+        <input type="text" class="campo-texto" id="f-nombre" placeholder="Ej: Martín García" oninput="calcularFoto()">
+      </div>
+      <div class="campo-grupo">
+        <span class="campo-label" data-es="Nombre de Cuenta" data-en="Account Name">Nombre de Cuenta</span>
+        <div style="display:flex;gap:8px">
+          <select class="campo-select" id="f-red" style="width:auto;min-width:130px" onchange="calcularFoto()">
+            <option value="Instagram">Instagram</option>
+            <option value="TikTok">TikTok</option>
+            <option value="YouTube">YouTube</option>
+            <option value="X">X</option>
+          </select>
+          <input type="text" class="campo-texto" id="f-cuenta" placeholder="@tucuenta" style="flex:1" oninput="calcularFoto()">
+        </div>
+      </div>
+    </div>
+    <div class="cotizador-result-col">
+      <div>
+        <p class="result-estado" id="f-estado" data-es="Completá el formulario" data-en="Fill in the form">Completá el formulario</p>
+        <div class="result-precio" id="f-precio">—</div>
+        <p class="result-detalle" id="f-detalle" data-es="Seleccioná el tipo de fotografía." data-en="Select the photography type.">Seleccioná el tipo de fotografía.</p>
+      </div>
+      <div>
+        <p class="result-note" id="f-note" data-es="* El precio final puede variar según el detalle del evento." data-en="* Final price may vary depending on event details.">* El precio final puede variar según el detalle del evento.</p>
+        <button class="cotizador-cta" id="cta-foto" disabled onclick="enviarWAFoto()" data-es="Consultar por WhatsApp" data-en="Contact via WhatsApp">Consultar por WhatsApp</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -396,7 +537,7 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">YouTube</span><a href="https://youtube.com/@sanbaoestudio" target="_blank" class="ci-valor">San Bao Estudio</a></div>
       <div class="contacto-item"><span class="ci-label">WhatsApp</span><a href="https://wa.me/5491130203625" target="_blank" class="ci-valor">+54 9 11 3020 3625</a></div>
-      <div class="contacto-item"><span class="ci-label">Email</span><a href="/cdn-cgi/l/email-protection#fb889a95999a949e888f8e9f9294bb9c969a9297d5989496" class="ci-valor"><span class="__cf_email__" data-cfemail="7f0c1e111d1e101a0c0b0a1b16103f18121e1613511c1012">[email&#160;protected]</span></a></div>
+      <div class="contacto-item"><span class="ci-label">Email</span><a href="mailto:sanbaoestudio@gmail.com" class="ci-valor">sanbaoestudio@gmail.com</a></div>
     </div>
   </div>
 </section>
@@ -479,7 +620,7 @@ footer{padding:24px 48px;display:flex;justify-content:space-between;border-top:1
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const FOTOS_FUTSAL=['https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg','https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg','https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg','https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg','https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg','https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg','https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg','https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg','https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg','https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg','https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'];
 const FOTOS_VOLEY=['https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg','https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg','https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg','https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg','https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg','https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg','https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'];
 const FOTOS_XV=['https://i.imgur.com/tszLcVK.jpg','https://i.imgur.com/03AyAyj.jpg','https://i.imgur.com/P71DeJ1.jpg','https://i.imgur.com/FaUCTFl.jpg','https://i.imgur.com/LnPy43d.jpg','https://i.imgur.com/Fdy2vHc.jpg','https://i.imgur.com/7UTIsFQ.jpg','https://i.imgur.com/WSjwUpx.jpg','https://i.imgur.com/14u1uOD.jpg','https://i.imgur.com/KB6qcey.jpg','https://i.imgur.com/E6OSnQZ.jpg'];
@@ -504,99 +645,33 @@ function toggleLang(){
   // Recalcular para actualizar moneda
   calcularVideo();
 }
-function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
-function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal,.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid,.proj-sublabel').forEach(el=>obs.observe(el));
-function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
 // ---- TIPO DE CAMBIO ----
-let dolarBlue=1425; // fallback valor actual
-let tcCargado=false;
-async function fetchDolar(){
-  try {
-    const r=await fetch('https://dolarapi.com/v1/dolares/blue');
-    const d=await r.json();
-    if(d.venta){dolarBlue=d.venta;tcCargado=true;}
-  } catch(e){
-    dolarBlue=1425; // fallback si falla la API
-  }
-}
+let dolarBlue=1425;
+async function fetchDolar(){try{const r=await fetch('https://dolarapi.com/v1/dolares/blue');const d=await r.json();if(d.venta)dolarBlue=d.venta;}catch(e){}}
 fetchDolar();
+function formatPrecio(usd){if(langActual==='es'){const pesos=Math.round(usd*dolarBlue);return`<em>~</em>$${pesos.toLocaleString('es-AR')}`;}return`<em>~</em>USD ${usd}`;}
 
-function formatPrecio(usd){
-  if(langActual==='es'){
-    const pesos=Math.round(usd*dolarBlue);
-    return `<em>~</em>$${pesos.toLocaleString('es-AR')}`;
-  } else {
-    return `<em>~</em>USD ${usd}`;
-  }
-}
+// ---- COTIZADOR ----
 const VMULT={urgente:1.5,normal:1.0,flexible:0.85};
 const VLPLAZO={urgente:'Urgente (48 hs)',normal:'Normal (1 semana)',flexible:'Flexible (+2 semanas)'};
 const VPRECIOS={corto:{label:'Edición Formato Corto (Reels · TikTok · YT Shorts)',base:10,unidad:'video'},largo:{label:'Edición Formato Largo',base:20,unidad:'video'},motion:{label:'Edición Motion Graphics',base:15,unidad:'pieza'},integral:{label:'Producción Integral',base:0,unidad:''}};
-const FPRECIOS={deportiva:{label:'Fotografía Deportiva',base:40},eventos:{label:'Fotografía para Eventos',base:50},profesionales:{label:'Fotografía Profesional',base:35}};
+const FPRECIOS={deportiva:{label:'Fotografía Deportiva'},eventos:{label:'Fotografía para Eventos'},profesionales:{label:'Fotografía Profesional'}};
 const vestado={vservicio:null,vplazo:null};
 const festado={fservicio:null};
 
-function switchTab(tab,btn){
-  document.querySelectorAll('.cot-tab').forEach(b=>b.classList.remove('activo'));
-  btn.classList.add('activo');
-  document.getElementById('form-video').style.display=tab==='video'?'':'none';
-  document.getElementById('form-foto').style.display=tab==='foto'?'':'none';
-}
+function switchTab(tab,btn){document.querySelectorAll('.cot-tab').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.getElementById('form-video').style.display=tab==='video'?'':'none';document.getElementById('form-foto').style.display=tab==='foto'?'':'none';}
 
-function selChipV(el,g){
-  document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));
-  el.classList.add('sel');
-  vestado[g]=el.dataset.val;
-  const esIntegral=vestado.vservicio==='integral';
-  document.getElementById('vg-cantidad').style.display=esIntegral?'none':'';
-  document.getElementById('vg-plazo').style.display=esIntegral?'none':'';
-  calcularVideo();
-}
+function selChipV(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');vestado[g]=el.dataset.val;const esIntegral=vestado.vservicio==='integral';document.getElementById('vg-cantidad').style.display=esIntegral?'none':'';document.getElementById('vg-plazo').style.display=esIntegral?'none':'';calcularVideo();}
 
-function selChipF(el,g){
-  document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));
-  el.classList.add('sel');
-  festado[g]=el.dataset.val;
-  calcularFoto();
-}
+function selChipF(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');festado[g]=el.dataset.val;calcularFoto();}
 
 function calcularVideo(){
-  const servicio=vestado.vservicio;
-  const plazo=vestado.vplazo;
+  const servicio=vestado.vservicio,plazo=vestado.vplazo;
   const cant=parseInt(document.getElementById('v-cantidad').value);
-  const nombre=document.getElementById('v-nombre').value.trim();
-  const cuenta=document.getElementById('v-cuenta').value.trim();
   const btn=document.getElementById('cta-video');
-
-  if(!servicio){
-    document.getElementById('v-precio').textContent='—';
-    document.getElementById('v-precio').classList.remove('calculado');
-    document.getElementById('v-estado').textContent='Completá el formulario';
-    document.getElementById('v-detalle').textContent='Seleccioná el tipo de servicio.';
-    btn.disabled=true; return;
-  }
-
-  if(servicio==='integral'){
-    document.getElementById('v-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
-    document.getElementById('v-precio').classList.remove('calculado');
-    document.getElementById('v-estado').textContent='Producción Integral';
-    document.getElementById('v-detalle').innerHTML='Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta.';
-    document.getElementById('v-note').textContent='Sin costo ni compromiso — solo una charla.';
-    btn.disabled=false;
-    return;
-  }
-
-  if(!plazo){
-    document.getElementById('v-precio').textContent='—';
-    document.getElementById('v-precio').classList.remove('calculado');
-    document.getElementById('v-estado').textContent='Falta el plazo de entrega';
-    document.getElementById('v-detalle').textContent='Seleccioná el tiempo de entrega.';
-    btn.disabled=true; return;
-  }
-
+  if(!servicio){document.getElementById('v-precio').textContent='—';document.getElementById('v-precio').classList.remove('calculado');document.getElementById('v-estado').textContent=langActual==='es'?'Completá el formulario':'Fill in the form';document.getElementById('v-detalle').textContent=langActual==='es'?'Seleccioná el tipo de servicio.':'Select the service type.';btn.disabled=true;return;}
+  if(servicio==='integral'){document.getElementById('v-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';document.getElementById('v-precio').classList.remove('calculado');document.getElementById('v-estado').textContent='Producción Integral';document.getElementById('v-detalle').innerHTML=langActual==='es'?'Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta.':'Every project is unique.<br><strong>Let\'s talk</strong> and build a proposal.';document.getElementById('v-note').textContent=langActual==='es'?'Sin costo ni compromiso — solo una charla.':'No cost or commitment — just a chat.';btn.disabled=false;return;}
+  if(!plazo){document.getElementById('v-precio').textContent='—';document.getElementById('v-precio').classList.remove('calculado');document.getElementById('v-estado').textContent=langActual==='es'?'Falta el plazo de entrega':'Missing delivery time';document.getElementById('v-detalle').textContent=langActual==='es'?'Seleccioná el tiempo de entrega.':'Select the delivery time.';btn.disabled=true;return;}
   const s=VPRECIOS[servicio];
   const precio=Math.round(s.base*cant*VMULT[plazo]);
   document.getElementById('v-precio').innerHTML=formatPrecio(precio);
@@ -610,24 +685,18 @@ function calcularVideo(){
 function calcularFoto(){
   const servicio=festado.fservicio;
   const btn=document.getElementById('cta-foto');
-  if(!servicio){
-    document.getElementById('f-precio').textContent='—';
-    document.getElementById('f-precio').classList.remove('calculado');
-    document.getElementById('f-estado').textContent='Completá el formulario';
-    btn.disabled=true; return;
-  }
+  if(!servicio){document.getElementById('f-precio').textContent='—';document.getElementById('f-precio').classList.remove('calculado');document.getElementById('f-estado').textContent=langActual==='es'?'Completá el formulario':'Fill in the form';btn.disabled=true;return;}
   const s=FPRECIOS[servicio];
   document.getElementById('f-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
   document.getElementById('f-precio').classList.remove('calculado');
   document.getElementById('f-estado').textContent=s.label;
-  document.getElementById('f-detalle').innerHTML='Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta para vos.';
-  document.getElementById('f-note').textContent='Sin costo ni compromiso — solo una charla.';
+  document.getElementById('f-detalle').innerHTML=langActual==='es'?'Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta para vos.':'Every project is unique.<br><strong>Let\'s talk</strong> and build a proposal.';
+  document.getElementById('f-note').textContent=langActual==='es'?'Sin costo ni compromiso — solo una charla.':'No cost or commitment — just a chat.';
   btn.disabled=false;
 }
 
 function enviarWAVideo(){
-  const servicio=vestado.vservicio;
-  const plazo=vestado.vplazo;
+  const servicio=vestado.vservicio,plazo=vestado.vplazo;
   const cant=document.getElementById('v-cantidad').value;
   const nombre=document.getElementById('v-nombre').value.trim()||'(no indicado)';
   const red=document.getElementById('v-red').value;
@@ -635,12 +704,8 @@ function enviarWAVideo(){
   const cuentaCompleta=`${red}: ${cuenta}`;
   const s=VPRECIOS[servicio];
   let msg='';
-  if(servicio==='integral'){
-    msg=`Hola Luca! Vengo de tu web, me interesa consultar sobre Producción Integral.\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
-  } else {
-    const precio=Math.round(s.base*parseInt(cant)*VMULT[plazo]);
-    msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nFormato de edición: ${s.label}\nCantidad de videos: ${cant}\nTiempo de entrega: ${VLPLAZO[plazo]}\nValor estimado: ~USD ${precio}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
-  }
+  if(servicio==='integral'){msg=`Hola Luca! Vengo de tu web, me interesa consultar sobre Producción Integral.\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;}
+  else{const precio=Math.round(s.base*parseInt(cant)*VMULT[plazo]);msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nFormato de edición: ${s.label}\nCantidad de videos: ${cant}\nTiempo de entrega: ${VLPLAZO[plazo]}\nValor estimado: ~USD ${precio}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;}
   window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
 }
 
@@ -657,6 +722,13 @@ function enviarWAFoto(){
   const msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nTipo de Evento: ${evento}\nUbicación: ${ubicacion}\nFecha estimada: ${fecha}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
   window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
 }
+
+function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
+function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
+document.querySelectorAll('.reveal,.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid,.proj-sublabel').forEach(el=>obs.observe(el));
+function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
 function abrirVideo(id){document.getElementById('iframeVideo').src='https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0';document.getElementById('modalVideo').classList.add('abierto');document.body.style.overflow='hidden'}
 function cerrarVideo(e){if(e&&e.target!==document.getElementById('modalVideo')&&!e.target.classList.contains('modal-cerrar'))return;document.getElementById('iframeVideo').src='';document.getElementById('modalVideo').classList.remove('abierto');document.body.style.overflow=''}
 let fotosActual=[],fotoIdx=0;
