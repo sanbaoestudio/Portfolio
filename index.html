@@ -99,10 +99,10 @@ section{padding:0 48px 100px}
 .chips .chip small{display:block;font-size:0.5rem;opacity:0.7;margin-top:2px;letter-spacing:0.08em}
 
 /* COTIZADOR */
-#cotizador{padding-top:20px;padding-bottom:80px}
-.cotizador-wrap{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.cotizador-form-col{padding:40px;border-radius:2px}
-.cotizador-result-col{padding:40px;border-radius:2px;display:flex;flex-direction:column;justify-content:space-between;min-height:460px;background:rgba(0,95,115,0.06);border:1px solid rgba(0,95,115,0.2);}
+
+
+
+
 .campo-grupo{margin-bottom:24px}
 .campo-label{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--secundario);display:block;margin-bottom:8px;font-weight:400}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
@@ -122,10 +122,10 @@ section{padding:0 48px 100px}
 .result-detalle{font-size:0.72rem;color:var(--secundario);line-height:1.8;min-height:80px;font-weight:500}
 .result-detalle strong{color:var(--negro);font-weight:700}
 .result-note{font-size:0.62rem;color:var(--gris);letter-spacing:0.08em;font-style:italic;margin-bottom:20px}
-.cotizador-cta{display:inline-flex;align-items:center;gap:10px;background:var(--primario);color:white;font-family:var(--cond);font-size:0.75rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;padding:14px 24px;transition:all 0.2s;cursor:pointer;border:none;width:100%;justify-content:center}
-.cotizador-cta:hover{background:#004d5e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,95,115,0.3)}
-.cotizador-cta::after{content:'→'}
-.cotizador-cta:disabled{background:rgba(14,14,14,0.1);color:var(--gris);cursor:not-allowed;transform:none;box-shadow:none}
+
+
+
+
 
 /* FILTROS */
 .filtros{display:flex;gap:8px;margin-bottom:32px}
@@ -249,13 +249,6 @@ section{padding:0 48px 100px}
   a,button,[onclick]{cursor:none}
 }
 
-/* WA FLOAT */
-.wa-float{position:fixed;bottom:32px;right:32px;z-index:400;display:flex;align-items:center;gap:12px;background:#25D366;color:white;font-family:var(--cond);font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;padding:14px 22px 14px 18px;border-radius:50px;box-shadow:0 8px 30px rgba(37,211,102,0.4);transform:translateY(80px);opacity:0;transition:transform 0.4s cubic-bezier(.16,1,.3,1),opacity 0.4s,box-shadow 0.3s}
-.wa-float.show{transform:translateY(0);opacity:1}
-.wa-float:hover{box-shadow:0 12px 40px rgba(37,211,102,0.6);transform:translateY(-3px)}
-.wa-float svg{width:20px;height:20px;flex-shrink:0}
-@media(max-width:900px){.wa-float{bottom:20px;right:16px;padding:12px 16px 12px 14px;font-size:0.65rem}}
-
 /* STATS */
 .stats-band{padding:60px 48px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:0;background:rgba(255,255,255,0.25)}
 .stat-item{padding:0 32px;border-right:1px solid var(--linea);display:flex;flex-direction:column;gap:6px}
@@ -337,9 +330,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
   section{padding:0 20px 60px}
   .grilla{grid-template-columns:repeat(2,1fr)}
   .card.doble{grid-column:span 2}
-  .servicios-grid,.testimonios-grid,.cotizador-wrap,.contacto-wrap{grid-template-columns:1fr}
-  .cotizador-form-col,.cotizador-result-col{padding:24px 20px}
-  .cotizador-result-col{min-height:auto}
+  .servicios-grid,.testimonios-grid,.contacto-wrap{grid-template-columns:1fr}
   footer{flex-direction:column;gap:6px;padding:20px}
   .lb-prev{left:-8px}
   .lb-next{right:-8px}
@@ -348,7 +339,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 
 /* SERVICIOS TEXTO */
 .servicios-texto{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px;align-items:start;border-top:1px solid var(--linea);padding-top:48px}
-.srv-bloque{}
+
 .srv-bloque-titulo{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--acento);margin-bottom:12px}
 .srv-bloque-desc{font-size:0.72rem;color:var(--gris);line-height:1.9}
 .srv-contacto{display:flex;flex-direction:column;justify-content:space-between;gap:24px;border-left:1px solid var(--linea);padding-left:40px}
@@ -366,17 +357,12 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-<a href="https://wa.me/5491130203625" target="_blank" class="wa-float" id="waFloat">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-  <span data-es="Hablemos" data-en="Let's talk">Hablemos</span>
-</a>
 
 <nav id="nav">
   <a href="#" class="nav-logo">San Bao Estudio</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#servicios" onclick="cerrarNav()" data-es="Servicios" data-en="Services">Servicios</a></li>
     <li><a href="#proyectos" onclick="cerrarNav()" data-es="Proyectos" data-en="Projects">Proyectos</a></li>
-    <li><a href="#cotizador" onclick="cerrarNav()" data-es="Cotizá" data-en="Quote">Cotizá</a></li>
     <li><a href="#contacto" onclick="cerrarNav()" data-es="Contacto" data-en="Contact">Contacto</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:8px">
@@ -395,7 +381,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
       <strong class="hero-tagline" data-es="Transformo ideas en contenido visual que conecta." data-en="I turn ideas into visual content that connects.">Transformo ideas en contenido visual que conecta.</strong>
       <span class="hero-descriptor" data-es="Video · Motion Graphics · Fotografía · Buenos Aires" data-en="Video · Motion Graphics · Photography · Buenos Aires">Video · Motion Graphics · Fotografía · Buenos Aires</span>
     </p>
-    <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn glow" data-es="Hablemos" data-en="Let's talk">Hablemos</a>
+    <a href="#contacto" class="cta-btn glow" data-es="Contacto" data-en="Contact">Contacto</a>
   </div>
   <div class="hero-right">
     <span class="tag glass">Reels & Short-form</span>
@@ -434,10 +420,10 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
       <div class="srv-contacto-links">
         <a href="https://instagram.com/sanbaoestudio" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">Instagram</span><span class="srv-contacto-val">@sanbaoestudio</span></a>
         <a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">TikTok</span><span class="srv-contacto-val">@sanbaoestudio</span></a>
-        <a href="https://wa.me/5491130203625" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">WhatsApp</span><span class="srv-contacto-val">+54 9 11 3020 3625</span></a>
+        <span class="srv-contacto-item"><span class="srv-contacto-label">Teléfono</span><span class="srv-contacto-val">+54 9 11 3020 3625</span></span>
         <a href="mailto:sanbaoestudio@gmail.com" class="srv-contacto-item"><span class="srv-contacto-label">Email</span><span class="srv-contacto-val">sanbaoestudio@gmail.com</span></a>
       </div>
-      <a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" data-es="Hablemos →" data-en="Let's talk →">Hablemos →</a>
+      <a href="#contacto" class="cta-btn" data-es="Contacto →" data-en="Contact →">Contacto →</a>
     </div>
   </div>
 </section>
@@ -477,117 +463,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
   </div>
 </section>
 
-<section id="cotizador">
-  <div class="sec-label reveal" data-es="Trabajemos juntos" data-en="Let's work together">Trabajemos juntos</div>
-  <div class="sec-title reveal" data-es="Cotizá tu proyecto" data-en="Quote your project">Cotizá tu proyecto</div>
-  <div class="cot-tabs reveal">
-    <button class="cot-tab activo" onclick="switchTab('video',this)" data-es="Video" data-en="Video">Video</button>
-    <button class="cot-tab" onclick="switchTab('foto',this)" data-es="Fotografía" data-en="Photography">Fotografía</button>
-  </div>
-  <div class="cotizador-wrap reveal" id="form-video">
-    <div class="cotizador-form-col glass">
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Tipo de servicio" data-en="Service type">Tipo de servicio</span>
-        <div class="chips" id="chips-vservicio">
-          <button class="chip" data-val="corto" onclick="selChipV(this,'vservicio')" data-es="Formato Corto" data-en="Short Format">Formato Corto<br><small>Reels · TikTok · YT Shorts</small></button>
-          <button class="chip" data-val="largo" onclick="selChipV(this,'vservicio')" data-es="Formato Largo" data-en="Long Format">Formato Largo</button>
-          <button class="chip" data-val="motion" onclick="selChipV(this,'vservicio')">Motion Graphics</button>
-          <button class="chip" data-val="integral" onclick="selChipV(this,'vservicio')" data-es="Producción Integral" data-en="Full Production">Producción Integral</button>
-        </div>
-      </div>
-      <div class="campo-grupo" id="vg-cantidad">
-        <span class="campo-label" data-es="Cantidad de videos" data-en="Number of videos">Cantidad de videos</span>
-        <div class="slider-wrap"><input type="range" id="v-cantidad" min="1" max="20" value="1" oninput="document.getElementById('v-cant-val').textContent=this.value;calcularVideo()"><span class="slider-val" id="v-cant-val">1</span></div>
-      </div>
-      <div class="campo-grupo" id="vg-plazo">
-        <span class="campo-label" data-es="Tiempo de entrega" data-en="Delivery time">Tiempo de entrega</span>
-        <div class="chips" id="chips-vplazo">
-          <button class="chip" data-val="urgente" onclick="selChipV(this,'vplazo')" data-es="Urgente (48 hs)" data-en="Urgent (48 hs)">Urgente (48 hs)</button>
-          <button class="chip" data-val="normal" onclick="selChipV(this,'vplazo')" data-es="Normal (1 semana)" data-en="Normal (1 week)">Normal (1 semana)</button>
-          <button class="chip" data-val="flexible" onclick="selChipV(this,'vplazo')" data-es="Flexible (+2 semanas)" data-en="Flexible (+2 weeks)">Flexible (+2 semanas)</button>
-        </div>
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Tu nombre" data-en="Your name">Tu nombre</span>
-        <input type="text" class="campo-texto" id="v-nombre" placeholder="Ej: Martín García" oninput="calcularVideo()">
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Nombre de Cuenta" data-en="Account Name">Nombre de Cuenta</span>
-        <div style="display:flex;gap:8px">
-          <select class="campo-select" id="v-red" style="width:auto;min-width:130px" onchange="calcularVideo()">
-            <option value="Instagram">Instagram</option>
-            <option value="TikTok">TikTok</option>
-            <option value="YouTube">YouTube</option>
-            <option value="X">X</option>
-          </select>
-          <input type="text" class="campo-texto" id="v-cuenta" placeholder="@tucuenta" style="flex:1" oninput="calcularVideo()">
-        </div>
-      </div>
-    </div>
-    <div class="cotizador-result-col">
-      <div>
-        <p class="result-estado" id="v-estado" data-es="Completá el formulario" data-en="Fill in the form">Completá el formulario</p>
-        <div class="result-precio" id="v-precio">—</div>
-        <p class="result-detalle" id="v-detalle" data-es="Seleccioná el tipo de servicio, cantidad y plazo." data-en="Select the service type, quantity and deadline.">Seleccioná el tipo de servicio, cantidad y plazo.</p>
-      </div>
-      <div>
-        <p class="result-note" id="v-note" data-es="* El precio final puede variar según el detalle del proyecto." data-en="* Final price may vary depending on project details.">* El precio final puede variar según el detalle del proyecto.</p>
-        <button class="cotizador-cta" id="cta-video" disabled onclick="enviarWAVideo()" data-es="Consultar por WhatsApp" data-en="Contact via WhatsApp">Consultar por WhatsApp</button>
-      </div>
-    </div>
-  </div>
-  <div class="cotizador-wrap reveal" id="form-foto" style="display:none">
-    <div class="cotizador-form-col glass">
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Tipo de fotografía" data-en="Photography type">Tipo de fotografía</span>
-        <div class="chips" id="chips-fservicio">
-          <button class="chip" data-val="deportiva" onclick="selChipF(this,'fservicio')" data-es="Deportiva" data-en="Sports">Deportiva</button>
-          <button class="chip" data-val="eventos" onclick="selChipF(this,'fservicio')" data-es="Eventos" data-en="Events">Eventos</button>
-          <button class="chip" data-val="profesionales" onclick="selChipF(this,'fservicio')" data-es="Profesionales" data-en="Portraits">Profesionales</button>
-        </div>
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Tipo de evento / detalle" data-en="Event type / details">Tipo de evento / detalle</span>
-        <input type="text" class="campo-texto" id="f-evento" placeholder="Ej: Partido de fútbol, cumpleaños XV..." oninput="calcularFoto()">
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Ubicación" data-en="Location">Ubicación</span>
-        <input type="text" class="campo-texto" id="f-ubicacion" placeholder="Ej: Buenos Aires, CABA..." oninput="calcularFoto()">
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Fecha estimada" data-en="Estimated date">Fecha estimada</span>
-        <input type="text" class="campo-texto" id="f-fecha" placeholder="Ej: Julio 2025, a confirmar..." oninput="calcularFoto()">
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Tu nombre" data-en="Your name">Tu nombre</span>
-        <input type="text" class="campo-texto" id="f-nombre" placeholder="Ej: Martín García" oninput="calcularFoto()">
-      </div>
-      <div class="campo-grupo">
-        <span class="campo-label" data-es="Nombre de Cuenta" data-en="Account Name">Nombre de Cuenta</span>
-        <div style="display:flex;gap:8px">
-          <select class="campo-select" id="f-red" style="width:auto;min-width:130px" onchange="calcularFoto()">
-            <option value="Instagram">Instagram</option>
-            <option value="TikTok">TikTok</option>
-            <option value="YouTube">YouTube</option>
-            <option value="X">X</option>
-          </select>
-          <input type="text" class="campo-texto" id="f-cuenta" placeholder="@tucuenta" style="flex:1" oninput="calcularFoto()">
-        </div>
-      </div>
-    </div>
-    <div class="cotizador-result-col">
-      <div>
-        <p class="result-estado" id="f-estado" data-es="Completá el formulario" data-en="Fill in the form">Completá el formulario</p>
-        <div class="result-precio" id="f-precio">—</div>
-        <p class="result-detalle" id="f-detalle" data-es="Seleccioná el tipo de fotografía." data-en="Select the photography type.">Seleccioná el tipo de fotografía.</p>
-      </div>
-      <div>
-        <p class="result-note" id="f-note" data-es="* El precio final puede variar según el detalle del evento." data-en="* Final price may vary depending on event details.">* El precio final puede variar según el detalle del evento.</p>
-        <button class="cotizador-cta" id="cta-foto" disabled onclick="enviarWAFoto()" data-es="Consultar por WhatsApp" data-en="Contact via WhatsApp">Consultar por WhatsApp</button>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <section id="testimonios">
   <div class="sec-label reveal" data-es="Lo que dicen" data-en="What they say">Lo que dicen</div>
@@ -601,12 +477,12 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 
 <section id="contacto">
   <div class="contacto-wrap reveal">
-    <div><h2 class="contacto-titulo" data-es="Trabajemos<br><em>juntos</em>" data-en="Let's work<br><em>together</em>">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc" data-es="Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto" data-en="Available for audiovisual projects, remote and international collaborations.<br>Buenos Aires · Remote">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto</p><a href="https://wa.me/5491130203625" target="_blank" class="cta-btn" style="margin-top:28px" data-es="Contactar por WhatsApp" data-en="Contact via WhatsApp">Contactar por WhatsApp</a></div>
+    <div><h2 class="contacto-titulo" data-es="Trabajemos<br><em>juntos</em>" data-en="Let's work<br><em>together</em>">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc" data-es="Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto" data-en="Available for audiovisual projects, remote and international collaborations.<br>Buenos Aires · Remote">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto</p><a href="mailto:sanbaoestudio@gmail.com" class="cta-btn" style="margin-top:28px" data-es="Enviar un email" data-en="Send an email">Enviar un email</a></div>
     <div class="contacto-items">
       <div class="contacto-item"><span class="ci-label">Instagram</span><a href="https://instagram.com/sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">YouTube</span><a href="https://youtube.com/@sanbaoestudio" target="_blank" class="ci-valor">San Bao Estudio</a></div>
-      <div class="contacto-item"><span class="ci-label">WhatsApp</span><a href="https://wa.me/5491130203625" target="_blank" class="ci-valor">+54 9 11 3020 3625</a></div>
+      <div class="contacto-item"><span class="ci-label">Teléfono</span><span class="ci-valor">+54 9 11 3020 3625</span></div>
       <div class="contacto-item"><span class="ci-label">Email</span><a href="mailto:sanbaoestudio@gmail.com" class="ci-valor">sanbaoestudio@gmail.com</a></div>
     </div>
   </div>
@@ -721,147 +597,22 @@ function toggleLang(){
       el.innerHTML=txt;
     }
   });
-  // Recalcular para actualizar moneda
-  calcularVideo();
-}
-// ---- TIPO DE CAMBIO ----
-let dolarBlue=1425;
-async function fetchDolar(){try{const r=await fetch('https://dolarapi.com/v1/dolares/blue');const d=await r.json();if(d.venta)dolarBlue=d.venta;}catch(e){}}
-fetchDolar();
-function formatPrecio(usd){if(langActual==='es'){const pesos=Math.round(usd*dolarBlue);return`<em>~</em>$${pesos.toLocaleString('es-AR')}`;}return`<em>~</em>USD ${usd}`;}
-
-// ---- COTIZADOR ----
-const VMULT={urgente:1.5,normal:1.0,flexible:0.85};
-const VLPLAZO={urgente:'Urgente (48 hs)',normal:'Normal (1 semana)',flexible:'Flexible (+2 semanas)'};
-const VPRECIOS={corto:{label:'Edición Formato Corto (Reels · TikTok · YT Shorts)',base:10,unidad:'video'},largo:{label:'Edición Formato Largo',base:20,unidad:'video'},motion:{label:'Edición Motion Graphics',base:15,unidad:'pieza'},integral:{label:'Producción Integral',base:0,unidad:''}};
-const FPRECIOS={deportiva:{label:'Fotografía Deportiva'},eventos:{label:'Fotografía para Eventos'},profesionales:{label:'Fotografía Profesional'}};
-const vestado={vservicio:null,vplazo:null};
-const festado={fservicio:null};
-
-function switchTab(tab,btn){document.querySelectorAll('.cot-tab').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.getElementById('form-video').style.display=tab==='video'?'':'none';document.getElementById('form-foto').style.display=tab==='foto'?'':'none';}
-
-function selChipV(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');vestado[g]=el.dataset.val;const esIntegral=vestado.vservicio==='integral';document.getElementById('vg-cantidad').style.display=esIntegral?'none':'';document.getElementById('vg-plazo').style.display=esIntegral?'none':'';calcularVideo();}
-
-function selChipF(el,g){document.querySelectorAll(`#chips-${g} .chip`).forEach(c=>c.classList.remove('sel'));el.classList.add('sel');festado[g]=el.dataset.val;calcularFoto();}
-
-function calcularVideo(){
-  const servicio=vestado.vservicio,plazo=vestado.vplazo;
-  const cant=parseInt(document.getElementById('v-cantidad').value);
-  const btn=document.getElementById('cta-video');
-  if(!servicio){document.getElementById('v-precio').textContent='—';document.getElementById('v-precio').classList.remove('calculado');document.getElementById('v-estado').textContent=langActual==='es'?'Completá el formulario':'Fill in the form';document.getElementById('v-detalle').textContent=langActual==='es'?'Seleccioná el tipo de servicio.':'Select the service type.';btn.disabled=true;return;}
-  if(servicio==='integral'){document.getElementById('v-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';document.getElementById('v-precio').classList.remove('calculado');document.getElementById('v-estado').textContent='Producción Integral';document.getElementById('v-detalle').innerHTML=langActual==='es'?'Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta.':'Every project is unique.<br><strong>Let\'s talk</strong> and build a proposal.';document.getElementById('v-note').textContent=langActual==='es'?'Sin costo ni compromiso — solo una charla.':'No cost or commitment — just a chat.';btn.disabled=false;return;}
-  if(!plazo){document.getElementById('v-precio').textContent='—';document.getElementById('v-precio').classList.remove('calculado');document.getElementById('v-estado').textContent=langActual==='es'?'Falta el plazo de entrega':'Missing delivery time';document.getElementById('v-detalle').textContent=langActual==='es'?'Seleccioná el tiempo de entrega.':'Select the delivery time.';btn.disabled=true;return;}
-  const s=VPRECIOS[servicio];
-  const precio=Math.round(s.base*cant*VMULT[plazo]);
-  document.getElementById('v-precio').innerHTML=formatPrecio(precio);
-  document.getElementById('v-precio').classList.add('calculado');
-  document.getElementById('v-estado').textContent=langActual==='es'?'Cotización estimada':'Estimated quote';
-  document.getElementById('v-detalle').innerHTML=`<strong>${cant} ${s.unidad}${cant>1?'s':''}</strong> — ${s.label}<br>Plazo: <strong>${VLPLAZO[plazo]}</strong>`;
-  document.getElementById('v-note').textContent=langActual==='es'?'* Estimación base. El precio final puede variar.':'* Base estimate. Final price may vary.';
-  btn.disabled=false;
 }
 
-function calcularFoto(){
-  const servicio=festado.fservicio;
-  const btn=document.getElementById('cta-foto');
-  if(!servicio){document.getElementById('f-precio').textContent='—';document.getElementById('f-precio').classList.remove('calculado');document.getElementById('f-estado').textContent=langActual==='es'?'Completá el formulario':'Fill in the form';btn.disabled=true;return;}
-  const s=FPRECIOS[servicio];
-  document.getElementById('f-precio').innerHTML='<span style="font-size:1.6rem;color:var(--primario)">A medida</span>';
-  document.getElementById('f-precio').classList.remove('calculado');
-  document.getElementById('f-estado').textContent=s.label;
-  document.getElementById('f-detalle').innerHTML=langActual==='es'?'Cada proyecto es único.<br><strong>Hablemos</strong> y armamos una propuesta para vos.':'Every project is unique.<br><strong>Let\'s talk</strong> and build a proposal.';
-  document.getElementById('f-note').textContent=langActual==='es'?'Sin costo ni compromiso — solo una charla.':'No cost or commitment — just a chat.';
-  btn.disabled=false;
-}
-
-function enviarWAVideo(){
-  const servicio=vestado.vservicio,plazo=vestado.vplazo;
-  const cant=document.getElementById('v-cantidad').value;
-  const nombre=document.getElementById('v-nombre').value.trim()||'(no indicado)';
-  const red=document.getElementById('v-red').value;
-  const cuenta=document.getElementById('v-cuenta').value.trim()||'(no indicada)';
-  const cuentaCompleta=`${red}: ${cuenta}`;
-  const s=VPRECIOS[servicio];
-  let msg='';
-  if(servicio==='integral'){msg=`Hola Luca! Vengo de tu web, me interesa consultar sobre Producción Integral.\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;}
-  else{const precio=Math.round(s.base*parseInt(cant)*VMULT[plazo]);msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nFormato de edición: ${s.label}\nCantidad de videos: ${cant}\nTiempo de entrega: ${VLPLAZO[plazo]}\nValor estimado: ~USD ${precio}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;}
-  window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
-}
-
-function enviarWAFoto(){
-  const servicio=festado.fservicio;
-  const s=FPRECIOS[servicio];
-  const evento=document.getElementById('f-evento').value.trim()||'(no indicado)';
-  const ubicacion=document.getElementById('f-ubicacion').value.trim()||'(no indicada)';
-  const fecha=document.getElementById('f-fecha').value.trim()||'(no indicada)';
-  const nombre=document.getElementById('f-nombre').value.trim()||'(no indicado)';
-  const red=document.getElementById('f-red').value;
-  const cuenta=document.getElementById('f-cuenta').value.trim()||'(no indicada)';
-  const cuentaCompleta=`${red}: ${cuenta}`;
-  const msg=`Hola Luca! Me interesan tus servicios de ${s.label}\nTipo de Evento: ${evento}\nUbicación: ${ubicacion}\nFecha estimada: ${fecha}\nMe contás un poco más?\nMi nombre es: ${nombre}\nMi cuenta es: ${cuentaCompleta}`;
-  window.open('https://wa.me/5491130203625?text='+encodeURIComponent(msg),'_blank');
-}
-
-function toggleNav(){document.getElementById('navLinks').classList.toggle('open');document.getElementById('hamburger').classList.toggle('open')}
-function cerrarNav(){document.getElementById('navLinks').classList.remove('open');document.getElementById('hamburger').classList.remove('open')}
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
-const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:0.1});
-document.querySelectorAll('.reveal,.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid,.proj-sublabel').forEach(el=>obs.observe(el));
-function filtrar(cat,btn){document.querySelectorAll('.filtro').forEach(b=>b.classList.remove('activo'));btn.classList.add('activo');document.querySelectorAll('.card').forEach(c=>{c.style.display=(cat==='todos'||c.dataset.cat===cat)?'':'none'})}
-function abrirVideo(id){document.getElementById('iframeVideo').src='https://player.vimeo.com/video/'+id+'?autoplay=1&title=0&byline=0&portrait=0';document.getElementById('modalVideo').classList.add('abierto');document.body.style.overflow='hidden'}
-function cerrarVideo(e){if(e&&e.target!==document.getElementById('modalVideo')&&!e.target.classList.contains('modal-cerrar'))return;document.getElementById('iframeVideo').src='';document.getElementById('modalVideo').classList.remove('abierto');document.body.style.overflow=''}
-let fotosActual=[],fotoIdx=0;
-function abrirFotos(f,i){fotosActual=f;fotoIdx=i;mostrarFoto();document.getElementById('lightbox').classList.add('abierto');document.body.style.overflow='hidden'}
-function mostrarFoto(){document.getElementById('lbImg').src=fotosActual[fotoIdx];document.getElementById('lbCounter').textContent=(fotoIdx+1)+' / '+fotosActual.length}
-function navFoto(d){fotoIdx=(fotoIdx+d+fotosActual.length)%fotosActual.length;mostrarFoto()}
-function cerrarFotos(e){if(e&&e.target!==document.getElementById('lightbox')&&!e.target.classList.contains('lb-cerrar'))return;document.getElementById('lightbox').classList.remove('abierto');document.getElementById('lbImg').src='';document.body.style.overflow=''}
-function abrirSelectorMusica(){document.getElementById('selectorMusica').classList.add('abierto');document.body.style.overflow='hidden'}
-function abrirSelectorEventos(){document.getElementById('selectorEventos').classList.add('abierto');document.body.style.overflow='hidden'}
-function abrirSelectorDeportiva(){document.getElementById('selectorDeportiva').classList.add('abierto');document.body.style.overflow='hidden'}
-function cerrarSelector(id){document.getElementById(id).classList.remove('abierto');document.body.style.overflow=''}
-function abrirDesdeSelector(selectorId,fotos,titulo){cerrarSelector(selectorId);if(fotos&&fotos.length>0){abrirGaleria(fotos,titulo||'')}else{alert('Próximamente — pronto vas a poder ver este álbum.')}}
-
-// GALERÍA GRILLA
-let galeriaFotos=[];
-function abrirGaleria(fotos,titulo){
-  galeriaFotos=fotos;
-  document.getElementById('galeriaTitulo').textContent=titulo;
-  document.getElementById('galeriaContador').textContent=fotos.length+' fotos';
-  const grid=document.getElementById('galeriaGrid');
-  grid.innerHTML='';
-  fotos.forEach((src,i)=>{
-    const item=document.createElement('div');
-    item.className='galeria-item';
-    item.innerHTML=`<img src="${src}" loading="lazy" alt="foto ${i+1}"><span class="galeria-item-num">${i+1}</span>`;
-    item.onclick=()=>{cerrarGaleria();abrirFotos(fotos,i)};
-    grid.appendChild(item);
+// ---- REVEAL ANIMATIONS ----
+const obsReveal = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); obsReveal.unobserve(e.target); }
   });
-  document.getElementById('galeria').classList.add('abierta');
-  document.body.style.overflow='hidden';
-}
-function cerrarGaleria(){
-  document.getElementById('galeria').classList.remove('abierta');
-  document.body.style.overflow='';
-}
-function abrirGaleriaDesdeSlider(){
-  cerrarFotos({target:document.getElementById('lightbox')});
-  abrirGaleria(fotosActual,'');
-}
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){
-    cerrarVideo({target:document.getElementById('modalVideo')});
-    cerrarFotos({target:document.getElementById('lightbox')});
-    cerrarGaleria();
-    cerrarSelector('selectorMusica');
-    cerrarSelector('selectorEventos');
-    cerrarSelector('selectorDeportiva');
-    document.body.style.overflow='';
-  }
-  if(document.getElementById('lightbox').classList.contains('abierto')){
-    if(e.key==='ArrowLeft')navFoto(-1);
-    if(e.key==='ArrowRight')navFoto(1);
-  }
-});
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obsReveal.observe(el));
+
+const obsGrids = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){ e.target.classList.add('visible'); obsGrids.unobserve(e.target); }
+  });
+}, {threshold:0.05});
+document.querySelectorAll('.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid').forEach(el => obsGrids.observe(el));
 
 // === SCROLL PROGRESS BAR ===
 const progressBar = document.getElementById('scroll-progress');
@@ -899,19 +650,11 @@ window.addEventListener('scroll', () => {
   });
 })();
 
-// === WHATSAPP FLOAT BUTTON ===
-(function(){
-  const wa = document.getElementById('waFloat');
-  if(!wa) return;
-  window.addEventListener('scroll', () => {
-    if(window.scrollY > 400) wa.classList.add('show');
-    else wa.classList.remove('show');
-  }, {passive: true});
-})();
+
 
 // === ACTIVE NAV INDICATOR ===
 (function(){
-  const sections = document.querySelectorAll('section[id], div[id="cotizador"]');
+  const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.nav-links a');
   const obs2 = new IntersectionObserver(entries => {
     entries.forEach(e => {
