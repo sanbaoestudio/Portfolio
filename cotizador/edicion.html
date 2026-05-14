@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edición de Video — Cotizador San Bao</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#F0EDE6;--negro:#1a3448;--gris:#354259;
+  --linea:rgba(53,66,89,0.18);--acento:#E8622A;
+  --primario:#00536a;--secundario:#354259;
+  --glass:rgba(255,255,255,0.55);--glass-border:rgba(255,255,255,0.7);
+  --mono:'DM Mono',monospace;--display:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
+}
+body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:400;overflow-x:hidden;min-height:100vh;}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.2;}
+body::before{width:600px;height:600px;background:radial-gradient(circle,#005f73 0%,transparent 70%);top:-100px;right:-100px;animation:f1 12s ease-in-out infinite;}
+body::after{width:400px;height:400px;background:radial-gradient(circle,#354259 0%,transparent 70%);bottom:-80px;left:-80px;animation:f2 15s ease-in-out infinite;}
+@keyframes f1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px}
+.glass{background:var(--glass);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid var(--glass-border);box-shadow:0 8px 32px rgba(14,14,14,0.07),inset 0 1px 0 rgba(255,255,255,0.8);}
+nav,section,footer{position:relative;z-index:2}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:160;display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(240,237,230,0.55);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.6);gap:1rem;flex-wrap:wrap;}
+.nav-left{display:flex;align-items:center;gap:20px}
+.nav-back{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gris);text-decoration:none;transition:color 0.2s}
+.nav-back:hover{color:var(--acento)}
+.nav-logo{font-family:var(--cond);font-size:0.95rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--secundario);text-decoration:none;opacity:0.85}
+.nav-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--linea);color:var(--secundario);padding:4px 10px;background:rgba(255,255,255,0.4)}
+
+/* FX BAR */
+.fx-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fx-pill{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px;cursor:pointer;background:rgba(255,255,255,0.45);border:1px solid var(--glass-border);transition:all 0.2s;color:var(--secundario);display:flex;align-items:center;gap:5px;user-select:none}
+.fx-pill:hover{background:rgba(255,255,255,0.75);color:var(--negro)}
+.fx-pill.on{background:var(--primario);color:white;border-color:var(--primario)}
+.fx-pill .pv{font-weight:400;opacity:0.8}
+.live-dot{width:6px;height:6px;border-radius:50%;background:rgba(53,66,89,0.25);display:inline-block}
+.live-dot.on{background:#2db568;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.live-label{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris)}
+
+/* LAYOUT */
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px 8rem}
+
+/* PAGE HERO */
+.page-hero{padding:56px 0 44px;border-bottom:1px solid var(--linea);margin-bottom:44px}
+.eyebrow{font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px;margin-bottom:16px;font-weight:600}
+.eyebrow::before{content:'';width:30px;height:1px;background:var(--acento)}
+.page-title{font-family:var(--display);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro)}
+.page-title em{font-style:italic;color:var(--acento)}
+.page-sub{font-family:var(--cond);font-size:1rem;color:var(--gris);margin-top:12px}
+
+/* TABS */
+.tabs{display:flex;gap:0;margin-bottom:36px;border-bottom:2px solid var(--linea)}
+.tab-btn{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;padding:10px 24px;cursor:pointer;background:rgba(255,255,255,0.35);border:1px solid var(--glass-border);border-bottom:none;color:var(--secundario);transition:all 0.2s;margin-bottom:-2px}
+.tab-btn.on{background:var(--secundario);color:white;border-color:var(--secundario);border-bottom-color:var(--secundario)}
+.tab-btn:hover:not(.on){background:rgba(255,255,255,0.65);color:var(--negro)}
+.tab-pane{display:none}.tab-pane.on{display:block}
+
+/* BLOQUE */
+.blk{border-radius:2px;margin-bottom:16px;overflow:hidden}
+.bh{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--glass-border)}
+.bl{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario);font-weight:600}
+.bb{padding:24px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+
+/* FIELDS */
+.fld{display:flex;flex-direction:column;gap:7px}
+.fld label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--secundario);opacity:0.8}
+.fld input,.fld select{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);padding:10px 14px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;width:100%;backdrop-filter:blur(8px)}
+.fld input:focus,.fld select:focus{border-color:var(--primario)}
+.fld select option{background:#F0EDE6}
+
+/* ENTREGABLES */
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.ei{padding:14px 16px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.4)}
+.ei:hover{background:rgba(255,255,255,0.75);transform:translateY(-2px)}
+.ei.sel{background:var(--primario);border-color:var(--primario);color:white;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,83,106,0.25)}
+.en{font-family:var(--cond);font-size:0.9rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px}
+.eh{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;opacity:0.65}
+.ei.sel .eh{opacity:0.8}
+
+/* TOGGLES */
+.tlist{display:flex;flex-direction:column;gap:8px}
+.tr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.35)}
+.tr:hover{background:rgba(255,255,255,0.65)}
+.tr.on{background:rgba(255,255,255,0.55);border-color:rgba(0,83,106,0.3)}
+.trl{font-family:var(--cond);font-size:0.88rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px}
+.trd{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.06em;color:var(--gris)}
+.tre{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.pos{color:#c0392b}.neg{color:#1a7a45}.neu{color:var(--gris)}
+/* toggle switch */
+.sw{position:relative;width:38px;height:22px;flex-shrink:0}
+.sw input{opacity:0;width:0;height:0;position:absolute}
+.sw-t{position:absolute;inset:0;background:rgba(53,66,89,0.2);cursor:pointer;transition:.2s;border-radius:1px}
+.sw-t::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:white;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,0.2)}
+input:checked+.sw-t{background:var(--primario)}
+input:checked+.sw-t::before{transform:translateX(16px)}
+
+/* VIDEO LIST */
+.vlist{display:flex;flex-direction:column;gap:10px}
+/* Video card: nombre arriba, controles abajo en una fila */
+.vrow{border-radius:2px;border:1px solid var(--glass-border);background:rgba(255,255,255,0.45);overflow:hidden}
+.vrow-top{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 8px;border-bottom:1px solid var(--linea);gap:10px}
+.vrow-name{background:transparent;border:none;font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--negro);outline:none;width:100%;padding:2px 0}
+.vrow-name::placeholder{color:rgba(53,66,89,0.35);font-weight:300}
+.vrow-name:focus{border-bottom:1px solid var(--primario)}
+.vrow-del{background:none;border:none;color:rgba(53,66,89,0.3);cursor:pointer;font-size:1.1rem;padding:0 4px;flex-shrink:0;transition:color 0.15s}
+.vrow-del:hover{color:var(--acento)}
+.vrow-bottom{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:10px 14px}
+.vrow-tipo-label{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--primario);margin-bottom:4px}
+.vsel{font-family:var(--mono);font-size:0.65rem;background:rgba(255,255,255,0.7);border:1px solid var(--glass-border);color:var(--secundario);padding:6px 10px;outline:none;-webkit-appearance:none;cursor:pointer;width:100%}
+.vsel:focus{border-color:var(--primario)}
+.qc{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.qc-label{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gris);text-align:center;margin-bottom:4px}
+.qb{font-family:var(--mono);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);color:var(--negro);width:28px;height:28px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s;border-radius:2px}
+.qb:hover{background:var(--primario);color:white;border-color:var(--primario)}
+.qn{font-family:var(--display);font-size:1.1rem;font-weight:900;min-width:22px;text-align:center;color:var(--negro)}
+.vrow-price-wrap{text-align:right;flex-shrink:0}
+.vrow-price-label{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gris);margin-bottom:4px}
+.vp{font-family:var(--display);font-size:1.1rem;font-weight:900;color:var(--primario);white-space:nowrap}
+.addrow{display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border:1px dashed var(--linea);color:var(--gris);font-family:var(--mono);font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:4px;border-radius:2px}
+.addrow:hover{border-color:var(--primario);color:var(--primario);background:rgba(0,83,106,0.05)}
+
+/* PACK CARDS */
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:4px}
+.pc{padding:24px 20px 28px;border-radius:2px;cursor:pointer;position:relative;transition:all 0.25s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.35)}
+.pc:hover{background:rgba(255,255,255,0.65);transform:translateY(-3px);box-shadow:0 10px 32px rgba(53,66,89,0.12)}
+.pc.sel{background:var(--secundario);border-color:var(--secundario);color:white;transform:translateY(-3px);box-shadow:0 10px 32px rgba(53,66,89,0.25)}
+.pt{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento);margin-bottom:10px;display:block}
+.pc.sel .pt{color:rgba(255,255,255,0.6)}
+.pn{font-family:var(--cond);font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:8px;line-height:1.1}
+.pd{font-family:var(--mono);font-size:0.6rem;line-height:1.7;letter-spacing:0.04em;opacity:0.65}
+.pc.sel .pd{opacity:0.75}
+.pdisc{position:absolute;top:14px;right:16px;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;color:#1a7a45;font-weight:400}
+.pc.sel .pdisc{color:#7ef7b0}
+
+/* BREAKDOWN */
+.bk2{border-radius:2px;margin-top:16px;padding:24px 28px}
+.bt{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--primario);margin-bottom:16px;font-weight:600}
+.bsec{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);padding:.5rem 0 .2rem;border-bottom:1px solid var(--linea);margin-bottom:4px;margin-top:8px}
+.br{display:flex;justify-content:space-between;align-items:center;padding:.38rem 0;font-family:var(--mono);font-size:0.65rem;border-bottom:1px solid var(--linea);letter-spacing:0.05em}
+.br:last-child{border-bottom:none}
+.br span:last-child{color:var(--primario);font-weight:400}
+.br.tot{padding-top:.8rem;margin-top:4px}
+.br.tot span{font-family:var(--display);font-size:1rem;font-weight:900;color:var(--negro)}
+.br.tot span:first-child{font-family:var(--mono);font-size:0.6rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--gris)}
+
+/* RESULT BAR */
+.rb{position:sticky;bottom:0;background:var(--secundario);color:white;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;gap:20px;margin-top:16px;box-shadow:0 -8px 40px rgba(26,52,72,0.25);z-index:50}
+.rl{flex:1}
+.rey{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:4px}
+.ra{font-family:var(--display);font-size:2.4rem;font-weight:900;line-height:1;letter-spacing:-0.03em}
+.ra .rc{font-size:1rem;font-weight:700;margin-right:4px;opacity:0.7}
+.rars{font-family:var(--mono);font-size:0.72rem;color:rgba(255,255,255,0.6);margin-top:5px;display:none;letter-spacing:0.06em}
+.rars .ral{font-size:0.52rem;letter-spacing:0.16em;text-transform:uppercase;margin-right:6px;opacity:0.7}
+.rm{font-family:var(--mono);font-size:0.58rem;color:rgba(255,255,255,0.45);margin-top:4px;letter-spacing:0.06em}
+.cpb{background:var(--acento);color:white;border:none;font-family:var(--cond);font-size:0.78rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 28px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.cpb:hover{background:#c94e1e;transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,98,42,0.4)}
+
+footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;color:var(--gris)}
+.footer-logo{font-family:var(--display);font-size:1.2rem;font-weight:900;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);opacity:0.2}
+
+@media(max-width:760px){
+  nav{padding:14px 20px}
+  .wrap{padding:0 20px 8rem}
+  .g2,.g3{grid-template-columns:1fr}
+  .vrow-bottom{grid-template-columns:1fr auto}
+  .rb{flex-direction:column;align-items:flex-start}
+  footer{padding:20px;flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav>
+  <div class="nav-left">
+    <a class="nav-back" href="index.html">← Cotizadores</a>
+    <a class="nav-logo" href="../index.html">San Bao Estudio</a>
+    <span class="nav-badge">✂️ Edición</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <div class="fx-bar">
+      <div class="fx-pill on" id="pu" onclick="setCur('usd')"><span>USD</span><span class="pv">base</span></div>
+      <div class="fx-pill" id="pb" onclick="setCur('blue')"><span>Blue</span><span class="pv" id="bv">...</span></div>
+      <div class="fx-pill" id="pm" onclick="setCur('mep')"><span>MEP</span><span class="pv" id="mep-val">...</span></div>
+    </div>
+    <span class="live-dot" id="ld"></span>
+    <span class="live-label" id="ll">cargando...</span>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="page-hero">
+    <div class="eyebrow">Cotizador · Postproducción</div>
+    <h1 class="page-title">Edición de <em>Video</em></h1>
+    <p class="page-sub">Reels, YouTube, institucionales, motion graphics y más.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn on" onclick="tab('s')">Proyecto único</button>
+    <button class="tab-btn" onclick="tab('m')">Múltiples videos</button>
+    <button class="tab-btn" onclick="tab('p')">Packs</button>
+  </div>
+
+  <!-- SIMPLE -->
+  <div id="ts" class="tab-pane on">
+    <div class="blk glass">
+      <div class="bh"><span class="bl">01 — Base económica</span></div>
+      <div class="bb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="s-me" value="2000" oninput="cS()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="s-hm" value="160" oninput="cS()"></div>
+      </div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">02 — ¿Qué vas a editar?</span></div>
+      <div class="bb">
+        <div class="eg" id="se"></div>
+        <div class="g2" style="margin-bottom:12px">
+          <div class="fld"><label>Duración del video final</label>
+            <select id="sd" onchange="cS()">
+              <option value="0.8">Hasta 30 seg</option>
+              <option value="1.0" selected>30 seg – 2 min</option>
+              <option value="1.2">2 – 5 min</option>
+              <option value="1.4">5 – 15 min</option>
+              <option value="1.7">+15 min (largo/documental)</option>
+            </select>
+          </div>
+          <div class="fld"><label>Rondas de correcciones</label>
+            <select id="sc" onchange="cS()">
+              <option value="1.0">1 ronda (base)</option>
+              <option value="1.1">2 rondas</option>
+              <option value="1.2">3 rondas</option>
+              <option value="1.35">Ilimitadas</option>
+            </select>
+          </div>
+        </div>
+        <div class="fld"><label>Formatos de entrega</label>
+          <select id="sf" onchange="cS()">
+            <option value="1.0">1 formato (ej: solo 16:9)</option>
+            <option value="1.1">2 formatos (16:9 + 9:16)</option>
+            <option value="1.2">3+ formatos</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">03 — Extras incluidos</span></div>
+      <div class="bb"><div class="tlist" id="sx"></div></div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">04 — Factores del cliente</span></div>
+      <div class="bb"><div class="tlist" id="sf2"></div></div>
+    </div>
+    <div class="bk2 glass" id="sbk"></div>
+    <div class="rb">
+      <div class="rl">
+        <div class="rey">Precio sugerido</div>
+        <div class="ra"><span class="rc">USD $</span><span id="sr">0</span></div>
+        <div class="rars" id="sa"><span class="ral" id="sal">ARS Blue</span><span id="sav">$0</span></div>
+        <div class="rm" id="smt"></div>
+      </div>
+      <button class="cpb" onclick="doCopy('s')">Copiar presupuesto</button>
+    </div>
+  </div>
+
+  <!-- MULTI -->
+  <div id="tm" class="tab-pane">
+    <div class="blk glass">
+      <div class="bh"><span class="bl">01 — Base económica</span></div>
+      <div class="bb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="m-me" value="2000" oninput="cM()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="m-hm" value="160" oninput="cM()"></div>
+      </div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">02 — Lista de videos</span></div>
+      <div class="bb" style="padding:16px">
+        <div class="vlist" id="m-vlist"></div>
+        <div class="addrow" onclick="addV()">＋ Agregar video</div>
+      </div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">03 — Factores generales</span></div>
+      <div class="bb"><div class="tlist" id="mf"></div></div>
+    </div>
+    <div class="bk2 glass" id="mbk"></div>
+    <div class="rb">
+      <div class="rl">
+        <div class="rey">Total del paquete</div>
+        <div class="ra"><span class="rc">USD $</span><span id="mr">0</span></div>
+        <div class="rars" id="ma"><span class="ral" id="mal">ARS Blue</span><span id="mav">$0</span></div>
+        <div class="rm" id="mmt"></div>
+      </div>
+      <button class="cpb" onclick="doCopy('m')">Copiar presupuesto</button>
+    </div>
+  </div>
+
+  <!-- PACKS -->
+  <div id="tp2" class="tab-pane">
+    <div class="blk glass">
+      <div class="bh"><span class="bl">01 — Base económica</span></div>
+      <div class="bb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="p-me" value="2000" oninput="cP()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="p-hm" value="160" oninput="cP()"></div>
+      </div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">02 — Elegí un pack</span></div>
+      <div class="bb" style="padding:16px"><div class="pg" id="pp"></div></div>
+    </div>
+    <div class="blk glass">
+      <div class="bh"><span class="bl">03 — Factores del cliente</span></div>
+      <div class="bb"><div class="tlist" id="pf"></div></div>
+    </div>
+    <div class="bk2 glass" id="pbk"></div>
+    <div class="rb">
+      <div class="rl">
+        <div class="rey">Total del pack</div>
+        <div class="ra"><span class="rc">USD $</span><span id="pr">0</span></div>
+        <div class="rars" id="pa"><span class="ral" id="pal">ARS Blue</span><span id="pav">$0</span></div>
+        <div class="rm" id="pmt"></div>
+      </div>
+      <button class="cpb" onclick="doCopy('p')">Copiar presupuesto</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 San Bao Estudio — Luca Gazzola</span>
+  <span class="footer-logo">San Bao</span>
+  <span>Uso interno · No indexado</span>
+</footer>
+
+<script>
+const ENTS=[
+  {id:'reel',n:'Reel / Short',h:2},{id:'tiktok',n:'TikTok / Vertical',h:1.5},
+  {id:'youtube',n:'YouTube largo',h:5},{id:'inst',n:'Institucional',h:6},
+  {id:'motion',n:'Motion graphics',h:7},{id:'docu',n:'Documental',h:10},
+  {id:'podcast',n:'Podcast / Talking head',h:3},{id:'vfx',n:'VFX / Compositing',h:8},
+];
+const EXTRAS=[
+  {id:'sub',l:'Subtítulos / captions',d:'Transcripción y quemado al video',m:1.10},
+  {id:'clr',l:'Color grading avanzado',d:'LUTs personalizados, look cinematográfico',m:1.15},
+  {id:'snd',l:'Diseño sonoro',d:'SFX, mezcla y mastering de audio',m:1.12},
+  {id:'mus',l:'Búsqueda de música',d:'Licencia incluida o gestión sin licencia',m:1.08},
+  {id:'thm',l:'Miniatura / thumbnail',d:'Diseño gráfico de portada o cover',m:1.07},
+];
+const FACTS=[
+  {id:'pt',l:'¿Suma a tu portfolio?',d:'El proyecto mejora tu muestra de trabajo',y:1.0,n:1.05,def:false},
+  {id:'mo',l:'¿El cliente es buena onda?',d:'Relación fluida, comunicación clara',y:1.0,n:1.08,def:false},
+  {id:'co',l:'¿Es empresa grande?',d:'Corporación o marca con presupuesto real',y:1.15,n:1.0,def:false},
+  {id:'ur',l:'¿Entrega urgente? (<48hs)',d:'Entrega en menos de 48 horas',y:1.25,n:1.0,def:false},
+  {id:'ne',l:'¿Necesitás el trabajo?',d:'Momento de flujo bajo, priorizás entrar',y:0.85,n:1.0,def:false},
+  {id:'re',l:'¿Es cliente recurrente?',d:'Trabajo mensual o paquete grande',y:0.9,n:1.0,def:false},
+  {id:'ia',l:'¿El video incluye IA?',d:'Generación, efectos o edición con inteligencia artificial',y:1.15,n:1.0,def:false},
+];
+const PACKS=[
+  {id:'sc',tag:'Social media',n:'Pack Social',d:'4 reels + 2 TikToks con hook y ritmo.',h:14,disc:.10},
+  {id:'cr',tag:'YouTube',n:'Pack Creator',d:'2 videos largos (10–15 min) + thumbnails.',h:16,disc:.12},
+  {id:'br',tag:'Marca',n:'Pack Marca',d:'1 institucional + 3 reels + subtítulos.',h:18,disc:.12},
+  {id:'mo',tag:'Motion',n:'Pack Motion',d:'1 pieza motion completa + 2 bumpers.',h:22,disc:.15},
+];
+const TV={reel:{l:'Reel/Short',h:2},tiktok:{l:'TikTok/Vert.',h:1.5},youtube:{l:'YouTube',h:5},inst:{l:'Institucional',h:6},motion:{l:'Motion',h:7},docu:{l:'Documental',h:10},podcast:{l:'Podcast',h:3}};
+
+let selE='reel',sX={},sF={},mF={},pF={},mVids=[],vid=0,selPk='sc';
+EXTRAS.forEach(e=>sX[e.id]=false);
+FACTS.forEach(f=>{sF[f.id]=f.def;mF[f.id]=f.def;pF[f.id]=f.def;});
+let rates={blue:1400,mep:1429},cur='usd';
+
+const fmt=n=>Math.round(n).toLocaleString('es-AR');
+const vh=px=>{const m=+document.getElementById(px+'-me').value||1500,h=+document.getElementById(px+'-hm').value||180;return m/h;};
+function apF(b,fo){let x=1;FACTS.forEach(f=>x*=fo[f.id]?f.y:f.n);return b*x;}
+function fR(fo){return FACTS.filter(f=>{const m=fo[f.id]?f.y:f.n;return m!==1;}).map(f=>{const m=fo[f.id]?f.y:f.n,p=((m-1)*100).toFixed(0);return{l:f.l,v:(m>1?'+':'')+p+'%'};});}
+
+async function fetchFX(){
+  try{
+    const r=await fetch('https://api.bluelytics.com.ar/v2/latest');const d=await r.json();
+    rates.blue=d.blue.value_sell;rates.mep=d.oficial.value_sell;
+    try{const r2=await fetch('https://dolarito.ar/api/v2/quotations');const d2=await r2.json();const m=d2.find(q=>q.name==='mep');if(m)rates.mep=m.sell;}catch(_){}
+    document.getElementById('bv').textContent='$'+Math.round(rates.blue).toLocaleString('es-AR');
+    document.getElementById('mep-val').textContent='$'+Math.round(rates.mep).toLocaleString('es-AR');
+    document.getElementById('ld').classList.add('on');document.getElementById('ll').textContent='en tiempo real';
+  }catch(_){
+    document.getElementById('bv').textContent='$'+Math.round(rates.blue).toLocaleString('es-AR');
+    document.getElementById('mep-val').textContent='$'+Math.round(rates.mep).toLocaleString('es-AR');
+    document.getElementById('ll').textContent='val. referencial';
+  }updA();
+}
+function setCur(c){cur=c;['usd','blue','mep'].forEach((x,i)=>document.getElementById(['pu','pb','pm'][i]).classList.toggle('on',x===c));updA();cS();cM();cP();}
+function updA(){['s','m','p'].forEach(px=>{const el=document.getElementById(px+'a');if(!el)return;const lb=document.getElementById(px+'al');if(cur==='usd'){el.style.display='none';}else{el.style.display='block';if(lb)lb.textContent=cur==='blue'?'ARS Blue':'ARS MEP';}});}
+function putA(px,usd){if(cur==='usd')return;const r=cur==='blue'?rates.blue:rates.mep;const el=document.getElementById(px+'av');if(el)el.textContent='$'+Math.round(usd*r).toLocaleString('es-AR');}
+function arsL(usd){if(cur==='usd')return'';const r=cur==='blue'?rates.blue:rates.mep;return'\nEn ARS ('+cur.toUpperCase()+'): $'+Math.round(usd*r).toLocaleString('es-AR');}
+
+function rEnts(){const el=document.getElementById('se');el.innerHTML='';ENTS.forEach(e=>{const d=document.createElement('div');d.className='ei'+(selE===e.id?' sel':'');d.innerHTML=`<div class="en">${e.n}</div><div class="eh">~${e.h}h de edición</div>`;d.onclick=()=>{selE=e.id;rEnts();cS();};el.appendChild(d);});}
+
+function rTog(cid,arr,st,mode){const el=document.getElementById(cid);el.innerHTML='';arr.forEach(f=>{const on=st[f.id];const mult=f.m?(on?f.m:1):(on?f.y:f.n);const p=((mult-1)*100).toFixed(0);const txt=mult===1?'sin efecto':(mult>1?'+':'')+p+'%';const cls=mult>1?'pos':mult<1?'neg':'neu';const r=document.createElement('div');r.className='tr'+(on?' on':'');r.innerHTML=`<div><div class="trl">${f.l}</div><div class="trd">${f.d}</div></div><div class="tre ${cls}">${txt}</div><label class="sw"><input type="checkbox" ${on?'checked':''} onchange="tog('${f.id}','${cid}','${mode}')"><span class="sw-t"></span></label>`;el.appendChild(r);});}
+function tog(id,cid,mode){const maps={sx:[sX,'sx'],sf:[sF,'sf'],mf:[mF,'mf'],pf:[pF,'pf']};const[st,m]=maps[mode]||[sF,'sf'];st[id]=!st[id];const arr=mode==='sx'?EXTRAS:FACTS;rTog(cid,arr,st,m);if(mode==='sx'||mode==='sf')cS();else if(mode==='mf')cM();else cP();}
+
+function cS(){
+  const v=vh('s'),e=ENTS.find(x=>x.id===selE);
+  const dur=+document.getElementById('sd').value,cor=+document.getElementById('sc').value,fmtV=+document.getElementById('sf').value;
+  let xm=1;EXTRAS.forEach(x=>{if(sX[x.id])xm*=x.m;});
+  const base=v*e.h*dur*cor*fmtV*xm,fin=apF(base,sF);
+  document.getElementById('sr').textContent=fmt(fin);putA('s',fin);
+  document.getElementById('smt').textContent=`Valor hora $${v.toFixed(2)} · Base $${fmt(base)}`;
+  let h=`<div class="bt">Desglose del precio</div><div class="br"><span>Valor hora</span><span>$${v.toFixed(2)}</span></div><div class="br"><span>${e.n} (~${e.h}h)</span><span>$${fmt(v*e.h)}</span></div><div class="br"><span>Duración</span><span>×${dur}</span></div><div class="br"><span>Correcciones</span><span>×${cor}</span></div><div class="br"><span>Formatos</span><span>×${fmtV}</span></div>`;
+  EXTRAS.filter(x=>sX[x.id]).forEach(x=>{h+=`<div class="br"><span>${x.l}</span><span>+${((x.m-1)*100).toFixed(0)}%</span></div>`;});
+  h+=`<div class="br"><span>Subtotal</span><span>$${fmt(base)}</span></div>`;
+  fR(sF).forEach(r=>{h+=`<div class="br"><span>${r.l}</span><span>${r.v}</span></div>`;});
+  h+=`<div class="br tot"><span>Total sugerido</span><span>USD $${fmt(fin)}</span></div>`;
+  document.getElementById('sbk').innerHTML=h;
+}
+
+function addV(n='',t='reel',q=1){mVids.push({id:++vid,n,t,q});rVl();cM();}
+function remV(id){mVids=mVids.filter(v=>v.id!==id);rVl();cM();}
+function updV(id,f,v2){const v=mVids.find(x=>x.id===id);if(v){v[f]=f==='q'?+v2:v2;cM();}}
+function chQ(id,d){const v=mVids.find(x=>x.id===id);if(v){v.q=Math.max(1,v.q+d);rVl();cM();}}
+function rVl(){
+  const v=vh('m');const el=document.getElementById('m-vlist');el.innerHTML='';
+  mVids.forEach(vi=>{
+    const t=TV[vi.t]||TV.reel;const pr=v*t.h*vi.q;
+    const r=document.createElement('div');r.className='vrow';
+    r.innerHTML=`
+      <div class="vrow-top">
+        <input class="vrow-name" type="text" placeholder="Nombre del proyecto / cliente" value="${vi.n}" oninput="updV(${vi.id},'n',this.value)">
+        <button class="vrow-del" onclick="remV(${vi.id})">✕</button>
+      </div>
+      <div class="vrow-bottom">
+        <div>
+          <div class="vrow-tipo-label">Tipo de video</div>
+          <select class="vsel" onchange="updV(${vi.id},'t',this.value)">
+            ${Object.entries(TV).map(([k,x])=>`<option value="${k}"${vi.t===k?' selected':''}>${x.l}</option>`).join('')}
+          </select>
+        </div>
+        <div>
+          <div class="qc-label">Cantidad</div>
+          <div class="qc">
+            <button class="qb" onclick="chQ(${vi.id},-1)">−</button>
+            <span class="qn">${vi.q}</span>
+            <button class="qb" onclick="chQ(${vi.id},1)">+</button>
+          </div>
+        </div>
+        <div class="vrow-price-wrap">
+          <div class="vrow-price-label">Subtotal</div>
+          <div class="vp">USD $${fmt(pr)}</div>
+        </div>
+      </div>`;
+    el.appendChild(r);
+  });
+}
+function cM(){
+  rVl();const v=vh('m');let sub=0,th=0;
+  mVids.forEach(x=>{const t=TV[x.t]||TV.reel;sub+=v*t.h*x.q;th+=t.h*x.q;});
+  const fin=apF(sub,mF);
+  document.getElementById('mr').textContent=fmt(fin);putA('m',fin);
+  const n=mVids.reduce((a,x)=>a+x.q,0);
+  document.getElementById('mmt').textContent=`${n} video${n!==1?'s':''} · ~${th.toFixed(1)}h`;
+  let h=`<div class="bt">Desglose</div><div class="br"><span>Valor hora</span><span>$${v.toFixed(2)}</span></div>`;
+  mVids.forEach(x=>{const t=TV[x.t]||TV.reel;h+=`<div class="br"><span>${x.n||t.l} ×${x.q} (${(t.h*x.q).toFixed(1)}h)</span><span>$${fmt(v*t.h*x.q)}</span></div>`;});
+  h+=`<div class="br"><span>Subtotal</span><span>$${fmt(sub)}</span></div>`;
+  fR(mF).forEach(r=>{h+=`<div class="br"><span>${r.l}</span><span>${r.v}</span></div>`;});
+  h+=`<div class="br tot"><span>Total sugerido</span><span>USD $${fmt(fin)}</span></div>`;
+  document.getElementById('mbk').innerHTML=h;
+}
+
+function rPacks(){const el=document.getElementById('pp');el.innerHTML='';PACKS.forEach(pk=>{const c=document.createElement('div');c.className='pc'+(selPk===pk.id?' sel':'');c.onclick=()=>{selPk=pk.id;rPacks();cP();};c.innerHTML=`<span class="pt">${pk.tag}</span>${pk.disc>0?`<div class="pdisc">–${(pk.disc*100).toFixed(0)}%</div>`:''}<div class="pn">${pk.n}</div><div class="pd">${pk.d}</div>`;el.appendChild(c);});}
+function cP(){
+  const v=vh('p');const pk=PACKS.find(x=>x.id===selPk);
+  const sub=v*pk.h*(1-pk.disc),fin=apF(sub,pF);
+  document.getElementById('pr').textContent=fmt(fin);putA('p',fin);
+  document.getElementById('pmt').textContent=`${pk.n} · ~${pk.h}h`;
+  let h=`<div class="bt">Desglose del pack</div><div class="br"><span>Valor hora</span><span>$${v.toFixed(2)}</span></div><div class="br"><span>Horas totales</span><span>${pk.h}h</span></div>`;
+  if(pk.disc>0)h+=`<div class="br"><span>Descuento pack</span><span>–${(pk.disc*100).toFixed(0)}%</span></div>`;
+  h+=`<div class="br"><span>Subtotal</span><span>$${fmt(sub)}</span></div>`;
+  fR(pF).forEach(r=>{h+=`<div class="br"><span>${r.l}</span><span>${r.v}</span></div>`;});
+  h+=`<div class="br tot"><span>Total sugerido</span><span>USD $${fmt(fin)}</span></div>`;
+  document.getElementById('pbk').innerHTML=h;
+}
+
+function tab(n){const ns=['s','m','p'],tids=['ts','tm','tp2'];document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.toggle('on',ns[i]===n));document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('on'));document.getElementById(n==='p'?'tp2':'t'+n).classList.add('on');}
+
+function doCopy(mode){
+  const hdr='PRESUPUESTO EDICIÓN\nSan Bao Estudio — Luca Gazzola\n';let txt='';
+  if(mode==='s'){const e=ENTS.find(x=>x.id===selE);const m=document.getElementById('sr').textContent;const u=parseFloat(m.replace(/\./g,'').replace(',','.'));txt=hdr+`\nEntregable: ${e.n}\nTotal: USD $${m}${arsL(u)}\n\nContacto: sanbaoestudio@gmail.com\n+54 9 11 3020 3625`;}
+  else if(mode==='m'){const m=document.getElementById('mr').textContent;const u=parseFloat(m.replace(/\./g,'').replace(',','.'));const l=mVids.map(v=>`  · ${v.n||TV[v.t].l} ×${v.q}`).join('\n');txt=hdr+`\nVideos:\n${l}\n\nTotal: USD $${m}${arsL(u)}\n\nContacto: sanbaoestudio@gmail.com\n+54 9 11 3020 3625`;}
+  else{const pk=PACKS.find(x=>x.id===selPk);const m=document.getElementById('pr').textContent;const u=parseFloat(m.replace(/\./g,'').replace(',','.'));txt=hdr+`\n${pk.n}: ${pk.d}\n\nTotal: USD $${m}${arsL(u)}\n\nContacto: sanbaoestudio@gmail.com\n+54 9 11 3020 3625`;}
+  navigator.clipboard.writeText(txt).then(()=>{const b=event.target;b.textContent='✓ Copiado';setTimeout(()=>b.textContent='Copiar presupuesto',2200);});
+}
+
+rEnts();
+rTog('sx',EXTRAS,sX,'sx');rTog('sf2',FACTS,sF,'sf');
+rTog('mf',FACTS,mF,'mf');rTog('pf',FACTS,pF,'pf');
+rPacks();addV('Reel institucional','reel',1);
+cS();cM();cP();fetchFX();setInterval(fetchFX,5*60*1000);
+</script>
+</body>
+</html>
