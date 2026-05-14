@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cotizador Interno — San Bao Estudio</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#F0EDE6;--negro:#1a3448;--gris:#354259;
+  --linea:rgba(53,66,89,0.18);--acento:#E8622A;
+  --primario:#00536a;--secundario:#354259;
+  --glass:rgba(255,255,255,0.55);--glass-border:rgba(255,255,255,0.7);
+  --mono:'DM Mono',monospace;--display:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;
+}
+body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:400;overflow-x:hidden;min-height:100vh;}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.2;}
+body::before{width:600px;height:600px;background:radial-gradient(circle,#005f73 0%,transparent 70%);top:-100px;right:-100px;animation:f1 12s ease-in-out infinite;}
+body::after{width:400px;height:400px;background:radial-gradient(circle,#354259 0%,transparent 70%);bottom:-80px;left:-80px;animation:f2 15s ease-in-out infinite;}
+@keyframes f1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
+@keyframes f2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
+.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px}
+.glass{background:var(--glass);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid var(--glass-border);box-shadow:0 8px 32px rgba(14,14,14,0.07),inset 0 1px 0 rgba(255,255,255,0.8);}
+nav,main,footer{position:relative;z-index:2}
+nav{position:sticky;top:0;z-index:160;display:flex;justify-content:space-between;align-items:center;padding:16px 48px;background:rgba(240,237,230,0.55);backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.6);gap:1rem;flex-wrap:wrap;}
+.nav-left{display:flex;align-items:center;gap:20px}
+.nav-logo{font-family:var(--cond);font-size:0.95rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--secundario);text-decoration:none;opacity:0.85}
+.nav-badge{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.16em;text-transform:uppercase;border:1px solid var(--linea);color:var(--secundario);padding:4px 10px;background:rgba(255,255,255,0.4)}
+.fx-bar{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fx-pill{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;padding:5px 12px;cursor:pointer;background:rgba(255,255,255,0.45);border:1px solid var(--glass-border);transition:all 0.2s;color:var(--secundario);display:flex;align-items:center;gap:5px;user-select:none}
+.fx-pill:hover{background:rgba(255,255,255,0.75);color:var(--negro)}
+.fx-pill.on{background:var(--primario);color:white;border-color:var(--primario)}
+.fx-pill .pv{opacity:0.8}
+.live-dot{width:6px;height:6px;border-radius:50%;background:rgba(53,66,89,0.25);display:inline-block}
+.live-dot.on{background:#2db568;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.live-label{font-family:var(--mono);font-size:0.54rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 48px 8rem}
+.page-hero{padding:56px 0 44px;border-bottom:1px solid var(--linea);margin-bottom:44px}
+.eyebrow{font-size:0.6rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--acento);display:flex;align-items:center;gap:12px;margin-bottom:16px;font-weight:600}
+.eyebrow::before{content:'';width:30px;height:1px;background:var(--acento)}
+.page-title{font-family:var(--display);font-size:clamp(2.8rem,6vw,5rem);font-weight:900;line-height:0.88;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro)}
+.page-title em{font-style:italic;color:var(--acento)}
+.page-sub{font-family:var(--cond);font-size:1rem;color:var(--gris);margin-top:12px}
+.blk{border-radius:2px;margin-bottom:16px;overflow:hidden}
+.bh{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--glass-border)}
+.bl{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario);font-weight:600}
+.bb{padding:24px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.fld{display:flex;flex-direction:column;gap:7px}
+.fld label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--secundario);opacity:0.8}
+.fld input,.fld select,.fld textarea{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.08em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);padding:10px 14px;outline:none;transition:border-color 0.2s;-webkit-appearance:none;width:100%;backdrop-filter:blur(8px)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--primario)}
+.fld select option{background:#F0EDE6}
+.fld textarea{resize:vertical;min-height:80px;line-height:1.6}
+.tc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tc-card{padding:18px 16px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.35);text-align:center}
+.tc-card:hover{background:rgba(255,255,255,0.65);transform:translateY(-2px)}
+.tc-card.sel{background:var(--secundario);border-color:var(--secundario);color:white;transform:translateY(-2px);box-shadow:0 6px 20px rgba(53,66,89,0.25)}
+.tc-ic{font-size:1.4rem;display:block;margin-bottom:6px}
+.tc-n{font-family:var(--cond);font-size:0.9rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px}
+.tc-d{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.06em;opacity:0.6}
+.tc-card.sel .tc-d{opacity:0.75}
+.srv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.srv-card{padding:24px 20px 28px;border-radius:2px;cursor:pointer;position:relative;transition:all 0.25s;border:2px solid var(--glass-border);background:rgba(255,255,255,0.35);user-select:none}
+.srv-card:hover{background:rgba(255,255,255,0.65);transform:translateY(-3px);box-shadow:0 10px 32px rgba(53,66,89,0.12)}
+.srv-card.sel{border-color:var(--primario);background:rgba(0,83,106,0.07);transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,83,106,0.15)}
+.srv-check{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:2px;border:2px solid var(--linea);background:white;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;color:white;transition:all 0.2s}
+.srv-card.sel .srv-check{background:var(--primario);border-color:var(--primario)}
+.srv-ic{font-size:2rem;display:block;margin-bottom:10px}
+.srv-n{font-family:var(--cond);font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:6px;color:var(--negro)}
+.srv-d{font-family:var(--mono);font-size:0.6rem;line-height:1.7;letter-spacing:0.04em;color:var(--gris)}
+.srv-hint{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris);opacity:0.6;margin-top:4px}
+.sec-sep{display:flex;align-items:center;gap:16px;margin:40px 0 28px}
+.sec-sep-line{flex:1;height:1px;background:var(--linea)}
+.sec-sep-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--gris);white-space:nowrap}
+.cot-section{display:none;opacity:0;transform:translateY(20px);transition:opacity 0.4s ease,transform 0.4s ease}
+.cot-section.visible{display:block}
+.cot-section.anim{opacity:1;transform:translateY(0)}
+.cot-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--linea)}
+.cot-title{font-family:var(--display);font-size:1.6rem;font-weight:900;text-transform:uppercase;letter-spacing:-0.03em;color:var(--negro)}
+.cot-title em{font-style:italic;color:var(--acento)}
+.cot-chip{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;padding:5px 12px;background:var(--primario);color:white}
+.tabs{display:flex;gap:0;margin-bottom:28px;border-bottom:2px solid var(--linea)}
+.tab-btn{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;padding:10px 24px;cursor:pointer;background:rgba(255,255,255,0.35);border:1px solid var(--glass-border);border-bottom:none;color:var(--secundario);transition:all 0.2s;margin-bottom:-2px}
+.tab-btn.on{background:var(--secundario);color:white;border-color:var(--secundario);border-bottom-color:var(--secundario)}
+.tab-btn:hover:not(.on){background:rgba(255,255,255,0.65);color:var(--negro)}
+.tab-pane{display:none}.tab-pane.on{display:block}
+.iblk{border-radius:2px;margin-bottom:14px;overflow:hidden}
+.ibh{padding:12px 20px;display:flex;align-items:center;border-bottom:1px solid var(--glass-border)}
+.ibl{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario);font-weight:600}
+.ibb{padding:20px}
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin-bottom:18px}
+.ei{padding:12px 14px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.4)}
+.ei:hover{background:rgba(255,255,255,0.75);transform:translateY(-2px)}
+.ei.sel{background:var(--primario);border-color:var(--primario);color:white;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,83,106,0.25)}
+.en{font-family:var(--cond);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:3px}
+.eh{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.1em;opacity:0.65}
+.ei.sel .eh{opacity:0.8}
+.tlist{display:flex;flex-direction:column;gap:8px}
+.tr{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 14px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.35)}
+.tr:hover{background:rgba(255,255,255,0.65)}
+.tr.on{background:rgba(255,255,255,0.55);border-color:rgba(0,83,106,0.3)}
+.trl{font-family:var(--cond);font-size:0.85rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:2px}
+.trd{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.06em;color:var(--gris)}
+.tre{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:400;white-space:nowrap}
+.pos{color:#c0392b}.neg{color:#1a7a45}.neu{color:var(--gris)}
+.sw{position:relative;width:38px;height:22px;flex-shrink:0}
+.sw input{opacity:0;width:0;height:0;position:absolute}
+.sw-t{position:absolute;inset:0;background:rgba(53,66,89,0.2);cursor:pointer;transition:.2s;border-radius:1px}
+.sw-t::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:white;transition:.2s;box-shadow:0 1px 4px rgba(0,0,0,0.2)}
+input:checked+.sw-t{background:var(--primario)}
+input:checked+.sw-t::before{transform:translateX(16px)}
+.vlist{display:flex;flex-direction:column;gap:10px}
+.vrow{border-radius:2px;border:1px solid var(--glass-border);background:rgba(255,255,255,0.45);overflow:hidden}
+.vrow-top{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 8px;border-bottom:1px solid var(--linea);gap:10px}
+.vrow-name{background:transparent;border:none;font-family:var(--cond);font-size:0.95rem;font-weight:600;text-transform:uppercase;letter-spacing:0.04em;color:var(--negro);outline:none;width:100%;padding:2px 0}
+.vrow-name::placeholder{color:rgba(53,66,89,0.35);font-weight:300}
+.vrow-del{background:none;border:none;color:rgba(53,66,89,0.3);cursor:pointer;font-size:1.1rem;padding:0 4px;flex-shrink:0;transition:color 0.15s}
+.vrow-del:hover{color:var(--acento)}
+.vrow-bottom{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:12px;padding:10px 14px}
+.vrow-tipo-label{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--primario);margin-bottom:3px}
+.vsel{font-family:var(--mono);font-size:0.62rem;background:rgba(255,255,255,0.7);border:1px solid var(--glass-border);color:var(--secundario);padding:6px 10px;outline:none;-webkit-appearance:none;cursor:pointer;width:100%}
+.qc{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.qc-label{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gris);text-align:center;margin-bottom:3px}
+.qb{font-family:var(--mono);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);color:var(--negro);width:26px;height:26px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all 0.15s;border-radius:2px}
+.qb:hover{background:var(--primario);color:white;border-color:var(--primario)}
+.qn{font-family:var(--display);font-size:1rem;font-weight:900;min-width:20px;text-align:center;color:var(--negro)}
+.vrow-price-wrap{text-align:right;flex-shrink:0}
+.vrow-price-label{font-family:var(--mono);font-size:0.5rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gris);margin-bottom:3px}
+.vp{font-family:var(--display);font-size:1rem;font-weight:900;color:var(--primario);white-space:nowrap}
+.addrow{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border:1px dashed var(--linea);color:var(--gris);font-family:var(--mono);font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;margin-top:4px;border-radius:2px}
+.addrow:hover{border-color:var(--primario);color:var(--primario);background:rgba(0,83,106,0.05)}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:10px;margin-bottom:4px}
+.pc{padding:20px 18px 24px;border-radius:2px;cursor:pointer;position:relative;transition:all 0.25s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.35)}
+.pc:hover{background:rgba(255,255,255,0.65);transform:translateY(-3px)}
+.pc.sel{background:var(--secundario);border-color:var(--secundario);color:white;transform:translateY(-3px);box-shadow:0 10px 32px rgba(53,66,89,0.25)}
+.pt{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--acento);margin-bottom:8px;display:block}
+.pc.sel .pt{color:rgba(255,255,255,0.6)}
+.pn{font-family:var(--cond);font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:6px;line-height:1.1}
+.pd{font-family:var(--mono);font-size:0.58rem;line-height:1.7;letter-spacing:0.04em;opacity:0.65}
+.pc.sel .pd{opacity:0.75}
+.pdisc{position:absolute;top:12px;right:14px;font-family:var(--mono);font-size:0.56rem;letter-spacing:0.1em;text-transform:uppercase;color:#1a7a45}
+.pc.sel .pdisc{color:#7ef7b0}
+.tg{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-bottom:18px}
+.ti{padding:14px 12px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.4);text-align:center}
+.ti:hover{background:rgba(255,255,255,0.75);transform:translateY(-2px)}
+.ti.sel{background:var(--primario);border-color:var(--primario);color:white;transform:translateY(-2px)}
+.ti-ic{font-size:1.3rem;display:block;margin-bottom:5px}
+.ti-n{font-family:var(--cond);font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:2px}
+.ti-h{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.08em;opacity:0.6}.ti.sel .ti-h{opacity:0.8}
+.eq-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:8px}
+.eq-i{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-radius:2px;cursor:pointer;transition:all 0.2s;border:1px solid var(--glass-border);background:rgba(255,255,255,0.35)}
+.eq-i:hover{background:rgba(255,255,255,0.65)}.eq-i.sel{background:var(--primario);border-color:var(--primario);color:white}
+.eq-n{font-family:var(--cond);font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.03em;margin-bottom:2px}
+.eq-p{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.08em;opacity:0.65}.eq-i.sel .eq-p{opacity:0.8}
+.eq-ck{font-family:var(--mono);font-size:0.7rem;opacity:0.6}.eq-i.sel .eq-ck{opacity:1}
+.gl{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.gr{display:grid;grid-template-columns:1fr 100px auto;align-items:center;gap:8px}
+.gr input{font-family:var(--mono);font-size:0.65rem;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);padding:8px 12px;outline:none;width:100%;letter-spacing:0.06em}
+.gr input:focus{border-color:var(--primario)}
+.gd{background:none;border:none;color:rgba(53,66,89,0.3);cursor:pointer;font-size:1rem;padding:0 4px;transition:color 0.15s}
+.gd:hover{color:var(--acento)}
+.bk2{border-radius:2px;margin-top:14px;padding:20px 24px}
+.bt{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--primario);margin-bottom:14px;font-weight:600}
+.bsec{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--acento);padding:.5rem 0 .2rem;border-bottom:1px solid var(--linea);margin-bottom:4px;margin-top:8px}
+.br{display:flex;justify-content:space-between;align-items:center;padding:.35rem 0;font-family:var(--mono);font-size:0.63rem;border-bottom:1px solid var(--linea);letter-spacing:0.05em}
+.br:last-child{border-bottom:none}
+.br span:last-child{color:var(--primario)}
+.br.tot{padding-top:.7rem;margin-top:4px}
+.br.tot span{font-family:var(--display);font-size:0.95rem;font-weight:900;color:var(--negro)}
+.br.tot span:first-child{font-family:var(--mono);font-size:0.58rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--gris)}
+.mini-total{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:rgba(0,83,106,0.08);border:1px solid rgba(0,83,106,0.2);border-radius:2px;margin-top:12px}
+.mt-label{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)}
+.mt-val{font-family:var(--display);font-size:1.2rem;font-weight:900;color:var(--primario)}
+.empty-cot{padding:48px 24px;text-align:center;border:1px dashed var(--linea);border-radius:2px;margin-top:32px}
+.empty-cot-ic{font-size:2.5rem;margin-bottom:12px;display:block;opacity:0.4}
+.empty-cot-t{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--gris);margin-bottom:6px}
+.empty-cot-d{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.06em;color:var(--gris);opacity:0.7}
+.total-bar{position:sticky;bottom:0;z-index:100;background:var(--negro);color:white;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 -8px 40px rgba(26,52,72,0.35);margin-top:32px}
+.total-bar-left{flex:1}
+.total-eyebrow{font-family:var(--mono);font-size:0.52rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:6px}
+.total-servicios{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-top:4px}
+.total-num{font-family:var(--display);font-size:2.6rem;font-weight:900;line-height:1;letter-spacing:-0.03em}
+.total-cur{font-size:1rem;font-weight:700;margin-right:6px;opacity:0.6}
+.total-ars{font-family:var(--mono);font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:5px;letter-spacing:0.06em;display:none}
+.total-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn-copy{background:var(--acento);color:white;border:none;font-family:var(--cond);font-size:0.78rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 24px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.btn-copy:hover{background:#c94e1e;transform:translateY(-1px)}
+footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;color:var(--gris)}
+.footer-logo{font-family:var(--display);font-size:1.2rem;font-weight:900;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);opacity:0.2}
+@media(max-width:760px){
+  nav{padding:14px 20px}
+  .wrap{padding:0 20px 8rem}
+  .g2,.g3,.tc-grid,.srv-grid{grid-template-columns:1fr}
+  .vrow-bottom{grid-template-columns:1fr auto}
+  .total-bar{flex-direction:column;align-items:flex-start}
+  footer{padding:20px;flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<nav>
+  <div class="nav-left">
+    <a class="nav-logo" href="../index.html">San Bao Estudio</a>
+    <span class="nav-badge">Cotizador Interno</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+    <div class="fx-bar">
+      <div class="fx-pill on" id="pu" onclick="setCur('usd')"><span>USD</span><span class="pv">base</span></div>
+      <div class="fx-pill" id="pb" onclick="setCur('blue')"><span>Blue</span><span class="pv" id="bv">...</span></div>
+      <div class="fx-pill" id="pm" onclick="setCur('mep')"><span>MEP</span><span class="pv" id="mep-val">...</span></div>
+    </div>
+    <span class="live-dot" id="ld"></span>
+    <span class="live-label" id="ll">cargando...</span>
+  </div>
+</nav>
+<div class="wrap">
+  <div class="page-hero">
+    <div class="eyebrow">Uso interno · No indexado</div>
+    <h1 class="page-title">Nuevo <em>Presupuesto</em></h1>
+    <p class="page-sub">Datos del cliente, elegí el servicio y configurá el cotizador.</p>
+  </div>
+
+  <!-- 01 CLIENTE -->
+  <div class="blk glass">
+    <div class="bh"><span class="bl">01 — Datos del cliente</span></div>
+    <div class="bb">
+      <div class="g2" style="margin-bottom:16px">
+        <div class="fld"><label>Nombre y Apellido *</label><input type="text" id="cl-nombre" placeholder="Juan Pérez" oninput="updTotal()"></div>
+        <div class="fld"><label>Email</label><input type="email" id="cl-email" placeholder="juan@empresa.com"></div>
+      </div>
+      <div class="g2" style="margin-bottom:16px">
+        <div class="fld"><label>Teléfono / WhatsApp</label><input type="tel" id="cl-tel" placeholder="+54 9 11 0000-0000"></div>
+        <div class="fld"><label>Instagram</label><input type="text" id="cl-ig" placeholder="@usuario"></div>
+      </div>
+      <div class="fld" style="margin-bottom:16px">
+        <label>Empresa / Marca</label>
+        <input type="text" id="cl-empresa" placeholder="Nombre de la marca o empresa (opcional)">
+      </div>
+      <div class="fld">
+        <label>Descripción del proyecto</label>
+        <textarea id="cl-desc" placeholder="Contame brevemente qué necesita el cliente…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 TIPO CLIENTE -->
+  <div class="blk glass">
+    <div class="bh"><span class="bl">02 — Tipo de cliente</span></div>
+    <div class="bb">
+      <div class="tc-grid">
+        <div class="tc-card sel" data-tipo="chico" onclick="selTipo('chico')">
+          <span class="tc-ic">👤</span>
+          <div class="tc-n">Chico</div>
+          <div class="tc-d">Persona, emprendedor o proyecto personal</div>
+        </div>
+        <div class="tc-card" data-tipo="mediano" onclick="selTipo('mediano')">
+          <span class="tc-ic">🏪</span>
+          <div class="tc-n">Mediano</div>
+          <div class="tc-d">Pyme, marca con presencia establecida</div>
+        </div>
+        <div class="tc-card" data-tipo="grande" onclick="selTipo('grande')">
+          <span class="tc-ic">🏢</span>
+          <div class="tc-n">Grande</div>
+          <div class="tc-d">Corporación o empresa con presupuesto real</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 SERVICIOS -->
+  <div class="blk glass">
+    <div class="bh"><span class="bl">03 — Servicio/s requeridos</span></div>
+    <div class="bb">
+      <div class="srv-grid">
+        <div class="srv-card" id="srv-film" onclick="toggleSrv('film')">
+          <div class="srv-check" id="chk-film"></div>
+          <span class="srv-ic">🎬</span>
+          <div class="srv-n">Filmmaking</div>
+          <div class="srv-d">Filmación en locación, coberturas, sesiones musicales, spots publicitarios y más.</div>
+          <div class="srv-hint">Producción</div>
+        </div>
+        <div class="srv-card" id="srv-edit" onclick="toggleSrv('edit')">
+          <div class="srv-check" id="chk-edit"></div>
+          <span class="srv-ic">✂️</span>
+          <div class="srv-n">Edición de Video</div>
+          <div class="srv-d">Reels, YouTube, institucionales, motion graphics, color grading y más.</div>
+          <div class="srv-hint">Postproducción</div>
+        </div>
+      </div>
+      <p style="font-family:var(--mono);font-size:0.58rem;color:var(--gris);letter-spacing:0.06em;margin-top:12px;opacity:0.7">Podés elegir uno o los dos. El total se suma automáticamente.</p>
+    </div>
+  </div>
+
+  <!-- COTIZADOR FILMMAKING -->
+  <div id="cot-film" class="cot-section">
+    <div class="sec-sep"><div class="sec-sep-line"></div><div class="sec-sep-label">🎬 Filmmaking</div><div class="sec-sep-line"></div></div>
+    <div class="cot-header"><div class="cot-title">Film<em>making</em></div><div class="cot-chip">Producción</div></div>
+    <div class="tabs">
+      <button class="tab-btn on" onclick="fmTab('pr')">Proyecto</button>
+      <button class="tab-btn" onclick="fmTab('pk')">Packs</button>
+    </div>
+    <div id="fm-pr" class="tab-pane on">
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="fm-me" value="2000" oninput="cFmPr()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="fm-hm" value="160" oninput="cFmPr()"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Tipo de filmación</span></div><div class="ibb">
+        <div class="tg" id="fm-tipos"></div>
+        <div class="g2">
+          <div class="fld"><label>Días de rodaje</label><input type="number" id="fm-dias" value="1" min="1" max="30" oninput="cFmPr()"></div>
+          <div class="fld"><label>Horas por día</label><input type="number" id="fm-hd" value="8" min="1" max="16" oninput="cFmPr()"></div>
+        </div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Equipamiento propio</span></div><div class="ibb" style="padding:16px">
+        <p style="font-family:var(--mono);font-size:0.58rem;color:var(--gris);letter-spacing:0.08em;margin-bottom:12px">Seleccioná el equipo que llevás — se suma como costo de uso por día:</p>
+        <div class="eq-g" id="fm-equip"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Logística y gastos</span></div><div class="ibb">
+        <div class="g3">
+          <div class="fld"><label>Viáticos / traslado (USD)</label><input type="number" id="fm-vi" value="0" min="0" oninput="cFmPr()"></div>
+          <div class="fld"><label>Locación / permisos (USD)</label><input type="number" id="fm-lo" value="0" min="0" oninput="cFmPr()"></div>
+          <div class="fld"><label>Asistente / crew (USD)</label><input type="number" id="fm-cr" value="0" min="0" oninput="cFmPr()"></div>
+        </div>
+        <div style="margin-top:14px">
+          <label style="font-family:var(--mono);font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--secundario);opacity:0.8;display:block;margin-bottom:8px">Gastos adicionales</label>
+          <div class="gl" id="fm-gastos"></div>
+          <div class="addrow" onclick="addFmG()">＋ Agregar gasto</div>
+        </div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Extras de producción</span></div><div class="ibb"><div class="tlist" id="fm-ex"></div></div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="fm-fa"></div></div></div>
+      <div class="bk2 glass" id="fm-bk"></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Filmmaking</span><span class="mt-val">USD $<span id="fm-sub">0</span></span></div>
+    </div>
+    <div id="fm-pk" class="tab-pane">
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="fmpk-me" value="2000" oninput="cFmPk()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="fmpk-hm" value="160" oninput="cFmPk()"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Elegí un pack</span></div><div class="ibb" style="padding:16px"><div class="pg" id="fmpk-packs"></div></div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Logística del pack</span></div><div class="ibb g3">
+        <div class="fld"><label>Viáticos (USD)</label><input type="number" id="fmpk-vi" value="0" min="0" oninput="cFmPk()"></div>
+        <div class="fld"><label>Locación (USD)</label><input type="number" id="fmpk-lo" value="0" min="0" oninput="cFmPk()"></div>
+        <div class="fld"><label>Crew adicional (USD)</label><input type="number" id="fmpk-cr" value="0" min="0" oninput="cFmPk()"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="fmpk-fa"></div></div></div>
+      <div class="bk2 glass" id="fmpk-bk"></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Filmmaking (pack)</span><span class="mt-val">USD $<span id="fmpk-sub">0</span></span></div>
+    </div>
+  </div>
+
+  <!-- COTIZADOR EDICION -->
+  <div id="cot-edit" class="cot-section">
+    <div class="sec-sep"><div class="sec-sep-line"></div><div class="sec-sep-label">✂️ Edición de Video</div><div class="sec-sep-line"></div></div>
+    <div class="cot-header"><div class="cot-title">Edición de <em>Video</em></div><div class="cot-chip">Postproducción</div></div>
+    <div class="tabs">
+      <button class="tab-btn on" onclick="edTab('s')">Proyecto único</button>
+      <button class="tab-btn" onclick="edTab('m')">Múltiples videos</button>
+      <button class="tab-btn" onclick="edTab('p')">Packs</button>
+    </div>
+    <div id="ed-s" class="tab-pane on">
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="ed-me" value="2000" oninput="cEdS()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="ed-hm" value="160" oninput="cEdS()"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">¿Qué vas a editar?</span></div><div class="ibb">
+        <div class="eg" id="ed-ents"></div>
+        <div class="g2" style="margin-bottom:12px">
+          <div class="fld"><label>Duración del video final</label>
+            <select id="ed-dur" onchange="cEdS()">
+              <option value="0.8">Hasta 30 seg</option>
+              <option value="1.0" selected>30 seg – 2 min</option>
+              <option value="1.2">2 – 5 min</option>
+              <option value="1.4">5 – 15 min</option>
+              <option value="1.7">+15 min</option>
+            </select>
+          </div>
+          <div class="fld"><label>Rondas de correcciones</label>
+            <select id="ed-cor" onchange="cEdS()">
+              <option value="1.0">1 ronda (base)</option>
+              <option value="1.1">2 rondas</option>
+              <option value="1.2">3 rondas</option>
+              <option value="1.35">Ilimitadas</option>
+            </select>
+          </div>
+        </div>
+        <div class="fld"><label>Formatos de entrega</label>
+          <select id="ed-fmt" onchange="cEdS()">
+            <option value="1.0">1 formato</option>
+            <option value="1.1">2 formatos (16:9 + 9:16)</option>
+            <option value="1.2">3+ formatos</option>
+          </select>
+        </div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Extras incluidos</span></div><div class="ibb"><div class="tlist" id="ed-extras"></div></div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="ed-facts"></div></div></div>
+      <div class="bk2 glass" id="ed-bk"></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Edición</span><span class="mt-val">USD $<span id="ed-sub">0</span></span></div>
+    </div>
+    <div id="ed-m" class="tab-pane">
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="edm-me" value="2000" oninput="cEdM()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="edm-hm" value="160" oninput="cEdM()"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Lista de videos</span></div><div class="ibb" style="padding:16px">
+        <div class="vlist" id="edm-vlist"></div>
+        <div class="addrow" onclick="addEdV()">＋ Agregar video</div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Factores generales</span></div><div class="ibb"><div class="tlist" id="edm-facts"></div></div></div>
+      <div class="bk2 glass" id="edm-bk"></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Edición</span><span class="mt-val">USD $<span id="edm-sub">0</span></span></div>
+    </div>
+    <div id="ed-p" class="tab-pane">
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
+        <div class="fld"><label>Meta mensual (USD)</label><input type="number" id="edp-me" value="2000" oninput="cEdP()"></div>
+        <div class="fld"><label>Horas laborales al mes</label><input type="number" id="edp-hm" value="160" oninput="cEdP()"></div>
+      </div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Elegí un pack</span></div><div class="ibb" style="padding:16px"><div class="pg" id="edp-packs"></div></div></div>
+      <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="edp-facts"></div></div></div>
+      <div class="bk2 glass" id="edp-bk"></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Edición (pack)</span><span class="mt-val">USD $<span id="edp-sub">0</span></span></div>
+    </div>
+  </div>
+
+  <div id="empty-state" class="empty-cot">
+    <span class="empty-cot-ic">↑</span>
+    <div class="empty-cot-t">Elegí un servicio arriba</div>
+    <div class="empty-cot-d">Seleccioná Filmmaking, Edición o los dos para desplegar el cotizador</div>
+  </div>
+</div>
+
+<!-- BARRA TOTAL -->
+<div class="total-bar" id="total-bar" style="display:none">
+  <div class="total-bar-left">
+    <div class="total-eyebrow">Total del presupuesto</div>
+    <div class="total-num"><span class="total-cur">USD $</span><span id="grand-total">0</span></div>
+    <div class="total-ars" id="total-ars-line"></div>
+    <div class="total-servicios" id="total-srv-label"></div>
+  </div>
+  <div class="total-actions">
+    <button class="btn-copy" onclick="copyPresupuesto()">📋 Copiar presupuesto</button>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 San Bao Estudio — Luca Gazzola</span>
+  <span class="footer-logo">San Bao</span>
+  <span>Uso interno · No indexado</span>
+</footer>
+
+<script>
+const FM_TIPOS=[
+  {id:'reel',ic:'📱',n:'Reel / Short',h:4,m:1.0},{id:'evt',ic:'🎉',n:'Cobertura evento',h:8,m:1.1},
+  {id:'ses',ic:'🎵',n:'Sesión musical',h:6,m:1.15},{id:'corp',ic:'🏢',n:'Corporativo',h:8,m:1.2},
+  {id:'docu',ic:'🎞️',n:'Documental',h:10,m:1.1},{id:'foto',ic:'📸',n:'Sesión foto',h:4,m:0.9},
+  {id:'clip',ic:'🎤',n:'Video clip',h:10,m:1.25},{id:'spot',ic:'📺',n:'Spot publicitario',h:12,m:1.35},
+];
+const FM_EQUIP=[
+  {id:'cam',n:'Sony Alpha',p:25},{id:'stb',n:'Estabilizador DJI',p:15},
+  {id:'tri',n:'Trípode / slider',p:10},{id:'led',n:'Panel LED',p:20},
+  {id:'mic',n:'Micrófono / boom',p:15},{id:'drn',n:'Dron',p:40},
+  {id:'len',n:'Lentes extra',p:15},{id:'mon',n:'Monitor de campo',p:10},
+];
+const FM_EXTRAS=[
+  {id:'pre',l:'Preproducción',d:'Scouting, storyboard, coordinación previa',m:1.15},
+  {id:'dir',l:'Dirección artística',d:'Dirección de actores o talent',m:1.12},
+  {id:'clr',l:'Color básico incluido',d:'Corrección de color entregada con el material',m:1.08},
+  {id:'raw',l:'Entrega de material RAW',d:'Archivos originales sin comprimir',m:1.10},
+  {id:'mul',l:'Multiángulo',d:'Filmación desde más de 2 ángulos simultáneos',m:1.20},
+];
+const FM_PACKS=[
+  {id:'r1',tag:'Reel',n:'Pack Reel 1 día',d:'Filmación de 1 día completo para 3–5 reels en locación.',h:8,disc:0},
+  {id:'ev',tag:'Evento',n:'Pack Evento',d:'Cobertura completa de evento hasta 8hs. 2 cámaras.',h:16,disc:.10},
+  {id:'br',tag:'Marca',n:'Pack Marca',d:'2 días de rodaje + material para 1 institucional + reels.',h:24,disc:.12},
+  {id:'fp',tag:'Full',n:'Pack Full Production',d:'Preproducción + 3 días de rodaje + equipo completo.',h:40,disc:.15},
+];
+const ED_ENTS=[
+  {id:'reel',n:'Reel / Short',h:2},{id:'tiktok',n:'TikTok / Vertical',h:1.5},
+  {id:'youtube',n:'YouTube largo',h:5},{id:'inst',n:'Institucional',h:6},
+  {id:'motion',n:'Motion graphics',h:7},{id:'docu',n:'Documental',h:10},
+  {id:'podcast',n:'Podcast / Talking head',h:3},{id:'vfx',n:'VFX / Compositing',h:8},
+];
+const ED_EXTRAS=[
+  {id:'sub',l:'Subtítulos / captions',d:'Transcripción y quemado al video',m:1.10},
+  {id:'clr',l:'Color grading avanzado',d:'LUTs personalizados, look cinematográfico',m:1.15},
+  {id:'snd',l:'Diseño sonoro',d:'SFX, mezcla y mastering de audio',m:1.12},
+  {id:'mus',l:'Búsqueda de música',d:'Licencia incluida o gestión sin licencia',m:1.08},
+  {id:'thm',l:'Miniatura / thumbnail',d:'Diseño gráfico de portada o cover',m:1.07},
+];
+const FACTS=[
+  {id:'pt',l:'¿Suma a tu portfolio?',d:'El proyecto mejora tu muestra de trabajo',y:1.0,n:1.05,def:false},
+  {id:'mo',l:'¿El cliente es buena onda?',d:'Relación fluida, comunicación clara',y:1.0,n:1.08,def:false},
+  {id:'co',l:'¿Es empresa grande?',d:'Corporación o marca con presupuesto real',y:1.15,n:1.0,def:false},
+  {id:'ur',l:'¿Entrega urgente? (<48hs)',d:'Entrega en menos de 48 horas',y:1.25,n:1.0,def:false},
+  {id:'ne',l:'¿Necesitás el trabajo?',d:'Momento de flujo bajo, priorizás entrar',y:0.85,n:1.0,def:false},
+  {id:'re',l:'¿Es cliente recurrente?',d:'Trabajo mensual o paquete grande',y:0.9,n:1.0,def:false},
+  {id:'ia',l:'¿El video incluye IA?',d:'Generación, efectos o edición con IA',y:1.15,n:1.0,def:false},
+];
+const ED_PACKS=[
+  {id:'sc',tag:'Social media',n:'Pack Social',d:'4 reels + 2 TikToks con hook y ritmo.',h:14,disc:.10},
+  {id:'cr',tag:'YouTube',n:'Pack Creator',d:'2 videos largos (10–15 min) + thumbnails.',h:16,disc:.12},
+  {id:'br',tag:'Marca',n:'Pack Marca',d:'1 institucional + 3 reels + subtítulos.',h:18,disc:.12},
+  {id:'mo',tag:'Motion',n:'Pack Motion',d:'1 pieza motion completa + 2 bumpers.',h:22,disc:.15},
+];
+const TV={reel:{l:'Reel/Short',h:2},tiktok:{l:'TikTok/Vert.',h:1.5},youtube:{l:'YouTube',h:5},inst:{l:'Institucional',h:6},motion:{l:'Motion',h:7},docu:{l:'Documental',h:10},podcast:{l:'Podcast',h:3}};
+
+let srvFilm=false,srvEdit=false,tipoCliente='chico';
+let fmSelT='reel',fmEq={},fmExSt={},fmFaSt={},fmGastos=[],fmGid=0,fmSelPk='r1',fmPkFaSt={};
+let edSelE='reel',edXSt={},edFaSt={},edmFaSt={},edpFaSt={},edmVids=[],edmVid=0,edpSelPk='sc';
+let rates={blue:1400,mep:1429},cur='usd';
+let fmPrVal=0,fmPkVal=0,edSVal=0,edMVal=0,edPVal=0;
+
+FM_EQUIP.forEach(e=>fmEq[e.id]=false);
+FM_EXTRAS.forEach(e=>fmExSt[e.id]=false);
+FACTS.forEach(f=>{fmFaSt[f.id]=false;fmPkFaSt[f.id]=false;edFaSt[f.id]=false;edmFaSt[f.id]=false;edpFaSt[f.id]=false;});
+ED_EXTRAS.forEach(e=>edXSt[e.id]=false);
+
+const fmt=n=>Math.round(n).toLocaleString('es-AR');
+function apFacts(b,st){let x=1;FACTS.forEach(f=>x*=st[f.id]?f.y:f.n);return b*x;}
+function fRows(st){return FACTS.filter(f=>{const m=st[f.id]?f.y:f.n;return m!==1;}).map(f=>{const m=st[f.id]?f.y:f.n,p=((m-1)*100).toFixed(0);return{l:f.l,v:(m>1?'+':'')+p+'%'};});}
+
+async function fetchFX(){
+  try{
+    const r=await fetch('https://api.bluelytics.com.ar/v2/latest');const d=await r.json();
+    rates.blue=d.blue.value_sell;rates.mep=d.oficial.value_sell;
+    try{const r2=await fetch('https://dolarito.ar/api/v2/quotations');const d2=await r2.json();const m=d2.find(q=>q.name==='mep');if(m)rates.mep=m.sell;}catch(_){}
+    document.getElementById('bv').textContent='$'+Math.round(rates.blue).toLocaleString('es-AR');
+    document.getElementById('mep-val').textContent='$'+Math.round(rates.mep).toLocaleString('es-AR');
+    document.getElementById('ld').classList.add('on');document.getElementById('ll').textContent='en tiempo real';
+  }catch(_){document.getElementById('ll').textContent='val. referencial';}
+  updTotal();
+}
+function setCur(c){cur=c;['usd','blue','mep'].forEach((x,i)=>document.getElementById(['pu','pb','pm'][i]).classList.toggle('on',x===c));cFmPr();cFmPk();cEdS();cEdM();cEdP();updTotal();}
+function selTipo(t){tipoCliente=t;document.querySelectorAll('.tc-card').forEach(c=>c.classList.toggle('sel',c.dataset.tipo===t));}
+
+function toggleSrv(s){
+  if(s==='film'){srvFilm=!srvFilm;document.getElementById('srv-film').classList.toggle('sel',srvFilm);document.getElementById('chk-film').textContent=srvFilm?'✓':'';}
+  else{srvEdit=!srvEdit;document.getElementById('srv-edit').classList.toggle('sel',srvEdit);document.getElementById('chk-edit').textContent=srvEdit?'✓':'';}
+  showCots();updTotal();
+}
+function showCots(){
+  const any=srvFilm||srvEdit;
+  document.getElementById('empty-state').style.display=any?'none':'block';
+  document.getElementById('total-bar').style.display=any?'flex':'none';
+  ['film','edit'].forEach(s=>{
+    const on=s==='film'?srvFilm:srvEdit;
+    const el=document.getElementById('cot-'+s);
+    if(on){el.classList.add('visible');setTimeout(()=>el.classList.add('anim'),10);}
+    else{el.classList.remove('anim');setTimeout(()=>el.classList.remove('visible'),400);}
+  });
+}
+function fmTab(n){
+  const btns=document.querySelectorAll('#cot-film .tab-btn');
+  btns.forEach((b,i)=>b.classList.toggle('on',i===(n==='pr'?0:1)));
+  ['fm-pr','fm-pk'].forEach(p=>document.getElementById(p).classList.toggle('on',p==='fm-'+n));
+  updTotal();
+}
+function edTab(n){
+  const map={s:0,m:1,p:2};
+  document.querySelectorAll('#cot-edit .tab-btn').forEach((b,i)=>b.classList.toggle('on',i===map[n]));
+  ['ed-s','ed-m','ed-p'].forEach(p=>document.getElementById(p).classList.toggle('on',p==='ed-'+n));
+  updTotal();
+}
+function rTog(cid,arr,st,cb){
+  const el=document.getElementById(cid);if(!el)return;el.innerHTML='';
+  arr.forEach(f=>{
+    const on=st[f.id];const mult=f.m?(on?f.m:1):(on?f.y:f.n);
+    const p=((mult-1)*100).toFixed(0);const txt=mult===1?'sin efecto':(mult>1?'+':'')+p+'%';
+    const cls=mult>1?'pos':mult<1?'neg':'neu';
+    const r=document.createElement('div');r.className='tr'+(on?' on':'');
+    r.innerHTML='<div><div class="trl">'+f.l+'</div><div class="trd">'+f.d+'</div></div><div class="tre '+cls+'">'+txt+'</div><label class="sw"><input type="checkbox" '+(on?'checked':'')+' onchange="togFn(\''+f.id+'\',\''+cid+'\',\''+cb+'\')"><span class="sw-t"></span></label>';
+    el.appendChild(r);
+  });
+}
+function togFn(id,cid,cb){
+  const maps={fmExSt:[fmExSt,FM_EXTRAS],fmFaSt:[fmFaSt,FACTS],fmPkFaSt:[fmPkFaSt,FACTS],edXSt:[edXSt,ED_EXTRAS],edFaSt:[edFaSt,FACTS],edmFaSt:[edmFaSt,FACTS],edpFaSt:[edpFaSt,FACTS]};
+  const[st,arr]=maps[cb]||[edFaSt,FACTS];st[id]=!st[id];rTog(cid,arr,st,cb);
+  if(cb==='fmExSt'||cb==='fmFaSt')cFmPr();
+  else if(cb==='fmPkFaSt')cFmPk();
+  else if(cb==='edXSt'||cb==='edFaSt')cEdS();
+  else if(cb==='edmFaSt')cEdM();
+  else if(cb==='edpFaSt')cEdP();
+}
+function rFmTipos(){const el=document.getElementById('fm-tipos');if(!el)return;el.innerHTML='';FM_TIPOS.forEach(t=>{const d=document.createElement('div');d.className='ti'+(fmSelT===t.id?' sel':'');d.innerHTML='<span class="ti-ic">'+t.ic+'</span><div class="ti-n">'+t.n+'</div><div class="ti-h">~'+t.h+'h base</div>';d.onclick=()=>{fmSelT=t.id;rFmTipos();cFmPr();};el.appendChild(d);});}
+function rFmEquip(){const el=document.getElementById('fm-equip');if(!el)return;el.innerHTML='';FM_EQUIP.forEach(e=>{const d=document.createElement('div');d.className='eq-i'+(fmEq[e.id]?' sel':'');d.innerHTML='<div><div class="eq-n">'+e.n+'</div><div class="eq-p">+$'+e.p+'/día</div></div><span class="eq-ck">'+(fmEq[e.id]?'✓':'')+'</span>';d.onclick=()=>{fmEq[e.id]=!fmEq[e.id];rFmEquip();cFmPr();};el.appendChild(d);});}
+function addFmG(ds,mo){ds=ds||'';mo=mo||0;fmGastos.push({id:++fmGid,ds,mo});rFmGastos();cFmPr();}
+function remFmG(id){fmGastos=fmGastos.filter(g=>g.id!==id);rFmGastos();cFmPr();}
+function updFmG(id,f,v){const g=fmGastos.find(x=>x.id===id);if(g){g[f]=f==='mo'?+v:v;cFmPr();}}
+function rFmGastos(){const el=document.getElementById('fm-gastos');if(!el)return;el.innerHTML='';fmGastos.forEach(g=>{const r=document.createElement('div');r.className='gr';r.innerHTML='<input type="text" placeholder="Descripción" value="'+g.ds+'" oninput="updFmG('+g.id+',\'ds\',this.value)"><input type="number" placeholder="0" value="'+(g.mo||'')+'" oninput="updFmG('+g.id+',\'mo\',this.value)"><button class="gd" onclick="remFmG('+g.id+')">✕</button>';el.appendChild(r);});}
+
+function cFmPr(){
+  const me=+document.getElementById('fm-me').value||2000,hm=+document.getElementById('fm-hm').value||160,v=me/hm;
+  const tipo=FM_TIPOS.find(t=>t.id===fmSelT);
+  const dias=+document.getElementById('fm-dias').value||1,hd=+document.getElementById('fm-hd').value||8,ht=dias*hd;
+  const hon=v*ht*tipo.m;
+  const eq=FM_EQUIP.filter(e=>fmEq[e.id]).reduce((a,e)=>a+e.p*dias,0);
+  let xm=1;FM_EXTRAS.forEach(e=>{if(fmExSt[e.id])xm*=e.m;});
+  const vi=+document.getElementById('fm-vi').value||0,lo=+document.getElementById('fm-lo').value||0,cr=+document.getElementById('fm-cr').value||0;
+  const gx=fmGastos.reduce((a,g)=>a+(+g.mo||0),0),logT=vi+lo+cr+gx;
+  const sub=(hon*xm)+eq+logT,fin=apFacts(sub,fmFaSt);
+  fmPrVal=fin;document.getElementById('fm-sub').textContent=fmt(fin);
+  let h='<div class="bt">Desglose filmmaking</div><div class="br"><span>Valor hora</span><span>$'+v.toFixed(2)+'</span></div><div class="br"><span>'+tipo.n+' ('+ht+'h × '+tipo.m.toFixed(2)+')</span><span>$'+fmt(hon)+'</span></div>';
+  FM_EXTRAS.filter(e=>fmExSt[e.id]).forEach(e=>{h+='<div class="br"><span>'+e.l+'</span><span>+'+((e.m-1)*100).toFixed(0)+'%</span></div>';});
+  if(eq>0){FM_EQUIP.filter(e=>fmEq[e.id]).forEach(e=>{h+='<div class="br"><span>'+e.n+'</span><span>$'+fmt(e.p*dias)+'</span></div>';});}
+  if(logT>0){if(vi>0)h+='<div class="br"><span>Viáticos</span><span>$'+fmt(vi)+'</span></div>';if(lo>0)h+='<div class="br"><span>Locación</span><span>$'+fmt(lo)+'</span></div>';if(cr>0)h+='<div class="br"><span>Crew</span><span>$'+fmt(cr)+'</span></div>';fmGastos.forEach(g=>{if(g.mo>0)h+='<div class="br"><span>'+(g.ds||'Gasto')+'</span><span>$'+fmt(g.mo)+'</span></div>';});}
+  h+='<div class="br"><span>Subtotal</span><span>$'+fmt(sub)+'</span></div>';
+  fRows(fmFaSt).forEach(r=>{h+='<div class="br"><span>'+r.l+'</span><span>'+r.v+'</span></div>';});
+  h+='<div class="br tot"><span>Total filmmaking</span><span>USD $'+fmt(fin)+'</span></div>';
+  document.getElementById('fm-bk').innerHTML=h;updTotal();
+}
+function rFmPacks(){const el=document.getElementById('fmpk-packs');if(!el)return;el.innerHTML='';FM_PACKS.forEach(pk=>{const c=document.createElement('div');c.className='pc'+(fmSelPk===pk.id?' sel':'');c.onclick=()=>{fmSelPk=pk.id;rFmPacks();cFmPk();};c.innerHTML='<span class="pt">'+pk.tag+'</span>'+(pk.disc>0?'<div class="pdisc">–'+(pk.disc*100).toFixed(0)+'%</div>':'')+'<div class="pn">'+pk.n+'</div><div class="pd">'+pk.d+'</div>';el.appendChild(c);});}
+function cFmPk(){
+  const me=+document.getElementById('fmpk-me').value||2000,hm=+document.getElementById('fmpk-hm').value||160,v=me/hm;
+  const pk=FM_PACKS.find(x=>x.id===fmSelPk);
+  const vi=+document.getElementById('fmpk-vi').value||0,lo=+document.getElementById('fmpk-lo').value||0,cr=+document.getElementById('fmpk-cr').value||0,log=vi+lo+cr;
+  const hon=v*pk.h*(1-pk.disc),sub=hon+log,fin=apFacts(sub,fmPkFaSt);
+  fmPkVal=fin;document.getElementById('fmpk-sub').textContent=fmt(fin);
+  let h='<div class="bt">Desglose pack</div><div class="br"><span>Valor hora</span><span>$'+v.toFixed(2)+'</span></div><div class="br"><span>'+pk.h+'h de producción</span><span>'+pk.n+'</span></div>';
+  if(pk.disc>0)h+='<div class="br"><span>Descuento pack</span><span>–'+(pk.disc*100).toFixed(0)+'%</span></div>';
+  h+='<div class="br"><span>Honorarios</span><span>$'+fmt(hon)+'</span></div>';
+  if(vi>0)h+='<div class="br"><span>Viáticos</span><span>$'+fmt(vi)+'</span></div>';
+  if(lo>0)h+='<div class="br"><span>Locación</span><span>$'+fmt(lo)+'</span></div>';
+  if(cr>0)h+='<div class="br"><span>Crew</span><span>$'+fmt(cr)+'</span></div>';
+  h+='<div class="br tot"><span>Total pack</span><span>USD $'+fmt(fin)+'</span></div>';
+  document.getElementById('fmpk-bk').innerHTML=h;updTotal();
+}
+function rEdEnts(){const el=document.getElementById('ed-ents');if(!el)return;el.innerHTML='';ED_ENTS.forEach(e=>{const d=document.createElement('div');d.className='ei'+(edSelE===e.id?' sel':'');d.innerHTML='<div class="en">'+e.n+'</div><div class="eh">~'+e.h+'h</div>';d.onclick=()=>{edSelE=e.id;rEdEnts();cEdS();};el.appendChild(d);});}
+function cEdS(){
+  const me=+document.getElementById('ed-me').value||2000,hm=+document.getElementById('ed-hm').value||160,v=me/hm;
+  const e=ED_ENTS.find(x=>x.id===edSelE);
+  const dur=+document.getElementById('ed-dur').value,cor=+document.getElementById('ed-cor').value,fmtV=+document.getElementById('ed-fmt').value;
+  let xm=1;ED_EXTRAS.forEach(x=>{if(edXSt[x.id])xm*=x.m;});
+  const base=v*e.h*dur*cor*fmtV*xm,fin=apFacts(base,edFaSt);
+  edSVal=fin;document.getElementById('ed-sub').textContent=fmt(fin);
+  let h='<div class="bt">Desglose edición</div><div class="br"><span>Valor hora</span><span>$'+v.toFixed(2)+'</span></div><div class="br"><span>'+e.n+' (~'+e.h+'h)</span><span>$'+fmt(v*e.h)+'</span></div>';
+  ED_EXTRAS.filter(x=>edXSt[x.id]).forEach(x=>{h+='<div class="br"><span>'+x.l+'</span><span>+'+((x.m-1)*100).toFixed(0)+'%</span></div>';});
+  h+='<div class="br"><span>Subtotal</span><span>$'+fmt(base)+'</span></div>';
+  fRows(edFaSt).forEach(r=>{h+='<div class="br"><span>'+r.l+'</span><span>'+r.v+'</span></div>';});
+  h+='<div class="br tot"><span>Total edición</span><span>USD $'+fmt(fin)+'</span></div>';
+  document.getElementById('ed-bk').innerHTML=h;updTotal();
+}
+function addEdV(n,t,q){n=n||'';t=t||'reel';q=q||1;edmVids.push({id:++edmVid,n,t,q});rEdVl();cEdM();}
+function remEdV(id){edmVids=edmVids.filter(v=>v.id!==id);rEdVl();cEdM();}
+function updEdV(id,f,v2){const v=edmVids.find(x=>x.id===id);if(v){v[f]=f==='q'?+v2:v2;cEdM();}}
+function chEdQ(id,d){const v=edmVids.find(x=>x.id===id);if(v){v.q=Math.max(1,v.q+d);rEdVl();cEdM();}}
+function rEdVl(){
+  const me=+document.getElementById('edm-me').value||2000,hm=+document.getElementById('edm-hm').value||160,v=me/hm;
+  const el=document.getElementById('edm-vlist');if(!el)return;el.innerHTML='';
+  edmVids.forEach(vi=>{
+    const t=TV[vi.t]||TV.reel;const pr=v*t.h*vi.q;
+    const r=document.createElement('div');r.className='vrow';
+    r.innerHTML='<div class="vrow-top"><input class="vrow-name" type="text" placeholder="Nombre del proyecto" value="'+vi.n+'" oninput="updEdV('+vi.id+',\'n\',this.value)"><button class="vrow-del" onclick="remEdV('+vi.id+')">✕</button></div><div class="vrow-bottom"><div><div class="vrow-tipo-label">Tipo</div><select class="vsel" onchange="updEdV('+vi.id+',\'t\',this.value)">'+Object.entries(TV).map(([k,x])=>'<option value="'+k+'"'+(vi.t===k?' selected':'')+'>'+x.l+'</option>').join('')+'</select></div><div><div class="qc-label">Cant.</div><div class="qc"><button class="qb" onclick="chEdQ('+vi.id+',-1)">−</button><span class="qn">'+vi.q+'</span><button class="qb" onclick="chEdQ('+vi.id+',1)">+</button></div></div><div class="vrow-price-wrap"><div class="vrow-price-label">Subtotal</div><div class="vp">USD $'+fmt(pr)+'</div></div></div>';
+    el.appendChild(r);
+  });
+}
+function cEdM(){
+  rEdVl();const me=+document.getElementById('edm-me').value||2000,hm=+document.getElementById('edm-hm').value||160,v=me/hm;
+  let sub=0;edmVids.forEach(x=>{const t=TV[x.t]||TV.reel;sub+=v*t.h*x.q;});
+  const fin=apFacts(sub,edmFaSt);edMVal=fin;document.getElementById('edm-sub').textContent=fmt(fin);
+  let h='<div class="bt">Desglose multi</div>';
+  edmVids.forEach(x=>{const t=TV[x.t]||TV.reel;h+='<div class="br"><span>'+(x.n||t.l)+' ×'+x.q+'</span><span>$'+fmt(v*t.h*x.q)+'</span></div>';});
+  h+='<div class="br"><span>Subtotal</span><span>$'+fmt(sub)+'</span></div>';
+  fRows(edmFaSt).forEach(r=>{h+='<div class="br"><span>'+r.l+'</span><span>'+r.v+'</span></div>';});
+  h+='<div class="br tot"><span>Total</span><span>USD $'+fmt(fin)+'</span></div>';
+  document.getElementById('edm-bk').innerHTML=h;updTotal();
+}
+function rEdPacks(){const el=document.getElementById('edp-packs');if(!el)return;el.innerHTML='';ED_PACKS.forEach(pk=>{const c=document.createElement('div');c.className='pc'+(edpSelPk===pk.id?' sel':'');c.onclick=()=>{edpSelPk=pk.id;rEdPacks();cEdP();};c.innerHTML='<span class="pt">'+pk.tag+'</span>'+(pk.disc>0?'<div class="pdisc">–'+(pk.disc*100).toFixed(0)+'%</div>':'')+'<div class="pn">'+pk.n+'</div><div class="pd">'+pk.d+'</div>';el.appendChild(c);});}
+function cEdP(){
+  const me=+document.getElementById('edp-me').value||2000,hm=+document.getElementById('edp-hm').value||160,v=me/hm;
+  const pk=ED_PACKS.find(x=>x.id===edpSelPk);
+  const sub=v*pk.h*(1-pk.disc),fin=apFacts(sub,edpFaSt);
+  edPVal=fin;document.getElementById('edp-sub').textContent=fmt(fin);
+  let h='<div class="bt">Desglose pack edición</div><div class="br"><span>Horas</span><span>'+pk.h+'h</span></div>';
+  if(pk.disc>0)h+='<div class="br"><span>Descuento</span><span>–'+(pk.disc*100).toFixed(0)+'%</span></div>';
+  h+='<div class="br tot"><span>Total pack</span><span>USD $'+fmt(fin)+'</span></div>';
+  document.getElementById('edp-bk').innerHTML=h;updTotal();
+}
+function getFmVal(){const prOn=document.getElementById('fm-pr')&&document.getElementById('fm-pr').classList.contains('on');return prOn?fmPrVal:fmPkVal;}
+function getEdVal(){const sOn=document.getElementById('ed-s')&&document.getElementById('ed-s').classList.contains('on');const mOn=document.getElementById('ed-m')&&document.getElementById('ed-m').classList.contains('on');if(sOn)return edSVal;if(mOn)return edMVal;return edPVal;}
+function updTotal(){
+  if(!srvFilm&&!srvEdit){document.getElementById('total-bar').style.display='none';return;}
+  document.getElementById('total-bar').style.display='flex';
+  let total=0,labels=[];
+  if(srvFilm){total+=getFmVal();labels.push('Filmmaking');}
+  if(srvEdit){total+=getEdVal();labels.push('Edición');}
+  document.getElementById('grand-total').textContent=fmt(total);
+  document.getElementById('total-srv-label').textContent=labels.join(' + ');
+  const arsEl=document.getElementById('total-ars-line');
+  if(cur!=='usd'){const r=cur==='blue'?rates.blue:rates.mep;arsEl.style.display='block';arsEl.textContent='ARS '+cur.toUpperCase()+': $'+Math.round(total*r).toLocaleString('es-AR');}
+  else{arsEl.style.display='none';}
+}
+function copyPresupuesto(){
+  const nombre=document.getElementById('cl-nombre').value||'[Cliente]';
+  const email=document.getElementById('cl-email').value;
+  const tel=document.getElementById('cl-tel').value;
+  const ig=document.getElementById('cl-ig').value;
+  const empresa=document.getElementById('cl-empresa').value;
+  const desc=document.getElementById('cl-desc').value;
+  const tipo=tipoCliente.charAt(0).toUpperCase()+tipoCliente.slice(1);
+  let txt='PRESUPUESTO — SAN BAO ESTUDIO\nLuca Gazzola\n'+'━'.repeat(34)+'\n\n';
+  txt+='Cliente: '+nombre+'\n';
+  if(empresa)txt+='Empresa: '+empresa+'\n';
+  txt+='Tipo: '+tipo+'\n';
+  if(email)txt+='Email: '+email+'\n';
+  if(tel)txt+='Tel: '+tel+'\n';
+  if(ig)txt+='Instagram: '+ig+'\n';
+  if(desc)txt+='\nProyecto: '+desc+'\n';
+  txt+='\n'+'━'.repeat(34)+'\n\n';
+  let total=0;
+  if(srvFilm){const v=getFmVal();total+=v;txt+='🎬 FILMMAKING: USD $'+fmt(v)+'\n';}
+  if(srvEdit){const v=getEdVal();total+=v;txt+='✂️ EDICIÓN: USD $'+fmt(v)+'\n';}
+  txt+='\n'+'━'.repeat(34)+'\n';
+  txt+='TOTAL: USD $'+fmt(total)+'\n';
+  if(cur!=='usd'){const r=cur==='blue'?rates.blue:rates.mep;txt+='En ARS ('+cur.toUpperCase()+'): $'+Math.round(total*r).toLocaleString('es-AR')+'\n';}
+  txt+='\n'+'━'.repeat(34)+'\nContacto: sanbaoestudio@gmail.com\n+54 9 11 3020 3625\n@sanbaoestudio';
+  navigator.clipboard.writeText(txt).then(()=>{const b=event.target;const o=b.textContent;b.textContent='✓ Copiado!';setTimeout(()=>b.textContent=o,2200);});
+}
+
+rFmTipos();rFmEquip();rFmGastos();rFmPacks();
+rEdEnts();rEdPacks();
+rTog('fm-ex',FM_EXTRAS,fmExSt,'fmExSt');
+rTog('fm-fa',FACTS,fmFaSt,'fmFaSt');
+rTog('fmpk-fa',FACTS,fmPkFaSt,'fmPkFaSt');
+rTog('ed-extras',ED_EXTRAS,edXSt,'edXSt');
+rTog('ed-facts',FACTS,edFaSt,'edFaSt');
+rTog('edm-facts',FACTS,edmFaSt,'edmFaSt');
+rTog('edp-facts',FACTS,edpFaSt,'edpFaSt');
+addEdV('Reel institucional','reel',1);
+cFmPr();cFmPk();cEdS();cEdM();cEdP();
+fetchFX();setInterval(fetchFX,5*60*1000);
+</script>
+</body>
+</html>
