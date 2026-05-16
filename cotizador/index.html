@@ -191,6 +191,14 @@ input:checked+.sw-t::before{transform:translateX(16px)}
 .total-actions{display:flex;gap:10px;flex-wrap:wrap}
 .btn-copy{background:var(--acento);color:white;border:none;font-family:var(--cond);font-size:0.78rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 24px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .btn-copy:hover{background:#c94e1e;transform:translateY(-1px)}
+.btn-notion{background:white;color:var(--negro);border:none;font-family:var(--cond);font-size:0.78rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 24px;cursor:pointer;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:8px}
+.btn-notion:hover{background:#e8e5de;transform:translateY(-1px)}
+.btn-notion.loading{opacity:0.6;pointer-events:none}
+.btn-notion.ok{background:#2db568;color:white}
+.btn-notion.err{background:#c0392b;color:white}
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--negro);color:white;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;padding:12px 20px;border-radius:2px;opacity:0;transition:all 0.3s;z-index:200;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.14em;color:var(--gris)}
 .footer-logo{font-family:var(--display);font-size:1.2rem;font-weight:900;letter-spacing:-0.04em;text-transform:uppercase;color:var(--negro);opacity:0.2}
 @media(max-width:760px){
@@ -446,9 +454,11 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
   </div>
   <div class="total-actions">
     <button class="btn-copy" onclick="copyPresupuesto()">📋 Copiar presupuesto</button>
+    <button class="btn-notion" id="btn-notion" onclick="saveToNotion()">Guardar en Notion</button>
   </div>
 </div>
 
+<div class="toast" id="toast"></div>
 <footer>
   <span>© 2026 San Bao Estudio — Luca Gazzola</span>
   <span class="footer-logo">San Bao</span>
@@ -723,7 +733,75 @@ function copyPresupuesto(){
   navigator.clipboard.writeText(txt).then(()=>{const b=event.target;const o=b.textContent;b.textContent='✓ Copiado!';setTimeout(()=>b.textContent=o,2200);});
 }
 
-rFmTipos();rFmEquip();rFmGastos();rFmPacks();
+
+/* ── NOTION ── */
+const NOTION_TOKEN='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';
+const NOTION_DB='362caa43d08b8079bd60f1564d9b8749';
+const NOTION_PROXY='https://notion-proxy.sanbaoestudio.workers.dev';
+
+function showToast(msg,ok){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.className='toast show'+(ok===false?' err':ok===true?' ok':'');
+  setTimeout(()=>t.className='toast',3000);
+}
+
+async function saveToNotion(){
+  const nombre=document.getElementById('cl-nombre').value.trim();
+  if(!nombre){showToast('⚠️ Completá el nombre del cliente',false);return;}
+  const btn=document.getElementById('btn-notion');
+  btn.textContent='Guardando…';btn.classList.add('loading');
+
+  const email=document.getElementById('cl-email').value.trim();
+  const tel=document.getElementById('cl-tel').value.trim();
+  const ig=document.getElementById('cl-ig').value.trim();
+  const empresa=document.getElementById('cl-empresa').value.trim();
+  const desc=document.getElementById('cl-desc').value.trim();
+  const tipo=tipoCliente.charAt(0).toUpperCase()+tipoCliente.slice(1);
+
+  let servicios=[],total=0;
+  if(srvFilm){const v=getFmVal();total+=v;servicios.push('Filmmaking');}
+  if(srvEdit){const v=getEdVal();total+=v;servicios.push('Edición de Video');}
+
+  const cuenta=ig||(email?email:'');
+  const rrss=ig?ig:cuenta;
+
+  const body={
+    parent:{database_id:NOTION_DB},
+    properties:{
+      'Nombre':{title:[{text:{content:nombre+(empresa?' — '+empresa:'')}}]},
+      'Mail':{email:email||null},
+      'Teléfono':{phone_number:tel||null},
+      'Cuenta RRSS':{rich_text:[{text:{content:rrss}}]},
+      'Servicio':{multi_select:servicios.map(s=>({name:s}))},
+      'Presupuesto':{number:Math.round(total)},
+      'Tipo de cliente':{select:{name:tipo}},
+      'Comentarios':{rich_text:[{text:{content:desc}}]},
+      'Fecha':{date:{start:new Date().toISOString().split('T')[0]}},
+    }
+  };
+
+  try{
+    const res=await fetch(NOTION_PROXY,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(body)
+    });
+    const data=await res.json();
+    if(res.ok){
+      btn.textContent='✓ Guardado';btn.classList.remove('loading');btn.classList.add('ok');
+      showToast('✓ Cliente guardado en Notion',true);
+      setTimeout(()=>{btn.textContent='Guardar en Notion';btn.classList.remove('ok');},3000);
+    }else{
+      throw new Error(data.message||'Error Notion');
+    }
+  }catch(e){
+    btn.textContent='Guardar en Notion';btn.classList.remove('loading');
+    showToast('⚠️ Error: '+e.message+' — Revisá CORS o el token',false);
+    console.error(e);
+  }
+}
+rFmGastos();rFmPacks();
 rEdEnts();rEdPacks();
 rTog('fm-ex',FM_EXTRAS,fmExSt,'fmExSt');
 rTog('fm-fa',FACTS,fmFaSt,'fmFaSt');
