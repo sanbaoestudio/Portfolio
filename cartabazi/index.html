@@ -3,17 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BaZi Familia · 2026</title>
+<title>BaZi · Luca Gazzola · 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Lato:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#c9972a;--gold-light:#e8c46a;
-  --cinnabar:#c0392b;--jade:#2d7a5a;
-  --midnight:#0d0a18;--surface:#13101f;--surface2:#1a1628;
+  --gold:#c9972a;--gold-l:#e8c46a;--cinnabar:#c0392b;--jade:#2d7a5a;
+  --midnight:#0d0a18;--surf:#13101f;--surf2:#1a1628;
   --smoke:#7a6e60;--ash:#cfc0a8;--ash2:#b0a090;
   --fire:#e05a1a;--wood:#4a8c3f;--metal:#7a9bb5;--water:#2c5f8a;--earth:#9c7a3c;
-  --border:rgba(201,151,42,0.18);
-  --luca:#c9972a;--guadi:#c06090;--morena:#5a9abf;
+  --bdr:rgba(201,151,42,0.18);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -23,571 +21,572 @@ body::before{content:'';position:fixed;inset:0;z-index:-1;
   radial-gradient(ellipse at 85% 90%,rgba(192,57,43,0.04) 0%,transparent 45%),var(--midnight);}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
-.nav-logo{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold);padding:1rem 1.2rem 1rem 0;border-right:1px solid var(--border);margin-right:0.8rem;white-space:nowrap;flex-shrink:0;}
+nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
+.nav-logo{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold);padding:1rem 1.2rem 1rem 0;border-right:1px solid var(--bdr);margin-right:0.8rem;white-space:nowrap;flex-shrink:0;}
 .nav-tab{padding:0.85rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
 .nav-tab:hover{color:var(--ash);}
-.nav-tab.active{color:var(--gold-light);border-bottom-color:var(--gold);}
-.nav-sep{width:1px;height:24px;background:var(--border);margin:0 0.3rem;flex-shrink:0;}
-
-/* PERSON BAR */
-.person-bar{display:flex;gap:0.6rem;align-items:center;padding:0.8rem 1.5rem;background:rgba(201,151,42,0.03);border-bottom:1px solid var(--border);flex-wrap:wrap;}
-.person-label{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;color:var(--smoke);text-transform:uppercase;margin-right:0.3rem;}
-.person-btn{padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);background:transparent;font-family:'Lato',sans-serif;font-size:0.85rem;cursor:pointer;transition:all 0.2s;color:var(--smoke);}
-.person-btn:hover{color:var(--ash);}
-.person-btn.luca.active{border-color:var(--luca);color:var(--luca);background:rgba(201,151,42,0.1);}
-.person-btn.guadi.active{border-color:var(--guadi);color:var(--guadi);background:rgba(192,96,144,0.1);}
-.person-btn.morena.active{border-color:var(--morena);color:var(--morena);background:rgba(90,154,191,0.1);}
+.nav-tab.active{color:var(--gold-l);border-bottom-color:var(--gold);}
+.nav-sep{width:1px;height:22px;background:var(--bdr);margin:0 0.2rem;flex-shrink:0;}
+.nav-familia{color:rgba(201,151,42,0.5);font-size:0.55rem;}
+.nav-familia:hover{color:var(--gold);}
 
 /* SECTIONS */
 .section{display:none;animation:fadeUp 0.3s ease;}
 .section.active{display:block;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
 
-/* PAGE HEADER */
-.page-header{text-align:center;padding:2.5rem 2rem 1.8rem;border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
-.page-header::before{content:attr(data-glyph);position:absolute;right:2rem;top:1rem;font-size:5rem;opacity:0.04;color:var(--gold);font-family:serif;pointer-events:none;}
-.header-eyebrow{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:0.7rem;}
-.page-header h1{font-family:'IM Fell English',serif;font-size:clamp(1.6rem,4vw,2.4rem);color:var(--gold-light);font-weight:400;line-height:1.15;}
+/* ══ SHARED COMPONENTS ══ */
+.page-header{text-align:center;padding:2.5rem 2rem 1.8rem;border-bottom:1px solid var(--bdr);position:relative;overflow:hidden;}
+.page-header::before{content:attr(data-g);position:absolute;right:2rem;top:1rem;font-size:5rem;opacity:0.04;color:var(--gold);font-family:serif;pointer-events:none;}
+.eyebrow{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:0.7rem;}
+.page-header h1{font-family:'IM Fell English',serif;font-size:clamp(1.7rem,4vw,2.6rem);color:var(--gold-l);font-weight:400;line-height:1.15;}
 .page-header p{margin-top:0.4rem;color:var(--smoke);font-style:italic;font-size:0.95rem;}
+.badge{display:inline-block;margin-top:0.8rem;padding:0.35rem 1.2rem;border:1px solid var(--gold);font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--gold);letter-spacing:0.18em;border-radius:2px;}
+.ctx-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(201,151,42,0.03);border-bottom:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
+.ctx-bar span{color:var(--gold-l);}
+.sec-title{font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--gold-l);font-weight:400;margin:2.2rem 0 0.4rem;padding-bottom:0.5rem;border-bottom:1px solid var(--bdr);}
+.sec-sub{font-size:0.88rem;color:var(--smoke);font-style:italic;margin-bottom:1.3rem;line-height:1.6;}
 
-/* ══════════════════════════════════
-   HOY PANEL
-══════════════════════════════════ */
-.hoy-wrap{max-width:980px;margin:0 auto;padding:2rem 1.5rem 1rem;}
+/* Stars */
+.star{fill:rgba(201,151,42,0.15);}
+.star.on{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(201,151,42,0.45));}
 
-.hoy-date-hero{
-  text-align:center;
-  padding:2rem 1.5rem 1.8rem;
-  background:rgba(201,151,42,0.04);
-  border:1px solid var(--border);
-  border-radius:6px;
-  margin-bottom:1.5rem;
-  position:relative;
-  overflow:hidden;
-}
-.hoy-date-hero::before{
-  content:'今日';position:absolute;right:1.5rem;top:1rem;
-  font-size:4rem;opacity:0.05;color:var(--gold);font-family:serif;
-}
-.hoy-fecha-label{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.3em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.5rem;}
-.hoy-fecha{font-family:'IM Fell English',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--gold-light);font-weight:400;margin-bottom:0.3rem;}
-.hoy-pilar-display{font-family:'Space Mono',monospace;font-size:0.72rem;letter-spacing:0.15em;color:var(--smoke);margin-bottom:1.2rem;}
-.hoy-pilar-display span{color:var(--gold);}
-
-/* Stars hero */
-.hoy-stars{display:flex;gap:4px;justify-content:center;margin-bottom:0.8rem;}
-.hoy-star{width:18px;height:18px;fill:rgba(201,151,42,0.15);}
-.hoy-star.on{fill:var(--gold);filter:drop-shadow(0 0 4px rgba(201,151,42,0.5));}
-
-/* Energy badge hero */
-.hoy-energy-badge{
-  display:inline-block;padding:0.3rem 1.1rem;border-radius:3px;
-  font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;font-weight:700;
-  margin-bottom:1rem;
-}
-.hoy-verdict{font-family:'IM Fell English',serif;font-size:1.15rem;font-weight:400;margin-bottom:0.4rem;}
-.verdict-green{color:#6dbf99;}.verdict-yellow{color:var(--earth);}.verdict-red{color:#e08070;}
-.hoy-ints{font-size:0.82rem;color:var(--smoke);font-style:italic;}
-
-/* Person cards grid */
-.hoy-persons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;margin-bottom:2rem;}
-.hoy-person-card{
-  background:var(--surface2);border:1px solid var(--border);border-radius:4px;
-  padding:1.3rem 1.4rem;position:relative;overflow:hidden;
-}
-.hoy-person-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
-.hoy-person-card.card-luca::before{background:var(--luca);}
-.hoy-person-card.card-guadi::before{background:var(--guadi);}
-.hoy-person-card.card-morena::before{background:var(--morena);}
-
-.hpc-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.7rem;}
-.hpc-name{font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;}
-.hpc-name.luca-c{color:var(--luca);}
-.hpc-name.guadi-c{color:var(--guadi);}
-.hpc-name.morena-c{color:var(--morena);}
-.hpc-stars{display:flex;gap:2px;}
-.hpc-star{width:11px;height:11px;fill:rgba(201,151,42,0.15);}
-.hpc-star.on{fill:var(--gold);filter:drop-shadow(0 0 2px rgba(201,151,42,0.4));}
-
-.hpc-dm{font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--smoke);letter-spacing:0.07em;margin-bottom:0.6rem;}
-.hpc-etag{display:inline-block;padding:0.1rem 0.5rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.06em;font-weight:700;margin-bottom:0.6rem;}
-.etag-f{background:rgba(224,90,26,0.16);color:#e87a40;border:1px solid rgba(224,90,26,0.26);}
+/* Element tags */
+.etag{display:inline-block;padding:0.11rem 0.5rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.06em;font-weight:700;}
 .etag-m{background:rgba(74,140,63,0.16);color:#6db860;border:1px solid rgba(74,140,63,0.26);}
+.etag-f{background:rgba(224,90,26,0.16);color:#e87a40;border:1px solid rgba(224,90,26,0.26);}
 .etag-t{background:rgba(156,122,60,0.16);color:#c9a45a;border:1px solid rgba(156,122,60,0.26);}
 .etag-me{background:rgba(122,155,181,0.16);color:#a0b4c8;border:1px solid rgba(122,155,181,0.26);}
 .etag-a{background:rgba(44,95,138,0.16);color:#5a9abf;border:1px solid rgba(44,95,138,0.26);}
 
-.hpc-summary{font-size:0.88rem;color:var(--ash2);line-height:1.55;font-style:italic;margin-bottom:0.7rem;}
-.hpc-row{display:flex;gap:0.45rem;margin-bottom:0.35rem;align-items:flex-start;}
-.hpc-label{font-family:'Space Mono',monospace;font-size:0.5rem;padding:0.1rem 0.32rem;border-radius:2px;flex-shrink:0;margin-top:0.15rem;letter-spacing:0.04em;}
-.lsi{background:rgba(45,122,90,0.22);color:#5aba90;}
-.lno{background:rgba(192,57,43,0.22);color:#e07060;}
-.hpc-text{font-size:0.82rem;color:var(--ash2);line-height:1.42;}
-
-/* ══════════════════════════════════
-   CALCULATOR
-══════════════════════════════════ */
-.calc-wrap{max-width:820px;margin:0 auto;padding:0 1.5rem 2rem;}
-.calc-divider{
-  display:flex;align-items:center;gap:1rem;margin:0 1.5rem 1.5rem;
-  max-width:820px;margin-left:auto;margin-right:auto;
+/* ══ RESUMEN EJECUTIVO ══ */
+.resumen-wrap{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:1.2rem;
+  margin-bottom:1.8rem;
 }
-.calc-divider-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);}
-.calc-divider-text{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:var(--smoke);text-transform:uppercase;white-space:nowrap;}
 
-.calc-box{background:rgba(201,151,42,0.03);border:1px solid var(--border);border-radius:6px;padding:2rem 2.2rem;position:relative;overflow:hidden;}
+/* PUBLICAR CARD — the star of the show */
+.publicar-card{
+  background:var(--surf2);
+  border:1px solid var(--bdr);
+  border-radius:8px;
+  padding:1.4rem 1.5rem;
+  text-align:center;
+  min-width:160px;
+  max-width:180px;
+  position:relative;
+  overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;
+}
+.publicar-card.pub-excelente{border-color:rgba(45,122,90,0.5);background:rgba(45,122,90,0.08);}
+.publicar-card.pub-bueno{border-color:rgba(74,140,63,0.4);background:rgba(74,140,63,0.06);}
+.publicar-card.pub-neutro{border-color:rgba(156,122,60,0.35);background:rgba(156,122,60,0.06);}
+.publicar-card.pub-evitar{border-color:rgba(192,57,43,0.35);background:rgba(192,57,43,0.06);}
+.publicar-card.pub-mal{border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.09);}
+
+.pub-label{
+  font-family:'Space Mono',monospace;font-size:0.55rem;
+  letter-spacing:0.2em;color:var(--smoke);text-transform:uppercase;
+}
+.pub-icon{font-size:2.2rem;line-height:1;}
+.pub-stars{display:flex;gap:3px;justify-content:center;}
+.pub-star{width:14px;height:14px;}
+.pub-verdict{
+  font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;
+  line-height:1.2;margin-top:0.1rem;
+}
+.pub-excelente .pub-verdict{color:#6dbf99;}
+.pub-bueno .pub-verdict{color:#8cc87a;}
+.pub-neutro .pub-verdict{color:#c9a45a;}
+.pub-evitar .pub-verdict{color:#e07a5a;}
+.pub-mal .pub-verdict{color:#e08070;}
+.pub-note{font-size:0.75rem;color:var(--smoke);font-style:italic;line-height:1.4;}
+
+/* RIGHT SIDE — hacer/no hacer */
+.resumen-right{
+  display:flex;flex-direction:column;gap:0.8rem;
+}
+.resumen-hacer{
+  background:rgba(45,122,90,0.07);
+  border:1px solid rgba(45,122,90,0.2);
+  border-radius:5px;
+  padding:1rem 1.2rem;
+  flex:1;
+}
+.resumen-nohacer{
+  background:rgba(192,57,43,0.07);
+  border:1px solid rgba(192,57,43,0.2);
+  border-radius:5px;
+  padding:1rem 1.2rem;
+  flex:1;
+}
+.resumen-label{
+  font-family:'Space Mono',monospace;font-size:0.57rem;
+  letter-spacing:0.15em;text-transform:uppercase;
+  margin-bottom:0.5rem;display:block;
+}
+.resumen-hacer .resumen-label{color:#6dbf99;}
+.resumen-nohacer .resumen-label{color:#e08070;}
+.resumen-items{list-style:none;padding:0;margin:0;}
+.resumen-items li{
+  font-size:0.9rem;color:var(--ash2);
+  padding:0.22rem 0;line-height:1.45;
+  display:flex;gap:0.5rem;align-items:flex-start;
+}
+.resumen-items li::before{
+  flex-shrink:0;margin-top:0.05rem;font-size:0.75rem;
+}
+.resumen-hacer .resumen-items li::before{content:'✦';color:#6dbf99;opacity:0.7;}
+.resumen-nohacer .resumen-items li::before{content:'✕';color:#e08070;opacity:0.7;}
+
+@media(max-width:620px){
+  .resumen-wrap{grid-template-columns:1fr;}
+  .publicar-card{max-width:100%;min-width:unset;flex-direction:row;gap:1.2rem;text-align:left;align-items:center;}
+  .pub-stars{justify-content:flex-start;}
+}
+
+
+.hoy-wrap{max-width:1060px;margin:0 auto;padding:2rem 1.5rem 1rem;}
+
+/* Hero date banner */
+.hoy-hero{
+  background:rgba(201,151,42,0.04);border:1px solid var(--bdr);border-radius:8px;
+  padding:2.2rem 2rem 1.8rem;margin-bottom:2rem;position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;
+}
+.hoy-hero::before{content:'今日';position:absolute;right:2rem;bottom:-0.5rem;font-size:8rem;opacity:0.035;color:var(--gold);font-family:serif;line-height:1;pointer-events:none;}
+.hoy-left{}
+.hoy-fecha-label{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.3em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.4rem;}
+.hoy-fecha{font-family:'IM Fell English',serif;font-size:clamp(1.4rem,3.5vw,2rem);color:var(--gold-l);font-weight:400;margin-bottom:0.5rem;}
+.hoy-pilar-row{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:1rem;}
+.hoy-pilar-main{font-family:'IM Fell English',serif;font-size:2.2rem;color:var(--gold);line-height:1;}
+.hoy-pilar-detail{font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--smoke);line-height:1.9;letter-spacing:0.08em;}
+.hoy-pilar-detail span{color:var(--gold-l);}
+.hoy-verdict-row{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.5rem;}
+.hoy-verdict-text{font-family:'IM Fell English',serif;font-size:1.15rem;font-weight:400;}
+.vg{color:#6dbf99;}.vy{color:var(--earth);}.vr{color:#e08070;}
+.hoy-context{font-size:0.88rem;color:var(--smoke);font-style:italic;line-height:1.65;}
+.hoy-context strong{color:var(--ash2);font-style:normal;}
+.hoy-right{text-align:right;}
+.hoy-stars-big{display:flex;gap:3px;justify-content:flex-end;margin-bottom:0.6rem;}
+.hoy-star-big{width:20px;height:20px;}
+.hoy-score-label{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;color:var(--smoke);}
+
+/* Deep tips grid */
+.tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.tips-box{padding:1.3rem 1.4rem;border-radius:5px;}
+.tips-box.do-box{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
+.tips-box.dont-box{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.tips-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.75rem;}
+.tips-box.do-box h3{color:#6dbf99;}
+.tips-box.dont-box h3{color:#e08070;}
+.tips-box ul{list-style:none;padding:0;}
+.tips-box li{font-size:0.9rem;color:var(--ash2);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.55;}
+.tips-box li:last-child{border-bottom:none;}
+.tips-box li strong{color:var(--ash);display:block;font-size:0.82rem;margin-bottom:0.1rem;}
+
+/* Dios detail */
+.dios-block{background:var(--surf2);border:1px solid var(--bdr);border-radius:5px;padding:1.3rem 1.5rem;margin-bottom:1.5rem;display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:start;}
+.dios-icon{font-size:2.5rem;line-height:1;opacity:0.7;}
+.dios-title{font-family:'IM Fell English',serif;font-size:1.1rem;color:var(--gold-l);font-weight:400;margin-bottom:0.25rem;}
+.dios-sub{font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--smoke);letter-spacing:0.1em;margin-bottom:0.5rem;}
+.dios-desc{font-size:0.92rem;color:var(--ash2);line-height:1.65;}
+
+/* Interacciones */
+.ints-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.int-chip{padding:0.3rem 0.75rem;border-radius:20px;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;}
+.int-bien{background:rgba(45,122,90,0.15);border:1px solid rgba(45,122,90,0.3);color:#6dbf99;}
+.int-mal{background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.3);color:#e08070;}
+.int-cuidado{background:rgba(156,122,60,0.15);border:1px solid rgba(156,122,60,0.3);color:#c9a45a;}
+.int-trio{background:rgba(224,90,26,0.15);border:1px solid rgba(224,90,26,0.3);color:#e87a40;}
+.int-none{background:rgba(122,122,122,0.1);border:1px solid rgba(122,122,122,0.2);color:var(--smoke);}
+
+/* Hora oracle */
+.hora-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.6rem;margin-bottom:2rem;}
+.hora-card{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:0.85rem 0.9rem;text-align:center;}
+.hora-card.hora-best{border-color:rgba(45,122,90,0.4);background:rgba(45,122,90,0.06);}
+.hora-card.hora-ok{border-color:rgba(156,122,60,0.3);}
+.hora-card.hora-bad{border-color:rgba(192,57,43,0.25);opacity:0.7;}
+.hora-time{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--smoke);letter-spacing:0.08em;margin-bottom:0.3rem;}
+.hora-animal{font-size:1.1rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;font-family:'IM Fell English',serif;}
+.hora-elem{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);}
+.hora-verdict{font-family:'Space Mono',monospace;font-size:0.55rem;margin-top:0.35rem;letter-spacing:0.06em;}
+.hora-best .hora-verdict{color:#6dbf99;}
+.hora-ok .hora-verdict{color:#c9a45a;}
+.hora-bad .hora-verdict{color:#e08070;}
+
+/* ══ CALCULATOR ══ */
+.calc-wrap{max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 3rem;}
+.calc-box{background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:6px;padding:2rem 2.2rem;position:relative;overflow:hidden;}
 .calc-box::before{content:'奇門';position:absolute;right:1.2rem;top:0.8rem;font-size:3rem;opacity:0.04;color:var(--gold);}
-.calc-title{font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--gold-light);font-weight:400;margin-bottom:0.2rem;}
-.calc-subtitle{font-size:0.9rem;color:var(--smoke);font-style:italic;margin-bottom:1.6rem;}
+.calc-title{font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--gold-l);font-weight:400;margin-bottom:0.2rem;}
+.calc-sub{font-size:0.9rem;color:var(--smoke);font-style:italic;margin-bottom:1.6rem;}
 .calc-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
 .calc-field{display:flex;flex-direction:column;gap:0.4rem;}
 .calc-field label{font-family:'Space Mono',monospace;font-size:0.57rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;}
 .calc-field input,.calc-field select{background:rgba(0,0,0,0.4);border:1px solid rgba(201,151,42,0.25);color:var(--ash);padding:0.7rem 0.9rem;font-family:'Lato',sans-serif;font-size:0.95rem;border-radius:3px;width:100%;outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
 .calc-field input:focus,.calc-field select:focus{border-color:var(--gold);}
 .calc-field select option{background:#1a1209;}
-.calc-btn{width:100%;padding:0.85rem;background:linear-gradient(135deg,rgba(201,151,42,0.18),rgba(201,151,42,0.06));border:1px solid var(--gold);color:var(--gold-light);font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;cursor:pointer;border-radius:3px;transition:all 0.25s;margin-top:0.3rem;}
+.calc-btn{width:100%;padding:0.85rem;background:linear-gradient(135deg,rgba(201,151,42,0.18),rgba(201,151,42,0.06));border:1px solid var(--gold);color:var(--gold-l);font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;cursor:pointer;border-radius:3px;transition:all 0.25s;margin-top:0.3rem;}
 .calc-btn:hover{background:linear-gradient(135deg,rgba(201,151,42,0.3),rgba(201,151,42,0.12));transform:translateY(-1px);box-shadow:0 4px 20px rgba(201,151,42,0.15);}
-.result-box{margin-top:1.5rem;padding:1.5rem;background:rgba(0,0,0,0.3);border:1px solid rgba(201,151,42,0.18);border-radius:4px;display:none;}
-.result-box.visible{display:block;animation:fadeUp 0.4s ease;}
-.result-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.8rem;padding-bottom:0.7rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:0.5rem;}
-.result-date-label{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;color:var(--smoke);}
-.result-rating{display:flex;gap:3px;}
-.result-verdict{font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.6rem;}
-.result-pillars{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.8rem;font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);}
-.result-pillars span{color:var(--gold-light);}
-.result-text{font-size:0.92rem;color:var(--ash2);line-height:1.7;}
-.result-action-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-top:0.9rem;}
-.action-box{padding:0.85rem 1rem;border-radius:3px;font-size:0.88rem;line-height:1.52;}
-.action-box.do{background:rgba(45,122,90,0.1);border:1px solid rgba(45,122,90,0.25);color:#7dd4aa;}
-.action-box.dont{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.25);color:#e08070;}
-.action-box strong{display:block;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;margin-bottom:0.3rem;opacity:0.75;}
+.res-box{margin-top:1.5rem;padding:1.5rem;background:rgba(0,0,0,0.3);border:1px solid rgba(201,151,42,0.18);border-radius:4px;display:none;}
+.res-box.visible{display:block;animation:fadeUp 0.4s ease;}
+.res-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.8rem;padding-bottom:0.7rem;border-bottom:1px solid var(--bdr);flex-wrap:wrap;gap:0.5rem;}
+.res-dlabel{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;color:var(--smoke);}
+.res-rating{display:flex;gap:3px;}
+.res-verdict{font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.6rem;}
+.res-pillars{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.8rem;font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);}
+.res-pillars span{color:var(--gold-l);}
+.res-text{font-size:0.92rem;color:var(--ash2);line-height:1.7;}
+.res-act-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-top:0.9rem;}
+.act-box{padding:0.85rem 1rem;border-radius:3px;font-size:0.88rem;line-height:1.52;}
+.act-box.do{background:rgba(45,122,90,0.1);border:1px solid rgba(45,122,90,0.25);color:#7dd4aa;}
+.act-box.dont{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.25);color:#e08070;}
+.act-box strong{display:block;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;margin-bottom:0.3rem;opacity:0.75;}
 
-/* Export */
-.export-bar{padding:1rem 1.3rem;background:rgba(201,151,42,0.03);border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
-.export-bar p{font-size:0.87rem;color:var(--smoke);flex:1;min-width:180px;}
-.export-btn{padding:0.5rem 1rem;border:1px solid var(--border);background:transparent;color:var(--ash);cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;border-radius:3px;transition:all 0.2s;}
-.export-btn:hover{border-color:var(--gold);color:var(--gold-light);}
-.export-btn.primary{border-color:var(--gold);color:var(--gold-light);background:rgba(201,151,42,0.08);}
-.export-btn.primary:hover{background:rgba(201,151,42,0.18);}
-
-/* ══════════════════════════════════
-   CALENDAR
-══════════════════════════════════ */
+/* ══ CALENDAR ══ */
 .cal-wrap{max-width:1140px;margin:0 auto;padding:2rem 1.5rem 4rem;}
-.month-selector{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
-.month-btn{padding:0.5rem 0.95rem;border:1px solid var(--border);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.07em;cursor:pointer;border-radius:3px;transition:all 0.18s;}
+.month-sel{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
+.month-btn{padding:0.5rem 0.95rem;border:1px solid var(--bdr);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.07em;cursor:pointer;border-radius:3px;transition:all 0.18s;}
 .month-btn:hover{border-color:rgba(201,151,42,0.4);color:var(--ash);}
-.month-btn.active{border-color:var(--gold);color:var(--gold-light);background:rgba(201,151,42,0.08);}
-.month-btn.active.g-active{border-color:var(--guadi);color:var(--guadi);background:rgba(192,96,144,0.08);}
-.month-btn.active.m-active{border-color:var(--morena);color:var(--morena);background:rgba(90,154,191,0.08);}
-.month-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px solid var(--border);}
-.month-chinese{font-size:2.6rem;color:var(--gold);opacity:0.55;line-height:1;}
-.month-info h2{font-family:'IM Fell English',serif;font-size:1.3rem;color:var(--gold-light);font-weight:400;}
+.month-btn.active{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.08);}
+.month-hdr{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px solid var(--bdr);}
+.month-cn{font-size:2.6rem;color:var(--gold);opacity:0.55;line-height:1;}
+.month-info h2{font-family:'IM Fell English',serif;font-size:1.3rem;color:var(--gold-l);font-weight:400;}
 .month-info p{font-size:0.88rem;color:var(--ash2);margin-top:0.2rem;font-style:italic;}
-.month-pilar{margin-left:auto;text-align:right;font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);line-height:1.9;}
-.month-pilar span{color:var(--gold-light);}
-.calendar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:0.8rem;}
-.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(201,151,42,0.11);border-radius:4px;padding:1rem 1.15rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
+.month-meta{margin-left:auto;text-align:right;font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);line-height:1.9;}
+.month-meta span{color:var(--gold-l);}
+.cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0.8rem;}
+.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(201,151,42,0.11);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
 .day-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
-.day-card.r5::before{background:#2d7a5a;}.day-card.r4::before{background:#4a8c3f;}.day-card.r3::before{background:#9c7a3c;}.day-card.r2::before{background:#c0602a;}.day-card.r1::before{background:var(--cinnabar);}
+.day-card.r5::before{background:#2d7a5a;}.day-card.r4::before{background:#4a8c3f;}
+.day-card.r3::before{background:#9c7a3c;}.day-card.r2::before{background:#c0602a;}
+.day-card.r1::before{background:var(--cinnabar);}
 .day-card:hover{border-color:rgba(201,151,42,0.3);background:rgba(255,255,255,0.038);}
-.day-card.weekend{opacity:0.65;}
-.day-card.today-card{border-color:rgba(201,151,42,0.5);box-shadow:0 0 0 1px rgba(201,151,42,0.2);}
-.today-badge{display:inline-block;background:rgba(201,151,42,0.2);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;padding:0.08rem 0.4rem;border-radius:2px;margin-left:0.4rem;vertical-align:middle;}
-.dc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem;}
-.dc-num{font-family:'IM Fell English',serif;font-size:1.5rem;color:var(--gold-light);line-height:1;}
-.dc-dow{font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);letter-spacing:0.07em;margin-top:0.1rem;}
-.dc-pilar{text-align:right;font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);line-height:1.65;}
-.stars{display:flex;gap:2px;margin-bottom:0.42rem;}
-.star{width:11px;height:11px;fill:rgba(201,151,42,0.18);}
-.star.on{fill:var(--gold);filter:drop-shadow(0 0 2px rgba(201,151,42,0.4));}
-.etag{display:inline-block;padding:0.1rem 0.48rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.06em;font-weight:700;margin-bottom:0.48rem;}
-.dc-summary{font-size:0.87rem;color:var(--ash2);line-height:1.5;margin-bottom:0.5rem;font-style:italic;}
+.day-card.weekend{opacity:0.62;}
+.day-card.today-card{border-color:rgba(201,151,42,0.55);box-shadow:0 0 0 1px rgba(201,151,42,0.18);}
+.today-badge{display:inline-block;background:rgba(201,151,42,0.22);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;padding:0.07rem 0.38rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
+.dc-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem;}
+.dc-num{font-family:'IM Fell English',serif;font-size:1.5rem;color:var(--gold-l);line-height:1;}
+.dc-dow{font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);letter-spacing:0.07em;margin-top:0.1rem;}
+.dc-pilar{text-align:right;font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--smoke);line-height:1.65;}
+.dc-stars{display:flex;gap:2px;margin-bottom:0.42rem;}
+.dc-summary{font-size:0.87rem;color:var(--ash2);line-height:1.5;margin-bottom:0.48rem;font-style:italic;}
 .fav-row{display:flex;gap:0.42rem;margin-bottom:0.28rem;align-items:flex-start;}
-.fav-label{font-family:'Space Mono',monospace;font-size:0.49rem;padding:0.09rem 0.3rem;border-radius:2px;flex-shrink:0;margin-top:0.14rem;letter-spacing:0.04em;}
+.fav-label{font-family:'Space Mono',monospace;font-size:0.49rem;padding:0.08rem 0.3rem;border-radius:2px;flex-shrink:0;margin-top:0.14rem;letter-spacing:0.04em;}
+.lsi{background:rgba(45,122,90,0.22);color:#5aba90;}
+.lno{background:rgba(192,57,43,0.22);color:#e07060;}
 .fav-text{font-size:0.8rem;color:var(--ash2);line-height:1.42;}
 
-/* ══════════════════════════════════
-   CARTA SECTION
-══════════════════════════════════ */
+/* ══ CARTA SECTION ══ */
 .carta-wrap{max-width:980px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
-.carta-section-title{font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--gold-light);font-weight:400;margin:2.3rem 0 0.4rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
-.carta-section-title.gt{color:var(--guadi);}
-.carta-section-title.mt{color:var(--morena);}
-.carta-section-sub{font-size:0.88rem;color:var(--smoke);font-style:italic;margin-bottom:1.3rem;line-height:1.6;}
-.pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:1.8rem;}
-.pilar-col{padding:1rem 0.8rem;border-right:1px solid var(--border);text-align:center;}
+.pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bdr);border-radius:4px;overflow:hidden;margin-bottom:1.8rem;}
+.pilar-col{padding:1rem 0.8rem;border-right:1px solid var(--bdr);text-align:center;}
 .pilar-col:last-child{border-right:none;}
 .pilar-col.hl{background:rgba(201,151,42,0.05);}
-.pilar-col.hl-g{background:rgba(192,96,144,0.05);}
-.pilar-col.hl-m{background:rgba(90,154,191,0.05);}
-.pilar-label{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.6rem;}
-.pilar-chinese{font-size:2.2rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;}
-.pilar-chinese.gc{color:var(--guadi);}
-.pilar-chinese.mc{color:var(--morena);}
-.pilar-name{font-size:0.88rem;color:var(--ash);margin-bottom:0.12rem;}
-.pilar-elem{font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--smoke);letter-spacing:0.05em;}
-.dios-tag{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.42rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.05em;}
-.tag-f{background:rgba(232,88,10,0.14);color:#e87a3a;border:1px solid rgba(232,88,10,0.26);}
-.tag-m{background:rgba(74,140,63,0.14);color:#6db860;border:1px solid rgba(74,140,63,0.26);}
-.tag-t{background:rgba(156,122,60,0.14);color:#c9a45a;border:1px solid rgba(156,122,60,0.26);}
-.tag-me{background:rgba(138,157,181,0.14);color:#a0b4c8;border:1px solid rgba(138,157,181,0.26);}
-.tag-a{background:rgba(44,95,138,0.14);color:#5a9abf;border:1px solid rgba(44,95,138,0.26);}
-.energy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.85rem;margin-bottom:1.8rem;}
-.energy-card{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1.15rem 1.2rem;position:relative;overflow:hidden;}
-.energy-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
-.energy-card.fuego::before{background:var(--fire);}
-.energy-card.madera::before{background:var(--wood);}
-.energy-card.metal::before{background:var(--metal);}
-.energy-card.agua::before{background:var(--water);}
-.energy-card.tierra::before{background:var(--earth);}
-.energy-card.ga::before{background:var(--guadi);}
-.energy-card.ma::before{background:var(--morena);}
-.ec-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.09em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.35rem;}
-.energy-card h3{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold-light);font-weight:400;margin-bottom:0.3rem;}
-.energy-card h3.gc{color:var(--guadi);}
-.energy-card h3.mc{color:var(--morena);}
-.energy-card p{font-size:0.88rem;color:var(--ash2);line-height:1.6;}
+.pilar-label{font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.6rem;}
+.pilar-cn{font-size:2.2rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;}
+.pilar-name{font-size:0.87rem;color:var(--ash);margin-bottom:0.1rem;}
+.pilar-el{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);}
+.dios-tag{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.42rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;}
+.tag-f{background:rgba(232,88,10,0.13);color:#e87a3a;border:1px solid rgba(232,88,10,0.25);}
+.tag-m{background:rgba(74,140,63,0.13);color:#6db860;border:1px solid rgba(74,140,63,0.25);}
+.tag-t{background:rgba(156,122,60,0.13);color:#c9a45a;border:1px solid rgba(156,122,60,0.25);}
+.tag-me{background:rgba(138,157,181,0.13);color:#a0b4c8;border:1px solid rgba(138,157,181,0.25);}
+.tag-a{background:rgba(44,95,138,0.13);color:#5a9abf;border:1px solid rgba(44,95,138,0.25);}
+.e-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.85rem;margin-bottom:1.8rem;}
+.e-card{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:1.1rem 1.2rem;position:relative;overflow:hidden;}
+.e-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
+.e-card.fuego::before{background:var(--fire);}.e-card.madera::before{background:var(--wood);}
+.e-card.metal::before{background:var(--metal);}.e-card.agua::before{background:var(--water);}
+.e-card.tierra::before{background:var(--earth);}
+.e-card-label{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.09em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.3rem;}
+.e-card h3{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold-l);font-weight:400;margin-bottom:0.28rem;}
+.e-card p{font-size:0.87rem;color:var(--ash2);line-height:1.6;}
 .pot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem;}
 .pot-box{padding:1.2rem 1.3rem;border-radius:4px;}
 .pot-box.green{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
 .pot-box.red{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
 .pot-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.55rem;}
-.pot-box.green h3{color:#6dbf99;}
-.pot-box.red h3{color:#e08070;}
+.pot-box.green h3{color:#6dbf99;}.pot-box.red h3{color:#e08070;}
 .pot-box ul{padding-left:1.1rem;}
-.pot-box li{font-size:0.88rem;color:var(--ash2);margin-bottom:0.38rem;line-height:1.52;}
-.compat-box{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1.3rem 1.4rem;margin-bottom:1.8rem;}
-.compat-box h3{font-family:'IM Fell English',serif;font-size:1.05rem;font-weight:400;color:var(--gold-light);margin-bottom:0.75rem;}
-.compat-row{display:flex;gap:0.55rem;align-items:flex-start;margin-bottom:0.48rem;}
-.compat-icon{font-size:0.95rem;flex-shrink:0;margin-top:0.1rem;}
-.compat-text{font-size:0.88rem;color:var(--ash2);line-height:1.55;}
-.badge{display:inline-block;margin-top:0.8rem;padding:0.35rem 1.2rem;border:1px solid var(--gold);font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--gold);letter-spacing:0.18em;border-radius:2px;}
-.badge.gb{border-color:var(--guadi);color:var(--guadi);}
-.badge.mb{border-color:var(--morena);color:var(--morena);}
-.context-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(201,151,42,0.03);border-bottom:1px solid var(--border);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
-.context-bar span{color:var(--gold-light);}
-.context-bar.gc span{color:var(--guadi);}
-.context-bar.mc span{color:var(--morena);}
+.pot-box li{font-size:0.87rem;color:var(--ash2);margin-bottom:0.36rem;line-height:1.52;}
+
+/* Export */
+.exp-bar{padding:1rem 1.3rem;background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
+.exp-bar p{font-size:0.87rem;color:var(--smoke);flex:1;min-width:180px;}
+.exp-btn{padding:0.5rem 1rem;border:1px solid var(--bdr);background:transparent;color:var(--ash);cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;border-radius:3px;transition:all 0.2s;}
+.exp-btn:hover{border-color:var(--gold);color:var(--gold-l);}
+.exp-btn.primary{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.08);}
+
+/* divider */
+.divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.5rem;}
+.div-line{flex:1;height:1px;background:linear-gradient(to right,transparent,var(--bdr),transparent);}
+.div-txt{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;color:var(--smoke);white-space:nowrap;}
 
 @media(max-width:620px){
   .pilares-grid{grid-template-columns:repeat(2,1fr);}
-  .pot-grid,.calc-row,.result-action-grid,.hoy-persons-grid{grid-template-columns:1fr;}
-  .calendar-grid{grid-template-columns:1fr;}
-  .month-pilar{display:none;}
+  .pot-grid,.calc-row,.res-act-grid,.tips-grid{grid-template-columns:1fr;}
+  .cal-grid{grid-template-columns:1fr;}
+  .month-meta,.hoy-right{display:none;}
+  .hoy-hero{grid-template-columns:1fr;}
+  .dios-block{grid-template-columns:1fr;}
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">八字 · Familia</div>
+  <div class="nav-logo">甲 · Luca 2026</div>
   <button class="nav-tab active" onclick="showSection('sec-hoy',this)">① Hoy</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-cal',this)">② Calendario</button>
+  <button class="nav-tab" onclick="showSection('sec-calc',this)">② Calculadora</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-carta',this)">③ Cartas</button>
+  <button class="nav-tab" onclick="showSection('sec-cal',this)">③ Calendario</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab" onclick="showSection('sec-carta',this)">④ Mi Carta</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab nav-familia" onclick="window.open('bazi_familia_2026.html','_blank')">⑤ Familia ↗</button>
 </nav>
-
-<div class="person-bar" id="person-bar">
-  <span class="person-label">Persona</span>
-  <button class="person-btn luca active" onclick="switchPerson('luca',this)">Luca</button>
-  <button class="person-btn guadi" onclick="switchPerson('guadi',this)">Guadalupe · 4a</button>
-  <button class="person-btn morena" onclick="switchPerson('morena',this)">Morena · 15a</button>
-</div>
 
 
 <!-- ══════════════════════════════════════
-     SECCIÓN 1: HOY + CALCULADORA
+     ① HOY
 ══════════════════════════════════════ -->
 <div id="sec-hoy" class="section active">
-<div class="page-header" data-glyph="今">
-  <div class="header-eyebrow">Energía del Día · Calculadora de Momento</div>
-  <h1 id="hoy-title">Cargando...</h1>
-  <p id="hoy-subtitle">Análisis en tiempo real calibrado a cada carta natal</p>
+<div class="page-header" data-g="今">
+  <div class="eyebrow">Energía del Día · 今日能量</div>
+  <h1 id="hoy-title-main">Cargando...</h1>
+  <p>Análisis en tiempo real calibrado a tu carta natal 甲 Jia Yang Wood</p>
+</div>
+<div class="ctx-bar" id="hoy-ctx-bar">
+  <div>AÑO <span>—</span></div>
+  <div>MES <span>—</span></div>
+  <div>DÍA <span>—</span></div>
+  <div>DA YUN <span>丁未 Fuego Yin/Cabra</span></div>
 </div>
 
-<!-- HOY PANEL -->
 <div class="hoy-wrap">
 
-  <!-- FECHA HERO -->
-  <div class="hoy-date-hero">
-    <div class="hoy-fecha-label">Hoy es</div>
-    <div class="hoy-fecha" id="hero-fecha">—</div>
-    <div class="hoy-pilar-display" id="hero-pilar">— · —</div>
-    <div class="hoy-stars" id="hero-stars-global"></div>
-    <div class="hoy-energy-badge" id="hero-badge">—</div>
-    <div class="hoy-verdict" id="hero-verdict">—</div>
-    <div class="hoy-ints" id="hero-ints">—</div>
+  <!-- HERO -->
+  <div class="hoy-hero">
+    <div class="hoy-left">
+      <div class="hoy-fecha-label">Hoy</div>
+      <div class="hoy-fecha" id="h-fecha">—</div>
+      <div class="hoy-pilar-row">
+        <div class="hoy-pilar-main" id="h-pilar-cn">—</div>
+        <div class="hoy-pilar-detail" id="h-pilar-detail">—</div>
+      </div>
+      <div class="hoy-verdict-row">
+        <div id="h-stars-inline"></div>
+        <div class="hoy-verdict-text" id="h-verdict">—</div>
+      </div>
+      <div class="hoy-context" id="h-context">—</div>
+    </div>
+    <div class="hoy-right">
+      <div class="hoy-stars-big" id="h-stars-big"></div>
+      <div class="hoy-score-label" id="h-score-label">—</div>
+      <div style="margin-top:0.8rem;" id="h-etag-wrap"></div>
+    </div>
+  </div><!-- /hoy-hero -->
+
+  <!-- ✦ RESUMEN EJECUTIVO DEL DÍA ✦ -->
+  <div id="h-resumen-ejecutivo"></div>
+
+  <!-- INTERACCIONES -->
+  <div class="sec-title">Interacciones con tu Carta</div>
+  <p class="sec-sub">Cómo el pilar de hoy dialoga con tus ramas natales (Xu, Yin, Chen, Shen) y el año 2026.</p>
+  <div class="ints-row" id="h-ints-row"></div>
+
+  <!-- DIOS DEL DÍA -->
+  <div class="sec-title">El Dios del Día</div>
+  <p class="sec-sub">Cada tronco celeste activa un arquetipo diferente en tu carta natal. Hoy está activo:</p>
+  <div class="dios-block" id="h-dios-block"></div>
+
+  <!-- TIPS PROFUNDOS -->
+  <div class="sec-title">Guía de Acción para Hoy</div>
+  <p class="sec-sub">Tips específicos para tu Day Master Jia Yang Wood en este clima energético.</p>
+  <div class="tips-grid" id="h-tips-grid"></div>
+
+  <!-- ORACLE DE HORAS -->
+  <div class="sec-title">Las Mejores Horas de Hoy</div>
+  <p class="sec-sub">Cada hora tiene su propia energía. Las horas en verde amplifican tu potencial hoy.</p>
+  <div class="hora-grid" id="h-hora-grid"></div>
+
+  <!-- EXPORT -->
+  <div class="exp-bar">
+    <p>Exportar el análisis de hoy a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarHoyICS()">⬇ Descargar .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalHoy()">📅 Google Calendar</button>
   </div>
 
-  <!-- CARDS POR PERSONA -->
-  <div class="hoy-persons-grid" id="hoy-cards-grid"></div>
+</div><!-- /hoy-wrap -->
+</div><!-- /sec-hoy -->
 
+
+<!-- ══════════════════════════════════════
+     ② CALCULADORA
+══════════════════════════════════════ -->
+<div id="sec-calc" class="section">
+<div class="page-header" data-g="奇">
+  <div class="eyebrow">Qi Men Dun Jia · 奇門遁甲</div>
+  <h1>Calculadora de Momento</h1>
+  <p>Elegí una fecha y una acción — análisis calibrado a tu carta natal</p>
 </div>
-
-<!-- DIVIDER -->
-<div class="calc-divider" style="padding:0 1.5rem;max-width:820px;margin:0 auto 1.5rem;">
-  <div class="calc-divider-line"></div>
-  <div class="calc-divider-text">☯ Calculadora de Momento ☯</div>
-  <div class="calc-divider-line"></div>
-</div>
-
-<!-- CALCULADORA -->
 <div class="calc-wrap">
 <div class="calc-box">
-  <div class="calc-title">Calculadora de Momento</div>
-  <div class="calc-subtitle">Elegí una persona, una fecha y una actividad — resultado calibrado a la carta natal</div>
+  <div class="calc-title">Análisis de Momento Energético</div>
+  <div class="calc-sub">Basado en tu carta natal Jia Yang Wood · Da Yun Ding Wei · Año Bing Wu 2026</div>
   <div class="calc-row">
-    <div class="calc-field">
-      <label>👤 Persona</label>
-      <select id="calc-persona">
-        <option value="luca">Luca (Jia Yang Wood)</option>
-        <option value="guadi">Guadalupe (Ren Yang Water)</option>
-        <option value="morena">Morena (Jia Yang Wood)</option>
-      </select>
-    </div>
-    <div class="calc-field">
-      <label>📅 Fecha</label>
+    <div class="calc-field"><label>📅 Fecha</label>
       <input type="date" id="calc-date" min="2026-01-01" max="2027-12-31">
     </div>
-  </div>
-  <div class="calc-row">
-    <div class="calc-field" style="grid-column:1/-1;">
-      <label>⚡ Actividad / Acción</label>
+    <div class="calc-field"><label>⚡ Acción</label>
       <select id="calc-action">
         <option value="">— Seleccioná —</option>
-        <optgroup label="💼 Luca — Negocios">
+        <optgroup label="💼 Negocios y Contratos">
           <option value="reunion">Reunión importante / pitch</option>
           <option value="firma">Firma de contrato</option>
+          <option value="renegociar">Renegociar acuerdo</option>
           <option value="cerrar">Cerrar deal / venta grande</option>
-          <option value="lanzar">Lanzar proyecto / producto</option>
+          <option value="sociedad">Proponer nueva sociedad</option>
+        </optgroup>
+        <optgroup label="💰 Finanzas">
           <option value="cobrar">Cobrar / gestionar pagos</option>
           <option value="invertir">Invertir capital</option>
-          <option value="publicar">Publicar / visibilidad</option>
+          <option value="prestamo">Pedir préstamo / crédito</option>
+          <option value="cotizar">Enviar cotización / propuesta</option>
+        </optgroup>
+        <optgroup label="🚀 Proyectos y Visibilidad">
+          <option value="lanzar">Lanzar proyecto / producto</option>
+          <option value="publicar">Publicar contenido / campaña</option>
+          <option value="presentacion">Presentación pública</option>
+          <option value="cliente">Primer contacto nuevo cliente</option>
+        </optgroup>
+        <optgroup label="🧠 Estrategia">
           <option value="decision">Decisión importante</option>
           <option value="planificar">Planificación estratégica</option>
-          <option value="networking">Networking / evento</option>
+          <option value="cerrar_ciclo">Cerrar / terminar algo</option>
+          <option value="conflicto">Resolver conflicto difícil</option>
         </optgroup>
-        <optgroup label="🌊 Guadalupe — Crianza">
-          <option value="g_aprender">Nueva actividad / aprendizaje</option>
-          <option value="g_salud">Consulta médica / salud</option>
-          <option value="g_social">Juego social con otros niños</option>
-          <option value="g_creativo">Arte / música / creatividad</option>
-          <option value="g_viaje">Viaje o salida especial</option>
-          <option value="g_conversa">Conversación importante con ella</option>
-        </optgroup>
-        <optgroup label="🌳 Morena — Adolescencia">
-          <option value="m_estudio">Examen / estudio importante</option>
-          <option value="m_proyecto">Iniciar proyecto propio</option>
-          <option value="m_vocacion">Decisión vocacional / educativa</option>
-          <option value="m_social">Evento social / relaciones</option>
-          <option value="m_conversa">Conversación importante con ella</option>
-          <option value="m_creativo">Performance / presentación artística</option>
+        <optgroup label="👥 Personas">
+          <option value="networking">Networking / evento social</option>
+          <option value="favor">Pedir un favor importante</option>
+          <option value="equipo">Reunión de equipo</option>
         </optgroup>
       </select>
     </div>
   </div>
   <button class="calc-btn" onclick="calcular()">✦ CALCULAR ENERGÍA DEL MOMENTO ✦</button>
 
-  <div class="result-box" id="result-box">
-    <div class="result-header">
-      <div><div class="result-date-label" id="res-date-label">—</div></div>
-      <div class="result-rating" id="res-stars"></div>
+  <div class="res-box" id="res-box">
+    <div class="res-header">
+      <div><div class="res-dlabel" id="res-dlabel">—</div></div>
+      <div class="res-rating" id="res-stars"></div>
     </div>
-    <div class="result-verdict" id="res-verdict">—</div>
-    <div class="result-pillars" id="res-pillars">—</div>
-    <div class="result-text" id="res-explanation">—</div>
-    <div class="result-action-grid">
-      <div class="action-box do"><strong>✓ HACER</strong><span id="res-do">—</span></div>
-      <div class="action-box dont"><strong>✗ EVITAR</strong><span id="res-dont">—</span></div>
+    <div class="res-verdict" id="res-verdict">—</div>
+    <div class="res-pillars" id="res-pillars">—</div>
+    <div class="res-text" id="res-text">—</div>
+    <div class="res-act-grid">
+      <div class="act-box do"><strong>✓ HACER</strong><span id="res-do">—</span></div>
+      <div class="act-box dont"><strong>✗ EVITAR</strong><span id="res-dont">—</span></div>
     </div>
   </div>
 </div>
-
-<div class="export-bar">
-  <p>Exportar análisis · <strong>sanbaoestudio@gmail.com</strong></p>
-  <button class="export-btn" onclick="exportarICS()">⬇ Descargar .ICS</button>
-  <button class="export-btn primary" onclick="abrirGoogleCal()">📅 Google Calendar</button>
+<div class="exp-bar">
+  <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
+  <button class="exp-btn" onclick="exportarCalcICS()">⬇ Descargar .ICS</button>
+  <button class="exp-btn primary" onclick="abrirGCalCalc()">📅 Google Calendar</button>
 </div>
-</div><!-- /calc-wrap -->
-</div><!-- /sec-hoy -->
+</div>
+</div>
 
 
 <!-- ══════════════════════════════════════
-     SECCIÓN 2: CALENDARIO
+     ③ CALENDARIO
 ══════════════════════════════════════ -->
 <div id="sec-cal" class="section">
-<div class="page-header" data-glyph="历">
-  <div class="header-eyebrow">Calendario Energético · Mayo–Diciembre 2026</div>
+<div class="page-header" data-g="历">
+  <div class="eyebrow">Calendario Energético · Mayo–Diciembre 2026</div>
   <h1>Calendario BaZi</h1>
-  <p>Análisis día a día · cambiá la persona con el selector de arriba</p>
+  <p>Análisis día a día calibrado a tu carta natal Jia Yang Wood</p>
 </div>
 <div class="cal-wrap">
-  <div class="month-selector" id="month-selector"></div>
+  <div class="month-sel" id="month-sel"></div>
   <div id="month-display"></div>
-  <div class="export-bar">
-    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="export-btn" onclick="exportarMesICS()">⬇ Descargar mes .ICS</button>
-    <button class="export-btn primary" onclick="abrirGoogleCalMes()">📅 Abrir en Google Calendar</button>
+  <div class="exp-bar">
+    <p>Exportar mes a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarMesICS()">⬇ Descargar mes .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalMes()">📅 Google Calendar</button>
   </div>
 </div>
 </div>
 
 
 <!-- ══════════════════════════════════════
-     SECCIÓN 3: CARTAS
+     ④ MI CARTA
 ══════════════════════════════════════ -->
 <div id="sec-carta" class="section">
-
-<!-- LUCA -->
-<div id="carta-luca" class="persona-carta">
-<div class="page-header" data-glyph="甲">
-  <div class="header-eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
+<div class="page-header" data-g="甲">
+  <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
   <h1>Luca Gazzola</h1>
   <p>08 Abril 1992 · 20:45 hs · Masculino</p>
   <div class="badge">甲 JIA · MADERA YANG · DAY MASTER</div>
 </div>
-<div class="context-bar">
+<div class="ctx-bar">
   <div>AÑO 2026 <span>丙午 Fuego/Caballo</span></div>
   <div>DA YUN <span>丁未 Fuego Yin/Cabra (29–39)</span></div>
   <div>TRÍO FUEGO <span>Tigre+Caballo+Perro ACTIVO</span></div>
   <div>PERFIL <span>The Friend · Connectors</span></div>
 </div>
 <div class="carta-wrap">
-  <div class="carta-section-title">Cuatro Pilares Natales</div>
-  <p class="carta-section-sub">El Tronco del Día (甲 Jia) sos vos. Todo se lee en relación a ese elemento.</p>
+  <div class="sec-title">Los Cuatro Pilares</div>
+  <p class="sec-sub">El Tronco del Día (甲 Jia) sos vos. Todo lo demás se lee en relación a ese elemento.</p>
   <div class="pilares-grid">
-    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-chinese">甲</div><div class="pilar-name">Jia · Madera Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese" style="font-size:1.6rem;">戌</div></div><div class="pilar-name">Xu · Perro · Tierra Yang</div><div class="dios-tag tag-t">Ind. Wealth</div></div>
-    <div class="pilar-col hl"><div class="pilar-label">Día — El Yo</div><div class="pilar-chinese">甲</div><div class="pilar-name">Jia · Madera Yang</div><div class="pilar-elem">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-chinese" style="font-size:1.6rem;">寅</div></div><div class="pilar-name">Yin · Tigre · Madera Yang</div><div class="dios-tag tag-m">Friend</div></div>
-    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-chinese">甲</div><div class="pilar-name">Jia · Madera Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese" style="font-size:1.6rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-m">Friend</div></div>
-    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-chinese">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese" style="font-size:1.6rem;">申</div></div><div class="pilar-name">Shen · Mono · Metal Yang</div><div class="dios-tag tag-a">Ind. Resource</div></div>
+    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn">甲</div><div class="pilar-name">Jia · Madera Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;">戌</div></div><div class="pilar-name">Xu · Perro · Tierra Yang</div><div class="dios-tag tag-t">Ind. Wealth</div></div>
+    <div class="pilar-col hl"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn">甲</div><div class="pilar-name">Jia · Madera Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;">寅</div></div><div class="pilar-name">Yin · Tigre · Madera Yang</div><div class="dios-tag tag-m">Friend</div></div>
+    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-cn">甲</div><div class="pilar-name">Jia · Madera Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-m">Friend</div></div>
+    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-cn">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;">申</div></div><div class="pilar-name">Shen · Mono · Metal Yang</div><div class="dios-tag tag-a">Ind. Resource</div></div>
   </div>
-  <div class="carta-section-title">Day Master: 甲 Jia — El Gran Árbol</div>
-  <p class="carta-section-sub">Madera Yang extremadamente fuerte. Tres Jia en troncos + Tigre en rama del día. Necesitás espacio, propósito y autonomía para florecer.</p>
-  <div class="energy-grid">
-    <div class="energy-card madera"><div class="ec-label">Arquetipo</div><h3>El Gran Árbol Yang</h3><p>Recto, pionero, líder por naturaleza. Crece hacia la luz sin desviarse. Necesitás propósito y autonomía — en estructuras donde seguís órdenes, tu energía se comprime.</p></div>
-    <div class="energy-card agua"><div class="ec-label">Recurso natal</div><h3>Ren Agua Yang — Océano</h3><p>Intuición estratégica y capacidad de aprender rápido. Tu inteligencia más profunda es no lineal y de largo plazo. El Agua nutre tu Madera permanentemente.</p></div>
-    <div class="energy-card fuego"><div class="ec-label">Canal de expresión</div><h3>Fuego — Food God / Hurt Officer</h3><p>Cuando creás, comunicás o liderás proyectos propios, el Qi fluye sin fricción. Tu Da Yun actual (Ding Wei) amplifica este canal al máximo hasta los 39 años.</p></div>
-    <div class="energy-card metal"><div class="ec-label">Tensión central</div><h3>Mono (Shen) — El Podador</h3><p>Choque Tigre-Mono: tu motor de ambición y tu mayor fricción. Para un Jia fuerte, el 7K es combustible — la presión te afila en lugar de quebrarte.</p></div>
-    <div class="energy-card tierra"><div class="ec-label">Riqueza</div><h3>Tierra — Direct Wealth</h3><p>Dragón y Perro anclan tu Tierra. El dinero llega cuando estructurás y ejecutás con disciplina. La creatividad sin estructura no consolida.</p></div>
-    <div class="energy-card fuego"><div class="ec-label">2026 · Trío Fuego</div><h3>Tigre + Caballo + Perro</h3><p>El año Bing Wu completa el trío. Visibilidad máxima en Junio. Lo que mostrás llega más lejos. Riesgo: dispersión en demasiados proyectos.</p></div>
+  <div class="sec-title">Day Master: 甲 Jia — El Gran Árbol</div>
+  <p class="sec-sub">Madera Yang extremadamente fuerte. Tres Jia en troncos + Tigre en rama del día. Necesitás espacio, propósito y autonomía para florecer.</p>
+  <div class="e-grid">
+    <div class="e-card madera"><div class="e-card-label">Arquetipo</div><h3>El Gran Árbol Yang</h3><p>Recto, pionero, líder por naturaleza. Necesitás propósito claro y autonomía — en estructuras donde seguís órdenes, tu energía se comprime.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Recurso natal</div><h3>Ren Agua Yang — Océano</h3><p>El Agua nutre la Madera. Tu intuición estratégica y aprendizaje rápido vienen del Ren en tu pilar del año. Tu inteligencia es no lineal y de largo plazo.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Canal de expresión</div><h3>Fuego — Food God / HO</h3><p>Cuando creás, comunicás o liderás proyectos propios, el Qi fluye sin fricción. Tu Da Yun actual (Ding Wei) amplifica este canal al máximo.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Tensión central</div><h3>Mono (Shen) — El Podador</h3><p>Choque Tigre-Mono: motor de ambición y mayor fricción. Para Jia fuerte, el 7K es combustible — la presión afila en lugar de quebrar.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Riqueza</div><h3>Tierra — Direct Wealth</h3><p>Dragón y Perro anclan tu Tierra. El dinero llega con estructura y disciplina. La creatividad sin consolidación no produce riqueza.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">2026 · Trío Fuego</div><h3>Tigre + Caballo + Perro</h3><p>El año Bing Wu completa el trío. Visibilidad máxima en Junio. Lo que mostrás en ese período llega más lejos. Riesgo: dispersión.</p></div>
   </div>
-  <div class="carta-section-title">Activar el Potencial · Evitar los Bloqueos</div>
+  <div class="sec-title">Activar el Potencial · Evitar los Bloqueos</div>
   <div class="pot-grid">
-    <div class="pot-box green"><h3>✦ Cómo potenciarte</h3><ul><li><strong>Proyectos propios:</strong> tu Food God florece con autonomía total.</li><li><strong>Red antes de necesitarla:</strong> perfil Connectors — las mejores oportunidades llegan por personas.</li><li><strong>Usá la presión:</strong> el 7K te afila. Los desafíos grandes son tus mayores saltos.</li><li><strong>Junio 2026:</strong> máxima ventana de visibilidad — publicar, lanzar, presentar.</li><li><strong>Estructura la riqueza:</strong> contratos claros, honorarios definidos, disciplina financiera.</li></ul></div>
-    <div class="pot-box red"><h3>✕ Patrones de bloqueo</h3><ul><li><strong>Dispersión:</strong> con el Trío de Fuego activo, riesgo de abrir demasiados frentes.</li><li><strong>Conflicto con autoridades:</strong> el HO te empuja a romper reglas — elegí cuáles vale la pena romper.</li><li><strong>Asociaciones sin estructura:</strong> el Rob Wealth (Wei activo) atrae quien puede llevarse lo tuyo.</li><li><strong>Agosto-Septiembre:</strong> meses de Metal — no forzar lanzamientos.</li></ul></div>
+    <div class="pot-box green"><h3>✦ Cómo potenciarte</h3><ul>
+      <li><strong>Proyectos propios:</strong> tu Food God florece con autonomía total.</li>
+      <li><strong>Red antes de necesitarla:</strong> perfil Connectors — las mejores oportunidades llegan por personas.</li>
+      <li><strong>Usá la presión:</strong> el 7K te afila. Los desafíos grandes son tus mayores saltos.</li>
+      <li><strong>Junio 2026:</strong> máxima ventana de visibilidad — publicar, lanzar, presentar.</li>
+      <li><strong>Estructura la riqueza:</strong> contratos claros, honorarios definidos, disciplina financiera.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Patrones de bloqueo</h3><ul>
+      <li><strong>Dispersión:</strong> con el Trío de Fuego activo, riesgo de abrir demasiados frentes.</li>
+      <li><strong>Conflicto con autoridades:</strong> el HO te empuja a romper reglas — elegí cuáles vale.</li>
+      <li><strong>Asociaciones sin estructura:</strong> el Rob Wealth (Wei activo) atrae quien puede llevarse lo tuyo.</li>
+      <li><strong>Agosto-Septiembre:</strong> meses de Metal — no forzar lanzamientos ni confrontaciones.</li>
+    </ul></div>
   </div>
 </div>
 </div>
 
-<!-- GUADI -->
-<div id="carta-guadi" class="persona-carta" style="display:none;">
-<div class="page-header" data-glyph="壬">
-  <div class="header-eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
-  <h1>Guadalupe</h1>
-  <p>29 Abril 2022 · 16:59 hs · Femenino · 4 años</p>
-  <div class="badge gb">壬 REN · AGUA YANG · DAY MASTER</div>
-</div>
-<div class="context-bar gc">
-  <div>AÑO NATAL <span>壬寅 Agua Yang / Tigre</span></div>
-  <div>PRIMEROS 8 AÑOS <span>Energía vía los padres</span></div>
-  <div>DA YUN PRÓXIMO <span>癸卯 Agua Yin / Conejo (edad 8+)</span></div>
-  <div>PERFIL <span>Agua Yang · Océano · Estratega</span></div>
-</div>
-<div class="carta-wrap">
-  <div class="carta-section-title gt">Cuatro Pilares Natales</div>
-  <p class="carta-section-sub">Guadi nació en año de Tigre (Madera fuerte). Su Day Master Ren Agua Yang es uno de los más poderosos en intuición y profundidad.</p>
-  <div class="pilares-grid">
-    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-chinese gc">戊</div><div class="pilar-name">Wu · Tierra Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese gc" style="font-size:1.6rem;">申</div></div><div class="pilar-name">Shen · Mono · Metal Yang</div><div class="dios-tag tag-t">7 Killings</div></div>
-    <div class="pilar-col hl-g"><div class="pilar-label">Día — El Yo</div><div class="pilar-chinese gc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div class="pilar-elem">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-chinese gc" style="font-size:1.6rem;">子</div></div><div class="pilar-name">Zi · Rata · Agua Yang</div><div class="dios-tag tag-a">Comparator</div></div>
-    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-chinese gc">甲</div><div class="pilar-name">Jia · Madera Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese gc" style="font-size:1.6rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-m">Food God</div></div>
-    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-chinese gc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese gc" style="font-size:1.6rem;">寅</div></div><div class="pilar-name">Yin · Tigre · Madera Yang</div><div class="dios-tag tag-m">Food God</div></div>
-  </div>
-  <div class="carta-section-title gt">Day Master: 壬 Ren — El Océano</div>
-  <p class="carta-section-sub">El Ren Agua es el Day Master de personas que piensan a gran escala. A los 4 años se expresa como curiosidad insaciable y preguntas que sorprenden.</p>
-  <div class="energy-grid">
-    <div class="energy-card agua"><div class="ec-label">Su naturaleza profunda</div><h3 class="gc">El Océano Yang</h3><p>Mente estratégica natural, capacidad de ver patrones que otros no ven. Curiosidad insaciable. El silencio no es timidez — es su forma de integrar el mundo.</p></div>
-    <div class="energy-card agua"><div class="ec-label">Ren Zi — Agua pura</div><h3 class="gc">Intuición máxima</h3><p>Agua sobre Agua en el pilar del día — una de las combinaciones más intuitivas del sistema. Necesita mucho tiempo interior para procesar. Recargar en silencio es su necesidad real.</p></div>
-    <div class="energy-card madera"><div class="ec-label">Expresión (Food God)</div><h3 class="gc">Jia/Tigre — Madera Yang</h3><p>Su canal de expresión es el Food God. Se expresa con creatividad expansiva y espontaneidad. Le encanta crear, contar historias y explorar sin límites predefinidos.</p></div>
-    <div class="energy-card tierra"><div class="ec-label">Tensión central</div><h3 class="gc">Tierra — el límite necesario</h3><p>La Tierra controla el Agua. Necesita límites claros pero nunca rígidos. Sin contención, el océano se desborda. Con demasiada contención, se estanca.</p></div>
-    <div class="energy-card ga"><div class="ec-label">Primeros 8 años</div><h3 class="gc">Energía vía los padres</h3><p>El Tigre de su año natal conecta con el Tigre del día de Luca. Ella absorbe y refleja la energía de quien la cuida. Lo que Luca irradia, Guadi lo incorpora.</p></div>
-    <div class="energy-card ga"><div class="ec-label">Conexión con Luca</div><h3 class="gc">Agua nutre Madera</h3><p>Energéticamente, Guadi nutre a Luca. Su presencia activa el recurso de Luca. Esta es una relación de alta resonancia y aprendizaje mutuo profundo.</p></div>
-  </div>
-  <div class="carta-section-title gt">Cómo potenciar a Guadi — Guía de crianza energética</div>
-  <div class="pot-grid">
-    <div class="pot-box green"><h3>✦ Lo que la hace florecer</h3><ul><li><strong>Exploración sin presión de resultado.</strong> El Ren aprende por inmersión, no por repetición.</li><li><strong>Cuentos, narrativa e imaginación.</strong> Su Food God ama crear mundos.</li><li><strong>Preguntas abiertas.</strong> "¿Qué pensás vos?" en lugar de dar la respuesta directa.</li><li><strong>Actividades cerca del agua.</strong> Playa, pileta, lluvia. Se recarga en su elemento.</li><li><strong>Libertad dentro de estructura.</strong> Límites claros con espacio creativo adentro.</li></ul></div>
-    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul><li><strong>Presión por resultados inmediatos.</strong> Su mente procesa en profundidad — necesita tiempo.</li><li><strong>Rigidez excesiva.</strong> El 7K ya genera suficiente presión interna.</li><li><strong>Comparación con otros niños.</strong> Tiene su propio ritmo — no lineal.</li><li><strong>Conflictos entre adultos.</strong> Su Agua absorbe el entorno emocional como esponja.</li><li><strong>Forzar sociabilidad.</strong> Necesita tiempo a solas. No es timidez — es recarga.</li></ul></div>
-  </div>
-  <div class="carta-section-title gt">Compatibilidad con Luca</div>
-  <div class="compat-box">
-    <h3>Jia Yang Wood (Luca) + Ren Yang Water (Guadi)</h3>
-    <div class="compat-row"><div class="compat-icon">🌊</div><div class="compat-text"><strong>Agua genera Madera:</strong> Guadi nutre a Luca energéticamente. Su presencia lo inspira y lo conecta con algo más profundo que el logro.</div></div>
-    <div class="compat-row"><div class="compat-icon">🌳</div><div class="compat-text"><strong>Tigre compartido:</strong> el Tigre de Guadi (año) y el de Luca (día) crean sintonía intuitiva muy fuerte — se entienden sin palabras.</div></div>
-    <div class="compat-row"><div class="compat-icon">💡</div><div class="compat-text"><strong>Clave:</strong> Cuando estés con ella, estar de verdad. El Ren Agua detecta la distancia emocional antes que la física.</div></div>
-  </div>
-</div>
-</div>
-
-<!-- MORENA -->
-<div id="carta-morena" class="persona-carta" style="display:none;">
-<div class="page-header" data-glyph="甲">
-  <div class="header-eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
-  <h1>Morena Santorum</h1>
-  <p>09 Abril 2011 · 17:51 hs · Femenino · 15 años</p>
-  <div class="badge mb">甲 JIA · MADERA YANG · DAY MASTER</div>
-</div>
-<div class="context-bar mc">
-  <div>AÑO NATAL <span>辛卯 Metal Yin / Conejo</span></div>
-  <div>DA YUN ACTUAL <span>甲午 Madera/Caballo (edad ≈14-24)</span></div>
-  <div>2026 <span>Caballo doble — intensidad máxima</span></div>
-  <div>PERFIL <span>Mismo Day Master que Luca</span></div>
-</div>
-<div class="carta-wrap">
-  <div class="carta-section-title mt">Cuatro Pilares Natales</div>
-  <p class="carta-section-sub">Morena tiene el mismo Day Master que Luca (甲 Jia), pero su carta es estructuralmente diferente: Fuego en el día, Agua en el mes, Metal en el año.</p>
-  <div class="pilares-grid">
-    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-chinese mc">癸</div><div class="pilar-name">Gui · Agua Yin</div><div style="margin-top:0.6rem;"><div class="pilar-chinese mc" style="font-size:1.6rem;">酉</div></div><div class="pilar-name">You · Gallo · Metal Yin</div><div class="dios-tag tag-me">Dir. Officer</div></div>
-    <div class="pilar-col hl-m"><div class="pilar-label">Día — El Yo</div><div class="pilar-chinese mc">甲</div><div class="pilar-name">Jia · Madera Yang</div><div class="pilar-elem">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-chinese mc" style="font-size:1.6rem;">午</div></div><div class="pilar-name">Wu · Caballo · Fuego Yang</div><div class="dios-tag tag-f">Hurt Officer</div></div>
-    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-chinese mc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-chinese mc" style="font-size:1.6rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-a">Ind. Resource</div></div>
-    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-chinese mc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-chinese mc" style="font-size:1.6rem;">卯</div></div><div class="pilar-name">Mao · Conejo · Madera Yin</div><div class="dios-tag tag-me">Dir. Officer</div></div>
-  </div>
-  <div class="carta-section-title mt">Day Master: 甲 Jia con Caballo</div>
-  <p class="carta-section-sub">El Caballo (Fuego) en la rama del día activa el Hurt Officer permanentemente. Talento disruptivo, creatividad brillante, tendencia a cuestionar autoridades y reglas.</p>
-  <div class="energy-grid">
-    <div class="energy-card madera"><div class="ec-label">Su naturaleza profunda</div><h3 class="mc">Árbol que da sombra y calor</h3><p>Madera Yang con Caballo debajo: irradia energía naturalmente. A los 15 años esto se vive como intensidad emocional alta y necesidad de expresarse auténticamente.</p></div>
-    <div class="energy-card fuego"><div class="ec-label">Hurt Officer activo</div><h3 class="mc">El don disruptivo</h3><p>Es la chica que pregunta "¿por qué?" cuando todos siguen instrucciones. Su mayor don y su principal punto de tensión. No es rebeldía vacía — es inteligencia que exige coherencia.</p></div>
-    <div class="energy-card agua"><div class="ec-label">Recurso natal</div><h3 class="mc">Ren Agua Yang — Dragón</h3><p>Aprende rápido cuando el tema la apasiona. Aprende muy lentamente cuando no ve el sentido. La motivación es el interruptor de su inteligencia.</p></div>
-    <div class="energy-card metal"><div class="ec-label">Tensión y estructura</div><h3 class="mc">Metal — Direct Officer</h3><p>La estructura tiene que tener sentido para ella, no solo existir. Cuando entiende el porqué de una regla, la sigue. Cuando no, la desafía.</p></div>
-    <div class="energy-card ma"><div class="ec-label">Da Yun actual (14–24)</div><h3 class="mc">甲午 Madera/Caballo</h3><p>Amplifica su Hurt Officer al máximo. Período donde su identidad se consolida con fuerza. Necesita guía sin control — acompañamiento, no imposición.</p></div>
-    <div class="energy-card ma"><div class="ec-label">2026 · Caballo doble</div><h3 class="mc">Año de máxima intensidad</h3><p>Caballo natal + año Bing Wu = intensidad emocional muy alta. Puede ser año de decisiones vocacionales clave. Necesita espacio para hablar sin sentirse juzgada.</p></div>
-  </div>
-  <div class="carta-section-title mt">Cómo acompañar a Morena</div>
-  <div class="pot-grid">
-    <div class="pot-box green"><h3>✦ Lo que la hace florecer</h3><ul><li><strong>Proyectos con propósito propio.</strong> Elegir el objetivo, no que se lo asignen.</li><li><strong>Reconocimiento genuino.</strong> Un elogio específico la mueve más que cualquier obligación.</li><li><strong>Arte, música, escritura, performance.</strong> El Caballo-Fuego necesita expresarse.</li><li><strong>Conversaciones de igual a igual.</strong> No "hablarle" — hablar con ella.</li><li><strong>Decisiones sobre su propio camino.</strong> ¿Qué le apasiona? Eso es hacia donde ir.</li></ul></div>
-    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul><li><strong>Control sin explicación.</strong> "Porque sí" activa su Hurt Officer en modo rebeldía.</li><li><strong>Comparación con Luca.</strong> Mismo árbol, distinto bosque — contraproducente.</li><li><strong>Aburrimiento.</strong> No es pasividad — es energía sin canal de salida.</li><li><strong>No ser escuchada.</strong> Cuando no tiene voz, el HO busca otros caminos, más disruptivos.</li><li><strong>2026:</strong> Caballo doble puede generar intensidad emocional muy alta.</li></ul></div>
-  </div>
-  <div class="carta-section-title mt">Compatibilidad con Luca</div>
-  <div class="compat-box">
-    <h3>Jia Yang Wood (Luca) + Jia Yang Wood / Caballo (Morena)</h3>
-    <div class="compat-row"><div class="compat-icon">🌳</div><div class="compat-text"><strong>Mismo Day Master:</strong> comprensión intuitiva profunda pero posibles choques de ego. Dos árboles grandes en el mismo espacio compiten por la luz.</div></div>
-    <div class="compat-row"><div class="compat-icon">🔥</div><div class="compat-text"><strong>Trío de Fuego (Luca) + Caballo doble (Morena) en 2026:</strong> pueden ser el mayor equipo de visibilidad juntos — o la mayor fricción si no tienen canal propio cada uno.</div></div>
-    <div class="compat-row"><div class="compat-icon">💡</div><div class="compat-text"><strong>Clave:</strong> La autoridad que Morena respeta viene de la coherencia, no del rol. Cuando Luca lidera desde el ejemplo, ella lo sigue naturalmente.</div></div>
-  </div>
-</div>
-</div>
-
-</div><!-- /sec-carta -->
-
-<footer style="text-align:center;padding:2rem;border-top:1px solid var(--border);font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);letter-spacing:0.1em;">
-  BAZI · CUATRO PILARES · 四柱命理 · LUCA · GUADALUPE · MORENA · 2026<br>
-  sanbaoestudio@gmail.com
+<footer style="text-align:center;padding:2rem;border-top:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);letter-spacing:0.1em;">
+  BAZI · 四柱命理 · LUCA GAZZOLA · 2026 · sanbaoestudio@gmail.com<br>
+  甲 JIA YANG WOOD · DA YUN 丁未 · AÑO 丙午
 </footer>
 
 <script>
 // ══════════════════════════════════════
-// CORE ENGINE
+// ENGINE
 // ══════════════════════════════════════
 const TRONCOS_SHORT=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
 const TRONCOS_FULL=['甲 Jia','乙 Yi','丙 Bing','丁 Ding','戊 Wu','己 Ji','庚 Geng','辛 Xin','壬 Ren','癸 Gui'];
@@ -596,9 +595,12 @@ const ANIMALES=['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','
 const ELEM_T=['Madera Yang','Madera Yin','Fuego Yang','Fuego Yin','Tierra Yang','Tierra Yin','Metal Yang','Metal Yin','Agua Yang','Agua Yin'];
 const ELEM_NAME=['Madera','Madera','Fuego','Fuego','Tierra','Tierra','Metal','Metal','Agua','Agua'];
 const ELEM_CLS=['etag-m','etag-m','etag-f','etag-f','etag-t','etag-t','etag-me','etag-me','etag-a','etag-a'];
-const DIAS=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+const DIAS_ES=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const MESES_ES=['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const ELEM_COLORS={0:'#6db860',1:'#6db860',2:'#e87a40',3:'#e87a40',4:'#c9a45a',5:'#c9a45a',6:'#a0b4c8',7:'#a0b4c8',8:'#5a9abf',9:'#5a9abf'};
+const ELEM_BG={0:'rgba(74,140,63,0.22)',1:'rgba(74,140,63,0.22)',2:'rgba(224,90,26,0.22)',3:'rgba(224,90,26,0.22)',4:'rgba(156,122,60,0.22)',5:'rgba(156,122,60,0.22)',6:'rgba(122,155,181,0.22)',7:'rgba(122,155,181,0.22)',8:'rgba(44,95,138,0.22)',9:'rgba(44,95,138,0.22)'};
 
+function getToday(){return new Date();}
 function getPilar(date){
   const ref=new Date('2024-01-01T12:00:00');
   const diff=Math.round((date-ref)/86400000);
@@ -608,82 +610,89 @@ function getPilar(date){
     animal:ANIMALES[r],elemT:ELEM_T[t],elemN:ELEM_NAME[t],elemC:ELEM_CLS[t]};
 }
 
-// Get today's real date (always live)
-function getToday(){
-  return new Date();
-}
-
-// PERSONS
-const PERSONS={
-  luca:{name:'Luca',dm:0,dmElem:'Jia · Madera Yang',color:'var(--luca)',
-    natal:[10,2,4,8],anioR:6,dayunR:7,
-    dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
-    elemBon:[2,3,4,5,8,9],elemBad:[6],
-    actionMap:{
-      reunion:{ideal:[2,3],bad:[6],do:'Preparar argumentos. Propuesta clara y visión de largo plazo.',dont:'Improvisar. Ceder ante la primera resistencia.'},
-      firma:{ideal:[5,4],bad:[6,1],do:'Revisar cláusulas antes. Horario Dragón (7-9am) es favorable.',dont:'Firmar bajo presión de tiempo.'},
-      cerrar:{ideal:[5,4,2],bad:[6],do:'Crear momentum de cierre desde el inicio.',dont:'Dejar el cierre para después.'},
-      lanzar:{ideal:[2,3],bad:[6,8],do:'Máxima visibilidad — redes, email, presencia pública.',dont:'Lanzar sin audiencia preparada.'},
-      cobrar:{ideal:[5,4],bad:[6,3],do:'Comunicar con firmeza y claridad. Soporte escrito siempre.',dont:'Pedir disculpas por cobrar.'},
-      invertir:{ideal:[5,9],bad:[6,1,3],do:'Análisis completo. Sectores Madera/Agua son favorables.',dont:'Decisión impulsiva o bajo presión.'},
-      publicar:{ideal:[2,3],bad:[8,9],do:'Contenido de impacto, opinión propia, autenticidad.',dont:'Publicar sin punto de vista claro.'},
-      decision:{ideal:[5,9],bad:[6,1,3],do:'Información completa antes de decidir.',dont:'Decidir bajo emociones fuertes.'},
-      planificar:{ideal:[8,9],bad:[2,3],do:'Silencio, foco, análisis profundo. Sin interrupciones.',dont:'Mezclar planificación con ejecución.'},
-      networking:{ideal:[2,3,0],bad:[8,9],do:'Presentarte con propósito claro. Conectar genuinamente.',dont:'Ir sin objetivo definido.'},
-    }
-  },
-  guadi:{name:'Guadalupe',dm:8,dmElem:'Ren · Agua Yang',color:'var(--guadi)',
-    natal:[8,0,4,2],anioR:2,dayunR:3,
-    dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
-    elemBon:[2,3,0,1],elemBad:[4,5],
-    actionMap:{
-      g_aprender:{ideal:[0,1,8,9],bad:[4,5],do:'Iniciar cuando hay Madera o Agua activos — flujo y apertura mental.',dont:'Forzar aprendizaje en días de Tierra pesada.'},
-      g_salud:{ideal:[9,8],bad:[6,7],do:'Días de Agua — energía de recurso activo. Mejor para consultas.',dont:'Días de Metal intenso — evitar intervenciones no urgentes.'},
-      g_social:{ideal:[2,3],bad:[4,5],do:'Días de Fuego — energía social alta, juego espontáneo.',dont:'Días de Tierra pesada — puede estar más introvertida.'},
-      g_creativo:{ideal:[0,1,2,3],bad:[6,7],do:'Madera y Fuego activan su Food God. Exploración libre.',dont:'Metal activo — genera contracción creativa.'},
-      g_viaje:{ideal:[0,1,8],bad:[4,5,6],do:'Días de Madera o Agua — movimiento fluido y positivo.',dont:'Tierra y Metal activos — mejor lo conocido.'},
-      g_conversa:{ideal:[9,8,0],bad:[6,7],do:'Días de Agua y Madera — más receptiva y comunicativa.',dont:'Metal activo — puede estar más cerrada emocionalmente.'},
-    }
-  },
-  morena:{name:'Morena',dm:0,dmElem:'Jia · Madera Yang',color:'var(--morena)',
-    natal:[9,6,4,3],anioR:3,dayunR:6,
-    dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
-    elemBon:[2,3,8,9],elemBad:[6,7],
-    actionMap:{
-      m_estudio:{ideal:[8,9],bad:[6,7],do:'Días de Agua — concentración y retención máximas.',dont:'Días de Metal — resistencia interna y dificultad de foco.'},
-      m_proyecto:{ideal:[0,1,2,3],bad:[6,7],do:'Madera y Fuego — impulso creativo en el pico. Arrancar fuerte.',dont:'Metal activo — puede sentir que todo la bloquea.'},
-      m_vocacion:{ideal:[9,5],bad:[6,3],do:'Agua o Tierra — claridad y perspectiva. Reflexión antes de decidir.',dont:'Días de Rob Wealth — puede influenciarse demasiado por otros.'},
-      m_social:{ideal:[2,3],bad:[8,9],do:'Fuego — energía social alta. Momento de brillar y conectar.',dont:'Agua — tiende a introvertirse.'},
-      m_conversa:{ideal:[9,0,2],bad:[6,7],do:'Agua y Madera — más abierta y receptiva. Conversar sin agenda.',dont:'Metal activo — puede estar a la defensiva.'},
-      m_creativo:{ideal:[2,3],bad:[8,9],do:'Fuego activo — su Hurt Officer brilla. Mejor momento de expresión.',dont:'Agua en exceso — puede apagar el entusiasmo.'},
+// LUCA ONLY
+const LUCA={
+  dm:0,natal:[10,2,4,8],anioR:6,dayunR:7,
+  elemBon:[2,3,4,5,8,9],elemBad:[6],
+  dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
+  diosIcons:['🤝','⚔️','🎨','💥','💰','💵','🗡️','⚖️','📚','🌊'],
+  diosDesc:[
+    'Tu igual. Pares que cooperan. Día ideal para alianzas, trabajo en equipo y reforzar tu red. Las mejores oportunidades hoy llegan por personas.',
+    'Tu rival-socio. Competencia y velocidad. Oportunidades fugaces pero también riesgo de que alguien se lleve lo tuyo. Actuar rápido pero con protección.',
+    'Tu expresión libre. El talento que fluye sin esfuerzo. Día de creatividad máxima — crear, publicar, presentar, mostrar. Tu energía más poderosa.',
+    'Talento disruptivo. Creatividad que rompe reglas. Brillantez no convencional activa. Cuidado: puede generar fricciones con autoridades o sistemas.',
+    'Riqueza de oportunidad. Ganancias inesperadas. Negocios propios y emprendimiento favorecidos. El dinero puede llegar de fuentes no convencionales.',
+    'Riqueza directa. Ingreso por trabajo disciplinado. Día de cobrar, firmar contratos, gestionar finanzas con método y claridad.',
+    'Poder sin reglas. Presión que forja el carácter. Para tu Jia fuerte, este elemento te afila. La presión de hoy es combustible — no obstáculo.',
+    'Autoridad formal. Reputación y disciplina. Favorable para trámites, reconocimiento oficial, cumplir compromisos formales con precisión.',
+    'Recurso intuitivo. Aprendizaje no convencional. Día de estudiar, planificar en profundidad, escuchar tu intuición estratégica antes de actuar.',
+    'Recurso formal. Mentores y apoyo. Día de aprender, descansar, recibir ayuda. No forzar acciones importantes — recargarte para lo que viene.',
+  ],
+  tipsDetallados:{
+    0:{// Hermano / Jia
+      hacer:['Llamar a un aliado o socio para avanzar juntos en algo pendiente','Asistir a un evento de networking o conectar con alguien de tu industria','Proponer colaboraciones donde ambas partes aporten valor igual','Trabajar en equipo — hoy la energía cooperativa amplifica resultados','Pedirle opinión a alguien de confianza sobre una decisión importante'],
+      noHacer:['Competir abiertamente con alguien del mismo rubro sin acuerdo previo','Trabajar completamente en solitario — hoy la energía pide intercambio','Cerrar negocios en solitario sin involucrar a tu red','Ignorar oportunidades que llegan por referencias o contactos','Desestimar lo que otros pueden aportar a tu proyecto']
+    },
+    1:{// Rob Wealth / Yi
+      hacer:['Actuar rápido en oportunidades que tienen ventana corta','Moverse antes de que otros lo hagan si ya tenés la decisión tomada','Revisar contratos y acuerdos vigentes por si algo falta proteger','Tomar acción concreta sobre algo que llevás pospuesto','Ser ágil en respuestas y comunicaciones importantes'],
+      noHacer:['Fiar dinero o dar crédito sin respaldo escrito','Confiar ciegamente en socios nuevos o propuestas demasiado buenas','Dejar información sensible sin proteger hoy','Comprometer recursos de largo plazo bajo presión de momento','Ignorar señales de alerta en personas que se acercan']
+    },
+    2:{// Food God / Bing
+      hacer:['Crear, escribir, diseñar o producir contenido — tu mejor día creativo','Publicar en redes, enviar propuestas, hacer visible tu trabajo','Dar presentaciones, hablar en público, hacer pitches — tu carisma está en el pico','Iniciar proyectos creativos o expandir los que ya existen','Conectar con tu audiencia de manera auténtica y espontánea'],
+      noHacer:['Quedarte trabajando en modo invisible cuando el clima pide visibilidad','Editar y sobre-analizar en lugar de publicar y mostrar','Perderte en detalles técnicos cuando la energía es de flujo creativo','Reprimir tu expresión por miedo al qué dirán','Posponer ese contenido o presentación que tenés listo']
+    },
+    3:{// Hurt Officer / Ding
+      hacer:['Apostar por ideas no convencionales — hoy los disruptores ganan','Mostrar tu talento único sin suavizarlo para complacer a otros','Crear contenido con punto de vista propio y opinión clara','Liderar desde tu autenticidad, no desde el rol','Iniciar proyectos que desafíen el status quo de tu industria'],
+      noHacer:['Confrontar directamente con jefes, instituciones o figuras de autoridad','Prometer cosas que dependen de terceros sin consultarles','Firmar contratos o compromisos formales sin revisión exhaustiva','Actuar con arrogancia o superioridad ante quienes toman decisiones','Ignorar los límites formales cuando el costo de cruzarlos es alto']
+    },
+    4:{// Ind Wealth / Wu
+      hacer:['Explorar nuevas fuentes de ingreso o modelos de negocio alternativos','Conectar con personas que puedan abrir puertas a oportunidades inesperadas','Invertir en tu propio negocio o emprendimiento','Hacer propuestas comerciales a clientes que aún no habías abordado','Avanzar en proyectos que generan ingresos fuera de lo convencional'],
+      noHacer:['Desestimar oportunidades porque "no son tu rubro"','Gastar en cosas que no generan retorno — hoy el foco es acumulación','Perder tiempo en actividades que no tienen impacto financiero','Ignorar señales del mercado sobre lo que la gente valora y paga','Ser demasiado conservador cuando la energía pide expansión']
+    },
+    5:{// Dir Wealth / Ji
+      hacer:['Cobrar lo que te deben — hoy la energía de riqueza directa te respalda','Firmar contratos o formalizar acuerdos económicos pendientes','Gestionar tus finanzas: revisar gastos, organizar ingresos, planificar','Enviar facturas, propuestas con precio claro o cotizaciones finales','Negociar desde una posición de valor definido y concreto'],
+      noHacer:['Improvisar en conversaciones de dinero sin números claros','Hacer descuentos sin justificación o ceder en precio por incomodidad','Posponer cobros o conversaciones de dinero que ya deberían estar cerradas','Mezclar favores con transacciones comerciales','Ignorar los números de tu negocio — hoy el Qi pide orden financiero']
+    },
+    6:{// 7K / Geng
+      hacer:['Prepararte mental y estratégicamente para los desafíos que vienen','Tomar decisiones difíciles que venías evitando — hoy tenés la fortaleza','Mostrar solidez y determinación ante presiones externas','Avanzar en situaciones competitivas desde una posición de calidad, no de pelea','Usar la tensión del día como combustible para ser más preciso y efectivo'],
+      noHacer:['Confrontar directamente a competidores o figuras de poder sin estrategia','Actuar desde la impulsividad cuando hay presión — hoy perder los estribos sale caro','Forzar situaciones que requieren cooperación con agresividad','Tomar decisiones importantes en el pico emocional del conflicto','Ignorar que la resistencia de hoy puede ser una señal de ajuste, no solo un obstáculo']
+    },
+    7:{// Dir Officer / Xin
+      hacer:['Avanzar en trámites formales, papeles, registros o procesos burocráticos','Respetar los tiempos y formas de instituciones o personas con autoridad','Construir tu reputación con acciones consistentes y visibles','Cumplir compromisos formales con precisión — la confiabilidad de hoy abre puertas mañana','Organizar y documentar lo que hacés — la estructura hoy tiene recompensa futura'],
+      noHacer:['Saltear pasos en procesos que requieren validación formal','Actuar fuera del marco sin tener el respaldo necesario','Descuidar compromisos o reuniones con personas de influencia','Improvisar donde se esperan resultados formales y medibles','Confrontar el sistema cuando hoy el sistema puede ser un aliado']
+    },
+    8:{// Ind Resource / Ren
+      hacer:['Estudiar, investigar o profundizar en algo que querés dominar','Planificar a largo plazo — hoy tu intuición estratégica está en el pico','Tomar decisiones con base en análisis profundo, no en reacción','Meditar, hacer silencio, escuchar lo que tu intuición te dice sobre algo pendiente','Buscar mentores o voces expertas antes de comprometerte con algo importante'],
+      noHacer:['Lanzar o hacer anuncios públicos — hoy la energía es de interioridad, no de visibilidad','Decidir en caliente o bajo presión social','Comprometer recursos importantes sin haber revisado la información disponible','Forzar acciones que requieren alta energía cuando el Qi pide reflexión','Ignorar señales sutiles o corazonadas sobre personas o situaciones']
+    },
+    9:{// Dir Resource / Gui
+      hacer:['Descansar, recargar, permitirte un ritmo más lento sin culpa','Aprender algo nuevo — un curso, un libro, una conversación con un mentor','Recibir ayuda o apoyo sin resistirte — hoy la energía de nutrir está activa','Revisar lo que construiste recientemente con perspectiva y sin prisa','Conectar con personas que genuinamente te inspiran o nutren'],
+      noHacer:['Asumir nuevos compromisos importantes cuando tu energía está en modo recarga','Hacer anuncios, lanzamientos o presentaciones públicas — no es el momento','Tomar decisiones de largo plazo sin haber procesado la información que tenés','Forzar productividad cuando el cuerpo y la mente piden integración','Desestimar el valor del descanso estratégico en un ciclo de alta exigencia']
     }
   }
 };
 
-// INTERACTIONS
 const CHOQUES=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
 const COMBHE=[[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
 const DESTRUCT=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
 
-function getInts(ri,person){
-  const p=PERSONS[person];
-  const refs=[...p.natal,p.anioR,p.dayunR];
+function getInts(ri){
+  const refs=[...LUCA.natal,LUCA.anioR,LUCA.dayunR];
   let res=[];
   for(let b of refs){
-    for(let[a,c]of CHOQUES)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`Choque con ${ANIMALES[b]}`});
-    for(let[a,c]of COMBHE)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`Combina con ${ANIMALES[b]}`});
-    for(let[a,c]of DESTRUCT)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`Destructor con ${ANIMALES[b]}`});
+    for(let[a,c]of CHOQUES)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`⚡ Choque con ${ANIMALES[b]}`});
+    for(let[a,c]of COMBHE)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`🤝 Combina con ${ANIMALES[b]}`});
+    for(let[a,c]of DESTRUCT)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`⚠️ Destructor con ${ANIMALES[b]}`});
   }
-  if((person==='luca'||person==='morena')&&(ri===2||ri===6||ri===10))res.push({tipo:'trio',efecto:'bien',txt:'Completa Trío de Fuego'});
+  if(ri===2||ri===6||ri===10)res.push({tipo:'trio',efecto:'bien',txt:'🔥 Trío de Fuego completo'});
   return res;
 }
 
-function calcRating(ti,ri,person){
-  const p=PERSONS[person];
+function calcRating(ti,ri){
   let s=3;
-  if(p.elemBon.includes(ti))s+=1.0;
-  if(p.elemBad.includes(ti))s-=1.1;
-  for(let i of getInts(ri,person)){
+  if(LUCA.elemBon.includes(ti))s+=1.0;
+  if(LUCA.elemBad.includes(ti))s-=1.1;
+  for(let i of getInts(ri)){
     if(i.efecto==='bien')s+=0.5;
     if(i.efecto==='mal')s-=0.8;
     if(i.efecto==='cuidado')s-=0.35;
@@ -698,297 +707,410 @@ function renderStars(n,sz=12,cls='star'){
   return s;
 }
 
-const ELEM_COLORS={0:'#6db860',1:'#6db860',2:'#e87a40',3:'#e87a40',4:'#c9a45a',5:'#c9a45a',6:'#a0b4c8',7:'#a0b4c8',8:'#5a9abf',9:'#5a9abf'};
-const ELEM_BG={0:'rgba(74,140,63,0.2)',1:'rgba(74,140,63,0.2)',2:'rgba(224,90,26,0.2)',3:'rgba(224,90,26,0.2)',4:'rgba(156,122,60,0.2)',5:'rgba(156,122,60,0.2)',6:'rgba(122,155,181,0.2)',7:'rgba(122,155,181,0.2)',8:'rgba(44,95,138,0.2)',9:'rgba(44,95,138,0.2)'};
-
-function getCardDo(ti,person){
-  if(person==='luca'){const m={0:'Colaborar, redes, alianzas',1:'Oportunidades rápidas — moverse ágil',2:'Crear, publicar, presentar proyectos propios',3:'Innovar, romper esquemas — talento disruptivo',4:'Capturar negocios, inversión propia',5:'Cobrar, firmar, disciplina financiera',6:'Superarte bajo presión, mostrarte fuerte',7:'Trámites formales, procesos oficiales',8:'Estudiar, planificar, estrategia profunda',9:'Aprender, reflexionar, buscar mentoría'};return m[ti]||'Accionar con conciencia';}
-  if(person==='guadi'){const m={0:'Juego imaginativo y cuentos largos',1:'Exploración flexible y arte libre',2:'Actividades sociales y de movimiento',3:'Música, danza, expresión emocional libre',4:'Rutinas suaves en entorno estable',5:'Aprendizaje con estructura gentil',6:'Actividades con reglas claras y simples',7:'Clasificar, ordenar, lógica simple',8:'Exploración de ideas, preguntas abiertas',9:'Tiempo en silencio, naturaleza o agua'};return m[ti]||'Observar y acompañar';}
-  if(person==='morena'){const m={0:'Trabajo colaborativo con pares',1:'Proyectos creativos de corto plazo',2:'Expresión artística, performance, escenario',3:'Escritura creativa, composición musical',4:'Tareas con meta clara y visible',5:'Organización de sus proyectos propios',6:'Desafíos que la reten positivamente',7:'Estudio estructurado, preparación de examen',8:'Investigación profunda, aprendizaje autónomo',9:'Reflexión personal, diario, tiempo a solas'};return m[ti]||'Escuchar y dar espacio';}
-  return '';
+// HORA PILLARS — para Jia (tronco del día define la hora)
+// Hora empieza en Zi (23h). Tronco de hora para Jia: Jia Zi, Yi Chou, Bing Yin...
+// Para día Jia (ti=0): hora Zi=Jia(0), Chou=Yi(1), Yin=Bing(2), Mao=Ding(3), Chen=Wu(4), Si=Ji(5), Wu=Geng(6), Wei=Xin(7), Shen=Ren(8), You=Gui(9), Xu=Jia(0), Hai=Yi(1)
+function getHorasTi(dayTi){
+  // For each of 12 hours (starting Zi=0), hour stem cycles based on day stem
+  const starts={0:0,1:2,2:4,3:6,4:8,5:0,6:2,7:4,8:6,9:8};
+  const base=starts[dayTi]||0;
+  return Array.from({length:12},(_,i)=>(base+i)%10);
 }
 
-function getCardDont(ti,person){
-  if(person==='luca'){const m={0:'Competir sin acuerdo previo',1:'Fiar sin contrato escrito',2:'Trabajar sin visibilidad o reconocimiento',3:'Discutir con figuras de autoridad',4:'Perder tiempo en detalles sin impacto',5:'Improvisar en finanzas o compromisos',6:'Confrontar rivales directamente',7:'Saltear procesos o trámites formales',8:'Lanzar sin análisis previo',9:'Asumir compromisos nuevos importantes'};return m[ti]||'Impulsividad sin estrategia';}
-  if(person==='guadi'){const m={0:'Rutinas muy rígidas o inflexibles',1:'Cambios bruscos de plan sin aviso',2:'Entornos muy estimulantes o ruidosos',3:'Suprimir su expresión emocional',4:'Demasiada presión o exigencia de resultados',5:'Exceso de estructura sin creatividad',6:'Ambientes de conflicto entre adultos',7:'Forzar sociabilidad cuando no tiene ganas',8:'Apresurarla o exigir rapidez',9:'Interrumpir su tiempo de quietud'};return m[ti]||'Forzar o presionar';}
-  if(person==='morena'){const m={0:'Comparar con otros o con Luca',1:'Compromisos impulsivos sin análisis',2:'Discutir con figuras de autoridad',3:'Temas difíciles o confrontativos',4:'Obligaciones sin sentido aparente para ella',5:'Ambientes aburridos sin estímulo genuino',6:'Imposiciones sin explicación clara',7:'Rutinas sin propósito visible',8:'Tomar decisiones importantes sin apoyo',9:'Presión social o escolar intensa'};return m[ti]||'Imponer sin dialogar';}
-  return '';
+const HORA_INFO=[
+  {label:'23–01',rama:'子 Rata',ri:0},{label:'01–03',rama:'丑 Buey',ri:1},
+  {label:'03–05',rama:'寅 Tigre',ri:2},{label:'05–07',rama:'卯 Conejo',ri:3},
+  {label:'07–09',rama:'辰 Dragón',ri:4},{label:'09–11',rama:'巳 Serpiente',ri:5},
+  {label:'11–13',rama:'午 Caballo',ri:6},{label:'13–15',rama:'未 Cabra',ri:7},
+  {label:'15–17',rama:'申 Mono',ri:8},{label:'17–19',rama:'酉 Gallo',ri:9},
+  {label:'19–21',rama:'戌 Perro',ri:10},{label:'21–23',rama:'亥 Cerdo',ri:11},
+];
+
+// ══ MONTH CALC ══
+function getMesPilar(m){
+  // 2026 month pillars
+  const mp={1:{ti:4,ri:1},2:{ti:5,ri:2},3:{ti:6,ri:3},4:{ti:7,ri:4},
+    5:{ti:8,ri:5},6:{ti:9,ri:6},7:{ti:0,ri:7},8:{ti:1,ri:8},
+    9:{ti:2,ri:9},10:{ti:3,ri:10},11:{ti:4,ri:11},12:{ti:5,ri:0}};
+  return mp[m]||{ti:0,ri:0};
 }
 
-function getResumenDia(ti,ri,rating,person){
-  const a=ANIMALES[ri],e=ELEM_T[ti];
-  const r={
-    luca:{5:`Flujo óptimo. ${e} con ${a} — alineación alta con tu Madera Yang.`,4:`Día favorable. ${e} coopera con tu carta. Avanzar con confianza.`,3:`Día neutro. ${e} con ${a} — movimiento normal sin impulso especial.`,2:`Fricción latente. El ${a} genera presión sobre tus ramas natales.`,1:`Alta fricción. El ${a} choca con tu carta. Proteger más que avanzar.`},
-    guadi:{5:`Día de alta armonía para Guadi. ${e} activa su Agua Yang de manera fluida.`,4:`Buen día. El ${a} trae energía cooperativa para su carta.`,3:`Día neutro para ella. Observar su estado y acompañar.`,2:`El ${a} genera cierta tensión. Más calma y menos demandas.`,1:`Día difícil energéticamente. Simplificar entorno y dar espacio.`},
-    morena:{5:`Día de flujo alto para Morena. ${e} potencia su expresión natural.`,4:`Día favorable. Su Hurt Officer fluye sin fricción mayor.`,3:`Día neutro para ella. Ni gran impulso ni bloqueo significativo.`,2:`Tensión latente. El ${a} puede activar su modo defensivo.`,1:`Día de alta fricción. Evitar conversaciones difíciles o confrontaciones.`}
-  };
-  return r[person][rating];
-}
-
-// ══ HOY PANEL ══
-let currentPerson='luca';
+// ══ HOY ══
+let todayPilar=null;
 
 function buildHoyPanel(){
   const today=getToday();
   const p=getPilar(today);
-  const dow=DIAS[today.getDay()];
+  todayPilar=p;
+  const rating=calcRating(p.ti,p.ri);
+  const dow=DIAS_ES[today.getDay()];
   const dia=today.getDate();
   const mes=MESES_ES[today.getMonth()+1];
   const anio=today.getFullYear();
+  const m=today.getMonth()+1;
+  const mp=getMesPilar(m);
 
-  // Update page title
-  document.getElementById('hoy-title').textContent=`${dow}, ${dia} de ${mes} ${anio}`;
+  // Title
+  document.getElementById('hoy-title-main').textContent=`${dow}, ${dia} de ${mes} ${anio}`;
 
-  // Hero fecha
-  document.getElementById('hero-fecha').textContent=`${dow} ${dia} de ${mes} ${anio}`;
-  document.getElementById('hero-pilar').innerHTML=`PILAR DEL DÍA · <span>${p.tFull}</span> · <span>${p.rFull} (${p.animal})</span> · ${p.elemT}`;
+  // Context bar
+  document.getElementById('hoy-ctx-bar').innerHTML=`
+    <div>AÑO <span>丙午 Fuego/Caballo</span></div>
+    <div>MES <span>${TRONCOS_FULL[mp.ti]} ${RAMAS_FULL[mp.ri]}</span></div>
+    <div>DÍA <span>${p.tFull} ${p.rFull} · ${p.animal}</span></div>
+    <div>DA YUN <span>丁未 Fuego Yin/Cabra</span></div>
+  `;
 
-  // Rating global (base Luca como referencia)
-  const ratingGlobal=calcRating(p.ti,p.ri,'luca');
-  document.getElementById('hero-stars-global').innerHTML=renderStars(ratingGlobal,18,'hoy-star');
+  // Hero
+  document.getElementById('h-fecha').textContent=`${dow} ${dia} de ${mes} ${anio}`;
+  document.getElementById('h-pilar-cn').textContent=`${p.tFull.split(' ')[0]} ${p.rFull.split(' ')[0]}`;
+  document.getElementById('h-pilar-detail').innerHTML=`
+    TRONCO <span>${p.tFull}</span><br>
+    RAMA <span>${p.rFull} · ${p.animal}</span><br>
+    ELEMENTO <span>${p.elemT}</span><br>
+    DIOS <span>${LUCA.dios[p.ti]}</span>
+  `;
 
-  // Energy badge
-  const badge=document.getElementById('hero-badge');
-  badge.textContent=`${p.elemN.toUpperCase()} · ${PERSONS.luca.dios[p.ti]}`;
-  badge.style.background=ELEM_BG[p.ti];
-  badge.style.color=ELEM_COLORS[p.ti];
-  badge.style.border=`1px solid ${ELEM_COLORS[p.ti]}44`;
+  // Stars
+  document.getElementById('h-stars-big').innerHTML=renderStars(rating,22,'hoy-star-big star');
+  document.getElementById('h-score-label').textContent=`${rating}/5 ESTRELLAS`;
+  document.getElementById('h-etag-wrap').innerHTML=`<span class="etag ${p.elemC}" style="font-size:0.65rem;padding:0.2rem 0.8rem;">${p.elemN.toUpperCase()} · ${LUCA.dios[p.ti].toUpperCase()}</span>`;
 
-  // Verdict global
-  const vEl=document.getElementById('hero-verdict');
-  if(ratingGlobal>=4){vEl.className='hoy-verdict verdict-green';vEl.textContent='✦ Día de alta alineación energética';}
-  else if(ratingGlobal===3){vEl.className='hoy-verdict verdict-yellow';vEl.textContent='◈ Día de energía neutral — flujo moderado';}
-  else{vEl.className='hoy-verdict verdict-red';vEl.textContent='✕ Día de fricción energética — moverse con cautela';}
+  // Verdict
+  const vEl=document.getElementById('h-verdict');
+  const inlineStars=document.getElementById('h-stars-inline');
+  inlineStars.innerHTML=renderStars(rating,14,'star');
+  if(rating>=4){vEl.className='hoy-verdict-text vg';vEl.textContent='Día de alta alineación — el Qi fluye a tu favor';}
+  else if(rating===3){vEl.className='hoy-verdict-text vy';vEl.textContent='Día neutral — flujo moderado, requiere conciencia';}
+  else{vEl.className='hoy-verdict-text vr';vEl.textContent='Día de fricción — mover con cautela y estrategia';}
 
-  // Ints
-  const ints=getInts(p.ri,'luca');
-  document.getElementById('hero-ints').textContent=ints.length?ints.map(i=>i.txt).join(' · '):'Sin interacciones especiales con la carta natal';
+  // Context paragraph
+  const ints=getInts(p.ri);
+  const intDesc=ints.length?ints.map(i=>i.txt.replace(/[🤝⚡⚠️🔥]/g,'')).join(', '):'Sin interacciones especiales';
+  const contexts={
+    5:`Alineación máxima. El pilar del día amplifica tu Madera Yang sin resistencia. Los 10 Dioses más favorables están activos — este es el tipo de día para hacer lo que más importa. Interacciones: <strong>${intDesc}</strong>.`,
+    4:`Día de buen flujo. El Qi del día coopera con tu carta natal y el Da Yun activo. No hay obstáculos mayores — avanzar con confianza. Interacciones: <strong>${intDesc}</strong>.`,
+    3:`Día neutro. Ni el mayor impulso ni grandes bloqueos. La energía del día requiere conciencia para aprovecharla. Interacciones: <strong>${intDesc}</strong>.`,
+    2:`Fricción moderada. El pilar del día genera cierta tensión con tus ramas natales. No paraliza, pero requiere más energía para avanzar. Interacciones: <strong>${intDesc}</strong>.`,
+    1:`Alta fricción. El pilar de hoy choca con tu carta de maneras que frenan el flujo natural. El Qi recomienda proteger lo existente más que expandir. Interacciones: <strong>${intDesc}</strong>.`,
+  };
+  document.getElementById('h-context').innerHTML=contexts[rating];
 
-  // Cards por persona
-  buildPersonCards(today,p);
+  // Interacciones chips
+  const intsEl=document.getElementById('h-ints-row');
+  if(ints.length){
+    intsEl.innerHTML=ints.map(i=>{
+      let cls='int-'+i.tipo;
+      if(i.tipo==='choque')cls='int-mal';
+      if(i.tipo==='combo')cls='int-bien';
+      if(i.tipo==='dest')cls='int-cuidado';
+      if(i.tipo==='trio')cls='int-trio';
+      return `<span class="int-chip ${cls}">${i.txt}</span>`;
+    }).join('');
+  } else {
+    intsEl.innerHTML=`<span class="int-chip int-none">Sin interacciones especiales hoy</span>`;
+  }
+
+  // Dios block
+  const diosIdx=p.ti;
+  document.getElementById('h-dios-block').innerHTML=`
+    <div class="dios-icon">${LUCA.diosIcons[diosIdx]}</div>
+    <div>
+      <div class="dios-title">${LUCA.dios[diosIdx]} — ${TRONCOS_FULL[diosIdx]} ${p.elemT}</div>
+      <div class="dios-sub">DIOS ACTIVO HOY · ${p.elemN.toUpperCase()} · DAY MASTER 甲 JIA YANG WOOD</div>
+      <div class="dios-desc">${LUCA.diosDesc[diosIdx]}</div>
+    </div>
+  `;
+
+  // Tips profundos
+  const tips=LUCA.tipsDetallados[diosIdx];
+  const tipsEl=document.getElementById('h-tips-grid');
+  const doItems=tips.hacer.map(t=>`<li>${t}</li>`).join('');
+  const dontItems=tips.noHacer.map(t=>`<li>${t}</li>`).join('');
+  tipsEl.innerHTML=`
+    <div class="tips-box do-box">
+      <h3>✦ Hacer hoy</h3>
+      <ul>${doItems}</ul>
+    </div>
+    <div class="tips-box dont-box">
+      <h3>✕ No hacer hoy</h3>
+      <ul>${dontItems}</ul>
+    </div>
+  `;
+
+  // Horas oracle
+  const horasTi=getHorasTi(p.ti);
+  const horaEl=document.getElementById('h-hora-grid');
+  horaEl.innerHTML=HORA_INFO.map((h,i)=>{
+    const hti=horasTi[i];
+    const hRating=calcRating(hti,h.ri);
+    let cls='hora-ok';
+    if(hRating>=4)cls='hora-best';
+    if(hRating<=2)cls='hora-bad';
+    let verdict='Neutral';
+    if(hRating>=4)verdict='✦ Óptima';
+    else if(hRating===3)verdict='◈ Aceptable';
+    else verdict='✕ Difícil';
+    return `<div class="hora-card ${cls}">
+      <div class="hora-time">${h.label}h</div>
+      <div class="hora-animal">${h.rama}</div>
+      <div class="hora-elem">${ELEM_T[hti]}</div>
+      <div class="hora-elem" style="margin-top:0.2rem;color:var(--ash2);">${LUCA.dios[hti]}</div>
+      <div class="hora-verdict">${verdict}</div>
+    </div>`;
+  }).join('');
+
+  // Resumen ejecutivo
+  buildResumenEjecutivo(p, rating);
 }
 
-function buildPersonCards(today,p){
-  const grid=document.getElementById('hoy-cards-grid');
-  grid.innerHTML='';
-  ['luca','guadi','morena'].forEach(person=>{
-    const pData=PERSONS[person];
-    const rating=calcRating(p.ti,p.ri,person);
-    const ints=getInts(p.ri,person);
-    const doTxt=getCardDo(p.ti,person);
-    const dontTxt=getCardDont(p.ti,person);
-    const summary=getResumenDia(p.ti,p.ri,rating,person);
-    const intTxt=ints.length?ints.map(i=>i.txt).slice(0,2).join(' · '):'Sin interacciones especiales';
+function buildResumenEjecutivo(p, rating){
+  // Rating específico para PUBLICAR
+  const pubIdeal=[2,3], pubBad=[8,9];
+  let pubScore=rating;
+  if(pubIdeal.includes(p.ti)) pubScore=Math.min(5,rating+1);
+  if(pubBad.includes(p.ti))   pubScore=Math.max(1,rating-1);
 
-    const card=document.createElement('div');
-    card.className=`hoy-person-card card-${person}`;
-    card.innerHTML=`
-      <div class="hpc-header">
-        <div class="hpc-name ${person}-c">${pData.name}</div>
-        <div class="hpc-stars">${renderStars(rating,11,'hpc-star')}</div>
+  const pubConfigs={
+    5:{cls:'pub-excelente',icon:'🔥',verdict:'PUBLICAR HOY',    note:'Máxima alineación. Food God activo — lo que mostrás llega más lejos.'},
+    4:{cls:'pub-bueno',    icon:'✦', verdict:'Buen día para publicar', note:'Fuego activo. Tu mensaje resuena con más fuerza que un día neutro.'},
+    3:{cls:'pub-neutro',   icon:'◈', verdict:'Puede funcionar',  note:'No es el peak, pero tampoco bloquea. Contenido liviano OK.'},
+    2:{cls:'pub-evitar',   icon:'⚠', verdict:'Mejor esperar',    note:'Metal o Tierra activos. Guardá el contenido importante para otro día.'},
+    1:{cls:'pub-mal',      icon:'✕', verdict:'No publicar hoy',  note:'Fricción alta con tu carta. Reservá el lanzamiento para una ventana mejor.'},
+  };
+  const pc=pubConfigs[pubScore];
+
+  const tips=LUCA.tipsDetallados[p.ti];
+  const hacerTop =tips.hacer.slice(0,3);
+  const noHacerTop=tips.noHacer.slice(0,3);
+
+  function starSvg(n,sz=14){
+    let s='';
+    for(let i=1;i<=5;i++) s+=`<svg class="pub-star star ${i<=n?'on':''}" width="${sz}" height="${sz}" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`;
+    return s;
+  }
+
+  document.getElementById('h-resumen-ejecutivo').innerHTML=`
+    <div class="resumen-wrap">
+      <div class="publicar-card ${pc.cls}">
+        <div class="pub-label">📣 Publicar</div>
+        <div class="pub-icon">${pc.icon}</div>
+        <div class="pub-stars">${starSvg(pubScore)}</div>
+        <div class="pub-verdict">${pc.verdict}</div>
+        <div class="pub-note">${pc.note}</div>
       </div>
-      <div class="hpc-dm">${pData.dmElem} · ${pData.dios[p.ti]}</div>
-      <span class="hpc-etag ${p.elemC}">${p.elemN.toUpperCase()} · ${['★','★★','★★★','★★★★','★★★★★'][rating-1]}</span>
-      <div class="hpc-summary">${summary}</div>
-      <div style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.05em;margin-bottom:0.5rem;">${intTxt}</div>
-      <div class="hpc-row"><div class="hpc-label lsi">HACER</div><div class="hpc-text">${doTxt}</div></div>
-      <div class="hpc-row"><div class="hpc-label lno">EVITAR</div><div class="hpc-text">${dontTxt}</div></div>
-    `;
-    grid.appendChild(card);
-  });
+      <div class="resumen-right">
+        <div class="resumen-hacer">
+          <span class="resumen-label">✦ Hacer hoy</span>
+          <ul class="resumen-items">
+            ${hacerTop.map(t=>`<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="resumen-nohacer">
+          <span class="resumen-label">✕ No hacer hoy</span>
+          <ul class="resumen-items">
+            ${noHacerTop.map(t=>`<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ══ CALCULATOR ══
+const ACTION_MAP={
+  reunion:{ideal:[2,3],bad:[6],do:'Preparar argumentos con antelación. Propuesta clara y visión de largo plazo.',dont:'Improvisar el discurso. Ceder terreno por presión inicial.'},
+  firma:{ideal:[5,4],bad:[6,1],do:'Revisar cláusulas antes. Horario Dragón (7-9am) favorable.',dont:'Firmar bajo presión de tiempo. Aceptar condiciones verbales.'},
+  renegociar:{ideal:[5,7],bad:[6,8],do:'Ir con datos concretos. Proponer win-win. Lógica sobre emoción.',dont:'Amenazar sin poder de cierre. Mostrar urgencia.'},
+  cerrar:{ideal:[5,4,2],bad:[6],do:'Crear momentum de cierre desde el inicio de la reunión.',dont:'Dejar el cierre para después. Dar demasiadas opciones.'},
+  sociedad:{ideal:[0,2],bad:[6,1],do:'Presentar visión compartida. Dejar claro qué aporta cada uno.',dont:'Apresurarse sin claridad de roles.'},
+  cobrar:{ideal:[5,4],bad:[6,3],do:'Comunicar con firmeza. Soporte escrito siempre.',dont:'Pedir disculpas por cobrar. Ceder en plazos sin garantía.'},
+  invertir:{ideal:[5,9],bad:[6,1,3],do:'Análisis completo previo. Sectores Madera/Agua favorables.',dont:'Decisión impulsiva. Invertir bajo presión de terceros.'},
+  prestamo:{ideal:[9,8],bad:[6,1],do:'Presentar garantías sólidas. Claridad sobre el uso del capital.',dont:'Pedir sin plan de repago definido.'},
+  cotizar:{ideal:[2,5],bad:[6],do:'Cotización clara con valor visible. Incluir casos de éxito.',dont:'Subestimar tu propuesta. Ofrecer descuento sin negociar.'},
+  lanzar:{ideal:[2,3],bad:[6,8],do:'Máxima visibilidad — redes, email, presencia pública.',dont:'Lanzar sin audiencia preparada.'},
+  publicar:{ideal:[2,3],bad:[8,9],do:'Contenido de impacto, opinión propia, autenticidad.',dont:'Publicar sin punto de vista claro.'},
+  presentacion:{ideal:[2,3],bad:[6,8],do:'Preparar bien apertura y cierre. Mostrar autoridad y calidez.',dont:'Improvisar. Ceder al primer cuestionamiento.'},
+  cliente:{ideal:[2,0],bad:[6,1],do:'Escuchar más que hablar. Generar confianza primero.',dont:'Vender demasiado pronto. Prometer sin capacidad de cumplir.'},
+  decision:{ideal:[5,9],bad:[6,1,3],do:'Información completa antes de decidir. Hora Agua (23-3am) para reflexión final.',dont:'Decidir bajo emociones fuertes.'},
+  planificar:{ideal:[8,9],bad:[2,3],do:'Silencio, foco, análisis largo. Sin interrupciones.',dont:'Mezclar planificación con ejecución.'},
+  cerrar_ciclo:{ideal:[6,7],bad:[2,0],do:'Claridad total en términos de cierre. Metal activo es tu aliado.',dont:'Dejar cabos sueltos. Ceder en el final.'},
+  conflicto:{ideal:[9,7],bad:[6,3,1],do:'Calma, datos, propuesta concreta. Ceder en forma, ganar en fondo.',dont:'Emocionarte. Ataques personales.'},
+  networking:{ideal:[2,3,0],bad:[8,9],do:'Presentarte con propósito claro. Conectar genuinamente.',dont:'Ir sin objetivo definido.'},
+  favor:{ideal:[9,0],bad:[6,1],do:'Contexto claro de por qué lo pedís. Agradecer genuinamente.',dont:'Pedir sin haber dado antes.'},
+  equipo:{ideal:[0,2],bad:[6,8],do:'Agenda clara, participación activa, decisiones concretas.',dont:'Reunión sin propósito definido.'},
+};
+
+let lastCalcDate=null,lastCalcRes=null;
+
+function calcular(){
+  const dv=document.getElementById('calc-date').value;
+  const av=document.getElementById('calc-action').value;
+  if(!dv||!av){alert('Por favor completá todos los campos.');return;}
+  const date=new Date(dv+'T12:00:00');
+  const p=getPilar(date);
+  const rating=calcRating(p.ti,p.ri);
+  const dow=DIAS_ES[date.getDay()];
+  const m=date.getMonth()+1;
+  const act=ACTION_MAP[av]||null;
+  let aScore=rating;
+  if(act){if(act.ideal.includes(p.ti))aScore=Math.min(5,rating+1);if(act.bad.includes(p.ti))aScore=Math.max(1,rating-1);}
+  lastCalcDate=date;lastCalcRes={p,rating:aScore,act,av};
+  const ints=getInts(p.ri);
+  const mp=getMesPilar(m);
+  let vClass,vText;
+  if(aScore>=4){vClass='vg';vText='✦ MUY FAVORABLE — Momento de alta alineación';}
+  else if(aScore===3){vClass='vy';vText='◈ NEUTRAL — Funciona con conciencia del contexto';}
+  else{vClass='vr';vText='✕ DESFAVORABLE — Mejor posponer o protegerte';}
+  const intTxt=ints.length?ints.map(i=>i.txt.replace(/[🤝⚡⚠️🔥]/g,'')).join(', '):'Sin interacciones especiales';
+  const isToday=date.toDateString()===getToday().toDateString();
+  const expl=`${isToday?'<strong>📍 Análisis de hoy</strong><br><br>':''}<strong>${dow} ${date.getDate()}/${m}/${date.getFullYear()}</strong><br>Pilar: <strong>${p.tFull} · ${p.rFull}</strong> (${p.animal}) · ${p.elemT}<br>Dios activo: <strong>${LUCA.dios[p.ti]}</strong><br>Interacciones: ${intTxt}<br><br>${aScore>=4?'La energía del día amplifica exactamente lo que esta acción requiere.':aScore>=3?'Sin gran impulso pero sin bloqueos. Proceder con preparación y claridad.':'Fricción con los requerimientos de esta acción. Si podés, mover a un día con Fuego o Tierra activos.'}`;
+  document.getElementById('res-dlabel').textContent=`${dow} ${date.getDate()}/${m}/${date.getFullYear()}${isToday?' · HOY':''}`;
+  document.getElementById('res-stars').innerHTML=renderStars(aScore,16);
+  document.getElementById('res-verdict').className=`res-verdict ${vClass}`;
+  document.getElementById('res-verdict').textContent=vText;
+  document.getElementById('res-pillars').innerHTML=`AÑO <span>丙午</span> · MES <span>${TRONCOS_SHORT[mp.ti]} ${ANIMALES[mp.ri]}</span> · DÍA <span>${p.tShort} ${p.animal}</span>`;
+  document.getElementById('res-text').innerHTML=expl;
+  document.getElementById('res-do').textContent=act?act.do:LUCA.tipsDetallados[p.ti].hacer[0];
+  document.getElementById('res-dont').textContent=act?act.dont:LUCA.tipsDetallados[p.ti].noHacer[0];
+  const box=document.getElementById('res-box');box.classList.remove('visible');void box.offsetWidth;box.classList.add('visible');
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 // ══ CALENDAR ══
 const MONTHS_DATA=[
-  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Ji Si · Tierra Yin',pilar:'己巳',chinese:'巳',mp:{tc:'Ji',rama:'Si',tci:5,ri:5}},
-  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Geng Wu · Metal Yang',pilar:'庚午',chinese:'午',mp:{tc:'Geng',rama:'Wu',tci:6,ri:6}},
-  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Ji Wei · Tierra Yin',pilar:'己未',chinese:'未',mp:{tc:'Ji',rama:'Wei',tci:5,ri:7}},
-  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Geng Shen · Metal Yang',pilar:'庚申',chinese:'申',mp:{tc:'Geng',rama:'Shen',tci:6,ri:8}},
-  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Xin You · Metal Yin',pilar:'辛酉',chinese:'酉',mp:{tc:'Xin',rama:'You',tci:7,ri:9}},
-  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Ren Xu · Agua Yang',pilar:'壬戌',chinese:'戌',mp:{tc:'Ren',rama:'Xu',tci:8,ri:10}},
-  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Gui Hai · Agua Yin',pilar:'癸亥',chinese:'亥',mp:{tc:'Gui',rama:'Hai',tci:9,ri:11}},
-  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Jia Zi · Madera Yang',pilar:'甲子',chinese:'子',mp:{tc:'Jia',rama:'Zi',tci:0,ri:0}},
+  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Ji Si · Tierra Yin',pilar:'己巳',chinese:'巳'},
+  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Geng Wu · Metal Yang',pilar:'庚午',chinese:'午'},
+  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Ji Wei · Tierra Yin',pilar:'己未',chinese:'未'},
+  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Geng Shen · Metal Yang',pilar:'庚申',chinese:'申'},
+  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Xin You · Metal Yin',pilar:'辛酉',chinese:'酉'},
+  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Ren Xu · Agua Yang',pilar:'壬戌',chinese:'戌'},
+  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Gui Hai · Agua Yin',pilar:'癸亥',chinese:'亥'},
+  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Jia Zi · Madera Yang',pilar:'甲子',chinese:'子'},
 ];
-
 let currentMonth=5;
 
-function buildMonthSelector(){
-  const sel=document.getElementById('month-selector');
+function buildMonthSel(){
+  const sel=document.getElementById('month-sel');
+  const today=getToday();
   MONTHS_DATA.forEach(md=>{
+    const isNow=md.m===(today.getMonth()+1)&&today.getFullYear()===2026;
     const btn=document.createElement('button');
-    const today=getToday();
-    const isCurrentMonth=md.m===(today.getMonth()+1)&&today.getFullYear()===2026;
-    btn.className='month-btn'+(md.m===currentMonth?' active':'')+(isCurrentMonth?' ':'');
-    btn.textContent=md.name+(isCurrentMonth?' ·Hoy':'');
-    btn.onclick=()=>{
-      document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active','g-active','m-active'));
-      btn.classList.add('active');
-      if(currentPerson==='guadi')btn.classList.add('g-active');
-      if(currentPerson==='morena')btn.classList.add('m-active');
-      currentMonth=md.m;
-      renderMonth(md.m);
-    };
+    btn.className='month-btn'+(md.m===currentMonth?' active':'');
+    btn.textContent=md.name+(isNow?' · Hoy':'');
+    btn.onclick=()=>{document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentMonth=md.m;renderMonth(md.m);};
     sel.appendChild(btn);
   });
+}
+
+function getCardDo(ti){const m={0:'Colaborar, redes, alianzas',1:'Oportunidades rápidas — moverse ágil',2:'Crear, publicar, presentar — visibilidad máxima',3:'Innovar, romper esquemas, talento disruptivo',4:'Capturar negocios y oportunidades propias',5:'Cobrar, firmar, disciplina financiera',6:'Superarte bajo presión, mostrarte sólido',7:'Trámites formales, compromisos de reputación',8:'Estudiar, planificar, estrategia profunda',9:'Aprender, reflexionar, buscar mentoría'};return m[ti]||'Accionar con conciencia';}
+function getCardDont(ti){const m={0:'Competir sin acuerdo previo ni contrato',1:'Fiar sin respaldo escrito',2:'Quedarte en modo invisible cuando el clima pide visibilidad',3:'Discutir con figuras de autoridad o instituciones',4:'Perder tiempo en detalles sin impacto financiero',5:'Improvisar en finanzas o ceder en precio por incomodidad',6:'Confrontar rivales directamente sin estrategia',7:'Saltear procesos o trámites formales',8:'Lanzar o decidir sin análisis previo',9:'Asumir compromisos nuevos e importantes'};return m[ti]||'Impulsividad sin estrategia';}
+function getResumen(ti,ri,rating){
+  const a=ANIMALES[ri],e=ELEM_T[ti];
+  const r={5:`Flujo óptimo. ${e} con ${a} — alineación alta con tu Madera Yang.`,4:`Día favorable. ${e} coopera con tu carta. Avanzar con confianza.`,3:`Día neutro. ${e} con ${a} — movimiento sin impulso especial.`,2:`Fricción latente. El ${a} genera presión sobre tus ramas natales.`,1:`Alta fricción. El ${a} choca con tu carta. Proteger más que avanzar.`};
+  return r[rating];
 }
 
 function renderMonth(m){
   const md=MONTHS_DATA.find(x=>x.m===m);
   const display=document.getElementById('month-display');
-  const nextM=m===12?1:m+1;
-  const nextY=m===12?2027:2026;
+  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
   const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
-  const startDate=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  const endDate=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
-  const pData=PERSONS[currentPerson];
+  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const today=getToday();
-
-  let html=`<div class="month-header">
-    <div class="month-chinese">${md.chinese}</div>
-    <div class="month-info"><h2>${md.name} 2026 — ${pData.name}</h2><p>${md.desc}</p></div>
-    <div class="month-pilar"><div>PILAR <span>${md.pilar}</span></div><div>PERSONA <span>${pData.name} · ${pData.dmElem}</span></div></div>
-  </div><div class="calendar-grid">`;
-
-  for(let d=new Date(startDate);d<=endDate;d.setDate(d.getDate()+1)){
+  const mp=getMesPilar(m);
+  let html=`<div class="month-hdr">
+    <div class="month-cn">${md.chinese}</div>
+    <div class="month-info"><h2>${md.name} 2026</h2><p>${md.desc}</p></div>
+    <div class="month-meta"><div>PILAR <span>${md.pilar}</span></div><div>MES <span>${TRONCOS_FULL[mp.ti]} · ${ELEM_T[mp.ti]}</span></div></div>
+  </div><div class="cal-grid">`;
+  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
     const p=getPilar(new Date(d));
-    const rating=calcRating(p.ti,p.ri,currentPerson);
-    const dow=DIAS[d.getDay()];
+    const rating=calcRating(p.ti,p.ri);
+    const dow=DIAS_ES[d.getDay()];
     const isWe=d.getDay()===0||d.getDay()===6;
-    const isToday=d.getDate()===today.getDate()&&d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear();
-    const ints=getInts(p.ri,currentPerson);
+    const isTd=d.getDate()===today.getDate()&&d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear();
+    const ints=getInts(p.ri);
     const intTxt=ints.length?ints.map(i=>i.txt).slice(0,2).join(' · '):'—';
-    const summary=getResumenDia(p.ti,p.ri,rating,currentPerson);
-    const doTxt=getCardDo(p.ti,currentPerson);
-    const dontTxt=getCardDont(p.ti,currentPerson);
-    const todayBadge=isToday?'<span class="today-badge">HOY</span>':'';
-
-    html+=`<div class="day-card r${rating}${isWe?' weekend':''}${isToday?' today-card':''}">
-      <div class="dc-header">
+    const todayBadge=isTd?'<span class="today-badge">HOY</span>':'';
+    html+=`<div class="day-card r${rating}${isWe?' weekend':''}${isTd?' today-card':''}">
+      <div class="dc-hdr">
         <div><div class="dc-num">${d.getDate()}${todayBadge}</div><div class="dc-dow">${dow}</div></div>
         <div class="dc-pilar">${p.tFull}<br>${p.rFull} · ${p.animal}</div>
       </div>
-      <div class="stars">${renderStars(rating)}</div>
-      <span class="etag ${p.elemC}">${p.elemN.toUpperCase()} · ${pData.dios[p.ti]||'—'}</span>
-      <div class="dc-summary">${summary}</div>
+      <div class="dc-stars">${renderStars(rating)}</div>
+      <span class="etag ${p.elemC}" style="margin-bottom:0.45rem;">${p.elemN.toUpperCase()} · ${LUCA.dios[p.ti]}</span>
+      <div class="dc-summary">${getResumen(p.ti,p.ri,rating)}</div>
       <div style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.05em;margin-bottom:0.38rem;">${intTxt}</div>
-      <div class="fav-row"><div class="fav-label lsi">HACER</div><div class="fav-text">${doTxt}</div></div>
-      <div class="fav-row"><div class="fav-label lno">EVITAR</div><div class="fav-text">${dontTxt}</div></div>
+      <div class="fav-row"><div class="fav-label lsi">HACER</div><div class="fav-text">${getCardDo(p.ti)}</div></div>
+      <div class="fav-row"><div class="fav-label lno">EVITAR</div><div class="fav-text">${getCardDont(p.ti)}</div></div>
     </div>`;
   }
   html+=`</div>`;
   display.innerHTML=html;
-
-  // Scroll to today if visible
-  if(m===(today.getMonth()+1)){
-    setTimeout(()=>{const tc=document.querySelector('.today-card');if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);
-  }
-}
-
-// ══ CALCULADORA ══
-let lastCalcDate=null,lastCalcResult=null;
-
-function calcular(){
-  const persona=document.getElementById('calc-persona').value;
-  const dv=document.getElementById('calc-date').value;
-  const av=document.getElementById('calc-action').value;
-  if(!dv||!av){alert('Por favor completá todos los campos.');return;}
-
-  const date=new Date(dv+'T12:00:00');
-  const p=getPilar(date);
-  const pData=PERSONS[persona];
-  const rating=calcRating(p.ti,p.ri,persona);
-  const ints=getInts(p.ri,persona);
-  const dow=DIAS[date.getDay()];
-  const m=date.getMonth()+1;
-  const actionData=pData.actionMap[av]||null;
-
-  let aScore=rating;
-  if(actionData){
-    if(actionData.ideal&&actionData.ideal.includes(p.ti))aScore=Math.min(5,rating+1);
-    if(actionData.bad&&actionData.bad.includes(p.ti))aScore=Math.max(1,rating-1);
-  }
-  lastCalcDate=date;
-  lastCalcResult={persona,pData,p,rating:aScore,actionData,av};
-
-  let vClass,vText;
-  if(aScore>=4){vClass='verdict-green';vText='✦ MUY FAVORABLE — Momento de alta alineación';}
-  else if(aScore===3){vClass='verdict-yellow';vText='◈ NEUTRAL — Funciona con conciencia del contexto';}
-  else{vClass='verdict-red';vText='✕ DESFAVORABLE — Mejor posponer o protegerte';}
-
-  const intTxt=ints.length?ints.map(i=>i.txt).join(', '):'Sin interacciones especiales';
-  const doFinal=actionData?actionData.do:getCardDo(p.ti,persona);
-  const dontFinal=actionData?actionData.dont:getCardDont(p.ti,persona);
-  const mp=MONTHS_DATA.find(x=>x.m===m)||MONTHS_DATA[0];
-  const isToday=date.toDateString()===getToday().toDateString();
-  const todayNote=isToday?' (HOY)':'';
-
-  const expl=`${isToday?'<strong>📍 Análisis de hoy</strong><br><br>':''}<strong>${pData.name}</strong> (${pData.dmElem}) · ${dow} ${date.getDate()}/${m}/2026${todayNote}<br>Pilar del día: <strong>${p.tFull} · ${p.rFull}</strong> (${p.animal})<br>Dios activo: <strong>${pData.dios[p.ti]}</strong> · Energía: <strong>${p.elemT}</strong><br><br>Interacciones: ${intTxt}<br><br>${aScore>=4?'La energía del día amplifica exactamente lo que esta actividad requiere. Excelente ventana.':aScore>=3?'Sin gran impulso pero sin bloqueos. Proceder con preparación y claridad.':'El Qi del día genera fricción. Si es posible, mover la actividad a un día de Fuego o Tierra activos.'}`;
-
-  document.getElementById('res-date-label').textContent=`${pData.name} · ${dow} ${date.getDate()}/${m}/2026${todayNote}`;
-  document.getElementById('res-stars').innerHTML=renderStars(aScore,16);
-  document.getElementById('res-verdict').className=`result-verdict ${vClass}`;
-  document.getElementById('res-verdict').textContent=vText;
-  document.getElementById('res-pillars').innerHTML=`AÑO <span>丙午 Fuego/Caballo</span> · MES <span>${mp.mp.tc} ${mp.mp.rama}</span> · DÍA <span>${p.tShort} ${p.animal}</span>`;
-  document.getElementById('res-explanation').innerHTML=expl;
-  document.getElementById('res-do').textContent=doFinal;
-  document.getElementById('res-dont').textContent=dontFinal;
-
-  const box=document.getElementById('result-box');
-  box.classList.remove('visible');
-  void box.offsetWidth;
-  box.classList.add('visible');
-  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+  if(m===(today.getMonth()+1)){setTimeout(()=>{const tc=document.querySelector('.today-card');if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
 }
 
 // ══ EXPORT ══
-function formatICS(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';}
-function makeEvent(date,title,desc,dur=60){
+function fICS(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';}
+function mkEvent(date,title,desc,dur=60){
   const s=new Date(date);s.setHours(9,0,0);
   const e=new Date(s);e.setMinutes(e.getMinutes()+dur);
-  return `BEGIN:VEVENT\r\nDTSTAMP:${formatICS(new Date())}\r\nDTSTART:${formatICS(s)}\r\nDTEND:${formatICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc.replace(/\n/g,'\\n').replace(/<[^>]+>/g,'')}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
+  return `BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc.replace(/\n/g,'\\n').replace(/<[^>]+>/g,'')}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
 }
-function dl(name,content,type){const b=new Blob([content],{type});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href);}
+function dl(name,content){const b=new Blob([content],{type:'text/calendar'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href);}
 
-function exportarICS(){
-  if(!lastCalcDate||!lastCalcResult)return;
-  const r=lastCalcResult;
-  const title=`BaZi ${'⭐'.repeat(r.rating)} · ${r.pData.name} · ${r.p.tShort} ${r.p.animal}`;
-  const desc=`Persona: ${r.pData.name}\nRating: ${r.rating}/5\nDios: ${r.pData.dios[r.p.ti]}\nHACER: ${r.actionData?r.actionData.do:getCardDo(r.p.ti,r.persona)}\nEVITAR: ${r.actionData?r.actionData.dont:getCardDont(r.p.ti,r.persona)}`;
-  dl(`bazi_${r.persona}.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Familia//ES\r\n${makeEvent(lastCalcDate,title,desc)}END:VCALENDAR`,'text/calendar');
+function exportarHoyICS(){
+  if(!todayPilar)return;
+  const today=getToday();
+  const rating=calcRating(todayPilar.ti,todayPilar.ri);
+  const title=`BaZi ${'⭐'.repeat(rating)} · Luca · ${todayPilar.tShort} ${todayPilar.animal}`;
+  const desc=`Dios: ${LUCA.dios[todayPilar.ti]}\nHACER: ${LUCA.tipsDetallados[todayPilar.ti].hacer.slice(0,3).join(' / ')}\nEVITAR: ${LUCA.tipsDetallados[todayPilar.ti].noHacer.slice(0,3).join(' / ')}`;
+  dl('bazi_hoy.ics',`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Luca//ES\r\n${mkEvent(today,title,desc)}END:VCALENDAR`);
 }
-
-function abrirGoogleCal(){
-  if(!lastCalcDate||!lastCalcResult)return;
-  const r=lastCalcResult;
-  const title=encodeURIComponent(`BaZi ⭐${r.rating} · ${r.pData.name} · ${r.p.tShort} ${r.p.animal}`);
-  const det=encodeURIComponent(`Dios: ${r.pData.dios[r.p.ti]}\nHACER: ${r.actionData?r.actionData.do:''}\nEVITAR: ${r.actionData?r.actionData.dont:''}`);
+function abrirGCalHoy(){
+  if(!todayPilar)return;
+  const today=getToday();
+  const rating=calcRating(todayPilar.ti,todayPilar.ri);
+  const title=encodeURIComponent(`BaZi ⭐${rating} · Luca · ${todayPilar.tShort} ${todayPilar.animal}`);
+  const det=encodeURIComponent(`Dios: ${LUCA.dios[todayPilar.ti]}\nHACER: ${LUCA.tipsDetallados[todayPilar.ti].hacer[0]}\nEVITAR: ${LUCA.tipsDetallados[todayPilar.ti].noHacer[0]}`);
+  const ds=`${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
+}
+function exportarCalcICS(){
+  if(!lastCalcDate||!lastCalcRes)return;
+  const r=lastCalcRes;
+  const title=`BaZi ${'⭐'.repeat(r.rating)} · Luca · ${r.p.tShort} ${r.p.animal}`;
+  const desc=`Rating: ${r.rating}/5\nDios: ${LUCA.dios[r.p.ti]}\nHACER: ${r.act?r.act.do:LUCA.tipsDetallados[r.p.ti].hacer[0]}\nEVITAR: ${r.act?r.act.dont:LUCA.tipsDetallados[r.p.ti].noHacer[0]}`;
+  dl('bazi_calc.ics',`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Luca//ES\r\n${mkEvent(lastCalcDate,title,desc)}END:VCALENDAR`);
+}
+function abrirGCalCalc(){
+  if(!lastCalcDate||!lastCalcRes)return;
+  const r=lastCalcRes;
+  const title=encodeURIComponent(`BaZi ⭐${r.rating} · Luca · ${r.p.tShort} ${r.p.animal}`);
+  const det=encodeURIComponent(`Dios: ${LUCA.dios[r.p.ti]}\nHACER: ${r.act?r.act.do:''}\nEVITAR: ${r.act?r.act.dont:''}`);
   const d=lastCalcDate;
   const ds=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
   window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
 }
-
 function exportarMesICS(){
   const md=MONTHS_DATA.find(x=>x.m===currentMonth);
-  const nextM=currentMonth===12?1:currentMonth+1;
-  const nextY=currentMonth===12?2027:2026;
+  const nextM=currentMonth===12?1:currentMonth+1;const nextY=currentMonth===12?2027:2026;
   const nextMd=currentMonth===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
   const start=new Date(`2026-${String(currentMonth).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
   const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
-  const pData=PERSONS[currentPerson];
   let events='';
   for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
     const p=getPilar(new Date(d));
-    const rating=calcRating(p.ti,p.ri,currentPerson);
-    const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`;
-    const desc=`Rating: ${rating}/5\nDios: ${pData.dios[p.ti]}\nHACER: ${getCardDo(p.ti,currentPerson)}\nEVITAR: ${getCardDont(p.ti,currentPerson)}`;
-    events+=makeEvent(new Date(d),title,desc,30);
+    const rating=calcRating(p.ti,p.ri);
+    const title=`BaZi ${'⭐'.repeat(rating)} · Luca · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`;
+    const desc=`Rating: ${rating}/5\nDios: ${LUCA.dios[p.ti]}\nHACER: ${getCardDo(p.ti)}\nEVITAR: ${getCardDont(p.ti)}`;
+    events+=mkEvent(new Date(d),title,desc,30);
   }
-  dl(`bazi_${currentPerson}_${md.name.toLowerCase()}.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Familia//ES\r\nCALNAME:BaZi ${pData.name} ${md.name}\r\n${events}END:VCALENDAR`,'text/calendar');
+  dl(`bazi_luca_${md.name.toLowerCase()}.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Luca//ES\r\nCALNAME:BaZi Luca ${md.name}\r\n${events}END:VCALENDAR`);
 }
-
-function abrirGoogleCalMes(){
-  window.open(`https://calendar.google.com/calendar/r/month/2026/${currentMonth}?authuser=sanbaoestudio%40gmail.com`,'_blank');
-}
+function abrirGCalMes(){window.open(`https://calendar.google.com/calendar/r/month/2026/${currentMonth}?authuser=sanbaoestudio%40gmail.com`,'_blank');}
 
 // ══ NAV ══
 function showSection(id,tab){
@@ -998,47 +1120,15 @@ function showSection(id,tab){
   if(tab)tab.classList.add('active');
 }
 
-function switchPerson(person,btn){
-  currentPerson=person;
-  document.querySelectorAll('.person-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.persona-carta').forEach(c=>c.style.display='none');
-  const cartaEl=document.getElementById('carta-'+person);
-  if(cartaEl)cartaEl.style.display='block';
-  // Re-render if on calendar
-  if(document.getElementById('sec-cal').classList.contains('active')){
-    document.querySelectorAll('.month-btn').forEach(b=>{
-      b.classList.remove('g-active','m-active');
-      if(b.classList.contains('active')){
-        if(person==='guadi')b.classList.add('g-active');
-        if(person==='morena')b.classList.add('m-active');
-      }
-    });
-    renderMonth(currentMonth);
-  }
-  // Re-render hoy cards if on hoy section
-  if(document.getElementById('sec-hoy').classList.contains('active')){
-    const today=getToday();
-    const p=getPilar(today);
-    buildPersonCards(today,p);
-  }
-}
-
 // ══ INIT ══
-// Set calc date to today
 const todayInit=getToday();
-const y=todayInit.getFullYear();
-const mo=String(todayInit.getMonth()+1).padStart(2,'0');
-const d=String(todayInit.getDate()).padStart(2,'0');
-document.getElementById('calc-date').value=`${y}-${mo}-${d}`;
-
-// Detect current month for calendar
-const todayMonth=todayInit.getMonth()+1;
-const hasCurrentMonth=MONTHS_DATA.some(x=>x.m===todayMonth);
-currentMonth=hasCurrentMonth?todayMonth:5;
-
+const calcDateVal=`${todayInit.getFullYear()}-${String(todayInit.getMonth()+1).padStart(2,'0')}-${String(todayInit.getDate()).padStart(2,'0')}`;
+document.getElementById('calc-date').value=calcDateVal;
+const todayM=todayInit.getMonth()+1;
+const hasM=MONTHS_DATA.some(x=>x.m===todayM);
+currentMonth=hasM?todayM:5;
 buildHoyPanel();
-buildMonthSelector();
+buildMonthSel();
 renderMonth(currentMonth);
 </script>
 </body>
