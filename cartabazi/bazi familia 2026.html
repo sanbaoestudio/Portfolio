@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BaZi · Familia · 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Lato:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#c9972a;--gold-l:#e8c46a;--cinnabar:#c0392b;
+  --midnight:#0d0a18;--surf2:#1a1628;
+  --smoke:#7a6e60;--ash:#cfc0a8;--ash2:#b0a090;
+  --fire:#e05a1a;--wood:#4a8c3f;--metal:#7a9bb5;--water:#2c5f8a;--earth:#9c7a3c;
+  --bdr:rgba(201,151,42,0.18);
+  --guadi:#c06090;--morena:#5a9abf;--carla:#7a9b6a;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--midnight);color:var(--ash);font-family:'Lato',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:-1;
+  background:radial-gradient(ellipse at 20% 10%,rgba(192,96,144,0.05) 0%,transparent 45%),
+  radial-gradient(ellipse at 80% 90%,rgba(90,154,191,0.05) 0%,transparent 45%),var(--midnight);}
+
+nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
+.nav-logo{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold);padding:1rem 1.2rem 1rem 0;border-right:1px solid var(--bdr);margin-right:0.8rem;white-space:nowrap;flex-shrink:0;}
+.nav-tab{padding:0.85rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.nav-tab:hover{color:var(--ash);}
+.nav-tab.active{color:var(--gold-l);border-bottom-color:var(--gold);}
+.nav-tab.g-tab.active{color:var(--guadi);border-bottom-color:var(--guadi);}
+.nav-tab.m-tab.active{color:var(--morena);border-bottom-color:var(--morena);}
+.nav-tab.c-tab.active{color:var(--carla);border-bottom-color:var(--carla);}
+.nav-sep{width:1px;height:22px;background:var(--bdr);margin:0 0.2rem;flex-shrink:0;}
+.nav-back{color:rgba(201,151,42,0.5);font-size:0.55rem;}
+.nav-back:hover{color:var(--gold);}
+
+.section{display:none;animation:fadeUp 0.3s ease;}
+.section.active{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.page-header{text-align:center;padding:2.5rem 2rem 1.8rem;border-bottom:1px solid var(--bdr);position:relative;overflow:hidden;}
+.page-header::before{content:attr(data-g);position:absolute;right:2rem;top:1rem;font-size:5rem;opacity:0.04;font-family:serif;pointer-events:none;}
+.page-header.guadi-hdr::before{color:var(--guadi);}
+.page-header.morena-hdr::before{color:var(--morena);}
+.page-header.carla-hdr::before{color:var(--carla);}
+.eyebrow{font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.45em;color:var(--gold);text-transform:uppercase;margin-bottom:0.7rem;}
+.page-header h1{font-family:'IM Fell English',serif;font-size:clamp(1.7rem,4vw,2.6rem);font-weight:400;line-height:1.15;}
+.page-header h1.gc{color:var(--guadi);}
+.page-header h1.mc{color:var(--morena);}
+.page-header h1.cc{color:var(--carla);}
+.page-header p{margin-top:0.4rem;color:var(--smoke);font-style:italic;font-size:0.95rem;}
+.badge{display:inline-block;margin-top:0.8rem;padding:0.35rem 1.2rem;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.18em;border-radius:2px;}
+.badge.gb{border:1px solid var(--guadi);color:var(--guadi);}
+.badge.mb{border:1px solid var(--morena);color:var(--morena);}
+.badge.cb{border:1px solid var(--carla);color:var(--carla);}
+
+.ctx-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(201,151,42,0.03);border-bottom:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
+.ctx-bar.gc span{color:var(--guadi);}
+.ctx-bar.mc span{color:var(--morena);}
+.ctx-bar.cc span{color:var(--carla);}
+
+.carta-wrap{max-width:980px;margin:0 auto;padding:2.5rem 1.5rem 4rem;}
+.sec-title{font-family:'IM Fell English',serif;font-size:1.4rem;font-weight:400;margin:2.2rem 0 0.4rem;padding-bottom:0.5rem;border-bottom:1px solid var(--bdr);}
+.sec-title.gt{color:var(--guadi);}
+.sec-title.mt{color:var(--morena);}
+.sec-title.ct{color:var(--carla);}
+.sec-sub{font-size:0.88rem;color:var(--smoke);font-style:italic;margin-bottom:1.3rem;line-height:1.6;}
+
+.pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bdr);border-radius:4px;overflow:hidden;margin-bottom:1.8rem;}
+.pilar-col{padding:1rem 0.8rem;border-right:1px solid var(--bdr);text-align:center;}
+.pilar-col:last-child{border-right:none;}
+.pilar-col.hl-g{background:rgba(192,96,144,0.05);}
+.pilar-col.hl-m{background:rgba(90,154,191,0.05);}
+.pilar-label{font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.6rem;}
+.pilar-cn{font-size:2.2rem;line-height:1;margin-bottom:0.25rem;}
+.pilar-cn.gc{color:var(--guadi);}
+.pilar-cn.mc{color:var(--morena);}
+.pilar-name{font-size:0.87rem;color:var(--ash);margin-bottom:0.1rem;}
+.pilar-el{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);}
+.dios-tag{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.42rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;}
+.tag-f{background:rgba(232,88,10,0.13);color:#e87a3a;border:1px solid rgba(232,88,10,0.25);}
+.tag-m{background:rgba(74,140,63,0.13);color:#6db860;border:1px solid rgba(74,140,63,0.25);}
+.tag-t{background:rgba(156,122,60,0.13);color:#c9a45a;border:1px solid rgba(156,122,60,0.25);}
+.tag-me{background:rgba(138,157,181,0.13);color:#a0b4c8;border:1px solid rgba(138,157,181,0.25);}
+.tag-a{background:rgba(44,95,138,0.13);color:#5a9abf;border:1px solid rgba(44,95,138,0.25);}
+
+.e-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.85rem;margin-bottom:1.8rem;}
+.e-card{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:1.1rem 1.2rem;position:relative;overflow:hidden;}
+.e-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
+.e-card.fuego::before{background:var(--fire);}.e-card.madera::before{background:var(--wood);}
+.e-card.metal::before{background:var(--metal);}.e-card.agua::before{background:var(--water);}
+.e-card.tierra::before{background:var(--earth);}
+.e-card.ga::before{background:var(--guadi);}
+.e-card.ma::before{background:var(--morena);}
+.e-card.ca::before{background:var(--carla);}
+.e-card-label{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.09em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.3rem;}
+.e-card h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;}
+.e-card h3.gc{color:var(--guadi);}
+.e-card h3.mc{color:var(--morena);}
+.e-card h3.cc{color:var(--carla);}
+.e-card p{font-size:0.87rem;color:var(--ash2);line-height:1.6;}
+
+.pot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem;}
+.pot-box{padding:1.2rem 1.3rem;border-radius:4px;}
+.pot-box.green{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
+.pot-box.red{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.pot-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.55rem;}
+.pot-box.green h3{color:#6dbf99;}.pot-box.red h3{color:#e08070;}
+.pot-box ul{padding-left:1.1rem;}
+.pot-box li{font-size:0.87rem;color:var(--ash2);margin-bottom:0.36rem;line-height:1.52;}
+
+.compat-box{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:1.3rem 1.4rem;margin-bottom:1.8rem;}
+.compat-box h3{font-family:'IM Fell English',serif;font-size:1.05rem;font-weight:400;color:var(--gold-l);margin-bottom:0.75rem;}
+.compat-row{display:flex;gap:0.55rem;align-items:flex-start;margin-bottom:0.48rem;}
+.compat-icon{font-size:0.95rem;flex-shrink:0;margin-top:0.1rem;}
+.compat-text{font-size:0.87rem;color:var(--ash2);line-height:1.55;}
+
+/* HOY CARDS */
+.hoy-wrap-fam{max-width:980px;margin:0 auto;padding:2rem 1.5rem 4rem;}
+.hoy-hero-fam{
+  background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:6px;
+  padding:1.8rem 2rem;margin-bottom:1.5rem;
+}
+.hoy-fecha-fam{font-family:'IM Fell English',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.3rem;}
+.hoy-fecha-fam.gc{color:var(--guadi);}
+.hoy-fecha-fam.mc{color:var(--morena);}
+.hoy-pilar-fam{font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--smoke);letter-spacing:0.1em;margin-bottom:1rem;}
+.hoy-pilar-fam span{color:var(--gold-l);}
+
+.hoy-stars-fam{display:flex;gap:3px;margin-bottom:0.5rem;}
+.star-fam{width:16px;height:16px;fill:rgba(201,151,42,0.15);}
+.star-fam.on{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(201,151,42,0.4));}
+
+.hoy-verdict-fam{font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.6rem;}
+.vg{color:#6dbf99;}.vy{color:var(--earth);}.vr{color:#e08070;}
+
+.tips-grid-fam{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+.tips-box{padding:1.3rem 1.4rem;border-radius:5px;}
+.tips-box.do-box{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
+.tips-box.dont-box{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.tips-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.75rem;}
+.tips-box.do-box h3{color:#6dbf99;}
+.tips-box.dont-box h3{color:#e08070;}
+.tips-box ul{list-style:none;padding:0;}
+.tips-box li{font-size:0.9rem;color:var(--ash2);padding:0.38rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.55;}
+.tips-box li:last-child{border-bottom:none;}
+.tips-box li strong{color:var(--ash);display:block;font-size:0.82rem;margin-bottom:0.08rem;}
+
+/* Calendar fam */
+.cal-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem;}
+.month-sel{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
+.month-btn{padding:0.5rem 0.95rem;border:1px solid var(--bdr);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.07em;cursor:pointer;border-radius:3px;transition:all 0.18s;}
+.month-btn:hover{border-color:rgba(201,151,42,0.4);color:var(--ash);}
+.month-btn.active.ga{border-color:var(--guadi);color:var(--guadi);background:rgba(192,96,144,0.08);}
+.month-btn.active.ma{border-color:var(--morena);color:var(--morena);background:rgba(90,154,191,0.08);}
+.month-btn.active.ca{border-color:var(--carla);color:var(--carla);background:rgba(122,155,106,0.08);}
+.month-hdr{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px solid var(--bdr);}
+.month-cn{font-size:2.6rem;opacity:0.55;line-height:1;}
+.month-cn.gc{color:var(--guadi);}
+.month-cn.mc{color:var(--morena);}
+.month-info h2{font-family:'IM Fell English',serif;font-size:1.3rem;font-weight:400;}
+.month-info h2.gc{color:var(--guadi);}
+.month-info h2.mc{color:var(--morena);}
+.month-info p{font-size:0.88rem;color:var(--ash2);margin-top:0.2rem;font-style:italic;}
+.cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:0.8rem;}
+.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(201,151,42,0.11);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
+.day-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
+.day-card.r5::before{background:#2d7a5a;}.day-card.r4::before{background:#4a8c3f;}
+.day-card.r3::before{background:#9c7a3c;}.day-card.r2::before{background:#c0602a;}
+.day-card.r1::before{background:var(--cinnabar);}
+.day-card:hover{border-color:rgba(201,151,42,0.3);background:rgba(255,255,255,0.038);}
+.day-card.weekend{opacity:0.62;}
+.day-card.today-card{border-color:rgba(201,151,42,0.5);box-shadow:0 0 0 1px rgba(201,151,42,0.18);}
+.today-badge{display:inline-block;background:rgba(201,151,42,0.22);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;padding:0.07rem 0.38rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
+.dc-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem;}
+.dc-num{font-family:'IM Fell English',serif;font-size:1.5rem;color:var(--gold-l);line-height:1;}
+.dc-dow{font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);letter-spacing:0.07em;margin-top:0.1rem;}
+.dc-pilar{text-align:right;font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--smoke);line-height:1.65;}
+.dc-stars{display:flex;gap:2px;margin-bottom:0.42rem;}
+.star{fill:rgba(201,151,42,0.15);}
+.star.on{fill:var(--gold);filter:drop-shadow(0 0 2px rgba(201,151,42,0.4));}
+.etag{display:inline-block;padding:0.11rem 0.5rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.06em;font-weight:700;margin-bottom:0.48rem;}
+.etag-m{background:rgba(74,140,63,0.16);color:#6db860;border:1px solid rgba(74,140,63,0.26);}
+.etag-f{background:rgba(224,90,26,0.16);color:#e87a40;border:1px solid rgba(224,90,26,0.26);}
+.etag-t{background:rgba(156,122,60,0.16);color:#c9a45a;border:1px solid rgba(156,122,60,0.26);}
+.etag-me{background:rgba(122,155,181,0.16);color:#a0b4c8;border:1px solid rgba(122,155,181,0.26);}
+.etag-a{background:rgba(44,95,138,0.16);color:#5a9abf;border:1px solid rgba(44,95,138,0.26);}
+.dc-summary{font-size:0.87rem;color:var(--ash2);line-height:1.5;margin-bottom:0.48rem;font-style:italic;}
+.fav-row{display:flex;gap:0.42rem;margin-bottom:0.28rem;align-items:flex-start;}
+.fav-label{font-family:'Space Mono',monospace;font-size:0.49rem;padding:0.08rem 0.3rem;border-radius:2px;flex-shrink:0;margin-top:0.14rem;letter-spacing:0.04em;}
+.lsi{background:rgba(45,122,90,0.22);color:#5aba90;}
+.lno{background:rgba(192,57,43,0.22);color:#e07060;}
+.fav-text{font-size:0.8rem;color:var(--ash2);line-height:1.42;}
+
+.exp-bar{padding:1rem 1.3rem;background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
+.exp-bar p{font-size:0.87rem;color:var(--smoke);flex:1;min-width:180px;}
+.exp-btn{padding:0.5rem 1rem;border:1px solid var(--bdr);background:transparent;color:var(--ash);cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;border-radius:3px;transition:all 0.2s;}
+.exp-btn:hover{border-color:var(--gold);color:var(--gold-l);}
+.exp-btn.primary{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.08);}
+
+@media(max-width:620px){
+  .pilares-grid{grid-template-columns:repeat(2,1fr);}
+  .pot-grid,.tips-grid-fam{grid-template-columns:1fr;}
+  .cal-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">八字 · Familia</div>
+  <button class="nav-tab g-tab active" onclick="showSection('sec-guadi',this)">Guadalupe · 4a</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab m-tab" onclick="showSection('sec-morena',this)">Morena · 15a</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab c-tab" onclick="showSection('sec-carla',this)">Carla · Pareja</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab" style="color:rgba(201,151,42,0.7);" onclick="showSection('sec-compat-familia',this)">♾ Compatibilidades</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab nav-back" onclick="window.open('bazi_luca_2026.html','_self')">← Volver a Luca</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════
+     GUADALUPE
+══════════════════════════════════════ -->
+<div id="sec-guadi" class="section active">
+
+<!-- SUB NAV GUADI -->
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(192,96,144,0.03);overflow-x:auto;">
+  <button class="nav-tab g-tab active" style="border-bottom-color:var(--guadi);color:var(--guadi);" onclick="showSubSection('g-hoy','g-',this)">Hoy</button>
+  <button class="nav-tab g-tab" onclick="showSubSection('g-cal','g-',this)">Calendario</button>
+  <button class="nav-tab g-tab" onclick="showSubSection('g-carta','g-',this)">Su Carta</button>
+</div>
+
+<!-- G-HOY -->
+<div id="g-hoy" class="sub-section g- active-sub">
+<div class="page-header guadi-hdr" data-g="壬">
+  <div class="eyebrow">Energía del Día · Guadalupe</div>
+  <h1 class="gc" id="g-title">Cargando...</h1>
+  <p>Análisis calibrado a su carta natal 壬 Ren Yang Water · 4 años</p>
+</div>
+<div class="ctx-bar gc" id="g-ctx"></div>
+<div class="hoy-wrap-fam">
+  <div class="hoy-hero-fam" id="g-hero"></div>
+  <div class="sec-title gt" style="margin-top:0;">Guía para hoy</div>
+  <p class="sec-sub">Tips de crianza basados en el clima energético del día y su carta natal Ren Agua Yang.</p>
+  <div class="tips-grid-fam" id="g-tips"></div>
+  <div class="exp-bar">
+    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarHoyFam('guadi')">⬇ Descargar .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalHoyFam('guadi')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- G-CAL -->
+<div id="g-cal" class="sub-section g-" style="display:none;">
+<div class="page-header guadi-hdr" data-g="历">
+  <div class="eyebrow">Calendario · Guadalupe · 2026</div>
+  <h1 class="gc">Calendario Energético</h1>
+  <p>Mayo–Diciembre 2026 · Análisis calibrado a 壬 Ren Yang Water</p>
+</div>
+<div class="cal-wrap">
+  <div class="month-sel" id="g-month-sel"></div>
+  <div id="g-month-display"></div>
+  <div class="exp-bar">
+    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarMesFam('guadi')">⬇ Descargar mes .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalMesFam('guadi')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- G-CARTA -->
+<div id="g-carta" class="sub-section g-" style="display:none;">
+<div class="page-header guadi-hdr" data-g="壬">
+  <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
+  <h1 class="gc">Guadalupe</h1>
+  <p>29 Abril 2022 · 16:59 hs · Femenino · 4 años</p>
+  <div class="badge gb">壬 REN · AGUA YANG · DAY MASTER</div>
+</div>
+<div class="ctx-bar gc">
+  <div>AÑO NATAL <span>壬寅 Agua Yang/Tigre</span></div>
+  <div>PRIMEROS 8 AÑOS <span>Energía vía los padres</span></div>
+  <div>DA YUN PRÓXIMO <span>癸卯 Agua Yin/Conejo (edad 8+)</span></div>
+  <div>PERFIL <span>Agua Yang · Océano · Estratega</span></div>
+</div>
+<div class="carta-wrap">
+  <div class="sec-title gt">Los Cuatro Pilares</div>
+  <p class="sec-sub">Su Day Master Ren Agua Yang es uno de los más intuitivos y profundos del sistema. A los 4 años se expresa como curiosidad insaciable y preguntas que sorprenden.</p>
+  <div class="pilares-grid">
+    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn gc">戊</div><div class="pilar-name">Wu · Tierra Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn gc" style="font-size:1.7rem;">申</div></div><div class="pilar-name">Shen · Mono · Metal Yang</div><div class="dios-tag tag-t">7 Killings</div></div>
+    <div class="pilar-col hl-g"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn gc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn gc" style="font-size:1.7rem;">子</div></div><div class="pilar-name">Zi · Rata · Agua Yang</div><div class="dios-tag tag-a">Comparator</div></div>
+    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-cn gc">甲</div><div class="pilar-name">Jia · Madera Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn gc" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-m">Food God</div></div>
+    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-cn gc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn gc" style="font-size:1.7rem;">寅</div></div><div class="pilar-name">Yin · Tigre · Madera Yang</div><div class="dios-tag tag-m">Food God</div></div>
+  </div>
+  <div class="sec-title gt">Su naturaleza energética</div>
+  <p class="sec-sub">Todo lo que sos como padre/cuidador impacta directamente en ella durante los primeros 8 años — el Tigre de su año natal es el mismo que el de tu pilar del día.</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">Arquetipo</div><h3 class="gc">El Océano Yang</h3><p>Mente estratégica natural, capacidad de ver patrones que otros no ven. Curiosidad insaciable. El silencio no es timidez — es su forma de integrar el mundo que la rodea.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Ren Zi — Agua pura</div><h3 class="gc">Intuición máxima</h3><p>Agua sobre Agua en el día — una de las combinaciones más intuitivas del sistema. Necesita mucho tiempo interior para procesar. Recargar en silencio es su necesidad real.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Expresión (Food God)</div><h3 class="gc">Jia/Tigre — Madera Yang</h3><p>Su canal de expresión es el Food God — creatividad expansiva y espontánea. Le encanta crear, contar historias y explorar sin límites predefinidos.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tensión central</div><h3 class="gc">Tierra — el límite que necesita</h3><p>La Tierra controla el Agua. Necesita límites claros pero nunca rígidos. Sin contención, el océano se desborda. Con demasiada contención, se estanca.</p></div>
+    <div class="e-card ga"><div class="e-card-label">Primeros 8 años</div><h3 class="gc">Energía vía los padres</h3><p>El Tigre de su año natal conecta con el Tigre del día de Luca. Ella absorbe y refleja la energía del entorno. Lo que irradia quien la cuida, ella lo incorpora primero.</p></div>
+    <div class="e-card ga"><div class="e-card-label">Conexión con Luca</div><h3 class="gc">Agua nutre Madera</h3><p>Energéticamente, Guadi nutre a Luca. Su presencia lo inspira y conecta con algo más profundo que el logro. Alta resonancia y aprendizaje mutuo.</p></div>
+  </div>
+  <div class="sec-title gt">Cómo potenciarla</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ Lo que la hace florecer</h3><ul>
+      <li><strong>Exploración sin presión de resultado.</strong> El Ren aprende por inmersión, no por repetición mecánica.</li>
+      <li><strong>Cuentos, narrativa e imaginación.</strong> Su Food God ama crear mundos propios.</li>
+      <li><strong>Preguntas abiertas.</strong> "¿Qué pensás vos?" activa su inteligencia más que la respuesta directa.</li>
+      <li><strong>Actividades cerca del agua.</strong> Playa, pileta, lluvia — se recarga en su elemento natural.</li>
+      <li><strong>Libertad dentro de estructura.</strong> Límites claros con espacio creativo adentro.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul>
+      <li><strong>Presión por resultados inmediatos.</strong> Su mente procesa en profundidad — necesita tiempo.</li>
+      <li><strong>Rigidez excesiva.</strong> El 7K ya genera suficiente presión interna en su carta.</li>
+      <li><strong>Comparación con otros niños.</strong> Tiene su propio ritmo — no lineal, no estándar.</li>
+      <li><strong>Conflictos entre adultos.</strong> Su Agua absorbe el entorno emocional como esponja.</li>
+      <li><strong>Forzar sociabilidad.</strong> Necesita tiempo a solas para recargar — no es timidez.</li>
+    </ul></div>
+  </div>
+  <div class="sec-title gt">Compatibilidad con Luca</div>
+  <div class="compat-box">
+    <h3>Jia Yang Wood (Luca) + Ren Yang Water (Guadalupe)</h3>
+    <div class="compat-row"><div class="compat-icon">🌊</div><div class="compat-text"><strong>Agua genera Madera:</strong> Guadi nutre a Luca energéticamente. Su presencia lo conecta con algo más profundo que el logro. Alta resonancia mutua.</div></div>
+    <div class="compat-row"><div class="compat-icon">🐯</div><div class="compat-text"><strong>Tigre compartido:</strong> el Tigre de Guadi (año) y el de Luca (día) crean sintonía intuitiva muy fuerte — se entienden sin palabras en muchos momentos.</div></div>
+    <div class="compat-row"><div class="compat-icon">⚡</div><div class="compat-text"><strong>Mono de Guadi (hora) vs Tigre de Luca:</strong> fricción ocasional entre las metas de Luca y las necesidades de Guadi. No es conflicto — es señal de que ella necesita atención real en ese momento.</div></div>
+    <div class="compat-row"><div class="compat-icon">💡</div><div class="compat-text"><strong>Clave de la relación:</strong> Cuando estés con ella, estar de verdad. El Ren Agua detecta la distancia emocional antes que la física. Presencia real sobre tiempo cantidad.</div></div>
+  </div>
+</div>
+</div>
+</div><!-- /sec-guadi -->
+
+
+<!-- ══════════════════════════════════════
+     MORENA
+══════════════════════════════════════ -->
+<div id="sec-morena" class="section">
+
+<!-- SUB NAV MORENA -->
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(90,154,191,0.03);overflow-x:auto;">
+  <button class="nav-tab m-tab active" style="border-bottom-color:var(--morena);color:var(--morena);" onclick="showSubSection('m-hoy','m-',this)">Hoy</button>
+  <button class="nav-tab m-tab" onclick="showSubSection('m-cal','m-',this)">Calendario</button>
+  <button class="nav-tab m-tab" onclick="showSubSection('m-carta','m-',this)">Su Carta</button>
+</div>
+
+<!-- M-HOY -->
+<div id="m-hoy" class="sub-section m- active-sub">
+<div class="page-header morena-hdr" data-g="甲">
+  <div class="eyebrow">Energía del Día · Morena</div>
+  <h1 class="mc" id="m-title">Cargando...</h1>
+  <p>Análisis calibrado a su carta natal 甲 Jia Yang Wood · 15 años</p>
+</div>
+<div class="ctx-bar mc" id="m-ctx"></div>
+<div class="hoy-wrap-fam">
+  <div class="hoy-hero-fam" id="m-hero"></div>
+  <div class="sec-title mt" style="margin-top:0;">Guía para hoy</div>
+  <p class="sec-sub">Tips de acompañamiento para adolescente de 15 años con Day Master Jia Yang Wood y Hurt Officer activo.</p>
+  <div class="tips-grid-fam" id="m-tips"></div>
+  <div class="exp-bar">
+    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarHoyFam('morena')">⬇ Descargar .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalHoyFam('morena')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- M-CAL -->
+<div id="m-cal" class="sub-section m-" style="display:none;">
+<div class="page-header morena-hdr" data-g="历">
+  <div class="eyebrow">Calendario · Morena · 2026</div>
+  <h1 class="mc">Calendario Energético</h1>
+  <p>Mayo–Diciembre 2026 · Análisis calibrado a 甲 Jia Yang Wood</p>
+</div>
+<div class="cal-wrap">
+  <div class="month-sel" id="m-month-sel"></div>
+  <div id="m-month-display"></div>
+  <div class="exp-bar">
+    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarMesFam('morena')">⬇ Descargar mes .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalMesFam('morena')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- M-CARTA -->
+<div id="m-carta" class="sub-section m-" style="display:none;">
+<div class="page-header morena-hdr" data-g="甲">
+  <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
+  <h1 class="mc">Morena Santorum</h1>
+  <p>09 Abril 2011 · 17:51 hs · Femenino · 15 años</p>
+  <div class="badge mb">甲 JIA · MADERA YANG · DAY MASTER</div>
+</div>
+<div class="ctx-bar mc">
+  <div>AÑO NATAL <span>辛卯 Metal Yin/Conejo</span></div>
+  <div>DA YUN ACTUAL <span>甲午 Madera/Caballo (≈14–24)</span></div>
+  <div>2026 <span>Caballo doble — intensidad máxima</span></div>
+  <div>PERFIL <span>Mismo Day Master que Luca</span></div>
+</div>
+<div class="carta-wrap">
+  <div class="sec-title mt">Los Cuatro Pilares</div>
+  <p class="sec-sub">Mismo Day Master que Luca (甲 Jia), carta estructuralmente diferente: Fuego en el día, Agua en el mes, Metal en el año. Da Yun activo amplifica el Hurt Officer al máximo.</p>
+  <div class="pilares-grid">
+    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn mc">癸</div><div class="pilar-name">Gui · Agua Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">酉</div></div><div class="pilar-name">You · Gallo · Metal Yin</div><div class="dios-tag tag-me">Dir. Officer</div></div>
+    <div class="pilar-col hl-m"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn mc">甲</div><div class="pilar-name">Jia · Madera Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">午</div></div><div class="pilar-name">Wu · Caballo · Fuego Yang</div><div class="dios-tag tag-f">Hurt Officer</div></div>
+    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-cn mc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-a">Ind. Resource</div></div>
+    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-cn mc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">卯</div></div><div class="pilar-name">Mao · Conejo · Madera Yin</div><div class="dios-tag tag-me">Dir. Officer</div></div>
+  </div>
+  <div class="sec-title mt">Su naturaleza energética</div>
+  <p class="sec-sub">El Caballo (Fuego) en la rama del día activa el Hurt Officer permanentemente. Talento creativo brillante, tendencia a cuestionar autoridades y reglas. No es rebeldía vacía — es inteligencia que exige coherencia.</p>
+  <div class="e-grid">
+    <div class="e-card madera"><div class="e-card-label">Arquetipo</div><h3 class="mc">Árbol que da sombra y calor</h3><p>Madera Yang con Caballo debajo — irradia energía naturalmente. Presencia magnética. A los 15 años esto es intensidad emocional alta y necesidad de expresión auténtica.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Hurt Officer activo</div><h3 class="mc">El don disruptivo</h3><p>Es la persona que pregunta "¿por qué?" cuando todos siguen instrucciones. Su mayor don y principal punto de tensión. La autoridad que respeta es la que tiene coherencia.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Recurso natal</div><h3 class="mc">Ren Agua Yang</h3><p>Aprende rápido cuando el tema la apasiona. Aprende muy lentamente cuando no ve el sentido. La motivación es el interruptor de toda su inteligencia.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Estructura necesaria</div><h3 class="mc">Metal — Direct Officer</h3><p>La estructura tiene que tener sentido para ella, no solo existir. Cuando entiende el porqué de una regla, la sigue. Cuando no, la desafía activamente.</p></div>
+    <div class="e-card ma"><div class="e-card-label">Da Yun actual (14–24)</div><h3 class="mc">甲午 Madera/Caballo</h3><p>Amplifica su Hurt Officer al máximo. Período donde su identidad se consolida con fuerza. Guía sin control — acompañamiento, no imposición.</p></div>
+    <div class="e-card ma"><div class="e-card-label">2026 · Caballo doble</div><h3 class="mc">Intensidad máxima</h3><p>Caballo natal + año Bing Wu. Alta intensidad emocional. Puede ser año de decisiones vocacionales clave. Necesita espacio para hablar sin sentirse juzgada.</p></div>
+  </div>
+  <div class="sec-title mt">Cómo acompañarla</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ Lo que la hace florecer</h3><ul>
+      <li><strong>Proyectos con propósito propio.</strong> Elegir el objetivo, no que se lo asignen.</li>
+      <li><strong>Reconocimiento genuino y específico.</strong> Un elogio real la mueve más que cualquier obligación.</li>
+      <li><strong>Arte, música, escritura, performance.</strong> El Caballo-Fuego necesita canal de expresión.</li>
+      <li><strong>Conversaciones de igual a igual.</strong> No "hablarle" — hablar con ella como par.</li>
+      <li><strong>Decisiones sobre su propio camino.</strong> ¿Qué le apasiona? Eso es su dirección.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul>
+      <li><strong>Control sin explicación.</strong> "Porque sí" activa su Hurt Officer en modo rebeldía.</li>
+      <li><strong>Comparación con Luca.</strong> Mismo árbol, distinto bosque — contraproducente.</li>
+      <li><strong>Aburrimiento sin canal de salida.</strong> La energía acumulada busca expresarse sola.</li>
+      <li><strong>No ser escuchada.</strong> Cuando no tiene voz, el HO busca otros caminos más disruptivos.</li>
+      <li><strong>2026:</strong> Caballo doble — intensidad emocional alta, darle espacio sin juzgar.</li>
+    </ul></div>
+  </div>
+  <div class="sec-title mt">Compatibilidad con Luca</div>
+  <div class="compat-box">
+    <h3>Jia Yang Wood (Luca) + Jia Yang Wood / Caballo (Morena)</h3>
+    <div class="compat-row"><div class="compat-icon">🌳</div><div class="compat-text"><strong>Mismo Day Master:</strong> comprensión intuitiva profunda pero posibles choques de ego. Dos árboles grandes en el mismo espacio compiten por la luz — necesitan roles claros.</div></div>
+    <div class="compat-row"><div class="compat-icon">🔥</div><div class="compat-text"><strong>Trío Fuego (Luca) + Caballo doble (Morena) en 2026:</strong> pueden ser el mayor equipo de visibilidad juntos — o la mayor fricción si no tienen canal propio cada uno.</div></div>
+    <div class="compat-row"><div class="compat-icon">💡</div><div class="compat-text"><strong>Clave:</strong> La autoridad que Morena respeta viene de la coherencia, no del rol. Cuando Luca lidera desde el ejemplo — no desde la posición — ella lo sigue naturalmente.</div></div>
+  </div>
+</div>
+</div>
+</div><!-- /sec-morena -->
+
+<!-- ══════════════════════════════════════
+     CARLA
+══════════════════════════════════════ -->
+<div id="sec-carla" class="section">
+
+<!-- SUB NAV CARLA -->
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(122,155,106,0.03);overflow-x:auto;">
+  <button class="nav-tab c-tab active" style="border-bottom-color:var(--carla);color:var(--carla);" onclick="showSubSection('c-hoy','c-',this)">Hoy</button>
+  <button class="nav-tab c-tab" onclick="showSubSection('c-cal','c-',this)">Calendario</button>
+  <button class="nav-tab c-tab" onclick="showSubSection('c-carta','c-',this)">Su Carta</button>
+  <button class="nav-tab c-tab" onclick="showSubSection('c-compat','c-',this)">Compatibilidad con Luca</button>
+</div>
+
+<!-- C-HOY -->
+<div id="c-hoy" class="sub-section c- active-sub">
+<div class="page-header carla-hdr" data-g="壬">
+  <div class="eyebrow">Energía del Día · Carla</div>
+  <h1 class="cc" id="c-title">Cargando...</h1>
+  <p>Análisis calibrado a su carta natal 壬 Ren Yang Water · Mujer</p>
+</div>
+<div class="ctx-bar cc" id="c-ctx"></div>
+<div class="hoy-wrap-fam">
+  <div class="hoy-hero-fam" id="c-hero"></div>
+  <div class="sec-title ct" style="margin-top:0;">Guía para hoy</div>
+  <p class="sec-sub">Tips personalizados para Carla (壬 Ren Yang Water) en el clima energético de hoy — cómo aprovechar el día y qué evitar.</p>
+  <div class="tips-grid-fam" id="c-tips"></div>
+  <div class="exp-bar">
+    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarHoyFam('carla')">⬇ Descargar .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalHoyFam('carla')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- C-CAL -->
+<div id="c-cal" class="sub-section c-" style="display:none;">
+<div class="page-header carla-hdr" data-g="历">
+  <div class="eyebrow">Calendario · Carla · 2026</div>
+  <h1 class="cc">Calendario Energético</h1>
+  <p>Mayo–Diciembre 2026 · Análisis calibrado a 壬 Ren Yang Water</p>
+</div>
+<div class="cal-wrap">
+  <div class="month-sel" id="c-month-sel"></div>
+  <div id="c-month-display"></div>
+  <div class="exp-bar">
+    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarMesFam('carla')">⬇ Descargar mes .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalMesFam('carla')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- C-CARTA -->
+<div id="c-carta" class="sub-section c-" style="display:none;">
+<div class="page-header carla-hdr" data-g="壬">
+  <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
+  <h1 class="cc">Carla</h1>
+  <p>17 Enero 1992 · 21:40 hs · Femenino</p>
+  <div class="badge cb">壬 REN · AGUA YANG · DAY MASTER</div>
+</div>
+<div class="ctx-bar cc">
+  <div>AÑO NATAL <span>辛未 Metal Yin/Cabra</span></div>
+  <div>DA YUN ACTUAL <span>甲辰 Madera Yang/Dragón (edad 26–36)</span></div>
+  <div>GUA <span>6 Metal Yang — Direcciones O/NE/SO/NO</span></div>
+  <div>DIOS PRINCIPAL <span>OD — Oficial Directo</span></div>
+</div>
+<div class="carta-wrap">
+  <div class="sec-title ct">Los Cuatro Pilares</div>
+  <p class="sec-sub">Su Day Master 壬 Ren Yang Water comparte esencia con Guadi — ambas son Océano Yang. El contexto es completamente diferente: la carta de Carla tiene mucho Metal (recurso que nutre el Agua) y Tierra (que la contiene).</p>
+  <div class="pilares-grid">
+    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn cc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">亥</div></div><div class="pilar-name">Hai · Cerdo · Agua Yin</div><div class="dios-tag tag-a">Recurso Directo</div></div>
+    <div class="pilar-col hl-c" style="background:rgba(122,155,106,0.05);"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn cc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-t">7 Muertes</div></div>
+    <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-cn cc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">丑</div></div><div class="pilar-name">Chou · Buey · Tierra Yin</div><div class="dios-tag tag-a">Recurso Directo</div></div>
+    <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-cn cc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">未</div></div><div class="pilar-name">Wei · Cabra · Tierra Yin</div><div class="dios-tag tag-a">Recurso Directo</div></div>
+  </div>
+
+  <div class="sec-title ct">Day Master: 壬 Ren — El Océano Yang</div>
+  <p class="sec-sub">Tres troncos Xin (Metal Yin) nutren constantemente su Agua — Carla tiene un recurso permanente y profundo. Su Agua es abundante, bien contenida, pero necesita expresarse (generar Madera/Fuego) o se estanca.</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">Arquetipo</div><h3 class="cc">El Océano que sabe a dónde va</h3><p>A diferencia de Guadi (Océano libre), Carla tiene su Agua muy nutrida y contenida por la Tierra del Dragón. Profunda, estratégica, con una capacidad de análisis y paciencia notables. Actúa cuando está segura, no antes.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Triple Xin — Recurso dominante</div><h3 class="cc">Metal Yin alimenta todo</h3><p>Tres Xin (Metal Yin) en sus troncos: el mayor nivel de recurso posible. Esto la hace muy inteligente, metódica y con capacidad de aprender casi cualquier cosa. El riesgo: parálisis por análisis o dificultad para actuar sin certeza total.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Dragón en la rama del día</div><h3 class="cc">7 Muertes — tensión que transforma</h3><p>El Dragón (Tierra Yang) controla su Agua. El 7M en el pilar del día es su mayor desafío y su mayor catalizador de crecimiento. La presión externa la transforma. Es su motor interno cuando activa bien este dios.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Cerdo en la hora</div><h3 class="cc">Agua pura — metas profundas</h3><p>El Cerdo (亥Hai) en la hora de metas aporta más Agua Yin. Sus metas reales son profundas, casi filosóficas — no de acumulación superficial. Necesita propósito genuino para comprometerse de verdad.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Da Yun actual (edad 26–36)</div><h3 class="cc">甲辰 Madera Yang / Dragón</h3><p>Jia (Madera Yang) activa su Food God — expresión creativa y flujo de talentos que antes estaban contenidos. El Dragón (segunda aparición) intensifica la tensión del 7M. Es un Da Yun de transformación profunda y emergencia de identidad propia.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Elemento de riqueza</div><h3 class="cc">Fuego — su canal de expresión</h3><p>La Madera genera Fuego, y el Fuego es su riqueza. Carla acumula cuando crea, comparte y se expresa. Cuanto más auténtica sea su expresión, más fluye la prosperidad en su vida. El silencio y la contención la alejan del Fuego.</p></div>
+  </div>
+
+  <div class="sec-title ct">Los 10 Dioses de Carla</div>
+  <p class="sec-sub">Cómo cada elemento opera en su vida, con el Oficial Directo (OD) como dios principal.</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">RD 40% — Recurso Directo (Xin)</div><h3 class="cc">Su mayor activo</h3><p>El Metal Yin nutre constantemente su Agua. Capacidad de aprendizaje casi ilimitada, memoria, metodología, intuición estructurada. Es la persona que entiende cómo funciona todo antes de actuar.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">OD 25% — Oficial Directo (Ji)</div><h3 class="cc">Dios Principal</h3><p>La Tierra Yin que controla su Agua con suavidad. Necesidad de estructura, reconocimiento y legitimidad. Busca relaciones y entornos donde se sienta valorada y respetada formalmente. Le cuesta mucho los sistemas caóticos.</p></div>
+    <div class="e-card agua"><div class="e-card-label">A 12% — Amigo (Ren)</div><h3 class="cc">Sus pares</h3><p>Agua Yang como compañía. Disfruta profundamente de relaciones con personas que tienen la misma profundidad y ritmo interior que ella. Le cuesta relacionarse con quienes van muy rápido o muy superficialmente.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">7M 6% — Siete Muertes (Wu)</div><h3 class="cc">Su motor de transformación</h3><p>La Tierra Yang que la desafía. El 7M bien activado la convierte en su mejor versión. Cuando siente presión real (no imaginada), responde con una claridad y determinación que sorprende a todos.</p></div>
+    <div class="e-card madera"><div class="e-card-label">CD 4% — Comiendo Dios (Jia)</div><h3 class="cc">Su canal de expresión</h3><p>La Madera Yang activa su creatividad libre. Activo en su Da Yun actual — este período es el de mayor flujo creativo y expresivo de su vida. Crear, enseñar, producir y compartir su conocimiento la potencia enormemente.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">DD — Dinero Directo (Ding)</div><h3 class="cc">Riqueza por autenticidad</h3><p>El Fuego Yin es su riqueza directa. Llega cuando se expresa con autenticidad, cuando enseña lo que sabe, cuando comparte sin esconderse. La contención excesiva la aleja del dinero y la prosperidad.</p></div>
+  </div>
+
+  <div class="sec-title ct">Fortalezas y bloqueos energéticos</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ Lo que la potencia</h3><ul>
+      <li><strong>Expresión auténtica.</strong> Su Fuego (riqueza) aparece cuando ella se muestra. Enseñar, crear, compartir conocimiento son sus canales más poderosos.</li>
+      <li><strong>Entornos con estructura y reconocimiento.</strong> El OD florece cuando hay claridad de roles y respeto mutuo.</li>
+      <li><strong>Aprendizaje profundo y aplicado.</strong> Su triple Recurso la hace una aprendiz extraordinaria — necesita estar siempre aprendiendo algo.</li>
+      <li><strong>Desafíos que la empujan a crecer.</strong> El 7M bien activado saca su mejor versión.</li>
+      <li><strong>Da Yun actual (Jia/Dragón):</strong> el período más creativo y transformador de su vida hasta ahora. Lo que construya entre los 26-36 años define la siguiente década.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul>
+      <li><strong>Parálisis por análisis.</strong> Con tanto recurso (Metal), puede quedar atrapada estudiando en lugar de actuando. El momento perfecto no existe — actuar con el 80% de información es su desafío.</li>
+      <li><strong>Contención excesiva de su expresión.</strong> Cuanto más se guarda, más se aleja de su Fuego (riqueza). El silencio sistemático es costoso para ella.</li>
+      <li><strong>Entornos caóticos o sin estructura.</strong> El OD necesita orden. El caos crónico la desgasta profundamente.</li>
+      <li><strong>No reconocer su propio valor.</strong> Triple RD puede generar exceso de humildad o comparación — su conocimiento vale más de lo que ella suele creer.</li>
+      <li><strong>Ignorar la presión del 7M.</strong> La tensión no es señal de error — es señal de que está creciendo. Resistirla la agota más que atravesarla.</li>
+    </ul></div>
+  </div>
+</div>
+</div>
+
+<!-- C-COMPAT -->
+<div id="c-compat" class="sub-section c-" style="display:none;">
+<div class="page-header carla-hdr" data-g="合">
+  <div class="eyebrow">Compatibilidad · Carla &amp; Luca</div>
+  <h1 class="cc">Carla + Luca</h1>
+  <p>壬 Ren Yang Water + 甲 Jia Yang Wood · Análisis de compatibilidad BaZi</p>
+</div>
+<div class="carta-wrap">
+  <div class="sec-title ct">La dinámica fundamental</div>
+  <p class="sec-sub">Agua nutre Madera. Esta es una de las combinaciones más naturalmente complementarias del sistema BaZi. Carla da a Luca lo que él necesita para crecer; Luca le da a Carla un canal de expresión para su Agua acumulada.</p>
+
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">El vínculo energético base</div><h3 class="cc">Agua → Madera: nutrimento natural</h3><p>El elemento de Carla (Agua Yang) genera directamente el de Luca (Madera Yang). Energéticamente, ella lo nutre, lo sostiene y lo inspira. Para ella, Luca es el canal donde su Agua encuentra dirección y propósito — sin él, su profundidad puede quedarse sin cauce.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Lo que Luca activa en Carla</div><h3 class="cc">Madera = Comiendo Dios de Carla</h3><p>La Madera Yang (Jia) es el Comiendo Dios de Carla — su canal de expresión libre y creatividad. Estar con Luca activa en ella el flujo espontáneo de talento y expresión. Él literalmente la desbloquea creativamente.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Lo que Carla activa en Luca</div><h3 class="cc">Agua = Recurso Indirecto de Luca</h3><p>El Agua de Carla es el Pian Yin (Recurso Indirecto) de Luca — intuición estratégica, profundidad, perspectiva de largo plazo. Estar con Carla le da acceso a una forma de pensar que su propia carta no produce naturalmente.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Ambos nacidos en 1992</div><h3 class="cc">Misma generación, distinto camino</h3><p>Comparten el año Ren Shen (Agua Yang / Mono). La misma energía generacional de fondo: transformación, velocidad, ruptura de estructuras viejas. Pero Luca la vive desde la expansión (Madera) y Carla desde la profundidad (Agua). Se complementan perfectamente.</p></div>
+    <div class="e-card ca"><div class="e-card-label">El desafío de la pareja</div><h3 class="cc">Madera consume Agua — el riesgo</h3><p>La Madera, al crecer, consume el Agua que la nutre. Si Luca está en modo expansión máxima (especialmente en 2026 con el Trío de Fuego), puede drenar la energía de Carla sin darse cuenta. El equilibrio requiere que ambos tengan espacios propios de recarga.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tensión productiva</div><h3 class="cc">Dragón (Carla) + Tigre (Luca)</h3><p>El Dragón de Carla (rama del día) y el Tigre de Luca (rama del día) no chocan pero tampoco combinan — son energías que coexisten con independencia. Esto da a la pareja una buena cuota de autonomía individual sin que eso signifique distancia.</p></div>
+  </div>
+
+  <div class="sec-title ct">2026 — Cómo viven el año juntos</div>
+  <p class="sec-sub">El año Bing Wu (Fuego Yang / Caballo) afecta a cada uno de manera diferente y genera una dinámica específica en la pareja.</p>
+  <div class="e-grid">
+    <div class="e-card fuego"><div class="e-card-label">Para Luca en 2026</div><h3 class="cc">Trío de Fuego — máxima visibilidad</h3><p>Tigre (día) + Caballo (año) + Perro (hora) activan el Trío de Fuego completo. Luca está en su año de mayor expansión y visibilidad. El riesgo: puede perderse en el exterior y descuidar la conexión íntima.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Para Carla en 2026</div><h3 class="cc">Caballo choca con su Buey/Chou</h3><p>El Caballo del año (Wu) y su Buey natal (Chou) generan un semi-choque — tensión en el área del mes (trabajo, carrera). Puede ser un año de revisión profunda en lo profesional. El Da Yun activo (Jia/Dragón) la respalda para atravesarlo con recursos.</p></div>
+    <div class="e-card ca"><div class="e-card-label">La dinámica de pareja en 2026</div><h3 class="cc">Él expande · Ella profundiza</h3><p>2026 los pone en movimientos opuestos pero complementarios: Luca hacia afuera (visibilidad, expansión, acción) y Carla hacia adentro (revisión, consolidación, profundidad). El desafío es no interpretar esa diferencia de ritmo como desconexión.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Consejo energético para la pareja</div><h3 class="cc">Definir espacios propios y compartidos</h3><p>En 2026 es clave que tengan proyectos propios (para no drenar al otro) y rituales compartidos que anclen la conexión. Los meses de Agua (Octubre-Noviembre) son los mejores para profundizar la intimidad y la comunicación genuina.</p></div>
+  </div>
+
+  <div class="sec-title ct">Direcciones favorables compartidas</div>
+  <p class="sec-sub">Basado en los Gua individuales (Luca Gua 8 · Carla Gua 6), estos son los espacios energéticamente potentes para la pareja.</p>
+  <div class="e-grid">
+    <div class="e-card ca"><div class="e-card-label">Oeste — favorable para Carla (Sheng Qi)</div><h3 class="cc">Mayor dirección de Carla</h3><p>El Oeste es su generador de vida (+4). Para decisiones importantes, trabajo o activaciones de prosperidad, orientarse hacia el Oeste es su dirección de máximo potencial.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Suroeste — favorable para Luca (Sheng Qi)</div><h3 class="cc">Mayor dirección de Luca</h3><p>El Suroeste es el generador de vida de Luca. Para la pareja, un espacio que pueda orientarse tanto al Oeste como al Suroeste es idealmente potente para ambos.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Noreste — bueno para ambos</div><h3 class="cc">Punto de convergencia</h3><p>El Noreste es Fu Wei (estabilidad) para Luca y dirección favorable para Carla. Es la dirección más segura para el hogar compartido — estabilidad y calma para los dos.</p></div>
+  </div>
+</div>
+</div>
+
+</div><!-- /sec-carla -->
+
+
+<!-- ══════════════════════════════════════
+     COMPATIBILIDADES FAMILIARES
+══════════════════════════════════════ -->
+<div id="sec-compat-familia" class="section">
+<div class="page-header" data-g="合">
+  <div class="eyebrow" style="letter-spacing:0.3em;">Compatibilidades · Familia · BaZi</div>
+  <h1 style="color:var(--gold-l);">Vínculos Energéticos</h1>
+  <p>Cómo se relacionan entre sí los cuatro — Luca, Carla, Morena y Guadalupe</p>
+</div>
+
+<div class="carta-wrap" style="max-width:980px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+  <!-- INTRO FAMILIAR -->
+  <div style="background:rgba(201,151,42,0.04);border:1px solid var(--bdr);border-radius:6px;padding:1.5rem 1.8rem;margin-bottom:2.5rem;">
+    <div style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:var(--smoke);margin-bottom:0.8rem;text-transform:uppercase;">El sistema familiar completo · Cuatro Pilares</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:1.2rem;">
+      <div style="text-align:center;padding:0.9rem;background:rgba(201,151,42,0.07);border:1px solid rgba(201,151,42,0.25);border-radius:4px;">
+        <div style="font-size:1.8rem;color:var(--gold);">甲</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--gold-l);font-size:1rem;margin-bottom:0.2rem;">Luca</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Madera Yang · Papá<br>Pareja de Carla</div>
+      </div>
+      <div style="text-align:center;padding:0.9rem;background:rgba(122,155,106,0.07);border:1px solid rgba(122,155,106,0.2);border-radius:4px;">
+        <div style="font-size:1.8rem;color:var(--carla);">壬</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--carla);font-size:1rem;margin-bottom:0.2rem;">Carla</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Agua Yang · Mamá<br>Pareja de Luca</div>
+      </div>
+      <div style="text-align:center;padding:0.9rem;background:rgba(90,154,191,0.07);border:1px solid rgba(90,154,191,0.2);border-radius:4px;">
+        <div style="font-size:1.8rem;color:var(--morena);">甲</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--morena);font-size:1rem;margin-bottom:0.2rem;">Morena</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Madera Yang · 15 años<br>Hija de Carla</div>
+      </div>
+      <div style="text-align:center;padding:0.9rem;background:rgba(192,96,144,0.07);border:1px solid rgba(192,96,144,0.2);border-radius:4px;">
+        <div style="font-size:1.8rem;color:var(--guadi);">壬</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--guadi);font-size:1rem;margin-bottom:0.2rem;">Guadalupe</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Agua Yang · 4 años<br>Hija de Carla y Luca</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.6rem;margin-bottom:1rem;">
+      <div style="font-size:0.8rem;color:var(--ash2);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);border-radius:3px;border:1px solid var(--bdr);">
+        <strong style="color:var(--gold);font-size:0.75rem;">Luca + Carla</strong> · Madera + Agua · El Océano nutre al Árbol
+      </div>
+      <div style="font-size:0.8rem;color:var(--ash2);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);border-radius:3px;border:1px solid var(--bdr);">
+        <strong style="color:var(--gold);font-size:0.75rem;">Luca + Morena</strong> · Madera + Madera · Mismo árbol, distinto bosque
+      </div>
+      <div style="font-size:0.8rem;color:var(--ash2);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);border-radius:3px;border:1px solid var(--bdr);">
+        <strong style="color:var(--gold);font-size:0.75rem;">Luca + Guadi</strong> · Madera + Agua · El Océano nutre al Árbol
+      </div>
+      <div style="font-size:0.8rem;color:var(--ash2);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);border-radius:3px;border:1px solid var(--bdr);">
+        <strong style="color:var(--carla);font-size:0.75rem;">Carla + Guadi</strong> · Agua + Agua · Mismo Océano, dos generaciones
+      </div>
+      <div style="font-size:0.8rem;color:var(--ash2);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);border-radius:3px;border:1px solid var(--bdr);">
+        <strong style="color:var(--carla);font-size:0.75rem;">Carla + Morena</strong> · Agua + Madera · Profundidad + Expansión
+      </div>
+      <div style="font-size:0.8rem;color:var(--ash2);padding:0.5rem 0.8rem;background:rgba(255,255,255,0.02);border-radius:3px;border:1px solid var(--bdr);">
+        <strong style="color:var(--morena);font-size:0.75rem;">Morena + Guadi</strong> · Madera + Agua · La grande lidera, la chica ancla
+      </div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--ash2);line-height:1.65;">El sistema tiene un patrón elegante: <strong style="color:var(--ash);">Agua (Carla, Guadi) nutre a Madera (Luca, Morena)</strong>. Y los dos pares de Madera Yang (Luca + Morena) y los dos pares de Agua Yang (Carla + Guadi) se espejean entre sí. Seis combinaciones. Una sola familia.</p>
+  </div>
+
+  <!-- ═══ LUCA + CARLA ═══ -->
+  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(201,151,42,0.25);margin-top:0;">Luca &amp; Carla — La Pareja</div>
+  <p class="sec-sub">甲 Madera Yang + 壬 Agua Yang · Agua nutre Madera · Una de las combinaciones más complementarias del sistema</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">El vínculo elemental</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Agua → Madera: Carla nutre a Luca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Agua genera Madera — Carla es la fuente profunda que sostiene el crecimiento de Luca. La intuición estratégica de Carla, su profundidad y su capacidad analítica dan a Luca exactamente el tipo de recurso que su carta no produce sola: perspectiva de largo plazo sin la urgencia del Fuego.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Lo que Luca activa en Carla</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Madera = Food God de Carla</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Madera Yang de Luca activa el Comiendo Dios de Carla — su canal de creatividad más libre y espontáneo. Estar en proyectos juntos desbloquea en Carla un flujo que no surge tan naturalmente cuando trabaja sola. Luca la desinhibe creativamente sin saber que lo hace.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">El riesgo de la pareja</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">La Madera consume Agua</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">En 2026 con el Trío de Fuego activo, Luca está en expansión máxima. La expansión de la Madera consume el Agua que la nutre — puede drenar la energía de Carla sin darse cuenta. Ambos necesitan espacios propios de recarga o el vínculo se desequilibra.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tigre + Dragón</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Autonomía natural</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Tigre de Luca (día) y el Dragón de Carla (día) no chocan ni combinan — coexisten con independencia. Esto da a la pareja una cuota saludable de autonomía: pueden ser muy distintos en su ritmo sin que eso genere distancia. No necesitan ser idénticos para estar alineados.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Misma generación (1992)</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Ren Shen — visión compartida</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Ambos nacieron en el año Ren Shen (Agua Yang / Mono). Comparten la misma energía generacional: transformación, ruptura de estructuras viejas, velocidad. Luca la vive desde la expansión (Madera) y Carla desde la profundidad (Agua). Misma corriente, distinta orilla.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">2026 en la pareja</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Él expande · Ella profundiza</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">2026 los pone en movimientos opuestos pero complementarios. El desafío es no interpretar esa diferencia de ritmo como desconexión. Los meses de Agua (Octubre-Noviembre) son la ventana natural para la conexión íntima y la comunicación genuina.</p></div>
+  </div>
+  <div class="pot-grid" style="margin-bottom:2.5rem;">
+    <div class="pot-box green"><h3>✦ Lo que fortalece la pareja</h3><ul>
+      <li><strong>Proyectos creativos juntos.</strong> El Food God de Carla se activa con la Madera de Luca — crean bien en equipo.</li>
+      <li><strong>Espacios propios de recarga.</strong> Ella necesita silencio profundo; él necesita movimiento. Los dos se benefician de tener tiempo propio antes de conectar.</li>
+      <li><strong>Hablar de lo que cada uno está construyendo.</strong> Luca en visibilidad, Carla en consolidación — escucharse mutuamente los calibra.</li>
+      <li><strong>Octubre-Noviembre 2026:</strong> la mejor ventana del año para profundizar la conexión.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que tensiona la pareja</h3><ul>
+      <li><strong>Luca en expansión total sin mirar el estado de Carla.</strong> La Madera consume Agua sin darse cuenta.</li>
+      <li><strong>Carla conteniendo su Food God por no "invadir" el espacio de Luca.</strong> Cuando ella no se expresa, el Fuego (su riqueza) se apaga.</li>
+      <li><strong>Agosto-Septiembre 2026:</strong> Metal activo — máxima fricción potencial. No el momento para decisiones grandes de pareja.</li>
+    </ul></div>
+  </div>
+
+  <!-- ═══ LUCA + MORENA ═══ -->
+  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(201,151,42,0.25);">Luca &amp; Morena — Padrasto e Hijastra</div>
+  <p class="sec-sub">甲 Madera Yang + 甲 Madera Yang · Mismo Day Master · Dos árboles, mismo bosque</p>
+  <div class="e-grid">
+    <div class="e-card madera"><div class="e-card-label">El vínculo elemental</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Mismo Day Master: dos Jia</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Luca y Morena son ambos 甲 Jia Yang Wood. Se entienden de manera profunda e intuitiva — pero dos árboles grandes en el mismo espacio compiten naturalmente por la luz. No es conflicto estructural: es tensión de expansión que necesita canales propios para cada uno.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Lo que tienen en común</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Food God / Hurt Officer activos en los dos</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Los dos tienen Fuego activo en sus cartas (Luca en el Da Yun, Morena en la rama del día). Los dos son creativos, expresivos y disruptivos por naturaleza. Cuando están alineados, son el equipo de mayor visibilidad posible. Cuando están en fricción, la chispa puede encender fácilmente.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">La diferencia clave</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Carta de Luca más anclada</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Luca tiene Tierra (Dragón, Perro) que ancla su Madera. Morena tiene Caballo (Fuego puro) sin ese anclaje de Tierra. Luca puede entender a Morena mejor que ella misma en sus momentos de intensidad — porque él también lo sintió, pero con más contención estructural.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">La autoridad que funciona</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Desde el ejemplo, no desde el rol</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Hurt Officer de Morena no respeta el rol — respeta la coherencia. Cuando Luca lidera proyectos propios, se arriesga, rompe estructuras y hace lo que dice, Morena lo observa y lo incorpora. El mejor liderazgo que Luca puede ejercer con Morena es vivir como referencia, no como norma.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">2026 — Caballo doble de Morena + Trío de Fuego de Luca</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">El año más intenso del vínculo</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">En 2026 ambos tienen su nivel de Fuego en el pico. Pueden ser el mayor equipo de visibilidad y creatividad juntos — o la mayor fuente de fricciones si no tienen canales propios. La clave: proyectos separados que se cuentan mutuamente, no proyectos mezclados que compiten.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">El regalo de este vínculo</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Ella te ve sin filtro</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Morena, con su mismo Day Master, puede leer a Luca con una claridad incómoda. Ve cuando hay inconsistencia entre lo que dice y lo que hace — antes que nadie. Eso puede sentirse como desafío, pero en realidad es el nivel de honestidad más valioso que una persona puede darte.</p></div>
+  </div>
+  <div class="pot-grid" style="margin-bottom:2.5rem;">
+    <div class="pot-box green"><h3>✦ Lo que fortalece este vínculo</h3><ul>
+      <li><strong>Compartir proyectos propios.</strong> Contarle qué está construyendo Luca — sin pedirle que lo ayude, solo compartirlo. El Jia de Morena lo absorbe como modelo.</li>
+      <li><strong>Conversaciones sin agenda.</strong> Cuando Luca no intenta "enseñar", Morena aprende. Cuando lo intenta, cierra.</li>
+      <li><strong>Reconocerle su talento de manera específica.</strong> "Eso que hiciste con X fue muy bueno" — exacto y genuino.</li>
+      <li><strong>Darle autonomía en decisiones que la afectan.</strong> El Hurt Officer respeta quien le da poder real, no simbólico.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que lo tensiona</h3><ul>
+      <li><strong>Querer tener razón frente a ella.</strong> Dos Jia compitiendo — nadie cede. Mejor elegir qué batallas valen.</li>
+      <li><strong>Inconsistencia entre lo que dice y lo que hace.</strong> Morena lo detecta antes que nadie y lo tiene en cuenta.</li>
+      <li><strong>Imponer estructura sin espacio para su voz.</strong> El HO necesita que su perspectiva cuente, aunque sea distinta.</li>
+      <li><strong>Agosto-Septiembre 2026:</strong> Metal activo — no el momento para conversaciones difíciles.</li>
+    </ul></div>
+  </div>
+
+  <!-- ═══ LUCA + GUADI ═══ -->
+  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(201,151,42,0.25);">Luca &amp; Guadalupe — Papá e Hija</div>
+  <p class="sec-sub">甲 Madera Yang + 壬 Agua Yang · Agua nutre Madera · Ella lo inspira sin saberlo</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">El vínculo elemental</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Agua nutre Madera: Guadi sostiene a Luca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Energéticamente, Guadi nutre a Luca. El Agua Yang de Guadi es el Recurso Indirecto de Luca — intuición, profundidad, perspectiva que su propia carta no genera fácilmente. Su presencia le activa algo más tranquilo y profundo que el ritmo normal de expansión de Luca.</p></div>
+    <div class="e-card madera"><div class="e-card-label">El Tigre compartido</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Tigre natal de Guadi (año) + Tigre de Luca (día)</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Tigre del pilar del año de Guadi y el Tigre del pilar del día de Luca crean una sintonía intuitiva muy poderosa. Se entienden sin palabras en momentos clave. Guadi siente a Luca como algo familiar en lo más profundo — aunque no pueda explicarlo.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Lo que Luca activa en Guadi</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Madera despierta su Food God</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Madera Yang de Luca activa el Food God de Guadi (Jia/Tigre en su carta). Cuando Luca juega, crea o explora con ella, Guadi entra en su modo más expansivo y creativo. La energía de papá la libera — es su mejor estímulo de Food God.</p></div>
+    <div class="e-card metal"><div class="e-card-label">El choque Mono-Tigre</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Mono de Guadi (hora) vs Tigre de Luca (día)</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Mono en la hora de Guadi y el Tigre en el día de Luca generan una tensión ocasional entre las metas/proyectos de Luca y las necesidades inmediatas de Guadi. No es conflicto — es una señal: cuando Guadi está inquieta o demandante, es porque necesita su atención real, no su presencia física.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Los primeros 8 años</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Ella vive a través del entorno de Luca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">En BaZi, los primeros años de vida se procesan principalmente a través del pilar del año (familia/padres). El Tigre de Guadi conecta directamente con el Tigre de Luca. Ella absorbe y refleja la energía de Luca — lo que él irradia, ella lo incorpora como parte de su mundo.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">La clave de este vínculo</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Presencia real sobre tiempo cantidad</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Ren Agua de Guadi detecta la distancia emocional antes que la física. Puede estar con Luca y sentirlo ausente. O puede estar un momento corto y sentirlo totalmente presente. Lo que importa no es cuánto tiempo, sino qué calidad de presencia.</p></div>
+  </div>
+  <div class="pot-grid" style="margin-bottom:2.5rem;">
+    <div class="pot-box green"><h3>✦ Lo que fortalece este vínculo</h3><ul>
+      <li><strong>Juego imaginativo juntos.</strong> Cuentos, personajes, mundos inventados — activa su Food God y es el canal más directo al corazón de Guadi.</li>
+      <li><strong>Estar presente de verdad cuando está.</strong> Sin el teléfono, sin distracciones — el Agua detecta la diferencia inmediatamente.</li>
+      <li><strong>Actividades con el cuerpo.</strong> Luca en movimiento (Tigre activo) + Guadi explorando = combinación perfecta de estimulación para ella.</li>
+      <li><strong>Contacto físico tranquilo.</strong> Abrazo, estar cerca sin hablar — el Agua Yang se recarga con presencia física calma.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que lo tensiona</h3><ul>
+      <li><strong>Presencia física pero ausencia emocional.</strong> Guadi lo detecta y se pone más demandante — es su forma de pedir conexión real.</li>
+      <li><strong>Apresurarse en la interacción.</strong> El ritmo de Luca (Tigre/expansión) puede ir demasiado rápido para el ritmo profundo de Guadi (Agua).</li>
+      <li><strong>2026 con el Trío de Fuego activo:</strong> Luca en modo expansión máxima puede descuidar los momentos tranquilos con Guadi. Programarlos intencionalmente.</li>
+    </ul></div>
+  </div>
+
+  <!-- ═══ CARLA + GUADI ═══ -->
+  <div class="sec-title ct" style="margin-top:0;">Carla &amp; Guadalupe — Madre e Hija Menor</div>
+  <p class="sec-sub">壬 Agua Yang + 壬 Agua Yang · Mismo Day Master · El espejo más profundo</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">Vínculo elemental</div><h3 class="cc">Dos Océanos — misma esencia</h3><p>Tener el mismo Day Master madre-hija es la compatibilidad más profunda en BaZi. No hay fricción elemental de base — se entienden de manera visceral sin necesitar palabras. Guadi siente a Carla como un espejo de lo que ella misma es, aunque todavía no lo pueda nombrar.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Lo que comparten</div><h3 class="cc">Ritmo interior igual</h3><p>Las dos procesan el mundo hacia adentro, en silencio, con tiempo. Ninguna necesita explicarle a la otra por qué necesita estar sola o en quietud. Esa aceptación mutua del ritmo es un ancla de paz en la relación.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Diferencias clave</div><h3 class="cc">Carla tiene Tierra · Guadi tiene Madera</h3><p>Carla tiende a contener y estructurar (7M/Dragón en su día). Guadi quiere explorar libremente (Food God/Madera en su año). El desafío: que la necesidad de orden de Carla no corte la exploración creativa de Guadi.</p></div>
+    <div class="e-card ca"><div class="e-card-label">El riesgo del espejo</div><h3 class="cc">No proyectar las propias limitaciones</h3><p>Cuando dos personas tienen el mismo Day Master, el riesgo es que una proyecte en la otra sus propios miedos sin intención. Guadi no es Carla en miniatura — es su propio Océano con su propio camino.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Fortaleza máxima</div><h3 class="cc">Comprensión sin palabras</h3><p>Carla puede anticipar lo que Guadi necesita porque lo vivió. Guadi confía en Carla de manera visceral — la siente como extensión propia. Es el vínculo madre-hija de mayor resonancia posible en el sistema.</p></div>
+    <div class="e-card ca"><div class="e-card-label">2026</div><h3 class="cc">Lo que Carla procese, Guadi lo absorbe</h3><p>Guadi en sus primeros años absorbe el estado emocional de Carla sin filtro. Lo que Carla resuelva internamente este año — su transformación del Da Yun — es también el clima de fondo que Guadi incorpora como base de seguridad.</p></div>
+  </div>
+  <div class="pot-grid" style="margin-bottom:2.5rem;">
+    <div class="pot-box green"><h3>✦ Fortalecer este vínculo</h3><ul>
+      <li><strong>Agua juntas:</strong> playa, pileta, lluvia — recarga natural para las dos.</li>
+      <li><strong>Silencio compartido.</strong> La presencia tranquila de Carla es suficiente nutrición.</li>
+      <li><strong>Dejarle espacio creativo.</strong> El Food God de Guadi necesita explorar sin corrección.</li>
+      <li><strong>Cuentos e historias.</strong> Su canal de conexión más poderoso pasa por la narrativa.</li>
+      <li><strong>Nombrar sus propias emociones.</strong> Guadi las detecta de todas formas — mejor verbalizarlas.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que lo tensiona</h3><ul>
+      <li><strong>Proyectar sus propias limitaciones.</strong> Guadi no es Carla en miniatura.</li>
+      <li><strong>Sobre-estructurar su mundo.</strong> El Food God de Guadi necesita algo de caos creativo.</li>
+      <li><strong>Procesar angustias propias delante de ella.</strong> El Agua de Guadi lo absorbe todo.</li>
+      <li><strong>Esperar que sea callada como ella.</strong> Guadi puede ser más expresiva — y está bien.</li>
+    </ul></div>
+  </div>
+
+  <!-- ═══ CARLA + MORENA ═══ -->
+  <div class="sec-title ct">Carla &amp; Morena — Madre e Hija Mayor</div>
+  <p class="sec-sub">壬 Agua Yang + 甲 Madera Yang · Agua nutre Madera · Profundidad + Expansión</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">Vínculo elemental</div><h3 class="cc">Carla nutre a Morena</h3><p>El Agua genera Madera — la profundidad, la inteligencia y la contención de Carla son exactamente lo que el Gran Árbol de Morena necesita para crecer. Una de las relaciones madre-hija más complementarias del sistema.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Lo que Morena activa en Carla</div><h3 class="cc">Madera = Food God de Carla</h3><p>La Madera de Morena activa el Comiendo Dios de Carla — su canal de expresión más libre. En proyectos creativos juntas, Carla fluye de una manera inusualmente espontánea. Morena la desbloquea sin saberlo.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">El desafío central</div><h3 class="cc">Hurt Officer vs Oficial Directo</h3><p>Morena cuestiona reglas y exige coherencia (HO activo). Carla necesita estructura y reconocimiento (OD principal). Si Carla percibe el cuestionamiento de Morena como falta de respeto, hay fricción. La clave: entender que el "¿por qué?" de Morena es su forma de procesar, no de atacar.</p></div>
+    <div class="e-card ca"><div class="e-card-label">Punto de conexión genuina</div><h3 class="cc">Autenticidad abre todo</h3><p>Cuando Carla habla desde su propia experiencia — no desde el rol de madre — Morena escucha. El Ren en el mes de Morena (Recurso Indirecto) la nutre de la profundidad de Carla. Es el único lenguaje que el Hurt Officer respeta sin resistencia.</p></div>
+    <div class="e-card ca"><div class="e-card-label">2026 — año crítico</div><h3 class="cc">Dos transformaciones simultáneas</h3><p>Carla en proceso de cambio profundo (Da Yun) + Morena con Caballo doble activo (intensidad máxima) bajo el mismo techo. El riesgo: que cada una interprete la energía de la otra como un obstáculo. La ventana de conexión real: meses de Agua (Oct-Nov).</p></div>
+    <div class="e-card ca"><div class="e-card-label">La clave de fondo</div><h3 class="cc">Liderar desde el ejemplo</h3><p>Morena respeta a quien vive lo que dice. Carla tiene la profundidad y la coherencia interna para serlo. Cuando Carla es auténtica consigo misma, Morena la sigue de manera natural — sin necesitar imposición.</p></div>
+  </div>
+  <div class="pot-grid" style="margin-bottom:2.5rem;">
+    <div class="pot-box green"><h3>✦ Fortalecer este vínculo</h3><ul>
+      <li><strong>Conversaciones de igual a igual.</strong> Morena florece cuando la tratan como par.</li>
+      <li><strong>Proyectos creativos juntas.</strong> El Food God de Carla y el HO de Morena se potencian.</li>
+      <li><strong>Hablar desde la propia experiencia.</strong> "Yo sentí algo parecido" abre más que cualquier consejo.</li>
+      <li><strong>Reconocimiento específico.</strong> Nombrar exactamente qué valoran de ella — no elogios genéricos.</li>
+      <li><strong>Octubre-Noviembre 2026:</strong> ventana ideal para conversaciones profundas.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que lo tensiona</h3><ul>
+      <li><strong>Imponer sin explicar el porqué.</strong> El HO de Morena necesita la razón — sin ella, resistencia automática.</li>
+      <li><strong>Esperar que sea como Guadi.</strong> Son Day Masters completamente distintos.</li>
+      <li><strong>Interpretar su cuestionamiento como ataque.</strong> Es su forma de procesar, no de rechazar.</li>
+      <li><strong>Agosto-Septiembre 2026:</strong> Metal activo — máxima fricción potencial.</li>
+    </ul></div>
+  </div>
+
+  <!-- ═══ MORENA + GUADI ═══ -->
+  <div class="sec-title mt">Morena &amp; Guadalupe — Las Hermanas</div>
+  <p class="sec-sub">甲 Madera Yang + 壬 Agua Yang · Agua nutre Madera · 11 años de diferencia</p>
+  <div class="e-grid">
+    <div class="e-card madera"><div class="e-card-label">Vínculo elemental</div><h3 class="mc">Guadi nutre a Morena</h3><p>Energéticamente, Guadi nutre a Morena. La profundidad y la quietud del Agua de Guadi son una fuente de calma para el Gran Árbol hiperactivo de Morena. Aunque es 11 años menor, energéticamente Guadi da algo que Morena necesita: anclaje y ternura sin condiciones.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Lo que Morena activa en Guadi</div><h3 class="mc">Morena despierta su Madera</h3><p>El Jia de Morena activa el Food God de Guadi (Jia/Tigre en su año natal). Morena despierta la creatividad y el entusiasmo de Guadi — cuando están juntas, Guadi juega con más energía y apertura. Morena es un estímulo natural para su hermana menor.</p></div>
+    <div class="e-card agua"><div class="e-card-label">La dinámica natural</div><h3 class="mc">La grande lidera · La chica ancla</h3><p>Morena naturalmente dirige y propone. Guadi naturalmente absorbe y sigue. Pero cuando Morena está en sus momentos de mayor intensidad emocional, Guadi se convierte inconscientemente en un ancla de calma. Es una dinámica que se construye sola, sin que nadie la programe.</p></div>
+    <div class="e-card morena" style="background:rgba(90,154,191,0.07);border-color:rgba(90,154,191,0.2);"><div class="e-card-label">Los mundos distintos ahora</div><h3 class="mc">11 años de diferencia real</h3><p>Morena (15) y Guadi (4) tienen mundos casi paralelos ahora. El vínculo real se construye en los momentos que Morena elige estar presente — y esos momentos, aunque pocos, dejan huella profunda en Guadi. La calidad importa más que la cantidad.</p></div>
+    <div class="e-card agua"><div class="e-card-label">2026</div><h3 class="mc">Morena en expansión · Guadi absorbiendo</h3><p>El Caballo doble activo de Morena genera alta intensidad emocional en el hogar. Guadi lo absorbe sin filtro. La hermana mayor es un modelo invisible para la pequeña — lo que Morena irradia, Guadi lo incorpora como parte de su mundo interior.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Proyección futura</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Cuando Guadi crezca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Cuando Guadi tenga 10-15 años y Morena 21-26, el vínculo se equipara en profundidad. Agua + Madera formarán una de las alianzas de hermanas más complementarias posibles — profundidad + acción, quietud + movimiento.</p></div>
+  </div>
+  <div class="pot-grid" style="margin-bottom:2.5rem;">
+    <div class="pot-box green"><h3>✦ Nutrir este vínculo</h3><ul>
+      <li><strong>Tiempo uno a uno.</strong> 20 minutos de presencia real de Morena con Guadi son enormes para ella.</li>
+      <li><strong>Dejar que Morena lidere el juego.</strong> Su HO florece con autonomía creativa — y Guadi la sigue con deleite.</li>
+      <li><strong>No exigirle a Morena que sea cuidadora.</strong> El vínculo es mejor cuando es espontáneo.</li>
+      <li><strong>Reconocerle a Morena su impacto.</strong> "Para Guadi, vos sos lo más" — ese reconocimiento activa lo mejor de Morena.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que lo tensiona</h3><ul>
+      <li><strong>Obligarla a cuidar a Guadi.</strong> La obligación apaga el vínculo espontáneo.</li>
+      <li><strong>Ignorar el impacto de Morena en el estado de Guadi.</strong> Si Morena está difícil, Guadi lo siente.</li>
+      <li><strong>Compararlas entre sí.</strong> Agua Yang y Madera Yang son complementarios, nunca el mismo molde.</li>
+      <li><strong>Agosto-Septiembre 2026:</strong> proteger a Guadi del clima tenso sin aislar a Morena.</li>
+    </ul></div>
+  </div>
+
+  <!-- ═══ SÍNTESIS ═══ -->
+  <div class="sec-title" style="color:var(--gold-l);">El Sistema Familiar — Síntesis</div>
+  <p class="sec-sub">Cómo operan los cuatro juntos como sistema energético completo.</p>
+  <div style="background:rgba(201,151,42,0.04);border:1px solid var(--bdr);border-radius:6px;padding:1.8rem 2rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;text-align:center;">
+      <div>
+        <div style="font-size:1.8rem;color:var(--gold);">甲 Luca</div>
+        <div style="font-size:0.78rem;color:var(--ash2);margin-top:0.2rem;">Madera Yang · El expansor</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;color:var(--carla);">壬 Carla</div>
+        <div style="font-size:0.78rem;color:var(--ash2);margin-top:0.2rem;">Agua Yang · El centro profundo</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;color:var(--morena);">甲 Morena</div>
+        <div style="font-size:0.78rem;color:var(--ash2);margin-top:0.2rem;">Madera Yang · La expresión</div>
+      </div>
+      <div>
+        <div style="font-size:1.8rem;color:var(--guadi);">壬 Guadi</div>
+        <div style="font-size:0.78rem;color:var(--ash2);margin-top:0.2rem;">Agua Yang · El ancla</div>
+      </div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--ash2);line-height:1.78;border-top:1px solid var(--bdr);padding-top:1.2rem;">
+      El sistema tiene un patrón muy claro: <strong style="color:var(--water);">Agua (Carla, Guadi)</strong> nutre a <strong style="color:var(--wood);">Madera (Luca, Morena)</strong>. Son dos parejas de elementos que se complementan en espejo.<br><br>
+      <strong style="color:var(--carla);">Carla</strong> nutre a <strong style="color:var(--gold);">Luca</strong> y a <strong style="color:var(--morena);">Morena</strong> simultáneamente — es el centro de recursos del sistema. <strong style="color:var(--guadi);">Guadi</strong> nutre a <strong style="color:var(--gold);">Luca</strong> y a <strong style="color:var(--morena);">Morena</strong> desde la ternura y el ancla emocional. <strong style="color:var(--gold);">Luca</strong> y <strong style="color:var(--morena);">Morena</strong> (mismo Day Master) son el motor de acción y visibilidad — y se espejean mutuamente.<br><br>
+      <strong style="color:var(--gold);">El sistema funciona en su máximo potencial cuando:</strong> el Agua (Carla/Guadi) puede profundizar y descansar sin que se la presione a actuar; la Madera (Luca/Morena) puede expandirse y expresarse sin que se la frene; y los cuatro tienen claro que sus diferencias de ritmo son complementarias, no competitivas.<br><br>
+      <strong style="color:var(--ash);">El regalo de esta familia:</strong> cuatro personas con dos elementos que se nutren mutuamente de manera natural. No hay fricción estructural de base. Hay Agua que sostiene dos Árboles — y los dos Árboles que dan sombra y oxígeno al Agua.
+    </p>
+  </div>
+</div>
+</div><!-- /sec-compat-familia -->
+
+<footer style="text-align:center;padding:2rem;border-top:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);letter-spacing:0.1em;">
+  BAZI · 四柱命理 · GUADALUPE · MORENA · CARLA · 2026 · sanbaoestudio@gmail.com
+</footer>
+
+<script>
+// ══ ENGINE ══
+const TRONCOS_SHORT=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
+const TRONCOS_FULL=['甲 Jia','乙 Yi','丙 Bing','丁 Ding','戊 Wu','己 Ji','庚 Geng','辛 Xin','壬 Ren','癸 Gui'];
+const RAMAS_FULL=['子 Zi','丑 Chou','寅 Yin','卯 Mao','辰 Chen','巳 Si','午 Wu','未 Wei','申 Shen','酉 You','戌 Xu','亥 Hai'];
+const ANIMALES=['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','Cabra','Mono','Gallo','Perro','Cerdo'];
+const ELEM_T=['Madera Yang','Madera Yin','Fuego Yang','Fuego Yin','Tierra Yang','Tierra Yin','Metal Yang','Metal Yin','Agua Yang','Agua Yin'];
+const ELEM_NAME=['Madera','Madera','Fuego','Fuego','Tierra','Tierra','Metal','Metal','Agua','Agua'];
+const ELEM_CLS=['etag-m','etag-m','etag-f','etag-f','etag-t','etag-t','etag-me','etag-me','etag-a','etag-a'];
+const DIAS_ES=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+const MESES_ES=['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+
+function getToday(){return new Date();}
+function getPilar(date){
+  const ref=new Date('2024-01-01T12:00:00');
+  const diff=Math.round((date-ref)/86400000);
+  const idx=((46+diff)%60+60)%60;
+  const t=idx%10,r=idx%12;
+  return{ti:t,ri:r,tShort:TRONCOS_SHORT[t],tFull:TRONCOS_FULL[t],rFull:RAMAS_FULL[r],
+    animal:ANIMALES[r],elemT:ELEM_T[t],elemN:ELEM_NAME[t],elemC:ELEM_CLS[t]};
+}
+
+const PERSONS={
+  guadi:{
+    name:'Guadalupe',dm:8,dmElem:'壬 Ren · Agua Yang',color:'var(--guadi)',
+    natal:[8,0,4,2],anioR:2,dayunR:3,
+    dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
+    elemBon:[2,3,0,1],elemBad:[4,5],
+    tipsHacer:{
+      0:['Juego imaginativo con cuentos y mundos inventados','Conectar con niños de su edad en ambientes conocidos','Actividades que combinen movimiento y narración','Pedir su opinión: "¿Qué preferís vos?" activa su inteligencia','Explorar algo nuevo juntos sin presión de resultado'],
+      1:['Arte libre — plastilina, dibujo, pintura sin indicaciones','Explorar algo nuevo de manera espontánea','Cambios pequeños de rutina que la estimulen','Actividades cortas con inicio y final claro','Juegos que tengan variantes o reglas que ella pueda modificar'],
+      2:['Salidas sociales a lugares conocidos y seguros','Actividades de movimiento y expresión corporal','Música y baile — el Fuego activa su expresión natural','Momentos de conexión emocional y juego compartido','Llevarla a ver a personas que la hacen sentir querida'],
+      3:['Música, danza, teatro o arte expresivo libre','Dejar que ella dirija el juego — su Fuego Yin necesita liderar','Actividades que mezclen fantasía y emoción','Cantar juntos, actuar personajes, crear canciones propias','Validar sus emociones sin intentar "solucionarlas"'],
+      4:['Rutinas predecibles y ambientes estables','Actividades con estructura clara: primero esto, luego aquello','Aprendizaje gentil con reglas simples y consistentes','Tiempo en casa o lugares conocidos que la hagan sentir segura','Momento de calidad sin multitarea ni distracciones'],
+      5:['Organizar sus juguetes o libros — la Tierra Yin le encanta clasificar','Actividades con pasos claros y resultado visible','Aprendizaje con estructura gentil y recompensa inmediata','Rutinas de sueño, comida y actividad que se sostengan en el tiempo','Cocinar o hacer algo concreto con sus manos'],
+      6:['Juegos con reglas claras y justicia visible','Actividades físicas estructuradas: saltar, trepar, moverse','Explicarle las reglas del entorno de manera simple y directa','Dejarla ganar y perder en contextos seguros','Actividades donde el esfuerzo tenga recompensa clara'],
+      7:['Clasificar, ordenar, armar puzzles o rompecabezas','Actividades de lógica simple adaptadas a su edad','Libros con patrones, números o secuencias visuales','Juegos de memoria o asociación','Construir algo con bloques o elementos que encajen'],
+      8:['Exploración libre en la naturaleza — jardín, parque, playa','Preguntas abiertas que inviten a su curiosidad: "¿Cómo pensás que funciona?"','Cuentos con mundos complejos y personajes profundos','Tiempo tranquilo para que procese lo que vivió','Música instrumental suave como fondo de exploración'],
+      9:['Tiempo a solas o en silencio — descanso genuino','Naturaleza: mar, río, lluvia — activa su Agua natal','Baño largo, juego con agua, actividades acuáticas','Cuentos suaves antes de dormir sin estimulación excesiva','Contacto físico tranquilo: abrazo, espalda, presencia sin hablar'],
+    },
+    tipsNoHacer:{
+      0:['Imponer actividades individuales cuando la energía pide conexión','Ignorar sus intentos de comunicarse o compartir','Rutinas tan fijas que no dejen espacio para el otro','Aislarla cuando el Qi del día pide intercambio','Competir o comparar con otros niños'],
+      1:['Cambios bruscos de plan sin aviso previo','Obligarla a terminar algo que no empezó bien','Comprometer su confianza confiando en extraños sin proceso','Dejarla expuesta a entornos nuevos sin acompañamiento','Ignorar señales sutiles de incomodidad o malestar'],
+      2:['Entornos muy ruidosos, sobreestimulados o caóticos','Suprimir su expresión emocional cuando quiere moverse o expresarse','Pantallas en lugar de movimiento real cuando la energía pide actuar','Actividades sedentarias y sin contacto cuando el Qi pide social','Acelerar el ritmo cuando necesita expresarse a su tiempo'],
+      3:['Suprimir sus emociones o pedirle que "no llore"','Entornos con mucha tensión o conflicto entre adultos','Actividades frías o desconectadas cuando el día pide calidez','Sobreestimulación que no deje espacio para sentir','Reprimirla cuando quiere cantar, bailar o actuar'],
+      4:['Cambios de planes de último momento sin explicación','Ambientes caóticos o desordenados sin estructura','Exigirle creatividad cuando el Qi pide estabilidad','Demasiados estímulos nuevos a la vez','Presión por resultados cuando lo que necesita es base segura'],
+      5:['Exceso de creatividad libre sin ningún orden — puede abrumarse','Actividades sin inicio o fin claro cuando el Qi pide estructura','Improvisar la rutina el día que necesita predecibilidad','Demasiadas opciones para elegir al mismo tiempo','Actividades abiertas sin límites cuando necesita contención'],
+      6:['Ambientes donde el conflicto entre adultos es visible','Reglas que cambian sin explicación — genera inseguridad','Injusticias visibles — el 7K es muy sensible a lo que "no es justo"','Exceso de flexibilidad cuando lo que necesita es certeza','Ignorar sus esfuerzos o no reconocer cuando cumplió las reglas'],
+      7:['Actividades caóticas o sin lógica visible','Demasiado estímulo emocional cuando necesita orden','Cambios abruptos en el entorno físico que la desorienten','Juegos de fantasía extrema cuando la energía pide lógica','Saltear pasos o apresurarse en algo que requiere secuencia'],
+      8:['Apresurarse o exigirle rapidez en sus procesos','Interrumpir su concentración cuando está explorando algo','Demasiadas preguntas directas cuando necesita silencio para pensar','Actividades muy pautadas cuando el Qi pide libre exploración','Pantallas que reemplacen exploración real y curiosidad activa'],
+      9:['Apresurar la transición del descanso a la actividad','Entornos ruidosos, con muchas personas o estímulos fuertes','Exigirle sociabilidad cuando está en modo recarga','Ignorar sus señales de cansancio o saturación emocional','Cambiar de ambiente cuando está en un espacio de quietud'],
+    }
+  },
+  morena:{
+    name:'Morena',dm:0,dmElem:'甲 Jia · Madera Yang',color:'var(--morena)',
+    natal:[9,6,4,3],anioR:3,dayunR:6,
+    dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
+    elemBon:[2,3,8,9],elemBad:[6,7],
+    tipsHacer:{
+      0:['Actividades colaborativas con amigas o pares que respeta','Conectar con personas que comparten sus intereses genuinos','Proyectos grupales donde ella aporte algo único y reconocible','Conversation sobre planes o decisiones incluyéndola como par','Recordarle que sus alianzas son su mayor activo'],
+      1:['Moverse rápido en algo que tiene ventana corta de oportunidad','Tomar iniciativa en un proyecto que le importa antes de que alguien más lo haga','Aprender algo nuevo de manera autodidacta y exploratoria','Actuar con la información que tiene sin paralizarse por la incertidumbre','Hacer algo impulsivo pero en un área que la desarrolla'],
+      2:['Crear, expresar, publicar — máximo día para su talento','Performance, música, escritura, arte o cualquier canal expresivo','Mostrar algo en lo que trabajó sin esperar que sea "perfecto"','Compartir con personas que la valoran genuinamente','Usar su voz — hablar, cantar, grabar, presentar algo'],
+      3:['Escribir, crear contenido, expresar su punto de vista sin filtros','Desafiar algo que no le cierra con argumentos propios','Proyectos que ella dirija completamente sin supervisión excesiva','Arte o música que rompa el molde — no lo convencional','Tomar una decisión importante sobre su propio camino'],
+      4:['Trabajar en algo con objetivo claro y resultado visible a corto plazo','Organizar una actividad que le importe — evento, salida, proyecto','Conectar su esfuerzo con algo que tiene impacto real en su vida','Hacer algo que genere recursos propios — aunque sea pequeño','Avanzar en una meta concreta sin la presión de hacerlo perfecto'],
+      5:['Organizar sus cosas, su espacio, sus proyectos pendientes','Conversación honesta sobre sus metas o situación concreta','Establecer un orden propio en algo que estaba suelto','Cumplir algo que se había comprometido — la recompensa la motiva','Conectar con alguien que pueda orientarla en algo práctico'],
+      6:['Aceptar un desafío difícil que la ponga a prueba positivamente','Resolver algo que evitaba por miedo o incomodidad','Usar la presión del entorno como combustible, no como obstáculo','Hablar directamente sobre algo que le molesta sin rodeos','Tomar una posición firme en algo que le importa'],
+      7:['Estudio estructurado y preparación para algo concreto','Cumplir compromisos formales — entregas, plazos, acuerdos','Conectar con personas de autoridad desde su mejor versión','Documentar o registrar lo que está haciendo o aprendiendo','Respetar un proceso que no se puede saltear aunque quiera'],
+      8:['Estudiar algo que le apasiona en profundidad','Leer, investigar, explorar un tema sin presión de resultado','Tiempo a solas para procesar lo que está viviendo','Escribir en un diario o reflexionar sobre decisiones importantes','Consultar con alguien de confianza antes de tomar una decisión grande'],
+      9:['Tiempo a solas sin obligaciones ni agenda','Descanso genuino — sin pantallas, sin presión social','Conectar con algo que la nutre sin costo emocional','Escuchar música, leer algo que la mueva, estar en silencio','Reflexionar sobre lo que quiere y lo que no — sin urgencia'],
+    },
+    tipsNoHacer:{
+      0:['Forzar trabajo solitario cuando la energía pide intercambio','Ignorar las relaciones que la nutren por priorizar lo individual','Competir con quienes podrían ser sus aliados','Desestimar el valor de las personas en su red','Cerrarse cuando alguien de confianza quiere conectar'],
+      1:['Comprometerse a largo plazo sin analizar bien la situación','Confiar ciegamente en alguien nuevo que apareció de repente','Compartir planes o proyectos antes de tenerlos más sólidos','Dejarse llevar por la presión del momento en decisiones que tienen consecuencias','Actuar por impulso en temas de dinero o compromisos importantes'],
+      2:['Quedarse en modo invisible cuando el clima pide visibilidad','Editar y sobre-analizar en lugar de publicar y mostrar','Reprimir su expresión por miedo a lo que piensen otros','Compararse con otros en lugar de expresarse desde su singularidad','Posponer ese contenido o trabajo creativo que tiene listo'],
+      3:['Confrontar con figuras de autoridad sin estrategia ni timing','Prometer o comprometerse a cosas que dependen de terceros','Actuar desde el enojo o la impulsividad cuando hay fricción','Romper reglas cuyo costo no vale el beneficio de cruzarlas','Dejar que el conflicto externo interrumpa su proceso creativo propio'],
+      4:['Gastar energía o recursos en cosas sin retorno visible','Perder tiempo en conversaciones sin propósito cuando el Qi pide acción','Ignorar oportunidades concretas por esperar condiciones perfectas','Desestimar el valor de lo que hace o produce','Procrastinar en tareas que tienen consecuencias reales'],
+      5:['Improvisar en algo que requiere disciplina o seguimiento','Ceder en conversaciones de dinero, intercambio o derechos propios','Dejar desordenado algo que tiene consecuencias si no se atiende','Ignorar sus compromisos o dejar algo a medias sin aviso','Evitar la conversación directa sobre algo que necesita resolverse'],
+      6:['Confrontar directamente sin estrategia — hoy sale caro','Actuar desde el enojo o la reactividad','Tomar decisiones importantes en el pico emocional del conflicto','Forzar situaciones que necesitan tiempo o proceso','Ignorar la fricción interna como si no estuviera ahí'],
+      7:['Saltear pasos en procesos que requieren secuencia y método','Confrontar autoridades sin tener el respaldo necesario','Improvisar en situaciones que piden formalidad y precisión','Descuidar compromisos o entregas que tienen consecuencia real','Actuar fuera del marco cuando el sistema puede ser un aliado hoy'],
+      8:['Tomar decisiones importantes sin tiempo de reflexión','Comprometerse bajo presión social sin haber procesado bien','Lanzarse a algo nuevo sin analizar la información disponible','Exponerse públicamente cuando la energía pide interioridad','Ignorar las corazonadas o señales internas sobre algo pendiente'],
+      9:['Asumir nuevos compromisos importantes cuando está en modo recarga','Hacer presentaciones o exposiciones públicas — no es el momento','Forzar productividad cuando el cuerpo y la mente piden integración','Tomar decisiones de largo plazo sin haber descansado','Rodearse de gente demandante cuando necesita quietud genuina'],
+    }
+  },
+  carla:{
+    name:'Carla',dm:8,dmElem:'壬 Ren · Agua Yang',color:'var(--carla)',
+    // natal: Hai(11), Chen(4), Chou(1), Wei(7) · año2026:Wu(6) · dayun:Chen(4)
+    natal:[11,4,1,7],anioR:6,dayunR:4,
+    dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
+    elemBon:[0,1,2,3,8,9],elemBad:[4,5],// Madera y Fuego son buenos (Food God/riqueza); Tierra frena
+    tipsHacer:{
+      0:['Reunirse con personas que tienen el mismo nivel de profundidad','Compartir conocimiento o proyectos con quien realmente lo valora','Conectar con alguien de confianza en quien apoyarse','Avanzar en algo colaborativo donde su aporte sea reconocido','Cuidar sus vínculos más importantes con presencia real'],
+      1:['Moverse rápido en una oportunidad que tiene ventana corta','Tomar iniciativa sin esperar certeza total — el 80% es suficiente','Aprender algo nuevo de manera autónoma y sin estructura rígida','Actuar sobre algo que lleva demasiado tiempo en análisis','Confiar en su primera intuición sobre una decisión concreta'],
+      2:['Expresarse creativamente — escribir, enseñar, crear sin filtros','Compartir algo propio con su entorno — idea, proyecto, conocimiento','Usar su voz con confianza: su perspectiva tiene un valor que otros no tienen','Crear contenido, dar una clase, presentar algo en lo que trabajó','Conectar desde su autenticidad sin suavizar su punto de vista'],
+      3:['Escribir, crear, expresar — el Fuego Yin fluye hoy','Compartir algo personal o creativo que guardaba para sí','Tomar una decisión desde la intuición sin necesitar más análisis','Liderar algo desde su autenticidad, no desde el rol','Hacer algo que la haga sentir viva y auténtica, no útil o correcta'],
+      4:['Organizar, planificar o estructurar algo que está suelto','Avanzar en tareas concretas con resultado visible','Conectar su esfuerzo con una meta concreta y cercana','Hacer algo práctico que tenga impacto real en su entorno','Gestionar finanzas, recursos o compromisos con orden y claridad'],
+      5:['Organizar algo con detalle y método — el Agua contenida fluye bien con estructura','Cumplir compromisos formales con exactitud','Conectar con personas de confianza en entornos ordenados','Avanzar en proyectos con pasos claros y secuencia definida','Tomarse el tiempo para hacer algo bien hecho, sin apresurarse'],
+      6:['Superar un desafío que venía posponiendo — el 7M activo la potencia hoy','Hablar con claridad sobre algo que estaba evitando','Tomar una posición firme en una situación que lo requiere','Usar la presión del entorno como combustible, no como parálisis','Resolver algo difícil con la claridad y determinación que la caracteriza cuando está activada'],
+      7:['Avanzar en trámites, procesos formales o compromisos de largo plazo','Construir su reputación con acciones consistentes y precisas','Conectar con personas de autoridad desde su mejor versión','Cumplir lo que se comprometió con exactitud — la confiabilidad la distingue','Documentar o registrar lo que está aprendiendo o construyendo'],
+      8:['Estudiar, investigar, profundizar en algo que le importa de verdad','Planificar a largo plazo con calma y perspectiva','Escuchar su intuición antes de actuar — hoy su lectura de la situación es muy precisa','Buscar una perspectiva externa antes de tomar una decisión importante','Tiempo de silencio y reflexión — procesar antes de responder'],
+      9:['Descansar genuinamente — su triple Recurso necesita recarga real','Aprender algo nuevo sin presión de aplicarlo de inmediato','Conectar con alguien que la nutre sin costo emocional','Tiempo a solas o en silencio sin agenda','Reflexionar sobre lo que quiere con perspectiva y sin urgencia'],
+    },
+    tipsNoHacer:{
+      0:['Aislarse cuando la energía pide conexión genuina','Trabajar sola en algo que se beneficiaría de colaboración','Desestimar el valor de las personas en su entorno más cercano','Competir en lugar de colaborar con quienes pueden ser aliados','Ignorar oportunidades que llegan a través de su red de confianza'],
+      1:['Comprometerse a largo plazo sin haber analizado mínimamente','Confiar ciegamente en alguien que apareció de repente con propuestas tentadoras','Compartir información sensible o proyectos antes de tener más contexto','Actuar por impulso en temas que tienen consecuencias financieras','Ignorar señales sutiles de inconsistencia en personas o situaciones'],
+      2:['Guardarse sus ideas o perspectivas cuando el clima pide compartir','Sobre-editar o sobre-analizar en lugar de publicar y expresar','Reprimir su creatividad por miedo a cómo será recibida','Trabajar en modo invisible cuando la energía pide visibilidad','Postergar ese proyecto creativo que tiene listo esperando el momento perfecto'],
+      3:['Contenerse cuando necesita expresarse — el Fuego Yin bloqueado agota','Sobre-analizar una decisión que ya tiene tomada intuitivamente','Priorizar la corrección sobre la autenticidad en la expresión','Quedarse en modo útil cuando la energía pide que esté presente para ella','Ignorar sus propias necesidades priorizando las de todos los demás'],
+      4:['Gastar tiempo en actividades sin retorno concreto','Ignorar las tareas prácticas que tienen consecuencias reales si se posponen','Perderse en análisis cuando el Qi pide acción y resultado','Desestimar el valor de lo mundano — la Tierra Yin de hoy pide orden, no vuelo','Dejar pendientes que se acumulan y generan presión innecesaria'],
+      5:['Improvisar en algo que requiere método y secuencia','Ceder en conversaciones de valor o reconocimiento por comodidad','Ignorar compromisos o dejar algo a medias sin avisar','Desordenar lo que estaba organizado sin un plan mejor','Apresurarse en algo que está pidiendo tiempo y precisión'],
+      6:['Entrar en confrontación directa sin estrategia clara','Actuar desde la reactividad o el agotamiento acumulado','Tomar decisiones importantes cuando está en el pico emocional','Forzar situaciones que necesitan tiempo o proceso','Ignorar las señales de que algo no está funcionando esperando que se resuelva solo'],
+      7:['Saltear pasos en procesos que requieren secuencia y validación','Actuar fuera del marco cuando el sistema puede ser un aliado hoy','Descuidar compromisos formales o personas de influencia','Improvisar en situaciones que piden formalidad y precisión','Ignorar la importancia de cómo la perciben quienes toman decisiones que la afectan'],
+      8:['Tomar decisiones importantes bajo presión sin tiempo de reflexión','Comprometerse antes de haber procesado bien la información disponible','Actuar impulsivamente cuando la energía pide análisis previo','Ignorar las corazonadas o lecturas sutiles sobre personas o situaciones','Forzar productividad cuando el cuerpo y la mente necesitan integración'],
+      9:['Asumir nuevos compromisos cuando está en modo recarga','Exponerse socialmente cuando necesita silencio y tiempo interior','Tomar decisiones importantes sin haberse recargado primero','Rodearse de personas demandantes cuando necesita quietud genuina','Ignorar sus propias señales de cansancio o saturación emocional'],
+    }
+  }
+};
+
+const CHOQUES_G=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
+const COMBHE_G=[[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
+const DESTRUCT_G=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
+
+function getIntsFam(ri,person){
+  const p=PERSONS[person];
+  const refs=[...p.natal,p.anioR,p.dayunR];
+  let res=[];
+  for(let b of refs){
+    for(let[a,c]of CHOQUES_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`Choque con ${ANIMALES[b]}`});
+    for(let[a,c]of COMBHE_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`Combina con ${ANIMALES[b]}`});
+    for(let[a,c]of DESTRUCT_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`Destructor con ${ANIMALES[b]}`});
+  }
+  if(person==='morena'&&(ri===2||ri===6||ri===10))res.push({tipo:'trio',efecto:'bien',txt:'Trío de Fuego completo'});
+  return res;
+}
+
+function calcRatingFam(ti,ri,person){
+  const p=PERSONS[person];let s=3;
+  if(p.elemBon.includes(ti))s+=1.0;
+  if(p.elemBad.includes(ti))s-=1.1;
+  for(let i of getIntsFam(ri,person)){
+    if(i.efecto==='bien')s+=0.5;
+    if(i.efecto==='mal')s-=0.8;
+    if(i.efecto==='cuidado')s-=0.35;
+    if(i.tipo==='trio')s+=0.7;
+  }
+  return Math.max(1,Math.min(5,Math.round(s)));
+}
+
+function renderStarsFam(n,sz=12,cls='star'){
+  let s='';
+  for(let i=1;i<=5;i++)s+=`<svg class="${cls} ${i<=n?'on':''}" width="${sz}" height="${sz}" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>`;
+  return s;
+}
+
+function getMesPilarFam(m){
+  const mp={1:{ti:4,ri:1},2:{ti:5,ri:2},3:{ti:6,ri:3},4:{ti:7,ri:4},
+    5:{ti:8,ri:5},6:{ti:9,ri:6},7:{ti:0,ri:7},8:{ti:1,ri:8},
+    9:{ti:2,ri:9},10:{ti:3,ri:10},11:{ti:4,ri:11},12:{ti:5,ri:0}};
+  return mp[m]||{ti:0,ri:0};
+}
+
+let todayPilares={};
+
+function buildHoyFam(person){
+  const today=getToday();
+  const p=getPilar(today);
+  todayPilares[person]=p;
+  const rating=calcRatingFam(p.ti,p.ri,person);
+  const pData=PERSONS[person];
+  const dow=DIAS_ES[today.getDay()];
+  const dia=today.getDate();
+  const mes=MESES_ES[today.getMonth()+1];
+  const anio=today.getFullYear();
+  const m=today.getMonth()+1;
+  const mp=getMesPilarFam(m);
+  const isG=person==='guadi';const isC=person==='carla';
+  const pfx=isG?'g':isC?'c':'m';
+  const colorCls=isG?'gc':isC?'cc':'mc';
+  const dayunLabel=isG?'癸卯 próximo':isC?'甲辰 Madera/Dragón':'甲午 Madera/Caballo';
+
+  document.getElementById(`${pfx}-title`).textContent=`${dow}, ${dia} de ${mes} ${anio}`;
+  document.getElementById(`${pfx}-ctx`).innerHTML=`
+    <div>AÑO <span>丙午 Fuego/Caballo</span></div>
+    <div>MES <span>${TRONCOS_FULL[mp.ti]} ${RAMAS_FULL[mp.ri]}</span></div>
+    <div>DÍA <span>${p.tFull} ${p.rFull} · ${p.animal}</span></div>
+    <div>DA YUN <span>${dayunLabel}</span></div>
+  `;
+
+  let vClass,vText,vContext;
+  if(rating>=4){vClass='vg';vText='Día de alta alineación energética';vContext=`El clima del día coopera plenamente con la carta natal de ${pData.name}. Excelente momento para accionar con intención.`;}
+  else if(rating===3){vClass='vy';vText='Día de energía neutral — flujo moderado';vContext=`Ni gran impulso ni bloqueos para ${pData.name} hoy. La energía funciona pero requiere conciencia y adaptación al contexto.`;}
+  else{vClass='vr';vText='Día de fricción energética — moverse con cuidado';vContext=`El pilar de hoy genera tensión con la carta de ${pData.name}. Simplificar, proteger y no forzar situaciones difíciles.`;}
+
+  const ints=getIntsFam(p.ri,person);
+  const intTxt=ints.length?ints.map(i=>i.txt).join(' · '):'Sin interacciones especiales';
+
+  document.getElementById(`${pfx}-hero`).innerHTML=`
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+      <div>
+        <div class="hoy-fecha-fam ${colorCls}">${dow} ${dia} de ${mes} ${anio}</div>
+        <div class="hoy-pilar-fam">PILAR DEL DÍA · <span>${p.tFull}</span> · <span>${p.rFull} (${p.animal})</span> · ${p.elemT}</div>
+      </div>
+      <div style="text-align:right;">
+        <div class="hoy-stars-fam">${renderStarsFam(rating,18,'star-fam star')}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--smoke);">${rating}/5 ESTRELLAS</div>
+      </div>
+    </div>
+    <div class="hoy-verdict-fam ${vClass}">${vText}</div>
+    <div style="font-size:0.9rem;color:var(--ash2);margin-bottom:0.6rem;">${vContext}</div>
+    <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--smoke);letter-spacing:0.06em;"><span class="etag ${p.elemC}" style="margin-right:0.5rem;">${p.elemN.toUpperCase()} · ${pData.dios[p.ti]}</span>${intTxt}</div>
+  `;
+
+  // Tips
+  const th=pData.tipsHacer[p.ti];
+  const tn=pData.tipsNoHacer[p.ti];
+  document.getElementById(`${pfx}-tips`).innerHTML=`
+    <div class="tips-box do-box">
+      <h3>✦ Hacer hoy${person==='carla'?'':' con'} ${pData.name}</h3>
+      <ul>${th.map(t=>`<li>${t}</li>`).join('')}</ul>
+    </div>
+    <div class="tips-box dont-box">
+      <h3>✕ Evitar hoy${person==='carla'?'':' con'} ${pData.name}</h3>
+      <ul>${tn.map(t=>`<li>${t}</li>`).join('')}</ul>
+    </div>
+  `;
+}
+
+// CALENDAR FAM
+const MONTHS_DATA=[
+  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Ji Si · Tierra Yin',pilar:'己巳',chinese:'巳'},
+  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Geng Wu · Metal Yang',pilar:'庚午',chinese:'午'},
+  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Ji Wei · Tierra Yin',pilar:'己未',chinese:'未'},
+  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Geng Shen · Metal Yang',pilar:'庚申',chinese:'申'},
+  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Xin You · Metal Yin',pilar:'辛酉',chinese:'酉'},
+  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Ren Xu · Agua Yang',pilar:'壬戌',chinese:'戌'},
+  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Gui Hai · Agua Yin',pilar:'癸亥',chinese:'亥'},
+  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Jia Zi · Madera Yang',pilar:'甲子',chinese:'子'},
+];
+const currentMonths={guadi:5,morena:5,carla:5};
+
+function getCardDoFam(ti,person){
+  return PERSONS[person].tipsHacer[ti]?PERSONS[person].tipsHacer[ti][0]:'Acompañar y observar';
+}
+function getCardDontFam(ti,person){
+  return PERSONS[person].tipsNoHacer[ti]?PERSONS[person].tipsNoHacer[ti][0]:'Forzar o presionar';
+}
+function getResumenFam(ti,ri,rating,person){
+  const a=ANIMALES[ri],e=ELEM_T[ti];
+  if(person==='guadi'){
+    const r={5:`Día de alta armonía para Guadi. ${e} con ${a} activa su Agua Yang de manera fluida.`,4:`Buen día. El ${a} trae energía cooperativa para su carta natal.`,3:`Día neutro para ella. Observar su estado antes de proponer actividades.`,2:`El ${a} genera cierta tensión. Más calma, menos demandas y estímulos.`,1:`Día difícil energéticamente para ella. Simplificar el entorno y dar mucho espacio.`};
+    return r[rating];
+  }
+  if(person==='carla'){
+    const r={5:`Día de alta alineación para Carla. ${e} con ${a} activa su Agua Yang de manera fluida y expansiva.`,4:`Día favorable. El ${a} coopera con su carta — buen momento para expresarse y actuar.`,3:`Día neutro para ella. Ni gran impulso ni bloqueo. Moverse con conciencia del contexto.`,2:`El ${a} genera tensión. Preferir análisis y reflexión sobre acción directa hoy.`,1:`Alta fricción energética para Carla. Simplificar, proteger y no forzar situaciones difíciles.`};
+    return r[rating];
+  }
+  const r={5:`Día de flujo alto para Morena. ${e} potencia su expresión natural de Madera Yang.`,4:`Día favorable. Su Hurt Officer fluye sin fricción mayor.`,3:`Día neutro. Ni gran impulso ni bloqueo significativo.`,2:`Tensión latente. El ${a} puede activar su modo defensivo.`,1:`Día de alta fricción. Evitar conversaciones difíciles o confrontaciones.`};
+  return r[rating];
+}
+
+function buildMonthSelFam(person){
+  const isG=person==='guadi';const isC=person==='carla';
+  const pfx=isG?'g':isC?'c':'m';
+  const colorCls=isG?'ga':isC?'ca':'ma';
+  const sel=document.getElementById(`${pfx}-month-sel`);
+  sel.innerHTML='';
+  const today=getToday();
+  MONTHS_DATA.forEach(md=>{
+    const isNow=md.m===(today.getMonth()+1)&&today.getFullYear()===2026;
+    const isActive=md.m===currentMonths[person];
+    const btn=document.createElement('button');
+    btn.className=`month-btn${isActive?' active '+colorCls:''}`;
+    btn.textContent=md.name+(isNow?' · Hoy':'');
+    btn.onclick=()=>{
+      document.querySelectorAll(`#${pfx}-month-sel .month-btn`).forEach(b=>b.classList.remove('active','ga','ma','ca'));
+      btn.classList.add('active',colorCls);
+      currentMonths[person]=md.m;
+      renderMonthFam(md.m,person);
+    };
+    sel.appendChild(btn);
+  });
+}
+
+function renderMonthFam(m,person){
+  const isG=person==='guadi';const isC=person==='carla';
+  const pfx=isG?'g':isC?'c':'m';
+  const colorCls=isG?'gc':isC?'cc':'mc';
+  const pData=PERSONS[person];
+  const md=MONTHS_DATA.find(x=>x.m===m);
+  const display=document.getElementById(`${pfx}-month-display`);
+  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
+  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
+  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
+  const today=getToday();
+  const mp=getMesPilarFam(m);
+
+  let html=`<div class="month-hdr">
+    <div class="month-cn ${colorCls}">${md.chinese}</div>
+    <div class="month-info"><h2 class="${colorCls}">${md.name} 2026 — ${pData.name}</h2><p>${md.desc}</p></div>
+  </div><div class="cal-grid">`;
+
+  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
+    const p=getPilar(new Date(d));
+    const rating=calcRatingFam(p.ti,p.ri,person);
+    const dow=DIAS_ES[d.getDay()];
+    const isWe=d.getDay()===0||d.getDay()===6;
+    const isTd=d.getDate()===today.getDate()&&d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear();
+    const ints=getIntsFam(p.ri,person);
+    const intTxt=ints.length?ints.map(i=>i.txt).slice(0,2).join(' · '):'—';
+    const todayBadge=isTd?'<span class="today-badge">HOY</span>':'';
+    const doTxt=getCardDoFam(p.ti,person);
+    const dontTxt=getCardDontFam(p.ti,person);
+    const summary=getResumenFam(p.ti,p.ri,rating,person);
+
+    html+=`<div class="day-card r${rating}${isWe?' weekend':''}${isTd?' today-card':''}">
+      <div class="dc-hdr">
+        <div><div class="dc-num">${d.getDate()}${todayBadge}</div><div class="dc-dow">${dow}</div></div>
+        <div class="dc-pilar">${p.tFull}<br>${p.rFull} · ${p.animal}</div>
+      </div>
+      <div class="dc-stars">${renderStarsFam(rating)}</div>
+      <span class="etag ${p.elemC}">${p.elemN.toUpperCase()} · ${pData.dios[p.ti]}</span>
+      <div class="dc-summary">${summary}</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.49rem;color:var(--smoke);letter-spacing:0.05em;margin-bottom:0.36rem;">${intTxt}</div>
+      <div class="fav-row"><div class="fav-label lsi">HACER</div><div class="fav-text">${doTxt}</div></div>
+      <div class="fav-row"><div class="fav-label lno">EVITAR</div><div class="fav-text">${dontTxt}</div></div>
+    </div>`;
+  }
+  html+=`</div>`;
+  display.innerHTML=html;
+  if(m===(today.getMonth()+1)){setTimeout(()=>{const tc=document.querySelector(`#${pfx}-month-display .today-card`);if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
+}
+
+// EXPORT FAM
+function fICS(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';}
+function mkEvent(date,title,desc,dur=60){
+  const s=new Date(date);s.setHours(9,0,0);
+  const e=new Date(s);e.setMinutes(e.getMinutes()+dur);
+  return `BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc.replace(/\n/g,'\\n').replace(/<[^>]+>/g,'')}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
+}
+function dl(name,content){const b=new Blob([content],{type:'text/calendar'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href);}
+
+function exportarHoyFam(person){
+  const p=todayPilares[person];if(!p)return;
+  const pData=PERSONS[person];
+  const today=getToday();
+  const rating=calcRatingFam(p.ti,p.ri,person);
+  const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${p.tShort} ${p.animal}`;
+  const desc=`Dios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti].slice(0,3).join(' / ')}\nEVITAR: ${pData.tipsNoHacer[p.ti].slice(0,3).join(' / ')}`;
+  dl(`bazi_${person}_hoy.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Familia//ES\r\n${mkEvent(today,title,desc)}END:VCALENDAR`);
+}
+function abrirGCalHoyFam(person){
+  const p=todayPilares[person];if(!p)return;
+  const pData=PERSONS[person];
+  const today=getToday();
+  const rating=calcRatingFam(p.ti,p.ri,person);
+  const title=encodeURIComponent(`BaZi ⭐${rating} · ${pData.name} · ${p.tShort} ${p.animal}`);
+  const det=encodeURIComponent(`Dios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti][0]}\nEVITAR: ${pData.tipsNoHacer[p.ti][0]}`);
+  const ds=`${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
+}
+function exportarMesFam(person){
+  const m=currentMonths[person];
+  const md=MONTHS_DATA.find(x=>x.m===m);
+  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
+  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
+  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
+  const pData=PERSONS[person];
+  let events='';
+  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
+    const p=getPilar(new Date(d));
+    const rating=calcRatingFam(p.ti,p.ri,person);
+    const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`;
+    const desc=`Rating: ${rating}/5\nDios: ${pData.dios[p.ti]}\nHACER: ${getCardDoFam(p.ti,person)}\nEVITAR: ${getCardDontFam(p.ti,person)}`;
+    events+=mkEvent(new Date(d),title,desc,30);
+  }
+  dl(`bazi_${person}_${md.name.toLowerCase()}.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Familia//ES\r\nCALNAME:BaZi ${pData.name} ${md.name}\r\n${events}END:VCALENDAR`);
+}
+function abrirGCalMesFam(person){
+  window.open(`https://calendar.google.com/calendar/r/month/2026/${currentMonths[person]}?authuser=sanbaoestudio%40gmail.com`,'_blank');
+}
+
+// NAV
+function showSection(id,tab){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav .nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(tab)tab.classList.add('active');
+}
+
+function showSubSection(id,prefix,tab){
+  document.querySelectorAll(`.sub-section.${prefix}`).forEach(s=>s.style.display='none');
+  const el=document.getElementById(id);
+  if(el)el.style.display='block';
+  // Update sub-nav tabs
+  const parentSection=el.closest('.section');
+  if(parentSection){
+    parentSection.querySelectorAll('.nav-tab').forEach(t=>{
+      t.style.borderBottomColor='transparent';
+      t.style.color='';
+    });
+    if(tab){
+      const isG=prefix==='g-';const isC=prefix==='c-';
+      tab.style.borderBottomColor=isG?'var(--guadi)':isC?'var(--carla)':'var(--morena)';
+      tab.style.color=isG?'var(--guadi)':isC?'var(--carla)':'var(--morena)';
+    }
+  }
+}
+
+// INIT
+const today=getToday();
+const todayM=today.getMonth()+1;
+const hasM=MONTHS_DATA.some(x=>x.m===todayM);
+if(hasM){currentMonths.guadi=todayM;currentMonths.morena=todayM;currentMonths.carla=todayM;}
+buildHoyFam('guadi');
+buildHoyFam('morena');
+buildHoyFam('carla');
+buildMonthSelFam('guadi');
+buildMonthSelFam('morena');
+buildMonthSelFam('carla');
+renderMonthFam(currentMonths.guadi,'guadi');
+renderMonthFam(currentMonths.morena,'morena');
+renderMonthFam(currentMonths.carla,'carla');
+</script>
+</body>
+</html>
