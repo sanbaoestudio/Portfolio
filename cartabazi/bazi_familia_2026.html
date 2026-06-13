@@ -12,7 +12,7 @@
   --smoke:#7a6e60;--ash:#cfc0a8;--ash2:#b0a090;
   --fire:#e05a1a;--wood:#4a8c3f;--metal:#7a9bb5;--water:#2c5f8a;--earth:#9c7a3c;
   --bdr:rgba(201,151,42,0.18);
-  --guadi:#c06090;--morena:#5a9abf;--carla:#7a9b6a;
+  --guadi:#c06090;--morena:#5a9abf;--carla:#7a9b6a;--grecia:#a07fc0;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -207,7 +207,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <body>
 
 <nav>
-  <div class="nav-logo">八字 · Familia</div>
+  <div class="nav-logo">八字 · Familia &amp; Amigos</div>
   <button class="nav-tab g-tab active" onclick="showSection('sec-guadi',this)">Guadalupe · 4a</button>
   <div class="nav-sep"></div>
   <button class="nav-tab m-tab" onclick="showSection('sec-morena',this)">Morena · 15a</button>
@@ -215,6 +215,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <button class="nav-tab c-tab" onclick="showSection('sec-carla',this)">Carla · Pareja</button>
   <div class="nav-sep"></div>
   <button class="nav-tab" style="color:rgba(201,151,42,0.7);" onclick="showSection('sec-compat-familia',this)">♾ Compatibilidades</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab" style="color:#a07fc0;" onclick="showSection('sec-amigos',this)">★ Amigos</button>
   <div class="nav-sep"></div>
   <button class="nav-tab nav-back" onclick="window.open('bazi_luca_2026.html','_self')">← Volver a Luca</button>
 </nav>
@@ -854,8 +856,473 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 </div>
 </div><!-- /sec-compat-familia -->
 
+<!-- ══════════════════════════════════════
+     AMIGOS
+══════════════════════════════════════ -->
+<div id="sec-amigos" class="section">
+
+<div class="page-header" data-g="友" style="position:relative;overflow:hidden;">
+  <div class="eyebrow" style="color:#a07fc0;">BaZi · Amigos · 朋友</div>
+  <h1 style="color:#c8a8e0;">Círculo Energético</h1>
+  <p>Análisis de compatibilidad y dinámica BaZi con personas cercanas</p>
+</div>
+
+<!-- GRECIA SUB NAV -->
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(160,127,192,0.03);overflow-x:auto;">
+  <button class="nav-tab active" style="color:#a07fc0;border-bottom-color:#a07fc0;" onclick="showFriend('gr-hoy','gr-',this)">Grecia · Hoy</button>
+  <button class="nav-tab" style="color:var(--smoke);" onclick="showFriend('gr-cal','gr-',this)">Calendario</button>
+  <button class="nav-tab" style="color:var(--smoke);" onclick="showFriend('gr-carta','gr-',this)">Su Carta</button>
+  <button class="nav-tab" style="color:var(--smoke);" onclick="showFriend('gr-compat','gr-',this)">Compat. con la familia</button>
+  <div style="width:1px;height:22px;background:var(--bdr);margin:0 0.5rem;align-self:center;flex-shrink:0;"></div>
+  <button class="nav-tab" style="color:#c09a5a;border-bottom-color:transparent;" onclick="switchFriend('am-hoy','am-',this)">Amancai · Hoy</button>
+  <button class="nav-tab" style="color:var(--smoke);" id="am-tab-cal" onclick="switchFriend('am-cal','am-',this)">Calendario</button>
+  <button class="nav-tab" style="color:var(--smoke);" id="am-tab-carta" onclick="switchFriend('am-carta','am-',this)">Su Carta</button>
+  <button class="nav-tab" style="color:var(--smoke);" id="am-tab-compat" onclick="switchFriend('am-compat','am-',this)">Compat. con Morena</button>
+</div>
+
+<!-- ══ GR-HOY ══ -->
+<div id="gr-hoy" class="sub-section gr-" style="display:block;">
+<div class="page-header" data-g="辛" style="background:rgba(160,127,192,0.03);">
+  <div class="eyebrow" style="color:#a07fc0;">Energía del Día · Grecia</div>
+  <h1 style="color:#c8a8e0;" id="gr-title">Cargando...</h1>
+  <p>Análisis calibrado a su carta natal 辛 Xin Metal Yin · 15 años</p>
+</div>
+<div class="ctx-bar" id="gr-ctx" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(160,127,192,0.03);border-bottom:1px solid var(--bdr);"></div>
+<div class="hoy-wrap-fam">
+  <div class="hoy-hero-fam" id="gr-hero"></div>
+  <div class="sec-title" style="color:#a07fc0;margin-top:0;font-family:'IM Fell English',serif;font-size:1.4rem;font-weight:400;padding-bottom:0.5rem;border-bottom:1px solid var(--bdr);">Guía para hoy — Grecia</div>
+  <p class="sec-sub">Tips calibrados a 辛 Xin Metal Yin — la Joya Pulida. Perspectiva, sensibilidad y precisión como sus mayores activos.</p>
+  <div class="tips-grid-fam" id="gr-tips"></div>
+  <div class="exp-bar">
+    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarHoyFriend('grecia')">⬇ Descargar .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalHoyFriend('grecia')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- ══ GR-CAL ══ -->
+<div id="gr-cal" class="sub-section gr-" style="display:none;">
+<div class="page-header" data-g="历" style="background:rgba(160,127,192,0.03);">
+  <div class="eyebrow" style="color:#a07fc0;">Calendario · Grecia · 2026</div>
+  <h1 style="color:#c8a8e0;">Calendario Energético</h1>
+  <p>Mayo–Diciembre 2026 · Calibrado a 辛 Xin Metal Yin</p>
+</div>
+<div class="cal-wrap">
+  <div class="month-sel" id="gr-month-sel"></div>
+  <div id="gr-month-display"></div>
+  <div class="exp-bar">
+    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarMesFriend('grecia')">⬇ Descargar mes .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalMesFriend('grecia')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- ══ GR-CARTA ══ -->
+<div id="gr-carta" class="sub-section gr-" style="display:none;">
+<div class="page-header" data-g="辛" style="background:rgba(160,127,192,0.03);">
+  <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
+  <h1 style="color:#c8a8e0;">Grecia</h1>
+  <p>06 Mayo 2011 · 01:52 hs · Femenino · 15 años</p>
+  <div class="badge" style="border-color:#a07fc0;color:#a07fc0;">辛 XIN · METAL YIN · DAY MASTER</div>
+</div>
+<div class="ctx-bar" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(160,127,192,0.03);border-bottom:1px solid var(--bdr);">
+  <div>AÑO NATAL <span style="color:#a07fc0;">辛卯 Metal Yin/Conejo</span></div>
+  <div>DA YUN ACTUAL <span style="color:#a07fc0;">癸巳 Agua Yin/Serpiente (~14a)</span></div>
+  <div>GUA <span style="color:#a07fc0;">8 · Tierra Yang · NE favorable</span></div>
+  <div>DIOS PRINCIPAL <span style="color:#a07fc0;">RD — Recurso Directo</span></div>
+</div>
+<div class="carta-wrap">
+  <div class="sec-title" style="color:#a07fc0;">Los Cuatro Pilares</div>
+  <p class="sec-sub">Day Master 辛 Xin Metal Yin — la Joya Pulida. Una de las energías más refinadas y sensibles del sistema. Inteligencia precisa, gusto estético natural, necesidad de ambientes de calidad para florecer.</p>
+  <div class="pilares-grid">
+    <div class="pilar-col"><div class="pilar-label">Hora</div>
+      <div class="pilar-cn" style="color:#a07fc0;">己</div><div class="pilar-name">Ji · Tierra Yin</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#a07fc0;">丑</div></div>
+      <div class="pilar-name">Chou · Buey · Tierra Yin</div><div class="dios-tag tag-t">Recurso Ind.</div></div>
+    <div class="pilar-col" style="background:rgba(160,127,192,0.05);">
+      <div class="pilar-label">Día — El Yo</div>
+      <div class="pilar-cn" style="color:#a07fc0;">辛</div><div class="pilar-name">Xin · Metal Yin</div>
+      <div class="pilar-el">DAY MASTER</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#a07fc0;">酉</div></div>
+      <div class="pilar-name">You · Gallo · Metal Yin</div><div class="dios-tag tag-me">Amigo (比)</div></div>
+    <div class="pilar-col"><div class="pilar-label">Mes</div>
+      <div class="pilar-cn" style="color:#a07fc0;">壬</div><div class="pilar-name">Ren · Agua Yang</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#a07fc0;">辰</div></div>
+      <div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-f">Oficial Herido</div></div>
+    <div class="pilar-col"><div class="pilar-label">Año</div>
+      <div class="pilar-cn" style="color:#a07fc0;">辛</div><div class="pilar-name">Xin · Metal Yin</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#a07fc0;">卯</div></div>
+      <div class="pilar-name">Mao · Conejo · Madera Yin</div><div class="dios-tag tag-m">Dinero Ind.</div></div>
+  </div>
+
+  <div class="sec-title" style="color:#a07fc0;">Day Master: 辛 Xin — La Joya Pulida</div>
+  <p class="sec-sub">Metal Yin en Gallo (su hogar natural). La Joya existe para brillar — pero necesita que la tallen, la cuiden y la pongan en el contexto correcto. No es un metal bruto: es el más refinado y sensible de todos.</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">Arquetipo</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">La Joya Pulida</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Xin es el metal más refinado — un diamante, una joya. Perceptiva, con un sentido estético natural y una inteligencia que va directo al núcleo de las cosas. Sensible a los ambientes: en entornos de calidad, brilla sin esfuerzo. En entornos tóxicos, se opaca.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Gallo en la rama del día</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">酉 — Hogar del Metal Yin</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Xin sobre Gallo es Metal puro y concentrado — la máxima expresión de este Day Master. Claridad de pensamiento, precisión en la palabra, capacidad de ver lo que otros no ven. El riesgo: hipersensibilidad y perfeccionismo que paraliza.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tierra como Recurso</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Ji/Buey y Dragón nutren su Metal</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Tierra genera Metal. Con Ji (Tierra Yin) en la hora y el Dragón en el mes, Grecia tiene un recurso de soporte profundo. La nutre el estudio, la estructura y los entornos ordenados. Su capacidad intelectual es uno de sus mayores activos.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Agua como expresión</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Ren en el mes — Oficial Herido</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Metal genera Agua — Ren Yang en el mes activa el Oficial Herido. Grecia tiene un talento creativo y disruptivo que emerge cuando se siente libre. A los 15 años esto puede vivirse como necesidad de romper moldes y expresarse de manera no convencional.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Madera — su Riqueza</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Conejo (Mao) — Dinero Indirecto</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Madera es lo que el Metal controla — la riqueza de Grecia. El Conejo en su año activa el Dinero Indirecto. Ella acumula recursos cuando trabaja con autonomía y creatividad. La prosperidad llega por vías inesperadas, no por el camino convencional.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);">
+      <div class="e-card-label">Da Yun actual (~14–24)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">癸巳 Agua Yin / Serpiente</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Gui (Agua Yin) activa el Comiendo Dios — su canal de expresión más genuino y creativo. La Serpiente aporta Fuego y Metal (profundidad + filo). Es el período donde su identidad más auténtica empieza a emerger. Necesita estímulo intelectual y espacio de expresión.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#a07fc0;">Los 10 Dioses de Grecia</div>
+  <p class="sec-sub">Cómo opera cada elemento en su vida. Dios principal: RD (Recurso Directo = Tierra nutre Metal).</p>
+  <div class="e-grid">
+    <div class="e-card tierra"><div class="e-card-label">DI 29% — Dinero Indirecto (Yi/Madera Yin)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Riqueza no convencional</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El mayor porcentaje de su carta. La Madera Yin (Conejo, Yi) es lo que el Metal controla con suavidad. Su riqueza llega por vías creativas, artísticas o poco convencionales. No es una acumuladora metódica — sus recursos fluyen cuando sigue su intuición.</p></div>
+    <div class="e-card metal"><div class="e-card-label">A 27% — Amigo (Xin/Metal Yin)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Sus pares naturales</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El 27% de Amigo indica una vida social rica en pares del mismo nivel. Disfruta de personas con su mismo tipo de inteligencia y refinamiento. El riesgo: competencia por recursos con pares demasiado similares.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">RD 14% — Recurso Directo (Wu/Tierra Yang)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Dios principal</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Tierra Yang nutre su Metal. Le da sustento, soporte y capacidad de aprendizaje formal. El RD como dios principal indica que florece en entornos estructurados, con mentores claros y metodología definida.</p></div>
+    <div class="e-card agua"><div class="e-card-label">CD 9% — Comiendo Dios (Gui/Agua Yin)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Su canal creativo genuino</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Agua Yin como expresión libre. Activo en su Da Yun actual. Es el período de su vida donde más necesita crear, explorar y expresarse sin restricciones. El Comiendo Dios floreciendo en la adolescencia es una señal de que tiene talento real que necesita canal.</p></div>
+    <div class="e-card agua"><div class="e-card-label">OH 7% — Oficial Herido (Ren/Agua Yang)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">El disruptor</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Ren en el mes activa el Oficial Herido permanentemente. Talento brillante pero tendencia a desafiar las normas. Aporta originalidad y perspectiva no convencional — el mismo desafío que Morena pero desde el Metal (más preciso y menos impulsivo que la Madera).</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Fuego — 0%</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Ausencia total de Fuego</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Grecia no tiene nada de Fuego en su carta. El Fuego es el Oficial Directo del Metal — estructura, disciplina y reconocimiento formal. La ausencia total puede generar dificultad para comprometerse con sistemas rígidos o autoridades convencionales.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#a07fc0;">Fortalezas y bloqueos energéticos</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ Lo que la potencia</h3><ul>
+      <li><strong>Entornos de calidad y estética.</strong> La Joya brilla en espacios refinados — ambientes que estimulen su inteligencia y gusto.</li>
+      <li><strong>Expresión creativa no convencional.</strong> Su Comiendo Dios activo ahora es su canal más poderoso. Arte, escritura, música — lo que ella elija.</li>
+      <li><strong>Estudio con metodología.</strong> Su Recurso Directo (Tierra) la hace una aprendiz excepcional cuando tiene estructura y un mentor que respete.</li>
+      <li><strong>Autonomía en sus proyectos.</strong> Dinero Indirecto alto — prospera cuando trabaja por cuenta propia o con libertad real.</li>
+      <li><strong>Da Yun actual:</strong> período de florecimiento de su identidad más genuina. Lo que construya ahora (15-24) define su próxima década.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul>
+      <li><strong>Hipersensibilidad al entorno.</strong> La Joya se opaca en ambientes tóxicos o de baja energía. Los ambientes deteriorados la afectan más que a otros Day Masters.</li>
+      <li><strong>Perfeccionismo paralizante.</strong> Metal Yin sobre Gallo (Metal puro) puede generar un estándar de exigencia tan alto que bloquea la acción.</li>
+      <li><strong>Ausencia de Fuego.</strong> Sin estructura formal interna, puede costarle comprometerse con plazos, autoridades o sistemas que le impongan ritmo.</li>
+      <li><strong>Competencia con pares similares.</strong> Con 27% de Amigo, puede haber fricción con personas demasiado parecidas a ella.</li>
+      <li><strong>Ignorar su Madera (riqueza).</strong> Si no cultiva sus talentos creativos y no convencionales, la prosperidad no fluye.</li>
+    </ul></div>
+  </div>
+</div>
+</div><!-- /gr-carta -->
+
+<!-- ══ GR-COMPAT ══ -->
+<div id="gr-compat" class="sub-section gr-" style="display:none;">
+<div class="page-header" data-g="合" style="background:rgba(160,127,192,0.03);">
+  <div class="eyebrow" style="color:#a07fc0;">Compatibilidad · Grecia &amp; Familia</div>
+  <h1 style="color:#c8a8e0;">Grecia en el sistema</h1>
+  <p>辛 Xin Metal Yin — cómo resuena con cada miembro de la familia</p>
+</div>
+<div class="carta-wrap">
+
+  <div class="sec-title" style="color:#a07fc0;">Grecia &amp; Luca — Amigo/figura paterna</div>
+  <p class="sec-sub">辛 Metal Yin + 甲 Madera Yang · Metal corta Madera · Una dinámica de precisión y expansión</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">El vínculo elemental</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Metal corta Madera — afina sin destruir</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Metal Yin no destruye la Madera como lo haría el Metal Yang — la afina y esculpe. Grecia tiene la capacidad de ver con precisión lo que a Luca le falta pulir. Aporta perspectiva crítica sin agresividad. Luca puede sentirla como desafío intelectual estimulante.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Lo que Luca activa en Grecia</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Madera = Dinero Indirecto de Grecia</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Madera Yang de Luca activa el Dinero Indirecto de Grecia — sus recursos más creativos y no convencionales. Estar en proyectos o aprendizajes con Luca le activa un canal de prosperidad que con otras personas no surge tan naturalmente.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">La dinámica de fondo</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Dos inteligencias distintas que se respetan</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Luca es expansión y visión (Madera). Grecia es precisión y profundidad (Metal). Cuando conversan, la agudeza de Grecia ayuda a Luca a enfocar; el impulso de Luca ayuda a Grecia a actuar. Una dinámica de aprendizaje mutuo genuino.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#a07fc0;">Grecia &amp; Morena — Las Amigas</div>
+  <p class="sec-sub">辛 Metal Yin + 甲 Madera Yang · Misma edad, elementos opuestos · La combinación más dinámica</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">Metal corta Madera — en positivo</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Grecia afina lo que Morena expande</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Morena genera ideas y energía en todas direcciones (Madera Yang + HO activo). Grecia tiene la precisión para ver cuál de esas ideas tiene verdadero filo (Metal Yin). Son el dúo creativo ideal: una expande, la otra enfoca. El riesgo: que Grecia parezca "fría" cuando en realidad está siendo precisa.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Lo que Morena activa en Grecia</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Madera = Riqueza de Grecia</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Madera de Morena activa el DI de Grecia — la estimula hacia sus recursos más creativos. Morena la saca de su zona de perfeccionismo. Grecia le da a Morena criterio y foco. Es una de las amistades más complementarias energéticamente.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Misma generación (2011)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Año 辛卯 compartido</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Las dos nacieron en el año Metal Yin/Conejo. Comparten la misma corriente generacional de fondo. Eso crea una comprensión del mundo y una sensibilidad de época que pocas personas tienen con ellas. Son amigas de su tiempo de una manera muy profunda.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">El desafío de la amistad</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">HO de Morena vs precisión de Grecia</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Hurt Officer de Morena puede interpretar la precisión crítica de Grecia como rechazo o frialdad. Y el perfeccionismo de Grecia puede sentir el caos creativo de Morena como amenaza. Cuando aprenden el lenguaje de la otra, son extraordinariamente potentes juntas.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#a07fc0;">Grecia &amp; Carla</div>
+  <p class="sec-sub">辛 Metal Yin + 壬 Agua Yang · Metal genera Agua · Carla fluye con la precisión de Grecia</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">El vínculo elemental</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Metal → Agua: Grecia nutre a Carla</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Metal genera Agua — la precisión y profundidad de Grecia alimenta el Océano de Carla. Se entienden en un nivel intelectual y estético que pocas personas pueden dar a Carla. Es una relación de alta calidad cuando hay confianza mutua.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Lo que Carla activa en Grecia</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Agua = Oficial Herido / CD de Grecia</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Agua de Carla activa el lado creativo y disruptivo de Grecia. Carla puede sacar de Grecia una expresión más libre y desinhibida que la que Grecia muestra al mundo normalmente.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#a07fc0;">Grecia &amp; Guadalupe</div>
+  <p class="sec-sub">辛 Metal Yin + 壬 Agua Yang · Metal genera Agua · La joya y el océano pequeño</p>
+  <div class="e-grid">
+    <div class="e-card agua"><div class="e-card-label">El vínculo</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Grecia nutre a Guadi energéticamente</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Metal genera Agua — Grecia alimenta el Agua de Guadi con su precisión y refinamiento. Guadi, con su Agua Yang profunda, probablemente sienta a Grecia como alguien "especial" de una manera que no puede explicar. El Gua 8 que comparten (mismo Gua natal) refuerza la resonancia.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Mismo Gua</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Gua 8 compartido</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Grecia y Guadi comparten el mismo Gua 8 (Tierra Yang / Gen / Noreste). Mismas direcciones favorables, mismo sistema de activación del espacio. Una afinidad de fondo que opera más allá de los elementos.</p></div>
+  </div>
+
+</div>
+</div><!-- /gr-compat -->
+
+<!-- ══════════════════════════════════════
+     AMANCAI
+══════════════════════════════════════ -->
+
+<!-- AM-HOY -->
+<div id="am-hoy" class="sub-section am-" style="display:none;">
+<div class="page-header" data-g="庚" style="background:rgba(192,154,90,0.03);">
+  <div class="eyebrow" style="color:#c09a5a;">Energía del Día · Amancai</div>
+  <h1 style="color:#e0c080;" id="am-title">Cargando...</h1>
+  <p>Análisis calibrado a su carta natal 庚 Geng Metal Yang · 15 años</p>
+</div>
+<div class="ctx-bar" id="am-ctx" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(192,154,90,0.03);border-bottom:1px solid var(--bdr);"></div>
+<div class="hoy-wrap-fam">
+  <div class="hoy-hero-fam" id="am-hero"></div>
+  <div class="sec-title" style="color:#c09a5a;margin-top:0;font-family:'IM Fell English',serif;font-size:1.4rem;font-weight:400;padding-bottom:0.5rem;border-bottom:1px solid var(--bdr);">Guía para hoy — Amancai</div>
+  <p class="sec-sub">Tips calibrados a 庚 Geng Metal Yang — el Hacha. Determinación, liderazgo y acción directa como sus mayores activos.</p>
+  <div class="tips-grid-fam" id="am-tips"></div>
+  <div class="exp-bar">
+    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarHoyFriend('amancai')">⬇ Descargar .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalHoyFriend('amancai')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- AM-CAL -->
+<div id="am-cal" class="sub-section am-" style="display:none;">
+<div class="page-header" data-g="历" style="background:rgba(192,154,90,0.03);">
+  <div class="eyebrow" style="color:#c09a5a;">Calendario · Amancai · 2026</div>
+  <h1 style="color:#e0c080;">Calendario Energético</h1>
+  <p>Mayo–Diciembre 2026 · Calibrado a 庚 Geng Metal Yang</p>
+</div>
+<div class="cal-wrap">
+  <div class="month-sel" id="am-month-sel"></div>
+  <div id="am-month-display"></div>
+  <div class="exp-bar">
+    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
+    <button class="exp-btn" onclick="exportarMesFriend('amancai')">⬇ Descargar mes .ICS</button>
+    <button class="exp-btn primary" onclick="abrirGCalMesFriend('amancai')">📅 Google Calendar</button>
+  </div>
+</div>
+</div>
+
+<!-- AM-CARTA -->
+<div id="am-carta" class="sub-section am-" style="display:none;">
+<div class="page-header" data-g="庚" style="background:rgba(192,154,90,0.03);">
+  <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
+  <h1 style="color:#e0c080;">Amancai</h1>
+  <p>08 Agosto 2010 · 06:45 hs · Femenino · 15 años</p>
+  <div class="badge" style="border-color:#c09a5a;color:#c09a5a;">庚 GENG · METAL YANG · DAY MASTER</div>
+</div>
+<div class="ctx-bar" style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(192,154,90,0.03);border-bottom:1px solid var(--bdr);">
+  <div>AÑO NATAL <span style="color:#c09a5a;">庚寅 Metal Yang/Tigre</span></div>
+  <div>DA YUN ACTUAL <span style="color:#c09a5a;">壬午 Agua Yang/Caballo (~15a)</span></div>
+  <div>GUA <span style="color:#c09a5a;">7 · Metal Yin · NO favorable</span></div>
+  <div>DIOS PRINCIPAL <span style="color:#c09a5a;">A — Amigo (Geng)</span></div>
+  <div>RIQUEZA <span style="color:#c09a5a;">Madera 🌳</span></div>
+</div>
+<div class="carta-wrap">
+  <div class="sec-title" style="color:#c09a5a;">Los Cuatro Pilares</div>
+  <p class="sec-sub">Una de las cartas más coherentes del sistema: dos pilares idénticos (庚寅 en día y año). Metal Yang sobre dos Tigres. La carta que nace sabiendo lo que quiere.</p>
+  <div class="pilares-grid">
+    <div class="pilar-col"><div class="pilar-label">Hora</div>
+      <div class="pilar-cn" style="color:#c09a5a;">己</div><div class="pilar-name">Ji · Tierra Yin</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#c09a5a;">卯</div></div>
+      <div class="pilar-name">Mao · Conejo · Madera Yin</div><div class="dios-tag" style="background:rgba(192,154,90,0.12);color:#c09a5a;border:1px solid rgba(192,154,90,0.3);">Dinero Directo</div></div>
+    <div class="pilar-col" style="background:rgba(192,154,90,0.05);">
+      <div class="pilar-label">Día — El Yo</div>
+      <div class="pilar-cn" style="color:#c09a5a;">庚</div><div class="pilar-name">Geng · Metal Yang</div>
+      <div class="pilar-el">DAY MASTER</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#c09a5a;">寅</div></div>
+      <div class="pilar-name">Yin · Tigre · Madera Yang</div><div class="dios-tag" style="background:rgba(192,154,90,0.12);color:#c09a5a;border:1px solid rgba(192,154,90,0.3);">Din. Indirecto</div></div>
+    <div class="pilar-col"><div class="pilar-label">Mes</div>
+      <div class="pilar-cn" style="color:#c09a5a;">甲</div><div class="pilar-name">Jia · Madera Yang</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#c09a5a;">申</div></div>
+      <div class="pilar-name">Shen · Mono · Metal Yang</div><div class="dios-tag" style="background:rgba(192,154,90,0.12);color:#c09a5a;border:1px solid rgba(192,154,90,0.3);">Amigo</div></div>
+    <div class="pilar-col"><div class="pilar-label">Año</div>
+      <div class="pilar-cn" style="color:#c09a5a;">庚</div><div class="pilar-name">Geng · Metal Yang</div>
+      <div style="margin-top:0.6rem;"><div class="pilar-cn" style="font-size:1.7rem;color:#c09a5a;">寅</div></div>
+      <div class="pilar-name">Yin · Tigre · Madera Yang</div><div class="dios-tag" style="background:rgba(192,154,90,0.12);color:#c09a5a;border:1px solid rgba(192,154,90,0.3);">Din. Indirecto</div></div>
+  </div>
+
+  <div class="sec-title" style="color:#c09a5a;">Day Master: 庚 Geng — El Hacha Yang</div>
+  <p class="sec-sub">Metal Yang es el más poderoso y directo de los Day Masters metálicos. No es la joya pulida de Grecia (辛 Xin) — es el hacha que corta, la espada que forja. Determinación, voluntad y una claridad de propósito que puede resultar intimidante para quienes no la conocen.</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">Arquetipo</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">El Hacha Yang</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Geng es el Metal más duro. Directa, decidida, con una voluntad que no se dobla fácilmente. No da vueltas — va al punto. Puede parecer brusca cuando en realidad está siendo eficiente. Su mayor fortaleza es también lo que más malinterpretan los demás.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Dos Tigres (día y año)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Madera Yang × 2 — expansión de su riqueza</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Tigre (Madera Yang) es su Dinero Indirecto — su riqueza no convencional. Con dos Tigres en la carta, tiene una cantidad de riqueza potencial inusualmente alta. El Hacha necesita madera que cortar — los Tigres se la dan en abundancia. Amancai tiene recursos creativos y de expansión que muchos no ven de inmediato.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Mono en el mes — choque con los Tigres</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">申寅 Mono vs Tigre — su motor interno</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Mono (申 Shen) en el mes choca con sus dos Tigres (寅 Yin) del día y el año. Este choque interno es el motor que la activa constantemente. No es solo tensión — es lo que la mantiene en movimiento. Sin ese choque, no habría la energía que la caracteriza.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Conejo en la hora — riqueza directa</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">卯 Mao — Dinero Directo en las metas</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Conejo (Madera Yin) en la rama de la hora activa el Dinero Directo — ingreso por trabajo constante y metódico. Sus metas profundas están conectadas con la prosperidad a través de la acción. Cuando tiene un objetivo claro, la disciplina aparece sola.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Ji Tierra Yin en la hora</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Recurso Directo — soporte profundo</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Tierra Yin en la hora activa su Recurso Directo. Tiene capacidad de aprendizaje formal y un soporte interno que no siempre muestra. Detrás de la dureza del Metal hay una inteligencia estudiosa que funciona muy bien cuando la estructura la contiene sin ahogarla.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Da Yun actual (~15–25 años)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">壬午 Agua Yang / Caballo</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Ren (Agua Yang) activa el Comiendo Dios — su expresión creativa más genuina y libre. El Caballo (Fuego) convive con su Metal generando tensión productiva. Es el período donde su voz propia emerge con más fuerza. Lo que expresa ahora define su identidad adulta.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#c09a5a;">Los 10 Dioses</div>
+  <p class="sec-sub">Cómo opera cada elemento en su vida. Dios principal A (Amigo = Geng Metal Yang), con alta concentración de riqueza (Madera).</p>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">A 42% — Amigo (Geng/Metal Yang)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Dios principal dominante</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El 42% más alto posible para Amigo. Esto hace que su identidad esté muy marcada — es intensamente ella misma, siempre. El riesgo: rigidez o dificultad para adaptarse cuando la situación pide flexibilidad. La fortaleza: autenticidad total, constancia y coherencia entre lo que piensa y lo que hace.</p></div>
+    <div class="e-card madera"><div class="e-card-label">DI 21% — Dinero Indirecto (Jia/Madera Yang)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Riqueza no convencional</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Madera Yang (Tigres) como riqueza principal. Sus recursos más importantes vienen de proyectos propios, creatividad y trabajo autónomo. No funciona bien en esquemas donde no tiene libertad de acción — la riqueza llega cuando sigue su propio criterio.</p></div>
+    <div class="e-card madera"><div class="e-card-label">DD 11% — Dinero Directo (Yi/Madera Yin)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Ingresos por trabajo constante</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Madera Yin (Conejo) en la hora activa el Dinero Directo. Tiene capacidad de acumulación disciplinada cuando tiene un objetivo concreto. El Conejo en la hora (metas) dice que sus motivaciones más profundas están ligadas a construir algo tangible.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">RI 8% + RD 7% — Recurso doble</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Tierra nutre Metal</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Con RI (Wu/Tierra Yang) y RD (Ji/Tierra Yin) presentes, tiene un doble sistema de recurso. Aprende de dos maneras: intuitiva (RI) y estructurada (RD). El aprendizaje que combina ambas es el que más la desarrolla.</p></div>
+    <div class="e-card agua"><div class="e-card-label">CD 6% — Comiendo Dios (Ren/Agua Yang)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Expresión genuina activa ahora</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Agua Yang en el Da Yun actual activa el CD. Es el período de mayor apertura creativa y expresiva de su vida hasta ahora. Lo que emerge en esta etapa (15-25) es su voz más auténtica — necesita que la escuchen sin juzgar.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Fuego — 7% · Casi ausente</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">El 7M débil — una ventaja</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Con solo 7% de Fuego, el 7 Muertes (Bing) casi no opera. Para Geng fuerte esto significa poca presión externa de control o autoridad. La tendencia natural es la autonomía. El riesgo: dificultad para relacionarse con sistemas de poder o jerarquías formales.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#c09a5a;">Fortalezas y bloqueos energéticos</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ Lo que la potencia</h3><ul>
+      <li><strong>Autonomía y liderazgo propio.</strong> Geng fuerte con 42% de Amigo — funciona mejor como líder que como seguidora.</li>
+      <li><strong>Proyectos con resultado concreto y visible.</strong> El Hacha necesita madera que cortar — objetivos claros, no abstractos.</li>
+      <li><strong>Acción directa sin rodeos.</strong> No sobreplanificar. Su fortaleza es la ejecución, no la teoría.</li>
+      <li><strong>Da Yun actual (Ren/Caballo):</strong> período de mayor expresión creativa de su vida. Darle voz y canal.</li>
+      <li><strong>Trabajo físico, deportivo o con las manos.</strong> Metal Yang se activa con el movimiento concreto.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que la bloquea</h3><ul>
+      <li><strong>Exceso de Metal (42% Amigo).</strong> Puede ser demasiado rígida o testaruda cuando se siente amenazada. El desafío es la flexibilidad.</li>
+      <li><strong>Choque Tigre-Mono permanente.</strong> Motor interno que no para — puede generar agotamiento si no tiene salida física y creativa.</li>
+      <li><strong>Ambientes sin estructura o con caos excesivo.</strong> Geng necesita una base sólida para operar bien.</li>
+      <li><strong>Jerarquías sin sentido o autoridades incoherentes.</strong> Con poco 7M, no tolera bien el poder arbitrario.</li>
+      <li><strong>Restricciones creativas en este período.</strong> Con el CD activado en el Da Yun actual, bloquear su expresión la apaga.</li>
+    </ul></div>
+  </div>
+</div>
+</div><!-- /am-carta -->
+
+<!-- AM-COMPAT -->
+<div id="am-compat" class="sub-section am-" style="display:none;">
+<div class="page-header" data-g="合" style="background:rgba(192,154,90,0.03);">
+  <div class="eyebrow" style="color:#c09a5a;">Compatibilidad · Amancai &amp; Morena</div>
+  <h1 style="color:#e0c080;">Amancai + Morena</h1>
+  <p>庚 Geng Metal Yang + 甲 Jia Madera Yang · Misma generación · Energías opuestas que se atraen</p>
+</div>
+<div class="carta-wrap">
+
+  <div style="background:rgba(192,154,90,0.04);border:1px solid rgba(192,154,90,0.2);border-radius:5px;padding:1.4rem 1.8rem;margin-bottom:2rem;">
+    <div style="font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.15em;color:#c09a5a;text-transform:uppercase;margin-bottom:0.7rem;">La dinámica central</div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:2rem;flex-wrap:wrap;margin-bottom:1rem;text-align:center;">
+      <div><div style="font-size:2rem;color:var(--morena);">甲 Morena</div><div style="font-size:0.78rem;color:var(--ash2);">Madera Yang · El Árbol</div></div>
+      <div style="font-size:1.5rem;color:var(--smoke);">⚔️</div>
+      <div><div style="font-size:2rem;color:#c09a5a;">庚 Amancai</div><div style="font-size:0.78rem;color:var(--ash2);">Metal Yang · El Hacha</div></div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--ash2);line-height:1.7;">El Hacha (Geng) corta la Madera (Jia). En BaZi esto no es destrucción — es la relación más intensa y transformadora del sistema. El Metal Yang da forma a la Madera Yang. Dos energías Yang en máxima tensión productiva. Ambas nacidas en 2011, mismo año 辛卯 — generación compartida de fondo.</p>
+  </div>
+
+  <div class="sec-title" style="color:#c09a5a;">Los 6 planos del vínculo</div>
+  <div class="e-grid">
+    <div class="e-card metal"><div class="e-card-label">El vínculo elemental</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Geng corta Jia — el escultor y el árbol</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Metal da forma a la Madera. Amancai tiene la capacidad de ver exactamente qué le falta o sobra a Morena con una precisión que pocas personas tienen. No es crueldad — es el ojo del Hacha. Morena puede sentirlo como crítica; en realidad es la perspectiva más afilada que puede recibir.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Lo que Morena activa en Amancai</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Madera = Riqueza de Amancai</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Madera Yang de Morena es el Dinero Indirecto de Amancai — su canal de riqueza y expansión. Estar cerca de Morena activa en Amancai recursos creativos y de crecimiento que con otras personas no emergen igual. Morena es literalmente la Madera que el Hacha de Amancai necesita para existir con propósito.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Lo que Amancai activa en Morena</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--morena);">Metal = 7 Muertes de Morena</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Para Morena (Jia), el Metal Yang de Amancai activa el 7 Killings. En positivo: la presiona, la desafía, saca su mejor versión. En negativo: puede sentirla como amenaza o competencia. El mismo elemento que la incomoda es el que la hace crecer más. La mejor amistad que puede tener para su desarrollo.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Misma generación (2011)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">辛卯 Metal Yin/Conejo compartido</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Ambas nacieron en el año 辛卯. Comparten la misma energía generacional de fondo: Metal Yin/Conejo. Eso crea una comprensión del mundo y una sensibilidad de época que no se puede fabricar. Son amigas de su tiempo en el sentido más profundo — aunque sus elementos de día sean opuestos.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Tigre de Amancai + Caballo de Morena (Da Yun)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Fuego compartido en 2026</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">En 2026, Amancai tiene su Da Yun en el Caballo (Fuego/Wu) y Morena tiene Caballo doble activo (natal + año). Las dos están en períodos de alta intensidad de Fuego simultáneamente. Esto genera una resonancia energética especial este año — están en frecuencias parecidas aunque por caminos distintos.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">El desafío de la amistad</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Dos Yang en el mismo espacio</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Morena (甲 Yang) y Amancai (庚 Yang) son las dos Yang más intensas del sistema BaZi. En acuerdo son imparables. En desacuerdo, ninguna cede fácilmente. El punto de equilibrio no es que una domine a la otra — es encontrar proyectos o espacios donde cada Yang tenga su propio territorio.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#c09a5a;">2026 — Cómo viven el año juntas</div>
+  <div class="e-grid">
+    <div class="e-card fuego"><div class="e-card-label">Morena en 2026</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--morena);">Caballo doble — intensidad máxima</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Caballo natal (día) + año Bing Wu = Fuego en el pico absoluto para Morena. Su HO está en su máxima expresión. Expansión, visibilidad y también la mayor tendencia a los conflictos con autoridades. Necesita canales de expresión, no contención.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Amancai en 2026</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#c09a5a;">Da Yun Ren/Caballo — CD emergiendo</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Agua Yang de su Da Yun activa el Comiendo Dios — creatividad genuina emergiendo. El Caballo en el Da Yun resuena con el Caballo del año. Amancai está en un período de descubrimiento de su propia voz. Más curiosidad hacia adentro que expansión pura hacia afuera.</p></div>
+    <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);grid-column:1/-1;"><div class="e-card-label">La dinámica de pareja de amigas en 2026</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Morena se expande · Amancai se descubre</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">En 2026 van en movimientos distintos pero complementarios: Morena hacia afuera (visibilidad, expresión, intensidad), Amancai hacia adentro (exploración de su identidad creativa, emergencia de su propia voz). Pueden ser el mejor anclaje mutua para el otro movimiento — Amancai le da perspectiva y foco a Morena; Morena le da impulso y visibilidad a Amancai.</p></div>
+  </div>
+
+  <div class="sec-title" style="color:#c09a5a;">Síntesis — Por qué esta amistad funciona</div>
+  <div style="background:rgba(192,154,90,0.04);border:1px solid rgba(192,154,90,0.2);border-radius:5px;padding:1.5rem 1.8rem;">
+    <p style="font-size:0.9rem;color:var(--ash2);line-height:1.78;">
+      <strong style="color:#c09a5a;">Amancai (庚 Geng) + Morena (甲 Jia)</strong> es el clásico Hacha y Árbol — la combinación más intensa del eje Metal-Madera. No es la amistad más cómoda, pero sí una de las más transformadoras.<br><br>
+      Amancai ve en Morena su riqueza (la Madera que el Hacha necesita). Morena ve en Amancai a alguien que la desafía de una manera que pocos pueden — y que al mismo tiempo comparte su generación, su año de nacimiento y una frecuencia Yang que pocas personas entienden.<br><br>
+      <strong style="color:var(--ash);">El regalo de esta amistad:</strong> Amancai afila a Morena (la hace más precisa, más estratégica, más consciente de sus límites). Morena expande a Amancai (le da movimiento, calidez y conexión con el mundo exterior que el Metal no genera solo).<br><br>
+      <strong style="color:var(--gold);">En 2026, las dos en sus momentos de pico simultáneos, pueden ser una fuerza creativa y de visibilidad extraordinaria juntas — si canalizan hacia afuera en lugar de hacia adentro de la relación.</strong>
+    </p>
+  </div>
+
+  <div class="pot-grid" style="margin-top:1.5rem;">
+    <div class="pot-box green"><h3>✦ Lo que fortalece la amistad</h3><ul>
+      <li><strong>Proyectos con territorio propio para cada una.</strong> Las dos Yang necesitan su espacio de liderazgo — sin superposición de roles.</li>
+      <li><strong>Honestidad directa.</strong> Amancai aprecia la franqueza; Morena no tolera las vueltas. Se entienden en el lenguaje directo.</li>
+      <li><strong>Creatividad compartida.</strong> Con el CD de Amancai activo y el HO de Morena en el pico, juntas en modo creativo son extraordinarias.</li>
+      <li><strong>Reconocerse mutuamente en público.</strong> Morena que dice "Amancai tiene razón" y Amancai que dice "lo que Morena está haciendo es increíble" son los momentos que más cimentan el vínculo.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Lo que tensiona la amistad</h3><ul>
+      <li><strong>Competencia directa.</strong> Dos Yang en el mismo territorio sin acuerdo previo — choque garantizado.</li>
+      <li><strong>Amancai siendo demasiado crítica sin contexto.</strong> Su precisión puede sentirse como ataque para el HO de Morena.</li>
+      <li><strong>Morena ignorando la perspectiva de Amancai.</strong> El HO de Morena puede desestimar lo que no generó ella misma.</li>
+      <li><strong>Agosto-Septiembre 2026:</strong> Metal activo en ambas cartas — mayor fricción potencial. Evitar confrontaciones importantes en ese período.</li>
+    </ul></div>
+  </div>
+
+</div>
+</div><!-- /am-compat -->
+
+</div><!-- /sec-amigos -->
+
 <footer style="text-align:center;padding:2rem;border-top:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);letter-spacing:0.1em;">
-  BAZI · 四柱命理 · GUADALUPE · MORENA · CARLA · 2026 · sanbaoestudio@gmail.com
+  BAZI · 四柱命理 · GUADALUPE · MORENA · CARLA · GRECIA · 2026 · sanbaoestudio@gmail.com
 </footer>
 
 <script>
@@ -1108,6 +1575,16 @@ function getResumenFam(ti,ri,rating,person){
     const r={5:`Día de alta armonía para Guadi. ${e} con ${a} activa su Agua Yang de manera fluida.`,4:`Buen día. El ${a} trae energía cooperativa para su carta natal.`,3:`Día neutro para ella. Observar su estado antes de proponer actividades.`,2:`El ${a} genera cierta tensión. Más calma, menos demandas y estímulos.`,1:`Día difícil energéticamente para ella. Simplificar el entorno y dar mucho espacio.`};
     return r[rating];
   }
+  if(person==='amancai'){
+    const r={
+      5:`Alineación alta para Amancai. ${e} con ${a} activa su Metal Yang de manera precisa y poderosa.`,
+      4:`Día favorable. El ${a} coopera con su carta — buen momento para actuar y crear.`,
+      3:`Día neutro para ella. Flujo moderado, sin impulso especial ni bloqueo.`,
+      2:`El ${a} genera tensión para su Metal. Mejor reflexión antes que acción directa.`,
+      1:`Alta fricción energética para Amancai. Simplificar y proteger el entorno hoy.`
+    };
+    return r[rating];
+  }
   if(person==='carla'){
     const r={5:`Día de alta alineación para Carla. ${e} con ${a} activa su Agua Yang de manera fluida y expansiva.`,4:`Día favorable. El ${a} coopera con su carta — buen momento para expresarse y actuar.`,3:`Día neutro para ella. Ni gran impulso ni bloqueo. Moverse con conciencia del contexto.`,2:`El ${a} genera tensión. Preferir análisis y reflexión sobre acción directa hoy.`,1:`Alta fricción energética para Carla. Simplificar, proteger y no forzar situaciones difíciles.`};
     return r[rating];
@@ -1266,20 +1743,341 @@ function showSubSection(id,prefix,tab){
   }
 }
 
+// ══ GRECIA / AMIGOS ENGINE ══
+const FRIENDS={
+  grecia:{
+    name:'Grecia',dm:7,dmElem:'辛 Xin · Metal Yin',color:'#a07fc0',
+    // natal: Chou(1),You(9),Chen(4),Mao(3) · año2026:Wu(6) · dayun:Si(5)
+    natal:[1,9,4,3],anioR:6,dayunR:5,
+    dios:['7 Muertes','Dinero Dir.','Recurso Dir.','Rec. Ind.','Amigo','Dinero Ind.','Ofic. Her.','Ofic. Dir.','Comiendo Dios','Rob. Riqueza'],
+    // Para Xin(7): Jia(0)=7M,Yi(1)=DD,Wu(4)=RD,Ji(5)=RI,Xin(7)=A,Mao via Yi=DD
+    // elemBon: Tierra(4,5)=recurso, Agua(8,9)=expresión; elemBad: Fuego(2,3)=oficial frena
+    elemBon:[4,5,8,9,0,1],elemBad:[2,3],
+    tipsHacer:{
+      0:['Conectar con personas de alto calibre que la estimulen intelectualmente','Colaborar en proyectos donde su precisión sea el activo clave','Buscar relaciones de aprendizaje mutuo genuino','Relacionarse con alguien que expanda su visión más allá de lo conocido','Activar su red de contactos con intención'],
+      1:['Moverse con rapidez en una oportunidad que tiene ventana corta','Tomar iniciativa en algo creativo antes de que alguien más lo haga','Confiar en su intuición estética sobre una decisión pendiente','Actuar sobre algo que lleva demasiado tiempo analizando','Explorar sin el requisito de la perfección'],
+      2:['Crear, expresar, producir algo con su sello personal','Compartir su perspectiva única con su entorno — arte, escritura, lo que elija','Mostrarse con la originalidad que normalmente guarda para sí','Liderar algo desde su autenticidad más profunda','Salir del perfeccionismo y publicar/mostrar algo que tiene listo'],
+      3:['Expresar ideas no convencionales sin autocensura','Tomar decisiones desde la intuición en lugar del análisis exhaustivo','Crear algo disruptivo que desafíe lo establecido en su entorno','Hablar con claridad sobre algo que venía guardando','Romper un molde propio que ya le quedó chico'],
+      4:['Organizar, estructurar o planificar algo importante con detalle','Avanzar en estudio o aprendizaje con metodología clara','Activar su Recurso Directo: leer, investigar, aprender','Conectar con figuras que puedan mentorearla de manera genuina','Cumplir compromisos formales con la precisión que la caracteriza'],
+      5:['Estudiar o profundizar en algo que le apasiona de verdad','Actividades que combinen orden y creatividad — su zona óptima','Conectar con personas estructuradas que la nutran sin limitarla','Avanzar en proyectos con pasos claros y secuencia definida','Prepararse metódicamente para algo importante que se acerca'],
+      6:['Usar su aguante bajo presión — el Metal templado es su fortaleza','Resolver algo difícil con la claridad y precisión que tiene cuando está activada','Hablar directamente sobre algo que venía evitando','Mostrar determinación frente a un desafío concreto','Tomar una posición firme en algo que realmente le importa'],
+      7:['Avanzar en compromisos formales o académicos importantes','Construir su reputación con acciones consistentes y de calidad','Conectar con personas de autoridad desde su mejor versión','Documentar o registrar algo de valor que está aprendiendo o creando','Respetar una estructura que le abre puertas aunque no sea su estilo natural'],
+      8:['Crear con libertad total — su Comiendo Dios en el pico','Explorar algo nuevo sin presión de resultado ni perfección','Expresarse artísticamente, musicalmente, o por escrito','Compartir algo creativo que normalmente guarda para sí','Conectar con su mundo interior sin agenda ni obligación'],
+      9:['Descansar y recargar — el Metal necesita silencio para mantener el filo','Reflexionar sobre lo que quiere con perspectiva','Actividades de quietud que la reconecten con su esencia','Tiempo a solas en un entorno de calidad — el ambiente importa para el Metal','Evitar compromisos nuevos y proteger su energía'],
+    },
+    tipsNoHacer:{
+      0:['Competir con personas que deberían ser aliadas','Quedarse en la soledad intelectual cuando la energía pide intercambio','Ignorar oportunidades que llegan por su red de contactos','Desestimar a quien tiene un enfoque diferente al suyo','Cerrar antes de haber escuchado la perspectiva del otro'],
+      1:['Comprometerse a algo importante sin mínimo análisis previo','Confiar ciegamente en algo o alguien nuevo que apareció de repente','Actuar desde la impulsividad en temas que tienen consecuencias duraderas','Bajar sus estándares por presión externa','Ignorar señales sutiles de incongruencia en personas o situaciones'],
+      2:['Contenerse cuando la energía pide expresarse — el Metal guardado pierde brillo','Editar y re-editar en lugar de mostrar y publicar','Reprimir su creatividad por miedo a que no sea "perfecta"','Quedarse en modo análisis cuando el Qi pide creación','Posponer ese proyecto creativo esperando el momento ideal que nunca llega'],
+      3:['Autocensurarse cuando tiene algo genuino que decir','Sobre-analizar una decisión que ya tiene tomada intuitivamente','Reprimir su originalidad para encajar en lo convencional','Actuar desde el enojo o la impaciencia en lugar de desde la claridad','Confrontar sin estrategia cuando la energía requiere precisión'],
+      4:['Saltar pasos en un proceso que necesita secuencia y método','Improvisar donde se esperan resultados de calidad','Descuidar la preparación en algo que tiene consecuencias reales','Ignorar oportunidades de aprendizaje formal que se presentan','Subestimar el valor de la estructura cuando el Qi la pide'],
+      5:['Caer en el perfeccionismo que paraliza — el análisis sin fin es su trampa principal','Sobre-planificar en lugar de actuar con lo que ya tiene','Esperar certeza total antes de moverse — no existe','Encerrarse en su mundo interior cuando la energía pide interacción','Ignorar el valor de lo imperfecto como punto de partida real'],
+      6:['Actuar desde la reactividad emocional en lugar de la precisión estratégica','Confrontar directamente cuando la sutileza funcionaría mejor','Tomar decisiones importantes en el pico de la tensión','Forzar resultados inmediatos cuando la situación necesita tiempo','Ignorar las señales de que algo necesita más preparación'],
+      7:['Saltear formalidades o compromisos que tienen consecuencias reales','Actuar fuera del marco cuando el sistema puede ser un aliado hoy','Descuidar su reputación o imagen en contextos donde cuenta','Improvisar en situaciones que requieren su precisión y método característicos','Ignorar la opinión de personas que tienen perspectiva sobre lo que le interesa'],
+      8:['Bloquear su Canal de expresión con el perfeccionismo — es el peor freno del CD','Compararse con otros mientras crea — mata el flujo','Pedir validación externa antes de terminar algo propio','Mezclar la expresión creativa con obligaciones o producción metódica','Ignorar las señales de que necesita más tiempo de creación libre en su vida'],
+      9:['Asumir compromisos nuevos cuando está en modo recarga','Exponerse a ambientes de baja energía o toxicidad cuando necesita silencio','Forzar productividad cuando el cuerpo y la mente piden integración','Tomar decisiones importantes sin haber descansado y procesado primero','Ignorar sus propias señales de que el entorno la está desgastando'],
+    }
+  },
+  amancai:{
+    name:'Amancai',dm:6,dmElem:'庚 Geng · Metal Yang',color:'#c09a5a',
+    // natal: Mao(3), Yin(2), Shen(8), Yin(2) · año2026: Wu(6) · dayun: Wu(6)
+    natal:[3,2,8,2],anioR:6,dayunR:6,
+    dios:['Din. Dir.','Din. Ind.','7 Killings','Of. Dir.','Rec. Ind.','Rec. Dir.','Amigo','Comiendo Dios','Rob Riqueza','Of. Herido'],
+    // Para Geng(6): Yi(1)=DD,Jia(0)=DI,Bing(2)=7M,Ding(3)=OD,Wu(4)=RI,Ji(5)=RD,Geng(6)=A,Ren(8)=CD,Xin(7)=RR,Gui(9)=OH
+    // elemBon: Madera(0,1)=riqueza, Agua(8,9)=expresión CD; elemBad: Fuego(2,3)=7M/OD controla Metal
+    elemBon:[0,1,4,5,8,9],elemBad:[2,3],
+    tipsHacer:{
+      0:['Activar su red — Amancai brilla cuando colabora con pares que la igualan','Proyectos conjuntos donde ambas partes lideran algo propio','Conectar con alguien que le da dirección y propósito concreto'],
+      1:['Moverse rápido en una oportunidad que tiene ventana corta','Actuar sobre algo pendiente sin esperar más análisis','Aprovechar su velocidad de ejecución — el Metal corta rápido cuando quiere'],
+      2:['Creatividad con autonomía total — su mejor modo','Crear, explorar, romper moldes propios','Mostrarse desde su perspectiva más original y sin autocensura'],
+      3:['Hablar con claridad sobre algo que venía evitando','Tomar una posición firme en algo que le importa','Decidir desde la convicción, no desde la presión externa'],
+      4:['Estudio, investigación o profundización en algo que le importa','Aprendizaje con estructura y metodología clara','Prepararse metódicamente para un objetivo cercano'],
+      5:['Organizar, planificar, estructurar con método','Actividades con secuencia clara y resultado concreto','Conectar con mentores o figuras de soporte genuino'],
+      6:['Avanzar en proyectos propios con total autonomía','Mostrar su criterio y su perspectiva sin filtros','Liderar algo donde no tenga que justificarse'],
+      7:['Expresión libre y genuina — el CD activo ahora en su Da Yun','Creatividad sin resultado obligatorio — explorar por explorar','Compartir algo propio con alguien que la valore de verdad'],
+      8:['Construir o reforzar alianzas con pares del mismo nivel','Trabajo conjunto donde la competencia no sea el motor','Conectar con su grupo desde lo genuino'],
+      9:['Reflexionar antes de actuar — la intuición hoy es muy precisa','Observar y procesar antes de comprometerse','Escuchar su instinto sobre algo que no termina de convencerla'],
+    },
+    tipsNoHacer:{
+      0:['No competir con quien podría ser aliada','Evitar la rigidez que aleja a personas que podrían aportarle','No cerrarse en su propio criterio sin escuchar'],
+      1:['No comprometerse a largo plazo sin análisis mínimo','Evitar impulsividad en decisiones que tienen consecuencias','No actuar solo por la presión de la velocidad'],
+      2:['No confrontar directamente cuando el día pide sutileza','Evitar el choque innecesario con figuras de poder','No actuar desde la impulsividad cuando hay tensión activa'],
+      3:['No ser demasiado directa cuando la situación pide tacto','Evitar el enfrentamiento cuando no vale el costo','No tomar decisiones importantes en el pico emocional'],
+      4:['No saltar pasos en procesos que requieren secuencia','Evitar la improvisación en algo que pide preparación','No subestimar el valor del soporte y la estructura'],
+      5:['No improvisar donde se necesita método y precisión','Evitar la vaguedad en compromisos de trabajo o amistad','No saltear la planificación cuando el Qi la pide'],
+      6:['No ser tan rígida que pierda flexibilidad cuando la situación lo requiere','Evitar el exceso de autosuficiencia — pedir ayuda no es debilidad','No encerrarse en su propio mundo cuando la energía pide intercambio'],
+      7:['No bloquear su CD con el perfeccionismo — el Metal puede ser muy exigente consigo mismo','No compararse mientras crea — mata el flujo genuino','No pedir validación antes de terminar algo propio'],
+      8:['No competir con pares cuando la energía pide colaboración','Evitar el individualismo excesivo cuando el Qi pide comunidad','No desestimar el aporte de personas con perspectivas distintas a la suya'],
+      9:['No actuar impulsivamente en algo que pide reflexión','No comprometerse bajo presión sin haber procesado bien','Evitar decisiones de largo plazo sin descanso previo'],
+    }
+  }
+};
+
+const currentFriendMonths={grecia:5,amancai:5};
+let todayFriendPilares={};
+
+function getIntsFriend(ri,person){
+  const p=FRIENDS[person];
+  const refs=[...p.natal,p.anioR,p.dayunR];
+  let res=[];
+  for(let b of refs){
+    for(let[a,c]of CHOQUES_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`Choque con ${ANIMALES[b]}`});
+    for(let[a,c]of COMBHE_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`Combina con ${ANIMALES[b]}`});
+    for(let[a,c]of DESTRUCT_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`Destructor con ${ANIMALES[b]}`});
+  }
+  // Gallo+You self-combination and metal interactions for Xin
+  if(person==='grecia'&&(ri===9||ri===5))res.push({tipo:'trio',efecto:'bien',txt:'Activa Metal/Agua de su carta'});
+  return res;
+}
+
+function calcRatingFriend(ti,ri,person){
+  const p=FRIENDS[person];let s=3;
+  if(p.elemBon.includes(ti))s+=1.0;
+  if(p.elemBad.includes(ti))s-=1.1;
+  for(let i of getIntsFriend(ri,person)){
+    if(i.efecto==='bien')s+=0.5;
+    if(i.efecto==='mal')s-=0.8;
+    if(i.efecto==='cuidado')s-=0.35;
+    if(i.tipo==='trio')s+=0.5;
+  }
+  return Math.max(1,Math.min(5,Math.round(s)));
+}
+
+function getResumenFriend(ti,ri,rating,person){
+  const a=ANIMALES[ri],e=ELEM_T[ti];
+  const r={
+    5:`Día de alta alineación para Grecia. ${e} con ${a} activa su Metal Yin de manera precisa y fluida.`,
+    4:`Día favorable. El ${a} coopera con su carta — buen momento para crear y expresarse.`,
+    3:`Día neutro. Ni gran impulso ni bloqueo significativo. Moverse con conciencia.`,
+    2:`El ${a} genera cierta tensión para su Metal. Reflexión antes que acción.`,
+    1:`Alta fricción energética para Grecia. Simplificar y proteger su entorno hoy.`
+  };
+  return r[rating];
+}
+
+function buildHoyFriend(person){
+  const today=getToday();
+  const p=getPilar(today);
+  todayFriendPilares[person]=p;
+  const pData=FRIENDS[person];
+  const rating=calcRatingFriend(p.ti,p.ri,person);
+  const dow=DIAS_ES[today.getDay()];
+  const dia=today.getDate();
+  const mes=MESES_ES[today.getMonth()+1];
+  const anio=today.getFullYear();
+  const m=today.getMonth()+1;
+  const mp=getMesPilarFam(m);
+  const pfx=person==='grecia'?'gr':'am';
+  const color=person==='grecia'?'#a07fc0':'#c09a5a';
+  const dayunLabel=person==='grecia'?'癸巳 Agua Yin/Serpiente':'壬午 Agua Yang/Caballo';
+
+  document.getElementById(`${pfx}-title`).textContent=`${dow}, ${dia} de ${mes} ${anio}`;
+  document.getElementById(`${pfx}-ctx`).innerHTML=`
+    <div>AÑO <span style="color:${color};">丙午 Fuego/Caballo</span></div>
+    <div>MES <span style="color:${color};">${TRONCOS_FULL[mp.ti]} ${RAMAS_FULL[mp.ri]}</span></div>
+    <div>DÍA <span style="color:${color};">${p.tFull} ${p.rFull} · ${p.animal}</span></div>
+    <div>DA YUN <span style="color:${color};">${dayunLabel}</span></div>
+  `;
+
+  let vClass,vText,vContext;
+  if(rating>=4){vClass='vg';vText='Día de alta alineación energética';vContext=`El clima del día coopera con la carta de Grecia. Su Metal Yin brilla en este contexto.`;}
+  else if(rating===3){vClass='vy';vText='Día de energía neutral';vContext=`Flujo moderado para Grecia. La energía funciona pero requiere conciencia del contexto.`;}
+  else{vClass='vr';vText='Día de fricción energética';vContext=`El pilar de hoy genera tensión con su Metal Yin. Simplificar y proteger el entorno.`;}
+
+  const ints=getIntsFriend(p.ri,person);
+  const intTxt=ints.length?ints.map(i=>i.txt).join(' · '):'Sin interacciones especiales';
+
+  document.getElementById(`${pfx}-hero`).innerHTML=`
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
+      <div>
+        <div style="font-family:'IM Fell English',serif;font-size:1.3rem;font-weight:400;color:${color};margin-bottom:0.3rem;">${dow} ${dia} de ${mes} ${anio}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--smoke);letter-spacing:0.1em;margin-bottom:0.8rem;">PILAR · <span style="color:#c8a8e0;">${p.tFull}</span> · <span style="color:#c8a8e0;">${p.rFull} (${p.animal})</span> · ${p.elemT}</div>
+      </div>
+      <div style="text-align:right;">
+        <div style="display:flex;gap:3px;justify-content:flex-end;">${renderStarsFam(rating,18,'star-fam star')}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--smoke);">${rating}/5 · ${pData.dios[p.ti]}</div>
+      </div>
+    </div>
+    <div style="font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;" class="${vClass}">${vText}</div>
+    <div style="font-size:0.9rem;color:var(--ash2);margin:0.5rem 0;">${vContext}</div>
+    <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--smoke);"><span class="etag ${p.elemC}" style="margin-right:0.5rem;">${p.elemN.toUpperCase()} · ${pData.dios[p.ti]}</span>${intTxt}</div>
+  `;
+
+  const th=pData.tipsHacer[p.ti];
+  const tn=pData.tipsNoHacer[p.ti];
+  document.getElementById(`${pfx}-tips`).innerHTML=`
+    <div class="tips-box do-box">
+      <h3>✦ Hacer hoy — Grecia</h3>
+      <ul>${th.map(t=>`<li>${t}</li>`).join('')}</ul>
+    </div>
+    <div class="tips-box dont-box">
+      <h3>✕ Evitar hoy — Grecia</h3>
+      <ul>${tn.map(t=>`<li>${t}</li>`).join('')}</ul>
+    </div>
+  `;
+}
+
+function buildMonthSelFriend(person){
+  const pfx=person==='grecia'?'gr':'am';
+  const color=person==='grecia'?'#a07fc0':'#c09a5a';
+  const bgColor=person==='grecia'?'rgba(160,127,192,0.08)':'rgba(192,154,90,0.08)';
+  const sel=document.getElementById(`${pfx}-month-sel`);
+  if(!sel)return;
+  sel.innerHTML='';
+  const today=getToday();
+  MONTHS_DATA.forEach(md=>{
+    const isNow=md.m===(today.getMonth()+1)&&today.getFullYear()===2026;
+    const isActive=md.m===currentFriendMonths[person];
+    const btn=document.createElement('button');
+    btn.className=`month-btn${isActive?' active':''}`;
+    if(isActive){btn.style.borderColor=color;btn.style.color=color;btn.style.background=bgColor;}
+    btn.textContent=md.name+(isNow?' · Hoy':'');
+    btn.onclick=()=>{
+      document.querySelectorAll(`#${pfx}-month-sel .month-btn`).forEach(b=>{b.classList.remove('active');b.style.borderColor='';b.style.color='';b.style.background='';});
+      btn.classList.add('active');btn.style.borderColor=color;btn.style.color=color;btn.style.background=bgColor;
+      currentFriendMonths[person]=md.m;
+      renderMonthFriend(md.m,person);
+    };
+    sel.appendChild(btn);
+  });
+}
+
+function renderMonthFriend(m,person){
+  const pfx=person==='grecia'?'gr':'am';
+  const color=person==='grecia'?'#a07fc0':'#c09a5a';
+  const titleColor=person==='grecia'?'#c8a8e0':'#e0c080';
+  const pData=FRIENDS[person];
+  const md=MONTHS_DATA.find(x=>x.m===m);
+  const display=document.getElementById(`${pfx}-month-display`);
+  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
+  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
+  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
+  const today=getToday();
+  const mp=getMesPilarFam(m);
+
+  let html=`<div class="month-hdr">
+    <div class="month-cn" style="color:${color};">${md.chinese}</div>
+    <div class="month-info"><h2 style="color:${titleColor};">${md.name} 2026 — ${pData.name}</h2><p>${md.desc}</p></div>
+  </div><div class="cal-grid">`;
+
+  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
+    const p=getPilar(new Date(d));
+    const rating=calcRatingFriend(p.ti,p.ri,person);
+    const dow=DIAS_ES[d.getDay()];
+    const isWe=d.getDay()===0||d.getDay()===6;
+    const isTd=d.getDate()===today.getDate()&&d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear();
+    const ints=getIntsFriend(p.ri,person);
+    const intTxt=ints.length?ints.map(i=>i.txt).slice(0,2).join(' · '):'—';
+    const todayBadge=isTd?'<span class="today-badge">HOY</span>':'';
+    const doTxt=pData.tipsHacer[p.ti]?pData.tipsHacer[p.ti][0]:'Accionar con conciencia';
+    const dontTxt=pData.tipsNoHacer[p.ti]?pData.tipsNoHacer[p.ti][0]:'Impulsividad sin estrategia';
+    const summary=getResumenFriend(p.ti,p.ri,rating,person);
+
+    html+=`<div class="day-card r${rating}${isWe?' weekend':''}${isTd?' today-card':''}">
+      <div class="dc-hdr">
+        <div><div class="dc-num">${d.getDate()}${todayBadge}</div><div class="dc-dow">${dow}</div></div>
+        <div class="dc-pilar">${p.tFull}<br>${p.rFull} · ${p.animal}</div>
+      </div>
+      <div class="dc-stars">${renderStarsFam(rating)}</div>
+      <span class="etag ${p.elemC}">${p.elemN.toUpperCase()} · ${pData.dios[p.ti]}</span>
+      <div class="dc-summary">${summary}</div>
+      <div style="font-family:'Space Mono',monospace;font-size:0.49rem;color:var(--smoke);letter-spacing:0.05em;margin-bottom:0.36rem;">${intTxt}</div>
+      <div class="fav-row"><div class="fav-label lsi">HACER</div><div class="fav-text">${doTxt}</div></div>
+      <div class="fav-row"><div class="fav-label lno">EVITAR</div><div class="fav-text">${dontTxt}</div></div>
+    </div>`;
+  }
+  html+=`</div>`;
+  display.innerHTML=html;
+  if(m===(today.getMonth()+1)){setTimeout(()=>{const tc=document.querySelector(`#${pfx}-month-display .today-card`);if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
+}
+
+function showFriend(id,prefix,tab){
+  document.querySelectorAll(`.sub-section.gr-`).forEach(s=>s.style.display='none');
+  const el=document.getElementById(id);
+  if(el)el.style.display='block';
+  const parent=el?el.closest('.section'):null;
+  if(parent){
+    parent.querySelectorAll('.nav-tab').forEach(t=>{t.style.borderBottomColor='transparent';t.style.color=''});
+    if(tab){tab.style.borderBottomColor='#a07fc0';tab.style.color='#a07fc0';}
+  }
+}
+
+function switchFriend(id,prefix,tab){
+  document.querySelectorAll('.sub-section.gr-,.sub-section.am-').forEach(s=>s.style.display='none');
+  const el=document.getElementById(id);
+  if(el)el.style.display='block';
+  const parent=el?el.closest('.section'):null;
+  if(parent){
+    parent.querySelectorAll('.nav-tab').forEach(t=>{t.style.borderBottomColor='transparent';t.style.color='';});
+    if(tab){tab.style.borderBottomColor='#c09a5a';tab.style.color='#c09a5a';}
+  }
+}
+
+// Friend export
+function exportarHoyFriend(person){
+  const p=todayFriendPilares[person];if(!p)return;
+  const pData=FRIENDS[person];
+  const today=getToday();
+  const rating=calcRatingFriend(p.ti,p.ri,person);
+  const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${p.tShort} ${p.animal}`;
+  const desc=`Dios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti].slice(0,3).join(' / ')}\nEVITAR: ${pData.tipsNoHacer[p.ti].slice(0,3).join(' / ')}`;
+  const b=new Blob([`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi//ES\r\n${mkEvent(today,title,desc)}END:VCALENDAR`],{type:'text/calendar'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`bazi_${person}_hoy.ics`;a.click();URL.revokeObjectURL(a.href);
+}
+function abrirGCalHoyFriend(person){
+  const p=todayFriendPilares[person];if(!p)return;
+  const pData=FRIENDS[person];
+  const today=getToday();
+  const rating=calcRatingFriend(p.ti,p.ri,person);
+  const title=encodeURIComponent(`BaZi ⭐${rating} · ${pData.name} · ${p.tShort} ${p.animal}`);
+  const det=encodeURIComponent(`Dios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti][0]}\nEVITAR: ${pData.tipsNoHacer[p.ti][0]}`);
+  const ds=`${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
+  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
+}
+function exportarMesFriend(person){
+  const m=currentFriendMonths[person];
+  const md=MONTHS_DATA.find(x=>x.m===m);
+  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
+  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
+  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
+  const pData=FRIENDS[person];
+  let events='';
+  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
+    const p=getPilar(new Date(d));
+    const rating=calcRatingFriend(p.ti,p.ri,person);
+    const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`;
+    const desc=`Rating: ${rating}/5\nDios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti]?pData.tipsHacer[p.ti][0]:''}\nEVITAR: ${pData.tipsNoHacer[p.ti]?pData.tipsNoHacer[p.ti][0]:''}`;
+    events+=mkEvent(new Date(d),title,desc,30);
+  }
+  const b=new Blob([`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi//ES\r\nCALNAME:BaZi ${pData.name} ${md.name}\r\n${events}END:VCALENDAR`],{type:'text/calendar'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`bazi_${person}_${md.name.toLowerCase()}.ics`;a.click();URL.revokeObjectURL(a.href);
+}
+function abrirGCalMesFriend(person){
+  window.open(`https://calendar.google.com/calendar/r/month/2026/${currentFriendMonths[person]}?authuser=sanbaoestudio%40gmail.com`,'_blank');
+}
+
 // INIT
 const today=getToday();
 const todayM=today.getMonth()+1;
 const hasM=MONTHS_DATA.some(x=>x.m===todayM);
-if(hasM){currentMonths.guadi=todayM;currentMonths.morena=todayM;currentMonths.carla=todayM;}
+if(hasM){currentMonths.guadi=todayM;currentMonths.morena=todayM;currentMonths.carla=todayM;currentFriendMonths.grecia=todayM;currentFriendMonths.amancai=todayM;}
 buildHoyFam('guadi');
 buildHoyFam('morena');
 buildHoyFam('carla');
+buildHoyFriend('grecia');
+buildHoyFriend('amancai');
 buildMonthSelFam('guadi');
 buildMonthSelFam('morena');
 buildMonthSelFam('carla');
+buildMonthSelFriend('grecia');
+buildMonthSelFriend('amancai');
 renderMonthFam(currentMonths.guadi,'guadi');
 renderMonthFam(currentMonths.morena,'morena');
 renderMonthFam(currentMonths.carla,'carla');
+renderMonthFriend(currentFriendMonths.grecia,'grecia');
+renderMonthFriend(currentFriendMonths.amancai,'amancai');
 </script>
 </body>
 </html>
