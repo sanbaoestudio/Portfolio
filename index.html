@@ -3,54 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San Bao Estudio — Luca Gazzola · Productora Audiovisual Buenos Aires</title>
-<meta name="description" content="San Bao Estudio · Luca Gazzola. Producción audiovisual en Buenos Aires: video, motion graphics, fotografía deportiva y de eventos, edición de reels y contenido institucional.">
-<meta name="author" content="Luca Gazzola">
-<meta name="theme-color" content="#F0EDE6">
-<link rel="canonical" href="https://www.sanbaoestudio.com.ar/">
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="apple-touch-icon" href="logo.png">
-
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_AR">
-<meta property="og:site_name" content="San Bao Estudio">
-<meta property="og:title" content="San Bao Estudio — Luca Gazzola · Productora Audiovisual">
-<meta property="og:description" content="Video, motion graphics y fotografía en Buenos Aires. Producción integral, reels, eventos, sesiones musicales y contenido institucional.">
-<meta property="og:url" content="https://www.sanbaoestudio.com.ar/">
-<meta property="og:image" content="https://www.sanbaoestudio.com.ar/logo.png">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="San Bao Estudio — Luca Gazzola">
-<meta name="twitter:description" content="Producción audiovisual · Buenos Aires. Video, motion graphics y fotografía.">
-<meta name="twitter:image" content="https://www.sanbaoestudio.com.ar/logo.png">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>San Bao Estudio — Luca Gazzola</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Luca Gazzola",
-  "alternateName": "San Bao Estudio",
-  "jobTitle": "Productor audiovisual · Editor · Fotógrafo",
-  "url": "https://www.sanbaoestudio.com.ar/",
-  "image": "https://www.sanbaoestudio.com.ar/logo.png",
-  "telephone": "+5491130203625",
-  "email": "sanbaoestudio@gmail.com",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Buenos Aires",
-    "addressCountry": "AR"
-  },
-  "sameAs": [
-    "https://instagram.com/sanbaoestudio",
-    "https://tiktok.com/@sanbaoestudio",
-    "https://youtube.com/@sanbaoestudio"
-  ]
-}
-</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -136,6 +90,41 @@ section{padding:0 48px 100px}
 
 .proj-sublabel{font-family:var(--display);font-size:1.6rem;font-weight:900;letter-spacing:-0.02em;text-transform:uppercase;color:var(--secundario);margin:40px 0 20px;padding-bottom:12px;border-bottom:2px solid var(--acento);}
 .grilla+.proj-sublabel{margin-top:56px}
+.cot-tabs{display:flex;gap:8px;margin-bottom:32px}
+.cot-tab{font-family:var(--mono);font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;padding:10px 28px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);transition:all 0.2s;color:var(--secundario)}
+.cot-tab.activo,.cot-tab:hover{background:var(--secundario);color:white;border-color:var(--secundario)}
+.campo-texto{width:100%;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.06em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);padding:10px 14px;outline:none;transition:border-color 0.2s}
+.campo-texto:focus{border-color:var(--primario)}
+.campo-texto::placeholder{color:rgba(107,107,107,0.5)}
+.chips .chip small{display:block;font-size:0.5rem;opacity:0.7;margin-top:2px;letter-spacing:0.08em}
+
+/* COTIZADOR */
+
+
+
+
+.campo-grupo{margin-bottom:24px}
+.campo-label{font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--secundario);display:block;margin-bottom:8px;font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--secundario);padding:7px 14px;cursor:pointer;background:rgba(255,255,255,0.5);border:1px solid var(--glass-border);backdrop-filter:blur(8px);transition:all 0.2s;user-select:none}
+.chip.sel{background:var(--primario);color:white;border-color:var(--primario)}
+.chip:hover{background:rgba(255,255,255,0.8);color:var(--negro)}
+.slider-wrap{display:flex;align-items:center;gap:16px}
+.slider-wrap input[type=range]{-webkit-appearance:none;flex:1;height:2px;background:var(--linea);outline:none;cursor:pointer}
+.slider-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;background:var(--primario);border-radius:50%;cursor:pointer;box-shadow:0 0 8px rgba(0,95,115,0.4)}
+.slider-val{font-family:var(--display);font-size:1.1rem;font-weight:900;color:var(--negro);min-width:28px;text-align:right}
+.campo-select{width:100%;font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;color:var(--negro);background:rgba(255,255,255,0.6);border:1px solid var(--glass-border);backdrop-filter:blur(8px);padding:10px 14px;appearance:none;cursor:pointer;outline:none;transition:border-color 0.2s}
+.campo-select:focus{border-color:var(--primario)}
+.result-estado{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--secundario);margin-bottom:12px;font-weight:600}
+.result-precio{font-family:var(--display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:900;color:var(--negro);line-height:1;letter-spacing:-0.03em;margin-bottom:8px;transition:color 0.3s}
+.result-precio.calculado{color:var(--primario)}
+.result-precio em{font-style:normal;font-size:1.2rem;font-weight:400;color:var(--gris);margin-right:4px}
+.result-detalle{font-size:0.72rem;color:var(--secundario);line-height:1.8;min-height:80px;font-weight:500}
+.result-detalle strong{color:var(--negro);font-weight:700}
+.result-note{font-size:0.62rem;color:var(--gris);letter-spacing:0.08em;font-style:italic;margin-bottom:20px}
+
+
+
 
 
 /* FILTROS */
@@ -348,16 +337,6 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
   .lb-albums{grid-template-columns:1fr}
 }
 
-/* PREFERS-REDUCED-MOTION */
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;animation-delay:0ms!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}
-  body{cursor:auto!important}
-  body::before,body::after{animation:none!important;opacity:0.15!important}
-  .cursor-dot,.cursor-ring{display:none!important}
-  a,button,[onclick]{cursor:pointer!important}
-  .reveal,.grilla .card,.servicios-grid .servicio-card,.testimonios-grid .testimonio,.servicios-grid-foto .servicio-card{opacity:1!important;transform:none!important}
-}
-
 /* SERVICIOS TEXTO */
 .servicios-texto{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px;align-items:start;border-top:1px solid var(--linea);padding-top:48px}
 
@@ -370,6 +349,30 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 .srv-contacto-label{font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario)}
 .srv-contacto-val{font-family:var(--cond);font-size:0.95rem;font-weight:600;color:var(--negro)}
 @media(max-width:900px){.servicios-texto{grid-template-columns:1fr;gap:32px}.srv-contacto{border-left:none;border-top:1px solid var(--linea);padding-left:0;padding-top:24px}}
+
+/* WHATSAPP FLOTANTE */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:300;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:transform 0.25s,box-shadow 0.25s;text-decoration:none}
+.wa-float:hover{transform:scale(1.08);box-shadow:0 6px 28px rgba(37,211,102,0.6)}
+.wa-float svg{width:28px;height:28px;fill:#fff}
+.wa-float::before{content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;animation:wa-pulse 2.4s infinite;z-index:-1}
+@keyframes wa-pulse{0%{transform:scale(1);opacity:0.6}100%{transform:scale(1.7);opacity:0}}
+@media(max-width:700px){.wa-float{bottom:18px;right:18px;width:50px;height:50px}.wa-float svg{width:24px;height:24px}}
+
+/* GRILLA HORIZONTAL (16:9) — Vlogs y Motion Graphics */
+.grilla-h{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grilla-h .card-thumb{padding-bottom:56.25%}
+@media(max-width:1100px){.grilla-h{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grilla-h{grid-template-columns:repeat(1,1fr)}}
+
+/* GHOST CARD — placeholder para agregar contenido */
+.card-ghost{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border:1.5px dashed var(--linea);background:rgba(255,255,255,0.22);transition:border-color 0.25s,background 0.25s;border-radius:2px}
+.card-ghost:hover{border-color:var(--primario);background:rgba(255,255,255,0.4)}
+.gp-icon{width:38px;height:38px;border-radius:50%;border:1.5px dashed var(--gris);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:1.3rem;font-weight:300;color:var(--gris)}
+.gp-text{font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gris);text-align:center;padding:0 16px}
+
+/* MODAL VIDEO — variante horizontal */
+.modal-video-inner.horizontal{width:min(900px,92vw)}
+.modal-video-wrap.horizontal{padding-bottom:56.25%}
 </style>
 </head>
 <body>
@@ -441,7 +444,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
       <div class="srv-contacto-links">
         <a href="https://instagram.com/sanbaoestudio" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">Instagram</span><span class="srv-contacto-val">@sanbaoestudio</span></a>
         <a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">TikTok</span><span class="srv-contacto-val">@sanbaoestudio</span></a>
-        <span class="srv-contacto-item"><span class="srv-contacto-label">Teléfono</span><span class="srv-contacto-val">+54 9 11 3020 3625</span></span>
+        <a href="https://wa.me/5491130203625?text=Hola%20Luca!%20Me%20interesa%20consultar%20sobre%20tus%20servicios.%20%C2%BFPodemos%20hablar%3F" target="_blank" class="srv-contacto-item"><span class="srv-contacto-label">WhatsApp</span><span class="srv-contacto-val">+54 9 11 3020 3625</span></a>
         <a href="mailto:sanbaoestudio@gmail.com" class="srv-contacto-item"><span class="srv-contacto-label">Email</span><span class="srv-contacto-val">sanbaoestudio@gmail.com</span></a>
       </div>
       <a href="#contacto" class="cta-btn" data-es="Contacto →" data-en="Contact →">Contacto →</a>
@@ -468,10 +471,60 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
     <div class="card" data-cat="video" onclick="abrirVideo('1177043795')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_000.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Presupuesto cliente"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><h3 class="card-titulo" data-es="Presupuesto<br>Cliente #Humor" data-en="Client<br>Budget #Humor">Presupuesto<br>Cliente #Humor</h3><p class="card-desc" data-es="Contenido de humor para redes." data-en="Humor content for social media.">Contenido de humor para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><span class="card-info-titulo" data-es="Presupuesto Cliente #Humor" data-en="Client Budget #Humor">Presupuesto Cliente #Humor</span></div></div>
   </div>
 
-  <!-- MOTION -->
-  <div class="proj-sublabel reveal" data-es="Motion" data-en="Motion">Motion</div>
-  <div class="grilla reveal" id="grilla-motion">
-    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc" data-es="Reel animado para redes." data-en="Animated reel for social media.">Reel animado para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
+  <!-- VLOGS / HORIZONTAL -->
+  <div class="proj-sublabel reveal" data-es="Vlogs" data-en="Vlogs">Vlogs</div>
+  <div class="grilla-h reveal" id="grilla-vlogs">
+    <div class="card" data-cat="vlog" onclick="abrirVideo('0n2GlkwmeE0','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/0n2GlkwmeE0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/0n2GlkwmeE0/hqdefault.jpg'" alt="Vlog 01"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 01</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 01</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('HUOZFaQa2Yo','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/HUOZFaQa2Yo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/HUOZFaQa2Yo/hqdefault.jpg'" alt="Vlog 02"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 02</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 02</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('prxTHLrhqEI','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/prxTHLrhqEI/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/prxTHLrhqEI/hqdefault.jpg'" alt="Vlog 03"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 03</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 03</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('II-An2CQ74A','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/II-An2CQ74A/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/II-An2CQ74A/hqdefault.jpg'" alt="Vlog 04"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 04</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 04</span></div></div>
+    <!--
+      PLANTILLA — copiá este bloque para agregar otro video horizontal (YouTube):
+      <div class="card" data-cat="vlog" onclick="abrirVideo('YOUTUBE_ID','h','yt')">
+        <div class="card-thumb"><img src="https://img.youtube.com/vi/YOUTUBE_ID/maxresdefault.jpg" alt="Nombre del video">
+          <div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="card-overlay">
+          <span class="card-cat">Vlog</span>
+          <h3 class="card-titulo">Título del video</h3>
+          <p class="card-desc">Descripción corta.</p>
+          <span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span>
+        </div>
+        <div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Título del video</span></div>
+      </div>
+
+      Si el video es de Vimeo en vez de YouTube, omitís el tercer parámetro: abrirVideo('VIMEO_ID','h')
+    -->
+    <div class="card-ghost">
+      <div class="gp-icon">+</div>
+      <span class="gp-text" data-es="Agregá otro video horizontal" data-en="Add another horizontal video">Agregá otro video horizontal</span>
+    </div>
+  </div>
+
+  <!-- MOTION GRAPHICS -->
+  <div class="proj-sublabel reveal" data-es="Motion Graphics" data-en="Motion Graphics">Motion Graphics</div>
+  <div class="grilla-h reveal" id="grilla-motion">
+    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428','h')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc" data-es="Reel animado para redes." data-en="Animated reel for social media.">Reel animado para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
+    <!--
+      PLANTILLA — copiá este bloque para agregar otra pieza de motion graphics (mismo formato horizontal):
+
+      <div class="card" data-cat="motion" onclick="abrirVideo('VIMEO_ID','h')">
+        <div class="card-thumb"><img src="URL_DE_TU_PORTADA.jpg" alt="Nombre de la pieza">
+          <div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
+        </div>
+        <div class="card-overlay">
+          <span class="card-cat">Motion graphics</span>
+          <h3 class="card-titulo">Título de la pieza</h3>
+          <p class="card-desc">Descripción corta.</p>
+          <span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span>
+        </div>
+        <div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Título de la pieza</span></div>
+      </div>
+    -->
+    <div class="card-ghost">
+      <div class="gp-icon">+</div>
+      <span class="gp-text" data-es="Agregá otra pieza de motion graphics" data-en="Add another motion graphics piece">Agregá otra pieza de motion graphics</span>
+    </div>
   </div>
 
   <!-- FOTOS -->
@@ -503,14 +556,14 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
       <div class="contacto-item"><span class="ci-label">Instagram</span><a href="https://instagram.com/sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">YouTube</span><a href="https://youtube.com/@sanbaoestudio" target="_blank" class="ci-valor">San Bao Estudio</a></div>
-      <div class="contacto-item"><span class="ci-label">Teléfono</span><span class="ci-valor">+54 9 11 3020 3625</span></div>
+      <div class="contacto-item"><span class="ci-label">WhatsApp</span><a href="https://wa.me/5491130203625?text=Hola%20Luca!%20Me%20interesa%20consultar%20sobre%20tus%20servicios.%20%C2%BFPodemos%20hablar%3F" target="_blank" class="ci-valor">+54 9 11 3020 3625</a></div>
       <div class="contacto-item"><span class="ci-label">Email</span><a href="mailto:sanbaoestudio@gmail.com" class="ci-valor">sanbaoestudio@gmail.com</a></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <span>© <span id="year">2026</span> San Bao Estudio — Luca Gazzola</span>
+  <span>© 2026 San Bao Estudio — Luca Gazzola</span>
   <span class="footer-logo">San Bao</span>
   <span data-es="Buenos Aires, Argentina" data-en="Buenos Aires, Argentina">Buenos Aires, Argentina</span>
 </footer>
@@ -604,6 +657,133 @@ const FOTOS_TINKUY=['https://i.imgur.com/yL5vRRk.jpg','https://i.imgur.com/i0TYy
 const FOTOS_FOLKLORE=['https://i.imgur.com/7b0Xsu2.jpg','https://i.imgur.com/JjNgjmK.jpg','https://i.imgur.com/QB326fN.jpg','https://i.imgur.com/b68tExc.jpg','https://i.imgur.com/1kfkcQ3.jpg','https://i.imgur.com/pSQx5aJ.jpg','https://i.imgur.com/AXYUOPt.jpg','https://i.imgur.com/DfPPgIz.jpg','https://i.imgur.com/pKz8wyb.jpg','https://i.imgur.com/jtET1Vt.jpg','https://i.imgur.com/9iZyGn5.jpg','https://i.imgur.com/YZ9ZAox.jpg','https://i.imgur.com/hGrRax1.jpg','https://i.imgur.com/9dcPvzU.jpg','https://i.imgur.com/m5F8R5o.jpg','https://i.imgur.com/iROY8tz.jpg','https://i.imgur.com/J50WITS.jpg','https://i.imgur.com/n7hNpdN.jpg','https://i.imgur.com/AnS8n9E.jpg','https://i.imgur.com/adFt2EW.jpg','https://i.imgur.com/bOqK9OQ.jpg','https://i.imgur.com/tQoaBSl.jpg','https://i.imgur.com/4gMlq7w.jpg','https://i.imgur.com/IoDLvTR.jpg','https://i.imgur.com/15X2eWG.jpg','https://i.imgur.com/0jrqLeC.jpg','https://i.imgur.com/xTLPTiP.jpg','https://i.imgur.com/TdkKGWW.jpg','https://i.imgur.com/fnzcPUt.jpg','https://i.imgur.com/VRC5mQa.jpg','https://i.imgur.com/zDrggrE.jpg','https://i.imgur.com/IlZKtEB.jpg','https://i.imgur.com/Zrpale4.jpg','https://i.imgur.com/0xfhkoX.jpg','https://i.imgur.com/QzanwIf.jpg','https://i.imgur.com/guxyNTa.jpg','https://i.imgur.com/QHCeN6C.jpg','https://i.imgur.com/azk5iVx.jpg','https://i.imgur.com/BDVgzkW.jpg','https://i.imgur.com/BbUP0Js.jpg','https://i.imgur.com/Pi5Obc9.jpg','https://i.imgur.com/d5SWGCG.jpg','https://i.imgur.com/cqSctC9.jpg','https://i.imgur.com/2KAG0gg.jpg','https://i.imgur.com/TxgyTJM.jpg','https://i.imgur.com/ZcniWXD.jpg','https://i.imgur.com/7LJBjrD.jpg'];
 const FOTOS_CERVECERIA=['https://i.imgur.com/2PYu7DF.jpg','https://i.imgur.com/6ckaaej.jpg','https://i.imgur.com/fc7GxHW.jpg','https://i.imgur.com/oVbRK8I.jpg','https://i.imgur.com/7THHuCx.jpg','https://i.imgur.com/qP7jacn.jpg','https://i.imgur.com/QMS6m9u.jpg','https://i.imgur.com/IoBqBZQ.jpg','https://i.imgur.com/kIw9dtQ.jpg','https://i.imgur.com/KUSAhDX.jpg','https://i.imgur.com/hHVnrAn.jpg','https://i.imgur.com/woQRQQF.jpg','https://i.imgur.com/m8pPMNi.jpg','https://i.imgur.com/HtodOu5.jpg','https://i.imgur.com/AD21Qne.jpg','https://i.imgur.com/006TVR0.jpg','https://i.imgur.com/LOmkVg8.jpg'];
 const FOTOS_PROFESIONALES=['https://i.imgur.com/sMafXdN.jpg','https://i.imgur.com/FB5BD3u.jpg','https://i.imgur.com/sFsIRDM.jpg','https://i.imgur.com/HMj0Wqr.jpg','https://i.imgur.com/yTcZHkC.jpg','https://i.imgur.com/hS5XjFz.jpg','https://i.imgur.com/6I18aCO.jpg','https://i.imgur.com/qPoajAu.jpg','https://i.imgur.com/uNe00Le.jpg','https://i.imgur.com/HRQ7FfR.jpg','https://i.imgur.com/ahqo0MR.jpg','https://i.imgur.com/RXUnQB3.jpg','https://i.imgur.com/NYHlyDl.jpg','https://i.imgur.com/kB84cHv.jpg'];
+
+
+// ---- NAV MÓVIL ----
+function toggleNav(){
+  document.getElementById('navLinks').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+function cerrarNav(){
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// ---- MODAL VIDEO (Vimeo) ----
+function abrirVideo(id, formato, plataforma){
+  const modal = document.getElementById('modalVideo');
+  const inner = modal.querySelector('.modal-video-inner');
+  const wrap = modal.querySelector('.modal-video-wrap');
+  const iframe = document.getElementById('iframeVideo');
+  const esHorizontal = formato === 'h';
+  inner.classList.toggle('horizontal', esHorizontal);
+  wrap.classList.toggle('horizontal', esHorizontal);
+  iframe.src = plataforma === 'yt'
+    ? 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0'
+    : 'https://player.vimeo.com/video/' + id + '?autoplay=1&title=0&byline=0&portrait=0';
+  modal.classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarVideo(e){
+  if(e && e.target !== e.currentTarget) return;
+  document.getElementById('modalVideo').classList.remove('abierto');
+  document.getElementById('iframeVideo').src = '';
+  document.body.style.overflow = '';
+}
+
+// ---- LIGHTBOX FOTOS (slider) ----
+let fotosActuales = [];
+let tituloActual = '';
+let fotoIndex = 0;
+
+function mostrarFotoActual(){
+  const img = document.getElementById('lbImg');
+  img.src = fotosActuales[fotoIndex];
+  img.alt = tituloActual || '';
+  document.getElementById('lbCounter').textContent =
+    (fotoIndex + 1) + ' / ' + fotosActuales.length + (tituloActual ? ' — ' + tituloActual : '');
+}
+function navFoto(dir){
+  if(!fotosActuales.length) return;
+  fotoIndex = (fotoIndex + dir + fotosActuales.length) % fotosActuales.length;
+  mostrarFotoActual();
+}
+function cerrarFotos(e){
+  if(e && e.target !== e.currentTarget) return;
+  document.getElementById('lightbox').classList.remove('abierta');
+  document.body.style.overflow = '';
+}
+
+// ---- GALERÍA GRILLA ----
+function abrirGaleria(fotos, titulo){
+  fotosActuales = fotos;
+  tituloActual = titulo || '';
+  document.getElementById('galeriaTitulo').textContent = tituloActual;
+  document.getElementById('galeriaContador').textContent = fotos.length + ' fotos';
+  const grid = document.getElementById('galeriaGrid');
+  grid.innerHTML = fotos.map((url, i) =>
+    '<div class="galeria-item" onclick="abrirFotoDesdeGaleria(' + i + ')"><img src="' + url + '" alt=""><span class="galeria-item-num">' + String(i + 1).padStart(2, '0') + '</span></div>'
+  ).join('');
+  document.getElementById('galeria').classList.add('abierta');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarGaleria(){
+  document.getElementById('galeria').classList.remove('abierta');
+  document.body.style.overflow = '';
+}
+function abrirFotoDesdeGaleria(i){
+  fotoIndex = i;
+  mostrarFotoActual();
+  document.getElementById('galeria').classList.remove('abierta');
+  document.getElementById('lightbox').classList.add('abierta');
+}
+function abrirGaleriaDesdeSlider(){
+  document.getElementById('lightbox').classList.remove('abierta');
+  abrirGaleria(fotosActuales, tituloActual);
+}
+
+// ---- SELECTORES DE ÁLBUM ----
+function abrirSelectorDeportiva(){
+  document.getElementById('selectorDeportiva').classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+function abrirSelectorEventos(){
+  document.getElementById('selectorEventos').classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+function abrirSelectorMusica(){
+  document.getElementById('selectorMusica').classList.add('abierto');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarSelector(id){
+  document.getElementById(id).classList.remove('abierto');
+  document.body.style.overflow = '';
+}
+function abrirDesdeSelector(selectorId, fotos, titulo){
+  cerrarSelector(selectorId);
+  fotosActuales = fotos;
+  tituloActual = titulo || '';
+  fotoIndex = 0;
+  mostrarFotoActual();
+  document.getElementById('lightbox').classList.add('abierta');
+  document.body.style.overflow = 'hidden';
+}
+
+// ---- TECLADO: ESC y flechas ----
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape'){
+    cerrarVideo();
+    cerrarFotos();
+    cerrarGaleria();
+    cerrarSelector('selectorDeportiva');
+    cerrarSelector('selectorEventos');
+    cerrarSelector('selectorMusica');
+  }
+  if(document.getElementById('lightbox').classList.contains('abierta')){
+    if(e.key === 'ArrowLeft') navFoto(-1);
+    if(e.key === 'ArrowRight') navFoto(1);
+  }
+});
 
 // ---- IDIOMA ----
 let langActual='es';
@@ -710,122 +890,10 @@ window.addEventListener('scroll', () => {
   }, {threshold: 0.5});
   counters.forEach(c => obsCount.observe(c));
 })();
-
-// === LAZY LOADING + ASYNC DECODE ===
-document.querySelectorAll('img').forEach(img => {
-  if(!img.loading) img.loading = 'lazy';
-  if(!img.decoding) img.decoding = 'async';
-});
-
-// === DYNAMIC YEAR ===
-(function(){ const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear(); })();
-
-// ========================================================================
-// MODALES, LIGHTBOX Y GALERÍAS
-// ========================================================================
-var _fotos = [], _idx = 0, _titulo = '';
-function $id(id){ return document.getElementById(id); }
-function lockScroll(lock){ document.body.style.overflow = lock ? 'hidden' : ''; }
-
-// ---- NAV MOBILE ----
-function toggleNav(){
-  const links = $id('navLinks'), h = $id('hamburger');
-  const open = links.classList.toggle('open');
-  h.classList.toggle('open', open);
-  lockScroll(open);
-}
-function cerrarNav(){
-  $id('navLinks').classList.remove('open');
-  $id('hamburger').classList.remove('open');
-  lockScroll(false);
-}
-
-// ---- VIDEO MODAL (Vimeo) ----
-function abrirVideo(vimeoId){
-  const m = $id('modalVideo'), f = $id('iframeVideo');
-  f.src = 'https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&dnt=1';
-  m.classList.add('abierto');
-  lockScroll(true);
-}
-function cerrarVideo(e){
-  if(e && e.target && e.target.closest && e.target.closest('.modal-video-inner') && !e.target.classList.contains('modal-cerrar')) return;
-  $id('modalVideo').classList.remove('abierto');
-  $id('iframeVideo').src = '';
-  lockScroll(false);
-}
-
-// ---- LIGHTBOX (visor de fotos) ----
-function abrirFotos(arr, idx, titulo){
-  _fotos = arr || []; _idx = idx || 0; _titulo = titulo || '';
-  if(!_fotos.length) return;
-  $id('lbImg').src = _fotos[_idx];
-  $id('lbCounter').textContent = (_idx + 1) + ' / ' + _fotos.length;
-  $id('lightbox').classList.add('abierto');
-  lockScroll(true);
-}
-function cerrarFotos(e){
-  if(e && e.target && e.target.closest && e.target.closest('.lightbox-inner') && !e.target.classList.contains('lb-cerrar')) return;
-  $id('lightbox').classList.remove('abierto');
-  lockScroll(false);
-}
-function navFoto(dir){
-  if(!_fotos.length) return;
-  _idx = (_idx + dir + _fotos.length) % _fotos.length;
-  $id('lbImg').src = _fotos[_idx];
-  $id('lbCounter').textContent = (_idx + 1) + ' / ' + _fotos.length;
-}
-
-// ---- GALERÍA GRID ----
-function abrirGaleria(arr, titulo){
-  _fotos = arr || []; _titulo = titulo || '';
-  $id('galeriaTitulo').textContent = _titulo;
-  $id('galeriaContador').textContent = _fotos.length + ' fotos';
-  const grid = $id('galeriaGrid');
-  grid.innerHTML = '';
-  _fotos.forEach((src, i) => {
-    const item = document.createElement('div');
-    item.className = 'galeria-item';
-    item.innerHTML = '<img src="' + src + '" loading="lazy" decoding="async" alt=""><span class="galeria-item-num">' + String(i + 1).padStart(2, '0') + '</span>';
-    item.addEventListener('click', () => { cerrarGaleria(true); abrirFotos(_fotos, i, _titulo); });
-    grid.appendChild(item);
-  });
-  $id('galeria').classList.add('abierta');
-  lockScroll(true);
-}
-function cerrarGaleria(silent){
-  $id('galeria').classList.remove('abierta');
-  if(!silent) lockScroll(false);
-}
-function abrirGaleriaDesdeSlider(){
-  $id('lightbox').classList.remove('abierto');
-  abrirGaleria(_fotos, _titulo);
-}
-
-// ---- SELECTORES DE ÁLBUM ----
-function abrirSelector(id){ $id(id).classList.add('abierto'); lockScroll(true); }
-function cerrarSelector(id){ $id(id).classList.remove('abierto'); lockScroll(false); }
-function abrirSelectorDeportiva(){ abrirSelector('selectorDeportiva'); }
-function abrirSelectorEventos(){ abrirSelector('selectorEventos'); }
-function abrirSelectorMusica(){ abrirSelector('selectorMusica'); }
-function abrirDesdeSelector(selectorId, arr, titulo){
-  cerrarSelector(selectorId);
-  abrirGaleria(arr, titulo || 'Galería');
-}
-
-// ---- TECLADO: ESC + flechas en lightbox ----
-document.addEventListener('keydown', e => {
-  const lightboxOpen = $id('lightbox').classList.contains('abierto');
-  if(e.key === 'Escape'){
-    if(lightboxOpen) return cerrarFotos();
-    if($id('galeria').classList.contains('abierta')) return cerrarGaleria();
-    if($id('modalVideo').classList.contains('abierto')) return cerrarVideo();
-    ['selectorDeportiva','selectorEventos','selectorMusica'].forEach(id => {
-      if($id(id).classList.contains('abierto')) cerrarSelector(id);
-    });
-    if($id('navLinks').classList.contains('open')) cerrarNav();
-  } else if(lightboxOpen && e.key === 'ArrowLeft'){ navFoto(-1); }
-  else if(lightboxOpen && e.key === 'ArrowRight'){ navFoto(1); }
-});
 </script>
+
+<a class="wa-float" href="https://wa.me/5491130203625?text=Hola%20Luca!%20Me%20interesa%20consultar%20sobre%20tus%20servicios.%20%C2%BFPodemos%20hablar%3F" target="_blank" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4c-4.86 0-8.82 3.95-8.82 8.81a8.8 8.8 0 0 0 1.32 4.64L4 21.4l3.95-1.51a8.79 8.79 0 0 0 4.1 1.02h.01c4.86 0 8.81-3.95 8.81-8.81a8.74 8.74 0 0 0-2.27-5.78zM12.06 19.4a7.3 7.3 0 0 1-3.72-1.02l-.27-.16-2.76 1.06.74-2.7-.18-.28a7.34 7.34 0 0 1-1.13-3.9c0-4.05 3.3-7.35 7.35-7.35a7.3 7.3 0 0 1 5.2 2.15 7.3 7.3 0 0 1 2.15 5.2c0 4.06-3.3 7.36-7.35 7.36zm4.03-5.51c-.22-.11-1.3-.64-1.5-.72-.2-.07-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-.22-.1-.94-.34-1.78-1.1-.66-.58-1.1-1.3-1.23-1.52-.13-.22-.01-.34.1-.45.1-.11.22-.27.33-.41.11-.13.15-.22.22-.37.07-.15.04-.27-.02-.39-.07-.11-.6-1.46-.83-1.99-.22-.51-.45-.44-.62-.45h-.52c-.18 0-.46.07-.7.34-.24.27-.93.91-.93 2.21s.94 2.57 1.07 2.75c.13.18 1.8 2.74 4.37 3.74 2.57.99 2.57.66 3.04.62.47-.04 1.51-.62 1.72-1.21.21-.6.21-1.11.15-1.21-.06-.1-.22-.16-.45-.27z"/></svg>
+</a>
 </body>
 </html>
