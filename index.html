@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>San Bao Estudio — Luca Gazzola</title>
+<title>San Bao Estudio</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,700;0,800;0,900;1,700&family=Barlow+Condensed:wght@300;400;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<script>
+(function(){
+  const saved = localStorage.getItem('sanbao-theme');
+  const tema = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  if(tema === 'dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -18,31 +25,54 @@ html{scroll-behavior:smooth}
   --secundario:#354259;
   --glass:rgba(255,255,255,0.55);
   --glass-border:rgba(255,255,255,0.7);
+  --nav-bg:rgba(240,237,230,0.5);
+  --band-bg:rgba(255,255,255,0.25);
   --mono:'DM Mono',monospace;
   --display:'Barlow',sans-serif;
   --cond:'Barlow Condensed',sans-serif;
+  transition:background-color 0.3s;
 }
 
+:root[data-theme="dark"]{
+  --bg:#12161a;
+  --negro:#f0ede6;
+  --gris:#9aa7b5;
+  --linea:rgba(240,237,230,0.14);
+  --primario:#3aa4c2;
+  --secundario:#b9c2cf;
+  --glass:rgba(30,36,42,0.55);
+  --glass-border:rgba(255,255,255,0.09);
+  --nav-bg:rgba(18,22,26,0.6);
+  --band-bg:rgba(255,255,255,0.05);
+}
+:root[data-theme="dark"] body{background:var(--bg)}
+:root[data-theme="dark"] .glass{box-shadow:0 8px 32px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.05)}
+:root[data-theme="dark"] .nav-hamburger span{background:var(--negro)}
+:root[data-theme="dark"] .card-info{background:rgba(30,36,42,0.7)}
+
 body{background:var(--bg);color:var(--negro);font-family:var(--mono);font-weight:400;overflow-x:hidden;position:relative;font-size:16px;}
-body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.25;}
+body::before,body::after{content:'';position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(50px);opacity:0.22;will-change:transform;transform:translateZ(0);}
 body::before{width:600px;height:600px;background:radial-gradient(circle,#005f73 0%,transparent 70%);top:-100px;right:-100px;animation:float1 12s ease-in-out infinite;}
 body::after{width:500px;height:500px;background:radial-gradient(circle,#354259 0%,transparent 70%);bottom:-100px;left:-100px;animation:float2 15s ease-in-out infinite;}
+@media(max-width:900px){body::before,body::after{display:none}}
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-60px,80px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(80px,-60px)}}
 body>.noise{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");background-size:200px}
 
-.glass{background:var(--glass);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border:1px solid var(--glass-border);box-shadow:0 8px 32px rgba(14,14,14,0.08),inset 0 1px 0 rgba(255,255,255,0.8);}
+.glass{background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--glass-border);box-shadow:0 8px 32px rgba(14,14,14,0.08),inset 0 1px 0 rgba(255,255,255,0.8);transform:translateZ(0);}
 nav,section,footer,.modal-video,.lightbox,.lb-selector{position:relative;z-index:2}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:160;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:rgba(240,237,230,0.5);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.6);transition:background 0.3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:160;display:flex;justify-content:space-between;align-items:center;padding:20px 48px;background:var(--nav-bg);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.6);transition:background 0.3s;}
 .nav-logo{font-family:var(--cond);font-size:1rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--secundario);text-decoration:none;opacity:0.85;transition:opacity 0.2s}
 .nav-logo:hover{opacity:1}
 .nav-links{display:flex;gap:32px;list-style:none}
 .nav-links a{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--secundario);font-weight:400;text-decoration:none;transition:color 0.2s}
 .nav-links a:hover{color:var(--acento)}
 .lang-btn{font-family:var(--mono);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;background:none;border:1px solid var(--linea);color:var(--secundario);padding:5px 10px;cursor:pointer;transition:all 0.2s;margin-left:16px}
-.lang-btn:hover{border-color:var(--primario);color:var(--primario)}
+.lang-btn:hover{border-color:var(--primario);color:var(--primario)}/* THEME TOGGLE */
+.theme-btn{font-family:var(--mono);font-size:0.75rem;background:none;border:1px solid var(--linea);color:var(--secundario);width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s;margin-left:8px}
+.theme-btn:hover{border-color:var(--primario);color:var(--primario)}
 .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:200;position:relative}
 .nav-hamburger span{display:block;width:24px;height:2px;background:var(--negro);transition:all 0.3s}
 .nav-hamburger.open span{background:white}
@@ -236,21 +266,21 @@ section{padding:0 48px 100px}
 .lb-counter{position:absolute;bottom:-32px;left:50%;transform:translateX(-50%);font-size:0.52rem;letter-spacing:0.2em;color:rgba(255,255,255,0.3)}
 
 /* SCROLL PROGRESS */
-#scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--acento),var(--primario));z-index:9999;width:0%;transition:width 0.1s linear;pointer-events:none}
+#scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;background:linear-gradient(90deg,var(--acento),var(--primario));z-index:9999;transform:scaleX(0);transform-origin:left;pointer-events:none;will-change:transform}
 
 /* CURSOR CUSTOM */
 @media(pointer:fine){
   body{cursor:none}
-  .cursor-dot{position:fixed;width:8px;height:8px;background:var(--acento);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:0;transition:opacity 0.3s}
-  .cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(0,77,100,0.5);border-radius:50%;pointer-events:none;z-index:9997;transform:translate(-50%,-50%);opacity:0;transition:width 0.2s,height 0.2s,border-color 0.2s,opacity 0.3s}
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--acento);border-radius:50%;pointer-events:none;z-index:9998;transform:translate3d(var(--x,0),var(--y,0),0) translate(-50%,-50%);opacity:0;transition:opacity 0.3s;will-change:transform}
+  .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:1px solid rgba(0,77,100,0.5);border-radius:50%;pointer-events:none;z-index:9997;transform:translate3d(var(--x,0),var(--y,0),0) translate(-50%,-50%);opacity:0;transition:width 0.2s,height 0.2s,border-color 0.2s,opacity 0.3s;will-change:transform}
   body.cursor-ready .cursor-dot,body.cursor-ready .cursor-ring{opacity:1}
   body.cursor-hovering .cursor-ring{width:50px;height:50px;border-color:var(--acento)}
-  body.cursor-hovering .cursor-dot{transform:translate(-50%,-50%) scale(1.5)}
+  body.cursor-hovering .cursor-dot{transform:translate3d(var(--x,0),var(--y,0),0) translate(-50%,-50%) scale(1.5)}
   a,button,[onclick]{cursor:none}
 }
 
 /* STATS */
-.stats-band{padding:60px 48px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:0;background:rgba(255,255,255,0.25)}
+.stats-band{padding:60px 48px;border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:0;background:var(--band-bg)}
 .stat-item{padding:0 32px;border-right:1px solid var(--linea);display:flex;flex-direction:column;gap:6px}
 .stat-item:first-child{padding-left:0}
 .stat-item:last-child{border-right:none}
@@ -319,7 +349,8 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 
 /* RESPONSIVE */
 @media(max-width:900px){
-  nav{padding:16px 20px}
+  .glass{backdrop-filter:none;background:rgba(255,255,255,0.85)}
+  nav{padding:16px 20px;backdrop-filter:none}
   .nav-links{display:none}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;z-index:150;justify-content:center;align-items:center;gap:0;background:rgba(14,14,14,0.99);backdrop-filter:blur(20px)}
   .nav-links.open li{border-bottom:1px solid rgba(255,255,255,0.1);width:100%;text-align:center}
@@ -338,17 +369,17 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 }
 
 /* SERVICIOS TEXTO */
-.servicios-texto{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px;align-items:start;border-top:1px solid var(--linea);padding-top:48px}
+.servicios-texto{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:48px 48px;align-items:start;border-top:1px solid var(--linea);padding-top:48px}
 
 .srv-bloque-titulo{font-family:var(--cond);font-size:1rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--acento);margin-bottom:12px}
 .srv-bloque-desc{font-size:0.72rem;color:var(--gris);line-height:1.9}
-.srv-contacto{display:flex;flex-direction:column;justify-content:space-between;gap:24px;border-left:1px solid var(--linea);padding-left:40px}
+.srv-contacto{grid-column:4;grid-row:1 / span 2;display:flex;flex-direction:column;justify-content:space-between;gap:24px;border-left:1px solid var(--linea);padding-left:40px}
 .srv-contacto-links{display:flex;flex-direction:column;gap:12px}
 .srv-contacto-item{text-decoration:none;display:flex;flex-direction:column;gap:2px;transition:opacity 0.2s}
 .srv-contacto-item:hover{opacity:0.7}
 .srv-contacto-label{font-size:0.5rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--primario)}
 .srv-contacto-val{font-family:var(--cond);font-size:0.95rem;font-weight:600;color:var(--negro)}
-@media(max-width:900px){.servicios-texto{grid-template-columns:1fr;gap:32px}.srv-contacto{border-left:none;border-top:1px solid var(--linea);padding-left:0;padding-top:24px}}
+@media(max-width:900px){.servicios-texto{grid-template-columns:1fr;gap:32px}.srv-contacto{grid-column:auto;grid-row:auto;border-left:none;border-top:1px solid var(--linea);padding-left:0;padding-top:24px}}
 
 /* WHATSAPP FLOTANTE */
 .wa-float{position:fixed;bottom:24px;right:24px;z-index:300;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.45);transition:transform 0.25s,box-shadow 0.25s;text-decoration:none}
@@ -360,7 +391,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 
 /* GRILLA HORIZONTAL (16:9) — Vlogs y Motion Graphics */
 .grilla-h{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.grilla-h .card-thumb{padding-bottom:56.25%}
+.grilla-h .card-thumb{padding-bottom:0;aspect-ratio:16/9}
 @media(max-width:1100px){.grilla-h{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.grilla-h{grid-template-columns:repeat(1,1fr)}}
 
@@ -391,6 +422,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
   </ul>
   <div style="display:flex;align-items:center;gap:8px">
     <button class="lang-btn" id="langBtn" onclick="toggleLang()">EN</button>
+    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Cambiar modo">🌙</button>
     <button class="nav-hamburger" id="hamburger" onclick="toggleNav()">
       <span></span><span></span><span></span>
     </button>
@@ -400,9 +432,9 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 <section class="hero">
   <div class="hero-left">
     <div class="hero-eyebrow">Buenos Aires · Argentina</div>
-    <h1 class="hero-title">Luca<br><em>Gazzola</em></h1>
+    <h1 class="hero-title">San Bao<br><em>Estudio</em></h1>
     <p class="hero-sub">
-      <strong class="hero-tagline" data-es="Transformo ideas en contenido visual que conecta." data-en="I turn ideas into visual content that connects.">Transformo ideas en contenido visual que conecta.</strong>
+      <strong class="hero-tagline" data-es="Transformamos ideas en contenido visual que conecta." data-en="We turn ideas into visual content that connects.">Transformamos ideas en contenido visual que conecta.</strong>
       <span class="hero-descriptor" data-es="Video · Motion Graphics · Fotografía · Buenos Aires" data-en="Video · Motion Graphics · Photography · Buenos Aires">Video · Motion Graphics · Fotografía · Buenos Aires</span>
     </p>
     <a href="#contacto" class="cta-btn glow" data-es="Contacto" data-en="Contact">Contacto</a>
@@ -425,7 +457,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 </div>
 
 <section id="servicios" style="padding-top:80px">
-  <div class="sec-label reveal" data-es="Lo que hago" data-en="What I do">Lo que hago</div>
+  <div class="sec-label reveal" data-es="Lo que hacemos" data-en="What we do">Lo que hacemos</div>
   <div class="sec-title reveal" data-es="Servicios" data-en="Services">Servicios</div>
   <div class="servicios-texto reveal">
     <div class="srv-bloque">
@@ -439,6 +471,18 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
     <div class="srv-bloque">
       <h3 class="srv-bloque-titulo" data-es="Fotografía" data-en="Photography">Fotografía</h3>
       <p class="srv-bloque-desc" data-es="Deportiva, eventos sociales, retratos profesionales. Cobertura de torneos, cumpleaños, sesiones de marca y ciclos culturales. Edición incluida." data-en="Sports, social events, professional portraits. Coverage of tournaments, birthdays, brand sessions and cultural events. Editing included.">Deportiva, eventos sociales, retratos profesionales. Cobertura de torneos, cumpleaños, sesiones de marca y ciclos culturales. Edición incluida.</p>
+    </div>
+    <div class="srv-bloque">
+      <h3 class="srv-bloque-titulo" data-es="Community Management" data-en="Community Management">Community Management</h3>
+      <p class="srv-bloque-desc" data-es="Contamos con equipo dedicado para administrar y calendarizar tus redes. Estrategia de contenido, programación de posteos y gestión de comunidad en Instagram, TikTok y más." data-en="We have a dedicated team to manage and schedule your social media. Content strategy, post scheduling and community management on Instagram, TikTok and more.">Contamos con equipo dedicado para administrar y calendarizar tus redes. Estrategia de contenido, programación de posteos y gestión de comunidad en Instagram, TikTok y más.</p>
+    </div>
+    <div class="srv-bloque">
+      <h3 class="srv-bloque-titulo" data-es="Diseño Gráfico" data-en="Graphic Design">Diseño Gráfico</h3>
+      <p class="srv-bloque-desc" data-es="Contamos con equipo dedicado para ayudar a tu marca a crecer. Identidad de marca y logotipos, piezas para redes sociales, papelería y cartelería para eventos." data-en="We have a dedicated team to help your brand grow. Brand identity and logos, social media pieces, stationery and event signage.">Contamos con equipo dedicado para ayudar a tu marca a crecer. Identidad de marca y logotipos, piezas para redes sociales, papelería y cartelería para eventos.</p>
+    </div>
+    <div class="srv-bloque">
+      <h3 class="srv-bloque-titulo" data-es="Inteligencia Artificial" data-en="Artificial Intelligence">Inteligencia Artificial</h3>
+      <p class="srv-bloque-desc" data-es="Combinamos lo mejor de los dos mundos, lo analógico y lo digital. Contamos con licencias para trabajar los modelos más avanzados del mercado (Seedance 2.0 · Kling 3.0 · Gemini Omni y mucho más)." data-en="We combine the best of both worlds, analog and digital. We hold licenses to work with the most advanced models on the market (Seedance 2.0 · Kling 3.0 · Gemini Omni and much more).">Combinamos lo mejor de los dos mundos, lo analógico y lo digital. Contamos con licencias para trabajar los modelos más avanzados del mercado (Seedance 2.0 · Kling 3.0 · Gemini Omni y mucho más).</p>
     </div>
     <div class="srv-contacto">
       <div class="srv-contacto-links">
@@ -458,30 +502,30 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
   <!-- VIDEO -->
   <div class="proj-sublabel reveal" data-es="Video" data-en="Video">Video</div>
   <div class="grilla reveal" id="grilla-video">
-<div class="card" data-cat="video" onclick="abrirVideo('1181674980')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/Icorporativo.jpg?raw=true" alt="Inglés Corporativo BA"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Inglés Corporativo BA<br>Reel Institucional</h3><p class="card-desc" data-es="Reel institucional. Producción completa." data-en="Institutional reel. Full production.">Reel institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Inglés Corporativo BA — Reel Institucional</span></div></div>
-        <div class="card" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc" data-es="Video promocional institucional. Producción completa." data-en="Institutional promotional video. Full production.">Video promocional institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Sesión Musical<br>Bajista" data-en="Musical Session<br>Bassist">Sesión Musical<br>Bajista</h3><p class="card-desc" data-es="Sesión en vivo." data-en="Live session.">Sesión en vivo.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Sesión Musical Bajista" data-en="Bassist Musical Session">Sesión Musical Bajista</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 1"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 1" data-en="Reel format<br>Edit 1">Edición formato<br>Reel 1</h3><p class="card-desc" data-es="Compilado del desafío." data-en="Challenge compilation.">Compilado del desafío.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 1" data-en="Reel format Edit 1">Edición formato Reel 1</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Reel<br>Cervecería" data-en="Reel<br>Brewery">Reel<br>Cervecería</h3><p class="card-desc" data-es="Reel de producto gastronómico." data-en="Gastronomic product reel.">Reel de producto gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Reel Cervecería" data-en="Brewery Reel">Reel Cervecería</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 2" data-en="Reel format<br>Edit 2">Edición formato<br>Reel 2</h3><p class="card-desc" data-es="Reel musical." data-en="Musical reel.">Reel musical.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 2" data-en="Reel format Edit 2">Edición formato Reel 2</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177044935')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_003.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Como hablarle a la camara"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Cómo hablarle<br>a la cámara" data-en="How to talk<br>to the camera">Cómo hablarle<br>a la cámara</h3><p class="card-desc" data-es="Consejo para creadores de contenido." data-en="Tip for content creators.">Consejo para creadores de contenido.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Cómo hablarle a la cámara" data-en="How to talk to the camera">Cómo hablarle a la cámara</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177045538')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_002.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Mascaras edicion"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Máscaras<br>Edición" data-en="Masks<br>Edit">Máscaras<br>Edición</h3><p class="card-desc" data-es="Técnica de máscaras en edición." data-en="Masks technique in editing.">Técnica de máscaras en edición.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Máscaras Edición" data-en="Masks Edit">Máscaras Edición</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177046446')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_005.png?raw=true" alt="Vino y Folklore"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Vino y<br>Folklore" data-en="Wine &amp;<br>Folklore">Vino y<br>Folklore</h3><p class="card-desc" data-es="Cobertura de evento cultural." data-en="Cultural event coverage.">Cobertura de evento cultural.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Vino y Folklore" data-en="Wine & Folklore">Vino y Folklore</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177046092')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_001.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Foto Local gastronomico"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Foto Local<br>Gastronómico" data-en="Gastronomic<br>Venue">Foto Local<br>Gastronómico</h3><p class="card-desc" data-es="Producción para local gastronómico." data-en="Production for gastronomic venue.">Producción para local gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Foto Local Gastronómico" data-en="Gastronomic Venue">Foto Local Gastronómico</span></div></div>
-    <div class="card" data-cat="video" onclick="abrirVideo('1177043795')"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_000.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Presupuesto cliente"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><h3 class="card-titulo" data-es="Presupuesto<br>Cliente #Humor" data-en="Client<br>Budget #Humor">Presupuesto<br>Cliente #Humor</h3><p class="card-desc" data-es="Contenido de humor para redes." data-en="Humor content for social media.">Contenido de humor para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><span class="card-info-titulo" data-es="Presupuesto Cliente #Humor" data-en="Client Budget #Humor">Presupuesto Cliente #Humor</span></div></div>
+<div class="card" data-cat="video" onclick="abrirVideo('1181674980')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/Icorporativo.jpg?raw=true" alt="Inglés Corporativo BA"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Inglés Corporativo BA<br>Reel Institucional</h3><p class="card-desc" data-es="Reel institucional. Producción completa." data-en="Institutional reel. Full production.">Reel institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Inglés Corporativo BA — Reel Institucional</span></div></div>
+        <div class="card" data-cat="video" onclick="abrirVideo('1173295192')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg" alt="UBA"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo">Reel Posgrado UBA<br>Odontología</h3><p class="card-desc" data-es="Video promocional institucional. Producción completa." data-en="Institutional promotional video. Full production.">Video promocional institucional. Producción completa.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo">Reel Posgrado UBA Odontología</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173295320')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg" alt="Bajo"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Sesión Musical<br>Bajista" data-en="Musical Session<br>Bassist">Sesión Musical<br>Bajista</h3><p class="card-desc" data-es="Sesión en vivo." data-en="Live session.">Sesión en vivo.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Sesión Musical Bajista" data-en="Bassist Musical Session">Sesión Musical Bajista</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1163783614')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png" alt="Reel 1"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 1" data-en="Reel format<br>Edit 1">Edición formato<br>Reel 1</h3><p class="card-desc" data-es="Compilado del desafío." data-en="Challenge compilation.">Compilado del desafío.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 1" data-en="Reel format Edit 1">Edición formato Reel 1</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1166457016')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg" alt="Cervecería"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Reel<br>Cervecería" data-en="Reel<br>Brewery">Reel<br>Cervecería</h3><p class="card-desc" data-es="Reel de producto gastronómico." data-en="Gastronomic product reel.">Reel de producto gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Reel Cervecería" data-en="Brewery Reel">Reel Cervecería</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1173318150')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg" alt="Reel 2"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Edición formato<br>Reel 2" data-en="Reel format<br>Edit 2">Edición formato<br>Reel 2</h3><p class="card-desc" data-es="Reel musical." data-en="Musical reel.">Reel musical.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Edición formato Reel 2" data-en="Reel format Edit 2">Edición formato Reel 2</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177044935')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_003.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Como hablarle a la camara"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Cómo hablarle<br>a la cámara" data-en="How to talk<br>to the camera">Cómo hablarle<br>a la cámara</h3><p class="card-desc" data-es="Consejo para creadores de contenido." data-en="Tip for content creators.">Consejo para creadores de contenido.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Cómo hablarle a la cámara" data-en="How to talk to the camera">Cómo hablarle a la cámara</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177045538')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_002.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Mascaras edicion"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><h3 class="card-titulo" data-es="Máscaras<br>Edición" data-en="Masks<br>Edit">Máscaras<br>Edición</h3><p class="card-desc" data-es="Técnica de máscaras en edición." data-en="Masks technique in editing.">Técnica de máscaras en edición.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Reel" data-en="Editing · Reel">Edición · Reel</span><span class="card-info-titulo" data-es="Máscaras Edición" data-en="Masks Edit">Máscaras Edición</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177046446')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_005.png?raw=true" alt="Vino y Folklore"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Vino y<br>Folklore" data-en="Wine &amp;<br>Folklore">Vino y<br>Folklore</h3><p class="card-desc" data-es="Cobertura de evento cultural." data-en="Cultural event coverage.">Cobertura de evento cultural.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Vino y Folklore" data-en="Wine & Folklore">Vino y Folklore</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177046092')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_001.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Foto Local gastronomico"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><h3 class="card-titulo" data-es="Foto Local<br>Gastronómico" data-en="Gastronomic<br>Venue">Foto Local<br>Gastronómico</h3><p class="card-desc" data-es="Producción para local gastronómico." data-en="Production for gastronomic venue.">Producción para local gastronómico.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Filmación · Edición" data-en="Filming · Editing">Filmación · Edición</span><span class="card-info-titulo" data-es="Foto Local Gastronómico" data-en="Gastronomic Venue">Foto Local Gastronómico</span></div></div>
+    <div class="card" data-cat="video" onclick="abrirVideo('1177043795')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/img_000.jpg?raw=true" onerror="this.style.display=\'none\'" alt="Presupuesto cliente"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><h3 class="card-titulo" data-es="Presupuesto<br>Cliente #Humor" data-en="Client<br>Budget #Humor">Presupuesto<br>Cliente #Humor</h3><p class="card-desc" data-es="Contenido de humor para redes." data-en="Humor content for social media.">Contenido de humor para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat" data-es="Edición · Humor" data-en="Editing · Humor">Edición · Humor</span><span class="card-info-titulo" data-es="Presupuesto Cliente #Humor" data-en="Client Budget #Humor">Presupuesto Cliente #Humor</span></div></div>
   </div>
 
   <!-- VLOGS / HORIZONTAL -->
   <div class="proj-sublabel reveal" data-es="Vlogs" data-en="Vlogs">Vlogs</div>
   <div class="grilla-h reveal" id="grilla-vlogs">
-    <div class="card" data-cat="vlog" onclick="abrirVideo('0n2GlkwmeE0','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/0n2GlkwmeE0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/0n2GlkwmeE0/hqdefault.jpg'" alt="Vlog 01"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 01</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 01</span></div></div>
-    <div class="card" data-cat="vlog" onclick="abrirVideo('HUOZFaQa2Yo','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/HUOZFaQa2Yo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/HUOZFaQa2Yo/hqdefault.jpg'" alt="Vlog 02"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 02</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 02</span></div></div>
-    <div class="card" data-cat="vlog" onclick="abrirVideo('prxTHLrhqEI','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/prxTHLrhqEI/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/prxTHLrhqEI/hqdefault.jpg'" alt="Vlog 03"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 03</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 03</span></div></div>
-    <div class="card" data-cat="vlog" onclick="abrirVideo('II-An2CQ74A','h','yt')"><div class="card-thumb"><img src="https://img.youtube.com/vi/II-An2CQ74A/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/II-An2CQ74A/hqdefault.jpg'" alt="Vlog 04"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 04</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 04</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('0n2GlkwmeE0','h','yt')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://img.youtube.com/vi/0n2GlkwmeE0/hqdefault.jpg" alt="Vlog 01"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 01</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 01</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('HUOZFaQa2Yo','h','yt')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://img.youtube.com/vi/HUOZFaQa2Yo/hqdefault.jpg" alt="Vlog 02"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 02</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 02</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('prxTHLrhqEI','h','yt')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://img.youtube.com/vi/prxTHLrhqEI/hqdefault.jpg" alt="Vlog 03"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 03</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 03</span></div></div>
+    <div class="card" data-cat="vlog" onclick="abrirVideo('II-An2CQ74A','h','yt')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://img.youtube.com/vi/II-An2CQ74A/hqdefault.jpg" alt="Vlog 04"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Vlog</span><h3 class="card-titulo">Vlog 04</h3><p class="card-desc" data-es="Contenido detrás de cámara." data-en="Behind the scenes content.">Contenido detrás de cámara.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Vlog</span><span class="card-info-titulo">Vlog 04</span></div></div>
     <!--
       PLANTILLA — copiá este bloque para agregar otro video horizontal (YouTube):
       <div class="card" data-cat="vlog" onclick="abrirVideo('YOUTUBE_ID','h','yt')">
-        <div class="card-thumb"><img src="https://img.youtube.com/vi/YOUTUBE_ID/maxresdefault.jpg" alt="Nombre del video">
+        <div class="card-thumb"><img loading="lazy" decoding="async" src="https://img.youtube.com/vi/YOUTUBE_ID/maxresdefault.jpg" alt="Nombre del video">
           <div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="card-overlay">
@@ -495,21 +539,17 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 
       Si el video es de Vimeo en vez de YouTube, omitís el tercer parámetro: abrirVideo('VIMEO_ID','h')
     -->
-    <div class="card-ghost">
-      <div class="gp-icon">+</div>
-      <span class="gp-text" data-es="Agregá otro video horizontal" data-en="Add another horizontal video">Agregá otro video horizontal</span>
-    </div>
   </div>
 
   <!-- MOTION GRAPHICS -->
   <div class="proj-sublabel reveal" data-es="Motion Graphics" data-en="Motion Graphics">Motion Graphics</div>
   <div class="grilla-h reveal" id="grilla-motion">
-    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428','h')"><div class="card-thumb"><img src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc" data-es="Reel animado para redes." data-en="Animated reel for social media.">Reel animado para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
+    <div class="card" data-cat="motion" onclick="abrirVideo('1166459428','h')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg" alt="Motion"><div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div></div><div class="card-overlay"><span class="card-cat">Motion graphics</span><h3 class="card-titulo">Villa Luro Vóley<br>2026</h3><p class="card-desc" data-es="Reel animado para redes." data-en="Animated reel for social media.">Reel animado para redes.</p><span class="card-link" data-es="Ver proyecto" data-en="View project">Ver proyecto</span></div><div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Villa Luro Vóley — 2026</span></div></div>
     <!--
       PLANTILLA — copiá este bloque para agregar otra pieza de motion graphics (mismo formato horizontal):
 
       <div class="card" data-cat="motion" onclick="abrirVideo('VIMEO_ID','h')">
-        <div class="card-thumb"><img src="URL_DE_TU_PORTADA.jpg" alt="Nombre de la pieza">
+        <div class="card-thumb"><img loading="lazy" decoding="async" src="URL_DE_TU_PORTADA.jpg" alt="Nombre de la pieza">
           <div class="card-play"><div class="card-play-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="card-overlay">
@@ -521,19 +561,15 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
         <div class="card-info"><span class="card-info-cat">Motion graphics</span><span class="card-info-titulo">Título de la pieza</span></div>
       </div>
     -->
-    <div class="card-ghost">
-      <div class="gp-icon">+</div>
-      <span class="gp-text" data-es="Agregá otra pieza de motion graphics" data-en="Add another motion graphics piece">Agregá otra pieza de motion graphics</span>
-    </div>
   </div>
 
   <!-- FOTOS -->
   <div class="proj-sublabel reveal" data-es="Fotos" data-en="Photos">Fotos</div>
   <div class="grilla reveal" id="grilla-foto">
-    <div class="card" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>Deportiva" data-en="Sports<br>Photography">Fotografía<br>Deportiva</h3><p class="card-desc" data-es="Vóley Femenino · Fútsal Femenino" data-en="Women's Volleyball · Women's Futsal">Vóley Femenino · Fútsal Femenino</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía deportiva · 2 álbumes" data-en="Sports photography · 2 albums">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía Deportiva" data-en="Sports Photography">Fotografía Deportiva</span></div></div>
-    <div class="card" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>para Eventos" data-en="Event<br>Photography">Fotografía<br>para Eventos</h3><p class="card-desc" data-es="XV Cumpleaños · Evento Cervecería" data-en="Sweet 16 · Brewery Event">XV Cumpleaños · Evento Cervecería</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Eventos · 2 álbumes" data-en="Photography · Events · 2 albums">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía para Eventos" data-en="Event Photography">Fotografía para Eventos</span></div></div>
-    <div class="card" data-cat="foto" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="card-thumb"><img src="https://i.imgur.com/sMafXdN.jpg" alt="Profesionales"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><h3 class="card-titulo" data-es="Fotografía<br>Profesional" data-en="Professional<br>Photography">Fotografía<br>Profesional</h3><p class="card-desc" data-es="Retratos y fotografía corporativa." data-en="Portraits and corporate photography.">Retratos y fotografía corporativa.</p><span class="card-link" data-es="Ver galería" data-en="View gallery">Ver galería</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><span class="card-info-titulo" data-es="Profesionales" data-en="Professionals">Profesionales</span></div></div>
-    <div class="card" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/DSC07596.jpg?raw=true" alt="Música"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 3 álbumes" data-en="Photography · 3 albums">Fotografía · 3 álbumes</span><h3 class="card-titulo" data-es="Música<br>en Vivo" data-en="Live<br>Music">Música<br>en Vivo</h3><p class="card-desc" data-es="Tinkuy · Folklore · Video Clip" data-en="Tinkuy · Folklore · Video Clip">Tinkuy · Folklore · Video Clip</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Música · 3 álbumes" data-en="Photography · Music · 3 albums">Fotografía · Música · 3 álbumes</span><span class="card-info-titulo" data-es="Música en Vivo" data-en="Live Music">Música en Vivo</span></div></div>
+    <div class="card" data-cat="foto" onclick="abrirSelectorDeportiva()"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://i.imgur.com/neyhV6v.jpg" alt="Fotografía Deportiva"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>Deportiva" data-en="Sports<br>Photography">Fotografía<br>Deportiva</h3><p class="card-desc" data-es="Vóley Femenino · Fútsal Femenino" data-en="Women's Volleyball · Women's Futsal">Vóley Femenino · Fútsal Femenino</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía deportiva · 2 álbumes" data-en="Sports photography · 2 albums">Fotografía deportiva · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía Deportiva" data-en="Sports Photography">Fotografía Deportiva</span></div></div>
+    <div class="card" data-cat="foto" onclick="abrirSelectorEventos()"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://i.imgur.com/tszLcVK.jpg" alt="Fotografía Eventos"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 2 álbumes" data-en="Photography · 2 albums">Fotografía · 2 álbumes</span><h3 class="card-titulo" data-es="Fotografía<br>para Eventos" data-en="Event<br>Photography">Fotografía<br>para Eventos</h3><p class="card-desc" data-es="XV Cumpleaños · Evento Cervecería" data-en="Sweet 16 · Brewery Event">XV Cumpleaños · Evento Cervecería</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Eventos · 2 álbumes" data-en="Photography · Events · 2 albums">Fotografía · Eventos · 2 álbumes</span><span class="card-info-titulo" data-es="Fotografía para Eventos" data-en="Event Photography">Fotografía para Eventos</span></div></div>
+    <div class="card" data-cat="foto" onclick="abrirGaleria(FOTOS_PROFESIONALES,'Profesionales')"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://i.imgur.com/sMafXdN.jpg" alt="Profesionales"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><h3 class="card-titulo" data-es="Fotografía<br>Profesional" data-en="Professional<br>Photography">Fotografía<br>Profesional</h3><p class="card-desc" data-es="Retratos y fotografía corporativa." data-en="Portraits and corporate photography.">Retratos y fotografía corporativa.</p><span class="card-link" data-es="Ver galería" data-en="View gallery">Ver galería</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · 14 fotos" data-en="Photography · 14 photos">Fotografía · 14 fotos</span><span class="card-info-titulo" data-es="Profesionales" data-en="Professionals">Profesionales</span></div></div>
+    <div class="card" data-cat="foto" onclick="abrirSelectorMusica()"><div class="card-thumb"><img loading="lazy" decoding="async" src="https://github.com/sanbaoestudio/Portfolio/blob/main/portadas/DSC07596.jpg?raw=true" alt="Música"></div><div class="card-overlay"><span class="card-cat" data-es="Fotografía · 3 álbumes" data-en="Photography · 3 albums">Fotografía · 3 álbumes</span><h3 class="card-titulo" data-es="Música<br>en Vivo" data-en="Live<br>Music">Música<br>en Vivo</h3><p class="card-desc" data-es="Tinkuy · Folklore · Video Clip" data-en="Tinkuy · Folklore · Video Clip">Tinkuy · Folklore · Video Clip</p><span class="card-link" data-es="Ver álbumes" data-en="View albums">Ver álbumes</span></div><div class="card-info"><span class="card-info-cat" data-es="Fotografía · Música · 3 álbumes" data-en="Photography · Music · 3 albums">Fotografía · Música · 3 álbumes</span><span class="card-info-titulo" data-es="Música en Vivo" data-en="Live Music">Música en Vivo</span></div></div>
   </div>
 </section>
 
@@ -551,7 +587,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 
 <section id="contacto">
   <div class="contacto-wrap reveal">
-    <div><h2 class="contacto-titulo" data-es="Trabajemos<br><em>juntos</em>" data-en="Let's work<br><em>together</em>">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc" data-es="Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto" data-en="Available for audiovisual projects, remote and international collaborations.<br>Buenos Aires · Remote">Disponible para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto</p><a href="mailto:sanbaoestudio@gmail.com" class="cta-btn" style="margin-top:28px" data-es="Enviar un email" data-en="Send an email">Enviar un email</a></div>
+    <div><h2 class="contacto-titulo" data-es="Trabajemos<br><em>juntos</em>" data-en="Let's work<br><em>together</em>">Trabajemos<br><em>juntos</em></h2><p class="contacto-desc" data-es="Disponibles para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto" data-en="Available for audiovisual projects, remote and international collaborations.<br>Buenos Aires · Remote">Disponibles para proyectos audiovisuales, colaboraciones remotas e internacionales.<br>Buenos Aires · Remoto</p><a href="mailto:sanbaoestudio@gmail.com" class="cta-btn" style="margin-top:28px" data-es="Enviar un email" data-en="Send an email">Enviar un email</a></div>
     <div class="contacto-items">
       <div class="contacto-item"><span class="ci-label">Instagram</span><a href="https://instagram.com/sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
       <div class="contacto-item"><span class="ci-label">TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" class="ci-valor">@sanbaoestudio</a></div>
@@ -572,7 +608,7 @@ footer{padding:28px 48px;display:flex;justify-content:space-between;align-items:
 <div class="modal-video" id="modalVideo" onclick="cerrarVideo(event)"><div class="modal-video-inner"><button class="modal-cerrar" onclick="cerrarVideo()">[ cerrar ]</button><div class="modal-video-wrap"><iframe id="iframeVideo" src="" allowfullscreen allow="autoplay"></iframe></div></div></div>
 
 <!-- LIGHTBOX FOTOS -->
-<div class="lightbox" id="lightbox" onclick="cerrarFotos(event)"><div class="lightbox-inner"><button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button><button class="lb-grilla-btn" onclick="abrirGaleriaDesdeSlider()">⊞ ver grilla</button><button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button><img id="lbImg" src="" alt=""><button class="lb-nav lb-next" onclick="navFoto(1)">→</button><span class="lb-counter" id="lbCounter"></span></div></div>
+<div class="lightbox" id="lightbox" onclick="cerrarFotos(event)"><div class="lightbox-inner"><button class="lb-cerrar" onclick="cerrarFotos()">[ cerrar ]</button><button class="lb-grilla-btn" onclick="abrirGaleriaDesdeSlider()">⊞ ver grilla</button><button class="lb-nav lb-prev" onclick="navFoto(-1)">←</button><img loading="lazy" decoding="async" id="lbImg" src="" alt=""><button class="lb-nav lb-next" onclick="navFoto(1)">→</button><span class="lb-counter" id="lbCounter"></span></div></div>
 
 <!-- GALERÍA GRILLA -->
 <div class="galeria" id="galeria">
@@ -722,7 +758,7 @@ function abrirGaleria(fotos, titulo){
   document.getElementById('galeriaContador').textContent = fotos.length + ' fotos';
   const grid = document.getElementById('galeriaGrid');
   grid.innerHTML = fotos.map((url, i) =>
-    '<div class="galeria-item" onclick="abrirFotoDesdeGaleria(' + i + ')"><img src="' + url + '" alt=""><span class="galeria-item-num">' + String(i + 1).padStart(2, '0') + '</span></div>'
+    '<div class="galeria-item" onclick="abrirFotoDesdeGaleria(' + i + ')"><img loading="lazy" decoding="async" src="' + url + '" alt=""><span class="galeria-item-num">' + String(i + 1).padStart(2, '0') + '</span></div>'
   ).join('');
   document.getElementById('galeria').classList.add('abierta');
   document.body.style.overflow = 'hidden';
@@ -785,6 +821,20 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// ---- TEMA (claro/oscuro) ----
+function toggleTheme(){
+  const esOscuro = document.documentElement.getAttribute('data-theme') === 'dark';
+  const nuevo = esOscuro ? 'light' : 'dark';
+  if(nuevo === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  else document.documentElement.removeAttribute('data-theme');
+  localStorage.setItem('sanbao-theme', nuevo);
+  document.getElementById('themeBtn').textContent = nuevo === 'dark' ? '☀️' : '🌙';
+}
+(function(){
+  const btn = document.getElementById('themeBtn');
+  if(btn) btn.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+})();
+
 // ---- IDIOMA ----
 let langActual='es';
 function toggleLang(){
@@ -815,16 +865,22 @@ const obsGrids = new IntersectionObserver(entries => {
 }, {threshold:0.05});
 document.querySelectorAll('.grilla,.servicios-grid,.servicios-grid-foto,.testimonios-grid').forEach(el => obsGrids.observe(el));
 
-// === SCROLL PROGRESS BAR ===
+// === SCROLL PROGRESS BAR (throttled con rAF, sin reflow) ===
 const progressBar = document.getElementById('scroll-progress');
+let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  progressBar.style.width = pct + '%';
+  if(scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? scrollTop / docHeight : 0;
+    progressBar.style.transform = 'scaleX(' + pct + ')';
+    scrollTicking = false;
+  });
 }, {passive: true});
 
-// === CUSTOM CURSOR ===
+// === CUSTOM CURSOR (transform/custom-properties, sin reflow) ===
 (function(){
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
@@ -833,15 +889,15 @@ window.addEventListener('scroll', () => {
   let mx=0, my=0, rx=0, ry=0;
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
+    dot.style.setProperty('--x', mx + 'px');
+    dot.style.setProperty('--y', my + 'px');
     document.body.classList.add('cursor-ready');
-  });
+  }, {passive: true});
   function animRing(){
     rx += (mx - rx) * 0.12;
     ry += (my - ry) * 0.12;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
+    ring.style.setProperty('--x', rx + 'px');
+    ring.style.setProperty('--y', ry + 'px');
     requestAnimationFrame(animRing);
   }
   animRing();
