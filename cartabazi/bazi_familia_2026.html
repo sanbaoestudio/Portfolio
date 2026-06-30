@@ -247,6 +247,12 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div class="sec-title gt" style="margin-top:0;">Guía para hoy</div>
   <p class="sec-sub">Tips de crianza basados en el clima energético del día y su carta natal Ren Agua Yang.</p>
   <div class="tips-grid-fam" id="g-tips"></div>
+
+  <!-- ACTIVIDADES CONCRETAS CON GUADI -->
+  <div class="sec-title gt">✦ Actividades para hoy con Guadi</div>
+  <p class="sec-sub">Ideas concretas según su estado energético del día. Pensadas para una niña de 4 años con Day Master de Agua Yang fuerte: necesita canalizar su energía (juego/expresión), calidez emocional y estructura suave.</p>
+  <div id="g-actividades"></div>
+
   <div class="exp-bar">
     <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
     <button class="exp-btn" onclick="exportarHoyFam('guadi')">⬇ Descargar .ICS</button>
@@ -966,9 +972,9 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
     <div class="e-card metal"><div class="e-card-label">Gallo en la rama del día</div>
       <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">酉 — Hogar del Metal Yin</h3>
       <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Xin sobre Gallo es Metal puro y concentrado — la máxima expresión de este Day Master. Claridad de pensamiento, precisión en la palabra, capacidad de ver lo que otros no ven. El riesgo: hipersensibilidad y perfeccionismo que paraliza.</p></div>
-    <div class="e-card tierra"><div class="e-card-label">Tierra como Recurso</div>
-      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Ji/Buey y Dragón nutren su Metal</h3>
-      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Tierra genera Metal. Con Ji (Tierra Yin) en la hora y el Dragón en el mes, Grecia tiene un recurso de soporte profundo. La nutre el estudio, la estructura y los entornos ordenados. Su capacidad intelectual es uno de sus mayores activos.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tierra — Recurso (con matiz)</div>
+      <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Ji/Buey y Dragón refuerzan su Metal</h3>
+      <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">La Tierra genera Metal. Con Ji (Tierra Yin) en la hora y el Dragón en el mes, Grecia tiene mucho soporte estructural. El matiz: como su Metal ya es fuerte, demasiada estructura la endurece y la lleva al perfeccionismo. Su crecimiento real viene de soltar y expresarse (Agua), no de acumular más orden.</p></div>
     <div class="e-card agua"><div class="e-card-label">Agua como expresión</div>
       <h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:#a07fc0;">Ren en el mes — Oficial Herido</h3>
       <p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Metal genera Agua — Ren Yang en el mes activa el Oficial Herido. Grecia tiene un talento creativo y disruptivo que emerge cuando se siente libre. A los 15 años esto puede vivirse como necesidad de romper moldes y expresarse de manera no convencional.</p></div>
@@ -1352,7 +1358,8 @@ const PERSONS={
     name:'Guadalupe',dm:8,dmElem:'壬 Ren · Agua Yang',color:'var(--guadi)',
     natal:[8,0,4,2],anioR:2,dayunR:3,
     dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
-    elemBon:[2,3,0,1],elemBad:[4,5],
+    // Agua Yang FUERTE (Ren+Ren+Zi). Necesita drenar(Madera), calentar(Fuego), contener(Tierra).
+    elemBon:[0,1,2,3,4,5],elemBad:[6,7,8,9],
     tipsHacer:{
       0:['Juego imaginativo con cuentos y mundos inventados','Conectar con niños de su edad en ambientes conocidos','Actividades que combinen movimiento y narración','Pedir su opinión: "¿Qué preferís vos?" activa su inteligencia','Explorar algo nuevo juntos sin presión de resultado'],
       1:['Arte libre — plastilina, dibujo, pintura sin indicaciones','Explorar algo nuevo de manera espontánea','Cambios pequeños de rutina que la estimulen','Actividades cortas con inicio y final claro','Juegos que tengan variantes o reglas que ella pueda modificar'],
@@ -1382,7 +1389,8 @@ const PERSONS={
     name:'Morena',dm:0,dmElem:'甲 Jia · Madera Yang',color:'var(--morena)',
     natal:[9,6,4,3],anioR:3,dayunR:6,
     dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
-    elemBon:[2,3,8,9],elemBad:[6,7],
+    // Madera Yang con Caballo(Fuego) drenando. Necesita Agua(nutre) y Madera(refuerza). Fuego ya fuerte la agota.
+    elemBon:[0,1,8,9],elemBad:[2,3,6,7],
     tipsHacer:{
       0:['Actividades colaborativas con amigas o pares que respeta','Conectar con personas que comparten sus intereses genuinos','Proyectos grupales donde ella aporte algo único y reconocible','Conversation sobre planes o decisiones incluyéndola como par','Recordarle que sus alianzas son su mayor activo'],
       1:['Moverse rápido en algo que tiene ventana corta de oportunidad','Tomar iniciativa en un proyecto que le importa antes de que alguien más lo haga','Aprender algo nuevo de manera autodidacta y exploratoria','Actuar con la información que tiene sin paralizarse por la incertidumbre','Hacer algo impulsivo pero en un área que la desarrolla'],
@@ -1413,7 +1421,8 @@ const PERSONS={
     // natal: Hai(11), Chen(4), Chou(1), Wei(7) · año2026:Wu(6) · dayun:Chen(4)
     natal:[11,4,1,7],anioR:6,dayunR:4,
     dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
-    elemBon:[0,1,2,3,8,9],elemBad:[4,5],// Madera y Fuego son buenos (Food God/riqueza); Tierra frena
+    // Agua Yang fuerte por triple Metal. Necesita drenar(Madera/Food God), riqueza(Fuego), control(Tierra). Metal/Agua = exceso.
+    elemBon:[0,1,2,3,4,5],elemBad:[6,7,8,9],
     tipsHacer:{
       0:['Reunirse con personas que tienen el mismo nivel de profundidad','Compartir conocimiento o proyectos con quien realmente lo valora','Conectar con alguien de confianza en quien apoyarse','Avanzar en algo colaborativo donde su aporte sea reconocido','Cuidar sus vínculos más importantes con presencia real'],
       1:['Moverse rápido en una oportunidad que tiene ventana corta','Tomar iniciativa sin esperar certeza total — el 80% es suficiente','Aprender algo nuevo de manera autónoma y sin estructura rígida','Actuar sobre algo que lleva demasiado tiempo en análisis','Confiar en su primera intuición sobre una decisión concreta'],
@@ -1548,6 +1557,98 @@ function buildHoyFam(person){
       <ul>${tn.map(t=>`<li>${t}</li>`).join('')}</ul>
     </div>
   `;
+
+  // Actividades concretas (solo Guadi)
+  if(person==='guadi'){buildActividadesGuadi(p,rating);}
+}
+
+// ══ ACTIVIDADES CONCRETAS CON GUADI (según estado energético) ══
+// Organizado por elemento del día. Guadi=Agua Yang fuerte: drena con Madera(juego/expresión),
+// calienta con Fuego(emoción/social), contiene con Tierra(estructura). Metal/Agua=día de recarga.
+const ACTIVIDADES_GUADI={
+  // MADERA (0,1) — día de canalizar energía: crecimiento, juego activo, creatividad
+  madera:{
+    estado:'Día expansivo — necesita canalizar energía hacia afuera',
+    icon:'🌱',
+    color:'#4a8c3f',
+    intro:'El día activa su Madera: el mejor canal para drenar su Agua. Guadi va a tener energía para crear, construir y explorar. Aprovechar para juego activo y proyectos con las manos.',
+    casa:['Construir torres, casas o mundos con bloques y dejar que ella dirija','Plastilina o masa: hacer animalitos, comida, lo que se le ocurra','Plantar una semilla en una maceta y que la cuide (le encanta el proceso de crecimiento)','Dibujar libre en papel grande pegado a la pared, de pie'],
+    afuera:['Plaza con juegos de trepar y movimiento — necesita gastar energía','Caminar y recolectar hojas, palitos, piedritas para una "colección"','Pasear en bici o triciclo','Visitar un vivero o parque con plantas y árboles'],
+    conexion:['Dejar que ELLA invente el juego y vos seguirla — su Madera necesita liderar','Inventar una historia juntos donde ella es la protagonista','Hacer un proyecto de varios pasos: "hoy empezamos, mañana seguimos"'],
+  },
+  // FUEGO (2,3) — día social y emocional: expresión, conexión, alegría
+  fuego:{
+    estado:'Día cálido y social — su corazón pide conexión y expresión',
+    icon:'🔥',
+    color:'#e05a1a',
+    intro:'El Fuego es su riqueza y su alegría. Hoy Guadi está en su modo más expresivo, afectivo y social. Es el día ideal para música, baile, ver gente querida y conexión emocional plena.',
+    casa:['Poner música y bailar juntos — su Fuego se enciende con el movimiento rítmico','Cantar canciones, inventar letras tontas, hacer un "show"','Juego de personajes y disfraces — actuar, hacer teatro','Cocinar algo simple y dulce juntos (con supervisión)'],
+    afuera:['Visitar abuelos, primos o amigos que la hacen sentir querida','Ir a un cumpleaños, plaza con otros niños, evento social','Salida a un lugar con color y estímulo alegre (feria, parque temático chico)','Merienda especial afuera como momento de conexión'],
+    conexion:['Mucho contacto físico: abrazos, upa, cosquillas — hoy lo necesita','Validar lo que siente sin minimizar: "veo que estás muy contenta/enojada"','Tiempo de juego 100% presente, sin teléfono — el Fuego siente la presencia real','Reírse juntos: lo que la haga reír hoy le recarga el corazón'],
+  },
+  // TIERRA (4,5) — día de estructura y calma: rutina, orden, seguridad
+  tierra:{
+    estado:'Día de calma y estructura — necesita previsibilidad y contención',
+    icon:'🏔️',
+    color:'#9c7a3c',
+    intro:'La Tierra contiene su Agua y le da el límite suave que necesita. Hoy Guadi se siente mejor con rutina clara, ambientes conocidos y actividades con principio y fin. No es día de sobreestimular.',
+    casa:['Ordenar y clasificar juguetes por color o tipo — le da calma y placer','Puzzles, encajables, juegos de meter-sacar','Cocinar algo concreto con pasos: amasar, cortar con cuchillo de plástico','Rutina tranquila en casa: un cuento, una actividad, una pausa'],
+    afuera:['Lugares conocidos y tranquilos — no estrenar lugares nuevos hoy','Caminar sin apuro a un destino familiar (la panadería, la plaza de siempre)','Mercado o verdulería: tocar, oler, elegir frutas (estímulo sensorial calmo)'],
+    conexion:['Anticiparle el plan del día: "primero esto, después esto" — le da seguridad','Sostener los límites con calma y firmeza amorosa, sin negociar de más','Un momento de calidad sin multitarea: solo ella y vos, una actividad','Respetar sus tiempos: no apurarla de una cosa a la otra'],
+  },
+  // METAL (6,7) — día de recarga: menos estímulo, lógica suave, descanso
+  metal:{
+    estado:'Día de menor energía — recarga, lógica suave, menos estímulo',
+    icon:'⚪',
+    color:'#7a9bb5',
+    intro:'El Metal genera más Agua en una carta que ya tiene mucha: hoy Guadi puede estar más sensible, introvertida o saturarse rápido. Bajar el ritmo, simplificar el entorno y dar espacio.',
+    casa:['Actividades tranquilas de a uno: un puzzle, mirar un libro juntos','Juegos de lógica suave: memoria, asociar, encontrar parejas','Dibujar o pintar en silencio, sin pedirle un resultado','Rincón tranquilo con cojines, mantita y pocos estímulos'],
+    afuera:['Mejor quedarse en casa o lugares de baja estimulación hoy','Si salen, paseos cortos y tranquilos, sin multitudes','Evitar cumpleaños, shoppings o lugares ruidosos si se la nota saturada'],
+    conexion:['Menos preguntas directas, más presencia silenciosa a su lado','Respetar si quiere estar sola un rato — no forzar interacción','Estar atentos a señales de saturación (llanto fácil, irritabilidad) y bajar el ritmo','Contacto físico calmo sin exigir charla: estar cerca alcanza'],
+  },
+  // AGUA (8,9) — día de descanso profundo: agua, naturaleza, quietud
+  agua:{
+    estado:'Día de máxima sensibilidad — descanso profundo y su elemento natural',
+    icon:'💧',
+    color:'#2c5f8a',
+    intro:'El Agua se suma a su Agua: día de altísima sensibilidad emocional e imaginación, pero también de posible dispersión o cansancio. Lo que mejor le hace: agua real, naturaleza y quietud.',
+    casa:['Juego con agua: bañera larga, vasitos, trasvasar líquidos (la calma y la centra)','Cuentos tranquilos con mundos imaginarios — su imaginación está en el pico','Música instrumental suave de fondo mientras juega tranquila','Siesta o descanso si se la nota dispersa o muy emocional'],
+    afuera:['Cerca del agua: mar, río, una fuente, charcos de lluvia','Naturaleza tranquila: un parque con sombra, pasto, observar pájaros','Caminata lenta y contemplativa, sin objetivo ni apuro'],
+    conexion:['Mucha contención emocional: hoy todo lo siente más fuerte','Abrazos largos, presencia tranquila, hablar bajito','Validar sus emociones grandes sin asustarse: "es mucho lo que sentís, estoy acá"','No sobrecargar la agenda — dejar espacio para no hacer nada'],
+  },
+};
+
+function buildActividadesGuadi(p,rating){
+  const cont=document.getElementById('g-actividades');
+  if(!cont)return;
+  const act=ACTIVIDADES_GUADI[p.elemN.toLowerCase()];
+  if(!act){cont.innerHTML='';return;}
+  cont.innerHTML=`
+    <div style="background:rgba(192,96,144,0.04);border:1px solid var(--bdr);border-left:3px solid ${act.color};border-radius:5px;padding:1.3rem 1.5rem;margin-bottom:1.2rem;">
+      <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.6rem;">
+        <span style="font-size:1.8rem;line-height:1;">${act.icon}</span>
+        <div>
+          <div style="font-family:'IM Fell English',serif;font-size:1.1rem;color:var(--guadi);font-weight:400;">${act.estado}</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--smoke);letter-spacing:0.08em;text-transform:uppercase;">Elemento del día · ${p.elemN} · ${ELEM_T[p.ti]}</div>
+        </div>
+      </div>
+      <p style="font-size:0.9rem;color:var(--ash2);line-height:1.6;">${act.intro}</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.9rem;">
+      <div style="background:var(--surf2);border:1px solid var(--bdr);border-radius:5px;padding:1.1rem 1.2rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:var(--guadi);text-transform:uppercase;margin-bottom:0.6rem;">🏠 En casa</div>
+        <ul style="list-style:none;padding:0;margin:0;">${act.casa.map(a=>`<li style="font-size:0.86rem;color:var(--ash2);padding:0.34rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.45;">${a}</li>`).join('')}</ul>
+      </div>
+      <div style="background:var(--surf2);border:1px solid var(--bdr);border-radius:5px;padding:1.1rem 1.2rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:var(--guadi);text-transform:uppercase;margin-bottom:0.6rem;">🌳 Afuera</div>
+        <ul style="list-style:none;padding:0;margin:0;">${act.afuera.map(a=>`<li style="font-size:0.86rem;color:var(--ash2);padding:0.34rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.45;">${a}</li>`).join('')}</ul>
+      </div>
+      <div style="background:var(--surf2);border:1px solid var(--bdr);border-radius:5px;padding:1.1rem 1.2rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:var(--guadi);text-transform:uppercase;margin-bottom:0.6rem;">💛 Conexión</div>
+        <ul style="list-style:none;padding:0;margin:0;">${act.conexion.map(a=>`<li style="font-size:0.86rem;color:var(--ash2);padding:0.34rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.45;">${a}</li>`).join('')}</ul>
+      </div>
+    </div>
+  `;
 }
 
 // CALENDAR FAM
@@ -1572,7 +1673,7 @@ function getCardDontFam(ti,person){
 function getResumenFam(ti,ri,rating,person){
   const a=ANIMALES[ri],e=ELEM_T[ti];
   if(person==='guadi'){
-    const r={5:`Día de alta armonía para Guadi. ${e} con ${a} activa su Agua Yang de manera fluida.`,4:`Buen día. El ${a} trae energía cooperativa para su carta natal.`,3:`Día neutro para ella. Observar su estado antes de proponer actividades.`,2:`El ${a} genera cierta tensión. Más calma, menos demandas y estímulos.`,1:`Día difícil energéticamente para ella. Simplificar el entorno y dar mucho espacio.`};
+    const r={5:`Día de alta armonía para Guadi. El ${a} (${e}) equilibra su Agua y la ayuda a canalizar su energía de forma fluida.`,4:`Buen día. El ${a} coopera con su carta — buena receptividad y ánimo.`,3:`Día neutro para ella. Observar su estado antes de proponer actividades.`,2:`El ${a} suma más Agua a su carta — puede estar más sensible o dispersa. Más calma, menos estímulos.`,1:`Día de mucha sensibilidad para ella. Simplificar el entorno y dar mucho espacio y contención.`};
     return r[rating];
   }
   if(person==='amancai'){
@@ -1586,7 +1687,7 @@ function getResumenFam(ti,ri,rating,person){
     return r[rating];
   }
   if(person==='carla'){
-    const r={5:`Día de alta alineación para Carla. ${e} con ${a} activa su Agua Yang de manera fluida y expansiva.`,4:`Día favorable. El ${a} coopera con su carta — buen momento para expresarse y actuar.`,3:`Día neutro para ella. Ni gran impulso ni bloqueo. Moverse con conciencia del contexto.`,2:`El ${a} genera tensión. Preferir análisis y reflexión sobre acción directa hoy.`,1:`Alta fricción energética para Carla. Simplificar, proteger y no forzar situaciones difíciles.`};
+    const r={5:`Día de alta alineación para Carla. El ${a} (${e}) drena su exceso de Agua y activa su expresión y riqueza.`,4:`Día favorable. El ${a} coopera con su carta — buen momento para crear y mostrar lo suyo.`,3:`Día neutro para ella. Ni gran impulso ni bloqueo. Moverse con conciencia del contexto.`,2:`El ${a} suma Agua/Metal a una carta que ya tiene de sobra — riesgo de sobre-análisis. Preferir reflexión breve sobre acción forzada.`,1:`Alta saturación de recurso para Carla. Simplificar, evitar el exceso de análisis y no forzar decisiones.`};
     return r[rating];
   }
   const r={5:`Día de flujo alto para Morena. ${e} potencia su expresión natural de Madera Yang.`,4:`Día favorable. Su Hurt Officer fluye sin fricción mayor.`,3:`Día neutro. Ni gran impulso ni bloqueo significativo.`,2:`Tensión latente. El ${a} puede activar su modo defensivo.`,1:`Día de alta fricción. Evitar conversaciones difíciles o confrontaciones.`};
@@ -1625,14 +1726,22 @@ function renderMonthFam(m,person){
   const display=document.getElementById(`${pfx}-month-display`);
   const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
   const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
-  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const today=getToday();
+  const isCurrentMonth=m===(today.getMonth()+1)&&today.getFullYear()===2026;
+  // Si es el mes actual, arranca desde HOY; si no, desde el inicio solar del mes
+  let start;
+  if(isCurrentMonth){
+    start=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0);
+  }else{
+    start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  }
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const mp=getMesPilarFam(m);
 
+  const fromTodayNote=isCurrentMonth?`<span style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.06em;"> · desde hoy</span>`:'';
   let html=`<div class="month-hdr">
     <div class="month-cn ${colorCls}">${md.chinese}</div>
-    <div class="month-info"><h2 class="${colorCls}">${md.name} 2026 — ${pData.name}</h2><p>${md.desc}</p></div>
+    <div class="month-info"><h2 class="${colorCls}">${md.name} 2026 — ${pData.name}${fromTodayNote}</h2><p>${md.desc}</p></div>
   </div><div class="cal-grid">`;
 
   for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
@@ -1751,8 +1860,8 @@ const FRIENDS={
     natal:[1,9,4,3],anioR:6,dayunR:5,
     dios:['7 Muertes','Dinero Dir.','Recurso Dir.','Rec. Ind.','Amigo','Dinero Ind.','Ofic. Her.','Ofic. Dir.','Comiendo Dios','Rob. Riqueza'],
     // Para Xin(7): Jia(0)=7M,Yi(1)=DD,Wu(4)=RD,Ji(5)=RI,Xin(7)=A,Mao via Yi=DD
-    // elemBon: Tierra(4,5)=recurso, Agua(8,9)=expresión; elemBad: Fuego(2,3)=oficial frena
-    elemBon:[4,5,8,9,0,1],elemBad:[2,3],
+    // Metal Yin FUERTE (Xin+Xin+You). Necesita drenar(Agua/CD), riqueza(Madera), control(Fuego). Tierra genera más metal, Metal=exceso.
+    elemBon:[0,1,2,3,8,9],elemBad:[4,5,6,7],
     tipsHacer:{
       0:['Conectar con personas de alto calibre que la estimulen intelectualmente','Colaborar en proyectos donde su precisión sea el activo clave','Buscar relaciones de aprendizaje mutuo genuino','Relacionarse con alguien que expanda su visión más allá de lo conocido','Activar su red de contactos con intención'],
       1:['Moverse con rapidez en una oportunidad que tiene ventana corta','Tomar iniciativa en algo creativo antes de que alguien más lo haga','Confiar en su intuición estética sobre una decisión pendiente','Actuar sobre algo que lleva demasiado tiempo analizando','Explorar sin el requisito de la perfección'],
@@ -1784,8 +1893,8 @@ const FRIENDS={
     natal:[3,2,8,2],anioR:6,dayunR:6,
     dios:['Din. Dir.','Din. Ind.','7 Killings','Of. Dir.','Rec. Ind.','Rec. Dir.','Amigo','Comiendo Dios','Rob Riqueza','Of. Herido'],
     // Para Geng(6): Yi(1)=DD,Jia(0)=DI,Bing(2)=7M,Ding(3)=OD,Wu(4)=RI,Ji(5)=RD,Geng(6)=A,Ren(8)=CD,Xin(7)=RR,Gui(9)=OH
-    // elemBon: Madera(0,1)=riqueza, Agua(8,9)=expresión CD; elemBad: Fuego(2,3)=7M/OD controla Metal
-    elemBon:[0,1,4,5,8,9],elemBad:[2,3],
+    // Metal Yang con Madera ya excesiva (38% riqueza). Necesita consolidar: Tierra(nutre), Metal(refuerza), Agua(drena). Madera ya en exceso la agota.
+    elemBon:[4,5,6,7,8,9],elemBad:[0,1],
     tipsHacer:{
       0:['Activar su red — Amancai brilla cuando colabora con pares que la igualan','Proyectos conjuntos donde ambas partes lideran algo propio','Conectar con alguien que le da dirección y propósito concreto'],
       1:['Moverse rápido en una oportunidad que tiene ventana corta','Actuar sobre algo pendiente sin esperar más análisis','Aprovechar su velocidad de ejecución — el Metal corta rápido cuando quiere'],
@@ -1951,14 +2060,21 @@ function renderMonthFriend(m,person){
   const display=document.getElementById(`${pfx}-month-display`);
   const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
   const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
-  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const today=getToday();
+  const isCurrentMonth=m===(today.getMonth()+1)&&today.getFullYear()===2026;
+  let start;
+  if(isCurrentMonth){
+    start=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0);
+  }else{
+    start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  }
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const mp=getMesPilarFam(m);
 
+  const fromTodayNote=isCurrentMonth?`<span style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.06em;"> · desde hoy</span>`:'';
   let html=`<div class="month-hdr">
     <div class="month-cn" style="color:${color};">${md.chinese}</div>
-    <div class="month-info"><h2 style="color:${titleColor};">${md.name} 2026 — ${pData.name}</h2><p>${md.desc}</p></div>
+    <div class="month-info"><h2 style="color:${titleColor};">${md.name} 2026 — ${pData.name}${fromTodayNote}</h2><p>${md.desc}</p></div>
   </div><div class="cal-grid">`;
 
   for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){

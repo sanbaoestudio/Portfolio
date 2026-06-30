@@ -12,6 +12,7 @@
   --smoke:#7a6e60;--ash:#cfc0a8;--ash2:#b0a090;
   --fire:#e05a1a;--wood:#4a8c3f;--metal:#7a9bb5;--water:#2c5f8a;--earth:#9c7a3c;
   --bdr:rgba(201,151,42,0.18);
+  --trabajo:#e0a050;--trabajo-l:#f0c880;--trabajo-d:#a06820;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -151,8 +152,55 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .hoy-wrap{max-width:1060px;margin:0 auto;padding:2rem 1.5rem 1rem;}
 
 /* Hero date banner */
-.hoy-hero{
-  background:rgba(201,151,42,0.04);border:1px solid var(--bdr);border-radius:8px;
+/* ══ TRABAJO CSS ══ */
+.client-btn{padding:0.42rem 1rem;border-radius:20px;border:1px solid rgba(224,160,80,0.3);background:transparent;font-family:'Lato',sans-serif;font-size:0.85rem;cursor:pointer;transition:all 0.2s;color:var(--smoke);}
+.client-btn:hover{color:var(--ash);}
+.client-btn.active{border-color:var(--trabajo);color:var(--trabajo-l);background:rgba(224,160,80,0.1);}
+.client-sub-tab{padding:0.78rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
+.client-sub-tab:hover{color:var(--ash);}
+.client-sub-tab.active{color:var(--trabajo-l);border-bottom-color:var(--trabajo);}
+.client-sub{display:none;animation:fadeUp 0.3s ease;}
+.client-sub.active-client-sub{display:block;}
+.pub-card-trabajo{background:var(--surf2);border-radius:6px;padding:1.3rem 1.2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.45rem;height:100%;}
+.pub-card-trabajo.pt5{border:1px solid rgba(45,122,90,0.5);background:rgba(45,122,90,0.08);}
+.pub-card-trabajo.pt4{border:1px solid rgba(74,140,63,0.4);background:rgba(74,140,63,0.06);}
+.pub-card-trabajo.pt3{border:1px solid rgba(156,122,60,0.35);background:rgba(156,122,60,0.06);}
+.pub-card-trabajo.pt2{border:1px solid rgba(192,87,43,0.35);background:rgba(192,87,43,0.06);}
+.pub-card-trabajo.pt1{border:1px solid rgba(192,57,43,0.5);background:rgba(192,57,43,0.08);}
+.pt-label{font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.18em;color:var(--smoke);text-transform:uppercase;}
+.pt-icon{font-size:2rem;line-height:1;}
+.pt-stars{display:flex;gap:2px;justify-content:center;}
+.pt-star{width:13px;height:13px;}
+.pt-verdict{font-family:'IM Fell English',serif;font-size:0.95rem;font-weight:400;line-height:1.2;}
+.pt5 .pt-verdict{color:#6dbf99;}.pt4 .pt-verdict{color:#8cc87a;}
+.pt3 .pt-verdict{color:#c9a45a;}.pt2 .pt-verdict{color:#e07a5a;}.pt1 .pt-verdict{color:#e08070;}
+.pt-note{font-size:0.73rem;color:var(--smoke);font-style:italic;line-height:1.4;}
+.estrategia-box{padding:1.2rem 1.3rem;border-radius:4px;font-size:0.9rem;color:var(--ash2);line-height:1.6;}
+.estrat-do{background:rgba(45,122,90,0.08);border:1px solid rgba(45,122,90,0.22);}
+.estrat-dont{background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.22);}
+.estrat-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;margin-bottom:0.5rem;display:block;}
+.estrat-do .estrat-label{color:#6dbf99;}.estrat-dont .estrat-label{color:#e08070;}
+.estrat-items{list-style:none;padding:0;}
+.estrat-items li{padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;gap:0.5rem;align-items:flex-start;}
+.estrat-items li:last-child{border-bottom:none;}
+.estrat-items li::before{flex-shrink:0;font-size:0.7rem;margin-top:0.08rem;}
+.estrat-do .estrat-items li::before{content:'✦';color:#6dbf99;opacity:0.7;}
+.estrat-dont .estrat-items li::before{content:'✕';color:#e08070;opacity:0.7;}
+.ct-day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(224,160,80,0.1);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.ct-day-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
+.ct-day-card.r5::before{background:#2d7a5a;}.ct-day-card.r4::before{background:#4a8c3f;}
+.ct-day-card.r3::before{background:#9c7a3c;}.ct-day-card.r2::before{background:#c0602a;}
+.ct-day-card.r1::before{background:var(--cinnabar);}
+.ct-day-card.weekend{opacity:0.6;}
+.ct-day-card.today-card{border-color:rgba(224,160,80,0.5);box-shadow:0 0 0 1px rgba(224,160,80,0.15);}
+.ct-pub-badge{display:inline-block;padding:0.1rem 0.4rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.07em;font-weight:700;margin-bottom:0.4rem;}
+.ct-pub-5{background:rgba(45,122,90,0.18);color:#6dbf99;border:1px solid rgba(45,122,90,0.3);}
+.ct-pub-4{background:rgba(74,140,63,0.15);color:#8cc87a;border:1px solid rgba(74,140,63,0.3);}
+.ct-pub-3{background:rgba(156,122,60,0.15);color:#c9a45a;border:1px solid rgba(156,122,60,0.25);}
+.ct-pub-2,.ct-pub-1{background:rgba(192,57,43,0.12);color:#e08070;border:1px solid rgba(192,57,43,0.25);}
+@media(max-width:620px){#ct-hero-wrap{grid-template-columns:1fr;}#ct-pub-card{max-width:100%;min-width:unset;}#ct-estrategia,#ct-tips-grid{grid-template-columns:1fr;}}
+
+/* ══ HOY SECTION ══ */
   padding:2.2rem 2rem 1.8rem;margin-bottom:2rem;position:relative;overflow:hidden;
   display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;
 }
@@ -348,7 +396,9 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div class="nav-sep"></div>
   <button class="nav-tab" onclick="showSection('sec-carta',this)">④ Mi Carta</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab nav-familia" onclick="window.open('bazi_familia_2026.html','_blank')">⑤ Familia ↗</button>
+  <button class="nav-tab" style="color:#e0a050;" onclick="showSection('sec-trabajo',this)">⑤ Trabajo ✦</button>
+  <div class="nav-sep"></div>
+  <button class="nav-tab nav-familia" onclick="window.open('bazi_familia_2026.html','_blank')">⑥ Familia ↗</button>
 </nav>
 
 
@@ -578,6 +628,74 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   </div>
 </div>
 </div>
+
+<!-- ══════════════════════════════════════
+     TRABAJO — CLIENTES
+══════════════════════════════════════ -->
+<div id="sec-trabajo" class="section">
+
+<div class="page-header" data-g="客" style="border-bottom:1px solid rgba(224,160,80,0.2);">
+  <div class="eyebrow" style="color:var(--trabajo);letter-spacing:0.3em;">Estrategia Privada · Trabajo</div>
+  <h1 style="color:var(--trabajo-l);">Panel de Trabajo</h1>
+  <p>Vista privada · Cómo tu energía interactúa con cada cliente · Los calendarios de clientes son independientes</p>
+</div>
+
+<!-- INFO PANEL -->
+<div style="max-width:900px;margin:0 auto;padding:2rem 1.5rem 1.5rem;">
+  <div style="background:rgba(224,160,80,0.04);border:1px solid rgba(224,160,80,0.2);border-radius:6px;padding:1.6rem 1.8rem;margin-bottom:2rem;">
+    <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:var(--trabajo);text-transform:uppercase;margin-bottom:0.7rem;">⑤ Trabajo · Vista privada de Luca</div>
+    <p style="font-size:0.9rem;color:var(--ash2);line-height:1.72;margin-bottom:1rem;">
+      Los calendarios y análisis de cada cliente son <strong style="color:var(--ash);">archivos separados e independientes</strong> — sin ninguna referencia a tu carta, tu familia ni tus datos personales. Podés compartirlos directamente con cada cliente o con quien necesites.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.7rem;">
+      <a href="bazi_trabajo_martina.html" target="_blank" style="display:flex;align-items:center;gap:0.9rem;padding:0.9rem 1.1rem;background:rgba(224,160,80,0.06);border:1px solid rgba(224,160,80,0.25);border-radius:4px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(224,160,80,0.12)'" onmouseout="this.style.background='rgba(224,160,80,0.06)'">
+        <div style="font-size:1.8rem;color:var(--water);line-height:1;">壬</div>
+        <div>
+          <div style="font-family:'IM Fell English',serif;font-size:0.95rem;color:var(--trabajo-l);font-weight:400;">Martina</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);">@hellomartusss · Abrir ↗</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- VINCULACIÓN LUCA ↔ CLIENTES (privada) -->
+  <div style="font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--trabajo-l);font-weight:400;margin-bottom:0.4rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(224,160,80,0.18);">Tu dinámica energética con cada cliente</div>
+  <p style="font-size:0.88rem;color:var(--smoke);font-style:italic;margin-bottom:1.5rem;">Cómo tu carta natal (甲 Jia Yang Wood) interactúa con la de cada cliente. Solo visible acá.</p>
+
+  <!-- MARTINA PRIVADO -->
+  <div style="background:var(--surf2);border:1px solid rgba(224,160,80,0.18);border-radius:5px;padding:1.4rem 1.6rem;margin-bottom:1.2rem;">
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.9rem;">
+      <div style="font-size:2rem;color:var(--water);">壬</div>
+      <div>
+        <div style="font-family:'IM Fell English',serif;font-size:1.1rem;color:var(--trabajo-l);font-weight:400;">Martina · @hellomartusss</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);">壬 Ren Yang Water · 甲 Jia Yang Wood · Agua nutre Madera</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;font-size:0.88rem;color:var(--ash2);line-height:1.65;">
+      <div style="background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.18);border-radius:4px;padding:1rem 1.1rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:#6dbf99;margin-bottom:0.45rem;text-transform:uppercase;">✦ Tu ventaja con ella</div>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Tu Madera Yang activa su <strong style="color:var(--ash);">Dinero Indirecto</strong> — estar en proyectos juntos activa su canal de riqueza más poderoso.</li>
+          <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Su Agua nutre tu Madera — ella te aporta perspectiva estratégica y profundidad que tu carta no genera sola.</li>
+          <li style="padding:0.28rem 0;">Misma generación (2000 vs 1992) — energía Yang de fondo compartida. Buena sintonía de ritmo.</li>
+        </ul>
+      </div>
+      <div style="background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.18);border-radius:4px;padding:1rem 1.1rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:#e08070;margin-bottom:0.45rem;text-transform:uppercase;">⚠ Tener en cuenta</div>
+        <ul style="list-style:none;padding:0;">
+          <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">La Madera consume Agua en expansión — en meses de Fuego alto (Junio 2026), podés agotar su energía sin darte cuenta.</li>
+          <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Su 7M (Tierra, 20%) ya la presiona internamente — no agregar presión externa innecesaria.</li>
+          <li style="padding:0.28rem 0;">Necesita tiempo para procesar. El silencio no es desinterés.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:0.9rem;padding:0.8rem 1rem;background:rgba(224,160,80,0.05);border-radius:3px;font-size:0.85rem;color:var(--ash2);">
+      <strong style="color:var(--ac);">Mejores meses para trabajo conjunto en 2026:</strong> Junio (Fuego/Caballo — máximo de ella y de vos), Octubre-Noviembre (Agua activa — ella más fluida). Evitar Agosto-Septiembre para lanzamientos importantes (Metal pesado la frena).
+    </div>
+  </div>
+
+</div><!-- /max-width -->
+</div><!-- /sec-trabajo -->
 
 <footer style="text-align:center;padding:2rem;border-top:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);letter-spacing:0.1em;">
   BAZI · 四柱命理 · LUCA GAZZOLA · 2026 · sanbaoestudio@gmail.com<br>
@@ -1016,13 +1134,20 @@ function renderMonth(m){
   const display=document.getElementById('month-display');
   const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
   const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
-  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const today=getToday();
+  const isCurrentMonth=m===(today.getMonth()+1)&&today.getFullYear()===2026;
+  let start;
+  if(isCurrentMonth){
+    start=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0);
+  }else{
+    start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
+  }
+  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
   const mp=getMesPilar(m);
+  const fromTodayNote=isCurrentMonth?` <span style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.06em;">· desde hoy</span>`:'';
   let html=`<div class="month-hdr">
     <div class="month-cn">${md.chinese}</div>
-    <div class="month-info"><h2>${md.name} 2026</h2><p>${md.desc}</p></div>
+    <div class="month-info"><h2>${md.name} 2026${fromTodayNote}</h2><p>${md.desc}</p></div>
     <div class="month-meta"><div>PILAR <span>${md.pilar}</span></div><div>MES <span>${TRONCOS_FULL[mp.ti]} · ${ELEM_T[mp.ti]}</span></div></div>
   </div><div class="cal-grid">`;
   for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
