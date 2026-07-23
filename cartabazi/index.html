@@ -445,6 +445,16 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <!-- ✦ RESUMEN EJECUTIVO DEL DÍA ✦ -->
   <div id="h-resumen-ejecutivo"></div>
 
+  <!-- ✦ PLANIFICACIÓN DE CONTENIDO ✦ -->
+  <div class="sec-title"><span id="plan-cont-titulo">✦ Plan de Contenido</span></div>
+  <p class="sec-sub">Los 4 días de mayor potencial energético para subir contenido de acá a fin de mes, calibrados a tu carta. El Fuego es tu canal de expresión y visibilidad (drena tu Madera Yang fuerte).</p>
+  <div id="h-plan-contenido"></div>
+
+  <!-- ✦ DÍAS PARA DINERO ✦ -->
+  <div class="sec-title"><span id="plan-dinero-titulo">💰 Días para Dinero</span></div>
+  <p class="sec-sub">Los mejores días para renegociar acuerdos, cerrar números o firmar contratos de acá a fin de mes. La Tierra es tu Riqueza (財): buscamos días con dinero activo, tu Day Master firme y sin choques que generen conflicto.</p>
+  <div id="h-plan-dinero"></div>
+
   <!-- INTERACCIONES -->
   <div class="sec-title">Interacciones con tu Carta</div>
   <p class="sec-sub">Cómo el pilar de hoy dialoga con tus ramas natales (Xu, Yin, Chen, Shen) y el año 2026.</p>
@@ -690,7 +700,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
       </div>
     </div>
     <div style="margin-top:0.9rem;padding:0.8rem 1rem;background:rgba(224,160,80,0.05);border-radius:3px;font-size:0.85rem;color:var(--ash2);">
-      <strong style="color:var(--ac);">Mejores meses para trabajo conjunto en 2026:</strong> Junio (Fuego/Caballo — máximo de ella y de vos), Octubre-Noviembre (Agua activa — ella más fluida). Evitar Agosto-Septiembre para lanzamientos importantes (Metal pesado la frena).
+      <strong style="color:var(--ac);">Mejores meses para trabajo conjunto en 2026:</strong> Junio (Fuego/Caballo — máximo de ella y de vos), Noviembre-Diciembre (meses de Agua — ella más fluida). Evitar Agosto-Septiembre para lanzamientos importantes (estación de Metal la frena).
     </div>
   </div>
 
@@ -731,7 +741,9 @@ function getPilar(date){
 // LUCA ONLY
 const LUCA={
   dm:0,natal:[10,2,4,8],anioR:6,dayunR:7,
-  elemBon:[2,3,4,5,8,9],elemBad:[6],
+  // Madera Yang FUERTE (triple Jia + raíz Tigre). Necesita drenar(Fuego), usar(Tierra), controlar(Metal).
+  // Agua nutre madera ya excesiva = desfavorable. Madera refuerza el exceso = desfavorable.
+  elemBon:[2,3,4,5,6,7],elemBad:[0,1,8,9],
   dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
   diosIcons:['🤝','⚔️','🎨','💥','💰','💵','🗡️','⚖️','📚','🌊'],
   diosDesc:[
@@ -794,15 +806,30 @@ const CHOQUES=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
 const COMBHE=[[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
 const DESTRUCT=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
 
+// ══ ESTRELLAS SIMBÓLICAS DE LUCA (del PDF Joey Yap, verificadas) ══
+// Day Master Jia → Nobleman: Chou(1) y Wei(7) · Wen Chang: Si(5)
+// Rama día Yin (grupo Yin-Wu-Xu) → Peach Blossom: Mao(3) · Sky Horse: Shen(8)
+const ESTRELLAS_LUCA={
+  1:{txt:'🐂 天乙 Nobleman (Buey) — ayuda de benefactores',efecto:'estrella'},
+  7:{txt:'🐐 天乙 Nobleman (Cabra) — ayuda de benefactores',efecto:'estrella'},
+  3:{txt:'🌸 桃花 Peach Blossom (Conejo) — carisma y magnetismo social',efecto:'estrella'},
+  5:{txt:'📖 文昌 Wen Chang (Serpiente) — claridad mental y aprendizaje',efecto:'estrella'},
+  8:{txt:'🐎 驛馬 Sky Horse (Mono) — movimiento y viajes',efecto:'info'},
+};
+
 function getInts(ri){
   const refs=[...LUCA.natal,LUCA.anioR,LUCA.dayunR];
   let res=[];
   for(let b of refs){
     for(let[a,c]of CHOQUES)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`⚡ Choque con ${ANIMALES[b]}`});
     for(let[a,c]of COMBHE)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`🤝 Combina con ${ANIMALES[b]}`});
-    for(let[a,c]of DESTRUCT)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`⚠️ Destructor con ${ANIMALES[b]}`});
+    for(let[a,c]of DESTRUCT)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`⚠️ Daño (害) con ${ANIMALES[b]}`});
   }
-  if(ri===2||ri===6||ri===10)res.push({tipo:'trio',efecto:'bien',txt:'🔥 Trío de Fuego completo'});
+  if(ri===2||ri===6||ri===10)res.push({tipo:'trio',efecto:'bien',txt:'🔥 Trío de Fuego (寅午戌) — expresión en el pico'});
+  // Trío de AGUA 申子辰: Luca tiene Shen+Chen natal — un día Rata lo completa = exceso de Agua
+  if(ri===0)res.push({tipo:'trioAgua',efecto:'cuidado',txt:'💧 Completa Trío de Agua (申子辰) — exceso de recurso, dispersión'});
+  // Estrellas simbólicas
+  if(ESTRELLAS_LUCA[ri])res.push({tipo:'estrella',efecto:ESTRELLAS_LUCA[ri].efecto,txt:ESTRELLAS_LUCA[ri].txt});
   return res;
 }
 
@@ -814,6 +841,7 @@ function calcRating(ti,ri){
     if(i.efecto==='bien')s+=0.5;
     if(i.efecto==='mal')s-=0.8;
     if(i.efecto==='cuidado')s-=0.35;
+    if(i.efecto==='estrella')s+=0.3;
     if(i.tipo==='trio')s+=0.7;
   }
   return Math.max(1,Math.min(5,Math.round(s)));
@@ -846,10 +874,11 @@ const HORA_INFO=[
 
 // ══ MONTH CALC ══
 function getMesPilar(m){
-  // 2026 month pillars
-  const mp={1:{ti:4,ri:1},2:{ti:5,ri:2},3:{ti:6,ri:3},4:{ti:7,ri:4},
-    5:{ti:8,ri:5},6:{ti:9,ri:6},7:{ti:0,ri:7},8:{ti:1,ri:8},
-    9:{ti:2,ri:9},10:{ti:3,ri:10},11:{ti:4,ri:11},12:{ti:5,ri:0}};
+  // 2026 = año Bing Wu → Feb arranca 庚寅 Geng Yin (regla Cinco Tigres 年上起月法)
+  // Ene 2026 pertenece al año Yi Si 2025 → Ji Chou
+  const mp={1:{ti:5,ri:1},2:{ti:6,ri:2},3:{ti:7,ri:3},4:{ti:8,ri:4},
+    5:{ti:9,ri:5},6:{ti:0,ri:6},7:{ti:1,ri:7},8:{ti:2,ri:8},
+    9:{ti:3,ri:9},10:{ti:4,ri:10},11:{ti:5,ri:11},12:{ti:6,ri:0}};
   return mp[m]||{ti:0,ri:0};
 }
 
@@ -1096,15 +1125,16 @@ function calcular(){
 }
 
 // ══ CALENDAR ══
+// Pilares de mes 2026 (año Bing Wu, regla Cinco Tigres: Feb=庚寅)
 const MONTHS_DATA=[
-  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Ji Si · Tierra Yin',pilar:'己巳',chinese:'巳'},
-  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Geng Wu · Metal Yang',pilar:'庚午',chinese:'午'},
-  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Ji Wei · Tierra Yin',pilar:'己未',chinese:'未'},
-  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Geng Shen · Metal Yang',pilar:'庚申',chinese:'申'},
-  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Xin You · Metal Yin',pilar:'辛酉',chinese:'酉'},
-  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Ren Xu · Agua Yang',pilar:'壬戌',chinese:'戌'},
-  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Gui Hai · Agua Yin',pilar:'癸亥',chinese:'亥'},
-  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Jia Zi · Madera Yang',pilar:'甲子',chinese:'子'},
+  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Gui Si · Agua Yin sobre Fuego',pilar:'癸巳',chinese:'巳'},
+  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Jia Wu · Madera sobre Fuego pico',pilar:'甲午',chinese:'午'},
+  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Yi Wei · Madera Yin sobre Tierra',pilar:'乙未',chinese:'未'},
+  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Bing Shen · Fuego sobre Metal',pilar:'丙申',chinese:'申'},
+  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Ding You · Fuego Yin sobre Metal',pilar:'丁酉',chinese:'酉'},
+  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Wu Xu · Tierra doble',pilar:'戊戌',chinese:'戌'},
+  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Ji Hai · Tierra sobre Agua',pilar:'己亥',chinese:'亥'},
+  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Geng Zi · Metal sobre Agua',pilar:'庚子',chinese:'子'},
 ];
 let currentMonth=5;
 
@@ -1245,6 +1275,256 @@ function showSection(id,tab){
   if(tab)tab.classList.add('active');
 }
 
+// ══ PLAN DE CONTENIDO ══
+// Calcula dinámicamente los mejores días para publicar desde HOY hasta fin de mes actual.
+function buildPlanContenido(){
+  const cont=document.getElementById('h-plan-contenido');
+  if(!cont)return;
+  const today=getToday();
+  const y=today.getFullYear();
+  const m=today.getMonth(); // 0-indexed
+  const lastDay=new Date(y,m+1,0).getDate();
+  const startDay=today.getDate();
+  const MESES_T=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const tituloEl=document.getElementById('plan-cont-titulo');
+  if(tituloEl)tituloEl.textContent=`✦ Plan de Contenido — ${MESES_T[m]} ${y}`;
+
+  // Recolectar todos los días desde hoy hasta fin de mes con su pub rating
+  let dias=[];
+  for(let d=startDay;d<=lastDay;d++){
+    const date=new Date(y,m,d,12,0,0);
+    const p=getPilar(date);
+    const rating=calcRating(p.ti,p.ri);
+    // pub rating: Fuego(2,3) ideal, Agua(8,9) malo
+    let pub=rating;
+    if([2,3].includes(p.ti))pub=Math.min(5,rating+1);
+    if([8,9].includes(p.ti))pub=Math.max(1,rating-1);
+    // raw score para desempate
+    let raw=3.0;
+    if(LUCA.elemBon.includes(p.ti))raw+=1.0;
+    if(LUCA.elemBad.includes(p.ti))raw-=1.1;
+    for(const it of getInts(p.ri)){
+      if(it.efecto==='bien')raw+=0.5;
+      else if(it.efecto==='mal')raw-=0.8;
+      else if(it.efecto==='cuidado')raw-=0.35;
+      else if(it.efecto==='estrella')raw+=0.3;
+      if(it.tipo==='trio')raw+=0.7;
+    }
+    const ints=getInts(p.ri);
+    dias.push({d,date,p,rating,pub,raw,ints,isFuego:[2,3].includes(p.ti)});
+  }
+
+  // Ordenar por pub rating, luego por si es Fuego, luego por raw
+  const ranked=[...dias].sort((a,b)=>{
+    if(b.pub!==a.pub)return b.pub-a.pub;
+    if(b.isFuego!==a.isFuego)return b.isFuego-a.isFuego;
+    return b.raw-a.raw;
+  });
+  const top4=ranked.slice(0,4).sort((a,b)=>a.d-b.d); // los 4 mejores, en orden cronológico
+
+  const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const DIAS_SEM=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+  if(top4.length===0){cont.innerHTML='<p style="color:var(--smoke);font-style:italic;">No quedan días en el mes.</p>';return;}
+
+  let cards=top4.map((dia,i)=>{
+    const dow=DIAS_SEM[dia.date.getDay()];
+    const mesN=MESES[m];
+    const pubColors={5:'#6dbf99',4:'#8cc87a',3:'#c9a45a',2:'#e07a5a',1:'#e08070'};
+    const pubLabels={5:'IDEAL PARA PUBLICAR',4:'MUY BUENO',3:'ACEPTABLE',2:'FLOJO',1:'EVITAR'};
+    const elemCls=dia.p.elemC;
+    const intTxt=dia.ints.length?dia.ints.map(x=>x.txt).join(' · '):'Sin interacciones especiales';
+    const esFuego=dia.isFuego;
+    const consejo=esFuego
+      ?'Fuego activo — tu canal de expresión en el pico. Reservá tu contenido más personal y expresivo para hoy.'
+      :(dia.p.elemN==='Tierra'?'Tierra = tu riqueza. Buen día para contenido de valor, educativo o que consolide tu marca.'
+      :(dia.p.elemN==='Metal'?'Metal = enfoque y estructura. Ideal para contenido más pensado, profesional o técnico.'
+      :'Día favorable para mostrar tu trabajo.'));
+    return `
+      <div style="background:var(--surf2);border:1px solid var(--bdr);border-left:3px solid ${pubColors[dia.pub]};border-radius:5px;padding:1.2rem 1.4rem;position:relative;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.2rem;">Video ${i+1}${esFuego?' · ★ Día pico':''}</div>
+            <div style="font-family:'IM Fell English',serif;font-size:1.3rem;color:var(--gold-l);font-weight:400;">${dow} ${dia.d} de ${mesN}</div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--smoke);letter-spacing:0.08em;margin-top:0.15rem;">${dia.p.tFull} · ${dia.p.rFull} (${dia.p.animal}) · ${dia.p.elemT}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="display:flex;gap:2px;justify-content:flex-end;margin-bottom:0.2rem;">${renderStars(dia.pub,16)}</div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:${pubColors[dia.pub]};letter-spacing:0.08em;">${pubLabels[dia.pub]}</div>
+          </div>
+        </div>
+        <span class="etag ${elemCls}" style="margin-bottom:0.5rem;display:inline-block;">${dia.p.elemN.toUpperCase()} · ${LUCA.dios[dia.p.ti]}</span>
+        <div style="font-size:0.88rem;color:var(--ash2);line-height:1.55;margin-bottom:0.5rem;">${consejo}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);letter-spacing:0.04em;">${intTxt}</div>
+      </div>`;
+  }).join('');
+
+  cont.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1rem;">${cards}</div>
+    <div class="exp-bar" style="border-color:rgba(224,160,80,0.25);">
+      <p>Agendar los 4 videos en <strong>sanbaoestudio@gmail.com</strong></p>
+      <button class="exp-btn primary" onclick="exportarPlanContenido()">⬇ Descargar plan .ICS</button>
+    </div>
+  `;
+
+  // Guardar para export
+  window._planContenido=top4.map((dia,i)=>({
+    d:dia.d,date:new Date(dia.date),pub:dia.pub,
+    pilar:`${dia.p.tShort} ${dia.p.animal}`,elem:dia.p.elemN,dios:LUCA.dios[dia.p.ti],i:i+1
+  }));
+}
+
+function exportarPlanContenido(){
+  if(!window._planContenido)return;
+  const MESES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  let events='';
+  const fICS=d=>d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  window._planContenido.forEach(v=>{
+    const s=new Date(v.date);s.setHours(11,0,0);
+    const e=new Date(s);e.setHours(12,0,0);
+    const title=`🎬 Video ${v.i} · ${'⭐'.repeat(v.pub)} · Publicar contenido`;
+    const desc=`Día de alto potencial para publicar (${v.pub}/5).\\nPilar: ${v.pilar} · ${v.elem} · ${v.dios}\\nCalibrado a tu carta 甲 Jia Madera Yang.`;
+    events+=`BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
+  });
+  const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Plan Contenido//ES\r\nCALNAME:Plan Contenido Luca\r\n${events}END:VCALENDAR`;
+  const b=new Blob([ics],{type:'text/calendar'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='plan_contenido_luca.ics';a.click();URL.revokeObjectURL(a.href);
+}
+
+// ══ PLAN DE DINERO ══
+// Mejores días para renegociar/cerrar acuerdos monetarios desde HOY hasta fin de mes.
+// Riqueza de Luca (甲 Jia) = Tierra. Ji(5)=Dinero Directo (acuerdos formales), Wu(4)=Dinero Indirecto.
+function buildPlanDinero(){
+  const cont=document.getElementById('h-plan-dinero');
+  if(!cont)return;
+  const today=getToday();
+  const y=today.getFullYear();
+  const m=today.getMonth();
+  const lastDay=new Date(y,m+1,0).getDate();
+  const startDay=today.getDate();
+  const MESES_T=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const tituloEl=document.getElementById('plan-dinero-titulo');
+  if(tituloEl)tituloEl.textContent=`💰 Días para Dinero — ${MESES_T[m]} ${y}`;
+
+  const RAMAS_RIQUEZA=[4,10,1,7]; // Chen, Xu, Chou, Wei (las 4 tierras)
+
+  function scoreNego(ti,ri){
+    let s=3.0; const notas=[]; let conflicto=false;
+    if(ti===5){s+=1.5;notas.push('💰 Dinero Directo (正財) — acuerdos formales');}
+    else if(ti===4){s+=1.2;notas.push('💰 Dinero Indirecto (偏財) — oportunidad grande');}
+    if(RAMAS_RIQUEZA.includes(ri)){s+=0.6;notas.push(`Tierra/riqueza en rama (${ANIMALES[ri]})`);}
+    if(ti===0||ti===1){s+=0.4;notas.push('Day Master firme (Madera)');}
+    if(ti===6||ti===7){s+=0.3;notas.push('Metal — autoridad/estructura');}
+    // Nobleman (天乙贵人): Buey/Cabra — LA estrella clásica de negociación (ayuda de benefactores)
+    if(ri===1||ri===7){s+=0.6;notas.push('🐐 Nobleman — benefactores a tu favor en la mesa');}
+    for(const it of getInts(ri)){
+      if(it.efecto==='mal'){s-=1.0;conflicto=true;notas.push('⚡ '+it.txt.replace(/[⚡🤝⚠️🔥💧🐂🐐🌸📖🐎]/g,'').trim());}
+      else if(it.efecto==='cuidado'){s-=0.4;notas.push('⚠️ '+it.txt.replace(/[⚡🤝⚠️🔥💧🐂🐐🌸📖🐎]/g,'').trim());}
+      else if(it.efecto==='bien'){s+=0.4;notas.push('🤝 '+it.txt.replace(/[⚡🤝⚠️🔥💧🐂🐐🌸📖🐎]/g,'').trim());}
+    }
+    if(ti===8||ti===9){s-=0.8;notas.push('Agua — dispersión, no ideal para $$');}
+    return {score:Math.max(1,Math.min(5,Math.round(s))),raw:s,notas,conflicto};
+  }
+
+  let dias=[];
+  for(let d=startDay;d<=lastDay;d++){
+    const date=new Date(y,m,d,12,0,0);
+    const p=getPilar(date);
+    const r=scoreNego(p.ti,p.ri);
+    dias.push({d,date,p,...r,esDinero:(p.ti===4||p.ti===5)});
+  }
+
+  // Ranking: sin conflicto primero, luego score, luego raw
+  const ranked=[...dias].sort((a,b)=>{
+    if(a.conflicto!==b.conflicto)return a.conflicto-b.conflicto; // sin conflicto primero
+    if(b.score!==a.score)return b.score-a.score;
+    return b.raw-a.raw;
+  });
+  const top4=ranked.slice(0,4).sort((a,b)=>a.d-b.d);
+
+  const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const DIAS_SEM=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+
+  if(top4.length===0){cont.innerHTML='<p style="color:var(--smoke);font-style:italic;">No quedan días en el mes.</p>';return;}
+
+  const scoreColors={5:'#6dbf99',4:'#8cc87a',3:'#c9a45a',2:'#e07a5a',1:'#e08070'};
+  const scoreLabels={5:'IDEAL PARA CERRAR',4:'MUY BUENO',3:'ACEPTABLE',2:'FLOJO',1:'EVITAR'};
+
+  let cards=top4.map((dia,i)=>{
+    const dow=DIAS_SEM[dia.date.getDay()];
+    const mesN=MESES[m];
+    const dineroFuerte=dia.esDinero&&!dia.conflicto;
+    let consejo;
+    if(dia.p.ti===5)consejo='Ji = Dinero Directo: la energía exacta de acuerdos formales, contratos y números fijos. El mejor tipo de día para cerrar cifras.';
+    else if(dia.p.ti===4)consejo='Wu = Dinero Indirecto: buena energía para oportunidades grandes o dinero por vías no fijas.';
+    else if(dia.p.ti===0||dia.p.ti===1)consejo='Tu Day Master reforzado: negociás desde la firmeza, no la necesidad. Ideal para sostener tu posición sin ceder.';
+    else if(dia.p.ti===6||dia.p.ti===7)consejo='Metal = autoridad y estructura. Le da marco formal al acuerdo. Bueno para tratar con figuras de poder o temas legales.';
+    else consejo='Día de respaldo para avanzar o formalizar algo ya conversado.';
+    const notaTxt=dia.notas.length?dia.notas.join(' · '):'—';
+    return `
+      <div style="background:var(--surf2);border:1px solid var(--bdr);border-left:3px solid ${scoreColors[dia.score]};border-radius:5px;padding:1.2rem 1.4rem;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:0.6rem;">
+          <div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.15em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.2rem;">Opción ${i+1}${dineroFuerte?' · ★ Dinero activo':''}${dia.conflicto?' · ⚠ con reservas':''}</div>
+            <div style="font-family:'IM Fell English',serif;font-size:1.3rem;color:var(--gold-l);font-weight:400;">${dow} ${dia.d} de ${mesN}</div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--smoke);letter-spacing:0.08em;margin-top:0.15rem;">${dia.p.tFull} · ${dia.p.rFull} (${dia.p.animal}) · ${dia.p.elemT}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="display:flex;gap:2px;justify-content:flex-end;margin-bottom:0.2rem;">${renderStars(dia.score,16)}</div>
+            <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:${scoreColors[dia.score]};letter-spacing:0.08em;">${scoreLabels[dia.score]}</div>
+          </div>
+        </div>
+        <span class="etag ${dia.p.elemC}" style="margin-bottom:0.5rem;display:inline-block;">${dia.p.elemN.toUpperCase()} · ${LUCA.dios[dia.p.ti]}</span>
+        <div style="font-size:0.88rem;color:var(--ash2);line-height:1.55;margin-bottom:0.5rem;">${consejo}</div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);letter-spacing:0.04em;">${notaTxt}</div>
+      </div>`;
+  }).join('');
+
+  // Días a evitar (con choque frontal en riqueza o DM)
+  const evitar=dias.filter(x=>x.conflicto).sort((a,b)=>a.raw-b.raw).slice(0,3);
+  let evitarHtml='';
+  if(evitar.length){
+    evitarHtml=`<div style="background:rgba(192,57,43,0.05);border:1px solid rgba(192,57,43,0.18);border-radius:5px;padding:1rem 1.3rem;margin-top:0.3rem;">
+      <div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:#e08070;text-transform:uppercase;margin-bottom:0.5rem;">❌ Evitar para dinero</div>
+      ${evitar.map(x=>{
+        const dow=DIAS_SEM[x.date.getDay()];
+        const choqueTxt=x.notas.filter(n=>n.includes('⚡')||n.includes('Agua')).join(' · ')||'fricción';
+        return `<div style="font-size:0.84rem;color:var(--ash2);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);"><strong style="color:var(--ash);">${x.d}/${String(m+1).padStart(2,'0')} (${dow.slice(0,3)})</strong> · ${x.p.tShort} ${x.p.animal} · ${choqueTxt}</div>`;
+      }).join('')}
+    </div>`;
+  }
+
+  cont.innerHTML=`
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1rem;">${cards}</div>
+    ${evitarHtml}
+    <div class="exp-bar" style="border-color:rgba(224,160,80,0.25);margin-top:1rem;">
+      <p>Agendar días de dinero en <strong>sanbaoestudio@gmail.com</strong></p>
+      <button class="exp-btn primary" onclick="exportarPlanDinero()">⬇ Descargar plan .ICS</button>
+    </div>
+  `;
+
+  window._planDinero=top4.map((dia,i)=>({
+    d:dia.d,date:new Date(dia.date),score:dia.score,
+    pilar:`${dia.p.tShort} ${dia.p.animal}`,elem:dia.p.elemN,dios:LUCA.dios[dia.p.ti],i:i+1,conflicto:dia.conflicto
+  }));
+}
+
+function exportarPlanDinero(){
+  if(!window._planDinero)return;
+  let events='';
+  const fICS=d=>d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
+  window._planDinero.forEach(v=>{
+    const s=new Date(v.date);s.setHours(10,0,0);
+    const e=new Date(s);e.setHours(11,0,0);
+    const title=`💰 ${'⭐'.repeat(v.score)} · Renegociar / cerrar acuerdo`;
+    const desc=`Día favorable para renegociar dinero (${v.score}/5).\\nPilar: ${v.pilar} · ${v.elem} · ${v.dios}\\nCalibrado a tu carta 甲 Jia Madera Yang (Riqueza = Tierra).${v.conflicto?'\\n⚠️ Día con reservas: revisar contexto antes de cerrar.':''}`;
+    events+=`BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
+  });
+  const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Plan Dinero//ES\r\nCALNAME:Plan Dinero Luca\r\n${events}END:VCALENDAR`;
+  const b=new Blob([ics],{type:'text/calendar'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='plan_dinero_luca.ics';a.click();URL.revokeObjectURL(a.href);
+}
+
 // ══ INIT ══
 const todayInit=getToday();
 const calcDateVal=`${todayInit.getFullYear()}-${String(todayInit.getMonth()+1).padStart(2,'0')}-${String(todayInit.getDate()).padStart(2,'0')}`;
@@ -1253,6 +1533,8 @@ const todayM=todayInit.getMonth()+1;
 const hasM=MONTHS_DATA.some(x=>x.m===todayM);
 currentMonth=hasM?todayM:5;
 buildHoyPanel();
+buildPlanContenido();
+buildPlanDinero();
 buildMonthSel();
 renderMonth(currentMonth);
 </script>
