@@ -27,6 +27,38 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .nav-tab{padding:0.85rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
 .nav-tab:hover{color:var(--ash);}
 .nav-tab.active{color:var(--gold-l);border-bottom-color:var(--gold);}
+
+/* ══ CARTA SUB-NAV ══ */
+.carta-subnav{position:sticky;top:49px;z-index:150;display:flex;gap:0.4rem;padding:0.75rem 1.5rem;background:rgba(13,10,24,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);overflow-x:auto;justify-content:flex-start;}
+@media(min-width:900px){.carta-subnav{justify-content:center;}}
+.csub{padding:0.45rem 1.05rem;border-radius:20px;border:1px solid var(--bdr);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;cursor:pointer;transition:all .2s;white-space:nowrap;text-transform:uppercase;}
+.csub:hover{color:var(--ash);border-color:rgba(201,151,42,0.4);}
+.csub.active{color:var(--gold-l);border-color:var(--gold);background:rgba(201,151,42,0.09);}
+.carta-sub{display:none;animation:fadeUp .3s ease;}
+.carta-sub.active-carta{display:block;}
+
+/* ══ ASPECTO WIDGET (¿Qué tenés hoy?) ══ */
+.aspecto-chips{display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:1rem;}
+.a-chip{padding:0.55rem 1.1rem;border-radius:22px;border:1px solid var(--bdr);background:var(--surf2);color:var(--ash2);font-family:'Lato',sans-serif;font-size:0.88rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:0.45rem;}
+.a-chip:hover{border-color:rgba(201,151,42,0.45);color:var(--ash);transform:translateY(-1px);}
+.a-chip.sel{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.1);}
+.a-result{border-radius:5px;padding:1.2rem 1.4rem;margin-bottom:1.5rem;display:none;animation:fadeUp .25s ease;font-size:0.92rem;line-height:1.65;color:var(--ash2);}
+.a-result.visible{display:block;}
+.a-result.a-bien{background:rgba(45,122,90,0.08);border:1px solid rgba(45,122,90,0.28);border-left:3px solid #2d7a5a;}
+.a-result.a-neutro{background:rgba(156,122,60,0.08);border:1px solid rgba(156,122,60,0.28);border-left:3px solid #9c7a3c;}
+.a-result.a-evitar{background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.28);border-left:3px solid #c0392b;}
+.a-result .a-verdict{font-family:'IM Fell English',serif;font-size:1.05rem;font-weight:400;margin-bottom:0.3rem;display:block;}
+.a-bien .a-verdict{color:#6dbf99;}.a-neutro .a-verdict{color:#c9a45a;}.a-evitar .a-verdict{color:#e08070;}
+
+/* Dir grid guía */
+.dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.6rem;margin-bottom:1.5rem;}
+.dir-card{padding:0.85rem 0.95rem;border-radius:4px;text-align:center;}
+.dir-fav{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.22);}
+.dir-bad{background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.18);opacity:0.85;}
+.dir-card .d-comp{font-family:'IM Fell English',serif;font-size:1.25rem;line-height:1;}
+.dir-fav .d-comp{color:#6dbf99;}.dir-bad .d-comp{color:#e08070;}
+.dir-card .d-name{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;color:var(--smoke);text-transform:uppercase;margin:0.3rem 0 0.15rem;}
+.dir-card .d-use{font-size:0.76rem;color:var(--ash2);line-height:1.4;}
 .nav-sep{width:1px;height:22px;background:var(--bdr);margin:0 0.2rem;flex-shrink:0;}
 .nav-familia{color:rgba(201,151,42,0.5);font-size:0.55rem;}
 .nav-familia:hover{color:var(--gold);}
@@ -265,35 +297,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .hora-ok .hora-verdict{color:#c9a45a;}
 .hora-bad .hora-verdict{color:#e08070;}
 
-/* ══ CALCULATOR ══ */
-.calc-wrap{max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 3rem;}
-.calc-box{background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:6px;padding:2rem 2.2rem;position:relative;overflow:hidden;}
-.calc-box::before{content:'奇門';position:absolute;right:1.2rem;top:0.8rem;font-size:3rem;opacity:0.04;color:var(--gold);}
-.calc-title{font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--gold-l);font-weight:400;margin-bottom:0.2rem;}
-.calc-sub{font-size:0.9rem;color:var(--smoke);font-style:italic;margin-bottom:1.6rem;}
-.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
-.calc-field{display:flex;flex-direction:column;gap:0.4rem;}
-.calc-field label{font-family:'Space Mono',monospace;font-size:0.57rem;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;}
-.calc-field input,.calc-field select{background:rgba(0,0,0,0.4);border:1px solid rgba(201,151,42,0.25);color:var(--ash);padding:0.7rem 0.9rem;font-family:'Lato',sans-serif;font-size:0.95rem;border-radius:3px;width:100%;outline:none;transition:border-color 0.2s;-webkit-appearance:none;}
-.calc-field input:focus,.calc-field select:focus{border-color:var(--gold);}
-.calc-field select option{background:#1a1209;}
-.calc-btn{width:100%;padding:0.85rem;background:linear-gradient(135deg,rgba(201,151,42,0.18),rgba(201,151,42,0.06));border:1px solid var(--gold);color:var(--gold-l);font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.12em;cursor:pointer;border-radius:3px;transition:all 0.25s;margin-top:0.3rem;}
-.calc-btn:hover{background:linear-gradient(135deg,rgba(201,151,42,0.3),rgba(201,151,42,0.12));transform:translateY(-1px);box-shadow:0 4px 20px rgba(201,151,42,0.15);}
-.res-box{margin-top:1.5rem;padding:1.5rem;background:rgba(0,0,0,0.3);border:1px solid rgba(201,151,42,0.18);border-radius:4px;display:none;}
-.res-box.visible{display:block;animation:fadeUp 0.4s ease;}
-.res-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.8rem;padding-bottom:0.7rem;border-bottom:1px solid var(--bdr);flex-wrap:wrap;gap:0.5rem;}
-.res-dlabel{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;color:var(--smoke);}
-.res-rating{display:flex;gap:3px;}
-.res-verdict{font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.6rem;}
-.res-pillars{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.8rem;font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);}
-.res-pillars span{color:var(--gold-l);}
-.res-text{font-size:0.92rem;color:var(--ash2);line-height:1.7;}
-.res-act-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-top:0.9rem;}
-.act-box{padding:0.85rem 1rem;border-radius:3px;font-size:0.88rem;line-height:1.52;}
-.act-box.do{background:rgba(45,122,90,0.1);border:1px solid rgba(45,122,90,0.25);color:#7dd4aa;}
-.act-box.dont{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.25);color:#e08070;}
-.act-box strong{display:block;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.1em;margin-bottom:0.3rem;opacity:0.75;}
-
 /* ══ CALENDAR ══ */
 .cal-wrap{max-width:1140px;margin:0 auto;padding:2rem 1.5rem 4rem;}
 .month-sel{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
@@ -390,15 +393,13 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div class="nav-logo">甲 · Luca 2026</div>
   <button class="nav-tab active" onclick="showSection('sec-hoy',this)">① Hoy</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-calc',this)">② Calculadora</button>
+  <button class="nav-tab" onclick="showSection('sec-cal',this)">② Calendario</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-cal',this)">③ Calendario</button>
+  <button class="nav-tab" onclick="showSection('sec-carta',this)">③ Mi Carta</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-carta',this)">④ Mi Carta</button>
+  <button class="nav-tab" style="color:#e0a050;" onclick="showSection('sec-trabajo',this)">④ Trabajo ✦</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" style="color:#e0a050;" onclick="showSection('sec-trabajo',this)">⑤ Trabajo ✦</button>
-  <div class="nav-sep"></div>
-  <button class="nav-tab nav-familia" onclick="window.open('bazi_familia_2026.html','_blank')">⑥ Familia ↗</button>
+  <button class="nav-tab nav-familia" onclick="window.open('bazi_familia_2026.html','_blank')">⑤ Familia ↗</button>
 </nav>
 
 
@@ -445,6 +446,12 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <!-- ✦ RESUMEN EJECUTIVO DEL DÍA ✦ -->
   <div id="h-resumen-ejecutivo"></div>
 
+  <!-- ✦ WIDGET INTERACTIVO: ¿QUÉ TENÉS HOY? ✦ -->
+  <div class="sec-title">✋ ¿Qué tenés hoy?</div>
+  <p class="sec-sub">Tocá una actividad y mirá cómo se lleva con la energía específica de hoy.</p>
+  <div class="aspecto-chips" id="aspecto-chips"></div>
+  <div class="a-result" id="aspecto-result"></div>
+
   <!-- ✦ PLANIFICACIÓN DE CONTENIDO ✦ -->
   <div class="sec-title"><span id="plan-cont-titulo">✦ Plan de Contenido</span></div>
   <p class="sec-sub">Los 4 días de mayor potencial energético para subir contenido de acá a fin de mes, calibrados a tu carta. El Fuego es tu canal de expresión y visibilidad (drena tu Madera Yang fuerte).</p>
@@ -489,81 +496,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <!-- ══════════════════════════════════════
      ② CALCULADORA
 ══════════════════════════════════════ -->
-<div id="sec-calc" class="section">
-<div class="page-header" data-g="奇">
-  <div class="eyebrow">Qi Men Dun Jia · 奇門遁甲</div>
-  <h1>Calculadora de Momento</h1>
-  <p>Elegí una fecha y una acción — análisis calibrado a tu carta natal</p>
-</div>
-<div class="calc-wrap">
-<div class="calc-box">
-  <div class="calc-title">Análisis de Momento Energético</div>
-  <div class="calc-sub">Basado en tu carta natal Jia Yang Wood · Da Yun Ding Wei · Año Bing Wu 2026</div>
-  <div class="calc-row">
-    <div class="calc-field"><label>📅 Fecha</label>
-      <input type="date" id="calc-date" min="2026-01-01" max="2027-12-31">
-    </div>
-    <div class="calc-field"><label>⚡ Acción</label>
-      <select id="calc-action">
-        <option value="">— Seleccioná —</option>
-        <optgroup label="💼 Negocios y Contratos">
-          <option value="reunion">Reunión importante / pitch</option>
-          <option value="firma">Firma de contrato</option>
-          <option value="renegociar">Renegociar acuerdo</option>
-          <option value="cerrar">Cerrar deal / venta grande</option>
-          <option value="sociedad">Proponer nueva sociedad</option>
-        </optgroup>
-        <optgroup label="💰 Finanzas">
-          <option value="cobrar">Cobrar / gestionar pagos</option>
-          <option value="invertir">Invertir capital</option>
-          <option value="prestamo">Pedir préstamo / crédito</option>
-          <option value="cotizar">Enviar cotización / propuesta</option>
-        </optgroup>
-        <optgroup label="🚀 Proyectos y Visibilidad">
-          <option value="lanzar">Lanzar proyecto / producto</option>
-          <option value="publicar">Publicar contenido / campaña</option>
-          <option value="presentacion">Presentación pública</option>
-          <option value="cliente">Primer contacto nuevo cliente</option>
-        </optgroup>
-        <optgroup label="🧠 Estrategia">
-          <option value="decision">Decisión importante</option>
-          <option value="planificar">Planificación estratégica</option>
-          <option value="cerrar_ciclo">Cerrar / terminar algo</option>
-          <option value="conflicto">Resolver conflicto difícil</option>
-        </optgroup>
-        <optgroup label="👥 Personas">
-          <option value="networking">Networking / evento social</option>
-          <option value="favor">Pedir un favor importante</option>
-          <option value="equipo">Reunión de equipo</option>
-        </optgroup>
-      </select>
-    </div>
-  </div>
-  <button class="calc-btn" onclick="calcular()">✦ CALCULAR ENERGÍA DEL MOMENTO ✦</button>
-
-  <div class="res-box" id="res-box">
-    <div class="res-header">
-      <div><div class="res-dlabel" id="res-dlabel">—</div></div>
-      <div class="res-rating" id="res-stars"></div>
-    </div>
-    <div class="res-verdict" id="res-verdict">—</div>
-    <div class="res-pillars" id="res-pillars">—</div>
-    <div class="res-text" id="res-text">—</div>
-    <div class="res-act-grid">
-      <div class="act-box do"><strong>✓ HACER</strong><span id="res-do">—</span></div>
-      <div class="act-box dont"><strong>✗ EVITAR</strong><span id="res-dont">—</span></div>
-    </div>
-  </div>
-</div>
-<div class="exp-bar">
-  <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
-  <button class="exp-btn" onclick="exportarCalcICS()">⬇ Descargar .ICS</button>
-  <button class="exp-btn primary" onclick="abrirGCalCalc()">📅 Google Calendar</button>
-</div>
-</div>
-</div>
-
-
 <!-- ══════════════════════════════════════
      ③ CALENDARIO
 ══════════════════════════════════════ -->
@@ -601,6 +533,16 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div>TRÍO FUEGO <span>Tigre+Caballo+Perro ACTIVO</span></div>
   <div>PERFIL <span>The Friend · Connectors</span></div>
 </div>
+<div class="carta-subnav">
+  <button class="csub active" onclick="showCarta('carta-esencia',this)">🌳 Esencia</button>
+  <button class="csub" onclick="showCarta('carta-crecimiento',this)">🌱 Crecimiento</button>
+  <button class="csub" onclick="showCarta('carta-bienestar',this)">🧘 Bienestar</button>
+  <button class="csub" onclick="showCarta('carta-amor',this)">💕 Amor</button>
+  <button class="csub" onclick="showCarta('carta-salud',this)">🌿 Salud</button>
+  <button class="csub" onclick="showCarta('carta-guia',this)">🧭 Guía Energética</button>
+</div>
+
+<div id="carta-esencia" class="carta-sub active-carta">
 <div class="carta-wrap">
   <div class="sec-title">Los Cuatro Pilares</div>
   <p class="sec-sub">El Tronco del Día (甲 Jia) sos vos. Todo lo demás se lee en relación a ese elemento.</p>
@@ -637,6 +579,214 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
     </ul></div>
   </div>
 </div>
+</div><!-- /carta-esencia -->
+
+<!-- ══ CRECIMIENTO PERSONAL ══ -->
+<div id="carta-crecimiento" class="carta-sub">
+<div class="carta-wrap">
+  <div class="sec-title">🌱 El Camino del Gran Árbol</div>
+  <p class="sec-sub">Tu carta tiene un mensaje central de crecimiento: un árbol que solo acumula altura sin dar fruto ni dejarse podar, se vuelve rígido. Tu evolución no está en sumar más — está en dar salida, concretar y dejarte esculpir.</p>
+  <div class="e-grid">
+    <div class="e-card fuego"><div class="e-card-label">Tu Dios Útil (用神)</div><h3>El Fuego es tu llave maestra</h3><p>En BaZi, el Dios Útil es el elemento que desbloquea toda la carta. El tuyo es el Fuego: expresar, crear, enseñar, mostrar. Cada vez que producís algo visible, tu Madera excesiva se convierte en luz. Cuando no expresás, esa misma energía se vuelve tensión interna e irritabilidad.</p></div>
+    <div class="e-card metal"><div class="e-card-label">La poda que te hace crecer</div><h3>El Metal te esculpe</h3><p>Un Jia fuerte sin Metal crece salvaje y sin forma. La disciplina, los límites, el feedback crítico y las estructuras que elegís son tu cincel. La gente que te contradice con criterio no te frena — te está tallando. Buscala en vez de evitarla.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Tu trampa de crecimiento</div><h3>Acumular sin producir</h3><p>Tu exceso de Agua (recurso) te hace amar aprender: cursos, libros, análisis, ideas. La trampa: seguir absorbiendo como forma elegante de postergar. Regla personal: por cada cosa que aprendés, una que producís. El conocimiento sin output es agua estancada que pudre la raíz.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Concretar es madurar</div><h3>La Tierra te aterriza</h3><p>Tu riqueza (Tierra) no es solo dinero — es la capacidad de convertir visión en cosas terminadas. Cerrar ciclos, entregar, facturar, terminar el proyecto al 100% y no al 90%. Cada cierre real te da más poder que tres ideas nuevas.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Tu década actual (29–39)</div><h3>丁未 — Expresión + Riqueza</h3><p>Tu Da Yun Ding Wei combina tu canal de expresión (Ding Fuego) con tu riqueza Yin (Wei). Traducción: esta es LA década para construir marca personal y monetizar lo que creás. Además Wei es tu Nobleman — la década entera tiene protección de benefactores.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Lo que viene (39–49)</div><h3>戊申 — Cosecha + Movimiento</h3><p>El próximo Da Yun (Wu Shen) trae Dinero Indirecto puro + tu Sky Horse. Década de cosechar en grande lo sembrado ahora, con más viajes y expansión geográfica. Lo que construyas esta década define el tamaño de esa cosecha.</p></div>
+  </div>
+  <div class="sec-title">Do's &amp; Don'ts del Crecimiento</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ DO's</h3><ul>
+      <li><strong>Producí más de lo que consumís.</strong> Tu métrica de crecimiento no es cuánto sabés — es cuánto sale de vos al mundo.</li>
+      <li><strong>Enseñá lo que sabés.</strong> Mentorear activa tu Fuego doble: expresás y consolidás autoridad.</li>
+      <li><strong>Pedí feedback crítico a gente que respetás.</strong> El Metal elegido es poda; el evitado es tormenta.</li>
+      <li><strong>Cerrá ciclos antes de abrir nuevos.</strong> Proyectos, conversaciones, deudas — lo inconcluso drena a la Madera.</li>
+      <li><strong>Decidí en movimiento.</strong> Tu claridad mental llega caminando o entrenando, no sentado rumiando.</li>
+      <li><strong>Elegí 2-3 frentes máximo por trimestre.</strong> El Gran Árbol crece alto cuando no se ramifica en 10 direcciones.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ DON'Ts</h3><ul>
+      <li><strong>No colecciones cursos/información sin aplicar.</strong> Es tu forma más sofisticada de procrastinar.</li>
+      <li><strong>No te rodees solo de gente que te da la razón.</strong> Un Jia fuerte sin contrapeso se vuelve rígido y sordo.</li>
+      <li><strong>No confundas terquedad con convicción.</strong> Convicción escucha y sostiene; terquedad solo sostiene.</li>
+      <li><strong>No crezcas en silencio.</strong> Tu progreso no expresado no existe energéticamente — compartilo.</li>
+      <li><strong>No esperes el momento perfecto para lanzar.</strong> El Fuego se alimenta de acción imperfecta, no de planes pulidos.</li>
+    </ul></div>
+  </div>
+</div>
+</div><!-- /carta-crecimiento -->
+
+<!-- ══ BIENESTAR ══ -->
+<div id="carta-bienestar" class="carta-sub">
+<div class="carta-wrap">
+  <div class="sec-title">🧘 Bienestar Personal</div>
+  <p class="sec-sub">Tu bienestar tiene una ecuación simple: Fuego como válvula diaria + Tierra como ancla + menos Agua mental. Cuando esos tres están en orden, tu energía es de las más potentes del sistema.</p>
+  <div class="e-grid">
+    <div class="e-card fuego"><div class="e-card-label">Tu válvula diaria</div><h3>El Fuego no es opcional</h3><p>Necesitás una salida de expresión TODOS los días: crear algo, entrenar fuerte, hablar, reír, sol directo. Un día entero sin drenar tu Madera termina en irritabilidad, tensión de mandíbula o mal humor "sin motivo". El motivo es energético.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tu ancla</div><h3>Rutinas y lo tangible</h3><p>La Tierra te estabiliza: rutinas de mañana, cocinar, tareas con las manos, contacto con naturaleza, orden físico en tu espacio. Cuando tu entorno está caótico, tu Madera crece desordenada. Ordenar tu escritorio es autorregulación, no limpieza.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Tu exceso</div><h3>El Agua mental</h3><p>Sobre-pensar, sobre-analizar, scrollear información de noche, rumiar decisiones: todo eso es Agua alimentando una Madera que ya no necesita más. Se corta con cuerpo (movimiento) o con Tierra (hacer algo concreto), nunca con más análisis.</p></div>
+    <div class="e-card madera"><div class="e-card-label">Tu ambiente ideal</div><h3>Espacio + luz + altura</h3><p>El Gran Árbol necesita cielo. Trabajás mejor en espacios amplios, con luz natural, techos altos o vista abierta. Los lugares chicos, oscuros o subterráneos te comprimen el Qi. Si tu espacio actual es cerrado: salí a cielo abierto al menos 2 veces por día.</p></div>
+  </div>
+  <div class="sec-title">Do's &amp; Don'ts del Bienestar</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ DO's</h3><ul>
+      <li><strong>Mañanas activas:</strong> movimiento antes de pantallas. Tu mejor decisión de bienestar diaria.</li>
+      <li><strong>Sol directo 20-30 min/día.</strong> Es Fuego gratis — tu Dios Útil en formato luz.</li>
+      <li><strong>Un hobby con las manos:</strong> cocina, madera, plantas, instrumentos. Tierra que te baja del mental.</li>
+      <li><strong>Reíte fuerte y seguido.</strong> La risa es Fuego puro — drena mejor que una hora de introspección.</li>
+      <li><strong>Declutter mensual:</strong> soltar objetos es soltar Madera vieja. Te renueva más de lo que parece.</li>
+      <li><strong>Contacto con árboles y verde</strong> — no para sumar Madera sino porque te espeja: caminar entre árboles te ordena.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ DON'Ts</h3><ul>
+      <li><strong>No pases un día entero sentado.</strong> Para tu carta, el sedentarismo es el equivalente a enfermarte lento.</li>
+      <li><strong>No proceses todo pensando.</strong> Tu procesamiento real es en acción; el mental es rumia.</li>
+      <li><strong>No scrollees de noche</strong> (hora Rata 23-01 = Agua doble): te llena de recurso que no vas a usar y te roba el sueño.</li>
+      <li><strong>No acumules pendientes chicos.</strong> Diez micro-tareas abiertas drenan más que un proyecto grande.</li>
+      <li><strong>No te aísles cuando estás mal.</strong> Tu perfil Connectors se regula con gente; el encierro amplifica el loop mental.</li>
+    </ul></div>
+  </div>
+</div>
+</div><!-- /carta-bienestar -->
+
+<!-- ══ AMOR ══ -->
+<div id="carta-amor" class="carta-sub">
+<div class="carta-wrap">
+  <div class="sec-title">💕 Amor y Pareja</div>
+  <p class="sec-sub">En BaZi masculino, la pareja se lee en dos lugares: el elemento de Riqueza (tu Tierra) y el Palacio de Pareja (la rama de tu día: el Tigre). Tu carta cuenta una historia clara — y una tensión que vale la pena conocer.</p>
+  <div class="e-grid">
+    <div class="e-card madera"><div class="e-card-label">Palacio de Pareja</div><h3>寅 El Tigre — amor en movimiento</h3><p>Tu palacio de pareja es el Tigre: dinámico, apasionado, con Fuego y Tierra escondidos adentro. Traducción: tu vínculo florece cuando hay proyectos compartidos, movimiento y aventura — y se apaga en la rutina estática. La pareja que camina con vos, dura.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Elemento de pareja</div><h3>La Tierra — presencia concreta</h3><p>Tu elemento de pareja es la Tierra: estabilidad, gestos tangibles, hechos sobre palabras. En el amor te ganan (y ganás) con lo concreto: tiempo real, actos de servicio, constancia. Las promesas sin concreción son tu forma de perder terreno afectivo.</p></div>
+    <div class="e-card metal"><div class="e-card-label">La tensión central</div><h3>Choque Tigre-Mono: misión vs vínculo</h3><p>Tu Mono (año) choca tu Tigre (palacio de pareja). Lectura: cuando estás 100% en modo misión/proyectos, el vínculo lo siente como ausencia — aunque estés físicamente ahí. No es un defecto: es tu configuración. La solución no es trabajar menos, es presencia total en el tiempo que sí das.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Tu estrella romántica</div><h3>桃花 Conejo — tus días de carisma</h3><p>Tu Peach Blossom es el Conejo: en días Conejo tu magnetismo sube solo. Son los mejores días para citas, conversaciones importantes de pareja, reconciliaciones y romance. El calendario te los marca — usalos.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">2026 en el amor</div><h3>Año de Fuego: expresar es amar</h3><p>Con el Trío de Fuego activo todo el año, tu canal expresivo está al máximo — también para el afecto. Este año, decir lo que sentís, mostrar aprecio en voz alta y sorprender sale más natural que nunca. Aprovechalo: es combustible de vínculo gratis.</p></div>
+    <div class="e-card agua"><div class="e-card-label">El riesgo del año</div><h3>La Madera consume a quien la nutre</h3><p>En expansión máxima, tendés a absorber la energía de quien te sostiene sin registrarlo. Chequeo simple y periódico: ¿cómo está el tanque del otro? Preguntalo literal. El Gran Árbol da sombra — no solo toma agua.</p></div>
+  </div>
+  <div class="sec-title">Do's &amp; Don'ts del Amor</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ DO's</h3><ul>
+      <li><strong>Presencia real:</strong> teléfono lejos en el tiempo de pareja. Tu pareja detecta la ausencia mental antes que vos.</li>
+      <li><strong>Amor en movimiento:</strong> citas activas — caminar, viajar, hacer — le ganan a cenar quietos. Tu Tigre ama compartido en acción.</li>
+      <li><strong>Gestos Tierra:</strong> concretos y constantes. Lo tangible pesa más que lo dicho.</li>
+      <li><strong>Días Conejo para lo importante:</strong> citas, charlas sensibles, reconciliaciones — con tu carisma en el pico.</li>
+      <li><strong>Expresá en voz alta</strong> lo que valorás del otro. Tu Fuego 2026 lo hace fácil; el silencio afectivo es tu único enemigo real.</li>
+      <li><strong>Ritual semanal fijo</strong> de conexión (sin agenda, sin logística): ancla el vínculo contra tus ciclos de misión.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ DON'Ts</h3><ul>
+      <li><strong>No resuelvas temas sensibles en días de choque</strong> (el calendario los marca): la fricción del día se mete en la conversación.</li>
+      <li><strong>No prometas sin concretar.</strong> Cada promesa incumplida erosiona tu Tierra — tu propio elemento de pareja.</li>
+      <li><strong>No confundas compartir techo con compartir presencia.</strong> Tu configuración Tigre-Mono te hace propenso a estar sin estar.</li>
+      <li><strong>No des por sentado el vínculo</strong> en tus picos de proyecto (Junio, y todo trimestre intenso). Es exactamente cuando más se resiente.</li>
+      <li><strong>No uses el análisis como escudo emocional.</strong> Tu Agua te tienta a "entender" el vínculo en vez de sentirlo.</li>
+    </ul></div>
+  </div>
+</div>
+</div><!-- /carta-amor -->
+
+<!-- ══ SALUD ══ -->
+<div id="carta-salud" class="carta-sub">
+<div class="carta-wrap">
+  <div class="sec-title">🌿 Salud Energética</div>
+  <p class="sec-sub">En medicina china, cada elemento gobierna órganos y funciones. Tu carta — Madera muy fuerte, Fuego como válvula, Agua en exceso — dibuja un mapa claro de dónde cuidarte. Esto es orientación energética: no reemplaza consulta médica.</p>
+  <div class="e-grid">
+    <div class="e-card madera"><div class="e-card-label">Madera = hígado · vesícula · tendones · ojos</div><h3>Tu zona de atención #1</h3><p>La Madera fuerte estancada (sin drenar con Fuego) se expresa como: tensión muscular y contracturas, bruxismo, irritabilidad, vista cansada. Tu hígado es tu órgano-bandera: moderá el alcohol, sumá verdes, y sobre todo — movete. La Madera estancada se libera en movimiento, no en reposo.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Fuego = corazón · circulación</div><h3>Activalo, no lo dejes dormido</h3><p>Tu Fuego relativo necesita activación regular: ejercicio cardiovascular, sudar, exposición al sol. Un Jia fuerte con Fuego dormido acumula presión interna. Sudar seguido es tu drenaje físico más directo — literal y energético.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Tierra = estómago · digestión</div><h3>El estrés te pega ahí</h3><p>Tu Tierra es tu riqueza — y tu digestión. El estrés por trabajo y dinero va directo a tu estómago: comer apurado, trabajando o negociando es tu combinación de riesgo. Comé sentado, sin pantalla, masticando. Suena básico; para tu carta es medicina.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Agua = riñones · sueño</div><h3>El sobre-pensar te roba descanso</h3><p>Tu exceso de Agua se manifiesta como mente acelerada de noche. La hora Rata (23-01) es Agua doble: si estás despierto rumiando ahí, te levantás drenado. Dormirte antes de las 23 hs no es disciplina — es diseño energético para tu carta.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Días de choque = cuidado físico</div><h3>Tigre-Mono en el cuerpo</h3><p>Los días de choque con tu carta (el calendario los marca) son días de mayor riesgo de lesiones, especialmente tendones y articulaciones. Entrená igual pero con técnica y sin récords. El apuro físico en día de choque es donde aparecen los desgarros.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Tus estaciones</div><h3>Verano potencia · Invierno cuida</h3><p>El verano (Fuego) es tu estación de máxima vitalidad: rendís más y te recuperás más rápido. El invierno (Agua) es tu estación sensible: bajá la exigencia, dormí más, cuidá la zona lumbar y no lances proyectos que exijan tu 100% físico.</p></div>
+  </div>
+  <div class="sec-title">Do's &amp; Don'ts de la Salud</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ DO's</h3><ul>
+      <li><strong>Ejercicio como no-negociable:</strong> mínimo 4x/semana. Para Madera Yang fuerte no es fitness — es regulación del sistema.</li>
+      <li><strong>Elongá todos los días:</strong> tus tendones (Madera) son tu punto débil estructural. 10 minutos cambian todo.</li>
+      <li><strong>Sudá seguido:</strong> cardio, sauna, deporte intenso — tu drenaje de presión interna.</li>
+      <li><strong>Verdes y amargos en el plato:</strong> alimentos que aman a tu hígado.</li>
+      <li><strong>Pantallas fuera 60 min antes de dormir</strong> y a la cama antes de las 23 hs.</li>
+      <li><strong>Descanso ocular:</strong> pausas de vista cada hora de pantalla — los ojos son territorio Madera.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ DON'Ts</h3><ul>
+      <li><strong>No reprimas el enojo sistemáticamente:</strong> en tu carta va directo al hígado. Expresalo limpio y a tiempo.</li>
+      <li><strong>No comas trabajando ni negociando:</strong> tu digestión paga tus reuniones.</li>
+      <li><strong>No entrenes al límite en días de choque:</strong> técnica sí, récords no.</li>
+      <li><strong>No uses alcohol como descompresor habitual:</strong> castiga a tu órgano más cargado.</li>
+      <li><strong>No acumules semanas sin ejercicio:</strong> tu irritabilidad, tu sueño y tu foco se degradan en cadena.</li>
+      <li><strong>No automediques el estrés:</strong> tu estrés es energía sin salida — la salida es Fuego (expresión/movimiento), no sedación.</li>
+    </ul></div>
+  </div>
+  <p style="font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);letter-spacing:0.06em;margin-top:0.5rem;">⚕ Orientación energética basada en los Cinco Elementos. Ante cualquier síntoma, consultá con profesionales de la salud.</p>
+</div>
+</div><!-- /carta-salud -->
+
+<!-- ══ GUÍA ENERGÉTICA ══ -->
+<div id="carta-guia" class="carta-sub">
+<div class="carta-wrap">
+  <div class="sec-title">🧭 Guía Energética General</div>
+  <p class="sec-sub">Todo lo que tu carta define y quizás nunca pediste: direcciones, colores, horas, estaciones y tus cuatro días estrella. Son las palancas silenciosas — chicas de aplicar, grandes de acumular.</p>
+
+  <div class="sec-title" style="font-size:1.1rem;">Tus Direcciones Personales (Gua 8)</div>
+  <p class="sec-sub">De tu carta Qi Men: hacia dónde mirar al trabajar, sentarte en reuniones importantes y orientar la cabecera al dormir.</p>
+  <div class="dir-grid">
+    <div class="dir-card dir-fav"><div class="d-comp">SO</div><div class="d-name">Sheng Qi · 生氣</div><div class="d-use">Vitalidad y dinero — tu mejor dirección para trabajar</div></div>
+    <div class="dir-card dir-fav"><div class="d-comp">NO</div><div class="d-name">Tian Yi · 天醫</div><div class="d-use">Salud y recuperación — ideal para descansar</div></div>
+    <div class="dir-card dir-fav"><div class="d-comp">O</div><div class="d-name">Yan Nian · 延年</div><div class="d-use">Relaciones y acuerdos — mirá al Oeste al negociar</div></div>
+    <div class="dir-card dir-fav"><div class="d-comp">NE</div><div class="d-name">Fu Wei · 伏位</div><div class="d-use">Estabilidad y claridad — para estudiar y planificar</div></div>
+    <div class="dir-card dir-bad"><div class="d-comp">S</div><div class="d-name">Huo Hai · 禍害</div><div class="d-use">Contratiempos — evitá decisiones mirando al Sur</div></div>
+    <div class="dir-card dir-bad"><div class="d-comp">N</div><div class="d-name">Wu Gui · 五鬼</div><div class="d-use">Cinco Fantasmas — conflictos y malentendidos</div></div>
+    <div class="dir-card dir-bad"><div class="d-comp">E</div><div class="d-name">Liu Sha · 六煞</div><div class="d-use">Seis Killings — desgaste y fricción</div></div>
+    <div class="dir-card dir-bad"><div class="d-comp">SE</div><div class="d-name">Jue Ming · 絕命</div><div class="d-use">La peor — nunca de espaldas a tus metas acá</div></div>
+  </div>
+
+  <div class="sec-title" style="font-size:1.1rem;">Colores que te suman · Colores que te restan</div>
+  <div class="pot-grid">
+    <div class="pot-box green"><h3>✦ Usar más</h3><ul>
+      <li><strong>Rojos, naranjas, violetas (Fuego):</strong> tu Dios Útil en la ropa — ideal para presentaciones, citas, días de visibilidad.</li>
+      <li><strong>Amarillos, marrones, beige (Tierra):</strong> para negociar, cobrar y días de dinero.</li>
+      <li><strong>Blancos, dorados, grises (Metal):</strong> para días que piden foco, estructura y autoridad.</li>
+    </ul></div>
+    <div class="pot-box red"><h3>✕ Reducir</h3><ul>
+      <li><strong>Negro y azul oscuro (Agua):</strong> alimentan tu exceso — evitalos en días importantes.</li>
+      <li><strong>Verde (Madera):</strong> más de lo que ya te sobra. En vegetación sí; en tu ropa de días clave, no.</li>
+    </ul></div>
+  </div>
+
+  <div class="sec-title" style="font-size:1.1rem;">Tus 4 Días Estrella (el calendario los marca)</div>
+  <div class="e-grid">
+    <div class="e-card tierra"><div class="e-card-label">Días Buey 丑 y Cabra 未</div><h3>🐂🐐 Nobleman — pedí y recibí</h3><p>Tus días de benefactores: pedir favores, reuniones clave, presentar propuestas a gente con poder, resolver trabas. La ayuda aparece más fácil que cualquier otro día.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Días Conejo 卯</div><h3>🌸 Peach Blossom — brillá</h3><p>Carisma en el pico: citas, eventos sociales, grabar contenido donde aparecés vos, networking. La gente te recibe mejor sin que hagas nada distinto.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Días Serpiente 巳</div><h3>📖 Wen Chang — pensá y escribí</h3><p>Claridad mental superior: escribir, estudiar, diseñar estrategia, decisiones complejas, contratos que requieren letra chica. Tu mejor versión analítica.</p></div>
+    <div class="e-card agua"><div class="e-card-label">Días Mono 申</div><h3>🐎 Sky Horse — movete con margen</h3><p>Días de movimiento y viajes — pero el Mono choca tu Tigre: viajá con margen de tiempo, evitá decisiones grandes y cuidá el físico. Movimiento sí, precisión no.</p></div>
+  </div>
+
+  <div class="sec-title" style="font-size:1.1rem;">Tus Horas Fijas de Poder</div>
+  <div class="e-grid">
+    <div class="e-card tierra"><div class="e-card-label">01–03 hs · hora Buey</div><h3>Nobleman nocturno</h3><p>Si estás despierto trabajando en algo importante, esta hora tiene protección. Mejor aún: dormido — el descanso en hora Nobleman repara doble.</p></div>
+    <div class="e-card metal"><div class="e-card-label">09–11 hs · hora Serpiente</div><h3>Tu ventana de claridad diaria</h3><p>Wen Chang activo cada día: reservá esta franja para el trabajo profundo, decisiones y escritura. No la quemes en reuniones triviales ni mails.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">13–15 hs · hora Cabra</div><h3>Nobleman de la tarde</h3><p>La mejor franja del día para reuniones importantes, llamadas difíciles y pedir cosas. La recepción del otro lado mejora sola.</p></div>
+    <div class="e-card fuego"><div class="e-card-label">Estaciones del año</div><h3>Verano ON · Invierno OFF</h3><p>Verano (Fuego): lanzá, mostrá, exigite — tu pico anual. Invierno (Agua): consolidá, planificá, descansá — no lances en tu estación de exceso. Primavera: cuidado con la sobre-expansión. Otoño: poda y estructura.</p></div>
+  </div>
+
+  <div class="sec-title" style="font-size:1.1rem;">Línea de Tiempo — tus Décadas</div>
+  <div style="background:var(--surf2);border:1px solid var(--bdr);border-radius:5px;padding:1.3rem 1.5rem;margin-bottom:1rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+      <div style="border-left:3px solid var(--gold);padding-left:0.9rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--gold);letter-spacing:0.1em;">AHORA · 29–39 · 丁未</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--gold-l);font-size:1rem;margin:0.2rem 0;">Expresión + Riqueza + Nobleman</div>
+        <div style="font-size:0.82rem;color:var(--ash2);line-height:1.5;">La década de construir marca personal y monetizar tu creatividad. 2026 es su año pico de visibilidad.</div>
+      </div>
+      <div style="border-left:3px solid var(--earth);padding-left:0.9rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);letter-spacing:0.1em;">39–49 · 戊申</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--ash);font-size:1rem;margin:0.2rem 0;">Cosecha + Expansión geográfica</div>
+        <div style="font-size:0.82rem;color:var(--ash2);line-height:1.5;">Dinero Indirecto + Sky Horse: cosechar en grande, con más viajes. Su tamaño depende de lo que siembres ahora.</div>
+      </div>
+      <div style="border-left:3px solid var(--metal);padding-left:0.9rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);letter-spacing:0.1em;">49–59 · 己酉</div>
+        <div style="font-family:'IM Fell English',serif;color:var(--ash);font-size:1rem;margin:0.2rem 0;">Consolidación + Autoridad</div>
+        <div style="font-size:0.82rem;color:var(--ash2);line-height:1.5;">Dinero Directo + Oficial: la década de la estructura grande, el legado y la autoridad reconocida.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- /carta-guia -->
 </div>
 
 <!-- ══════════════════════════════════════
@@ -1064,66 +1214,6 @@ function buildResumenEjecutivo(p, rating){
   `;
 }
 
-// ══ CALCULATOR ══
-const ACTION_MAP={
-  reunion:{ideal:[2,3],bad:[6],do:'Preparar argumentos con antelación. Propuesta clara y visión de largo plazo.',dont:'Improvisar el discurso. Ceder terreno por presión inicial.'},
-  firma:{ideal:[5,4],bad:[6,1],do:'Revisar cláusulas antes. Horario Dragón (7-9am) favorable.',dont:'Firmar bajo presión de tiempo. Aceptar condiciones verbales.'},
-  renegociar:{ideal:[5,7],bad:[6,8],do:'Ir con datos concretos. Proponer win-win. Lógica sobre emoción.',dont:'Amenazar sin poder de cierre. Mostrar urgencia.'},
-  cerrar:{ideal:[5,4,2],bad:[6],do:'Crear momentum de cierre desde el inicio de la reunión.',dont:'Dejar el cierre para después. Dar demasiadas opciones.'},
-  sociedad:{ideal:[0,2],bad:[6,1],do:'Presentar visión compartida. Dejar claro qué aporta cada uno.',dont:'Apresurarse sin claridad de roles.'},
-  cobrar:{ideal:[5,4],bad:[6,3],do:'Comunicar con firmeza. Soporte escrito siempre.',dont:'Pedir disculpas por cobrar. Ceder en plazos sin garantía.'},
-  invertir:{ideal:[5,9],bad:[6,1,3],do:'Análisis completo previo. Sectores Madera/Agua favorables.',dont:'Decisión impulsiva. Invertir bajo presión de terceros.'},
-  prestamo:{ideal:[9,8],bad:[6,1],do:'Presentar garantías sólidas. Claridad sobre el uso del capital.',dont:'Pedir sin plan de repago definido.'},
-  cotizar:{ideal:[2,5],bad:[6],do:'Cotización clara con valor visible. Incluir casos de éxito.',dont:'Subestimar tu propuesta. Ofrecer descuento sin negociar.'},
-  lanzar:{ideal:[2,3],bad:[6,8],do:'Máxima visibilidad — redes, email, presencia pública.',dont:'Lanzar sin audiencia preparada.'},
-  publicar:{ideal:[2,3],bad:[8,9],do:'Contenido de impacto, opinión propia, autenticidad.',dont:'Publicar sin punto de vista claro.'},
-  presentacion:{ideal:[2,3],bad:[6,8],do:'Preparar bien apertura y cierre. Mostrar autoridad y calidez.',dont:'Improvisar. Ceder al primer cuestionamiento.'},
-  cliente:{ideal:[2,0],bad:[6,1],do:'Escuchar más que hablar. Generar confianza primero.',dont:'Vender demasiado pronto. Prometer sin capacidad de cumplir.'},
-  decision:{ideal:[5,9],bad:[6,1,3],do:'Información completa antes de decidir. Hora Agua (23-3am) para reflexión final.',dont:'Decidir bajo emociones fuertes.'},
-  planificar:{ideal:[8,9],bad:[2,3],do:'Silencio, foco, análisis largo. Sin interrupciones.',dont:'Mezclar planificación con ejecución.'},
-  cerrar_ciclo:{ideal:[6,7],bad:[2,0],do:'Claridad total en términos de cierre. Metal activo es tu aliado.',dont:'Dejar cabos sueltos. Ceder en el final.'},
-  conflicto:{ideal:[9,7],bad:[6,3,1],do:'Calma, datos, propuesta concreta. Ceder en forma, ganar en fondo.',dont:'Emocionarte. Ataques personales.'},
-  networking:{ideal:[2,3,0],bad:[8,9],do:'Presentarte con propósito claro. Conectar genuinamente.',dont:'Ir sin objetivo definido.'},
-  favor:{ideal:[9,0],bad:[6,1],do:'Contexto claro de por qué lo pedís. Agradecer genuinamente.',dont:'Pedir sin haber dado antes.'},
-  equipo:{ideal:[0,2],bad:[6,8],do:'Agenda clara, participación activa, decisiones concretas.',dont:'Reunión sin propósito definido.'},
-};
-
-let lastCalcDate=null,lastCalcRes=null;
-
-function calcular(){
-  const dv=document.getElementById('calc-date').value;
-  const av=document.getElementById('calc-action').value;
-  if(!dv||!av){alert('Por favor completá todos los campos.');return;}
-  const date=new Date(dv+'T12:00:00');
-  const p=getPilar(date);
-  const rating=calcRating(p.ti,p.ri);
-  const dow=DIAS_ES[date.getDay()];
-  const m=date.getMonth()+1;
-  const act=ACTION_MAP[av]||null;
-  let aScore=rating;
-  if(act){if(act.ideal.includes(p.ti))aScore=Math.min(5,rating+1);if(act.bad.includes(p.ti))aScore=Math.max(1,rating-1);}
-  lastCalcDate=date;lastCalcRes={p,rating:aScore,act,av};
-  const ints=getInts(p.ri);
-  const mp=getMesPilar(m);
-  let vClass,vText;
-  if(aScore>=4){vClass='vg';vText='✦ MUY FAVORABLE — Momento de alta alineación';}
-  else if(aScore===3){vClass='vy';vText='◈ NEUTRAL — Funciona con conciencia del contexto';}
-  else{vClass='vr';vText='✕ DESFAVORABLE — Mejor posponer o protegerte';}
-  const intTxt=ints.length?ints.map(i=>i.txt.replace(/[🤝⚡⚠️🔥]/g,'')).join(', '):'Sin interacciones especiales';
-  const isToday=date.toDateString()===getToday().toDateString();
-  const expl=`${isToday?'<strong>📍 Análisis de hoy</strong><br><br>':''}<strong>${dow} ${date.getDate()}/${m}/${date.getFullYear()}</strong><br>Pilar: <strong>${p.tFull} · ${p.rFull}</strong> (${p.animal}) · ${p.elemT}<br>Dios activo: <strong>${LUCA.dios[p.ti]}</strong><br>Interacciones: ${intTxt}<br><br>${aScore>=4?'La energía del día amplifica exactamente lo que esta acción requiere.':aScore>=3?'Sin gran impulso pero sin bloqueos. Proceder con preparación y claridad.':'Fricción con los requerimientos de esta acción. Si podés, mover a un día con Fuego o Tierra activos.'}`;
-  document.getElementById('res-dlabel').textContent=`${dow} ${date.getDate()}/${m}/${date.getFullYear()}${isToday?' · HOY':''}`;
-  document.getElementById('res-stars').innerHTML=renderStars(aScore,16);
-  document.getElementById('res-verdict').className=`res-verdict ${vClass}`;
-  document.getElementById('res-verdict').textContent=vText;
-  document.getElementById('res-pillars').innerHTML=`AÑO <span>丙午</span> · MES <span>${TRONCOS_SHORT[mp.ti]} ${ANIMALES[mp.ri]}</span> · DÍA <span>${p.tShort} ${p.animal}</span>`;
-  document.getElementById('res-text').innerHTML=expl;
-  document.getElementById('res-do').textContent=act?act.do:LUCA.tipsDetallados[p.ti].hacer[0];
-  document.getElementById('res-dont').textContent=act?act.dont:LUCA.tipsDetallados[p.ti].noHacer[0];
-  const box=document.getElementById('res-box');box.classList.remove('visible');void box.offsetWidth;box.classList.add('visible');
-  box.scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-
 // ══ CALENDAR ══
 // Pilares de mes 2026 (año Bing Wu, regla Cinco Tigres: Feb=庚寅)
 const MONTHS_DATA=[
@@ -1231,22 +1321,6 @@ function abrirGCalHoy(){
   const title=encodeURIComponent(`BaZi ⭐${rating} · Luca · ${todayPilar.tShort} ${todayPilar.animal}`);
   const det=encodeURIComponent(`Dios: ${LUCA.dios[todayPilar.ti]}\nHACER: ${LUCA.tipsDetallados[todayPilar.ti].hacer[0]}\nEVITAR: ${LUCA.tipsDetallados[todayPilar.ti].noHacer[0]}`);
   const ds=`${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
-  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
-}
-function exportarCalcICS(){
-  if(!lastCalcDate||!lastCalcRes)return;
-  const r=lastCalcRes;
-  const title=`BaZi ${'⭐'.repeat(r.rating)} · Luca · ${r.p.tShort} ${r.p.animal}`;
-  const desc=`Rating: ${r.rating}/5\nDios: ${LUCA.dios[r.p.ti]}\nHACER: ${r.act?r.act.do:LUCA.tipsDetallados[r.p.ti].hacer[0]}\nEVITAR: ${r.act?r.act.dont:LUCA.tipsDetallados[r.p.ti].noHacer[0]}`;
-  dl('bazi_calc.ics',`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Luca//ES\r\n${mkEvent(lastCalcDate,title,desc)}END:VCALENDAR`);
-}
-function abrirGCalCalc(){
-  if(!lastCalcDate||!lastCalcRes)return;
-  const r=lastCalcRes;
-  const title=encodeURIComponent(`BaZi ⭐${r.rating} · Luca · ${r.p.tShort} ${r.p.animal}`);
-  const det=encodeURIComponent(`Dios: ${LUCA.dios[r.p.ti]}\nHACER: ${r.act?r.act.do:''}\nEVITAR: ${r.act?r.act.dont:''}`);
-  const d=lastCalcDate;
-  const ds=`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;
   window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
 }
 function exportarMesICS(){
@@ -1525,14 +1599,115 @@ function exportarPlanDinero(){
   const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='plan_dinero_luca.ics';a.click();URL.revokeObjectURL(a.href);
 }
 
+// ══ CARTA SUB-NAV ══
+function showCarta(id,btn){
+  document.querySelectorAll('.carta-sub').forEach(s=>s.classList.remove('active-carta'));
+  const el=document.getElementById(id);
+  if(el)el.classList.add('active-carta');
+  document.querySelectorAll('.csub').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+}
+
+// ══ WIDGET ¿QUÉ TENÉS HOY? ══
+// Evalúa cada aspecto contra la energía real del día (elemento del tronco + rama + interacciones)
+const ASPECTOS_HOY={
+  amor:{icon:'💕',label:'Cita / Amor',ev:p=>{
+    const clash=getInts(p.ri).some(i=>i.efecto==='mal');
+    if(p.ri===3)return{n:'bien',v:'Día ideal para el amor',t:'Día Conejo — tu Peach Blossom activo. Carisma y magnetismo en el pico: cita, conversación importante o reconciliación salen con viento a favor.'};
+    if(clash)return{n:'evitar',v:'Día sensible para el vínculo',t:'Hay choque activo en tu carta — la fricción del día se filtra en las conversaciones. Presencia y ligereza sí; temas sensibles de pareja, mejor otro día.'};
+    if([4,5].includes(p.ti))return{n:'bien',v:'Día de conexión concreta',t:'Tierra activa — tu elemento de pareja. Los gestos tangibles rinden doble: tiempo real, planes concretos, presencia física.'};
+    if([2,3].includes(p.ti))return{n:'bien',v:'Día expresivo',t:'Fuego activo — decir lo que sentís sale natural hoy. Expresá aprecio en voz alta, mostrá afecto. El silencio afectivo hoy sería desperdiciar el clima.'};
+    if([8,9].includes(p.ti))return{n:'neutro',v:'Día mental',t:'Agua activa — estás más analítico que presente. En el vínculo: escuchá más de lo que interpretás. No proceses la relación, viví el momento.'};
+    return{n:'neutro',v:'Día estándar',t:'Sin viento especial a favor ni en contra. La calidad del vínculo hoy la pone tu presencia, no el clima.'};
+  }},
+  entrenar:{icon:'💪',label:'Entrenar',ev:p=>{
+    const clash=getInts(p.ri).some(i=>i.efecto==='mal');
+    if(clash)return{n:'neutro',v:'Entrená con técnica, sin récords',t:'Día de choque — mayor riesgo en tendones y articulaciones (tu punto débil Madera). Movete igual, pero con control: técnica sí, máximos no.'};
+    if([2,3].includes(p.ti))return{n:'bien',v:'Tu mejor día para entrenar',t:'Fuego activo — el ejercicio hoy drena tu Madera con máxima eficiencia. Cardio intenso, sudar, exigirte: todo suma doble hoy.'};
+    if([0,1].includes(p.ti))return{n:'bien',v:'Energía física alta',t:'Madera activa — el cuerpo tiene combustible de sobra. Aprovechá el envión, pero cerrá con elongación: la Madera alta tensa los tendones.'};
+    if([8,9].includes(p.ti))return{n:'neutro',v:'Ejercicio suave',t:'Agua activa — el cuerpo pide ritmo más lento. Caminata larga, yoga, movilidad, natación. Guardá la intensidad para un día de Fuego.'};
+    return{n:'bien',v:'Buen día para moverte',t:'Para tu Madera Yang, el movimiento diario es regulación del sistema. Hoy no hay contraindicaciones — dale.'};
+  }},
+  descansar:{icon:'🧘',label:'Descansar',ev:p=>{
+    if([8,9].includes(p.ti))return{n:'bien',v:'El día acompaña la pausa',t:'Agua activa — el clima energético favorece el descanso profundo, la reflexión corta y el silencio. Dormí temprano: hoy repara doble.'};
+    if([6,7].includes(p.ti))return{n:'bien',v:'Bajar revoluciones',t:'Metal activo — buen día para el descanso estructurado: cortar a horario, rutina de noche ordenada, cero pantallas tarde.'};
+    if([2,3].includes(p.ti))return{n:'neutro',v:'Descanso activo',t:'Fuego activo — te va a costar quedarte quieto. Mejor descanso en movimiento suave: caminata, naturaleza, algo manual relajado.'};
+    return{n:'neutro',v:'Descanso normal',t:'Sin señal especial. Si venís de días intensos, priorizá el sueño: tu exceso de Agua mental se regula durmiendo, no scrolleando.'};
+  }},
+  negociar:{icon:'💰',label:'Negociar $$',ev:p=>{
+    const clash=getInts(p.ri).some(i=>i.efecto==='mal');
+    if(clash)return{n:'evitar',v:'No es el día para cerrar',t:'Choque activo — riesgo de conflicto o ruptura en la mesa. Si podés mover la negociación a un día limpio (mirá el panel 💰), movela.'};
+    if(p.ri===1||p.ri===7)return{n:'bien',v:'Nobleman en la mesa',t:'Día Buey/Cabra — tu estrella de benefactores activa. La mejor energía posible para negociar: la ayuda y la buena disposición aparecen solas.'};
+    if(p.ti===5)return{n:'bien',v:'Dinero Directo activo',t:'Ji en el tronco — la energía exacta de acuerdos formales y números fijos. Sentate a cerrar cifras hoy.'};
+    if(p.ti===4)return{n:'bien',v:'Dinero Indirecto activo',t:'Wu en el tronco — buen día para oportunidades grandes y propuestas ambiciosas.'};
+    if([8,9].includes(p.ti))return{n:'evitar',v:'Dispersión',t:'Agua activa — te vas a ir por las ramas y sobre-analizar. No es tu día de filo negociador.'};
+    return{n:'neutro',v:'Negociación estándar',t:'Sin viento especial. Si es importante, apuntá a un día de Tierra o Nobleman (panel 💰 Días para Dinero).'};
+  }},
+  publicar:{icon:'🎬',label:'Publicar',ev:p=>{
+    const clash=getInts(p.ri).some(i=>i.efecto==='mal');
+    if([2,3].includes(p.ti)&&!clash)return{n:'bien',v:'PUBLICAR — Fuego en el pico',t:'Tu Dios Útil activo: lo que muestres hoy llega más lejos. Contenido personal, opinión propia, cara a cámara — todo rinde más.'};
+    if(p.ri===3)return{n:'bien',v:'Carisma activo',t:'Día Conejo (Peach Blossom) — ideal para contenido donde aparecés vos. Tu magnetismo hace la mitad del trabajo.'};
+    if([8,9].includes(p.ti))return{n:'evitar',v:'Guardalo para otro día',t:'Agua activa — tu mensaje sale más mental que magnético. Hoy es día de crear/planificar contenido, no de publicarlo.'};
+    if(clash)return{n:'evitar',v:'Día de fricción',t:'Choque activo — mayor riesgo de malas interpretaciones o polémica no buscada. Si no es urgente, esperá.'};
+    return{n:'neutro',v:'Puede funcionar',t:'Contenido liviano OK. Tu mejor material guardalo para días de Fuego (mirá el Plan de Contenido).'};
+  }},
+  reunion:{icon:'🤝',label:'Reunión clave',ev:p=>{
+    const ints=getInts(p.ri);
+    if(ints.some(i=>i.efecto==='mal'))return{n:'evitar',v:'Riesgo de fricción',t:'Choque activo — las posiciones se endurecen fácil hoy. Reunión operativa sí; decisiva o delicada, mejor mover.'};
+    if(p.ri===1||p.ri===7)return{n:'bien',v:'Tu mejor día de reuniones',t:'Nobleman activo — presentaciones a gente con poder, pedir apoyo, destrabar temas. La recepción del otro lado mejora sola.'};
+    if(ints.some(i=>i.efecto==='bien'))return{n:'bien',v:'Buena sintonía',t:'Hay combinación armónica activa con tu carta — clima cooperativo para acordar y avanzar.'};
+    if([6,7].includes(p.ti))return{n:'bien',v:'Reunión formal',t:'Metal activo — autoridad y estructura de tu lado. Ideal para reuniones que requieren marco, agenda y decisiones firmes.'};
+    return{n:'neutro',v:'Reunión estándar',t:'Sin señal fuerte. Prepará bien y listo — el resultado depende de vos, no del clima.'};
+  }},
+  decidir:{icon:'🧠',label:'Decisión grande',ev:p=>{
+    const clash=getInts(p.ri).some(i=>i.efecto==='mal');
+    if(clash)return{n:'evitar',v:'No decidas hoy',t:'Choque activo — la fricción interna distorsiona el juicio. Dormila un día: la decisión correcta también lo será mañana.'};
+    if(p.ri===5)return{n:'bien',v:'Wen Chang — claridad máxima',t:'Día Serpiente: tu estrella de inteligencia activa. El mejor día posible para decisiones complejas, contratos y estrategia.'};
+    if([6,7].includes(p.ti))return{n:'bien',v:'Filo y estructura',t:'Metal activo — cortás lo accesorio y ves el núcleo. Buen día para decidir con criterio y cerrar el tema.'};
+    if([8,9].includes(p.ti))return{n:'neutro',v:'Cuidado con el loop',t:'Agua activa — tu análisis se puede volver infinito. Fijate un límite: decidí con el 80% de la información antes del fin del día.'};
+    if([2,3].includes(p.ti))return{n:'neutro',v:'Impulso alto',t:'Fuego activo — la convicción está en el pico, pero puede ser impulso. Si la decisión es irreversible, consultala con la almohada.'};
+    return{n:'neutro',v:'Decisión estándar',t:'Sin señal especial. Si podés elegir el día: buscá una Serpiente (Wen Chang) o un día de Metal.'};
+  }},
+  viajar:{icon:'✈️',label:'Viajar / moverse',ev:p=>{
+    const clash=getInts(p.ri).some(i=>i.efecto==='mal');
+    if(p.ri===8)return{n:'neutro',v:'Sky Horse — con margen',t:'Día Mono: tu estrella de viajes activa, PERO choca tu Tigre natal. Viajar sí — con margen de tiempo, documentos chequeados y cero decisiones grandes en tránsito.'};
+    if(clash)return{n:'evitar',v:'Día movido',t:'Choque activo — demoras, cambios de plan e imprevistos más probables. Si el viaje es opcional, movelo; si no, salí con margen doble.'};
+    if(getInts(p.ri).some(i=>i.efecto==='bien'))return{n:'bien',v:'Viaje fluido',t:'Combinación armónica activa — el movimiento fluye. Buen día para traslados, mudanzas de contexto y llegar bien.'};
+    return{n:'neutro',v:'Viaje estándar',t:'Sin señal especial para el movimiento. Logística normal.'};
+  }},
+};
+
+let aspectoSel=null;
+function buildAspectosHoy(){
+  const chips=document.getElementById('aspecto-chips');
+  if(!chips)return;
+  chips.innerHTML=Object.entries(ASPECTOS_HOY).map(([k,a])=>
+    `<button class="a-chip" id="chip-${k}" onclick="evalAspecto('${k}')">${a.icon} ${a.label}</button>`
+  ).join('');
+}
+function evalAspecto(k){
+  if(!todayPilar)return;
+  const a=ASPECTOS_HOY[k];
+  if(!a)return;
+  document.querySelectorAll('.a-chip').forEach(c=>c.classList.remove('sel'));
+  const chip=document.getElementById('chip-'+k);
+  if(chip)chip.classList.add('sel');
+  const r=a.ev(todayPilar);
+  const box=document.getElementById('aspecto-result');
+  const icons={bien:'✦',neutro:'◈',evitar:'✕'};
+  box.className=`a-result visible a-${r.n}`;
+  box.innerHTML=`<span class="a-verdict">${icons[r.n]} ${r.v}</span>${r.t}
+    <div style="font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);margin-top:0.6rem;letter-spacing:0.06em;">HOY · ${todayPilar.tFull} ${todayPilar.rFull} (${todayPilar.animal}) · ${todayPilar.elemT}</div>`;
+  aspectoSel=k;
+}
+
 // ══ INIT ══
 const todayInit=getToday();
-const calcDateVal=`${todayInit.getFullYear()}-${String(todayInit.getMonth()+1).padStart(2,'0')}-${String(todayInit.getDate()).padStart(2,'0')}`;
-document.getElementById('calc-date').value=calcDateVal;
 const todayM=todayInit.getMonth()+1;
 const hasM=MONTHS_DATA.some(x=>x.m===todayM);
 currentMonth=hasM?todayM:5;
 buildHoyPanel();
+buildAspectosHoy();
 buildPlanContenido();
 buildPlanDinero();
 buildMonthSel();
