@@ -73,13 +73,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .filtro[aria-pressed="true"]::after,.vista-btn[aria-pressed="true"]::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--naranja)}
 .vistas{display:flex;gap:18px}
 
-.mosaico{display:flex;gap:20px;align-items:flex-start}
-.columna{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:28px}
+.mosaico{display:grid;gap:36px 22px;align-items:start}
+#archivo .wrap{max-width:1500px}
+.cat-desc{color:var(--fg2);max-width:62ch;margin:-8px 0 32px;min-height:3.1em}
 .obra{display:block;text-decoration:none}
 .obra-media{display:block;position:relative;overflow:hidden;border-radius:3px;background:var(--hover)}
 .obra-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
 .obra:hover .obra-media img{transform:scale(1.035)}
-.obra-tit{display:block;font-weight:500;line-height:1.3;margin-top:12px}
+.obra-tit{display:block;font-weight:500;font-size:1.04rem;line-height:1.3;margin-top:12px}
 .obra:hover .obra-tit{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .obra-meta{display:flex;gap:10px;margin-top:4px;color:var(--fg2);font-size:.86rem}
 .fmt{font-family:var(--mono);font-size:.74rem;letter-spacing:.02em;padding-top:1px}
@@ -241,8 +242,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .tl-actual{display:block}
   .timeline{gap:10px}
   .tl-marca,.tl-marca img{width:28px;height:28px}
-  .mosaico{gap:12px}
-  .columna{gap:20px}
+  .mosaico{gap:24px 12px}
   .obra-meta{font-size:.8rem}
   .visor-uno{grid-template-columns:1fr}
   .visor-uno .flecha{display:none}
@@ -298,6 +298,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <button class="vista-btn" data-vista="indice" aria-pressed="false" data-es="Índice" data-en="Index">Índice</button>
       </div>
     </div>
+    <p class="cat-desc" id="catDesc" aria-live="polite"></p>
     <div id="obras"></div>
   </div>
 </section>
@@ -564,7 +565,6 @@ const Hero = {redibujar(){}};   // título en HTML, sin efecto espejo
 /* ======================= ARCHIVO ======================= */
 let filtro = 'todo', vista = 'grilla', colsActuales = 0, verTodo = false;
 const obras = document.getElementById('obras');
-function ratioDe(it){ return it.fmt === 'h' ? 16/9 : 3/4; }
 function fmtTxt(it){ return it.albumKey ? (it.nfotos + ' ' + L('fotos','photos')) : (it.fmt === 'h' ? '16:9' : '9:16'); }
 function catTxt(it){ return it.grupo || CATS[it.cat][lang === 'es' ? 0 : 1]; }
 function hrefDe(it){ return it.albumKey ? '#archivo' : (it.plat === 'yt' ? 'https://youtu.be/' + it.id : 'https://vimeo.com/' + it.id); }
@@ -585,32 +585,43 @@ function pintarFiltros(){
   document.getElementById('archivoIntro').textContent = L(
     ITEMS.length + ' trabajos entre reels, videos largos, motion, piezas con IA y fotografía.',
     ITEMS.length + ' works across reels, long-form video, motion, AI pieces and photography.');
+  document.getElementById('catDesc').textContent = DESC_CAT[filtro][lang === 'es' ? 0 : 1];
 }
+const DESC_CAT = {
+  todo:['Una selección de nuestros trabajos. Elegí una categoría para ver cada formato completo.','A selection of our work. Pick a category to see each format in full.'],
+  vertical:['Contenido para publicar en redes sociales, en formato vertical: reels, TikToks y shorts con distintos estilos de edición, IA incluida.','Content made for social media in vertical format: reels, TikToks and shorts in different editing styles, AI included.'],
+  film:['Material horizontal 16:9 para YouTube, presentaciones y pantallas: rodaje, edición y postproducción.','Horizontal 16:9 work for YouTube, presentations and screens: shooting, editing and post-production.'],
+  ia:['Piezas realizadas 100% con inteligencia artificial, de la idea al render final.','Pieces made 100% with artificial intelligence, from idea to final render.'],
+  motion:['Piezas visuales para programas en vivo y redes sociales: aperturas, separadores, banners y animaciones de marca.','Visual pieces for live shows and social media: openers, bumpers, banners and brand animations.'],
+  foto:['Coberturas deportivas, eventos sociales y retratos profesionales, con la edición incluida. Tocá un álbum para ver todas las fotos.','Sports coverage, social events and professional portraits, editing included. Tap an album to see every photo.']
+};
 function columnas(){ const w = obras.clientWidth; return w >= 1180 ? 5 : w >= 900 ? 4 : w >= 600 ? 3 : 2; }
-/* Destacados: 8 piezas que mezclan categorías; el resto, con "Ver todo el archivo" */
+/* Destacados: mezclan categorías y se muestran siempre en 2 filas completas; el resto, con "Ver todo el archivo".
+   Se saltean los banners de OLGA porque su miniatura es casi negra. */
 const DESTACADOS = (function(){
-  const orden = ['vertical','motion','film','ia','vertical','film','foto','motion'], usados = new Set(), out = [];
-  orden.forEach(c => { const it = ITEMS.find(x => x.cat === c && !usados.has(x)); if(it){ usados.add(it); out.push(it); } });
-  ITEMS.forEach(it => { if(out.length < 8 && !usados.has(it)){ usados.add(it); out.push(it); } });
+  const orden = ['vertical','motion','film','ia','foto','vertical','film','motion','ia','vertical'], usados = new Set(), out = [];
+  const apto = x => !usados.has(x) && !/^OLGA/.test(x.grupo || '');
+  orden.forEach(c => { const it = ITEMS.find(x => x.cat === c && apto(x)); if(it){ usados.add(it); out.push(it); } });
+  ITEMS.forEach(it => { if(out.length < 10 && apto(it)){ usados.add(it); out.push(it); } });
   return out;
 })();
+/* Proporción única por vista: todo vertical → 3:4, todo horizontal → 16:9, mezcla → 1:1 */
+function ratioLista(lista){
+  const v = lista.every(it => it.fmt === 'v' || it.albumKey), h = lista.every(it => it.fmt === 'h');
+  return v ? '3/4' : h ? '16/9' : '1/1';
+}
 function pintarObras(){
   const recorte = filtro === 'todo' && !verTodo;
-  const lista = recorte ? DESTACADOS : ITEMS.filter(it => filtro === 'todo' || it.cat === filtro);
+  const n = columnas(); colsActuales = n;
+  const lista = recorte ? DESTACADOS.slice(0, Math.min(DESTACADOS.length, n * 2)) : ITEMS.filter(it => filtro === 'todo' || it.cat === filtro);
   if(vista === 'grilla'){
-    const n = columnas(), gap = window.innerWidth <= 700 ? 12 : 20; colsActuales = n;
-    const colW = (obras.clientWidth - gap*(n-1)) / n;
-    const alturas = new Array(n).fill(0), cols = Array.from({length:n}, () => []);
-    lista.forEach(it => {
-      let c = 0; for(let k=1; k<n; k++) if(alturas[k] < alturas[c] - 1) c = k;
-      cols[c].push(it); alturas[c] += colW / ratioDe(it) + 70;
-    });
-    obras.innerHTML = '<div class="mosaico">' + cols.map(col => '<div class="columna">' + col.map(it =>
+    const r = ratioLista(lista);
+    obras.innerHTML = '<div class="mosaico" style="grid-template-columns:repeat(' + n + ',minmax(0,1fr))">' + lista.map(it =>
       '<a class="obra" href="' + hrefDe(it) + '" data-i="' + it.i + '">' +
-        '<span class="obra-media" style="aspect-ratio:' + (it.fmt === 'h' ? '16/9' : '3/4') + '">' + imgTag(it) + '</span>' +
+        '<span class="obra-media" style="aspect-ratio:' + r + '">' + imgTag(it) + '</span>' +
         '<span class="obra-tit">' + esc(it.title) + '</span>' +
         '<span class="obra-meta"><span class="fmt">' + fmtTxt(it) + '</span><span>' + esc(catTxt(it)) + '</span></span>' +
-      '</a>').join('') + '</div>').join('') + '</div>';
+      '</a>').join('') + '</div>';
   } else {
     obras.innerHTML = '<ol class="indice">' + lista.map(it =>
       '<li><a class="fila" href="' + hrefDe(it) + '" data-i="' + it.i + '">' +
@@ -641,7 +652,7 @@ obras.addEventListener('click', e => {
   const a = e.target.closest('[data-i]'); if(!a) return;
   e.preventDefault(); abrirObra(ITEMS[+a.dataset.i], a);
 });
-new ResizeObserver(() => { if(vista === 'grilla' && colsActuales && columnas() !== colsActuales) pintarObras(); }).observe(obras);
+new ResizeObserver(() => { if(colsActuales && columnas() !== colsActuales) pintarObras(); }).observe(obras);
 
 /* Vista índice: miniatura que sigue al puntero */
 (function(){
