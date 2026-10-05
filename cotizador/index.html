@@ -176,6 +176,8 @@ input:checked+.sw-t::before{transform:translateX(16px)}
 .br.tot span:first-child{font-family:var(--mono);font-size:0.68rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--gris)}
 .mini-total{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(0,83,106,0.08);border:1px solid rgba(0,83,106,0.2);border-radius:2px;margin-top:12px}
 .mt-label{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--primario)}
+.mt-col{display:flex;flex-direction:column;align-items:flex-end}
+.mt-ars{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--secundario);opacity:.8;margin-top:3px}
 .mt-val{font-family:var(--display);font-size:1.4rem;font-weight:900;color:var(--primario)}
 .empty-cot{padding:48px 24px;text-align:center;border:1px dashed var(--linea);border-radius:2px;margin-top:32px}
 .empty-cot-ic{font-size:2.5rem;margin-bottom:12px;display:block;opacity:0.4}
@@ -187,7 +189,7 @@ input:checked+.sw-t::before{transform:translateX(16px)}
 .total-servicios{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.1em;color:rgba(255,255,255,0.5);margin-top:4px}
 .total-num{font-family:var(--display);font-size:2.6rem;font-weight:900;line-height:1;letter-spacing:-0.03em}
 .total-cur{font-size:1rem;font-weight:700;margin-right:6px;opacity:0.6}
-.total-ars{font-family:var(--mono);font-size:0.7rem;color:rgba(255,255,255,0.5);margin-top:5px;letter-spacing:0.06em;display:none}
+.total-ars{font-family:var(--mono);font-size:0.8rem;color:rgba(255,255,255,0.75);margin-top:5px;letter-spacing:0.06em}
 .total-actions{display:flex;gap:10px;flex-wrap:wrap}
 .btn-copy{background:var(--acento);color:white;border:none;font-family:var(--cond);font-size:0.9rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 24px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
 .btn-copy:hover{background:#c94e1e;transform:translateY(-1px)}
@@ -206,8 +208,8 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
 }
 
 /* ── PRESUPUESTO PARA EL CLIENTE (solo se ve al imprimir / guardar PDF) ── */
-.btn-pdf{background:var(--negro);color:#fff;border:none;font-family:var(--cond);font-size:0.9rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 24px;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-pdf:hover{background:#0D1B21;transform:translateY(-1px)}
+.btn-pdf{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);font-family:var(--cond);font-size:0.9rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;padding:14px 24px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.btn-pdf:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-1px)}
 #doc{display:none}
 @media print{
   @page{size:A4;margin:12mm 0}
@@ -237,11 +239,12 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
 #doc .d-proy{color:var(--pe);white-space:pre-wrap}
 #doc table{width:100%;border-collapse:collapse;margin-bottom:5mm}
 #doc th{font-family:'DM Mono',monospace;font-weight:400;font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--pi);text-align:left;padding:0 0 2mm;border-bottom:.4mm solid var(--t)}
-#doc th:last-child,#doc td:last-child{text-align:right;white-space:nowrap}
 #doc td{padding:1.5mm 0;border-bottom:.2mm solid var(--a);vertical-align:top}
 #doc td .c{font-weight:500}
 #doc td .det{display:block;color:var(--pe);font-size:8.5pt;margin-top:.3mm}
-#doc tr.sec td{text-align:left!important;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11pt;letter-spacing:.1em;text-transform:uppercase;padding-top:3.5mm;border-bottom:.2mm solid var(--a)}
+#doc tr.sec td:last-child{text-align:right;font-family:'DM Mono',monospace;font-weight:400;font-size:8.5pt;letter-spacing:.04em;text-transform:none;color:var(--pe);white-space:nowrap}
+#doc tr.sec td:first-child{text-align:left}
+#doc tr.sec td{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:11pt;letter-spacing:.1em;text-transform:uppercase;padding-top:3.5mm;border-bottom:.2mm solid var(--a)}
 #doc tr.sub td{font-weight:500;border-bottom:0;padding-top:2mm;color:var(--pe)}
 #doc .d-total{display:flex;justify-content:space-between;align-items:center;background:var(--t);color:var(--b);padding:4.5mm 7mm;margin-bottom:5mm;break-inside:avoid}
 #doc .d-total .et{font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:12pt;letter-spacing:.14em;text-transform:uppercase}
@@ -263,9 +266,7 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
   </div>
   <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
     <div class="fx-bar">
-      <div class="fx-pill on" id="pu" onclick="setCur('usd')"><span>USD</span><span class="pv">base</span></div>
-      <div class="fx-pill" id="pb" onclick="setCur('blue')"><span>Blue</span><span class="pv" id="bv">...</span></div>
-      <div class="fx-pill" id="pm" onclick="setCur('mep')"><span>MEP</span><span class="pv" id="mep-val">...</span></div>
+      <div class="fx-pill on" id="pm" style="cursor:default"><span>Dólar MEP</span><span class="pv" id="mep-val">...</span></div>
     </div>
     <span class="live-dot" id="ld"></span>
     <span class="live-label" id="ll">cargando...</span>
@@ -388,7 +389,7 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
       <div class="iblk glass"><div class="ibh"><span class="ibl">Extras de producción</span></div><div class="ibb"><div class="tlist" id="fm-ex"></div></div></div>
       <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="fm-fa"></div></div></div>
       <div class="bk2 glass" id="fm-bk"></div>
-      <div class="mini-total"><span class="mt-label">Subtotal Filmmaking</span><span class="mt-val">USD $<span id="fm-sub">0</span></span></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Filmmaking</span><span class="mt-col"><span class="mt-val">USD $<span id="fm-sub">0</span></span><span class="mt-ars" id="fm-sub-ars"></span></span></div>
     </div>
     <div id="fm-pk" class="tab-pane">
       <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
@@ -403,7 +404,7 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
       </div></div>
       <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="fmpk-fa"></div></div></div>
       <div class="bk2 glass" id="fmpk-bk"></div>
-      <div class="mini-total"><span class="mt-label">Subtotal Filmmaking (pack)</span><span class="mt-val">USD $<span id="fmpk-sub">0</span></span></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Filmmaking (pack)</span><span class="mt-col"><span class="mt-val">USD $<span id="fmpk-sub">0</span></span><span class="mt-ars" id="fmpk-sub-ars"></span></span></div>
     </div>
   </div>
 
@@ -450,7 +451,7 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
       <div class="iblk glass"><div class="ibh"><span class="ibl">Extras incluidos</span></div><div class="ibb"><div class="tlist" id="ed-extras"></div></div></div>
       <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="ed-facts"></div></div></div>
       <div class="bk2 glass" id="ed-bk"></div>
-      <div class="mini-total"><span class="mt-label">Subtotal Edición</span><span class="mt-val">USD $<span id="ed-sub">0</span></span></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Edición</span><span class="mt-col"><span class="mt-val">USD $<span id="ed-sub">0</span></span><span class="mt-ars" id="ed-sub-ars"></span></span></div>
     </div>
     <div id="ed-m" class="tab-pane">
       <div class="iblk glass"><div class="ibh"><span class="ibl">Precios por pieza</span></div><div class="ibb"><p style="margin:0;font-size:.9rem;opacity:.75">Precio base fijo por tipo de video (USD), antes de extras y factores. Los packs se calculan aparte.</p></div></div>
@@ -460,7 +461,7 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
       </div></div>
       <div class="iblk glass"><div class="ibh"><span class="ibl">Factores generales</span></div><div class="ibb"><div class="tlist" id="edm-facts"></div></div></div>
       <div class="bk2 glass" id="edm-bk"></div>
-      <div class="mini-total"><span class="mt-label">Subtotal Edición</span><span class="mt-val">USD $<span id="edm-sub">0</span></span></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Edición</span><span class="mt-col"><span class="mt-val">USD $<span id="edm-sub">0</span></span><span class="mt-ars" id="edm-sub-ars"></span></span></div>
     </div>
     <div id="ed-p" class="tab-pane">
       <div class="iblk glass"><div class="ibh"><span class="ibl">Base económica</span></div><div class="ibb g2">
@@ -470,7 +471,7 @@ footer{padding:24px 48px;border-top:1px solid var(--linea);display:flex;justify-
       <div class="iblk glass"><div class="ibh"><span class="ibl">Elegí un pack</span></div><div class="ibb" style="padding:16px"><div class="pg" id="edp-packs"></div></div></div>
       <div class="iblk glass"><div class="ibh"><span class="ibl">Factores del cliente</span></div><div class="ibb"><div class="tlist" id="edp-facts"></div></div></div>
       <div class="bk2 glass" id="edp-bk"></div>
-      <div class="mini-total"><span class="mt-label">Subtotal Edición (pack)</span><span class="mt-val">USD $<span id="edp-sub">0</span></span></div>
+      <div class="mini-total"><span class="mt-label">Subtotal Edición (pack)</span><span class="mt-col"><span class="mt-val">USD $<span id="edp-sub">0</span></span><span class="mt-ars" id="edp-sub-ars"></span></span></div>
     </div>
   </div>
 
@@ -564,7 +565,7 @@ const TV={reel:{l:'Reel/Short'},tiktok:{l:'TikTok/Vert.'},youtube:{l:'YouTube'},
 let srvFilm=false,srvEdit=false,tipoCliente='chico';
 let fmSelT='reel',fmEq={},fmExSt={},fmFaSt={},fmGastos=[],fmGid=0,fmSelPk='r1',fmPkFaSt={};
 let edSelE='reel',edXSt={},edFaSt={},edmFaSt={},edpFaSt={},edmVids=[],edmVid=0,edpSelPk='sc';
-let rates={blue:1400,mep:1429},cur='usd';
+let rates={mep:1429},cur='mep';   // solo dólar MEP
 let fmPrVal=0,fmPkVal=0,edSVal=0,edMVal=0,edPVal=0;
 
 FM_EQUIP.forEach(e=>fmEq[e.id]=false);
@@ -577,17 +578,15 @@ function apFacts(b,st){let x=1;FACTS.forEach(f=>x*=st[f.id]?f.y:f.n);return b*x;
 function fRows(st){return FACTS.filter(f=>{const m=st[f.id]?f.y:f.n;return m!==1;}).map(f=>{const m=st[f.id]?f.y:f.n,p=((m-1)*100).toFixed(0);return{l:f.l,v:(m>1?'+':'')+p+'%'};});}
 
 async function fetchFX(){
-  try{
-    const r=await fetch('https://api.bluelytics.com.ar/v2/latest');const d=await r.json();
-    rates.blue=d.blue.value_sell;rates.mep=d.oficial.value_sell;
-    try{const r2=await fetch('https://dolarito.ar/api/v2/quotations');const d2=await r2.json();const m=d2.find(q=>q.name==='mep');if(m)rates.mep=m.sell;}catch(_){}
-    document.getElementById('bv').textContent='$'+Math.round(rates.blue).toLocaleString('es-AR');
-    document.getElementById('mep-val').textContent='$'+Math.round(rates.mep).toLocaleString('es-AR');
-    document.getElementById('ld').classList.add('on');document.getElementById('ll').textContent='en tiempo real';
-  }catch(_){document.getElementById('ll').textContent='val. referencial';}
+  // Dólar MEP (venta). Fuente principal: dolarapi.com · respaldo: dolarito.ar · si fallan, queda el valor referencial.
+  let ok=false;
+  try{const r=await fetch('https://dolarapi.com/v1/dolares/bolsa');const d=await r.json();if(d&&d.venta){rates.mep=+d.venta;ok=true;}}catch(_){}
+  if(!ok){try{const r2=await fetch('https://dolarito.ar/api/v2/quotations');const d2=await r2.json();const m=d2.find(q=>q.name==='mep');if(m){rates.mep=+m.sell;ok=true;}}catch(_){}}
+  document.getElementById('mep-val').textContent='$'+Math.round(rates.mep).toLocaleString('es-AR');
+  if(ok){document.getElementById('ld').classList.add('on');document.getElementById('ll').textContent='en tiempo real';}
+  else document.getElementById('ll').textContent='valor referencial';
   updTotal();
 }
-function setCur(c){cur=c;['usd','blue','mep'].forEach((x,i)=>document.getElementById(['pu','pb','pm'][i]).classList.toggle('on',x===c));cFmPr();cFmPk();cEdS();cEdM();cEdP();updTotal();}
 function selTipo(t){tipoCliente=t;document.querySelectorAll('.tc-card').forEach(c=>c.classList.toggle('sel',c.dataset.tipo===t));}
 
 function toggleSrv(s){
@@ -733,6 +732,8 @@ function cEdP(){
 function getFmVal(){const prOn=document.getElementById('fm-pr')&&document.getElementById('fm-pr').classList.contains('on');return prOn?fmPrVal:fmPkVal;}
 function getEdVal(){const sOn=document.getElementById('ed-s')&&document.getElementById('ed-s').classList.contains('on');const mOn=document.getElementById('ed-m')&&document.getElementById('ed-m').classList.contains('on');if(sOn)return edSVal;if(mOn)return edMVal;return edPVal;}
 function updTotal(){
+  const ars=u=>'≈ ARS $'+Math.round(Math.round(u)*rates.mep).toLocaleString('es-AR');   // se redondea el USD primero, igual que en el PDF
+  [['fm-sub',fmPrVal],['fmpk-sub',fmPkVal],['ed-sub',edSVal],['edm-sub',edMVal],['edp-sub',edPVal]].forEach(([id,v])=>{const el=document.getElementById(id+'-ars');if(el)el.textContent=ars(v);});
   if(!srvFilm&&!srvEdit){document.getElementById('total-bar').style.display='none';return;}
   document.getElementById('total-bar').style.display='flex';
   let total=0,labels=[];
@@ -741,8 +742,7 @@ function updTotal(){
   document.getElementById('grand-total').textContent=fmt(total);
   document.getElementById('total-srv-label').textContent=labels.join(' + ');
   const arsEl=document.getElementById('total-ars-line');
-  if(cur!=='usd'){const r=cur==='blue'?rates.blue:rates.mep;arsEl.style.display='block';arsEl.textContent='ARS '+cur.toUpperCase()+': $'+Math.round(total*r).toLocaleString('es-AR');}
-  else{arsEl.style.display='none';}
+  arsEl.textContent=ars(total)+' · dólar MEP $'+Math.round(rates.mep).toLocaleString('es-AR');
 }
 /* ══════════ PRESUPUESTO PARA EL CLIENTE ══════════
    Arma las líneas que ve el cliente. Los factores internos (portfolio, buena onda, urgencia, IA, etc.)
@@ -768,21 +768,21 @@ function lineasCliente(){
       const me=+document.getElementById('fm-me').value||2000,hm=+document.getElementById('fm-hm').value||160,v=me/hm;
       const tipo=FM_TIPOS.find(t=>t.id===fmSelT),dias=+document.getElementById('fm-dias').value||1,hd=+document.getElementById('fm-hd').value||8;
       const h0=v*dias*hd*tipo.m;
-      hon.push({c:'Rodaje · '+tipo.n,det:dias+(dias===1?' jornada':' jornadas')+' de '+hd+' hs',monto:h0});
+      hon.push({c:'Rodaje · '+tipo.n,det:dias+(dias===1?' jornada':' jornadas')+' de '+hd+' hs · '+(dias*hd)+' hs de filmación en total',monto:h0});var resFm=dias+(dias===1?' jornada':' jornadas')+' · '+(dias*hd)+' hs de rodaje';
       hon=hon.concat(extrasEnMonto(h0,FM_EXTRAS.filter(e=>fmExSt[e.id])));
-      FM_EQUIP.filter(e=>fmEq[e.id]).forEach(e=>fijos.push({c:'Equipo · '+e.n,det:dias>1?dias+' jornadas':'',monto:e.p*dias}));
-      [['fm-vi','Viáticos'],['fm-lo','Locación'],['fm-cr','Crew adicional']].forEach(([id,l])=>{const x=+document.getElementById(id).value||0;if(x>0)fijos.push({c:l,det:'',monto:x});});
-      fmGastos.forEach(g=>{if(+g.mo>0)fijos.push({c:g.ds||'Gasto de producción',det:'',monto:+g.mo});});
+      FM_EQUIP.filter(e=>fmEq[e.id]).forEach(e=>fijos.push({c:'Equipo · '+e.n,det:'',monto:e.p*dias,oculto:true}));
+      [['fm-vi','Viáticos'],['fm-lo','Locación'],['fm-cr','Crew adicional']].forEach(([id,l])=>{const x=+document.getElementById(id).value||0;if(x>0)fijos.push({c:l,det:'',monto:x,oculto:true});});
+      fmGastos.forEach(g=>{if(+g.mo>0)fijos.push({c:g.ds||'Gasto de producción',det:'',monto:+g.mo,oculto:true});});
       fin=fmPrVal;
     }else{
       const me=+document.getElementById('fmpk-me').value||2000,hm=+document.getElementById('fmpk-hm').value||160,v=me/hm,pk=FM_PACKS.find(x=>x.id===fmSelPk);
-      hon.push({c:pk.n,det:pk.d+(pk.disc>0?' Incluye '+Math.round(pk.disc*100)+'% de descuento por pack.':''),monto:v*pk.h*(1-pk.disc)});
-      [['fmpk-vi','Viáticos'],['fmpk-lo','Locación'],['fmpk-cr','Crew adicional']].forEach(([id,l])=>{const x=+document.getElementById(id).value||0;if(x>0)fijos.push({c:l,det:'',monto:x});});
+      hon.push({c:pk.n,det:pk.d+' '+pk.h+' hs de producción.',monto:v*pk.h*(1-pk.disc)});var resFm=pk.h+' hs de producción';
+      [['fmpk-vi','Viáticos'],['fmpk-lo','Locación'],['fmpk-cr','Crew adicional']].forEach(([id,l])=>{const x=+document.getElementById(id).value||0;if(x>0)fijos.push({c:l,det:'',monto:x,oculto:true});});
       fin=fmPkVal;
     }
     fijos.forEach(f=>f.monto=Math.round(f.monto));
     const fx=fijos.reduce((a,f)=>a+f.monto,0);
-    secs.push({t:'Filmmaking',l:repartir(hon,fin-fx).concat(fijos)});
+    secs.push({t:'Filmmaking',res:resFm,l:repartir(hon,fin-fx).concat(fijos)});
   }
   if(srvEdit){
     let hon=[],fin;
@@ -790,18 +790,18 @@ function lineasCliente(){
       const e=ED_ENTS.find(x=>x.id===edSelE),pb=TARIFA[e.id];
       const dur=+document.getElementById('ed-dur').value,cor=+document.getElementById('ed-cor').value,fv=+document.getElementById('ed-fmt').value;
       const core=pb*dur*cor*fv;
-      hon.push({c:'Edición · '+e.n,det:'Duración '+selTxt('ed-dur').toLowerCase()+' · '+selTxt('ed-cor').replace(' (base)','')+' de corrección · '+selTxt('ed-fmt'),monto:core});
+      var resEd='1 pieza';hon.push({c:'Edición · '+e.n,det:'Duración '+selTxt('ed-dur').toLowerCase()+' · '+selTxt('ed-cor').replace(' (base)','')+' de corrección · '+selTxt('ed-fmt'),monto:core});
       hon=hon.concat(extrasEnMonto(core,ED_EXTRAS.filter(x=>edXSt[x.id])));
       fin=edSVal;
     }else if(tabOn('ed-m')){
-      edmVids.forEach(x=>{const t=TV[x.t]?x.t:'reel',u=TARIFA[t];hon.push({c:(x.n||'Video')+(x.q>1?' ×'+x.q:''),det:((ED_ENTS.find(e=>e.id===t)||{n:TV[t].l}).n)+(x.q>1?' · '+x.q+' piezas':''),monto:u*x.q});});
+      var resEd=edmVids.reduce((a,x)=>a+x.q,0);resEd=resEd+(resEd===1?' pieza':' piezas');edmVids.forEach(x=>{const t=TV[x.t]?x.t:'reel',u=TARIFA[t];hon.push({c:(x.q>1?x.q+' × ':'')+(x.n||'Video'),det:((ED_ENTS.find(e=>e.id===t)||{n:TV[t].l}).n),monto:u*x.q});});
       fin=edMVal;
     }else{
       const me=+document.getElementById('edp-me').value||2000,hm=+document.getElementById('edp-hm').value||160,v=me/hm,pk=ED_PACKS.find(x=>x.id===edpSelPk);
-      hon.push({c:pk.n,det:pk.d+(pk.disc>0?' Incluye '+Math.round(pk.disc*100)+'% de descuento por pack.':''),monto:v*pk.h*(1-pk.disc)});
+      hon.push({c:pk.n,det:pk.d,monto:v*pk.h*(1-pk.disc)});var resEd='';
       fin=edPVal;
     }
-    if(hon.length)secs.push({t:'Edición de video',l:repartir(hon,fin)});
+    if(hon.length)secs.push({t:'Edición de video',res:resEd,l:repartir(hon,fin)});
   }
   secs.forEach(s=>s.sub=s.l.reduce((a,l)=>a+l.monto,0));
   return {secs,total:secs.reduce((a,s)=>a+s.sub,0)};
@@ -810,7 +810,7 @@ function datosDoc(){
   const g=id=>document.getElementById(id).value.trim();
   const hoy=new Date(),vence=new Date(hoy.getTime()+15*864e5),f=d=>d.toLocaleDateString('es-AR',{day:'2-digit',month:'2-digit',year:'numeric'});
   const p=n=>String(n).padStart(2,'0');
-  const tc=cur==='mep'?'mep':'blue',rate=cur==='mep'?rates.mep:rates.blue;
+  const tc='MEP',rate=rates.mep;
   const cor=srvEdit&&tabOn('ed-s')?selTxt('ed-cor').replace(' (base)',''):'1 ronda';
   return {nombre:g('cl-nombre'),empresa:g('cl-empresa'),email:g('cl-email'),tel:g('cl-tel'),ig:g('cl-ig'),desc:g('cl-desc'),
     num:'SB-'+String(hoy.getFullYear()).slice(2)+p(hoy.getMonth()+1)+p(hoy.getDate())+'-'+p(hoy.getHours())+p(hoy.getMinutes()),
@@ -832,9 +832,8 @@ function descargarPDF(){
   const {secs,total}=lineasCliente();
   let filas='';
   secs.forEach(s=>{
-    filas+='<tr class="sec"><td colspan="2">'+escH(s.t)+'</td></tr>';
-    s.l.forEach(l=>{filas+='<tr><td><span class="c">'+escH(l.c)+'</span>'+(l.det?'<span class="det">'+escH(l.det)+'</span>':'')+'</td><td>USD '+fmt(l.monto)+'</td></tr>';});
-    if(secs.length>1)filas+='<tr class="sub"><td>Subtotal '+escH(s.t.toLowerCase())+'</td><td>USD '+fmt(s.sub)+'</td></tr>';
+    filas+='<tr class="sec"><td>'+escH(s.t)+'</td><td>'+escH(s.res||'')+'</td></tr>';
+    s.l.filter(l=>!l.oculto).forEach(l=>{filas+='<tr><td colspan="2"><span class="c">'+escH(l.c)+'</span>'+(l.det?'<span class="det">'+escH(l.det)+'</span>':'')+'</td></tr>';});
   });
   const cli=[d.empresa,d.email,d.tel,d.ig].filter(Boolean).map(x=>'<div>'+escH(x)+'</div>').join('');
   document.getElementById('doc').innerHTML=
@@ -842,7 +841,7 @@ function descargarPDF(){
    '<div class="d-num"><strong>Presupuesto</strong>N° '+d.num+'<br>Fecha: '+d.fecha+'<br>Válido hasta: '+d.vence+'</div></div><div class="d-raya"></div>'+
    '<div class="d-cuerpo"><div class="d-dos"><div class="d-cli"><div class="d-et">Para</div><b>'+escH(d.nombre)+'</b>'+cli+'</div>'+
    (d.desc?'<div><div class="d-et">Proyecto</div><div class="d-proy">'+escH(d.desc)+'</div></div>':'<div></div>')+'</div>'+
-   '<table><thead><tr><th>Concepto</th><th>Importe</th></tr></thead><tbody>'+filas+'</tbody></table>'+
+   '<table><thead><tr><th colspan="2">Qué incluye</th></tr></thead><tbody>'+filas+'</tbody></table>'+
    '<div class="d-total"><div class="et">Total</div><div><div class="usd"><small>USD</small>'+fmt(total)+'</div>'+
    '<div class="ars">≈ ARS $'+Math.round(total*d.rate).toLocaleString('es-AR')+' · dólar '+d.tc+' del '+d.fecha+' ($'+Math.round(d.rate).toLocaleString('es-AR')+')</div></div></div>'+
    '<div class="d-condw"><div class="d-et">Condiciones</div><div class="d-cond">'+condiciones(d).map(c=>'<div><b>'+c[0]+':</b> '+escH(c[1])+'</div>').join('')+'</div></div></div>'+
@@ -859,7 +858,7 @@ function textoWhatsApp(ev){
   if(!srvFilm&&!srvEdit){showToast('⚠️ Elegí al menos un servicio',false);return;}
   const {secs,total}=lineasCliente(),nom=(d.nombre||'').split(' ')[0];
   let t='Hola'+(nom?' '+nom:'')+'! 👋 Te paso el presupuesto de *San Bao Estudio*.\n\n'+(d.desc?'_Proyecto:_ '+d.desc.replace(/\s+/g,' ')+'\n\n':'');
-  secs.forEach(s=>{t+='*'+s.t+'*\n';s.l.forEach(l=>t+='• '+l.c+': USD '+fmt(l.monto)+'\n');t+='\n';});
+  secs.forEach(s=>{t+='*'+s.t+'*'+(s.res&&s.res!=='Pack'?' ('+s.res+')':'')+'\n';s.l.filter(l=>!l.oculto).forEach(l=>t+='• '+l.c+'\n');t+='\n';});
   t+='*Total: USD '+fmt(total)+'*\n(≈ ARS $'+Math.round(total*d.rate).toLocaleString('es-AR')+' al dólar '+d.tc+' de hoy)\n\n';
   t+='✔️ 50% de anticipo y el resto contra entrega\n✔️ '+(d.cor==='Ilimitadas'?'Correcciones ilimitadas':d.cor+' de correcciones incluida'+(d.cor==='1 ronda'?'':'s'))+'\n✔️ '+(d.urg?'Entrega urgente en 48 hs':'Entrega en ~5 días según el proyecto')+'\n✔️ Válido hasta el '+d.vence+'\n\n';
   t+='Te mando también el PDF con el detalle. Cualquier duda, escribime 🙌';
