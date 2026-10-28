@@ -2,65 +2,114 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BaZi · Luca Gazzola · 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>BaZi Luca</title>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Lato:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#c9972a;--gold-l:#e8c46a;--cinnabar:#c0392b;--jade:#2d7a5a;
-  --midnight:#0d0a18;--surf:#13101f;--surf2:#1a1628;
-  --smoke:#7a6e60;--ash:#cfc0a8;--ash2:#b0a090;
-  --fire:#e05a1a;--wood:#4a8c3f;--metal:#7a9bb5;--water:#2c5f8a;--earth:#9c7a3c;
-  --bdr:rgba(201,151,42,0.18);
-  --trabajo:#e0a050;--trabajo-l:#f0c880;--trabajo-d:#a06820;
+  --gold:#ff914d;--gold-l:#f2b544;--cinnabar:#d9552c;--jade:#3a9a83;
+  --midnight:#0d1b21;--surf:#11242b;--surf2:#163039;
+  --smoke:#8fa3a8;--ash:#f4efe4;--ash2:#dcd2c0;
+  --fire:#d9552c;--wood:#5f9e6e;--metal:#a7b6ba;--water:#4f8c9e;--petrol:#264653;--earth:#c08a3e;
+  --bdr:rgba(255,145,77,0.18);
+  color-scheme:dark;
+  --trabajo:#f2b544;--trabajo-l:#f7cf7e;--trabajo-d:#8a4a2b;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--midnight);color:var(--ash);font-family:'Lato',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;z-index:-1;
-  background:radial-gradient(ellipse at 15% 10%,rgba(201,151,42,0.06) 0%,transparent 45%),
-  radial-gradient(ellipse at 85% 90%,rgba(192,57,43,0.04) 0%,transparent 45%),var(--midnight);}
+  background:radial-gradient(120% 70% at 50% 0%,rgba(38,70,83,0.55) 0%,transparent 60%),
+    radial-gradient(60% 40% at 50% 100%,rgba(255,145,77,0.08) 0%,transparent 70%),var(--midnight);}
+a.nav-tab,a.exp-btn{text-decoration:none;display:inline-flex;align-items:center;}
+.nav-trabajo{color:var(--trabajo);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+/* ══ BUSCADOR DE MOMENTOS ══ */
+.bus-wrap{max-width:1140px;margin:0 auto;padding:2rem 1.5rem 4rem;}
+.bus-acts{display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:1.1rem;}
+.bus-acts .a-chip{font-size:0.95rem;}
+.bus-filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0.8rem;padding:1.1rem 1.2rem;background:var(--surf2);border:1px solid var(--bdr);border-radius:6px;margin-bottom:1rem;}
+.bus-f{display:flex;flex-direction:column;gap:0.3rem;min-width:0;}
+.bus-f label,.bus-lbl{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--smoke);}
+.bus-f select{background:var(--midnight);color:var(--ash);border:1px solid var(--bdr);border-radius:4px;padding:0.5rem 0.6rem;font-family:'Lato',sans-serif;font-size:0.9rem;}
+.bus-check{display:flex;align-items:center;gap:0.5rem;font-size:0.88rem;color:var(--ash2);cursor:pointer;align-self:end;padding-bottom:0.4rem;}
+.bus-check input{accent-color:var(--gold);width:16px;height:16px;}
+.bus-desc{font-size:0.88rem;color:var(--ash2);margin-bottom:1rem;line-height:1.55;}
+.bus-resumen{display:flex;flex-wrap:wrap;gap:0.6rem 1.4rem;align-items:baseline;margin-bottom:0.9rem;font-size:0.9rem;color:var(--ash2);}
+.bus-resumen strong{color:var(--gold-l);font-family:'IM Fell English',serif;font-size:1.25rem;font-weight:400;}
+.bus-tabla-wrap{overflow-x:auto;border:1px solid var(--bdr);border-radius:6px;}
+.bus-tabla{width:100%;border-collapse:collapse;font-size:0.88rem;}
+.bus-tabla th{text-align:left;font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--smoke);font-weight:400;padding:0.7rem 0.8rem;border-bottom:1px solid var(--bdr);background:rgba(13,27,33,0.6);}
+.bus-tabla td{padding:0.8rem;border-bottom:1px solid rgba(255,255,255,0.05);vertical-align:top;color:var(--ash2);}
+.bus-tabla tr:last-child td{border-bottom:none;}
+.bus-tabla tr.top td{background:rgba(255,145,77,0.05);}
+.bus-fecha{font-family:'IM Fell English',serif;font-size:1.1rem;color:var(--ash);white-space:nowrap;}
+.bus-fecha small{display:block;font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);letter-spacing:0.06em;}
+.bus-pilar{font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--ash2);line-height:1.6;white-space:nowrap;}
+.bus-stars{display:flex;gap:2px;}
+.bus-horas{display:flex;flex-wrap:wrap;gap:0.35rem;}
+.h-chip{display:inline-flex;flex-direction:column;padding:0.32rem 0.6rem;border-radius:4px;border:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.6rem;line-height:1.45;color:var(--ash);text-decoration:none;}
+.h-chip span{font-size:0.5rem;color:var(--smoke);}
+.h-chip.h5{border-color:rgba(58,154,131,0.7);background:rgba(58,154,131,0.14);}
+.h-chip.h4{border-color:rgba(58,154,131,0.4);background:rgba(58,154,131,0.07);}
+.h-chip.h3{border-color:rgba(242,181,68,0.35);}
+.h-chip:hover{border-color:var(--gold);}
+.bus-notas{font-size:0.8rem;color:var(--smoke);line-height:1.5;margin:0;padding:0;list-style:none;}
+.bus-notas li.mas{color:#7cc8b0;}
+.bus-notas li.menos{color:#f08a62;}
+.bus-vacio{padding:2rem;text-align:center;color:var(--smoke);font-style:italic;}
+@media(max-width:720px){
+  .bus-tabla thead{display:none;}
+  .bus-tabla,.bus-tabla tbody,.bus-tabla tr,.bus-tabla td{display:block;width:100%;}
+  .bus-tabla tr{padding:0.6rem 0;border-bottom:1px solid var(--bdr);}
+  .bus-tabla td{border:none;padding:0.35rem 0.9rem;}
+  .bus-tabla td[data-l]::before{content:attr(data-l);display:block;font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--smoke);margin-bottom:0.2rem;}
+  .bus-tabla-wrap{overflow-x:visible;}
+}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
 
 /* NAV */
-nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:200;background:rgba(13,27,33,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
 .nav-logo{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold);padding:1rem 1.2rem 1rem 0;border-right:1px solid var(--bdr);margin-right:0.8rem;white-space:nowrap;flex-shrink:0;}
 .nav-tab{padding:0.85rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
 .nav-tab:hover{color:var(--ash);}
 .nav-tab.active{color:var(--gold-l);border-bottom-color:var(--gold);}
 
 /* ══ CARTA SUB-NAV ══ */
-.carta-subnav{position:sticky;top:49px;z-index:150;display:flex;gap:0.4rem;padding:0.75rem 1.5rem;background:rgba(13,10,24,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);overflow-x:auto;justify-content:flex-start;}
+.carta-subnav{position:sticky;top:49px;z-index:150;display:flex;gap:0.4rem;padding:0.75rem 1.5rem;background:rgba(13,27,33,0.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--bdr);overflow-x:auto;justify-content:flex-start;}
 @media(min-width:900px){.carta-subnav{justify-content:center;}}
 .csub{padding:0.45rem 1.05rem;border-radius:20px;border:1px solid var(--bdr);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;cursor:pointer;transition:all .2s;white-space:nowrap;text-transform:uppercase;}
-.csub:hover{color:var(--ash);border-color:rgba(201,151,42,0.4);}
-.csub.active{color:var(--gold-l);border-color:var(--gold);background:rgba(201,151,42,0.09);}
+.csub:hover{color:var(--ash);border-color:rgba(255,145,77,0.4);}
+.csub.active{color:var(--gold-l);border-color:var(--gold);background:rgba(255,145,77,0.09);}
 .carta-sub{display:none;animation:fadeUp .3s ease;}
 .carta-sub.active-carta{display:block;}
 
 /* ══ ASPECTO WIDGET (¿Qué tenés hoy?) ══ */
 .aspecto-chips{display:flex;flex-wrap:wrap;gap:0.55rem;margin-bottom:1rem;}
 .a-chip{padding:0.55rem 1.1rem;border-radius:22px;border:1px solid var(--bdr);background:var(--surf2);color:var(--ash2);font-family:'Lato',sans-serif;font-size:0.88rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:0.45rem;}
-.a-chip:hover{border-color:rgba(201,151,42,0.45);color:var(--ash);transform:translateY(-1px);}
-.a-chip.sel{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.1);}
+.a-chip:hover{border-color:rgba(255,145,77,0.45);color:var(--ash);transform:translateY(-1px);}
+.a-chip.sel{border-color:var(--gold);color:var(--gold-l);background:rgba(255,145,77,0.1);}
 .a-result{border-radius:5px;padding:1.2rem 1.4rem;margin-bottom:1.5rem;display:none;animation:fadeUp .25s ease;font-size:0.92rem;line-height:1.65;color:var(--ash2);}
 .a-result.visible{display:block;}
-.a-result.a-bien{background:rgba(45,122,90,0.08);border:1px solid rgba(45,122,90,0.28);border-left:3px solid #2d7a5a;}
-.a-result.a-neutro{background:rgba(156,122,60,0.08);border:1px solid rgba(156,122,60,0.28);border-left:3px solid #9c7a3c;}
-.a-result.a-evitar{background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.28);border-left:3px solid #c0392b;}
+.a-result.a-bien{background:rgba(58,154,131,0.08);border:1px solid rgba(58,154,131,0.28);border-left:3px solid #3a9a83;}
+.a-result.a-neutro{background:rgba(242,181,68,0.08);border:1px solid rgba(242,181,68,0.28);border-left:3px solid #c08a3e;}
+.a-result.a-evitar{background:rgba(217,85,44,0.08);border:1px solid rgba(217,85,44,0.28);border-left:3px solid #d9552c;}
 .a-result .a-verdict{font-family:'IM Fell English',serif;font-size:1.05rem;font-weight:400;margin-bottom:0.3rem;display:block;}
-.a-bien .a-verdict{color:#6dbf99;}.a-neutro .a-verdict{color:#c9a45a;}.a-evitar .a-verdict{color:#e08070;}
+.a-bien .a-verdict{color:#7cc8b0;}.a-neutro .a-verdict{color:#f2b544;}.a-evitar .a-verdict{color:#f08a62;}
 
 /* Dir grid guía */
 .dir-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.6rem;margin-bottom:1.5rem;}
 .dir-card{padding:0.85rem 0.95rem;border-radius:4px;text-align:center;}
-.dir-fav{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.22);}
-.dir-bad{background:rgba(192,57,43,0.06);border:1px solid rgba(192,57,43,0.18);opacity:0.85;}
+.dir-fav{background:rgba(58,154,131,0.07);border:1px solid rgba(58,154,131,0.22);}
+.dir-bad{background:rgba(217,85,44,0.06);border:1px solid rgba(217,85,44,0.18);opacity:0.85;}
 .dir-card .d-comp{font-family:'IM Fell English',serif;font-size:1.25rem;line-height:1;}
-.dir-fav .d-comp{color:#6dbf99;}.dir-bad .d-comp{color:#e08070;}
+.dir-fav .d-comp{color:#7cc8b0;}.dir-bad .d-comp{color:#f08a62;}
 .dir-card .d-name{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.08em;color:var(--smoke);text-transform:uppercase;margin:0.3rem 0 0.15rem;}
 .dir-card .d-use{font-size:0.76rem;color:var(--ash2);line-height:1.4;}
 .nav-sep{width:1px;height:22px;background:var(--bdr);margin:0 0.2rem;flex-shrink:0;}
-.nav-familia{color:rgba(201,151,42,0.5);font-size:0.55rem;}
+.nav-familia{color:rgba(255,145,77,0.5);font-size:0.55rem;}
 .nav-familia:hover{color:var(--gold);}
 
 /* SECTIONS */
@@ -75,22 +124,22 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .page-header h1{font-family:'IM Fell English',serif;font-size:clamp(1.7rem,4vw,2.6rem);color:var(--gold-l);font-weight:400;line-height:1.15;}
 .page-header p{margin-top:0.4rem;color:var(--smoke);font-style:italic;font-size:0.95rem;}
 .badge{display:inline-block;margin-top:0.8rem;padding:0.35rem 1.2rem;border:1px solid var(--gold);font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--gold);letter-spacing:0.18em;border-radius:2px;}
-.ctx-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(201,151,42,0.03);border-bottom:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
+.ctx-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(255,145,77,0.03);border-bottom:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
 .ctx-bar span{color:var(--gold-l);}
 .sec-title{font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--gold-l);font-weight:400;margin:2.2rem 0 0.4rem;padding-bottom:0.5rem;border-bottom:1px solid var(--bdr);}
 .sec-sub{font-size:0.88rem;color:var(--smoke);font-style:italic;margin-bottom:1.3rem;line-height:1.6;}
 
 /* Stars */
-.star{fill:rgba(201,151,42,0.15);}
-.star.on{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(201,151,42,0.45));}
+.star{fill:rgba(255,145,77,0.15);}
+.star.on{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(255,145,77,0.45));}
 
 /* Element tags */
 .etag{display:inline-block;padding:0.11rem 0.5rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.06em;font-weight:700;}
-.etag-m{background:rgba(74,140,63,0.16);color:#6db860;border:1px solid rgba(74,140,63,0.26);}
-.etag-f{background:rgba(224,90,26,0.16);color:#e87a40;border:1px solid rgba(224,90,26,0.26);}
-.etag-t{background:rgba(156,122,60,0.16);color:#c9a45a;border:1px solid rgba(156,122,60,0.26);}
-.etag-me{background:rgba(122,155,181,0.16);color:#a0b4c8;border:1px solid rgba(122,155,181,0.26);}
-.etag-a{background:rgba(44,95,138,0.16);color:#5a9abf;border:1px solid rgba(44,95,138,0.26);}
+.etag-m{background:rgba(95,158,110,0.16);color:#7dbb88;border:1px solid rgba(95,158,110,0.26);}
+.etag-f{background:rgba(217,85,44,0.16);color:#ff914d;border:1px solid rgba(217,85,44,0.26);}
+.etag-t{background:rgba(242,181,68,0.16);color:#f2b544;border:1px solid rgba(242,181,68,0.26);}
+.etag-me{background:rgba(167,182,186,0.16);color:#c3cdcf;border:1px solid rgba(167,182,186,0.26);}
+.etag-a{background:rgba(79,140,158,0.16);color:#6fb0c0;border:1px solid rgba(79,140,158,0.26);}
 
 /* ══ RESUMEN EJECUTIVO ══ */
 .resumen-wrap{
@@ -113,11 +162,11 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   overflow:hidden;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;
 }
-.publicar-card.pub-excelente{border-color:rgba(45,122,90,0.5);background:rgba(45,122,90,0.08);}
-.publicar-card.pub-bueno{border-color:rgba(74,140,63,0.4);background:rgba(74,140,63,0.06);}
-.publicar-card.pub-neutro{border-color:rgba(156,122,60,0.35);background:rgba(156,122,60,0.06);}
-.publicar-card.pub-evitar{border-color:rgba(192,57,43,0.35);background:rgba(192,57,43,0.06);}
-.publicar-card.pub-mal{border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.09);}
+.publicar-card.pub-excelente{border-color:rgba(58,154,131,0.5);background:rgba(58,154,131,0.08);}
+.publicar-card.pub-bueno{border-color:rgba(95,158,110,0.4);background:rgba(95,158,110,0.06);}
+.publicar-card.pub-neutro{border-color:rgba(242,181,68,0.35);background:rgba(242,181,68,0.06);}
+.publicar-card.pub-evitar{border-color:rgba(217,85,44,0.35);background:rgba(217,85,44,0.06);}
+.publicar-card.pub-mal{border-color:rgba(217,85,44,0.5);background:rgba(217,85,44,0.09);}
 
 .pub-label{
   font-family:'Space Mono',monospace;font-size:0.55rem;
@@ -130,11 +179,11 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;
   line-height:1.2;margin-top:0.1rem;
 }
-.pub-excelente .pub-verdict{color:#6dbf99;}
-.pub-bueno .pub-verdict{color:#8cc87a;}
-.pub-neutro .pub-verdict{color:#c9a45a;}
-.pub-evitar .pub-verdict{color:#e07a5a;}
-.pub-mal .pub-verdict{color:#e08070;}
+.pub-excelente .pub-verdict{color:#7cc8b0;}
+.pub-bueno .pub-verdict{color:#a9cf8a;}
+.pub-neutro .pub-verdict{color:#f2b544;}
+.pub-evitar .pub-verdict{color:#f08a62;}
+.pub-mal .pub-verdict{color:#f08a62;}
 .pub-note{font-size:0.75rem;color:var(--smoke);font-style:italic;line-height:1.4;}
 
 /* RIGHT SIDE — hacer/no hacer */
@@ -142,15 +191,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   display:flex;flex-direction:column;gap:0.8rem;
 }
 .resumen-hacer{
-  background:rgba(45,122,90,0.07);
-  border:1px solid rgba(45,122,90,0.2);
+  background:rgba(58,154,131,0.07);
+  border:1px solid rgba(58,154,131,0.2);
   border-radius:5px;
   padding:1rem 1.2rem;
   flex:1;
 }
 .resumen-nohacer{
-  background:rgba(192,57,43,0.07);
-  border:1px solid rgba(192,57,43,0.2);
+  background:rgba(217,85,44,0.07);
+  border:1px solid rgba(217,85,44,0.2);
   border-radius:5px;
   padding:1rem 1.2rem;
   flex:1;
@@ -160,8 +209,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   letter-spacing:0.15em;text-transform:uppercase;
   margin-bottom:0.5rem;display:block;
 }
-.resumen-hacer .resumen-label{color:#6dbf99;}
-.resumen-nohacer .resumen-label{color:#e08070;}
+.resumen-hacer .resumen-label{color:#7cc8b0;}
+.resumen-nohacer .resumen-label{color:#f08a62;}
 .resumen-items{list-style:none;padding:0;margin:0;}
 .resumen-items li{
   font-size:0.9rem;color:var(--ash2);
@@ -171,12 +220,12 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .resumen-items li::before{
   flex-shrink:0;margin-top:0.05rem;font-size:0.75rem;
 }
-.resumen-hacer .resumen-items li::before{content:'✦';color:#6dbf99;opacity:0.7;}
-.resumen-nohacer .resumen-items li::before{content:'✕';color:#e08070;opacity:0.7;}
+.resumen-hacer .resumen-items li::before{content:'✦';color:#7cc8b0;opacity:0.7;}
+.resumen-nohacer .resumen-items li::before{content:'✕';color:#f08a62;opacity:0.7;}
 
 @media(max-width:620px){
   .resumen-wrap{grid-template-columns:1fr;}
-  .publicar-card{max-width:100%;min-width:unset;flex-direction:row;gap:1.2rem;text-align:left;align-items:center;}
+  .publicar-card{max-width:100%;min-width:unset;flex-direction:column;gap:0.4rem;text-align:left;align-items:flex-start;}
   .pub-stars{justify-content:flex-start;}
 }
 
@@ -185,51 +234,51 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 
 /* Hero date banner */
 /* ══ TRABAJO CSS ══ */
-.client-btn{padding:0.42rem 1rem;border-radius:20px;border:1px solid rgba(224,160,80,0.3);background:transparent;font-family:'Lato',sans-serif;font-size:0.85rem;cursor:pointer;transition:all 0.2s;color:var(--smoke);}
+.client-btn{padding:0.42rem 1rem;border-radius:20px;border:1px solid rgba(242,181,68,0.3);background:transparent;font-family:'Lato',sans-serif;font-size:0.85rem;cursor:pointer;transition:all 0.2s;color:var(--smoke);}
 .client-btn:hover{color:var(--ash);}
-.client-btn.active{border-color:var(--trabajo);color:var(--trabajo-l);background:rgba(224,160,80,0.1);}
+.client-btn.active{border-color:var(--trabajo);color:var(--trabajo-l);background:rgba(242,181,68,0.1);}
 .client-sub-tab{padding:0.78rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
 .client-sub-tab:hover{color:var(--ash);}
 .client-sub-tab.active{color:var(--trabajo-l);border-bottom-color:var(--trabajo);}
 .client-sub{display:none;animation:fadeUp 0.3s ease;}
 .client-sub.active-client-sub{display:block;}
 .pub-card-trabajo{background:var(--surf2);border-radius:6px;padding:1.3rem 1.2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:0.45rem;height:100%;}
-.pub-card-trabajo.pt5{border:1px solid rgba(45,122,90,0.5);background:rgba(45,122,90,0.08);}
-.pub-card-trabajo.pt4{border:1px solid rgba(74,140,63,0.4);background:rgba(74,140,63,0.06);}
-.pub-card-trabajo.pt3{border:1px solid rgba(156,122,60,0.35);background:rgba(156,122,60,0.06);}
-.pub-card-trabajo.pt2{border:1px solid rgba(192,87,43,0.35);background:rgba(192,87,43,0.06);}
-.pub-card-trabajo.pt1{border:1px solid rgba(192,57,43,0.5);background:rgba(192,57,43,0.08);}
+.pub-card-trabajo.pt5{border:1px solid rgba(58,154,131,0.5);background:rgba(58,154,131,0.08);}
+.pub-card-trabajo.pt4{border:1px solid rgba(95,158,110,0.4);background:rgba(95,158,110,0.06);}
+.pub-card-trabajo.pt3{border:1px solid rgba(242,181,68,0.35);background:rgba(242,181,68,0.06);}
+.pub-card-trabajo.pt2{border:1px solid rgba(217,85,44,0.35);background:rgba(217,85,44,0.06);}
+.pub-card-trabajo.pt1{border:1px solid rgba(217,85,44,0.5);background:rgba(217,85,44,0.08);}
 .pt-label{font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.18em;color:var(--smoke);text-transform:uppercase;}
 .pt-icon{font-size:2rem;line-height:1;}
 .pt-stars{display:flex;gap:2px;justify-content:center;}
 .pt-star{width:13px;height:13px;}
 .pt-verdict{font-family:'IM Fell English',serif;font-size:0.95rem;font-weight:400;line-height:1.2;}
-.pt5 .pt-verdict{color:#6dbf99;}.pt4 .pt-verdict{color:#8cc87a;}
-.pt3 .pt-verdict{color:#c9a45a;}.pt2 .pt-verdict{color:#e07a5a;}.pt1 .pt-verdict{color:#e08070;}
+.pt5 .pt-verdict{color:#7cc8b0;}.pt4 .pt-verdict{color:#a9cf8a;}
+.pt3 .pt-verdict{color:#f2b544;}.pt2 .pt-verdict{color:#f08a62;}.pt1 .pt-verdict{color:#f08a62;}
 .pt-note{font-size:0.73rem;color:var(--smoke);font-style:italic;line-height:1.4;}
 .estrategia-box{padding:1.2rem 1.3rem;border-radius:4px;font-size:0.9rem;color:var(--ash2);line-height:1.6;}
-.estrat-do{background:rgba(45,122,90,0.08);border:1px solid rgba(45,122,90,0.22);}
-.estrat-dont{background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.22);}
+.estrat-do{background:rgba(58,154,131,0.08);border:1px solid rgba(58,154,131,0.22);}
+.estrat-dont{background:rgba(217,85,44,0.08);border:1px solid rgba(217,85,44,0.22);}
 .estrat-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;margin-bottom:0.5rem;display:block;}
-.estrat-do .estrat-label{color:#6dbf99;}.estrat-dont .estrat-label{color:#e08070;}
+.estrat-do .estrat-label{color:#7cc8b0;}.estrat-dont .estrat-label{color:#f08a62;}
 .estrat-items{list-style:none;padding:0;}
 .estrat-items li{padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.04);display:flex;gap:0.5rem;align-items:flex-start;}
 .estrat-items li:last-child{border-bottom:none;}
 .estrat-items li::before{flex-shrink:0;font-size:0.7rem;margin-top:0.08rem;}
-.estrat-do .estrat-items li::before{content:'✦';color:#6dbf99;opacity:0.7;}
-.estrat-dont .estrat-items li::before{content:'✕';color:#e08070;opacity:0.7;}
-.ct-day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(224,160,80,0.1);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s;}
+.estrat-do .estrat-items li::before{content:'✦';color:#7cc8b0;opacity:0.7;}
+.estrat-dont .estrat-items li::before{content:'✕';color:#f08a62;opacity:0.7;}
+.ct-day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(242,181,68,0.1);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s;}
 .ct-day-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
-.ct-day-card.r5::before{background:#2d7a5a;}.ct-day-card.r4::before{background:#4a8c3f;}
-.ct-day-card.r3::before{background:#9c7a3c;}.ct-day-card.r2::before{background:#c0602a;}
+.ct-day-card.r5::before{background:#3a9a83;}.ct-day-card.r4::before{background:#5f9e6e;}
+.ct-day-card.r3::before{background:#c08a3e;}.ct-day-card.r2::before{background:#d9552c;}
 .ct-day-card.r1::before{background:var(--cinnabar);}
 .ct-day-card.weekend{opacity:0.6;}
-.ct-day-card.today-card{border-color:rgba(224,160,80,0.5);box-shadow:0 0 0 1px rgba(224,160,80,0.15);}
+.ct-day-card.today-card{border-color:rgba(242,181,68,0.5);box-shadow:0 0 0 1px rgba(242,181,68,0.15);}
 .ct-pub-badge{display:inline-block;padding:0.1rem 0.4rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.07em;font-weight:700;margin-bottom:0.4rem;}
-.ct-pub-5{background:rgba(45,122,90,0.18);color:#6dbf99;border:1px solid rgba(45,122,90,0.3);}
-.ct-pub-4{background:rgba(74,140,63,0.15);color:#8cc87a;border:1px solid rgba(74,140,63,0.3);}
-.ct-pub-3{background:rgba(156,122,60,0.15);color:#c9a45a;border:1px solid rgba(156,122,60,0.25);}
-.ct-pub-2,.ct-pub-1{background:rgba(192,57,43,0.12);color:#e08070;border:1px solid rgba(192,57,43,0.25);}
+.ct-pub-5{background:rgba(58,154,131,0.18);color:#7cc8b0;border:1px solid rgba(58,154,131,0.3);}
+.ct-pub-4{background:rgba(95,158,110,0.15);color:#a9cf8a;border:1px solid rgba(95,158,110,0.3);}
+.ct-pub-3{background:rgba(242,181,68,0.15);color:#f2b544;border:1px solid rgba(242,181,68,0.25);}
+.ct-pub-2,.ct-pub-1{background:rgba(217,85,44,0.12);color:#f08a62;border:1px solid rgba(217,85,44,0.25);}
 @media(max-width:620px){#ct-hero-wrap{grid-template-columns:1fr;}#ct-pub-card{max-width:100%;min-width:unset;}#ct-estrategia,#ct-tips-grid{grid-template-columns:1fr;}}
 
 /* ══ HOY SECTION ══ */
@@ -246,7 +295,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .hoy-pilar-detail span{color:var(--gold-l);}
 .hoy-verdict-row{display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;margin-bottom:0.5rem;}
 .hoy-verdict-text{font-family:'IM Fell English',serif;font-size:1.15rem;font-weight:400;}
-.vg{color:#6dbf99;}.vy{color:var(--earth);}.vr{color:#e08070;}
+.vg{color:#7cc8b0;}.vy{color:var(--earth);}.vr{color:#f08a62;}
 .hoy-context{font-size:0.88rem;color:var(--smoke);font-style:italic;line-height:1.65;}
 .hoy-context strong{color:var(--ash2);font-style:normal;}
 .hoy-right{text-align:right;}
@@ -257,11 +306,11 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 /* Deep tips grid */
 .tips-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
 .tips-box{padding:1.3rem 1.4rem;border-radius:5px;}
-.tips-box.do-box{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
-.tips-box.dont-box{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.tips-box.do-box{background:rgba(58,154,131,0.07);border:1px solid rgba(58,154,131,0.2);}
+.tips-box.dont-box{background:rgba(217,85,44,0.07);border:1px solid rgba(217,85,44,0.2);}
 .tips-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.75rem;}
-.tips-box.do-box h3{color:#6dbf99;}
-.tips-box.dont-box h3{color:#e08070;}
+.tips-box.do-box h3{color:#7cc8b0;}
+.tips-box.dont-box h3{color:#f08a62;}
 .tips-box ul{list-style:none;padding:0;}
 .tips-box li{font-size:0.9rem;color:var(--ash2);padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.55;}
 .tips-box li:last-child{border-bottom:none;}
@@ -277,32 +326,32 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 /* Interacciones */
 .ints-row{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.5rem;}
 .int-chip{padding:0.3rem 0.75rem;border-radius:20px;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;}
-.int-bien{background:rgba(45,122,90,0.15);border:1px solid rgba(45,122,90,0.3);color:#6dbf99;}
-.int-mal{background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.3);color:#e08070;}
-.int-cuidado{background:rgba(156,122,60,0.15);border:1px solid rgba(156,122,60,0.3);color:#c9a45a;}
-.int-trio{background:rgba(224,90,26,0.15);border:1px solid rgba(224,90,26,0.3);color:#e87a40;}
-.int-none{background:rgba(122,122,122,0.1);border:1px solid rgba(122,122,122,0.2);color:var(--smoke);}
+.int-bien{background:rgba(58,154,131,0.15);border:1px solid rgba(58,154,131,0.3);color:#7cc8b0;}
+.int-mal{background:rgba(217,85,44,0.15);border:1px solid rgba(217,85,44,0.3);color:#f08a62;}
+.int-cuidado{background:rgba(242,181,68,0.15);border:1px solid rgba(242,181,68,0.3);color:#f2b544;}
+.int-trio{background:rgba(217,85,44,0.15);border:1px solid rgba(217,85,44,0.3);color:#ff914d;}
+.int-none{background:rgba(143,163,168,0.1);border:1px solid rgba(143,163,168,0.2);color:var(--smoke);}
 
 /* Hora oracle */
 .hora-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.6rem;margin-bottom:2rem;}
 .hora-card{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:0.85rem 0.9rem;text-align:center;}
-.hora-card.hora-best{border-color:rgba(45,122,90,0.4);background:rgba(45,122,90,0.06);}
-.hora-card.hora-ok{border-color:rgba(156,122,60,0.3);}
-.hora-card.hora-bad{border-color:rgba(192,57,43,0.25);opacity:0.7;}
+.hora-card.hora-best{border-color:rgba(58,154,131,0.4);background:rgba(58,154,131,0.06);}
+.hora-card.hora-ok{border-color:rgba(242,181,68,0.3);}
+.hora-card.hora-bad{border-color:rgba(217,85,44,0.25);opacity:0.7;}
 .hora-time{font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--smoke);letter-spacing:0.08em;margin-bottom:0.3rem;}
 .hora-animal{font-size:1.1rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;font-family:'IM Fell English',serif;}
 .hora-elem{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);}
 .hora-verdict{font-family:'Space Mono',monospace;font-size:0.55rem;margin-top:0.35rem;letter-spacing:0.06em;}
-.hora-best .hora-verdict{color:#6dbf99;}
-.hora-ok .hora-verdict{color:#c9a45a;}
-.hora-bad .hora-verdict{color:#e08070;}
+.hora-best .hora-verdict{color:#7cc8b0;}
+.hora-ok .hora-verdict{color:#f2b544;}
+.hora-bad .hora-verdict{color:#f08a62;}
 
 /* ══ CALENDAR ══ */
 .cal-wrap{max-width:1140px;margin:0 auto;padding:2rem 1.5rem 4rem;}
 .month-sel{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
 .month-btn{padding:0.5rem 0.95rem;border:1px solid var(--bdr);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.07em;cursor:pointer;border-radius:3px;transition:all 0.18s;}
-.month-btn:hover{border-color:rgba(201,151,42,0.4);color:var(--ash);}
-.month-btn.active{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.08);}
+.month-btn:hover{border-color:rgba(255,145,77,0.4);color:var(--ash);}
+.month-btn.active{border-color:var(--gold);color:var(--gold-l);background:rgba(255,145,77,0.08);}
 .month-hdr{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px solid var(--bdr);}
 .month-cn{font-size:2.6rem;color:var(--gold);opacity:0.55;line-height:1;}
 .month-info h2{font-family:'IM Fell English',serif;font-size:1.3rem;color:var(--gold-l);font-weight:400;}
@@ -310,15 +359,15 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .month-meta{margin-left:auto;text-align:right;font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);line-height:1.9;}
 .month-meta span{color:var(--gold-l);}
 .cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:0.8rem;}
-.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(201,151,42,0.11);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
+.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(255,145,77,0.11);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
 .day-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
-.day-card.r5::before{background:#2d7a5a;}.day-card.r4::before{background:#4a8c3f;}
-.day-card.r3::before{background:#9c7a3c;}.day-card.r2::before{background:#c0602a;}
+.day-card.r5::before{background:#3a9a83;}.day-card.r4::before{background:#5f9e6e;}
+.day-card.r3::before{background:#c08a3e;}.day-card.r2::before{background:#d9552c;}
 .day-card.r1::before{background:var(--cinnabar);}
-.day-card:hover{border-color:rgba(201,151,42,0.3);background:rgba(255,255,255,0.038);}
+.day-card:hover{border-color:rgba(255,145,77,0.3);background:rgba(255,255,255,0.038);}
 .day-card.weekend{opacity:0.62;}
-.day-card.today-card{border-color:rgba(201,151,42,0.55);box-shadow:0 0 0 1px rgba(201,151,42,0.18);}
-.today-badge{display:inline-block;background:rgba(201,151,42,0.22);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;padding:0.07rem 0.38rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
+.day-card.today-card{border-color:rgba(255,145,77,0.55);box-shadow:0 0 0 1px rgba(255,145,77,0.18);}
+.today-badge{display:inline-block;background:rgba(255,145,77,0.22);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;padding:0.07rem 0.38rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
 .dc-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem;}
 .dc-num{font-family:'IM Fell English',serif;font-size:1.5rem;color:var(--gold-l);line-height:1;}
 .dc-dow{font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);letter-spacing:0.07em;margin-top:0.1rem;}
@@ -327,8 +376,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .dc-summary{font-size:0.87rem;color:var(--ash2);line-height:1.5;margin-bottom:0.48rem;font-style:italic;}
 .fav-row{display:flex;gap:0.42rem;margin-bottom:0.28rem;align-items:flex-start;}
 .fav-label{font-family:'Space Mono',monospace;font-size:0.49rem;padding:0.08rem 0.3rem;border-radius:2px;flex-shrink:0;margin-top:0.14rem;letter-spacing:0.04em;}
-.lsi{background:rgba(45,122,90,0.22);color:#5aba90;}
-.lno{background:rgba(192,57,43,0.22);color:#e07060;}
+.lsi{background:rgba(58,154,131,0.22);color:#6cc0a6;}
+.lno{background:rgba(217,85,44,0.22);color:#f08a62;}
 .fav-text{font-size:0.8rem;color:var(--ash2);line-height:1.42;}
 
 /* ══ CARTA SECTION ══ */
@@ -336,17 +385,17 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bdr);border-radius:4px;overflow:hidden;margin-bottom:1.8rem;}
 .pilar-col{padding:1rem 0.8rem;border-right:1px solid var(--bdr);text-align:center;}
 .pilar-col:last-child{border-right:none;}
-.pilar-col.hl{background:rgba(201,151,42,0.05);}
+.pilar-col.hl{background:rgba(255,145,77,0.05);}
 .pilar-label{font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.6rem;}
 .pilar-cn{font-size:2.2rem;color:var(--gold);line-height:1;margin-bottom:0.25rem;}
 .pilar-name{font-size:0.87rem;color:var(--ash);margin-bottom:0.1rem;}
 .pilar-el{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);}
 .dios-tag{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.42rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;}
-.tag-f{background:rgba(232,88,10,0.13);color:#e87a3a;border:1px solid rgba(232,88,10,0.25);}
-.tag-m{background:rgba(74,140,63,0.13);color:#6db860;border:1px solid rgba(74,140,63,0.25);}
-.tag-t{background:rgba(156,122,60,0.13);color:#c9a45a;border:1px solid rgba(156,122,60,0.25);}
-.tag-me{background:rgba(138,157,181,0.13);color:#a0b4c8;border:1px solid rgba(138,157,181,0.25);}
-.tag-a{background:rgba(44,95,138,0.13);color:#5a9abf;border:1px solid rgba(44,95,138,0.25);}
+.tag-f{background:rgba(255,145,77,0.13);color:#ff914d;border:1px solid rgba(255,145,77,0.25);}
+.tag-m{background:rgba(95,158,110,0.13);color:#7dbb88;border:1px solid rgba(95,158,110,0.25);}
+.tag-t{background:rgba(242,181,68,0.13);color:#f2b544;border:1px solid rgba(242,181,68,0.25);}
+.tag-me{background:rgba(167,182,186,0.13);color:#c3cdcf;border:1px solid rgba(167,182,186,0.25);}
+.tag-a{background:rgba(79,140,158,0.13);color:#6fb0c0;border:1px solid rgba(79,140,158,0.25);}
 .e-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.85rem;margin-bottom:1.8rem;}
 .e-card{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:1.1rem 1.2rem;position:relative;overflow:hidden;}
 .e-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
@@ -358,19 +407,19 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .e-card p{font-size:0.87rem;color:var(--ash2);line-height:1.6;}
 .pot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem;}
 .pot-box{padding:1.2rem 1.3rem;border-radius:4px;}
-.pot-box.green{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
-.pot-box.red{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.pot-box.green{background:rgba(58,154,131,0.07);border:1px solid rgba(58,154,131,0.2);}
+.pot-box.red{background:rgba(217,85,44,0.07);border:1px solid rgba(217,85,44,0.2);}
 .pot-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.55rem;}
-.pot-box.green h3{color:#6dbf99;}.pot-box.red h3{color:#e08070;}
+.pot-box.green h3{color:#7cc8b0;}.pot-box.red h3{color:#f08a62;}
 .pot-box ul{padding-left:1.1rem;}
 .pot-box li{font-size:0.87rem;color:var(--ash2);margin-bottom:0.36rem;line-height:1.52;}
 
 /* Export */
-.exp-bar{padding:1rem 1.3rem;background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
+.exp-bar{padding:1rem 1.3rem;background:rgba(255,145,77,0.03);border:1px solid var(--bdr);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
 .exp-bar p{font-size:0.87rem;color:var(--smoke);flex:1;min-width:180px;}
 .exp-btn{padding:0.5rem 1rem;border:1px solid var(--bdr);background:transparent;color:var(--ash);cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;border-radius:3px;transition:all 0.2s;}
 .exp-btn:hover{border-color:var(--gold);color:var(--gold-l);}
-.exp-btn.primary{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.08);}
+.exp-btn.primary{border-color:var(--gold);color:var(--gold-l);background:rgba(255,145,77,0.08);}
 
 /* divider */
 .divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.5rem;}
@@ -390,16 +439,18 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <body>
 
 <nav>
-  <div class="nav-logo">甲 · Luca 2026</div>
+  <div class="nav-logo">甲 · Luca</div>
   <button class="nav-tab active" onclick="showSection('sec-hoy',this)">① Hoy</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-cal',this)">② Calendario</button>
+  <button class="nav-tab" onclick="showSection('sec-buscar',this)">② Buscar</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" onclick="showSection('sec-carta',this)">③ Mi Carta</button>
+  <button class="nav-tab" onclick="showSection('sec-cal',this)">③ Calendario</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" style="color:#e0a050;" onclick="showSection('sec-trabajo',this)">④ Trabajo ✦</button>
+  <button class="nav-tab" onclick="showSection('sec-carta',this)">④ Mi Carta</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab nav-familia" onclick="window.open('bazi_familia_2026.html','_blank')">⑤ Familia ↗</button>
+  <button class="nav-tab nav-trabajo" onclick="showSection('sec-trabajo',this)">⑤ Trabajo ✦</button>
+  <div class="nav-sep"></div>
+  <a class="nav-tab nav-familia" href="bazi_familia_2026.html">⑥ Familia →</a>
 </nav>
 
 
@@ -416,7 +467,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div>AÑO <span>—</span></div>
   <div>MES <span>—</span></div>
   <div>DÍA <span>—</span></div>
-  <div>DA YUN <span>丁未 Fuego Yin/Cabra</span></div>
+  <div>DA YUN <span>—</span></div>
 </div>
 
 <div class="hoy-wrap">
@@ -454,17 +505,17 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 
   <!-- ✦ PLANIFICACIÓN DE CONTENIDO ✦ -->
   <div class="sec-title"><span id="plan-cont-titulo">✦ Plan de Contenido</span></div>
-  <p class="sec-sub">Los 4 días de mayor potencial energético para subir contenido de acá a fin de mes, calibrados a tu carta. El Fuego es tu canal de expresión y visibilidad (drena tu Madera Yang fuerte).</p>
+  <p class="sec-sub">Los 4 días de mayor potencial energético para subir contenido en los próximos 14 días, calibrados a tu carta. El Fuego es tu canal de expresión y visibilidad (drena tu Madera Yang fuerte).</p>
   <div id="h-plan-contenido"></div>
 
   <!-- ✦ DÍAS PARA DINERO ✦ -->
   <div class="sec-title"><span id="plan-dinero-titulo">💰 Días para Dinero</span></div>
-  <p class="sec-sub">Los mejores días para renegociar acuerdos, cerrar números o firmar contratos de acá a fin de mes. La Tierra es tu Riqueza (財): buscamos días con dinero activo, tu Day Master firme y sin choques que generen conflicto.</p>
+  <p class="sec-sub">Los mejores días para renegociar acuerdos, cerrar números o firmar contratos en los próximos 14 días. La Tierra es tu Riqueza (財): buscamos días con dinero activo, tu Day Master firme y sin choques que generen conflicto.</p>
   <div id="h-plan-dinero"></div>
 
   <!-- INTERACCIONES -->
   <div class="sec-title">Interacciones con tu Carta</div>
-  <p class="sec-sub">Cómo el pilar de hoy dialoga con tus ramas natales (Xu, Yin, Chen, Shen) y el año 2026.</p>
+  <p class="sec-sub">Cómo el pilar de hoy dialoga con tus ramas natales (Xu, Yin, Chen, Shen), el año en curso y tu Da Yun. Incluye choques, combinaciones, daños y puniciones.</p>
   <div class="ints-row" id="h-ints-row"></div>
 
   <!-- DIOS DEL DÍA -->
@@ -479,18 +530,53 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 
   <!-- ORACLE DE HORAS -->
   <div class="sec-title">Las Mejores Horas de Hoy</div>
-  <p class="sec-sub">Cada hora tiene su propia energía. Las horas en verde amplifican tu potencial hoy.</p>
+  <p class="sec-sub">Cada hora china dura dos horas. Las horas en verde amplifican tu potencial hoy. La hora Rata (23–01) empieza a las 23 h del día anterior.</p>
   <div class="hora-grid" id="h-hora-grid"></div>
 
   <!-- EXPORT -->
   <div class="exp-bar">
-    <p>Exportar el análisis de hoy a <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarHoyICS()">⬇ Descargar .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalHoy()">📅 Google Calendar</button>
+    <p>Agendar el análisis de hoy en tu calendario</p>
+    <a class="exp-btn primary" id="gcal-hoy" href="https://calendar.google.com" target="_blank" rel="noopener">📅 Agregar a Google Calendar</a>
   </div>
 
 </div><!-- /hoy-wrap -->
 </div><!-- /sec-hoy -->
+
+
+<!-- ══════════════════════════════════════
+     ② BUSCAR MOMENTOS
+══════════════════════════════════════ -->
+<div id="sec-buscar" class="section">
+<div class="page-header" data-g="择">
+  <div class="eyebrow">Selección de fechas · 择日</div>
+  <h1>Buscar el mejor momento</h1>
+  <p>Elegí qué querés hacer y filtrá. La tabla ordena los días y, dentro de cada día, las horas chinas que mejor acompañan.</p>
+</div>
+<div class="bus-wrap">
+  <div class="bus-lbl" style="margin-bottom:0.5rem;">¿Qué querés hacer?</div>
+  <div class="bus-acts" id="bus-acts" role="radiogroup" aria-label="Actividad"></div>
+  <p class="bus-desc" id="bus-desc"></p>
+  <div class="bus-filtros">
+    <div class="bus-f"><label for="bus-periodo">Período</label>
+      <select id="bus-periodo"><option value="7">Próximos 7 días</option><option value="14" selected>Próximos 14 días</option><option value="30">Próximos 30 días</option><option value="60">Próximos 60 días</option><option value="90">Próximos 90 días</option></select></div>
+    <div class="bus-f"><label for="bus-min">Calidad mínima del día</label>
+      <select id="bus-min"><option value="1">Todos los días</option><option value="3">3★ o más</option><option value="4" selected>4★ o más</option><option value="5">Solo 5★</option></select></div>
+    <div class="bus-f"><label for="bus-dias">Días</label>
+      <select id="bus-dias"><option value="todos">Todos</option><option value="habiles">Lunes a viernes</option><option value="finde">Sábado y domingo</option></select></div>
+    <div class="bus-f"><label for="bus-franja">Franja horaria</label>
+      <select id="bus-franja"><option value="7-23">Despierto · 07 a 23 h</option><option value="9-19">Laboral · 09 a 19 h</option><option value="17-23">Tarde-noche · 17 a 23 h</option><option value="0-24">Todo el día</option></select></div>
+    <div class="bus-f"><label for="bus-orden">Ordenar por</label>
+      <select id="bus-orden"><option value="puntaje">Mejor puntaje</option><option value="fecha">Fecha</option></select></div>
+    <label class="bus-check" for="bus-sinchoque"><input type="checkbox" id="bus-sinchoque" checked> Excluir días con choque o punición</label>
+  </div>
+  <div class="bus-resumen" id="bus-resumen"></div>
+  <div class="bus-tabla-wrap"><table class="bus-tabla" id="bus-tabla"></table></div>
+  <div class="exp-bar">
+    <p>Descargá estos momentos como CSV e importalos en Google Calendar (Configuración → Importar). Cada día se agenda en su mejor hora.</p>
+    <button class="exp-btn primary" onclick="exportarBusqueda(this)">⬇ Descargar .CSV</button>
+  </div>
+</div>
+</div>
 
 
 <!-- ══════════════════════════════════════
@@ -501,7 +587,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 ══════════════════════════════════════ -->
 <div id="sec-cal" class="section">
 <div class="page-header" data-g="历">
-  <div class="eyebrow">Calendario Energético · Mayo–Diciembre 2026</div>
+  <div class="eyebrow">Calendario Energético · próximos 12 meses solares</div>
   <h1>Calendario BaZi</h1>
   <p>Análisis día a día calibrado a tu carta natal Jia Yang Wood</p>
 </div>
@@ -509,9 +595,9 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div class="month-sel" id="month-sel"></div>
   <div id="month-display"></div>
   <div class="exp-bar">
-    <p>Exportar mes a <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarMesICS()">⬇ Descargar mes .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalMes()">📅 Google Calendar</button>
+    <p>Descargá el mes como CSV e importalo en Google Calendar (Configuración → Importar)</p>
+    <button class="exp-btn primary" onclick="exportarMesCSV(this)">⬇ Descargar mes .CSV</button>
+    <a class="exp-btn" href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Abrir importador ↗</a>
   </div>
 </div>
 </div>
@@ -794,7 +880,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 ══════════════════════════════════════ -->
 <div id="sec-trabajo" class="section">
 
-<div class="page-header" data-g="客" style="border-bottom:1px solid rgba(224,160,80,0.2);">
+<div class="page-header" data-g="客" style="border-bottom:1px solid rgba(242,181,68,0.2);">
   <div class="eyebrow" style="color:var(--trabajo);letter-spacing:0.3em;">Estrategia Privada · Trabajo</div>
   <h1 style="color:var(--trabajo-l);">Panel de Trabajo</h1>
   <p>Vista privada · Cómo tu energía interactúa con cada cliente · Los calendarios de clientes son independientes</p>
@@ -802,28 +888,28 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 
 <!-- INFO PANEL -->
 <div style="max-width:900px;margin:0 auto;padding:2rem 1.5rem 1.5rem;">
-  <div style="background:rgba(224,160,80,0.04);border:1px solid rgba(224,160,80,0.2);border-radius:6px;padding:1.6rem 1.8rem;margin-bottom:2rem;">
+  <div style="background:rgba(242,181,68,0.04);border:1px solid rgba(242,181,68,0.2);border-radius:6px;padding:1.6rem 1.8rem;margin-bottom:2rem;">
     <div style="font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.2em;color:var(--trabajo);text-transform:uppercase;margin-bottom:0.7rem;">⑤ Trabajo · Vista privada de Luca</div>
     <p style="font-size:0.9rem;color:var(--ash2);line-height:1.72;margin-bottom:1rem;">
       Los calendarios y análisis de cada cliente son <strong style="color:var(--ash);">archivos separados e independientes</strong> — sin ninguna referencia a tu carta, tu familia ni tus datos personales. Podés compartirlos directamente con cada cliente o con quien necesites.
     </p>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.7rem;">
-      <a href="bazi_trabajo_martina.html" target="_blank" style="display:flex;align-items:center;gap:0.9rem;padding:0.9rem 1.1rem;background:rgba(224,160,80,0.06);border:1px solid rgba(224,160,80,0.25);border-radius:4px;text-decoration:none;transition:all 0.2s;" onmouseover="this.style.background='rgba(224,160,80,0.12)'" onmouseout="this.style.background='rgba(224,160,80,0.06)'">
+      <div style="display:flex;align-items:center;gap:0.9rem;padding:0.9rem 1.1rem;background:rgba(242,181,68,0.06);border:1px solid rgba(242,181,68,0.25);border-radius:4px;text-decoration:none;">
         <div style="font-size:1.8rem;color:var(--water);line-height:1;">壬</div>
         <div>
           <div style="font-family:'IM Fell English',serif;font-size:0.95rem;color:var(--trabajo-l);font-weight:400;">Martina</div>
-          <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);">@hellomartusss · Abrir ↗</div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);">@hellomartusss</div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 
   <!-- VINCULACIÓN LUCA ↔ CLIENTES (privada) -->
-  <div style="font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--trabajo-l);font-weight:400;margin-bottom:0.4rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(224,160,80,0.18);">Tu dinámica energética con cada cliente</div>
+  <div style="font-family:'IM Fell English',serif;font-size:1.4rem;color:var(--trabajo-l);font-weight:400;margin-bottom:0.4rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(242,181,68,0.18);">Tu dinámica energética con cada cliente</div>
   <p style="font-size:0.88rem;color:var(--smoke);font-style:italic;margin-bottom:1.5rem;">Cómo tu carta natal (甲 Jia Yang Wood) interactúa con la de cada cliente. Solo visible acá.</p>
 
   <!-- MARTINA PRIVADO -->
-  <div style="background:var(--surf2);border:1px solid rgba(224,160,80,0.18);border-radius:5px;padding:1.4rem 1.6rem;margin-bottom:1.2rem;">
+  <div style="background:var(--surf2);border:1px solid rgba(242,181,68,0.18);border-radius:5px;padding:1.4rem 1.6rem;margin-bottom:1.2rem;">
     <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.9rem;">
       <div style="font-size:2rem;color:var(--water);">壬</div>
       <div>
@@ -831,17 +917,17 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
         <div style="font-family:'Space Mono',monospace;font-size:0.57rem;color:var(--smoke);">壬 Ren Yang Water · 甲 Jia Yang Wood · Agua nutre Madera</div>
       </div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;font-size:0.88rem;color:var(--ash2);line-height:1.65;">
-      <div style="background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.18);border-radius:4px;padding:1rem 1.1rem;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:#6dbf99;margin-bottom:0.45rem;text-transform:uppercase;">✦ Tu ventaja con ella</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.9rem;font-size:0.88rem;color:var(--ash2);line-height:1.65;">
+      <div style="background:rgba(58,154,131,0.07);border:1px solid rgba(58,154,131,0.18);border-radius:4px;padding:1rem 1.1rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:#7cc8b0;margin-bottom:0.45rem;text-transform:uppercase;">✦ Tu ventaja con ella</div>
         <ul style="list-style:none;padding:0;">
-          <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Tu Madera Yang activa su <strong style="color:var(--ash);">Dinero Indirecto</strong> — estar en proyectos juntos activa su canal de riqueza más poderoso.</li>
+          <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Tu Madera Yang es su <strong style="color:var(--ash);">Food God</strong> (expresión): trabajar juntos le abre el canal creativo, y la expresión es la que alimenta su riqueza (Fuego).</li>
           <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Su Agua nutre tu Madera — ella te aporta perspectiva estratégica y profundidad que tu carta no genera sola.</li>
           <li style="padding:0.28rem 0;">Misma generación (2000 vs 1992) — energía Yang de fondo compartida. Buena sintonía de ritmo.</li>
         </ul>
       </div>
-      <div style="background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.18);border-radius:4px;padding:1rem 1.1rem;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:#e08070;margin-bottom:0.45rem;text-transform:uppercase;">⚠ Tener en cuenta</div>
+      <div style="background:rgba(217,85,44,0.07);border:1px solid rgba(217,85,44,0.18);border-radius:4px;padding:1rem 1.1rem;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.1em;color:#f08a62;margin-bottom:0.45rem;text-transform:uppercase;">⚠ Tener en cuenta</div>
         <ul style="list-style:none;padding:0;">
           <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">La Madera consume Agua en expansión — en meses de Fuego alto (Junio 2026), podés agotar su energía sin darte cuenta.</li>
           <li style="padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);">Su 7M (Tierra, 20%) ya la presiona internamente — no agregar presión externa innecesaria.</li>
@@ -849,7 +935,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
         </ul>
       </div>
     </div>
-    <div style="margin-top:0.9rem;padding:0.8rem 1rem;background:rgba(224,160,80,0.05);border-radius:3px;font-size:0.85rem;color:var(--ash2);">
+    <div style="margin-top:0.9rem;padding:0.8rem 1rem;background:rgba(242,181,68,0.05);border-radius:3px;font-size:0.85rem;color:var(--ash2);">
       <strong style="color:var(--ac);">Mejores meses para trabajo conjunto en 2026:</strong> Junio (Fuego/Caballo — máximo de ella y de vos), Noviembre-Diciembre (meses de Agua — ella más fluida). Evitar Agosto-Septiembre para lanzamientos importantes (estación de Metal la frena).
     </div>
   </div>
@@ -864,6 +950,216 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 
 <script>
 // ══════════════════════════════════════
+// MOTOR BAZI — compartido por todas las páginas
+// Día: número de día juliano (1/1/2000 = 戊午, 1/1/2024 = 甲子).
+// Mes y año: términos solares reales (longitud del Sol), el año arranca en Li Chun (315°).
+// Natal: hora solar verdadera (longitud del lugar + ecuación del tiempo).
+// ══════════════════════════════════════
+const BZ=(()=>{
+  const TRONCOS_SHORT=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
+  const TRONCOS_CN=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+  const RAMAS_SHORT=['Zi','Chou','Yin','Mao','Chen','Si','Wu','Wei','Shen','You','Xu','Hai'];
+  const RAMAS_CN=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+  const ANIMALES=['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','Cabra','Mono','Gallo','Perro','Cerdo'];
+  const ELEM=['Madera','Fuego','Tierra','Metal','Agua'];
+  // Elemento de cada rama (qi principal)
+  const RAMA_ELEM=[4,2,0,0,2,1,1,2,3,3,2,4];
+  const mod=(a,n)=>((a%n)+n)%n;
+  const RAD=Math.PI/180;
+
+  // ── Día ──
+  function jdn(y,m,d){return Math.floor(Date.UTC(y,m-1,d)/86400000)+2440588;}
+  function dayIdx(y,m,d){return mod(jdn(y,m,d)+49,60);}
+
+  // ── Sol (Meeus, baja precisión: ~0.01°, alcanza para fijar el día del término solar) ──
+  function sunLon(ms){
+    const T=(ms/86400000+2440587.5-2451545)/36525;
+    const L0=280.46646+36000.76983*T+0.0003032*T*T;
+    const M=357.52911+35999.05029*T-0.0001537*T*T;
+    const C=(1.914602-0.004817*T-0.000014*T*T)*Math.sin(M*RAD)+(0.019993-0.000101*T)*Math.sin(2*M*RAD)+0.000289*Math.sin(3*M*RAD);
+    const om=125.04-1934.136*T;
+    return mod(L0+C-0.00569-0.00478*Math.sin(om*RAD),360);
+  }
+  // Ecuación del tiempo en minutos (aprox. ±0.5 min)
+  function eot(ms){
+    const T=(ms/86400000+2440587.5-2451545)/36525;
+    const L0=mod(280.46646+36000.76983*T,360);
+    const lon=sunLon(ms);
+    const eps=23.4393-0.013*T;
+    let ra=Math.atan2(Math.cos(eps*RAD)*Math.sin(lon*RAD),Math.cos(lon*RAD))/RAD;
+    let e=mod(L0-0.0057183-ra+180,360)-180;
+    return e*4;
+  }
+  // Índice de mes solar: 0 = 寅 Tigre (desde 315°)
+  function monthK(ms){return Math.floor(mod(sunLon(ms)-315,360)/30);}
+
+  // Pilares de año y mes para un instante y su año civil local
+  function yearMonth(ms,civilYear,civilMonth){
+    const k=monthK(ms);
+    let y=civilYear;
+    if(civilMonth<=2&&k>=10)y-=1; // antes de Li Chun pertenece al año anterior
+    const yt=mod(y-4,10),yr=mod(y-4,12);
+    const mt=mod((yt%5)*2+2+k,10),mr=mod(k+2,12);
+    return{y,yt,yr,k,mt,mr};
+  }
+  const sexa=(t,r)=>mod(6*t-5*r,60);
+
+  function pilarFromIdx(idx){const t=idx%10,r=idx%12;return{ti:t,ri:r};}
+  function info(t,r){
+    return{ti:t,ri:r,tShort:TRONCOS_SHORT[t],tCn:TRONCOS_CN[t],rShort:RAMAS_SHORT[r],rCn:RAMAS_CN[r],
+      tFull:TRONCOS_CN[t]+' '+TRONCOS_SHORT[t],rFull:RAMAS_CN[r]+' '+RAMAS_SHORT[r],animal:ANIMALES[r],
+      elemT:ELEM[t>>1]+(t%2?' Yin':' Yang'),elemN:ELEM[t>>1]};
+  }
+
+  // Pilar del día para una fecha local (usa año/mes/día del calendario del dispositivo)
+  function dia(date){const p=pilarFromIdx(dayIdx(date.getFullYear(),date.getMonth()+1,date.getDate()));return info(p.ti,p.ri);}
+  // Pilares de año y mes vigentes al mediodía de esa fecha local
+  function anioMes(date){
+    const noon=new Date(date.getFullYear(),date.getMonth(),date.getDate(),12,0,0);
+    const ym=yearMonth(noon.getTime(),date.getFullYear(),date.getMonth()+1);
+    return{anio:info(ym.yt,ym.yr),mes:info(ym.mt,ym.mr),y:ym.y,k:ym.k};
+  }
+  // Troncos de las 12 horas (Zi..Hai) según el tronco del día
+  function horasTi(dayTi){const base=(dayTi%5)*2;return Array.from({length:12},(_,i)=>(base+i)%10);}
+
+  // Fecha del próximo/anterior término 節 (longitud ≡ 15 mod 30) desde ms
+  function nextJie(ms,dir){
+    const step=dir*3600000*6;
+    const seg=t=>Math.floor(mod(sunLon(t)-315,360)/30);
+    const s0=seg(ms);let a=ms,b=ms+step;
+    while(seg(b)===s0){a=b;b+=step;}
+    for(let i=0;i<30;i++){const mid=(a+b)/2;if(seg(mid)===s0)a=mid;else b=mid;}
+    return(a+b)/2;
+  }
+
+  // ── Carta natal ──
+  // birth:{y,m,d,h,min,utcOffset(h),lon(°)}, sexo:'M'|'F'
+  function natal(birth,sexo){
+    const ms=Date.UTC(birth.y,birth.m-1,birth.d,birth.h,birth.min)-birth.utcOffset*3600000;
+    // hora solar verdadera
+    const solarMs=ms+(birth.lon*4+eot(ms))*60000;
+    const sd=new Date(solarMs); // leer con getUTC*
+    let sy=sd.getUTCFullYear(),sm=sd.getUTCMonth()+1,sday=sd.getUTCDate();const sh=sd.getUTCHours();
+    if(sh>=23){const n=new Date(Date.UTC(sy,sm-1,sday+1));sy=n.getUTCFullYear();sm=n.getUTCMonth()+1;sday=n.getUTCDate();}
+    const dp=pilarFromIdx(dayIdx(sy,sm,sday));
+    const hr=Math.floor(((sh+1)%24)/2);
+    const ht=((dp.ti%5)*2+hr)%10;
+    const ym=yearMonth(ms,birth.y,birth.m);
+    // Da Yun
+    const yang=ym.yt%2===0;
+    const dir=((yang&&sexo==='M')||(!yang&&sexo==='F'))?1:-1;
+    const jie=nextJie(ms,dir);
+    const startAge=Math.abs(jie-ms)/86400000/3;
+    const mIdx=sexa(ym.mt,ym.mr);
+    const dayun=Array.from({length:9},(_,i)=>{
+      const p=pilarFromIdx(mod(mIdx+dir*(i+1),60));
+      return{...info(p.ti,p.ri),desde:startAge+10*i,hasta:startAge+10*(i+1)};
+    });
+    const solarH=sd.getUTCHours(),solarM=sd.getUTCMinutes();
+    return{
+      hora:info(ht,hr),dia:info(dp.ti,dp.ri),mes:info(ym.mt,ym.mr),anio:info(ym.yt,ym.yr),
+      dm:dp.ti,ramas:[hr,dp.ri,ym.mr,ym.yr],dayun,startAge,dir,
+      birthMs:ms,solar:`${String(solarH).padStart(2,'0')}:${String(solarM).padStart(2,'0')}`
+    };
+  }
+  function dayunEn(carta,date){
+    const edad=(date.getTime()-carta.birthMs)/(365.2422*86400000);
+    return carta.dayun.find(d=>edad>=d.desde&&edad<d.hasta)||null;
+  }
+
+  // ── 10 Dioses ──
+  const DIOS_NOMBRES=[['Friend','Rob Wealth'],['Food God','Hurt Officer'],['Ind. Wealth','Dir. Wealth'],['7 Killings','Dir. Officer'],['Ind. Resource','Dir. Resource']];
+  function dios(dm,t){const d=mod((t>>1)-(dm>>1),5);return DIOS_NOMBRES[d][(t%2===dm%2)?0:1];}
+  function diosArr(dm){return Array.from({length:10},(_,t)=>dios(dm,t));}
+
+  // ── Interacciones entre ramas ──
+  const CHOQUES=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
+  const COMBHE=[[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
+  const DANOS=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
+  const PUNICIONES=[
+    {grupo:[2,5,8],nombre:'寅巳申 Punición sin gracia (Tigre-Serpiente-Mono)'},
+    {grupo:[1,10,7],nombre:'丑戌未 Punición por abuso de poder (Buey-Perro-Cabra)'},
+  ];
+  const AUTO_PUN=[4,6,9,11]; // 辰 午 酉 亥
+  const par=(list,a,b)=>list.some(([x,y])=>(a===x&&b===y)||(a===y&&b===x));
+
+  // ri: rama del día. refs: [{r, label}] ramas de la carta + año + Da Yun
+  function interacciones(ri,refs){
+    const res=[];
+    for(const{r}of refs){
+      if(par(CHOQUES,ri,r))res.push({tipo:'choque',efecto:'mal',txt:`⚡ Choque con ${ANIMALES[r]}`});
+      if(par(COMBHE,ri,r))res.push({tipo:'combo',efecto:'bien',txt:`🤝 Combina con ${ANIMALES[r]}`});
+      if(par(DANOS,ri,r))res.push({tipo:'dest',efecto:'cuidado',txt:`⚠️ Daño (害) con ${ANIMALES[r]}`});
+      if(ri===r&&AUTO_PUN.includes(r))res.push({tipo:'pun',efecto:'cuidado',txt:`⚠️ Auto-punición (自刑) ${ANIMALES[r]}`});
+    }
+    if(ri===0||ri===3){const otro=ri===0?3:0;if(refs.some(x=>x.r===otro))res.push({tipo:'pun',efecto:'cuidado',txt:'⚠️ Punición 子卯 (Rata-Conejo)'});}
+    // Punición de tres ramas: el día la completa o la activa si ya hay al menos otra rama del grupo
+    const presentes=new Set(refs.map(x=>x.r));
+    for(const p of PUNICIONES){
+      if(!p.grupo.includes(ri))continue;
+      const otras=p.grupo.filter(g=>g!==ri&&presentes.has(g));
+      if(otras.length===2)res.push({tipo:'pun',efecto:'mal',txt:`⛓ Completa ${p.nombre}`});
+      else if(otras.length===1)res.push({tipo:'pun',efecto:'cuidado',txt:`⛓ Activa ${p.nombre.split(' ')[0]} con ${ANIMALES[otras[0]]}`});
+    }
+    return res;
+  }
+
+  // ── Exportación ──
+  function csvCalendario(eventos){
+    const esc=s=>`"${String(s).replace(/"/g,'""')}"`;
+    const f=d=>`${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`;
+    const h=(hh,mm)=>{const ap=hh>=12?'PM':'AM';const x=hh%12||12;return`${x}:${String(mm).padStart(2,'0')} ${ap}`;};
+    const rows=['Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description'];
+    for(const e of eventos){
+      rows.push([esc(e.titulo),f(e.fecha),h(e.h,0),f(e.fecha),h(e.h+(e.dur||1),0),'False',esc(e.desc)].join(','));
+    }
+    return rows.join('\r\n');
+  }
+  async function guardarArchivo(nombre,contenido,btn){
+    try{
+      const dl=window.claude?await window.claude.use('downloads'):null;
+      if(dl)await dl.save({filename:nombre,data:contenido});
+      else{
+        const url=URL.createObjectURL(new Blob(['\uFEFF'+contenido],{type:'text/csv;charset=utf-8'}));
+        const a=document.createElement('a');a.href=url;a.download=nombre;document.body.appendChild(a);a.click();a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url),1000);
+      }
+      if(btn){const t=btn.textContent;btn.textContent='✓ Guardado';setTimeout(()=>btn.textContent=t,2500);}
+    }catch(e){
+      if(e&&e.code==='declined')return;
+      if(btn){const t=btn.textContent;btn.textContent='Descarga no disponible acá';setTimeout(()=>btn.textContent=t,3000);}
+    }
+  }
+  function gcalUrl(titulo,detalle,fecha,hIni,hFin){
+    const ds=`${fecha.getFullYear()}${String(fecha.getMonth()+1).padStart(2,'0')}${String(fecha.getDate()).padStart(2,'0')}`;
+    const hh=x=>String(x).padStart(2,'0')+'0000';
+    return`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${ds}T${hh(hIni)}/${ds}T${hh(hFin)}&details=${encodeURIComponent(detalle)}`;
+  }
+
+  // Meses solares: devuelve [{inicio:Date, fin:Date, mes:info, anio:info, k, y}] desde el mes en curso
+  function mesesSolares(desde,cantidad){
+    const out=[];let d=new Date(desde.getFullYear(),desde.getMonth(),desde.getDate(),12);
+    let cur=anioMes(d);let ini=new Date(d);
+    // retroceder hasta el inicio del mes solar en curso
+    while(true){const prev=new Date(ini);prev.setDate(prev.getDate()-1);const am=anioMes(prev);if(am.k!==cur.k)break;ini=prev;}
+    d=new Date(ini);
+    while(out.length<cantidad){
+      const am=anioMes(d);let fin=new Date(d);
+      while(true){const nx=new Date(fin);nx.setDate(nx.getDate()+1);if(anioMes(nx).k!==am.k)break;fin=nx;}
+      out.push({inicio:new Date(d),fin:new Date(fin),mes:am.mes,anio:am.anio,k:am.k,y:am.y});
+      d=new Date(fin);d.setDate(d.getDate()+1);
+    }
+    return out;
+  }
+
+  return{TRONCOS_SHORT,TRONCOS_CN,RAMAS_SHORT,RAMAS_CN,ANIMALES,ELEM,RAMA_ELEM,
+    dayIdx,sunLon,eot,dia,anioMes,horasTi,natal,dayunEn,dios,diosArr,interacciones,
+    csvCalendario,guardarArchivo,gcalUrl,mesesSolares,info};
+})();
+
+</script>
+<script>
+// ══════════════════════════════════════
 // ENGINE
 // ══════════════════════════════════════
 const TRONCOS_SHORT=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
@@ -875,22 +1171,15 @@ const ELEM_NAME=['Madera','Madera','Fuego','Fuego','Tierra','Tierra','Metal','Me
 const ELEM_CLS=['etag-m','etag-m','etag-f','etag-f','etag-t','etag-t','etag-me','etag-me','etag-a','etag-a'];
 const DIAS_ES=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const MESES_ES=['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-const ELEM_COLORS={0:'#6db860',1:'#6db860',2:'#e87a40',3:'#e87a40',4:'#c9a45a',5:'#c9a45a',6:'#a0b4c8',7:'#a0b4c8',8:'#5a9abf',9:'#5a9abf'};
-const ELEM_BG={0:'rgba(74,140,63,0.22)',1:'rgba(74,140,63,0.22)',2:'rgba(224,90,26,0.22)',3:'rgba(224,90,26,0.22)',4:'rgba(156,122,60,0.22)',5:'rgba(156,122,60,0.22)',6:'rgba(122,155,181,0.22)',7:'rgba(122,155,181,0.22)',8:'rgba(44,95,138,0.22)',9:'rgba(44,95,138,0.22)'};
+const ELEM_COLORS={0:'#7dbb88',1:'#7dbb88',2:'#ff914d',3:'#ff914d',4:'#f2b544',5:'#f2b544',6:'#c3cdcf',7:'#c3cdcf',8:'#6fb0c0',9:'#6fb0c0'};
+const ELEM_BG={0:'rgba(95,158,110,0.22)',1:'rgba(95,158,110,0.22)',2:'rgba(217,85,44,0.22)',3:'rgba(217,85,44,0.22)',4:'rgba(242,181,68,0.22)',5:'rgba(242,181,68,0.22)',6:'rgba(167,182,186,0.22)',7:'rgba(167,182,186,0.22)',8:'rgba(79,140,158,0.22)',9:'rgba(79,140,158,0.22)'};
 
 function getToday(){return new Date();}
-function getPilar(date){
-  const ref=new Date('2024-01-01T12:00:00');
-  const diff=Math.round((date-ref)/86400000);
-  const idx=((46+diff)%60+60)%60;
-  const t=idx%10,r=idx%12;
-  return{ti:t,ri:r,tShort:TRONCOS_SHORT[t],tFull:TRONCOS_FULL[t],rFull:RAMAS_FULL[r],
-    animal:ANIMALES[r],elemT:ELEM_T[t],elemN:ELEM_NAME[t],elemC:ELEM_CLS[t]};
-}
+function getPilar(date){const p=BZ.dia(date);return{...p,elemC:ELEM_CLS[p.ti]};}
 
 // LUCA ONLY
 const LUCA={
-  dm:0,natal:[10,2,4,8],anioR:6,dayunR:7,
+  dm:0,natal:[10,2,4,8], // Hora Xu · Día Yin · Mes Chen · Año Shen (se recalcula abajo)
   // Madera Yang FUERTE (triple Jia + raíz Tigre). Necesita drenar(Fuego), usar(Tierra), controlar(Metal).
   // Agua nutre madera ya excesiva = desfavorable. Madera refuerza el exceso = desfavorable.
   elemBon:[2,3,4,5,6,7],elemBad:[0,1,8,9],
@@ -967,27 +1256,35 @@ const ESTRELLAS_LUCA={
   8:{txt:'🐎 驛馬 Sky Horse (Mono) — movimiento y viajes',efecto:'info'},
 };
 
-function getInts(ri){
-  const refs=[...LUCA.natal,LUCA.anioR,LUCA.dayunR];
-  let res=[];
-  for(let b of refs){
-    for(let[a,c]of CHOQUES)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`⚡ Choque con ${ANIMALES[b]}`});
-    for(let[a,c]of COMBHE)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`🤝 Combina con ${ANIMALES[b]}`});
-    for(let[a,c]of DESTRUCT)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`⚠️ Daño (害) con ${ANIMALES[b]}`});
-  }
-  if(ri===2||ri===6||ri===10)res.push({tipo:'trio',efecto:'bien',txt:'🔥 Trío de Fuego (寅午戌) — expresión en el pico'});
-  // Trío de AGUA 申子辰: Luca tiene Shen+Chen natal — un día Rata lo completa = exceso de Agua
-  if(ri===0)res.push({tipo:'trioAgua',efecto:'cuidado',txt:'💧 Completa Trío de Agua (申子辰) — exceso de recurso, dispersión'});
+// Carta natal calculada (hora solar verdadera, Buenos Aires)
+const CARTA_LUCA=BZ.natal({y:1992,m:4,d:8,h:20,min:45,utcOffset:-3,lon:-58.38},'M');
+LUCA.natal=CARTA_LUCA.ramas;
+function refsLuca(date){
+  const d=date||getToday();
+  const refs=LUCA.natal.map(r=>({r}));
+  refs.push({r:BZ.anioMes(d).anio.ri});
+  const dy=BZ.dayunEn(CARTA_LUCA,d);if(dy)refs.push({r:dy.ri});
+  return refs;
+}
+function getInts(ri,date){
+  const refs=refsLuca(date);
+  const res=BZ.interacciones(ri,refs);
+  const presentes=refs.map(x=>x.r);
+  const completa=g=>g.includes(ri)&&g.filter(x=>x!==ri).every(x=>presentes.includes(x));
+  // Trío de Fuego 寅午戌: Fuego es tu Dios útil
+  if(completa([2,6,10]))res.push({tipo:'trio',efecto:'bien',txt:'🔥 Trío de Fuego (寅午戌) — expresión en el pico'});
+  // Trío de Agua 申子辰: tenés Shen+Chen natal, un día Rata lo completa = exceso de Agua
+  if(completa([8,0,4]))res.push({tipo:'trioAgua',efecto:'cuidado',txt:'💧 Completa Trío de Agua (申子辰) — exceso de recurso, dispersión'});
   // Estrellas simbólicas
   if(ESTRELLAS_LUCA[ri])res.push({tipo:'estrella',efecto:ESTRELLAS_LUCA[ri].efecto,txt:ESTRELLAS_LUCA[ri].txt});
   return res;
 }
 
-function calcRating(ti,ri){
+function calcRating(ti,ri,date){
   let s=3;
   if(LUCA.elemBon.includes(ti))s+=1.0;
   if(LUCA.elemBad.includes(ti))s-=1.1;
-  for(let i of getInts(ri)){
+  for(let i of getInts(ri,date)){
     if(i.efecto==='bien')s+=0.5;
     if(i.efecto==='mal')s-=0.8;
     if(i.efecto==='cuidado')s-=0.35;
@@ -1006,12 +1303,7 @@ function renderStars(n,sz=12,cls='star'){
 // HORA PILLARS — para Jia (tronco del día define la hora)
 // Hora empieza en Zi (23h). Tronco de hora para Jia: Jia Zi, Yi Chou, Bing Yin...
 // Para día Jia (ti=0): hora Zi=Jia(0), Chou=Yi(1), Yin=Bing(2), Mao=Ding(3), Chen=Wu(4), Si=Ji(5), Wu=Geng(6), Wei=Xin(7), Shen=Ren(8), You=Gui(9), Xu=Jia(0), Hai=Yi(1)
-function getHorasTi(dayTi){
-  // For each of 12 hours (starting Zi=0), hour stem cycles based on day stem
-  const starts={0:0,1:2,2:4,3:6,4:8,5:0,6:2,7:4,8:6,9:8};
-  const base=starts[dayTi]||0;
-  return Array.from({length:12},(_,i)=>(base+i)%10);
-}
+function getHorasTi(dayTi){return BZ.horasTi(dayTi);}
 
 const HORA_INFO=[
   {label:'23–01',rama:'子 Rata',ri:0},{label:'01–03',rama:'丑 Buey',ri:1},
@@ -1022,15 +1314,7 @@ const HORA_INFO=[
   {label:'19–21',rama:'戌 Perro',ri:10},{label:'21–23',rama:'亥 Cerdo',ri:11},
 ];
 
-// ══ MONTH CALC ══
-function getMesPilar(m){
-  // 2026 = año Bing Wu → Feb arranca 庚寅 Geng Yin (regla Cinco Tigres 年上起月法)
-  // Ene 2026 pertenece al año Yi Si 2025 → Ji Chou
-  const mp={1:{ti:5,ri:1},2:{ti:6,ri:2},3:{ti:7,ri:3},4:{ti:8,ri:4},
-    5:{ti:9,ri:5},6:{ti:0,ri:6},7:{ti:1,ri:7},8:{ti:2,ri:8},
-    9:{ti:3,ri:9},10:{ti:4,ri:10},11:{ti:5,ri:11},12:{ti:6,ri:0}};
-  return mp[m]||{ti:0,ri:0};
-}
+
 
 // ══ HOY ══
 let todayPilar=null;
@@ -1044,18 +1328,18 @@ function buildHoyPanel(){
   const dia=today.getDate();
   const mes=MESES_ES[today.getMonth()+1];
   const anio=today.getFullYear();
-  const m=today.getMonth()+1;
-  const mp=getMesPilar(m);
+  const am=BZ.anioMes(today);
+  const dy=BZ.dayunEn(CARTA_LUCA,today);
 
   // Title
   document.getElementById('hoy-title-main').textContent=`${dow}, ${dia} de ${mes} ${anio}`;
 
   // Context bar
   document.getElementById('hoy-ctx-bar').innerHTML=`
-    <div>AÑO <span>丙午 Fuego/Caballo</span></div>
-    <div>MES <span>${TRONCOS_FULL[mp.ti]} ${RAMAS_FULL[mp.ri]}</span></div>
+    <div>AÑO <span>${am.anio.tFull} ${am.anio.rFull} · ${am.anio.animal}</span></div>
+    <div>MES <span>${am.mes.tFull} ${am.mes.rFull} · ${am.mes.animal}</span></div>
     <div>DÍA <span>${p.tFull} ${p.rFull} · ${p.animal}</span></div>
-    <div>DA YUN <span>丁未 Fuego Yin/Cabra</span></div>
+    <div>DA YUN <span>${dy?`${dy.tCn}${dy.rCn} ${dy.elemT}/${dy.animal}`:'—'}</span></div>
   `;
 
   // Hero
@@ -1083,7 +1367,7 @@ function buildHoyPanel(){
 
   // Context paragraph
   const ints=getInts(p.ri);
-  const intDesc=ints.length?ints.map(i=>i.txt.replace(/[🤝⚡⚠️🔥]/g,'')).join(', '):'Sin interacciones especiales';
+  const intDesc=ints.length?ints.map(i=>i.txt.replace(/[🤝⚡⚠️🔥💧⛓🐂🐐🌸📖🐎]|\uFE0F/gu,'').trim()).join(', '):'Sin interacciones especiales';
   const contexts={
     5:`Alineación máxima. El pilar del día amplifica tu Madera Yang sin resistencia. Los 10 Dioses más favorables están activos — este es el tipo de día para hacer lo que más importa. Interacciones: <strong>${intDesc}</strong>.`,
     4:`Día de buen flujo. El Qi del día coopera con tu carta natal y el Da Yun activo. No hay obstáculos mayores — avanzar con confianza. Interacciones: <strong>${intDesc}</strong>.`,
@@ -1102,6 +1386,7 @@ function buildHoyPanel(){
       if(i.tipo==='combo')cls='int-bien';
       if(i.tipo==='dest')cls='int-cuidado';
       if(i.tipo==='trio')cls='int-trio';
+      if(i.tipo==='pun')cls=i.efecto==='mal'?'int-mal':'int-cuidado';
       return `<span class="int-chip ${cls}">${i.txt}</span>`;
     }).join('');
   } else {
@@ -1140,7 +1425,7 @@ function buildHoyPanel(){
   const horaEl=document.getElementById('h-hora-grid');
   horaEl.innerHTML=HORA_INFO.map((h,i)=>{
     const hti=horasTi[i];
-    const hRating=calcRating(hti,h.ri);
+    const hRating=calcRating(hti,h.ri,today);
     let cls='hora-ok';
     if(hRating>=4)cls='hora-best';
     if(hRating<=2)cls='hora-bad';
@@ -1157,6 +1442,11 @@ function buildHoyPanel(){
     </div>`;
   }).join('');
 
+  // Google Calendar de hoy
+  const gcal=document.getElementById('gcal-hoy');
+  if(gcal)gcal.href=BZ.gcalUrl(`BaZi ⭐${rating} · Luca · ${p.tShort} ${p.animal}`,
+    `Dios: ${LUCA.dios[p.ti]}\nHACER: ${LUCA.tipsDetallados[p.ti].hacer[0]}\nEVITAR: ${LUCA.tipsDetallados[p.ti].noHacer[0]}`,today,9,10);
+
   // Resumen ejecutivo
   buildResumenEjecutivo(p, rating);
 }
@@ -1172,7 +1462,7 @@ function buildResumenEjecutivo(p, rating){
     5:{cls:'pub-excelente',icon:'🔥',verdict:'PUBLICAR HOY',    note:'Máxima alineación. Food God activo — lo que mostrás llega más lejos.'},
     4:{cls:'pub-bueno',    icon:'✦', verdict:'Buen día para publicar', note:'Fuego activo. Tu mensaje resuena con más fuerza que un día neutro.'},
     3:{cls:'pub-neutro',   icon:'◈', verdict:'Puede funcionar',  note:'No es el peak, pero tampoco bloquea. Contenido liviano OK.'},
-    2:{cls:'pub-evitar',   icon:'⚠', verdict:'Mejor esperar',    note:'Metal o Tierra activos. Guardá el contenido importante para otro día.'},
+    2:{cls:'pub-evitar',   icon:'⚠', verdict:'Mejor esperar',    note:'Agua o Madera activas, o choque con tu carta. Guardá el contenido importante para otro día.'},
     1:{cls:'pub-mal',      icon:'✕', verdict:'No publicar hoy',  note:'Fricción alta con tu carta. Reservá el lanzamiento para una ventana mejor.'},
   };
   const pc=pubConfigs[pubScore];
@@ -1215,28 +1505,19 @@ function buildResumenEjecutivo(p, rating){
 }
 
 // ══ CALENDAR ══
-// Pilares de mes 2026 (año Bing Wu, regla Cinco Tigres: Feb=庚寅)
-const MONTHS_DATA=[
-  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Gui Si · Agua Yin sobre Fuego',pilar:'癸巳',chinese:'巳'},
-  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Jia Wu · Madera sobre Fuego pico',pilar:'甲午',chinese:'午'},
-  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Yi Wei · Madera Yin sobre Tierra',pilar:'乙未',chinese:'未'},
-  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Bing Shen · Fuego sobre Metal',pilar:'丙申',chinese:'申'},
-  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Ding You · Fuego Yin sobre Metal',pilar:'丁酉',chinese:'酉'},
-  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Wu Xu · Tierra doble',pilar:'戊戌',chinese:'戌'},
-  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Ji Hai · Tierra sobre Agua',pilar:'己亥',chinese:'亥'},
-  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Geng Zi · Metal sobre Agua',pilar:'庚子',chinese:'子'},
-];
-let currentMonth=5;
+// 12 meses solares desde el mes en curso. Cada mes empieza en su término solar (節).
+const MESES_SOL=BZ.mesesSolares(getToday(),12);
+let currentMonth=0;
+const fmtDM=d=>`${d.getDate()}/${d.getMonth()+1}`;
+function mesDesc(ms){return `Mes ${ms.mes.animal} · ${ms.mes.tShort} ${ms.mes.rShort} · ${ms.mes.elemN} sobre ${BZ.ELEM[BZ.RAMA_ELEM[ms.mes.ri]]} · del ${fmtDM(ms.inicio)} al ${fmtDM(ms.fin)}`;}
 
 function buildMonthSel(){
   const sel=document.getElementById('month-sel');
-  const today=getToday();
-  MONTHS_DATA.forEach(md=>{
-    const isNow=md.m===(today.getMonth()+1)&&today.getFullYear()===2026;
+  MESES_SOL.forEach((ms,i)=>{
     const btn=document.createElement('button');
-    btn.className='month-btn'+(md.m===currentMonth?' active':'');
-    btn.textContent=md.name+(isNow?' · Hoy':'');
-    btn.onclick=()=>{document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentMonth=md.m;renderMonth(md.m);};
+    btn.className='month-btn'+(i===currentMonth?' active':'');
+    btn.textContent=`${ms.mes.rCn} ${ms.mes.animal} · ${fmtDM(ms.inicio)}`+(i===0?' · Hoy':'');
+    btn.onclick=()=>{document.querySelectorAll('.month-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentMonth=i;renderMonth(i);};
     sel.appendChild(btn);
   });
 }
@@ -1249,34 +1530,26 @@ function getResumen(ti,ri,rating){
   return r[rating];
 }
 
-function renderMonth(m){
-  const md=MONTHS_DATA.find(x=>x.m===m);
+function renderMonth(i){
+  const ms=MESES_SOL[i];
   const display=document.getElementById('month-display');
-  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
-  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
   const today=getToday();
-  const isCurrentMonth=m===(today.getMonth()+1)&&today.getFullYear()===2026;
-  let start;
-  if(isCurrentMonth){
-    start=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0);
-  }else{
-    start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  }
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
-  const mp=getMesPilar(m);
+  const isCurrentMonth=i===0;
+  const start=isCurrentMonth?new Date(today.getFullYear(),today.getMonth(),today.getDate(),12):new Date(ms.inicio);
+  const end=ms.fin;
   const fromTodayNote=isCurrentMonth?` <span style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.06em;">· desde hoy</span>`:'';
   let html=`<div class="month-hdr">
-    <div class="month-cn">${md.chinese}</div>
-    <div class="month-info"><h2>${md.name} 2026${fromTodayNote}</h2><p>${md.desc}</p></div>
-    <div class="month-meta"><div>PILAR <span>${md.pilar}</span></div><div>MES <span>${TRONCOS_FULL[mp.ti]} · ${ELEM_T[mp.ti]}</span></div></div>
+    <div class="month-cn">${ms.mes.rCn}</div>
+    <div class="month-info"><h2>${MESES_ES[ms.inicio.getMonth()+1]} ${ms.inicio.getFullYear()}${fromTodayNote}</h2><p>${mesDesc(ms)}</p></div>
+    <div class="month-meta"><div>PILAR <span>${ms.mes.tCn}${ms.mes.rCn}</span></div><div>AÑO <span>${ms.anio.tCn}${ms.anio.rCn} · ${ms.anio.animal}</span></div></div>
   </div><div class="cal-grid">`;
   for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
     const p=getPilar(new Date(d));
-    const rating=calcRating(p.ti,p.ri);
+    const rating=calcRating(p.ti,p.ri,d);
     const dow=DIAS_ES[d.getDay()];
     const isWe=d.getDay()===0||d.getDay()===6;
     const isTd=d.getDate()===today.getDate()&&d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear();
-    const ints=getInts(p.ri);
+    const ints=getInts(p.ri,d);
     const intTxt=ints.length?ints.map(i=>i.txt).slice(0,2).join(' · '):'—';
     const todayBadge=isTd?'<span class="today-badge">HOY</span>':'';
     html+=`<div class="day-card r${rating}${isWe?' weekend':''}${isTd?' today-card':''}">
@@ -1294,52 +1567,21 @@ function renderMonth(m){
   }
   html+=`</div>`;
   display.innerHTML=html;
-  if(m===(today.getMonth()+1)){setTimeout(()=>{const tc=document.querySelector('.today-card');if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
+  if(isCurrentMonth){setTimeout(()=>{const tc=document.querySelector('.today-card');if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
 }
 
-// ══ EXPORT ══
-function fICS(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';}
-function mkEvent(date,title,desc,dur=60){
-  const s=new Date(date);s.setHours(9,0,0);
-  const e=new Date(s);e.setMinutes(e.getMinutes()+dur);
-  return `BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc.replace(/\n/g,'\\n').replace(/<[^>]+>/g,'')}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
-}
-function dl(name,content){const b=new Blob([content],{type:'text/calendar'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href);}
-
-function exportarHoyICS(){
-  if(!todayPilar)return;
-  const today=getToday();
-  const rating=calcRating(todayPilar.ti,todayPilar.ri);
-  const title=`BaZi ${'⭐'.repeat(rating)} · Luca · ${todayPilar.tShort} ${todayPilar.animal}`;
-  const desc=`Dios: ${LUCA.dios[todayPilar.ti]}\nHACER: ${LUCA.tipsDetallados[todayPilar.ti].hacer.slice(0,3).join(' / ')}\nEVITAR: ${LUCA.tipsDetallados[todayPilar.ti].noHacer.slice(0,3).join(' / ')}`;
-  dl('bazi_hoy.ics',`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Luca//ES\r\n${mkEvent(today,title,desc)}END:VCALENDAR`);
-}
-function abrirGCalHoy(){
-  if(!todayPilar)return;
-  const today=getToday();
-  const rating=calcRating(todayPilar.ti,todayPilar.ri);
-  const title=encodeURIComponent(`BaZi ⭐${rating} · Luca · ${todayPilar.tShort} ${todayPilar.animal}`);
-  const det=encodeURIComponent(`Dios: ${LUCA.dios[todayPilar.ti]}\nHACER: ${LUCA.tipsDetallados[todayPilar.ti].hacer[0]}\nEVITAR: ${LUCA.tipsDetallados[todayPilar.ti].noHacer[0]}`);
-  const ds=`${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
-  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
-}
-function exportarMesICS(){
-  const md=MONTHS_DATA.find(x=>x.m===currentMonth);
-  const nextM=currentMonth===12?1:currentMonth+1;const nextY=currentMonth===12?2027:2026;
-  const nextMd=currentMonth===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
-  const start=new Date(`2026-${String(currentMonth).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
-  let events='';
-  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
+// ══ EXPORT ══ (CSV que Google Calendar importa; el visor no permite .ics)
+function exportarMesCSV(btn){
+  const ms=MESES_SOL[currentMonth];
+  const ev=[];
+  for(let d=new Date(ms.inicio);d<=ms.fin;d.setDate(d.getDate()+1)){
     const p=getPilar(new Date(d));
-    const rating=calcRating(p.ti,p.ri);
-    const title=`BaZi ${'⭐'.repeat(rating)} · Luca · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`;
-    const desc=`Rating: ${rating}/5\nDios: ${LUCA.dios[p.ti]}\nHACER: ${getCardDo(p.ti)}\nEVITAR: ${getCardDont(p.ti)}`;
-    events+=mkEvent(new Date(d),title,desc,30);
+    const rating=calcRating(p.ti,p.ri,d);
+    ev.push({fecha:new Date(d),h:9,dur:1,titulo:`BaZi ${'⭐'.repeat(rating)} · Luca · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`,
+      desc:`Rating: ${rating}/5 | Dios: ${LUCA.dios[p.ti]} | HACER: ${getCardDo(p.ti)} | EVITAR: ${getCardDont(p.ti)}`});
   }
-  dl(`bazi_luca_${md.name.toLowerCase()}.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Luca//ES\r\nCALNAME:BaZi Luca ${md.name}\r\n${events}END:VCALENDAR`);
+  BZ.guardarArchivo(`bazi_luca_${ms.mes.rShort.toLowerCase()}_${ms.inicio.getFullYear()}.csv`,BZ.csvCalendario(ev),btn);
 }
-function abrirGCalMes(){window.open(`https://calendar.google.com/calendar/r/month/2026/${currentMonth}?authuser=sanbaoestudio%40gmail.com`,'_blank');}
 
 // ══ NAV ══
 function showSection(id,tab){
@@ -1361,14 +1603,14 @@ function buildPlanContenido(){
   const startDay=today.getDate();
   const MESES_T=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   const tituloEl=document.getElementById('plan-cont-titulo');
-  if(tituloEl)tituloEl.textContent=`✦ Plan de Contenido — ${MESES_T[m]} ${y}`;
+  if(tituloEl)tituloEl.textContent='✦ Plan de Contenido · próximos 14 días';
 
   // Recolectar todos los días desde hoy hasta fin de mes con su pub rating
   let dias=[];
-  for(let d=startDay;d<=lastDay;d++){
-    const date=new Date(y,m,d,12,0,0);
+  for(let k=0;k<14;k++){
+    const date=new Date(y,m,startDay+k,12,0,0);const d=date.getDate();
     const p=getPilar(date);
-    const rating=calcRating(p.ti,p.ri);
+    const rating=calcRating(p.ti,p.ri,date);
     // pub rating: Fuego(2,3) ideal, Agua(8,9) malo
     let pub=rating;
     if([2,3].includes(p.ti))pub=Math.min(5,rating+1);
@@ -1377,14 +1619,14 @@ function buildPlanContenido(){
     let raw=3.0;
     if(LUCA.elemBon.includes(p.ti))raw+=1.0;
     if(LUCA.elemBad.includes(p.ti))raw-=1.1;
-    for(const it of getInts(p.ri)){
+    for(const it of getInts(p.ri,date)){
       if(it.efecto==='bien')raw+=0.5;
       else if(it.efecto==='mal')raw-=0.8;
       else if(it.efecto==='cuidado')raw-=0.35;
       else if(it.efecto==='estrella')raw+=0.3;
       if(it.tipo==='trio')raw+=0.7;
     }
-    const ints=getInts(p.ri);
+    const ints=getInts(p.ri,date);
     dias.push({d,date,p,rating,pub,raw,ints,isFuego:[2,3].includes(p.ti)});
   }
 
@@ -1394,7 +1636,7 @@ function buildPlanContenido(){
     if(b.isFuego!==a.isFuego)return b.isFuego-a.isFuego;
     return b.raw-a.raw;
   });
-  const top4=ranked.slice(0,4).sort((a,b)=>a.d-b.d); // los 4 mejores, en orden cronológico
+  const top4=ranked.slice(0,4).sort((a,b)=>a.date-b.date); // los 4 mejores, en orden cronológico
 
   const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   const DIAS_SEM=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
@@ -1403,8 +1645,8 @@ function buildPlanContenido(){
 
   let cards=top4.map((dia,i)=>{
     const dow=DIAS_SEM[dia.date.getDay()];
-    const mesN=MESES[m];
-    const pubColors={5:'#6dbf99',4:'#8cc87a',3:'#c9a45a',2:'#e07a5a',1:'#e08070'};
+    const mesN=MESES[dia.date.getMonth()];
+    const pubColors={5:'#7cc8b0',4:'#a9cf8a',3:'#f2b544',2:'#f08a62',1:'#f08a62'};
     const pubLabels={5:'IDEAL PARA PUBLICAR',4:'MUY BUENO',3:'ACEPTABLE',2:'FLOJO',1:'EVITAR'};
     const elemCls=dia.p.elemC;
     const intTxt=dia.ints.length?dia.ints.map(x=>x.txt).join(' · '):'Sin interacciones especiales';
@@ -1434,10 +1676,10 @@ function buildPlanContenido(){
   }).join('');
 
   cont.innerHTML=`
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1rem;">${cards}</div>
-    <div class="exp-bar" style="border-color:rgba(224,160,80,0.25);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.9rem;margin-bottom:1rem;">${cards}</div>
+    <div class="exp-bar" style="border-color:rgba(242,181,68,0.25);">
       <p>Agendar los 4 videos en <strong>sanbaoestudio@gmail.com</strong></p>
-      <button class="exp-btn primary" onclick="exportarPlanContenido()">⬇ Descargar plan .ICS</button>
+      <button class="exp-btn primary" onclick="exportarPlanContenido(this)">⬇ Descargar plan .CSV</button>
     </div>
   `;
 
@@ -1448,21 +1690,11 @@ function buildPlanContenido(){
   }));
 }
 
-function exportarPlanContenido(){
+function exportarPlanContenido(btn){
   if(!window._planContenido)return;
-  const MESES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-  let events='';
-  const fICS=d=>d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
-  window._planContenido.forEach(v=>{
-    const s=new Date(v.date);s.setHours(11,0,0);
-    const e=new Date(s);e.setHours(12,0,0);
-    const title=`🎬 Video ${v.i} · ${'⭐'.repeat(v.pub)} · Publicar contenido`;
-    const desc=`Día de alto potencial para publicar (${v.pub}/5).\\nPilar: ${v.pilar} · ${v.elem} · ${v.dios}\\nCalibrado a tu carta 甲 Jia Madera Yang.`;
-    events+=`BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
-  });
-  const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Plan Contenido//ES\r\nCALNAME:Plan Contenido Luca\r\n${events}END:VCALENDAR`;
-  const b=new Blob([ics],{type:'text/calendar'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='plan_contenido_luca.ics';a.click();URL.revokeObjectURL(a.href);
+  const ev=window._planContenido.map(v=>({fecha:v.date,h:11,dur:1,titulo:`🎬 Video ${v.i} · ${'⭐'.repeat(v.pub)} · Publicar contenido`,
+    desc:`Día de alto potencial para publicar (${v.pub}/5). Pilar: ${v.pilar} · ${v.elem} · ${v.dios}. Calibrado a tu carta 甲 Jia Madera Yang.`}));
+  BZ.guardarArchivo('plan_contenido_luca.csv',BZ.csvCalendario(ev),btn);
 }
 
 // ══ PLAN DE DINERO ══
@@ -1478,11 +1710,11 @@ function buildPlanDinero(){
   const startDay=today.getDate();
   const MESES_T=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   const tituloEl=document.getElementById('plan-dinero-titulo');
-  if(tituloEl)tituloEl.textContent=`💰 Días para Dinero — ${MESES_T[m]} ${y}`;
+  if(tituloEl)tituloEl.textContent='💰 Días para Dinero · próximos 14 días';
 
   const RAMAS_RIQUEZA=[4,10,1,7]; // Chen, Xu, Chou, Wei (las 4 tierras)
 
-  function scoreNego(ti,ri){
+  function scoreNego(ti,ri,date){
     let s=3.0; const notas=[]; let conflicto=false;
     if(ti===5){s+=1.5;notas.push('💰 Dinero Directo (正財) — acuerdos formales');}
     else if(ti===4){s+=1.2;notas.push('💰 Dinero Indirecto (偏財) — oportunidad grande');}
@@ -1491,20 +1723,20 @@ function buildPlanDinero(){
     if(ti===6||ti===7){s+=0.3;notas.push('Metal — autoridad/estructura');}
     // Nobleman (天乙贵人): Buey/Cabra — LA estrella clásica de negociación (ayuda de benefactores)
     if(ri===1||ri===7){s+=0.6;notas.push('🐐 Nobleman — benefactores a tu favor en la mesa');}
-    for(const it of getInts(ri)){
-      if(it.efecto==='mal'){s-=1.0;conflicto=true;notas.push('⚡ '+it.txt.replace(/[⚡🤝⚠️🔥💧🐂🐐🌸📖🐎]/g,'').trim());}
-      else if(it.efecto==='cuidado'){s-=0.4;notas.push('⚠️ '+it.txt.replace(/[⚡🤝⚠️🔥💧🐂🐐🌸📖🐎]/g,'').trim());}
-      else if(it.efecto==='bien'){s+=0.4;notas.push('🤝 '+it.txt.replace(/[⚡🤝⚠️🔥💧🐂🐐🌸📖🐎]/g,'').trim());}
+    for(const it of getInts(ri,date)){
+      if(it.efecto==='mal'){s-=1.0;conflicto=true;notas.push('⚡ '+it.txt.replace(/[⚡🤝⚠️🔥💧⛓🐂🐐🌸📖🐎]|\uFE0F/gu,'').trim());}
+      else if(it.efecto==='cuidado'){s-=0.4;notas.push('⚠️ '+it.txt.replace(/[⚡🤝⚠️🔥💧⛓🐂🐐🌸📖🐎]|\uFE0F/gu,'').trim());}
+      else if(it.efecto==='bien'){s+=0.4;notas.push('🤝 '+it.txt.replace(/[⚡🤝⚠️🔥💧⛓🐂🐐🌸📖🐎]|\uFE0F/gu,'').trim());}
     }
     if(ti===8||ti===9){s-=0.8;notas.push('Agua — dispersión, no ideal para $$');}
     return {score:Math.max(1,Math.min(5,Math.round(s))),raw:s,notas,conflicto};
   }
 
   let dias=[];
-  for(let d=startDay;d<=lastDay;d++){
-    const date=new Date(y,m,d,12,0,0);
+  for(let k=0;k<14;k++){
+    const date=new Date(y,m,startDay+k,12,0,0);const d=date.getDate();
     const p=getPilar(date);
-    const r=scoreNego(p.ti,p.ri);
+    const r=scoreNego(p.ti,p.ri,date);
     dias.push({d,date,p,...r,esDinero:(p.ti===4||p.ti===5)});
   }
 
@@ -1514,19 +1746,19 @@ function buildPlanDinero(){
     if(b.score!==a.score)return b.score-a.score;
     return b.raw-a.raw;
   });
-  const top4=ranked.slice(0,4).sort((a,b)=>a.d-b.d);
+  const top4=ranked.slice(0,4).sort((a,b)=>a.date-b.date);
 
   const MESES=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   const DIAS_SEM=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
 
   if(top4.length===0){cont.innerHTML='<p style="color:var(--smoke);font-style:italic;">No quedan días en el mes.</p>';return;}
 
-  const scoreColors={5:'#6dbf99',4:'#8cc87a',3:'#c9a45a',2:'#e07a5a',1:'#e08070'};
+  const scoreColors={5:'#7cc8b0',4:'#a9cf8a',3:'#f2b544',2:'#f08a62',1:'#f08a62'};
   const scoreLabels={5:'IDEAL PARA CERRAR',4:'MUY BUENO',3:'ACEPTABLE',2:'FLOJO',1:'EVITAR'};
 
   let cards=top4.map((dia,i)=>{
     const dow=DIAS_SEM[dia.date.getDay()];
-    const mesN=MESES[m];
+    const mesN=MESES[dia.date.getMonth()];
     const dineroFuerte=dia.esDinero&&!dia.conflicto;
     let consejo;
     if(dia.p.ti===5)consejo='Ji = Dinero Directo: la energía exacta de acuerdos formales, contratos y números fijos. El mejor tipo de día para cerrar cifras.';
@@ -1558,22 +1790,22 @@ function buildPlanDinero(){
   const evitar=dias.filter(x=>x.conflicto).sort((a,b)=>a.raw-b.raw).slice(0,3);
   let evitarHtml='';
   if(evitar.length){
-    evitarHtml=`<div style="background:rgba(192,57,43,0.05);border:1px solid rgba(192,57,43,0.18);border-radius:5px;padding:1rem 1.3rem;margin-top:0.3rem;">
-      <div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:#e08070;text-transform:uppercase;margin-bottom:0.5rem;">❌ Evitar para dinero</div>
+    evitarHtml=`<div style="background:rgba(217,85,44,0.05);border:1px solid rgba(217,85,44,0.18);border-radius:5px;padding:1rem 1.3rem;margin-top:0.3rem;">
+      <div style="font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.12em;color:#f08a62;text-transform:uppercase;margin-bottom:0.5rem;">❌ Evitar para dinero</div>
       ${evitar.map(x=>{
         const dow=DIAS_SEM[x.date.getDay()];
         const choqueTxt=x.notas.filter(n=>n.includes('⚡')||n.includes('Agua')).join(' · ')||'fricción';
-        return `<div style="font-size:0.84rem;color:var(--ash2);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);"><strong style="color:var(--ash);">${x.d}/${String(m+1).padStart(2,'0')} (${dow.slice(0,3)})</strong> · ${x.p.tShort} ${x.p.animal} · ${choqueTxt}</div>`;
+        return `<div style="font-size:0.84rem;color:var(--ash2);padding:0.28rem 0;border-bottom:1px solid rgba(255,255,255,0.04);"><strong style="color:var(--ash);">${x.d}/${String(x.date.getMonth()+1).padStart(2,'0')} (${dow.slice(0,3)})</strong> · ${x.p.tShort} ${x.p.animal} · ${choqueTxt}</div>`;
       }).join('')}
     </div>`;
   }
 
   cont.innerHTML=`
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.9rem;margin-bottom:1rem;">${cards}</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0.9rem;margin-bottom:1rem;">${cards}</div>
     ${evitarHtml}
-    <div class="exp-bar" style="border-color:rgba(224,160,80,0.25);margin-top:1rem;">
+    <div class="exp-bar" style="border-color:rgba(242,181,68,0.25);margin-top:1rem;">
       <p>Agendar días de dinero en <strong>sanbaoestudio@gmail.com</strong></p>
-      <button class="exp-btn primary" onclick="exportarPlanDinero()">⬇ Descargar plan .ICS</button>
+      <button class="exp-btn primary" onclick="exportarPlanDinero(this)">⬇ Descargar plan .CSV</button>
     </div>
   `;
 
@@ -1583,20 +1815,11 @@ function buildPlanDinero(){
   }));
 }
 
-function exportarPlanDinero(){
+function exportarPlanDinero(btn){
   if(!window._planDinero)return;
-  let events='';
-  const fICS=d=>d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';
-  window._planDinero.forEach(v=>{
-    const s=new Date(v.date);s.setHours(10,0,0);
-    const e=new Date(s);e.setHours(11,0,0);
-    const title=`💰 ${'⭐'.repeat(v.score)} · Renegociar / cerrar acuerdo`;
-    const desc=`Día favorable para renegociar dinero (${v.score}/5).\\nPilar: ${v.pilar} · ${v.elem} · ${v.dios}\\nCalibrado a tu carta 甲 Jia Madera Yang (Riqueza = Tierra).${v.conflicto?'\\n⚠️ Día con reservas: revisar contexto antes de cerrar.':''}`;
-    events+=`BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
-  });
-  const ics=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Plan Dinero//ES\r\nCALNAME:Plan Dinero Luca\r\n${events}END:VCALENDAR`;
-  const b=new Blob([ics],{type:'text/calendar'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='plan_dinero_luca.ics';a.click();URL.revokeObjectURL(a.href);
+  const ev=window._planDinero.map(v=>({fecha:v.date,h:10,dur:1,titulo:`💰 ${'⭐'.repeat(v.score)} · Renegociar / cerrar acuerdo`,
+    desc:`Día favorable para renegociar dinero (${v.score}/5). Pilar: ${v.pilar} · ${v.elem} · ${v.dios}. Riqueza = Tierra.${v.conflicto?' Día con reservas: revisar contexto antes de cerrar.':''}`}));
+  BZ.guardarArchivo('plan_dinero_luca.csv',BZ.csvCalendario(ev),btn);
 }
 
 // ══ CARTA SUB-NAV ══
@@ -1701,12 +1924,155 @@ function evalAspecto(k){
   aspectoSel=k;
 }
 
+
+// ══ BUSCADOR DE MOMENTOS ══
+// Cada actividad tiene su propio puntaje: para descansar sirve el Agua (tu Recurso),
+// que en el puntaje general del día resta porque tu Madera ya es fuerte.
+const ACTIVIDADES={
+  publicar:{icon:'🎬',label:'Publicar',desc:'Suma el Fuego (Food God / Hurt Officer: tu canal de expresión), tu Peach Blossom (Conejo) y el Trío de Fuego. Resta el Agua, que vuelve el mensaje más mental que magnético, y los choques, que traen malas lecturas.'},
+  descanso:{icon:'🧘',label:'Descanso mental',desc:'Suma el Agua (tu Recurso: recarga e integración), el Metal (orden y corte) y las horas de Agua (Rata, Cerdo). Resta el Fuego, que activa la mente, y los choques, que la agitan.'},
+  dinero:{icon:'💰',label:'Dinero y negocios',desc:'Suma la Tierra (tu Riqueza: Ji = acuerdos formales, Wu = oportunidades grandes), el Nobleman (Buey/Cabra: benefactores en la mesa), tu Day Master firme (Madera) y el Metal (marco formal). Resta el Agua y cualquier choque.'},
+};
+const CHIPS_TXT=s=>s.replace(/^[^\p{L}\p{N}]+/u,'').trim();
+function puntajeAct(act,ti,ri,date,diaRi){
+  let s=3;const mas=[],menos=[];let conflicto=false;
+  const ints=getInts(ri,date);
+  if(diaRi!==undefined)for(const i of BZ.interacciones(ri,[{r:diaRi}]))ints.push({...i,txt:i.txt+' del día'});
+  const E=ti>>1; // 0 Madera 1 Fuego 2 Tierra 3 Metal 4 Agua
+  const re=BZ.RAMA_ELEM[ri];
+  if(act==='publicar'){
+    if(E===1){s+=1.5;mas.push('Fuego: tu canal de expresión');}
+    if(E===2){s+=0.3;mas.push('Tierra: contenido de valor');}
+    if(E===0){s-=0.3;}
+    if(E===4){s-=1.0;menos.push('Agua: mensaje más mental');}
+    if(ri===3){s+=0.6;mas.push('Peach Blossom: carisma');}
+    if(re===1){s+=0.4;mas.push('Rama de Fuego');}
+  }else if(act==='descanso'){
+    if(E===4){s+=1.4;mas.push('Agua: tu Recurso, recarga');}
+    if(E===3){s+=0.5;mas.push('Metal: orden y corte');}
+    if(E===2){s+=0.2;}
+    if(E===1){s-=0.8;menos.push('Fuego: activa la mente');}
+    if(E===0){s-=0.3;}
+    if(re===4){s+=0.5;mas.push('Rama de Agua');}
+    if(re===1){s-=0.3;}
+  }else{
+    if(ti===5){s+=1.5;mas.push('Ji: Dinero Directo, acuerdos formales');}
+    if(ti===4){s+=1.2;mas.push('Wu: Dinero Indirecto, oportunidades');}
+    if(re===2){s+=0.6;mas.push('Tierra en la rama');}
+    if(E===0){s+=0.4;mas.push('Day Master firme');}
+    if(E===3){s+=0.3;mas.push('Metal: marco formal');}
+    if(E===4){s-=0.8;menos.push('Agua: dispersión');}
+    if(ri===1||ri===7){s+=0.3;}
+  }
+  for(const i of ints){
+    const t=CHIPS_TXT(i.txt);
+    if(i.efecto==='mal'){conflicto=true;s-=(act==='descanso'?1.2:1.0);menos.push(t);}
+    else if(i.efecto==='cuidado'){
+      if(act==='descanso'&&i.tipo==='trioAgua'){mas.push('Trío de Agua: introspección');s+=0.2;}
+      else{s-=0.4;menos.push(t);}
+    }
+    else if(i.efecto==='bien'){
+      if(i.tipo==='trio'){
+        if(act==='publicar'){s+=1.0;mas.push(t);}
+        else if(act==='descanso'){s-=0.3;menos.push('Trío de Fuego: mucha activación');}
+        else{s+=0.3;mas.push(t);}
+      }else{s+=0.4;mas.push(t);}
+    }
+    else if(i.efecto==='estrella'){s+=0.3;mas.push(t);}
+  }
+  return{raw:s,stars:Math.max(1,Math.min(5,Math.round(s))),mas,menos,conflicto};
+}
+// Horas chinas: índice 0 = Rata (23–01) … 11 = Cerdo (21–23)
+const HORA_INI=i=>(i*2+23)%24;
+function horasDelDia(act,date,p,franja){
+  const [desde,hasta]=franja;const hts=BZ.horasTi(p.ti);const dia=puntajeAct(act,p.ti,p.ri,date);
+  const res=[];
+  for(let i=0;i<12;i++){
+    const ini=HORA_INI(i),fin=ini+2;
+    if(i===0){if(!(desde===0&&hasta===24))continue;}
+    else if(ini<desde||fin>hasta)continue;
+    const h=puntajeAct(act,hts[i],i,date,p.ri);
+    const comb=0.4*dia.raw+0.6*h.raw;
+    res.push({i,ini,fin:fin%24,ti:hts[i],h,comb,stars:Math.max(1,Math.min(5,Math.round(comb)))});
+  }
+  return res.sort((a,b)=>b.comb-a.comb);
+}
+const BUS_DEF={act:'publicar',periodo:'14',min:'4',dias:'todos',franja:'7-23',orden:'puntaje',sinchoque:true};
+let BUS={...BUS_DEF};
+try{const g=JSON.parse(localStorage.getItem('bazi-buscar')||'null');if(g)BUS={...BUS_DEF,...g};}catch(e){}
+let _busRes=[];
+const pad2=n=>String(n).padStart(2,'0');
+function buildBuscar(){
+  const acts=document.getElementById('bus-acts');
+  acts.innerHTML=Object.entries(ACTIVIDADES).map(([k,a])=>`<button class="a-chip" role="radio" id="bus-act-${k}" data-act="${k}">${a.icon} ${a.label}</button>`).join('');
+  acts.onclick=e=>{const b=e.target.closest('[data-act]');if(!b)return;BUS.act=b.dataset.act;renderBuscar();};
+  const ids={periodo:'bus-periodo',min:'bus-min',dias:'bus-dias',franja:'bus-franja',orden:'bus-orden'};
+  for(const[k,id]of Object.entries(ids)){const el=document.getElementById(id);el.value=BUS[k];el.onchange=()=>{BUS[k]=el.value;renderBuscar();};}
+  const ch=document.getElementById('bus-sinchoque');ch.checked=BUS.sinchoque;ch.onchange=()=>{BUS.sinchoque=ch.checked;renderBuscar();};
+  renderBuscar();
+}
+function renderBuscar(){
+  try{localStorage.setItem('bazi-buscar',JSON.stringify(BUS));}catch(e){}
+  document.querySelectorAll('#bus-acts .a-chip').forEach(c=>{const on=c.dataset.act===BUS.act;c.classList.toggle('sel',on);c.setAttribute('aria-checked',on);});
+  const A=ACTIVIDADES[BUS.act];
+  document.getElementById('bus-desc').textContent=A.desc;
+  const franja=BUS.franja.split('-').map(Number);
+  const hoy=getToday();const filas=[];let total=0;
+  for(let k=0;k<+BUS.periodo;k++){
+    const date=new Date(hoy.getFullYear(),hoy.getMonth(),hoy.getDate()+k,12);
+    const dow=date.getDay();
+    if(BUS.dias==='habiles'&&(dow===0||dow===6))continue;
+    if(BUS.dias==='finde'&&dow>0&&dow<6)continue;
+    total++;
+    const p=getPilar(date);const d=puntajeAct(BUS.act,p.ti,p.ri,date);
+    if(BUS.sinchoque&&d.conflicto)continue;
+    if(d.stars<+BUS.min)continue;
+    const horas=horasDelDia(BUS.act,date,p,franja).filter(h=>!h.h.conflicto);
+    filas.push({date,p,d,horas});
+  }
+  filas.sort(BUS.orden==='fecha'?(a,b)=>a.date-b.date:(a,b)=>b.d.raw-a.d.raw||a.date-b.date);
+  _busRes=filas;
+  const tabla=document.getElementById('bus-tabla');const res=document.getElementById('bus-resumen');
+  if(!filas.length){
+    res.innerHTML=`<span>Ningún día de ${total} cumple estos filtros.</span>`;
+    tabla.innerHTML=`<tbody><tr><td class="bus-vacio">Probá con un período más largo, bajá la calidad mínima o incluí los días con choque.</td></tr></tbody>`;
+    return;
+  }
+  const best=[...filas].sort((a,b)=>b.d.raw-a.d.raw)[0];const bh=best.horas[0];
+  res.innerHTML=`<span><strong>${filas.length}</strong> de ${total} días cumplen</span>`+
+    `<span>Mejor momento: <strong>${DIAS_ES[best.date.getDay()]} ${best.date.getDate()}/${best.date.getMonth()+1}${bh?` · ${pad2(bh.ini)}–${pad2(bh.fin)} h`:''}</strong></span>`;
+  const topRaw=best.d.raw;
+  tabla.innerHTML=`<thead><tr><th>Día</th><th>Pilar</th><th>Día ★</th><th>Mejores horas</th><th>Por qué</th></tr></thead><tbody>`+
+  filas.map(f=>{
+    const {date,p,d,horas}=f;
+    const hs=horas.slice(0,3).map(h=>{
+      const t=`${A.icon} ${A.label} · BaZi ${'⭐'.repeat(h.stars)}`;
+      const det=`Día ${p.tShort} ${p.animal} · Hora ${BZ.TRONCOS_SHORT[h.ti]} ${BZ.ANIMALES[h.i]} (${pad2(h.ini)}–${pad2(h.fin)} h)\nA favor: ${[...d.mas,...h.h.mas].slice(0,4).join(', ')||'—'}`;
+      const fin=h.ini===23?24:h.ini+2;
+      return `<a class="h-chip h${h.stars}" href="${BZ.gcalUrl(t,det,date,h.ini,fin===24?23:fin)}" target="_blank" rel="noopener" title="Agendar en Google Calendar">${pad2(h.ini)}–${pad2(h.fin)} h · ${BZ.RAMAS_CN[h.i]} ${'★'.repeat(h.stars)}<span>${BZ.ANIMALES[h.i]} · ${BZ.TRONCOS_SHORT[h.ti]} ${BZ.ELEM[h.ti>>1]}</span></a>`;
+    }).join('')||'<span class="bus-notas">Ninguna hora limpia en esta franja</span>';
+    const notas=[...d.mas.slice(0,3).map(t=>`<li class="mas">+ ${t}</li>`),...d.menos.slice(0,2).map(t=>`<li class="menos">− ${t}</li>`)].join('');
+    return `<tr class="${d.raw===topRaw?'top':''}">
+      <td data-l="Día"><div class="bus-fecha">${DIAS_ES[date.getDay()]} ${date.getDate()}/${date.getMonth()+1}<small>${MESES_ES[date.getMonth()+1]}</small></div></td>
+      <td data-l="Pilar"><div class="bus-pilar">${p.tCn}${p.rCn} ${p.tShort} ${p.rShort}<br>${p.animal} · ${p.elemT}<br>${LUCA.dios[p.ti]}</div></td>
+      <td data-l="Día ★"><div class="bus-stars">${renderStars(d.stars,13)}</div></td>
+      <td data-l="Mejores horas · tocá para agendar"><div class="bus-horas">${hs}</div></td>
+      <td data-l="Por qué"><ul class="bus-notas">${notas||'<li>Sin señales fuertes</li>'}</ul></td>
+    </tr>`;
+  }).join('')+`</tbody>`;
+}
+function exportarBusqueda(btn){
+  if(!_busRes.length)return;
+  const A=ACTIVIDADES[BUS.act];
+  const ev=_busRes.filter(f=>f.horas.length).map(f=>{const h=f.horas[0];const ini=h.ini;
+    return{fecha:f.date,h:ini,dur:ini===23?1:2,titulo:`${A.icon} ${A.label} · BaZi ${'⭐'.repeat(h.stars)}`,
+      desc:`Día ${f.p.tShort} ${f.p.animal} (${f.d.stars}/5) · Hora ${BZ.TRONCOS_SHORT[h.ti]} ${BZ.ANIMALES[h.i]}. A favor: ${[...f.d.mas,...h.h.mas].slice(0,4).join(', ')}`};});
+  BZ.guardarArchivo(`bazi_${BUS.act}_${getToday().toISOString().slice(0,10)}.csv`,BZ.csvCalendario(ev),btn);
+}
+
 // ══ INIT ══
-const todayInit=getToday();
-const todayM=todayInit.getMonth()+1;
-const hasM=MONTHS_DATA.some(x=>x.m===todayM);
-currentMonth=hasM?todayM:5;
 buildHoyPanel();
+buildBuscar();
 buildAspectosHoy();
 buildPlanContenido();
 buildPlanDinero();
