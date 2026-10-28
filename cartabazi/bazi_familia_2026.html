@@ -2,26 +2,32 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BaZi · Familia · 2026</title>
+<title>BaZi Familia</title>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Lato:wght@300;400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gold:#c9972a;--gold-l:#e8c46a;--cinnabar:#c0392b;
-  --midnight:#0d0a18;--surf2:#1a1628;
-  --smoke:#7a6e60;--ash:#cfc0a8;--ash2:#b0a090;
-  --fire:#e05a1a;--wood:#4a8c3f;--metal:#7a9bb5;--water:#2c5f8a;--earth:#9c7a3c;
-  --bdr:rgba(201,151,42,0.18);
-  --guadi:#c06090;--morena:#5a9abf;--carla:#7a9b6a;
+  --gold:#ff914d;--gold-l:#f2b544;--cinnabar:#d9552c;
+  --midnight:#0d1b21;--surf2:#163039;
+  --smoke:#8fa3a8;--ash:#f4efe4;--ash2:#dcd2c0;
+  --fire:#d9552c;--wood:#5f9e6e;--metal:#a7b6ba;--water:#4f8c9e;--petrol:#264653;--earth:#c08a3e;
+  --bdr:rgba(255,145,77,0.18);
+  color-scheme:dark;
+  --guadi:#f29a8a;--morena:#6fb0c0;--carla:#b5c46e;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--midnight);color:var(--ash);font-family:'Lato',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden;}
 body::before{content:'';position:fixed;inset:0;z-index:-1;
-  background:radial-gradient(ellipse at 20% 10%,rgba(192,96,144,0.05) 0%,transparent 45%),
-  radial-gradient(ellipse at 80% 90%,rgba(90,154,191,0.05) 0%,transparent 45%),var(--midnight);}
+  background:radial-gradient(120% 70% at 50% 0%,rgba(38,70,83,0.55) 0%,transparent 60%),
+    radial-gradient(60% 40% at 50% 100%,rgba(255,145,77,0.08) 0%,transparent 70%),var(--midnight);}
+a.nav-tab,a.exp-btn{text-decoration:none;display:inline-flex;align-items:center;}
+.nav-trabajo{color:var(--trabajo);}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
 
-nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:200;background:rgba(13,27,33,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--bdr);display:flex;align-items:center;padding:0 1.5rem;overflow-x:auto;gap:0;}
 .nav-logo{font-family:'IM Fell English',serif;font-size:1rem;color:var(--gold);padding:1rem 1.2rem 1rem 0;border-right:1px solid var(--bdr);margin-right:0.8rem;white-space:nowrap;flex-shrink:0;}
 .nav-tab{padding:0.85rem 1rem;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;cursor:pointer;border:none;background:transparent;border-bottom:2px solid transparent;transition:color 0.2s,border-color 0.2s;white-space:nowrap;}
 .nav-tab:hover{color:var(--ash);}
@@ -30,7 +36,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .nav-tab.m-tab.active{color:var(--morena);border-bottom-color:var(--morena);}
 .nav-tab.c-tab.active{color:var(--carla);border-bottom-color:var(--carla);}
 .nav-sep{width:1px;height:22px;background:var(--bdr);margin:0 0.2rem;flex-shrink:0;}
-.nav-back{color:rgba(201,151,42,0.5);font-size:0.55rem;}
+.nav-back{color:rgba(255,145,77,0.5);font-size:0.55rem;}
 .nav-back:hover{color:var(--gold);}
 
 .section{display:none;animation:fadeUp 0.3s ease;}
@@ -53,7 +59,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .badge.mb{border:1px solid var(--morena);color:var(--morena);}
 .badge.cb{border:1px solid var(--carla);color:var(--carla);}
 
-.ctx-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(201,151,42,0.03);border-bottom:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
+.ctx-bar{display:flex;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:0.85rem 2rem;background:rgba(255,145,77,0.03);border-bottom:1px solid var(--bdr);font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.07em;color:var(--smoke);}
 .ctx-bar.gc span{color:var(--guadi);}
 .ctx-bar.mc span{color:var(--morena);}
 .ctx-bar.cc span{color:var(--carla);}
@@ -68,8 +74,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .pilares-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--bdr);border-radius:4px;overflow:hidden;margin-bottom:1.8rem;}
 .pilar-col{padding:1rem 0.8rem;border-right:1px solid var(--bdr);text-align:center;}
 .pilar-col:last-child{border-right:none;}
-.pilar-col.hl-g{background:rgba(192,96,144,0.05);}
-.pilar-col.hl-m{background:rgba(90,154,191,0.05);}
+.pilar-col.hl-g{background:rgba(242,154,138,0.05);}
+.pilar-col.hl-m{background:rgba(111,176,192,0.05);}
 .pilar-label{font-family:'Space Mono',monospace;font-size:0.53rem;letter-spacing:0.1em;color:var(--smoke);text-transform:uppercase;margin-bottom:0.6rem;}
 .pilar-cn{font-size:2.2rem;line-height:1;margin-bottom:0.25rem;}
 .pilar-cn.gc{color:var(--guadi);}
@@ -77,11 +83,11 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .pilar-name{font-size:0.87rem;color:var(--ash);margin-bottom:0.1rem;}
 .pilar-el{font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--smoke);}
 .dios-tag{display:inline-block;margin-top:0.35rem;padding:0.1rem 0.42rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.5rem;}
-.tag-f{background:rgba(232,88,10,0.13);color:#e87a3a;border:1px solid rgba(232,88,10,0.25);}
-.tag-m{background:rgba(74,140,63,0.13);color:#6db860;border:1px solid rgba(74,140,63,0.25);}
-.tag-t{background:rgba(156,122,60,0.13);color:#c9a45a;border:1px solid rgba(156,122,60,0.25);}
-.tag-me{background:rgba(138,157,181,0.13);color:#a0b4c8;border:1px solid rgba(138,157,181,0.25);}
-.tag-a{background:rgba(44,95,138,0.13);color:#5a9abf;border:1px solid rgba(44,95,138,0.25);}
+.tag-f{background:rgba(255,145,77,0.13);color:#ff914d;border:1px solid rgba(255,145,77,0.25);}
+.tag-m{background:rgba(95,158,110,0.13);color:#7dbb88;border:1px solid rgba(95,158,110,0.25);}
+.tag-t{background:rgba(242,181,68,0.13);color:#f2b544;border:1px solid rgba(242,181,68,0.25);}
+.tag-me{background:rgba(167,182,186,0.13);color:#c3cdcf;border:1px solid rgba(167,182,186,0.25);}
+.tag-a{background:rgba(79,140,158,0.13);color:#6fb0c0;border:1px solid rgba(79,140,158,0.25);}
 
 .e-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:0.85rem;margin-bottom:1.8rem;}
 .e-card{background:var(--surf2);border:1px solid var(--bdr);border-radius:4px;padding:1.1rem 1.2rem;position:relative;overflow:hidden;}
@@ -101,10 +107,10 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 
 .pot-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem;}
 .pot-box{padding:1.2rem 1.3rem;border-radius:4px;}
-.pot-box.green{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
-.pot-box.red{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.pot-box.green{background:rgba(58,154,131,0.07);border:1px solid rgba(58,154,131,0.2);}
+.pot-box.red{background:rgba(217,85,44,0.07);border:1px solid rgba(217,85,44,0.2);}
 .pot-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.55rem;}
-.pot-box.green h3{color:#6dbf99;}.pot-box.red h3{color:#e08070;}
+.pot-box.green h3{color:#7cc8b0;}.pot-box.red h3{color:#f08a62;}
 .pot-box ul{padding-left:1.1rem;}
 .pot-box li{font-size:0.87rem;color:var(--ash2);margin-bottom:0.36rem;line-height:1.52;}
 
@@ -117,7 +123,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 /* HOY CARDS */
 .hoy-wrap-fam{max-width:980px;margin:0 auto;padding:2rem 1.5rem 4rem;}
 .hoy-hero-fam{
-  background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:6px;
+  background:rgba(255,145,77,0.03);border:1px solid var(--bdr);border-radius:6px;
   padding:1.8rem 2rem;margin-bottom:1.5rem;
 }
 .hoy-fecha-fam{font-family:'IM Fell English',serif;font-size:1.3rem;font-weight:400;margin-bottom:0.3rem;}
@@ -127,19 +133,19 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .hoy-pilar-fam span{color:var(--gold-l);}
 
 .hoy-stars-fam{display:flex;gap:3px;margin-bottom:0.5rem;}
-.star-fam{width:16px;height:16px;fill:rgba(201,151,42,0.15);}
-.star-fam.on{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(201,151,42,0.4));}
+.star-fam{width:16px;height:16px;fill:rgba(255,145,77,0.15);}
+.star-fam.on{fill:var(--gold);filter:drop-shadow(0 0 3px rgba(255,145,77,0.4));}
 
 .hoy-verdict-fam{font-family:'IM Fell English',serif;font-size:1.1rem;font-weight:400;margin-bottom:0.6rem;}
-.vg{color:#6dbf99;}.vy{color:var(--earth);}.vr{color:#e08070;}
+.vg{color:#7cc8b0;}.vy{color:var(--earth);}.vr{color:#f08a62;}
 
 .tips-grid-fam{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
 .tips-box{padding:1.3rem 1.4rem;border-radius:5px;}
-.tips-box.do-box{background:rgba(45,122,90,0.07);border:1px solid rgba(45,122,90,0.2);}
-.tips-box.dont-box{background:rgba(192,57,43,0.07);border:1px solid rgba(192,57,43,0.2);}
+.tips-box.do-box{background:rgba(58,154,131,0.07);border:1px solid rgba(58,154,131,0.2);}
+.tips-box.dont-box{background:rgba(217,85,44,0.07);border:1px solid rgba(217,85,44,0.2);}
 .tips-box h3{font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.75rem;}
-.tips-box.do-box h3{color:#6dbf99;}
-.tips-box.dont-box h3{color:#e08070;}
+.tips-box.do-box h3{color:#7cc8b0;}
+.tips-box.dont-box h3{color:#f08a62;}
 .tips-box ul{list-style:none;padding:0;}
 .tips-box li{font-size:0.9rem;color:var(--ash2);padding:0.38rem 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.55;}
 .tips-box li:last-child{border-bottom:none;}
@@ -149,10 +155,10 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .cal-wrap{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem;}
 .month-sel{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.8rem;}
 .month-btn{padding:0.5rem 0.95rem;border:1px solid var(--bdr);background:transparent;color:var(--smoke);font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.07em;cursor:pointer;border-radius:3px;transition:all 0.18s;}
-.month-btn:hover{border-color:rgba(201,151,42,0.4);color:var(--ash);}
-.month-btn.active.ga{border-color:var(--guadi);color:var(--guadi);background:rgba(192,96,144,0.08);}
-.month-btn.active.ma{border-color:var(--morena);color:var(--morena);background:rgba(90,154,191,0.08);}
-.month-btn.active.ca{border-color:var(--carla);color:var(--carla);background:rgba(122,155,106,0.08);}
+.month-btn:hover{border-color:rgba(255,145,77,0.4);color:var(--ash);}
+.month-btn.active.ga{border-color:var(--guadi);color:var(--guadi);background:rgba(242,154,138,0.08);}
+.month-btn.active.ma{border-color:var(--morena);color:var(--morena);background:rgba(111,176,192,0.08);}
+.month-btn.active.ca{border-color:var(--carla);color:var(--carla);background:rgba(181,196,110,0.08);}
 .month-hdr{display:flex;align-items:center;gap:1.2rem;margin-bottom:1.3rem;padding-bottom:0.8rem;border-bottom:1px solid var(--bdr);}
 .month-cn{font-size:2.6rem;opacity:0.55;line-height:1;}
 .month-cn.gc{color:var(--guadi);}
@@ -162,40 +168,40 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 .month-info h2.mc{color:var(--morena);}
 .month-info p{font-size:0.88rem;color:var(--ash2);margin-top:0.2rem;font-style:italic;}
 .cal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:0.8rem;}
-.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(201,151,42,0.11);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
+.day-card{background:rgba(255,255,255,0.022);border:1px solid rgba(255,145,77,0.11);border-radius:4px;padding:1rem 1.1rem;position:relative;overflow:hidden;transition:border-color 0.2s,background 0.2s;}
 .day-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;}
-.day-card.r5::before{background:#2d7a5a;}.day-card.r4::before{background:#4a8c3f;}
-.day-card.r3::before{background:#9c7a3c;}.day-card.r2::before{background:#c0602a;}
+.day-card.r5::before{background:#3a9a83;}.day-card.r4::before{background:#5f9e6e;}
+.day-card.r3::before{background:#c08a3e;}.day-card.r2::before{background:#d9552c;}
 .day-card.r1::before{background:var(--cinnabar);}
-.day-card:hover{border-color:rgba(201,151,42,0.3);background:rgba(255,255,255,0.038);}
+.day-card:hover{border-color:rgba(255,145,77,0.3);background:rgba(255,255,255,0.038);}
 .day-card.weekend{opacity:0.62;}
-.day-card.today-card{border-color:rgba(201,151,42,0.5);box-shadow:0 0 0 1px rgba(201,151,42,0.18);}
-.today-badge{display:inline-block;background:rgba(201,151,42,0.22);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;padding:0.07rem 0.38rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
+.day-card.today-card{border-color:rgba(255,145,77,0.5);box-shadow:0 0 0 1px rgba(255,145,77,0.18);}
+.today-badge{display:inline-block;background:rgba(255,145,77,0.22);color:var(--gold);font-family:'Space Mono',monospace;font-size:0.48rem;letter-spacing:0.1em;padding:0.07rem 0.38rem;border-radius:2px;margin-left:0.35rem;vertical-align:middle;}
 .dc-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.5rem;}
 .dc-num{font-family:'IM Fell English',serif;font-size:1.5rem;color:var(--gold-l);line-height:1;}
 .dc-dow{font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--smoke);letter-spacing:0.07em;margin-top:0.1rem;}
 .dc-pilar{text-align:right;font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--smoke);line-height:1.65;}
 .dc-stars{display:flex;gap:2px;margin-bottom:0.42rem;}
-.star{fill:rgba(201,151,42,0.15);}
-.star.on{fill:var(--gold);filter:drop-shadow(0 0 2px rgba(201,151,42,0.4));}
+.star{fill:rgba(255,145,77,0.15);}
+.star.on{fill:var(--gold);filter:drop-shadow(0 0 2px rgba(255,145,77,0.4));}
 .etag{display:inline-block;padding:0.11rem 0.5rem;border-radius:2px;font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.06em;font-weight:700;margin-bottom:0.48rem;}
-.etag-m{background:rgba(74,140,63,0.16);color:#6db860;border:1px solid rgba(74,140,63,0.26);}
-.etag-f{background:rgba(224,90,26,0.16);color:#e87a40;border:1px solid rgba(224,90,26,0.26);}
-.etag-t{background:rgba(156,122,60,0.16);color:#c9a45a;border:1px solid rgba(156,122,60,0.26);}
-.etag-me{background:rgba(122,155,181,0.16);color:#a0b4c8;border:1px solid rgba(122,155,181,0.26);}
-.etag-a{background:rgba(44,95,138,0.16);color:#5a9abf;border:1px solid rgba(44,95,138,0.26);}
+.etag-m{background:rgba(95,158,110,0.16);color:#7dbb88;border:1px solid rgba(95,158,110,0.26);}
+.etag-f{background:rgba(217,85,44,0.16);color:#ff914d;border:1px solid rgba(217,85,44,0.26);}
+.etag-t{background:rgba(242,181,68,0.16);color:#f2b544;border:1px solid rgba(242,181,68,0.26);}
+.etag-me{background:rgba(167,182,186,0.16);color:#c3cdcf;border:1px solid rgba(167,182,186,0.26);}
+.etag-a{background:rgba(79,140,158,0.16);color:#6fb0c0;border:1px solid rgba(79,140,158,0.26);}
 .dc-summary{font-size:0.87rem;color:var(--ash2);line-height:1.5;margin-bottom:0.48rem;font-style:italic;}
 .fav-row{display:flex;gap:0.42rem;margin-bottom:0.28rem;align-items:flex-start;}
 .fav-label{font-family:'Space Mono',monospace;font-size:0.49rem;padding:0.08rem 0.3rem;border-radius:2px;flex-shrink:0;margin-top:0.14rem;letter-spacing:0.04em;}
-.lsi{background:rgba(45,122,90,0.22);color:#5aba90;}
-.lno{background:rgba(192,57,43,0.22);color:#e07060;}
+.lsi{background:rgba(58,154,131,0.22);color:#6cc0a6;}
+.lno{background:rgba(217,85,44,0.22);color:#f08a62;}
 .fav-text{font-size:0.8rem;color:var(--ash2);line-height:1.42;}
 
-.exp-bar{padding:1rem 1.3rem;background:rgba(201,151,42,0.03);border:1px solid var(--bdr);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
+.exp-bar{padding:1rem 1.3rem;background:rgba(255,145,77,0.03);border:1px solid var(--bdr);border-radius:4px;display:flex;align-items:center;gap:0.9rem;flex-wrap:wrap;margin-top:1.2rem;}
 .exp-bar p{font-size:0.87rem;color:var(--smoke);flex:1;min-width:180px;}
 .exp-btn{padding:0.5rem 1rem;border:1px solid var(--bdr);background:transparent;color:var(--ash);cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.08em;border-radius:3px;transition:all 0.2s;}
 .exp-btn:hover{border-color:var(--gold);color:var(--gold-l);}
-.exp-btn.primary{border-color:var(--gold);color:var(--gold-l);background:rgba(201,151,42,0.08);}
+.exp-btn.primary{border-color:var(--gold);color:var(--gold-l);background:rgba(255,145,77,0.08);}
 
 @media(max-width:620px){
   .pilares-grid{grid-template-columns:repeat(2,1fr);}
@@ -214,9 +220,9 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div class="nav-sep"></div>
   <button class="nav-tab c-tab" onclick="showSection('sec-carla',this)">Carla · Pareja</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab" style="color:rgba(201,151,42,0.7);" onclick="showSection('sec-compat-familia',this)">♾ Compatibilidades</button>
+  <button class="nav-tab" style="color:var(--gold);" onclick="showSection('sec-compat-familia',this)">♾ Compatibilidades</button>
   <div class="nav-sep"></div>
-  <button class="nav-tab nav-back" onclick="window.open('bazi_luca_2026.html','_self')">← Volver a Luca</button>
+  <a class="nav-tab nav-back" href="index.html">← Volver a Luca</a>
 </nav>
 
 
@@ -226,7 +232,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <div id="sec-guadi" class="section active">
 
 <!-- SUB NAV GUADI -->
-<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(192,96,144,0.03);overflow-x:auto;">
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(242,154,138,0.03);overflow-x:auto;">
   <button class="nav-tab g-tab active" style="border-bottom-color:var(--guadi);color:var(--guadi);" onclick="showSubSection('g-hoy','g-',this)">Hoy</button>
   <button class="nav-tab g-tab" onclick="showSubSection('g-cal','g-',this)">Calendario</button>
   <button class="nav-tab g-tab" onclick="showSubSection('g-carta','g-',this)">Su Carta</button>
@@ -252,9 +258,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div id="g-actividades"></div>
 
   <div class="exp-bar">
-    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarHoyFam('guadi')">⬇ Descargar .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalHoyFam('guadi')">📅 Google Calendar</button>
+    <p>Agendar el análisis de hoy en tu calendario</p>
+    <a class="exp-btn primary" id="gcal-hoy-guadi" href="https://calendar.google.com" target="_blank" rel="noopener">📅 Agregar a Google Calendar</a>
   </div>
 </div>
 </div>
@@ -262,17 +267,17 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <!-- G-CAL -->
 <div id="g-cal" class="sub-section g-" style="display:none;">
 <div class="page-header guadi-hdr" data-g="历">
-  <div class="eyebrow">Calendario · Guadalupe · 2026</div>
+  <div class="eyebrow">Calendario · Guadalupe</div>
   <h1 class="gc">Calendario Energético</h1>
-  <p>Mayo–Diciembre 2026 · Análisis calibrado a 壬 Ren Yang Water</p>
+  <p>Próximos 12 meses solares · Análisis calibrado a 壬 Ren Yang Water</p>
 </div>
 <div class="cal-wrap">
   <div class="month-sel" id="g-month-sel"></div>
   <div id="g-month-display"></div>
   <div class="exp-bar">
-    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarMesFam('guadi')">⬇ Descargar mes .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalMesFam('guadi')">📅 Google Calendar</button>
+    <p>Descargá el mes como CSV e importalo en Google Calendar (Configuración → Importar)</p>
+    <button class="exp-btn primary" onclick="exportarMesFam('guadi',this)">⬇ Descargar mes .CSV</button>
+    <a class="exp-btn" href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Abrir importador ↗</a>
   </div>
 </div>
 </div>
@@ -346,7 +351,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <div id="sec-morena" class="section">
 
 <!-- SUB NAV MORENA -->
-<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(90,154,191,0.03);overflow-x:auto;">
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(111,176,192,0.03);overflow-x:auto;">
   <button class="nav-tab m-tab active" style="border-bottom-color:var(--morena);color:var(--morena);" onclick="showSubSection('m-hoy','m-',this)">Hoy</button>
   <button class="nav-tab m-tab" onclick="showSubSection('m-cal','m-',this)">Calendario</button>
   <button class="nav-tab m-tab" onclick="showSubSection('m-carta','m-',this)">Su Carta</button>
@@ -366,9 +371,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <p class="sec-sub">Tips de acompañamiento para adolescente de 15 años con Day Master Jia Yang Wood y Hurt Officer activo.</p>
   <div class="tips-grid-fam" id="m-tips"></div>
   <div class="exp-bar">
-    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarHoyFam('morena')">⬇ Descargar .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalHoyFam('morena')">📅 Google Calendar</button>
+    <p>Agendar el análisis de hoy en tu calendario</p>
+    <a class="exp-btn primary" id="gcal-hoy-morena" href="https://calendar.google.com" target="_blank" rel="noopener">📅 Agregar a Google Calendar</a>
   </div>
 </div>
 </div>
@@ -376,17 +380,17 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <!-- M-CAL -->
 <div id="m-cal" class="sub-section m-" style="display:none;">
 <div class="page-header morena-hdr" data-g="历">
-  <div class="eyebrow">Calendario · Morena · 2026</div>
+  <div class="eyebrow">Calendario · Morena</div>
   <h1 class="mc">Calendario Energético</h1>
-  <p>Mayo–Diciembre 2026 · Análisis calibrado a 甲 Jia Yang Wood</p>
+  <p>Próximos 12 meses solares · Análisis calibrado a 甲 Jia Yang Wood</p>
 </div>
 <div class="cal-wrap">
   <div class="month-sel" id="m-month-sel"></div>
   <div id="m-month-display"></div>
   <div class="exp-bar">
-    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarMesFam('morena')">⬇ Descargar mes .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalMesFam('morena')">📅 Google Calendar</button>
+    <p>Descargá el mes como CSV e importalo en Google Calendar (Configuración → Importar)</p>
+    <button class="exp-btn primary" onclick="exportarMesFam('morena',this)">⬇ Descargar mes .CSV</button>
+    <a class="exp-btn" href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Abrir importador ↗</a>
   </div>
 </div>
 </div>
@@ -396,20 +400,20 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <div class="page-header morena-hdr" data-g="甲">
   <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
   <h1 class="mc">Morena Santorum</h1>
-  <p>09 Abril 2011 · 17:51 hs · Femenino · 15 años</p>
+  <p>09 Abril 2011 · 17:51 hs (hora solar 16:55) · Buenos Aires · Femenino · 15 años</p>
   <div class="badge mb">甲 JIA · MADERA YANG · DAY MASTER</div>
 </div>
 <div class="ctx-bar mc">
   <div>AÑO NATAL <span>辛卯 Metal Yin/Conejo</span></div>
-  <div>DA YUN ACTUAL <span>甲午 Madera/Caballo (≈14–24)</span></div>
+  <div>DA YUN ACTUAL <span>癸巳 Agua Yin/Serpiente (≈9–19)</span></div>
   <div>2026 <span>Caballo doble — intensidad máxima</span></div>
   <div>PERFIL <span>Mismo Day Master que Luca</span></div>
 </div>
 <div class="carta-wrap">
   <div class="sec-title mt">Los Cuatro Pilares</div>
-  <p class="sec-sub">Mismo Day Master que Luca (甲 Jia), carta estructuralmente diferente: Fuego en el día, Agua en el mes, Metal en el año. Da Yun activo amplifica el Hurt Officer al máximo.</p>
+  <p class="sec-sub">Mismo Day Master que Luca (甲 Jia), carta estructuralmente diferente: Fuego en el día, Agua en el mes y la hora, Metal en el año y la hora. Su Da Yun actual (Gui Si) suma Recurso y Food God; a los 19 entra Jia Wu, que lleva el Fuego al máximo.</p>
   <div class="pilares-grid">
-    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn mc">癸</div><div class="pilar-name">Gui · Agua Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">酉</div></div><div class="pilar-name">You · Gallo · Metal Yin</div><div class="dios-tag tag-me">Dir. Officer</div></div>
+    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn mc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">申</div></div><div class="pilar-name">Shen · Mono · Metal Yang</div><div class="dios-tag tag-me">7 Killings</div></div>
     <div class="pilar-col hl-m"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn mc">甲</div><div class="pilar-name">Jia · Madera Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">午</div></div><div class="pilar-name">Wu · Caballo · Fuego Yang</div><div class="dios-tag tag-f">Hurt Officer</div></div>
     <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-cn mc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-a">Ind. Resource</div></div>
     <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-cn mc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn mc" style="font-size:1.7rem;">卯</div></div><div class="pilar-name">Mao · Conejo · Madera Yin</div><div class="dios-tag tag-me">Dir. Officer</div></div>
@@ -421,7 +425,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
     <div class="e-card fuego"><div class="e-card-label">Hurt Officer activo</div><h3 class="mc">El don disruptivo</h3><p>Es la persona que pregunta "¿por qué?" cuando todos siguen instrucciones. Su mayor don y principal punto de tensión. La autoridad que respeta es la que tiene coherencia.</p></div>
     <div class="e-card agua"><div class="e-card-label">Recurso natal</div><h3 class="mc">Ren Agua Yang</h3><p>Aprende rápido cuando el tema la apasiona. Aprende muy lentamente cuando no ve el sentido. La motivación es el interruptor de toda su inteligencia.</p></div>
     <div class="e-card metal"><div class="e-card-label">Estructura necesaria</div><h3 class="mc">Metal — Direct Officer</h3><p>La estructura tiene que tener sentido para ella, no solo existir. Cuando entiende el porqué de una regla, la sigue. Cuando no, la desafía activamente.</p></div>
-    <div class="e-card ma"><div class="e-card-label">Da Yun actual (14–24)</div><h3 class="mc">甲午 Madera/Caballo</h3><p>Amplifica su Hurt Officer al máximo. Período donde su identidad se consolida con fuerza. Guía sin control — acompañamiento, no imposición.</p></div>
+    <div class="e-card ma"><div class="e-card-label">Da Yun actual (≈9–19)</div><h3 class="mc">癸巳 Agua Yin / Serpiente</h3><p>Gui es su Recurso Directo: aprendizaje y contención. La Serpiente trae Fuego (Food God): talento expresivo en formación. Desde los ≈19 entra 甲午 Jia Wu, la década de Hurt Officer al máximo.</p></div>
     <div class="e-card ma"><div class="e-card-label">2026 · Caballo doble</div><h3 class="mc">Intensidad máxima</h3><p>Caballo natal + año Bing Wu. Alta intensidad emocional. Puede ser año de decisiones vocacionales clave. Necesita espacio para hablar sin sentirse juzgada.</p></div>
   </div>
   <div class="sec-title mt">Cómo acompañarla</div>
@@ -458,7 +462,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <div id="sec-carla" class="section">
 
 <!-- SUB NAV CARLA -->
-<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(122,155,106,0.03);overflow-x:auto;">
+<div style="display:flex;gap:0;border-bottom:1px solid var(--bdr);background:rgba(181,196,110,0.03);overflow-x:auto;">
   <button class="nav-tab c-tab active" style="border-bottom-color:var(--carla);color:var(--carla);" onclick="showSubSection('c-hoy','c-',this)">Hoy</button>
   <button class="nav-tab c-tab" onclick="showSubSection('c-cal','c-',this)">Calendario</button>
   <button class="nav-tab c-tab" onclick="showSubSection('c-carta','c-',this)">Su Carta</button>
@@ -479,9 +483,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <p class="sec-sub">Tips personalizados para Carla (壬 Ren Yang Water) en el clima energético de hoy — cómo aprovechar el día y qué evitar.</p>
   <div class="tips-grid-fam" id="c-tips"></div>
   <div class="exp-bar">
-    <p>Exportar a <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarHoyFam('carla')">⬇ Descargar .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalHoyFam('carla')">📅 Google Calendar</button>
+    <p>Agendar el análisis de hoy en tu calendario</p>
+    <a class="exp-btn primary" id="gcal-hoy-carla" href="https://calendar.google.com" target="_blank" rel="noopener">📅 Agregar a Google Calendar</a>
   </div>
 </div>
 </div>
@@ -489,17 +492,17 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <!-- C-CAL -->
 <div id="c-cal" class="sub-section c-" style="display:none;">
 <div class="page-header carla-hdr" data-g="历">
-  <div class="eyebrow">Calendario · Carla · 2026</div>
+  <div class="eyebrow">Calendario · Carla</div>
   <h1 class="cc">Calendario Energético</h1>
-  <p>Mayo–Diciembre 2026 · Análisis calibrado a 壬 Ren Yang Water</p>
+  <p>Próximos 12 meses solares · Análisis calibrado a 壬 Ren Yang Water</p>
 </div>
 <div class="cal-wrap">
   <div class="month-sel" id="c-month-sel"></div>
   <div id="c-month-display"></div>
   <div class="exp-bar">
-    <p>Exportar mes · <strong>sanbaoestudio@gmail.com</strong></p>
-    <button class="exp-btn" onclick="exportarMesFam('carla')">⬇ Descargar mes .ICS</button>
-    <button class="exp-btn primary" onclick="abrirGCalMesFam('carla')">📅 Google Calendar</button>
+    <p>Descargá el mes como CSV e importalo en Google Calendar (Configuración → Importar)</p>
+    <button class="exp-btn primary" onclick="exportarMesFam('carla',this)">⬇ Descargar mes .CSV</button>
+    <a class="exp-btn" href="https://calendar.google.com/calendar/r/settings/export" target="_blank" rel="noopener">Abrir importador ↗</a>
   </div>
 </div>
 </div>
@@ -509,7 +512,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <div class="page-header carla-hdr" data-g="壬">
   <div class="eyebrow">BaZi · Cuatro Pilares · 四柱命理</div>
   <h1 class="cc">Carla</h1>
-  <p>17 Enero 1992 · 21:40 hs · Femenino</p>
+  <p>17 Enero 1992 · 21:40 hs (horario de verano · hora solar 19:36) · Buenos Aires · Femenino</p>
   <div class="badge cb">壬 REN · AGUA YANG · DAY MASTER</div>
 </div>
 <div class="ctx-bar cc">
@@ -522,19 +525,19 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <div class="sec-title ct">Los Cuatro Pilares</div>
   <p class="sec-sub">Su Day Master 壬 Ren Yang Water comparte esencia con Guadi — ambas son Océano Yang. El contexto es completamente diferente: la carta de Carla tiene mucho Metal (recurso que nutre el Agua) y Tierra (que la contiene).</p>
   <div class="pilares-grid">
-    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn cc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">亥</div></div><div class="pilar-name">Hai · Cerdo · Agua Yin</div><div class="dios-tag tag-a">Recurso Directo</div></div>
-    <div class="pilar-col hl-c" style="background:rgba(122,155,106,0.05);"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn cc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-t">7 Muertes</div></div>
+    <div class="pilar-col"><div class="pilar-label">Hora</div><div class="pilar-cn cc">庚</div><div class="pilar-name">Geng · Metal Yang</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">戌</div></div><div class="pilar-name">Xu · Perro · Tierra Yang</div><div class="dios-tag tag-t">Recurso Ind. · 7 Muertes</div></div>
+    <div class="pilar-col hl-c" style="background:rgba(181,196,110,0.05);"><div class="pilar-label">Día — El Yo</div><div class="pilar-cn cc">壬</div><div class="pilar-name">Ren · Agua Yang</div><div class="pilar-el">DAY MASTER</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">辰</div></div><div class="pilar-name">Chen · Dragón · Tierra Yang</div><div class="dios-tag tag-t">7 Muertes</div></div>
     <div class="pilar-col"><div class="pilar-label">Mes</div><div class="pilar-cn cc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">丑</div></div><div class="pilar-name">Chou · Buey · Tierra Yin</div><div class="dios-tag tag-a">Recurso Directo</div></div>
     <div class="pilar-col"><div class="pilar-label">Año</div><div class="pilar-cn cc">辛</div><div class="pilar-name">Xin · Metal Yin</div><div style="margin-top:0.6rem;"><div class="pilar-cn cc" style="font-size:1.7rem;">未</div></div><div class="pilar-name">Wei · Cabra · Tierra Yin</div><div class="dios-tag tag-a">Recurso Directo</div></div>
   </div>
 
   <div class="sec-title ct">Day Master: 壬 Ren — El Océano Yang</div>
-  <p class="sec-sub">Tres troncos Xin (Metal Yin) nutren constantemente su Agua — Carla tiene un recurso permanente y profundo. Su Agua es abundante, bien contenida, pero necesita expresarse (generar Madera/Fuego) o se estanca.</p>
+  <p class="sec-sub">Tres troncos de Metal (dos Xin y un Geng) nutren constantemente su Agua — Carla tiene un recurso permanente y profundo. Su Agua es abundante, bien contenida, pero necesita expresarse (generar Madera/Fuego) o se estanca.</p>
   <div class="e-grid">
     <div class="e-card agua"><div class="e-card-label">Arquetipo</div><h3 class="cc">El Océano que sabe a dónde va</h3><p>A diferencia de Guadi (Océano libre), Carla tiene su Agua muy nutrida y contenida por la Tierra del Dragón. Profunda, estratégica, con una capacidad de análisis y paciencia notables. Actúa cuando está segura, no antes.</p></div>
-    <div class="e-card metal"><div class="e-card-label">Triple Xin — Recurso dominante</div><h3 class="cc">Metal Yin alimenta todo</h3><p>Tres Xin (Metal Yin) en sus troncos: el mayor nivel de recurso posible. Esto la hace muy inteligente, metódica y con capacidad de aprender casi cualquier cosa. El riesgo: parálisis por análisis o dificultad para actuar sin certeza total.</p></div>
+    <div class="e-card metal"><div class="e-card-label">Triple Metal — Recurso dominante</div><h3 class="cc">El Metal alimenta todo</h3><p>Tres troncos de Metal (Xin, Xin, Geng): el mayor nivel de recurso posible. Esto la hace muy inteligente, metódica y con capacidad de aprender casi cualquier cosa. El riesgo: parálisis por análisis o dificultad para actuar sin certeza total.</p></div>
     <div class="e-card tierra"><div class="e-card-label">Dragón en la rama del día</div><h3 class="cc">7 Muertes — tensión que transforma</h3><p>El Dragón (Tierra Yang) controla su Agua. El 7M en el pilar del día es su mayor desafío y su mayor catalizador de crecimiento. La presión externa la transforma. Es su motor interno cuando activa bien este dios.</p></div>
-    <div class="e-card agua"><div class="e-card-label">Cerdo en la hora</div><h3 class="cc">Agua pura — metas profundas</h3><p>El Cerdo (亥Hai) en la hora de metas aporta más Agua Yin. Sus metas reales son profundas, casi filosóficas — no de acumulación superficial. Necesita propósito genuino para comprometerse de verdad.</p></div>
+    <div class="e-card tierra"><div class="e-card-label">Perro en la hora</div><h3 class="cc">Tierra que contiene — metas con estructura</h3><p>El Perro (戌 Xu) en la hora choca con el Dragón de su día (辰戌) y completa con el Buey del mes y la Cabra del año la punición 丑戌未. Mucha Tierra sobre su Agua: presión interna, autoexigencia y metas que necesitan forma concreta para avanzar.</p></div>
     <div class="e-card ca"><div class="e-card-label">Da Yun actual (edad 26–36)</div><h3 class="cc">甲辰 Madera Yang / Dragón</h3><p>Jia (Madera Yang) activa su Food God — expresión creativa y flujo de talentos que antes estaban contenidos. El Dragón (segunda aparición) intensifica la tensión del 7M. Es un Da Yun de transformación profunda y emergencia de identidad propia.</p></div>
     <div class="e-card ca"><div class="e-card-label">Elemento de riqueza</div><h3 class="cc">Fuego — su canal de expresión</h3><p>La Madera genera Fuego, y el Fuego es su riqueza. Carla acumula cuando crea, comparte y se expresa. Cuanto más auténtica sea su expresión, más fluye la prosperidad en su vida. El silencio y la contención la alejan del Fuego.</p></div>
   </div>
@@ -625,25 +628,25 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 <div class="carta-wrap" style="max-width:980px;margin:0 auto;padding:2rem 1.5rem 4rem;">
 
   <!-- INTRO FAMILIAR -->
-  <div style="background:rgba(201,151,42,0.04);border:1px solid var(--bdr);border-radius:6px;padding:1.5rem 1.8rem;margin-bottom:2.5rem;">
+  <div style="background:rgba(255,145,77,0.04);border:1px solid var(--bdr);border-radius:6px;padding:1.5rem 1.8rem;margin-bottom:2.5rem;">
     <div style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.15em;color:var(--smoke);margin-bottom:0.8rem;text-transform:uppercase;">El sistema familiar completo · Cuatro Pilares</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-bottom:1.2rem;">
-      <div style="text-align:center;padding:0.9rem;background:rgba(201,151,42,0.07);border:1px solid rgba(201,151,42,0.25);border-radius:4px;">
+      <div style="text-align:center;padding:0.9rem;background:rgba(255,145,77,0.07);border:1px solid rgba(255,145,77,0.25);border-radius:4px;">
         <div style="font-size:1.8rem;color:var(--gold);">甲</div>
         <div style="font-family:'IM Fell English',serif;color:var(--gold-l);font-size:1rem;margin-bottom:0.2rem;">Luca</div>
         <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Madera Yang · Papá<br>Pareja de Carla</div>
       </div>
-      <div style="text-align:center;padding:0.9rem;background:rgba(122,155,106,0.07);border:1px solid rgba(122,155,106,0.2);border-radius:4px;">
+      <div style="text-align:center;padding:0.9rem;background:rgba(181,196,110,0.07);border:1px solid rgba(181,196,110,0.2);border-radius:4px;">
         <div style="font-size:1.8rem;color:var(--carla);">壬</div>
         <div style="font-family:'IM Fell English',serif;color:var(--carla);font-size:1rem;margin-bottom:0.2rem;">Carla</div>
         <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Agua Yang · Mamá<br>Pareja de Luca</div>
       </div>
-      <div style="text-align:center;padding:0.9rem;background:rgba(90,154,191,0.07);border:1px solid rgba(90,154,191,0.2);border-radius:4px;">
+      <div style="text-align:center;padding:0.9rem;background:rgba(111,176,192,0.07);border:1px solid rgba(111,176,192,0.2);border-radius:4px;">
         <div style="font-size:1.8rem;color:var(--morena);">甲</div>
         <div style="font-family:'IM Fell English',serif;color:var(--morena);font-size:1rem;margin-bottom:0.2rem;">Morena</div>
         <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Madera Yang · 15 años<br>Hija de Carla</div>
       </div>
-      <div style="text-align:center;padding:0.9rem;background:rgba(192,96,144,0.07);border:1px solid rgba(192,96,144,0.2);border-radius:4px;">
+      <div style="text-align:center;padding:0.9rem;background:rgba(242,154,138,0.07);border:1px solid rgba(242,154,138,0.2);border-radius:4px;">
         <div style="font-size:1.8rem;color:var(--guadi);">壬</div>
         <div style="font-family:'IM Fell English',serif;color:var(--guadi);font-size:1rem;margin-bottom:0.2rem;">Guadalupe</div>
         <div style="font-family:'Space Mono',monospace;font-size:0.53rem;color:var(--smoke);">Agua Yang · 4 años<br>Hija de Carla y Luca</div>
@@ -673,7 +676,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   </div>
 
   <!-- ═══ LUCA + CARLA ═══ -->
-  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(201,151,42,0.25);margin-top:0;">Luca &amp; Carla — La Pareja</div>
+  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(255,145,77,0.25);margin-top:0;">Luca &amp; Carla — La Pareja</div>
   <p class="sec-sub">甲 Madera Yang + 壬 Agua Yang · Agua nutre Madera · Una de las combinaciones más complementarias del sistema</p>
   <div class="e-grid">
     <div class="e-card agua"><div class="e-card-label">El vínculo elemental</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Agua → Madera: Carla nutre a Luca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">El Agua genera Madera — Carla es la fuente profunda que sostiene el crecimiento de Luca. La intuición estratégica de Carla, su profundidad y su capacidad analítica dan a Luca exactamente el tipo de recurso que su carta no produce sola: perspectiva de largo plazo sin la urgencia del Fuego.</p></div>
@@ -698,7 +701,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   </div>
 
   <!-- ═══ LUCA + MORENA ═══ -->
-  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(201,151,42,0.25);">Luca &amp; Morena — Padrasto e Hijastra</div>
+  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(255,145,77,0.25);">Luca &amp; Morena — Padrasto e Hijastra</div>
   <p class="sec-sub">甲 Madera Yang + 甲 Madera Yang · Mismo Day Master · Dos árboles, mismo bosque</p>
   <div class="e-grid">
     <div class="e-card madera"><div class="e-card-label">El vínculo elemental</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Mismo Day Master: dos Jia</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Luca y Morena son ambos 甲 Jia Yang Wood. Se entienden de manera profunda e intuitiva — pero dos árboles grandes en el mismo espacio compiten naturalmente por la luz. No es conflicto estructural: es tensión de expansión que necesita canales propios para cada uno.</p></div>
@@ -724,7 +727,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   </div>
 
   <!-- ═══ LUCA + GUADI ═══ -->
-  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(201,151,42,0.25);">Luca &amp; Guadalupe — Papá e Hija</div>
+  <div class="sec-title" style="color:var(--gold-l);border-color:rgba(255,145,77,0.25);">Luca &amp; Guadalupe — Papá e Hija</div>
   <p class="sec-sub">甲 Madera Yang + 壬 Agua Yang · Agua nutre Madera · Ella lo inspira sin saberlo</p>
   <div class="e-grid">
     <div class="e-card agua"><div class="e-card-label">El vínculo elemental</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Agua nutre Madera: Guadi sostiene a Luca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Energéticamente, Guadi nutre a Luca. El Agua Yang de Guadi es el Recurso Indirecto de Luca — intuición, profundidad, perspectiva que su propia carta no genera fácilmente. Su presencia le activa algo más tranquilo y profundo que el ritmo normal de expansión de Luca.</p></div>
@@ -809,7 +812,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
     <div class="e-card madera"><div class="e-card-label">Vínculo elemental</div><h3 class="mc">Guadi nutre a Morena</h3><p>Energéticamente, Guadi nutre a Morena. La profundidad y la quietud del Agua de Guadi son una fuente de calma para el Gran Árbol hiperactivo de Morena. Aunque es 11 años menor, energéticamente Guadi da algo que Morena necesita: anclaje y ternura sin condiciones.</p></div>
     <div class="e-card fuego"><div class="e-card-label">Lo que Morena activa en Guadi</div><h3 class="mc">Morena despierta su Madera</h3><p>El Jia de Morena activa el Food God de Guadi (Jia/Tigre en su año natal). Morena despierta la creatividad y el entusiasmo de Guadi — cuando están juntas, Guadi juega con más energía y apertura. Morena es un estímulo natural para su hermana menor.</p></div>
     <div class="e-card agua"><div class="e-card-label">La dinámica natural</div><h3 class="mc">La grande lidera · La chica ancla</h3><p>Morena naturalmente dirige y propone. Guadi naturalmente absorbe y sigue. Pero cuando Morena está en sus momentos de mayor intensidad emocional, Guadi se convierte inconscientemente en un ancla de calma. Es una dinámica que se construye sola, sin que nadie la programe.</p></div>
-    <div class="e-card morena" style="background:rgba(90,154,191,0.07);border-color:rgba(90,154,191,0.2);"><div class="e-card-label">Los mundos distintos ahora</div><h3 class="mc">11 años de diferencia real</h3><p>Morena (15) y Guadi (4) tienen mundos casi paralelos ahora. El vínculo real se construye en los momentos que Morena elige estar presente — y esos momentos, aunque pocos, dejan huella profunda en Guadi. La calidad importa más que la cantidad.</p></div>
+    <div class="e-card morena" style="background:rgba(111,176,192,0.07);border-color:rgba(111,176,192,0.2);"><div class="e-card-label">Los mundos distintos ahora</div><h3 class="mc">11 años de diferencia real</h3><p>Morena (15) y Guadi (4) tienen mundos casi paralelos ahora. El vínculo real se construye en los momentos que Morena elige estar presente — y esos momentos, aunque pocos, dejan huella profunda en Guadi. La calidad importa más que la cantidad.</p></div>
     <div class="e-card agua"><div class="e-card-label">2026</div><h3 class="mc">Morena en expansión · Guadi absorbiendo</h3><p>El Caballo doble activo de Morena genera alta intensidad emocional en el hogar. Guadi lo absorbe sin filtro. La hermana mayor es un modelo invisible para la pequeña — lo que Morena irradia, Guadi lo incorpora como parte de su mundo interior.</p></div>
     <div class="e-card" style="background:var(--surf2);border:1px solid var(--bdr);"><div class="e-card-label">Proyección futura</div><h3 style="font-family:'IM Fell English',serif;font-size:1rem;font-weight:400;margin-bottom:0.28rem;color:var(--gold-l);">Cuando Guadi crezca</h3><p style="font-size:0.87rem;color:var(--ash2);line-height:1.6;">Cuando Guadi tenga 10-15 años y Morena 21-26, el vínculo se equipara en profundidad. Agua + Madera formarán una de las alianzas de hermanas más complementarias posibles — profundidad + acción, quietud + movimiento.</p></div>
   </div>
@@ -831,7 +834,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
   <!-- ═══ SÍNTESIS ═══ -->
   <div class="sec-title" style="color:var(--gold-l);">El Sistema Familiar — Síntesis</div>
   <p class="sec-sub">Cómo operan los cuatro juntos como sistema energético completo.</p>
-  <div style="background:rgba(201,151,42,0.04);border:1px solid var(--bdr);border-radius:6px;padding:1.8rem 2rem;">
+  <div style="background:rgba(255,145,77,0.04);border:1px solid var(--bdr);border-radius:6px;padding:1.8rem 2rem;">
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;text-align:center;">
       <div>
         <div style="font-size:1.8rem;color:var(--gold);">甲 Luca</div>
@@ -870,6 +873,216 @@ nav{position:sticky;top:0;z-index:200;background:rgba(13,10,24,0.97);backdrop-fi
 </footer>
 
 <script>
+// ══════════════════════════════════════
+// MOTOR BAZI — compartido por todas las páginas
+// Día: número de día juliano (1/1/2000 = 戊午, 1/1/2024 = 甲子).
+// Mes y año: términos solares reales (longitud del Sol), el año arranca en Li Chun (315°).
+// Natal: hora solar verdadera (longitud del lugar + ecuación del tiempo).
+// ══════════════════════════════════════
+const BZ=(()=>{
+  const TRONCOS_SHORT=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
+  const TRONCOS_CN=['甲','乙','丙','丁','戊','己','庚','辛','壬','癸'];
+  const RAMAS_SHORT=['Zi','Chou','Yin','Mao','Chen','Si','Wu','Wei','Shen','You','Xu','Hai'];
+  const RAMAS_CN=['子','丑','寅','卯','辰','巳','午','未','申','酉','戌','亥'];
+  const ANIMALES=['Rata','Buey','Tigre','Conejo','Dragón','Serpiente','Caballo','Cabra','Mono','Gallo','Perro','Cerdo'];
+  const ELEM=['Madera','Fuego','Tierra','Metal','Agua'];
+  // Elemento de cada rama (qi principal)
+  const RAMA_ELEM=[4,2,0,0,2,1,1,2,3,3,2,4];
+  const mod=(a,n)=>((a%n)+n)%n;
+  const RAD=Math.PI/180;
+
+  // ── Día ──
+  function jdn(y,m,d){return Math.floor(Date.UTC(y,m-1,d)/86400000)+2440588;}
+  function dayIdx(y,m,d){return mod(jdn(y,m,d)+49,60);}
+
+  // ── Sol (Meeus, baja precisión: ~0.01°, alcanza para fijar el día del término solar) ──
+  function sunLon(ms){
+    const T=(ms/86400000+2440587.5-2451545)/36525;
+    const L0=280.46646+36000.76983*T+0.0003032*T*T;
+    const M=357.52911+35999.05029*T-0.0001537*T*T;
+    const C=(1.914602-0.004817*T-0.000014*T*T)*Math.sin(M*RAD)+(0.019993-0.000101*T)*Math.sin(2*M*RAD)+0.000289*Math.sin(3*M*RAD);
+    const om=125.04-1934.136*T;
+    return mod(L0+C-0.00569-0.00478*Math.sin(om*RAD),360);
+  }
+  // Ecuación del tiempo en minutos (aprox. ±0.5 min)
+  function eot(ms){
+    const T=(ms/86400000+2440587.5-2451545)/36525;
+    const L0=mod(280.46646+36000.76983*T,360);
+    const lon=sunLon(ms);
+    const eps=23.4393-0.013*T;
+    let ra=Math.atan2(Math.cos(eps*RAD)*Math.sin(lon*RAD),Math.cos(lon*RAD))/RAD;
+    let e=mod(L0-0.0057183-ra+180,360)-180;
+    return e*4;
+  }
+  // Índice de mes solar: 0 = 寅 Tigre (desde 315°)
+  function monthK(ms){return Math.floor(mod(sunLon(ms)-315,360)/30);}
+
+  // Pilares de año y mes para un instante y su año civil local
+  function yearMonth(ms,civilYear,civilMonth){
+    const k=monthK(ms);
+    let y=civilYear;
+    if(civilMonth<=2&&k>=10)y-=1; // antes de Li Chun pertenece al año anterior
+    const yt=mod(y-4,10),yr=mod(y-4,12);
+    const mt=mod((yt%5)*2+2+k,10),mr=mod(k+2,12);
+    return{y,yt,yr,k,mt,mr};
+  }
+  const sexa=(t,r)=>mod(6*t-5*r,60);
+
+  function pilarFromIdx(idx){const t=idx%10,r=idx%12;return{ti:t,ri:r};}
+  function info(t,r){
+    return{ti:t,ri:r,tShort:TRONCOS_SHORT[t],tCn:TRONCOS_CN[t],rShort:RAMAS_SHORT[r],rCn:RAMAS_CN[r],
+      tFull:TRONCOS_CN[t]+' '+TRONCOS_SHORT[t],rFull:RAMAS_CN[r]+' '+RAMAS_SHORT[r],animal:ANIMALES[r],
+      elemT:ELEM[t>>1]+(t%2?' Yin':' Yang'),elemN:ELEM[t>>1]};
+  }
+
+  // Pilar del día para una fecha local (usa año/mes/día del calendario del dispositivo)
+  function dia(date){const p=pilarFromIdx(dayIdx(date.getFullYear(),date.getMonth()+1,date.getDate()));return info(p.ti,p.ri);}
+  // Pilares de año y mes vigentes al mediodía de esa fecha local
+  function anioMes(date){
+    const noon=new Date(date.getFullYear(),date.getMonth(),date.getDate(),12,0,0);
+    const ym=yearMonth(noon.getTime(),date.getFullYear(),date.getMonth()+1);
+    return{anio:info(ym.yt,ym.yr),mes:info(ym.mt,ym.mr),y:ym.y,k:ym.k};
+  }
+  // Troncos de las 12 horas (Zi..Hai) según el tronco del día
+  function horasTi(dayTi){const base=(dayTi%5)*2;return Array.from({length:12},(_,i)=>(base+i)%10);}
+
+  // Fecha del próximo/anterior término 節 (longitud ≡ 15 mod 30) desde ms
+  function nextJie(ms,dir){
+    const step=dir*3600000*6;
+    const seg=t=>Math.floor(mod(sunLon(t)-315,360)/30);
+    const s0=seg(ms);let a=ms,b=ms+step;
+    while(seg(b)===s0){a=b;b+=step;}
+    for(let i=0;i<30;i++){const mid=(a+b)/2;if(seg(mid)===s0)a=mid;else b=mid;}
+    return(a+b)/2;
+  }
+
+  // ── Carta natal ──
+  // birth:{y,m,d,h,min,utcOffset(h),lon(°)}, sexo:'M'|'F'
+  function natal(birth,sexo){
+    const ms=Date.UTC(birth.y,birth.m-1,birth.d,birth.h,birth.min)-birth.utcOffset*3600000;
+    // hora solar verdadera
+    const solarMs=ms+(birth.lon*4+eot(ms))*60000;
+    const sd=new Date(solarMs); // leer con getUTC*
+    let sy=sd.getUTCFullYear(),sm=sd.getUTCMonth()+1,sday=sd.getUTCDate();const sh=sd.getUTCHours();
+    if(sh>=23){const n=new Date(Date.UTC(sy,sm-1,sday+1));sy=n.getUTCFullYear();sm=n.getUTCMonth()+1;sday=n.getUTCDate();}
+    const dp=pilarFromIdx(dayIdx(sy,sm,sday));
+    const hr=Math.floor(((sh+1)%24)/2);
+    const ht=((dp.ti%5)*2+hr)%10;
+    const ym=yearMonth(ms,birth.y,birth.m);
+    // Da Yun
+    const yang=ym.yt%2===0;
+    const dir=((yang&&sexo==='M')||(!yang&&sexo==='F'))?1:-1;
+    const jie=nextJie(ms,dir);
+    const startAge=Math.abs(jie-ms)/86400000/3;
+    const mIdx=sexa(ym.mt,ym.mr);
+    const dayun=Array.from({length:9},(_,i)=>{
+      const p=pilarFromIdx(mod(mIdx+dir*(i+1),60));
+      return{...info(p.ti,p.ri),desde:startAge+10*i,hasta:startAge+10*(i+1)};
+    });
+    const solarH=sd.getUTCHours(),solarM=sd.getUTCMinutes();
+    return{
+      hora:info(ht,hr),dia:info(dp.ti,dp.ri),mes:info(ym.mt,ym.mr),anio:info(ym.yt,ym.yr),
+      dm:dp.ti,ramas:[hr,dp.ri,ym.mr,ym.yr],dayun,startAge,dir,
+      birthMs:ms,solar:`${String(solarH).padStart(2,'0')}:${String(solarM).padStart(2,'0')}`
+    };
+  }
+  function dayunEn(carta,date){
+    const edad=(date.getTime()-carta.birthMs)/(365.2422*86400000);
+    return carta.dayun.find(d=>edad>=d.desde&&edad<d.hasta)||null;
+  }
+
+  // ── 10 Dioses ──
+  const DIOS_NOMBRES=[['Friend','Rob Wealth'],['Food God','Hurt Officer'],['Ind. Wealth','Dir. Wealth'],['7 Killings','Dir. Officer'],['Ind. Resource','Dir. Resource']];
+  function dios(dm,t){const d=mod((t>>1)-(dm>>1),5);return DIOS_NOMBRES[d][(t%2===dm%2)?0:1];}
+  function diosArr(dm){return Array.from({length:10},(_,t)=>dios(dm,t));}
+
+  // ── Interacciones entre ramas ──
+  const CHOQUES=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
+  const COMBHE=[[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
+  const DANOS=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
+  const PUNICIONES=[
+    {grupo:[2,5,8],nombre:'寅巳申 Punición sin gracia (Tigre-Serpiente-Mono)'},
+    {grupo:[1,10,7],nombre:'丑戌未 Punición por abuso de poder (Buey-Perro-Cabra)'},
+  ];
+  const AUTO_PUN=[4,6,9,11]; // 辰 午 酉 亥
+  const par=(list,a,b)=>list.some(([x,y])=>(a===x&&b===y)||(a===y&&b===x));
+
+  // ri: rama del día. refs: [{r, label}] ramas de la carta + año + Da Yun
+  function interacciones(ri,refs){
+    const res=[];
+    for(const{r}of refs){
+      if(par(CHOQUES,ri,r))res.push({tipo:'choque',efecto:'mal',txt:`⚡ Choque con ${ANIMALES[r]}`});
+      if(par(COMBHE,ri,r))res.push({tipo:'combo',efecto:'bien',txt:`🤝 Combina con ${ANIMALES[r]}`});
+      if(par(DANOS,ri,r))res.push({tipo:'dest',efecto:'cuidado',txt:`⚠️ Daño (害) con ${ANIMALES[r]}`});
+      if(ri===r&&AUTO_PUN.includes(r))res.push({tipo:'pun',efecto:'cuidado',txt:`⚠️ Auto-punición (自刑) ${ANIMALES[r]}`});
+    }
+    if(ri===0||ri===3){const otro=ri===0?3:0;if(refs.some(x=>x.r===otro))res.push({tipo:'pun',efecto:'cuidado',txt:'⚠️ Punición 子卯 (Rata-Conejo)'});}
+    // Punición de tres ramas: el día la completa o la activa si ya hay al menos otra rama del grupo
+    const presentes=new Set(refs.map(x=>x.r));
+    for(const p of PUNICIONES){
+      if(!p.grupo.includes(ri))continue;
+      const otras=p.grupo.filter(g=>g!==ri&&presentes.has(g));
+      if(otras.length===2)res.push({tipo:'pun',efecto:'mal',txt:`⛓ Completa ${p.nombre}`});
+      else if(otras.length===1)res.push({tipo:'pun',efecto:'cuidado',txt:`⛓ Activa ${p.nombre.split(' ')[0]} con ${ANIMALES[otras[0]]}`});
+    }
+    return res;
+  }
+
+  // ── Exportación ──
+  function csvCalendario(eventos){
+    const esc=s=>`"${String(s).replace(/"/g,'""')}"`;
+    const f=d=>`${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}/${d.getFullYear()}`;
+    const h=(hh,mm)=>{const ap=hh>=12?'PM':'AM';const x=hh%12||12;return`${x}:${String(mm).padStart(2,'0')} ${ap}`;};
+    const rows=['Subject,Start Date,Start Time,End Date,End Time,All Day Event,Description'];
+    for(const e of eventos){
+      rows.push([esc(e.titulo),f(e.fecha),h(e.h,0),f(e.fecha),h(e.h+(e.dur||1),0),'False',esc(e.desc)].join(','));
+    }
+    return rows.join('\r\n');
+  }
+  async function guardarArchivo(nombre,contenido,btn){
+    try{
+      const dl=window.claude?await window.claude.use('downloads'):null;
+      if(dl)await dl.save({filename:nombre,data:contenido});
+      else{
+        const url=URL.createObjectURL(new Blob(['\uFEFF'+contenido],{type:'text/csv;charset=utf-8'}));
+        const a=document.createElement('a');a.href=url;a.download=nombre;document.body.appendChild(a);a.click();a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url),1000);
+      }
+      if(btn){const t=btn.textContent;btn.textContent='✓ Guardado';setTimeout(()=>btn.textContent=t,2500);}
+    }catch(e){
+      if(e&&e.code==='declined')return;
+      if(btn){const t=btn.textContent;btn.textContent='Descarga no disponible acá';setTimeout(()=>btn.textContent=t,3000);}
+    }
+  }
+  function gcalUrl(titulo,detalle,fecha,hIni,hFin){
+    const ds=`${fecha.getFullYear()}${String(fecha.getMonth()+1).padStart(2,'0')}${String(fecha.getDate()).padStart(2,'0')}`;
+    const hh=x=>String(x).padStart(2,'0')+'0000';
+    return`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(titulo)}&dates=${ds}T${hh(hIni)}/${ds}T${hh(hFin)}&details=${encodeURIComponent(detalle)}`;
+  }
+
+  // Meses solares: devuelve [{inicio:Date, fin:Date, mes:info, anio:info, k, y}] desde el mes en curso
+  function mesesSolares(desde,cantidad){
+    const out=[];let d=new Date(desde.getFullYear(),desde.getMonth(),desde.getDate(),12);
+    let cur=anioMes(d);let ini=new Date(d);
+    // retroceder hasta el inicio del mes solar en curso
+    while(true){const prev=new Date(ini);prev.setDate(prev.getDate()-1);const am=anioMes(prev);if(am.k!==cur.k)break;ini=prev;}
+    d=new Date(ini);
+    while(out.length<cantidad){
+      const am=anioMes(d);let fin=new Date(d);
+      while(true){const nx=new Date(fin);nx.setDate(nx.getDate()+1);if(anioMes(nx).k!==am.k)break;fin=nx;}
+      out.push({inicio:new Date(d),fin:new Date(fin),mes:am.mes,anio:am.anio,k:am.k,y:am.y});
+      d=new Date(fin);d.setDate(d.getDate()+1);
+    }
+    return out;
+  }
+
+  return{TRONCOS_SHORT,TRONCOS_CN,RAMAS_SHORT,RAMAS_CN,ANIMALES,ELEM,RAMA_ELEM,
+    dayIdx,sunLon,eot,dia,anioMes,horasTi,natal,dayunEn,dios,diosArr,interacciones,
+    csvCalendario,guardarArchivo,gcalUrl,mesesSolares,info};
+})();
+
+</script>
+<script>
 // ══ ENGINE ══
 const TRONCOS_SHORT=['Jia','Yi','Bing','Ding','Wu','Ji','Geng','Xin','Ren','Gui'];
 const TRONCOS_FULL=['甲 Jia','乙 Yi','丙 Bing','丁 Ding','戊 Wu','己 Ji','庚 Geng','辛 Xin','壬 Ren','癸 Gui'];
@@ -882,20 +1095,13 @@ const DIAS_ES=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
 const MESES_ES=['','Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
 
 function getToday(){return new Date();}
-function getPilar(date){
-  const ref=new Date('2024-01-01T12:00:00');
-  const diff=Math.round((date-ref)/86400000);
-  const idx=((46+diff)%60+60)%60;
-  const t=idx%10,r=idx%12;
-  return{ti:t,ri:r,tShort:TRONCOS_SHORT[t],tFull:TRONCOS_FULL[t],rFull:RAMAS_FULL[r],
-    animal:ANIMALES[r],elemT:ELEM_T[t],elemN:ELEM_NAME[t],elemC:ELEM_CLS[t]};
-}
+function getPilar(date){const p=BZ.dia(date);return{...p,elemC:ELEM_CLS[p.ti]};}
 
 const PERSONS={
   guadi:{
     name:'Guadalupe',dm:8,dmElem:'壬 Ren · Agua Yang',color:'var(--guadi)',
-    natal:[8,0,4,2],anioR:6,dayunR:3,// anioR=6: año 2026 Caballo (choca su Rata del día — año movido para ella)
-    dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
+    birth:{y:2022,m:4,d:29,h:16,min:59,utcOffset:-3,lon:-58.38},sexo:'F',
+    dios:BZ.diosArr(8),
     // Agua Yang FUERTE (Ren+Ren+Zi). Necesita drenar(Madera), calentar(Fuego), contener(Tierra).
     elemBon:[0,1,2,3,4,5],elemBad:[6,7,8,9],
     tipsHacer:{
@@ -917,7 +1123,7 @@ const PERSONS={
       3:['Suprimir sus emociones o pedirle que "no llore"','Entornos con mucha tensión o conflicto entre adultos','Actividades frías o desconectadas cuando el día pide calidez','Sobreestimulación que no deje espacio para sentir','Reprimirla cuando quiere cantar, bailar o actuar'],
       4:['Cambios de planes de último momento sin explicación','Ambientes caóticos o desordenados sin estructura','Exigirle creatividad cuando el Qi pide estabilidad','Demasiados estímulos nuevos a la vez','Presión por resultados cuando lo que necesita es base segura'],
       5:['Exceso de creatividad libre sin ningún orden — puede abrumarse','Actividades sin inicio o fin claro cuando el Qi pide estructura','Improvisar la rutina el día que necesita predecibilidad','Demasiadas opciones para elegir al mismo tiempo','Actividades abiertas sin límites cuando necesita contención'],
-      6:['Ambientes donde el conflicto entre adultos es visible','Reglas que cambian sin explicación — genera inseguridad','Injusticias visibles — el 7K es muy sensible a lo que "no es justo"','Exceso de flexibilidad cuando lo que necesita es certeza','Ignorar sus esfuerzos o no reconocer cuando cumplió las reglas'],
+      6:['Ambientes donde el conflicto entre adultos es visible','Reglas que cambian sin explicación — genera inseguridad','Injusticias visibles — es muy sensible a lo que "no es justo"','Exceso de flexibilidad cuando lo que necesita es certeza','Ignorar sus esfuerzos o no reconocer cuando cumplió las reglas'],
       7:['Actividades caóticas o sin lógica visible','Demasiado estímulo emocional cuando necesita orden','Cambios abruptos en el entorno físico que la desorienten','Juegos de fantasía extrema cuando la energía pide lógica','Saltear pasos o apresurarse en algo que requiere secuencia'],
       8:['Apresurarse o exigirle rapidez en sus procesos','Interrumpir su concentración cuando está explorando algo','Demasiadas preguntas directas cuando necesita silencio para pensar','Actividades muy pautadas cuando el Qi pide libre exploración','Pantallas que reemplacen exploración real y curiosidad activa'],
       9:['Apresurar la transición del descanso a la actividad','Entornos ruidosos, con muchas personas o estímulos fuertes','Exigirle sociabilidad cuando está en modo recarga','Ignorar sus señales de cansancio o saturación emocional','Cambiar de ambiente cuando está en un espacio de quietud'],
@@ -925,8 +1131,8 @@ const PERSONS={
   },
   morena:{
     name:'Morena',dm:0,dmElem:'甲 Jia · Madera Yang',color:'var(--morena)',
-    natal:[9,6,4,3],anioR:6,dayunR:6,// anioR=6: año 2026 Caballo (refuerza su Caballo natal — Fuego doble)
-    dios:['Hermano','Rob Wealth','Food God','Hurt Officer','Ind. Wealth','Dir. Wealth','7 Killings','Dir. Officer','Ind. Resource','Dir. Resource'],
+    birth:{y:2011,m:4,d:9,h:17,min:51,utcOffset:-3,lon:-58.38},sexo:'F',
+    dios:BZ.diosArr(0),
     // Madera Yang con Caballo(Fuego) drenando. Necesita Agua(nutre) y Madera(refuerza). Fuego ya fuerte la agota.
     elemBon:[0,1,8,9],elemBad:[2,3,6,7],
     tipsHacer:{
@@ -956,9 +1162,9 @@ const PERSONS={
   },
   carla:{
     name:'Carla',dm:8,dmElem:'壬 Ren · Agua Yang',color:'var(--carla)',
-    // natal: Hai(11), Chen(4), Chou(1), Wei(7) · año2026:Wu(6) · dayun:Chen(4)
-    natal:[11,4,1,7],anioR:6,dayunR:4,
-    dios:['7 Killings','Dir. Officer','Rob Wealth','Dir. Wealth','Dir. Resource','Ind. Resource','Friend','Ind. Wealth','Comparator','Food God'],
+    // 21:40 con horario de verano (UTC-2) → hora solar 19:36 → hora Xu
+    birth:{y:1992,m:1,d:17,h:21,min:40,utcOffset:-2,lon:-58.38},sexo:'F',
+    dios:BZ.diosArr(8),
     // Agua Yang fuerte por triple Metal. Necesita drenar(Madera/Food God), riqueza(Fuego), control(Tierra). Metal/Agua = exceso.
     elemBon:[0,1,2,3,4,5],elemBad:[6,7,8,9],
     tipsHacer:{
@@ -968,7 +1174,7 @@ const PERSONS={
       3:['Escribir, crear, expresar — el Fuego Yin fluye hoy','Compartir algo personal o creativo que guardaba para sí','Tomar una decisión desde la intuición sin necesitar más análisis','Liderar algo desde su autenticidad, no desde el rol','Hacer algo que la haga sentir viva y auténtica, no útil o correcta'],
       4:['Organizar, planificar o estructurar algo que está suelto','Avanzar en tareas concretas con resultado visible','Conectar su esfuerzo con una meta concreta y cercana','Hacer algo práctico que tenga impacto real en su entorno','Gestionar finanzas, recursos o compromisos con orden y claridad'],
       5:['Organizar algo con detalle y método — el Agua contenida fluye bien con estructura','Cumplir compromisos formales con exactitud','Conectar con personas de confianza en entornos ordenados','Avanzar en proyectos con pasos claros y secuencia definida','Tomarse el tiempo para hacer algo bien hecho, sin apresurarse'],
-      6:['Superar un desafío que venía posponiendo — el 7M activo la potencia hoy','Hablar con claridad sobre algo que estaba evitando','Tomar una posición firme en una situación que lo requiere','Usar la presión del entorno como combustible, no como parálisis','Resolver algo difícil con la claridad y determinación que la caracteriza cuando está activada'],
+      6:['Superar un desafío que venía posponiendo — el Metal Yang le da claridad y filo hoy','Hablar con claridad sobre algo que estaba evitando','Tomar una posición firme en una situación que lo requiere','Usar la presión del entorno como combustible, no como parálisis','Resolver algo difícil con la claridad y determinación que la caracteriza cuando está activada'],
       7:['Avanzar en trámites, procesos formales o compromisos de largo plazo','Construir su reputación con acciones consistentes y precisas','Conectar con personas de autoridad desde su mejor versión','Cumplir lo que se comprometió con exactitud — la confiabilidad la distingue','Documentar o registrar lo que está aprendiendo o construyendo'],
       8:['Estudiar, investigar, profundizar en algo que le importa de verdad','Planificar a largo plazo con calma y perspectiva','Escuchar su intuición antes de actuar — hoy su lectura de la situación es muy precisa','Buscar una perspectiva externa antes de tomar una decisión importante','Tiempo de silencio y reflexión — procesar antes de responder'],
       9:['Descansar genuinamente — su triple Recurso necesita recarga real','Aprender algo nuevo sin presión de aplicarlo de inmediato','Conectar con alguien que la nutre sin costo emocional','Tiempo a solas o en silencio sin agenda','Reflexionar sobre lo que quiere con perspectiva y sin urgencia'],
@@ -988,22 +1194,21 @@ const PERSONS={
   }
 };
 
-const CHOQUES_G=[[0,6],[1,7],[2,8],[3,9],[4,10],[5,11]];
-const COMBHE_G=[[0,1],[2,11],[3,10],[4,9],[5,8],[6,7]];
-const DESTRUCT_G=[[0,7],[1,6],[2,5],[3,4],[8,11],[9,10]];
+// Cartas natales calculadas (hora solar verdadera, Buenos Aires)
+for(const k in PERSONS){const P=PERSONS[k];P.carta=BZ.natal(P.birth,P.sexo);P.natal=P.carta.ramas;}
 
 // Nobleman (天乙贵人) por Day Master: Ren(Guadi/Carla)→Mao,Si · Jia(Morena)→Chou,Wei
 const NOBLEMAN_FAM={guadi:[3,5],carla:[3,5],morena:[1,7]};
 
-function getIntsFam(ri,person){
-  const p=PERSONS[person];
-  const refs=[...p.natal,p.anioR,p.dayunR];
-  let res=[];
-  for(let b of refs){
-    for(let[a,c]of CHOQUES_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'choque',efecto:'mal',txt:`Choque con ${ANIMALES[b]}`});
-    for(let[a,c]of COMBHE_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'combo',efecto:'bien',txt:`Combina con ${ANIMALES[b]}`});
-    for(let[a,c]of DESTRUCT_G)if((ri===a&&b===c)||(ri===c&&b===a))res.push({tipo:'dest',efecto:'cuidado',txt:`Daño (害) con ${ANIMALES[b]}`});
-  }
+function refsFam(person,date){
+  const P=PERSONS[person];const d=date||getToday();
+  const refs=P.natal.map(r=>({r}));
+  refs.push({r:BZ.anioMes(d).anio.ri});
+  const dy=BZ.dayunEn(P.carta,d);if(dy)refs.push({r:dy.ri});
+  return refs;
+}
+function getIntsFam(ri,person,date){
+  const res=BZ.interacciones(ri,refsFam(person,date));
   // Morena: el Trío de Fuego (寅午戌) refuerza un Fuego que YA la drena — señal de cuidado, no bonus
   if(person==='morena'&&(ri===2||ri===10))res.push({tipo:'trioFuego',efecto:'cuidado',txt:'Refuerza Trío de Fuego — mucha expresión, cuidar su energía'});
   // Nobleman del día
@@ -1011,11 +1216,11 @@ function getIntsFam(ri,person){
   return res;
 }
 
-function calcRatingFam(ti,ri,person){
+function calcRatingFam(ti,ri,person,date){
   const p=PERSONS[person];let s=3;
   if(p.elemBon.includes(ti))s+=1.0;
   if(p.elemBad.includes(ti))s-=1.1;
-  for(let i of getIntsFam(ri,person)){
+  for(let i of getIntsFam(ri,person,date)){
     if(i.efecto==='bien')s+=0.5;
     if(i.efecto==='mal')s-=0.8;
     if(i.efecto==='cuidado')s-=0.35;
@@ -1031,14 +1236,6 @@ function renderStarsFam(n,sz=12,cls='star'){
   return s;
 }
 
-function getMesPilarFam(m){
-  // 2026 = año Bing Wu → Feb arranca 庚寅 (regla Cinco Tigres). Ene 2026 = Ji Chou (año Yi Si)
-  const mp={1:{ti:5,ri:1},2:{ti:6,ri:2},3:{ti:7,ri:3},4:{ti:8,ri:4},
-    5:{ti:9,ri:5},6:{ti:0,ri:6},7:{ti:1,ri:7},8:{ti:2,ri:8},
-    9:{ti:3,ri:9},10:{ti:4,ri:10},11:{ti:5,ri:11},12:{ti:6,ri:0}};
-  return mp[m]||{ti:0,ri:0};
-}
-
 let todayPilares={};
 
 function buildHoyFam(person){
@@ -1051,17 +1248,18 @@ function buildHoyFam(person){
   const dia=today.getDate();
   const mes=MESES_ES[today.getMonth()+1];
   const anio=today.getFullYear();
-  const m=today.getMonth()+1;
-  const mp=getMesPilarFam(m);
+  const am=BZ.anioMes(today);
+  const dy=BZ.dayunEn(pData.carta,today);
   const isG=person==='guadi';const isC=person==='carla';
   const pfx=isG?'g':isC?'c':'m';
   const colorCls=isG?'gc':isC?'cc':'mc';
-  const dayunLabel=isG?'癸卯 próximo':isC?'甲辰 Madera/Dragón':'甲午 Madera/Caballo';
+  const d0=pData.carta.dayun[0];
+  const dayunLabel=dy?`${dy.tCn}${dy.rCn} ${dy.elemN}/${dy.animal}`:`${d0.tCn}${d0.rCn} desde los ${Math.round(pData.carta.startAge)}`;
 
   document.getElementById(`${pfx}-title`).textContent=`${dow}, ${dia} de ${mes} ${anio}`;
   document.getElementById(`${pfx}-ctx`).innerHTML=`
-    <div>AÑO <span>丙午 Fuego/Caballo</span></div>
-    <div>MES <span>${TRONCOS_FULL[mp.ti]} ${RAMAS_FULL[mp.ri]}</span></div>
+    <div>AÑO <span>${am.anio.tFull} ${am.anio.rFull} · ${am.anio.animal}</span></div>
+    <div>MES <span>${am.mes.tFull} ${am.mes.rFull} · ${am.mes.animal}</span></div>
     <div>DÍA <span>${p.tFull} ${p.rFull} · ${p.animal}</span></div>
     <div>DA YUN <span>${dayunLabel}</span></div>
   `;
@@ -1104,6 +1302,10 @@ function buildHoyFam(person){
     </div>
   `;
 
+  const gcal=document.getElementById('gcal-hoy-'+person);
+  if(gcal)gcal.href=BZ.gcalUrl(`BaZi ⭐${rating} · ${pData.name} · ${p.tShort} ${p.animal}`,
+    `Dios: ${pData.dios[p.ti]}\nHACER: ${th[0]}\nEVITAR: ${tn[0]}`,today,9,10);
+
   // Actividades concretas (solo Guadi)
   if(person==='guadi'){buildActividadesGuadi(p,rating);}
 }
@@ -1116,7 +1318,7 @@ const ACTIVIDADES_GUADI={
   madera:{
     estado:'Día expansivo — necesita canalizar energía hacia afuera',
     icon:'🌱',
-    color:'#4a8c3f',
+    color:'#5f9e6e',
     intro:'El día activa su Madera: el mejor canal para drenar su Agua. Guadi va a tener energía para crear, construir y explorar. Aprovechar para juego activo y proyectos con las manos.',
     casa:['Construir torres, casas o mundos con bloques y dejar que ella dirija','Plastilina o masa: hacer animalitos, comida, lo que se le ocurra','Plantar una semilla en una maceta y que la cuide (le encanta el proceso de crecimiento)','Dibujar libre en papel grande pegado a la pared, de pie'],
     afuera:['Plaza con juegos de trepar y movimiento — necesita gastar energía','Caminar y recolectar hojas, palitos, piedritas para una "colección"','Pasear en bici o triciclo','Visitar un vivero o parque con plantas y árboles'],
@@ -1126,7 +1328,7 @@ const ACTIVIDADES_GUADI={
   fuego:{
     estado:'Día cálido y social — su corazón pide conexión y expresión',
     icon:'🔥',
-    color:'#e05a1a',
+    color:'#d9552c',
     intro:'El Fuego es su riqueza y su alegría. Hoy Guadi está en su modo más expresivo, afectivo y social. Es el día ideal para música, baile, ver gente querida y conexión emocional plena.',
     casa:['Poner música y bailar juntos — su Fuego se enciende con el movimiento rítmico','Cantar canciones, inventar letras tontas, hacer un "show"','Juego de personajes y disfraces — actuar, hacer teatro','Cocinar algo simple y dulce juntos (con supervisión)'],
     afuera:['Visitar abuelos, primos o amigos que la hacen sentir querida','Ir a un cumpleaños, plaza con otros niños, evento social','Salida a un lugar con color y estímulo alegre (feria, parque temático chico)','Merienda especial afuera como momento de conexión'],
@@ -1136,7 +1338,7 @@ const ACTIVIDADES_GUADI={
   tierra:{
     estado:'Día de calma y estructura — necesita previsibilidad y contención',
     icon:'🏔️',
-    color:'#9c7a3c',
+    color:'#c08a3e',
     intro:'La Tierra contiene su Agua y le da el límite suave que necesita. Hoy Guadi se siente mejor con rutina clara, ambientes conocidos y actividades con principio y fin. No es día de sobreestimular.',
     casa:['Ordenar y clasificar juguetes por color o tipo — le da calma y placer','Puzzles, encajables, juegos de meter-sacar','Cocinar algo concreto con pasos: amasar, cortar con cuchillo de plástico','Rutina tranquila en casa: un cuento, una actividad, una pausa'],
     afuera:['Lugares conocidos y tranquilos — no estrenar lugares nuevos hoy','Caminar sin apuro a un destino familiar (la panadería, la plaza de siempre)','Mercado o verdulería: tocar, oler, elegir frutas (estímulo sensorial calmo)'],
@@ -1146,7 +1348,7 @@ const ACTIVIDADES_GUADI={
   metal:{
     estado:'Día de menor energía — recarga, lógica suave, menos estímulo',
     icon:'⚪',
-    color:'#7a9bb5',
+    color:'#a7b6ba',
     intro:'El Metal genera más Agua en una carta que ya tiene mucha: hoy Guadi puede estar más sensible, introvertida o saturarse rápido. Bajar el ritmo, simplificar el entorno y dar espacio.',
     casa:['Actividades tranquilas de a uno: un puzzle, mirar un libro juntos','Juegos de lógica suave: memoria, asociar, encontrar parejas','Dibujar o pintar en silencio, sin pedirle un resultado','Rincón tranquilo con cojines, mantita y pocos estímulos'],
     afuera:['Mejor quedarse en casa o lugares de baja estimulación hoy','Si salen, paseos cortos y tranquilos, sin multitudes','Evitar cumpleaños, shoppings o lugares ruidosos si se la nota saturada'],
@@ -1156,7 +1358,7 @@ const ACTIVIDADES_GUADI={
   agua:{
     estado:'Día de máxima sensibilidad — descanso profundo y su elemento natural',
     icon:'💧',
-    color:'#2c5f8a',
+    color:'#2f6b7a',
     intro:'El Agua se suma a su Agua: día de altísima sensibilidad emocional e imaginación, pero también de posible dispersión o cansancio. Lo que mejor le hace: agua real, naturaleza y quietud.',
     casa:['Juego con agua: bañera larga, vasitos, trasvasar líquidos (la calma y la centra)','Cuentos tranquilos con mundos imaginarios — su imaginación está en el pico','Música instrumental suave de fondo mientras juega tranquila','Siesta o descanso si se la nota dispersa o muy emocional'],
     afuera:['Cerca del agua: mar, río, una fuente, charcos de lluvia','Naturaleza tranquila: un parque con sombra, pasto, observar pájaros','Caminata lenta y contemplativa, sin objetivo ni apuro'],
@@ -1170,7 +1372,7 @@ function buildActividadesGuadi(p,rating){
   const act=ACTIVIDADES_GUADI[p.elemN.toLowerCase()];
   if(!act){cont.innerHTML='';return;}
   cont.innerHTML=`
-    <div style="background:rgba(192,96,144,0.04);border:1px solid var(--bdr);border-left:3px solid ${act.color};border-radius:5px;padding:1.3rem 1.5rem;margin-bottom:1.2rem;">
+    <div style="background:rgba(242,154,138,0.04);border:1px solid var(--bdr);border-left:3px solid ${act.color};border-radius:5px;padding:1.3rem 1.5rem;margin-bottom:1.2rem;">
       <div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.6rem;">
         <span style="font-size:1.8rem;line-height:1;">${act.icon}</span>
         <div>
@@ -1197,18 +1399,11 @@ function buildActividadesGuadi(p,rating){
   `;
 }
 
-// CALENDAR FAM
-const MONTHS_DATA=[
-  {m:5,name:'Mayo',solar:5,desc:'Mes Serpiente · Gui Si · Agua Yin sobre Fuego',pilar:'癸巳',chinese:'巳'},
-  {m:6,name:'Junio',solar:6,desc:'Mes Caballo · Jia Wu · Madera sobre Fuego pico',pilar:'甲午',chinese:'午'},
-  {m:7,name:'Julio',solar:7,desc:'Mes Cabra · Yi Wei · Madera Yin sobre Tierra',pilar:'乙未',chinese:'未'},
-  {m:8,name:'Agosto',solar:7,desc:'Mes Mono · Bing Shen · Fuego sobre Metal',pilar:'丙申',chinese:'申'},
-  {m:9,name:'Septiembre',solar:8,desc:'Mes Gallo · Ding You · Fuego Yin sobre Metal',pilar:'丁酉',chinese:'酉'},
-  {m:10,name:'Octubre',solar:8,desc:'Mes Perro · Wu Xu · Tierra doble',pilar:'戊戌',chinese:'戌'},
-  {m:11,name:'Noviembre',solar:7,desc:'Mes Cerdo · Ji Hai · Tierra sobre Agua',pilar:'己亥',chinese:'亥'},
-  {m:12,name:'Diciembre',solar:7,desc:'Mes Rata · Geng Zi · Metal sobre Agua',pilar:'庚子',chinese:'子'},
-];
-const currentMonths={guadi:5,morena:5,carla:5};
+// CALENDAR FAM — 12 meses solares desde el mes en curso
+const MESES_SOL=BZ.mesesSolares(getToday(),12);
+const currentMonths={guadi:0,morena:0,carla:0};
+const fmtDM=d=>`${d.getDate()}/${d.getMonth()+1}`;
+function mesDesc(ms){return `Mes ${ms.mes.animal} · ${ms.mes.tShort} ${ms.mes.rShort} · ${ms.mes.elemN} sobre ${BZ.ELEM[BZ.RAMA_ELEM[ms.mes.ri]]} · del ${fmtDM(ms.inicio)} al ${fmtDM(ms.fin)}`;}
 
 function getCardDoFam(ti,person){
   return PERSONS[person].tipsHacer[ti]?PERSONS[person].tipsHacer[ti][0]:'Acompañar y observar';
@@ -1237,17 +1432,16 @@ function buildMonthSelFam(person){
   const sel=document.getElementById(`${pfx}-month-sel`);
   sel.innerHTML='';
   const today=getToday();
-  MONTHS_DATA.forEach(md=>{
-    const isNow=md.m===(today.getMonth()+1)&&today.getFullYear()===2026;
-    const isActive=md.m===currentMonths[person];
+  MESES_SOL.forEach((ms,i)=>{
+    const isActive=i===currentMonths[person];
     const btn=document.createElement('button');
     btn.className=`month-btn${isActive?' active '+colorCls:''}`;
-    btn.textContent=md.name+(isNow?' · Hoy':'');
+    btn.textContent=`${ms.mes.rCn} ${ms.mes.animal} · ${fmtDM(ms.inicio)}`+(i===0?' · Hoy':'');
     btn.onclick=()=>{
       document.querySelectorAll(`#${pfx}-month-sel .month-btn`).forEach(b=>b.classList.remove('active','ga','ma','ca'));
       btn.classList.add('active',colorCls);
-      currentMonths[person]=md.m;
-      renderMonthFam(md.m,person);
+      currentMonths[person]=i;
+      renderMonthFam(i,person);
     };
     sel.appendChild(btn);
   });
@@ -1258,35 +1452,26 @@ function renderMonthFam(m,person){
   const pfx=isG?'g':isC?'c':'m';
   const colorCls=isG?'gc':isC?'cc':'mc';
   const pData=PERSONS[person];
-  const md=MONTHS_DATA.find(x=>x.m===m);
+  const ms=MESES_SOL[m];
   const display=document.getElementById(`${pfx}-month-display`);
-  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
-  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
   const today=getToday();
-  const isCurrentMonth=m===(today.getMonth()+1)&&today.getFullYear()===2026;
-  // Si es el mes actual, arranca desde HOY; si no, desde el inicio solar del mes
-  let start;
-  if(isCurrentMonth){
-    start=new Date(today.getFullYear(),today.getMonth(),today.getDate(),12,0,0);
-  }else{
-    start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  }
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
-  const mp=getMesPilarFam(m);
+  const isCurrentMonth=m===0;
+  const start=isCurrentMonth?new Date(today.getFullYear(),today.getMonth(),today.getDate(),12):new Date(ms.inicio);
+  const end=ms.fin;
 
   const fromTodayNote=isCurrentMonth?`<span style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--smoke);letter-spacing:0.06em;"> · desde hoy</span>`:'';
   let html=`<div class="month-hdr">
-    <div class="month-cn ${colorCls}">${md.chinese}</div>
-    <div class="month-info"><h2 class="${colorCls}">${md.name} 2026 — ${pData.name}${fromTodayNote}</h2><p>${md.desc}</p></div>
+    <div class="month-cn ${colorCls}">${ms.mes.rCn}</div>
+    <div class="month-info"><h2 class="${colorCls}">${MESES_ES[ms.inicio.getMonth()+1]} ${ms.inicio.getFullYear()} — ${pData.name}${fromTodayNote}</h2><p>${mesDesc(ms)}</p></div>
   </div><div class="cal-grid">`;
 
   for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
     const p=getPilar(new Date(d));
-    const rating=calcRatingFam(p.ti,p.ri,person);
+    const rating=calcRatingFam(p.ti,p.ri,person,d);
     const dow=DIAS_ES[d.getDay()];
     const isWe=d.getDay()===0||d.getDay()===6;
     const isTd=d.getDate()===today.getDate()&&d.getMonth()===today.getMonth()&&d.getFullYear()===today.getFullYear();
-    const ints=getIntsFam(p.ri,person);
+    const ints=getIntsFam(p.ri,person,d);
     const intTxt=ints.length?ints.map(i=>i.txt).slice(0,2).join(' · '):'—';
     const todayBadge=isTd?'<span class="today-badge">HOY</span>':'';
     const doTxt=getCardDoFam(p.ti,person);
@@ -1308,57 +1493,21 @@ function renderMonthFam(m,person){
   }
   html+=`</div>`;
   display.innerHTML=html;
-  if(m===(today.getMonth()+1)){setTimeout(()=>{const tc=document.querySelector(`#${pfx}-month-display .today-card`);if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
+  if(isCurrentMonth){setTimeout(()=>{const tc=document.querySelector(`#${pfx}-month-display .today-card`);if(tc)tc.scrollIntoView({behavior:'smooth',block:'nearest'});},150);}
 }
 
-// EXPORT FAM
-function fICS(d){return d.toISOString().replace(/[-:]/g,'').split('.')[0]+'Z';}
-function mkEvent(date,title,desc,dur=60){
-  const s=new Date(date);s.setHours(9,0,0);
-  const e=new Date(s);e.setMinutes(e.getMinutes()+dur);
-  return `BEGIN:VEVENT\r\nDTSTAMP:${fICS(new Date())}\r\nDTSTART:${fICS(s)}\r\nDTEND:${fICS(e)}\r\nSUMMARY:${title}\r\nDESCRIPTION:${desc.replace(/\n/g,'\\n').replace(/<[^>]+>/g,'')}\r\nORGANIZER:mailto:sanbaoestudio@gmail.com\r\nEND:VEVENT\r\n`;
-}
-function dl(name,content){const b=new Blob([content],{type:'text/calendar'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;a.click();URL.revokeObjectURL(a.href);}
-
-function exportarHoyFam(person){
-  const p=todayPilares[person];if(!p)return;
+// EXPORT FAM (CSV que Google Calendar importa; el visor no permite .ics)
+function exportarMesFam(person,btn){
+  const ms=MESES_SOL[currentMonths[person]];
   const pData=PERSONS[person];
-  const today=getToday();
-  const rating=calcRatingFam(p.ti,p.ri,person);
-  const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${p.tShort} ${p.animal}`;
-  const desc=`Dios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti].slice(0,3).join(' / ')}\nEVITAR: ${pData.tipsNoHacer[p.ti].slice(0,3).join(' / ')}`;
-  dl(`bazi_${person}_hoy.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Familia//ES\r\n${mkEvent(today,title,desc)}END:VCALENDAR`);
-}
-function abrirGCalHoyFam(person){
-  const p=todayPilares[person];if(!p)return;
-  const pData=PERSONS[person];
-  const today=getToday();
-  const rating=calcRatingFam(p.ti,p.ri,person);
-  const title=encodeURIComponent(`BaZi ⭐${rating} · ${pData.name} · ${p.tShort} ${p.animal}`);
-  const det=encodeURIComponent(`Dios: ${pData.dios[p.ti]}\nHACER: ${pData.tipsHacer[p.ti][0]}\nEVITAR: ${pData.tipsNoHacer[p.ti][0]}`);
-  const ds=`${today.getFullYear()}${String(today.getMonth()+1).padStart(2,'0')}${String(today.getDate()).padStart(2,'0')}`;
-  window.open(`https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${ds}T090000/${ds}T100000&details=${det}&add=sanbaoestudio%40gmail.com`,'_blank');
-}
-function exportarMesFam(person){
-  const m=currentMonths[person];
-  const md=MONTHS_DATA.find(x=>x.m===m);
-  const nextM=m===12?1:m+1;const nextY=m===12?2027:2026;
-  const nextMd=m===12?{solar:6}:MONTHS_DATA.find(x=>x.m===nextM);
-  const start=new Date(`2026-${String(m).padStart(2,'0')}-${String(md.solar).padStart(2,'0')}T12:00:00`);
-  const end=new Date(`${nextY}-${String(nextM).padStart(2,'0')}-${String((nextMd?.solar||6)-1).padStart(2,'0')}T12:00:00`);
-  const pData=PERSONS[person];
-  let events='';
-  for(let d=new Date(start);d<=end;d.setDate(d.getDate()+1)){
+  const ev=[];
+  for(let d=new Date(ms.inicio);d<=ms.fin;d.setDate(d.getDate()+1)){
     const p=getPilar(new Date(d));
-    const rating=calcRatingFam(p.ti,p.ri,person);
-    const title=`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`;
-    const desc=`Rating: ${rating}/5\nDios: ${pData.dios[p.ti]}\nHACER: ${getCardDoFam(p.ti,person)}\nEVITAR: ${getCardDontFam(p.ti,person)}`;
-    events+=mkEvent(new Date(d),title,desc,30);
+    const rating=calcRatingFam(p.ti,p.ri,person,d);
+    ev.push({fecha:new Date(d),h:9,dur:1,titulo:`BaZi ${'⭐'.repeat(rating)} · ${pData.name} · ${ELEM_NAME[p.ti]} · ${p.tShort} ${p.animal}`,
+      desc:`Rating: ${rating}/5 | Dios: ${pData.dios[p.ti]} | HACER: ${getCardDoFam(p.ti,person)} | EVITAR: ${getCardDontFam(p.ti,person)}`});
   }
-  dl(`bazi_${person}_${md.name.toLowerCase()}.ics`,`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//BaZi Familia//ES\r\nCALNAME:BaZi ${pData.name} ${md.name}\r\n${events}END:VCALENDAR`);
-}
-function abrirGCalMesFam(person){
-  window.open(`https://calendar.google.com/calendar/r/month/2026/${currentMonths[person]}?authuser=sanbaoestudio%40gmail.com`,'_blank');
+  BZ.guardarArchivo(`bazi_${person}_${ms.mes.rShort.toLowerCase()}_${ms.inicio.getFullYear()}.csv`,BZ.csvCalendario(ev),btn);
 }
 
 // NAV
@@ -1391,10 +1540,6 @@ function showSubSection(id,prefix,tab){
 
 
 // INIT
-const today=getToday();
-const todayM=today.getMonth()+1;
-const hasM=MONTHS_DATA.some(x=>x.m===todayM);
-if(hasM){currentMonths.guadi=todayM;currentMonths.morena=todayM;currentMonths.carla=todayM;}
 buildHoyFam('guadi');
 buildHoyFam('morena');
 buildHoyFam('carla');
