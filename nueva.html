@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="es" data-luz="noche">
+<head>
+<meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>San Bao Estudio</title>
+<meta name="description" content="Estudio audiovisual en Buenos Aires. Edición, filmación, motion graphics, fotografía, diseño e inteligencia artificial para marcas, artistas y creadores.">
+<meta name="theme-color" content="#0D1B21">
+<link rel="canonical" href="https://www.sanbaoestudio.com.ar/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;900&family=Barlow+Condensed:wght@500;600&family=DM+Mono&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bruma:#F4EFE4;--arena:#DCD2C0;--piedra:#6E6A63;--tinta:#0D1B21;--jing:#162931;
+  --petroleo:#264653;--naranja:#FF914D;--ambar:#F2B544;--terracota:#D9552C;--cobre:#8A4A2B;--crema:#EBE4D6;
+  --display:'Barlow',system-ui,sans-serif;--cond:'Barlow Condensed','Barlow',system-ui,sans-serif;--mono:'DM Mono',ui-monospace,monospace;
+  --nav:52px;--bar:0px;--gutter:clamp(16px,4vw,48px);--gap:12px;
+  /* todo en Tinta, el mismo fondo de la apertura */
+  --bg:var(--tinta);--fg:var(--bruma);--fg2:var(--arena);--line:rgba(244,239,228,.14);--hover:rgba(244,239,228,.06);--borde:rgba(244,239,228,.09);--overlay:rgba(13,27,33,.97)
+}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--nav) + 8px);scroll-behavior:smooth;background:var(--tinta)}
+body{background:var(--tinta);color:var(--fg);font-family:var(--display);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--naranja);outline-offset:3px}
+.sr,.oculto{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gutter)}
+.acciones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:28px}
+
+/* ---------- MENÚ ---------- */
+.nav{position:sticky;top:0;z-index:60;height:var(--nav);background:var(--tinta);color:var(--bruma);border-bottom:1px solid rgba(244,239,228,.1)}
+.nav-in{max-width:1180px;height:100%;margin:0 auto;padding:0 var(--gutter);display:flex;align-items:center;gap:20px}
+.nav-logo{flex-shrink:0;display:block;width:32px;height:32px}
+.nav-logo img{width:32px;height:32px}
+.nav-links{flex:1;display:flex;justify-content:center;gap:clamp(14px,2.6vw,36px);list-style:none}
+.nav-links a{font-size:.88rem;text-decoration:none;opacity:.78;transition:opacity .2s,color .2s}
+.nav-links a:hover{opacity:1}
+.nav-links a[aria-current="true"]{opacity:1;color:var(--naranja)}
+.nav-der{flex-shrink:0;display:flex;align-items:center;gap:8px}
+.nav-btn{height:32px;min-width:32px;padding:0 10px;border-radius:999px;border:1px solid var(--line);font-size:.8rem;font-weight:500}
+.nav-btn:hover{border-color:var(--bruma)}
+.nav-cta{display:inline-flex;align-items:center;height:32px;padding:0 16px;border-radius:999px;background:var(--naranja);color:var(--tinta);font-size:.86rem;font-weight:500;text-decoration:none}
+.nav-cta:hover{background:var(--ambar)}
+.nav-menu{display:none;width:36px;height:36px;place-items:center}
+.nav-menu span,.nav-menu span::before,.nav-menu span::after{display:block;width:18px;height:1.5px;background:currentColor;position:relative;transition:transform .25s}
+.nav-menu span::before,.nav-menu span::after{content:'';position:absolute;left:0}
+.nav-menu span::before{top:-6px}.nav-menu span::after{top:6px}
+.nav.abierto .nav-menu span{background:transparent}
+.nav.abierto .nav-menu span::before{transform:translateY(6px) rotate(45deg)}
+.nav.abierto .nav-menu span::after{transform:translateY(-6px) rotate(-45deg)}
+
+/* ---------- INSTAGRAM (apertura) ---------- */
+.ig{background:var(--tinta);color:var(--bruma);border:1px solid var(--borde);text-align:center;padding:clamp(48px,7vw,88px) var(--gutter) clamp(48px,6vw,80px);margin:var(--gap) var(--gap) 0}
+.ig .hero-iso{display:block;width:min(78vw,560px);height:auto;fill:var(--naranja);margin:0 auto}
+.ig-bajada{font-family:var(--cond);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.8rem);line-height:1.2;margin-top:18px}
+.ig-kicker{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:clamp(36px,5vw,56px);color:var(--arena);font-size:.95rem}
+.ig-kicker svg{width:18px;height:18px}
+.ig-kicker a{text-decoration:none;font-weight:500;color:var(--bruma)}
+.ig-kicker a:hover{text-decoration:underline;text-underline-offset:3px}
+.ig-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(8px,1.4vw,18px);max-width:980px;margin:18px auto 0}
+.ig-post{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border-radius:6px;background:var(--jing)}
+.ig-post img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.ig-post:hover img{transform:scale(1.04)}
+.ig-post .ig-ico{position:absolute;top:10px;right:10px;width:22px;height:22px;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))}
+.ig-vacio{display:grid;place-items:center;border:1px dashed rgba(244,239,228,.25);background:transparent;color:var(--arena);font-size:.86rem;text-decoration:none;padding:16px}
+
+/* ---------- RECTÁNGULOS ---------- */
+.grilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);padding:var(--gap)}
+.tile{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;min-height:clamp(500px,46vw,640px);padding:clamp(40px,4.6vw,56px) 20px 0;background:var(--tinta);color:var(--fg);border:1px solid var(--borde)}
+.tile.ancho{grid-column:1/-1;min-height:clamp(540px,44vw,700px)}
+.tile-kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--naranja)}
+.tile h2{font-family:var(--cond);font-weight:600;font-size:clamp(2.3rem,4.6vw,3.8rem);line-height:1;letter-spacing:-.01em;margin-top:8px}
+.tile .sub{font-size:clamp(1.02rem,1.5vw,1.3rem);line-height:1.35;margin-top:10px;max-width:34ch}
+.tile .acciones{margin-top:20px;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 22px;border-radius:999px;font-weight:500;text-decoration:none;transition:background-color .2s,color .2s,border-color .2s}
+.btn-pri{background:var(--naranja);color:var(--tinta)}
+.btn-pri:hover{background:var(--ambar)}
+.btn-sec{border:1px solid currentColor;color:var(--fg)}
+.btn-sec:hover{background:var(--bruma);border-color:var(--bruma);color:var(--tinta)}
+.btn svg{width:18px;height:18px;flex-shrink:0}
+.tile .btn{min-height:40px;padding:0 20px;font-size:.95rem}
+.tira{margin-top:auto;width:100%;max-width:1100px;display:flex;justify-content:center;align-items:flex-end;gap:10px;padding-top:32px}
+.tira .pieza{flex:1 1 0;min-width:0;border-radius:8px 8px 0 0;overflow:hidden;background:var(--hover);opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.tira .pieza:nth-child(2){transition-delay:.08s}.tira .pieza:nth-child(3){transition-delay:.16s}.tira .pieza:nth-child(4){transition-delay:.24s}
+.tile.visto .tira .pieza{opacity:1;transform:none}
+.tira .pieza img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tira .pieza:hover img{transform:scale(1.05)}
+
+/* ---------- BLOQUES (secciones de abajo, también en rectángulo) ---------- */
+.bloque{margin:0 var(--gap) var(--gap);padding-block:clamp(72px,9vw,128px);background:var(--tinta);color:var(--fg);border:1px solid var(--borde)}
+/* apariciones al scrollear (solo con JS; una vez, sin animaciones en reposo) */
+.js .tile > :not(.tira),.js .bloque > .wrap{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .tile.visto > :not(.tira),.js .bloque.visto > .wrap{opacity:1;transform:none}
+.js .tile.visto > h2{transition-delay:.05s}.js .tile.visto > .sub{transition-delay:.1s}.js .tile.visto > .acciones{transition-delay:.15s}
+.bloque.seccion{border-top:0}
+
+/* ---------- SECCIONES ---------- */
+.seccion{padding-block:clamp(72px,9vw,128px)}
+.titulo{font-family:var(--cond);font-weight:600;font-size:clamp(2.4rem,5.2vw,4.4rem);line-height:.95;letter-spacing:-.01em}
+.intro{color:var(--fg2);max-width:46ch;margin-top:16px}
+
+/* Qué hacemos */
+.servicios{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(32px,6vw,96px);align-items:start}
+.servicios-cabeza{position:sticky;top:calc(var(--nav) + 32px)}
+.servicio{padding:26px 0;border-bottom:1px solid var(--line)}
+.servicio:first-child{padding-top:0}
+.servicio h3{font-family:var(--cond);font-weight:600;font-size:1.7rem;line-height:1.1;margin-bottom:8px}
+.servicio p{color:var(--fg2);max-width:60ch}
+
+/* Archivo */
+.archivo-cabeza{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px 48px;margin-bottom:40px}
+.controles{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;margin-bottom:28px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.filtros{display:flex;flex-wrap:wrap;gap:4px 22px}
+.filtro,.vista-btn{position:relative;padding:8px 0;color:var(--fg2);font-weight:500;transition:color .2s}
+.filtro sup{font-family:var(--mono);font-size:.68rem;margin-left:3px;font-weight:400}
+.filtro:hover,.vista-btn:hover{color:var(--fg)}
+.filtro[aria-pressed="true"],.vista-btn[aria-pressed="true"]{color:var(--fg)}
+.filtro[aria-pressed="true"]::after,.vista-btn[aria-pressed="true"]::after{content:'';position:absolute;left:0;right:0;bottom:2px;height:2px;background:var(--naranja)}
+.vistas{display:flex;gap:18px}
+
+.mosaico{display:grid;gap:36px 22px;align-items:start}
+#archivo .wrap{max-width:1500px}
+.cat-desc{color:var(--fg2);max-width:62ch;margin:-8px 0 32px;min-height:3.1em}
+.obra{display:block;text-decoration:none}
+.obra-media{display:block;position:relative;overflow:hidden;border-radius:3px;background:var(--hover)}
+.obra-media img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.obra:hover .obra-media img{transform:scale(1.035)}
+.obra-tit{display:block;font-weight:500;font-size:1.04rem;line-height:1.3;margin-top:12px}
+.obra:hover .obra-tit{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.obra-meta{display:flex;gap:10px;margin-top:4px;color:var(--fg2);font-size:.86rem}
+.fmt{font-family:var(--mono);font-size:.74rem;letter-spacing:.02em;padding-top:1px}
+
+.indice{list-style:none;border-top:1px solid var(--line)}
+.fila{display:grid;grid-template-columns:4.5rem minmax(0,1.3fr) minmax(0,.9fr) minmax(0,1.2fr);gap:20px;align-items:baseline;padding:16px 8px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s}
+.fila:hover{background:var(--hover)}
+.fila .f-tit{font-weight:500}
+.fila .f-cat,.fila .f-desc{color:var(--fg2);font-size:.92rem}
+.preview{position:fixed;left:0;top:0;width:240px;border-radius:3px;pointer-events:none;z-index:40;opacity:0;transition:opacity .15s;box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.preview.on{opacity:1}
+
+/* Cómo trabajamos */
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 28px;margin-top:clamp(48px,7vw,88px);counter-reset:paso}
+.paso{position:relative;padding-top:34px;border-top:1px solid var(--line)}
+.paso::before{content:'';position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--fg2)}
+.paso:first-child::before{background:var(--naranja)}
+.paso-n{display:block;font-family:var(--mono);font-size:.74rem;color:var(--fg2);margin-bottom:14px}
+.paso h3{font-family:var(--cond);font-weight:600;font-size:1.55rem;line-height:1.1;margin-bottom:10px}
+.paso p{color:var(--fg2);font-size:.96rem}
+.datos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:clamp(56px,8vw,96px)}
+.dato b{display:block;font-weight:900;font-size:clamp(2.2rem,4vw,3.4rem);line-height:1;letter-spacing:-.03em}
+.dato span{display:block;color:var(--fg2);margin-top:8px;font-size:.92rem}
+
+/* Preguntas */
+.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(32px,6vw,96px);align-items:start}
+.faq-cabeza{position:sticky;top:calc(var(--nav) + 32px)}
+.faq-cabeza .btn{margin-top:28px}
+.pregunta{border-bottom:1px solid var(--line)}
+.pregunta:first-child{border-top:1px solid var(--line)}
+.pregunta summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;cursor:pointer;font-family:var(--cond);font-weight:500;font-size:clamp(1.25rem,2vw,1.5rem);line-height:1.2}
+.pregunta summary::-webkit-details-marker{display:none}
+.pregunta summary::after{content:'';flex-shrink:0;width:14px;height:14px;background:linear-gradient(currentColor,currentColor) center/14px 1.5px no-repeat,linear-gradient(currentColor,currentColor) center/1.5px 14px no-repeat;transition:transform .25s}
+.pregunta[open] summary::after{transform:rotate(45deg)}
+.pregunta summary:hover{color:var(--fg2)}
+.pregunta p{color:var(--fg2);max-width:60ch;padding:0 0 24px}
+
+/* Archivo: ver todo */
+.ver-todo{display:flex;justify-content:center;margin-top:clamp(40px,5vw,64px)}
+
+/* Clientes */
+.citas{display:grid;gap:clamp(48px,7vw,88px);margin-top:clamp(40px,6vw,72px)}
+.cita{max-width:62ch}
+.cita:nth-child(2){margin-left:auto}
+.cita p{font-family:var(--cond);font-weight:500;font-size:clamp(1.5rem,2.8vw,2.2rem);line-height:1.22}
+.cita footer{margin-top:16px;color:var(--fg2)}
+.cita footer strong{color:var(--fg);font-weight:500}
+
+/* Contacto */
+.contacto{min-height:60svh;display:flex;flex-direction:column;justify-content:center}
+.contacto-titulo{font-weight:900;text-transform:uppercase;font-size:clamp(3rem,9vw,8.5rem);line-height:.85;letter-spacing:-.04em}
+.contacto .acciones{justify-content:flex-start}
+.canales{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 32px;margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
+.canal span{display:block;color:var(--fg2);font-size:.86rem}
+.canal a{font-weight:500;text-decoration:none}
+.canal a:hover{text-decoration:underline;text-underline-offset:3px}
+.pie{color:var(--fg2);font-size:.86rem;padding-block:20px 32px}
+/* ---------- MODALES ---------- */
+.modal{position:fixed;inset:0;z-index:100;background:var(--overlay);display:flex;align-items:center;justify-content:center;padding:56px 16px 24px}
+.modal[hidden]{display:none}
+.cerrar{position:absolute;top:14px;right:16px;height:38px;padding:0 16px;border-radius:999px;border:1px solid var(--line);font-weight:500}
+.cerrar:hover{border-color:var(--fg)}
+.video-caja{display:flex;flex-direction:column;align-items:center;gap:14px}
+.video-marco{background:#000;border-radius:3px;overflow:hidden}
+.video-marco iframe{width:100%;height:100%;border:0;display:block}
+.video-titulo{font-weight:500;text-align:center}
+.visor{width:min(1200px,100%);height:100%;display:flex;flex-direction:column}
+.visor-cabeza{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 24px;padding-right:110px;margin-bottom:16px}
+.visor-cabeza h3{font-family:var(--cond);font-weight:600;font-size:1.8rem;line-height:1.1}
+.visor-tabs{display:flex;flex-wrap:wrap;gap:4px 18px}
+.visor-cuerpo{flex:1;min-height:0;overflow:auto}
+.visor-grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px}
+.visor-grilla button{aspect-ratio:1;overflow:hidden;border-radius:2px;background:var(--hover)}
+.visor-grilla img{width:100%;height:100%;object-fit:cover;transition:opacity .2s}
+.visor-grilla button:hover img{opacity:.8}
+.visor-uno{height:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.visor-uno img{max-width:100%;max-height:calc(100svh - 190px);margin:0 auto;object-fit:contain;border-radius:2px}
+.visor-pie{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:14px;color:var(--fg2);font-size:.9rem}
+.flecha{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center}
+.flecha:hover{border-color:var(--fg)}
+.flecha svg{width:18px;height:18px}
+.link-btn{text-decoration:underline;text-underline-offset:3px}
+
+.wa{position:fixed;right:max(16px,var(--gutter));bottom:calc(16px + env(safe-area-inset-bottom));z-index:45;width:54px;height:54px;border-radius:50%;background:var(--naranja);color:var(--tinta);display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:transform .2s}
+.wa:hover{transform:scale(1.06)}
+.wa svg{width:26px;height:26px}
+.modal{color:var(--bruma)}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .servicios{grid-template-columns:1fr}
+  .servicios-cabeza{position:static}
+  .fila{grid-template-columns:3.4rem minmax(0,1fr);gap:4px 14px}
+  .fila .f-cat{grid-column:2;font-size:.86rem}
+  .fila .f-desc{display:none}
+  .pasos{grid-template-columns:1fr;gap:0}
+  .paso{padding:0 0 36px 32px;border-top:0;border-left:1px solid var(--line)}
+  .paso:last-child{padding-bottom:0}
+  .paso::before{top:0;left:-5px}
+  .datos{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}
+  .faq{grid-template-columns:1fr}
+  .faq-cabeza{position:static}
+  .nav-links{display:none;position:absolute;top:var(--nav);left:0;right:0;flex-direction:column;gap:0;padding:8px var(--gutter) 24px;background:var(--tinta);border-bottom:1px solid rgba(244,239,228,.1)}
+  .nav.abierto .nav-links{display:flex}
+  .nav-links a{display:block;padding:10px 0;font-family:var(--cond);font-weight:600;font-size:1.6rem;opacity:1}
+  .nav-menu{display:grid}
+  .nav-in{justify-content:space-between}
+}
+@media (max-width:760px){
+  :root{--gap:8px}
+  body{font-size:16px}
+  .grilla{grid-template-columns:1fr}
+  .tile,.tile.ancho{min-height:0}
+  .tira{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-inline:4px}
+  .tira::-webkit-scrollbar{display:none}
+  .tira .pieza{flex:0 0 auto;height:240px;scroll-snap-align:center}
+  .tile.ancho .tira .pieza{height:180px}
+  .ig-grid{gap:6px}
+  .mosaico{gap:24px 12px}
+  .obra-meta{font-size:.8rem}
+  .visor-uno{grid-template-columns:1fr}
+  .visor-uno .flecha{display:none}
+  .cita:nth-child(2){margin-left:0}
+  .nav-cta{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .tira .pieza,.js .tile > :not(.tira),.js .bloque > .wrap{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Menú principal">
+  <div class="nav-in">
+    <a class="nav-logo" href="#inicio" aria-label="San Bao Estudio, ir al inicio"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjQ5NCAxMjYgMTE4MCAxMTgwIj48cGF0aCBmaWxsPSIjMWUyYTM4IiBkPSJNIDE2NzEuMyA3MTUuNyBDIDE2NzEuMyAxMDQwIDE0MDguNCAxMzAyLjkgMTA4NC4xIDEzMDIuOSBDIDc1OS44IDEzMDIuOSA0OTYuOCAxMDQwIDQ5Ni44IDcxNS43IEMgNDk2LjggMzkxLjQgNzU5LjggMTI4LjUgMTA4NC4xIDEyOC41IEMgMTQwOC40IDEyOC41IDE2NzEuMyAzOTEuNCAxNjcxLjMgNzE1LjciLz48cGF0aCBmaWxsPSIjZjRlZmU0IiBkPSJNIDEwODMgMTI4LjUgQyA3NTguNyAxMjguNSA0OTUuOCAzOTEuNCA0OTUuOCA3MTUuNyBDIDQ5NS44IDEwNDAgNzU4LjcgMTMwMi45IDEwODMgMTMwMi45IEMgMTQwNy40IDEzMDIuOSAxNjcwLjMgMTA0MCAxNjcwLjMgNzE1LjcgQyAxNjcwLjMgMzkxLjQgMTQwNy40IDEyOC41IDEwODMgMTI4LjUgTSAxMDgzIDEzNC41IEMgMTE2MS41IDEzNC41IDEyMzcuNiAxNDkuOCAxMzA5LjMgMTgwLjEgQyAxMzQzLjcgMTk0LjcgMTM3Ni45IDIxMi43IDE0MDggMjMzLjcgQyAxNDM4LjggMjU0LjUgMTQ2Ny43IDI3OC40IDE0OTQgMzA0LjcgQyAxNTIwLjMgMzMxIDE1NDQuMiAzNjAgMTU2NSAzOTAuNyBDIDE1ODYgNDIxLjggMTYwNCA0NTUgMTYxOC42IDQ4OS41IEMgMTY0OC45IDU2MS4xIDE2NjQuMyA2MzcuMiAxNjY0LjMgNzE1LjcgQyAxNjY0LjMgNzk0LjIgMTY0OC45IDg3MC4zIDE2MTguNiA5NDEuOSBDIDE2MDQgOTc2LjQgMTU4NiAxMDA5LjYgMTU2NSAxMDQwLjcgQyAxNTQ0LjIgMTA3MS40IDE1MjAuMyAxMTAwLjQgMTQ5NCAxMTI2LjcgQyAxNDY3LjcgMTE1MyAxNDM4LjggMTE3Ni45IDE0MDggMTE5Ny43IEMgMTM3Ni45IDEyMTguNyAxMzQzLjcgMTIzNi43IDEzMDkuMyAxMjUxLjMgQyAxMjM3LjYgMTI4MS42IDExNjEuNSAxMjk2LjkgMTA4MyAxMjk2LjkgQyAxMDA0LjYgMTI5Ni45IDkyOC41IDEyODEuNiA4NTYuOCAxMjUxLjMgQyA4MjIuNCAxMjM2LjcgNzg5LjEgMTIxOC43IDc1OC4xIDExOTcuNyBDIDcyNy4zIDExNzYuOSA2OTguNCAxMTUzIDY3Mi4xIDExMjYuNyBDIDY0NS44IDExMDAuNCA2MjEuOSAxMDcxLjQgNjAxLjEgMTA0MC43IEMgNTgwLjEgMTAwOS42IDU2Mi4xIDk3Ni40IDU0Ny41IDk0MS45IEMgNTE3LjIgODcwLjMgNTAxLjggNzk0LjIgNTAxLjggNzE1LjcgQyA1MDEuOCA2MzcuMiA1MTcuMiA1NjEuMSA1NDcuNSA0ODkuNSBDIDU2Mi4xIDQ1NSA1ODAuMSA0MjEuOCA2MDEuMSAzOTAuNyBDIDYyMS45IDM2MCA2NDUuOCAzMzEgNjcyLjEgMzA0LjcgQyA2OTguNCAyNzguNCA3MjcuMyAyNTQuNSA3NTguMSAyMzMuNyBDIDc4OS4xIDIxMi43IDgyMi40IDE5NC43IDg1Ni44IDE4MC4xIEMgOTI4LjUgMTQ5LjggMTAwNC42IDEzNC41IDEwODMgMTM0LjUiLz48cGF0aCBmaWxsPSIjZmY5MTRkIiBkPSJNIDg2OS4yIDkyMC45IEMgODY5LjIgOTUwLjcgODI2LjYgOTczLjQgNzY5LjMgOTc0LjYgTCA3NjkuMyA4OTQgQyA3ODEuNiA4ODguMyA3OTguOCA4ODUuMSA4MTcuMSA4ODUuMSBDIDg0Ni44IDg4NS4xIDg2OS4yIDkwMC41IDg2OS4yIDkyMC45IE0gODUyLjUgODYzLjMgQyA4NDIuMiA4NjEuNSA4MzEuMiA4NjAuNiA4MjAuNSA4NjAuNiBDIDgwNC4zIDg2MC42IDc4NS42IDg2My44IDc2OS4zIDg2OS4yIEwgNzY5LjMgNzc3LjMgQyA4MjEuOCA3NzguNyA4NjAuOCA4MDUgODYwLjggODM5LjQgQyA4NjAuOCA4NDggODU3LjYgODU2LjkgODUyLjUgODYzLjMgTSA4ODMuMiA4NzIuMSBDIDkwNi4zIDg2MCA5MjAuNyA4NDAuNiA5MjAuNyA4MjAuNiBDIDkyMC43IDc4NS40IDg3Ny43IDc1OC44IDgyMC41IDc1OC44IEwgNzA5LjMgNzU4LjggTCA3MDkuMyA5OTMgTCA4MjAuNSA5OTMgQyA4ODIuNSA5OTMgOTI5LjIgOTY1LjMgOTI5LjIgOTI4LjUgQyA5MjkuMiA5MDQuOSA5MTIuMiA4ODQuMyA4ODMuMiA4NzIuMSIvPjxwYXRoIGZpbGw9IiNmZjkxNGQiIGQ9Ik0gMTAwMS44IDg2NCBMIDEwNDguNSA3ODUuMyBMIDEwOTAuMyA4NzMuMyBDIDEwODkuMyA5MDkgMTA2My4zIDkzNC43IDEwMjguMiA5MzQuNyBDIDEwMTIuMiA5MzQuNyAxMDAwLjYgOTI5LjUgOTk0LjcgOTE5LjcgQyA5ODcgOTA2LjcgOTg5LjcgODg2LjQgMTAwMS44IDg2NCBNIDEwNDAuNyA3NTguOCBMIDk3OC40IDg1OS4xIEMgOTUxLjEgOTAyLjIgOTQzLjYgOTQxLjggOTU3LjggOTY3LjYgQyA5NjguNiA5ODcuMSA5OTAuNCA5OTcuNSAxMDIwLjkgOTk3LjUgQyAxMDYyLjIgOTk3LjUgMTA5NS41IDk2MC4yIDExMDUuMiA5MDQuOSBMIDExNDcuMSA5OTMgTCAxMjEwLjkgOTkzIEwgMTA5OS43IDc1OC44IFogTSAxMDQwLjcgNzU4LjgiLz48cGF0aCBmaWxsPSIjZmY5MTRkIiBkPSJNIDEzMDguMiA5MjIuOSBMIDEzMDguMiA5MjIuOSBDIDEyNTYuMSA4ODYuNCAxMjMwLjggODM4LjcgMTI0OS41IDgxMiBDIDEyNjguMSA3ODUuNCAxMzIxLjcgNzkyLjkgMTM3NC4yIDgyOS41IEMgMTQyNi4zIDg2NiAxNDUxLjUgOTEzLjcgMTQzMi45IDk0MC40IEMgMTQxNC4yIDk2NyAxMzYwLjYgOTU5LjUgMTMwOC4yIDkyMi45IE0gMTM0MS4yIDc1NC45IEMgMTI2Ni40IDc1NC45IDEyMTAgODA3LjEgMTIxMCA4NzYuMiBDIDEyMTAgOTQ1LjQgMTI2Ni40IDk5Ny41IDEzNDEuMiA5OTcuNSBDIDE0MTUuOSA5OTcuNSAxNDcyLjMgOTQ1LjQgMTQ3Mi4zIDg3Ni4yIEMgMTQ3Mi4zIDgwNy4xIDE0MTUuOSA3NTQuOSAxMzQxLjIgNzU0LjkiLz48cGF0aCBmaWxsPSIjZmY5MTRkIiBkPSJNIDgxOSA1NjkuNiBDIDc3MS44IDU2MyA3MjIuOSA1NTYuMSA3MjIuOSA1MzIuNCBDIDcyMi45IDUxNy43IDczMC41IDUwNi4xIDc0My45IDUwMC43IEMgNzY3LjQgNDkxLjIgODExIDUwMC40IDg2My4xIDU1NC40IEwgODY0LjUgNTU1LjggTCA5MzIuNSA1NTUuOCBMIDkzMC44IDU0OS44IEMgOTE3LjIgNTAxLjkgODY0LjIgNDY1LjggODA3LjYgNDY1LjggQyA3NDYuMyA0NjUuOCA3MDAuMiA0OTQuNSA3MDAuMiA1MzIuNCBDIDcwMC4yIDU3MiA3NTkuNiA1ODAuNiA4MTcgNTg4LjkgQyA4NjQuNyA1OTUuOCA5MTQuMSA2MDIuOSA5MTQuMSA2MjcuNCBDIDkxNC4xIDY0MS43IDg5OS45IDY0OC40IDg5MS41IDY1MS4xIEMgODU3IDY2Mi4xIDgwMC45IDY0Ny41IDc3MC42IDYwNC43IEwgNzY5LjIgNjAyLjcgTCA2OTUuOCA2MDIuNyBMIDY5Ny4xIDYwOC40IEMgNzA4IDY1OS41IDc2MC4xIDY5Ni42IDgyMC45IDY5Ni42IEMgODg4LjEgNjk2LjYgOTM2LjggNjY2LjkgOTM2LjggNjI2LjEgQyA5MzYuOCA1ODYuMyA4NzYuOSA1NzcuOCA4MTkgNTY5LjYiLz48cGF0aCBmaWxsPSIjZmY5MTRkIiBkPSJNIDEwMjcuOSA2MzYuNiBDIDEwMTIuOCA2MzYuNiAxMDAxLjkgNjMxLjcgOTk2LjQgNjIyLjQgQyA5ODkuMSA2MTAuMiA5OTEuNiA1OTAuOSAxMDAzLjEgNTY5LjggTCAxMDQ3LjIgNDk1LjQgTCAxMDg2LjcgNTc4LjUgQyAxMDg1LjcgNjEyLjIgMTA2MS4xIDYzNi42IDEwMjcuOSA2MzYuNiBNIDEwMzkuNyA0NjkuNiBMIDk4MC40IDU2NC45IEMgOTU0LjEgNjA2LjUgOTQ3LjIgNjQzLjIgOTYwLjkgNjY4LjEgQyA5NzEuMiA2ODYuOCA5OTEuOSA2OTYuNiAxMDIxIDY5Ni42IEMgMTA2MC4yIDY5Ni42IDEwOTEuOCA2NjEuNCAxMTAxLjEgNjA5LjIgTCAxMTQwLjcgNjkyLjQgTCAxMjAxLjggNjkyLjQgTCAxMDk1LjkgNDY5LjYgWiBNIDEwMzkuNyA0NjkuNiIvPjxwYXRoIGZpbGw9IiNmZjkxNGQiIGQ9Ik0gMTM3Ni40IDQ2OS4zIEwgMTM3Ni40IDY0Ny44IEwgMTI3MS43IDQ2OS42IEwgMTE4NC45IDQ2OS42IEwgMTE4NC45IDUyMS42IEwgMTIzOC42IDUyMS42IEMgMTIyNS4zIDUzMSAxMjE2LjkgNTQ2LjYgMTIxNi45IDU2NSBMIDEyMTYuMyA2OTIuNCBMIDEyNzMuNyA2OTIuNCBMIDEyNzMuNyA1MTMuOSBMIDEzNzguNCA2OTIuMSBMIDE0MzMuOCA2OTIuMSBMIDE0MzMuOCA0NjkuMyBaIE0gMTM3Ni40IDQ2OS4zIi8+PC9zdmc+" alt="" width="32" height="32"></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#instagram" data-es="Instagram" data-en="Instagram">Instagram</a></li>
+      <li><a href="#trabajos" data-es="Trabajos" data-en="Work">Trabajos</a></li>
+      <li><a href="#archivo" data-es="Archivo" data-en="Archive">Archivo</a></li>
+      <li><a href="#servicios" data-es="Servicios" data-en="Services">Servicios</a></li>
+      <li><a href="#proceso" data-es="Cómo trabajamos" data-en="How we work">Cómo trabajamos</a></li>
+      <li><a href="#preguntas" data-es="Preguntas" data-en="FAQ">Preguntas</a></li>
+      <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+    </ul>
+    <div class="nav-der">
+      <button class="nav-btn" id="btnIdioma" aria-label="Switch to English">EN</button>
+      <a class="nav-cta" href="https://wa.me/5491130203625?text=Hola%20San%20Bao!%20Quiero%20cotizar%20un%20proyecto." target="_blank" rel="noopener" data-es="Cotizar" data-en="Get a quote">Cotizar</a>
+      <button class="nav-menu" id="navMenu" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="ig" id="inicio">
+  <h1><span class="oculto">San Bao Estudio</span><svg class="hero-iso" viewBox="225 755 2675 410" aria-hidden="true" focusable="false"><path d="M447.25,941.8c-76.82-10.84-156.25-22.04-156.25-60.47,0-23.97,12.46-42.75,34.17-51.52,38.12-15.4,109.02-.59,193.74,87.15l2.25,2.33h110.4l-2.74-9.69c-22.03-77.79-108.11-136.45-200.22-136.45-99.48,0-174.5,46.51-174.5,108.18s96.53,78.28,189.88,91.76c77.56,11.2,157.76,22.79,157.76,62.55,0,23.31-23.06,34.14-36.8,38.52-56.05,17.86-147.12-5.89-196.45-75.44l-2.28-3.21h-119.12l1.98,9.21c17.84,83.11,102.46,143.42,201.2,143.42,109.15,0,188.37-48.23,188.37-114.68s-97.29-78.4-191.38-91.67Z"/><path d="M805.81,779.22l-96.27,154.82c-42.82,67.65-54.11,127.22-31.8,167.75,16.7,30.33,50.45,46.36,97.62,46.36,63.74,0,115.03-57.19,130.29-141.99l64.29,135.05h99.21l-171.95-362h-91.4ZM786.63,1050.56c-24.54,0-42.26-7.98-51.22-23.07-11.8-19.85-7.75-51.11,10.96-85.5l71.6-120.78,64.18,135c-1.62,54.77-41.53,94.34-95.51,94.34Z"/><path d="M1352.92,778.78v289.98l-170.08-289.54h-141.14v84.58h87.26c-21.62,15.2-35.24,40.55-35.25,70.39l-.9,207.03h93.29v-289.98l170.08,289.54h89.99v-362h-93.25Z"/><path d="M1936.31,953.34c37.62-19.7,61.05-51.21,61.05-83.75,0-57.18-70.01-100.3-162.85-100.3h-180.66v380.49h180.66c100.65,0,176.55-45.08,176.55-104.86,0-38.37-27.59-71.73-74.75-91.58ZM1886.44,938.96c-16.64-2.87-34.49-4.38-51.93-4.38-26.4,0-56.75,5.2-83.24,14.11v-149.44c85.29,2.4,148.68,44.99,148.68,100.94,0,13.98-5.11,28.46-13.51,38.77ZM1913.64,1032.6c0,48.48-69.28,85.36-162.37,87.28v-130.93c19.93-9.23,47.92-14.48,77.76-14.48,48.24,0,84.61,24.99,84.61,58.13Z"/><path d="M2192.33,769.3l-101.28,162.88c-44.37,70.09-56.57,134.35-33.48,176.28,17.51,31.81,52.94,48.62,102.47,48.62,67.25,0,121.3-60.67,137.06-150.47l68.16,143.16h103.61l-180.73-380.49h-95.79ZM2129.15,940.14l75.8-127.87,67.97,142.98c-1.67,57.98-43.89,99.87-101.01,99.87-26,0-44.78-8.47-54.3-24.5-12.5-21.04-8.24-54.1,11.55-90.47Z"/><path d="M2680.53,762.91c-121.47,0-213.08,84.73-213.08,197.09s91.6,197.09,213.08,197.09,213.07-84.73,213.07-197.09-91.6-197.09-213.07-197.09ZM2626.9,1035.94h0c-84.69-59.37-125.69-136.86-95.37-180.24,30.26-43.28,117.36-31.1,202.6,28.35,84.7,59.38,125.7,136.87,95.38,180.25-30.26,43.29-117.38,31.09-202.62-28.36Z"/></svg></h1>
+  <p class="ig-bajada" data-es="Transformamos ideas en contenido visual que conecta." data-en="We turn ideas into visual content that connects.">Transformamos ideas en contenido visual que conecta.</p>
+  <div id="instagram">
+    <p class="ig-kicker"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg><span data-es="Lo último en" data-en="Latest on">Lo último en</span> <a href="https://instagram.com/sanbaoestudio" target="_blank" rel="noopener">@sanbaoestudio</a></p>
+    <div class="ig-grid" id="igGrid"></div>
+  </div>
+</header>
+
+<main>
+
+<section class="grilla" id="trabajos" aria-label="Trabajos por categoría"></section>
+
+<section class="seccion bloque" id="archivo" data-clip-es="Archivo" data-clip-en="Archive">
+  <div class="wrap">
+    <div class="archivo-cabeza">
+      <div>
+        <h2 class="titulo" data-es="Archivo" data-en="Archive">Archivo</h2>
+        <p class="intro" id="archivoIntro"></p>
+      </div>
+    </div>
+    <div class="controles">
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar trabajos"></div>
+      <div class="vistas" role="group" aria-label="Vista">
+        <button class="vista-btn" data-vista="grilla" aria-pressed="true" data-es="Grilla" data-en="Grid">Grilla</button>
+        <button class="vista-btn" data-vista="indice" aria-pressed="false" data-es="Índice" data-en="Index">Índice</button>
+      </div>
+    </div>
+    <p class="cat-desc" id="catDesc" aria-live="polite"></p>
+    <div id="obras"></div>
+  </div>
+</section>
+
+<section class="seccion bloque" id="servicios" data-clip-es="Qué hacemos" data-clip-en="What we do">
+  <div class="wrap servicios">
+    <div class="servicios-cabeza">
+      <h2 class="titulo" data-es="Qué hacemos" data-en="What we do">Qué hacemos</h2>
+      <p class="intro" data-es="Somos un estudio audiovisual. Resolvemos el contenido de tu marca de punta a punta: idea, rodaje, edición, diseño y redes." data-en="We are an audiovisual studio. We handle your brand's content end to end: idea, shoot, edit, design and social media.">Somos un estudio audiovisual. Resolvemos el contenido de tu marca de punta a punta: idea, rodaje, edición, diseño y redes.</p>
+    </div>
+    <div>
+      <article class="servicio"><h3 data-es="Video y edición" data-en="Video &amp; editing">Video y edición</h3><p data-es="Edición de Reels, TikTok y YouTube Shorts con hooks y ritmo pensados para retención. Videos largos, documentales y contenido institucional. Motion graphics y VFX con After Effects para marcas, intros y piezas animadas." data-en="Editing Reels, TikTok and YouTube Shorts with hooks and rhythm designed for retention. Long-form video, documentaries and institutional content. Motion graphics and VFX with After Effects for brands, intros and animated pieces.">Edición de Reels, TikTok y YouTube Shorts con hooks y ritmo pensados para retención. Videos largos, documentales y contenido institucional. Motion graphics y VFX con After Effects para marcas, intros y piezas animadas.</p></article>
+      <article class="servicio"><h3 data-es="Producción integral" data-en="Full production">Producción integral</h3><p data-es="Filmación multiángulo, diseño sonoro y postproducción completa. Cobertura de eventos, sesiones musicales y contenido para marcas, con equipo propio: Sony Alpha y estabilizador DJI." data-en="Multi-angle filming, sound design and full post-production. Event coverage, music sessions and brand content, with our own gear: Sony Alpha and DJI stabilizer.">Filmación multiángulo, diseño sonoro y postproducción completa. Cobertura de eventos, sesiones musicales y contenido para marcas, con equipo propio: Sony Alpha y estabilizador DJI.</p></article>
+      <article class="servicio"><h3 data-es="Fotografía" data-en="Photography">Fotografía</h3><p data-es="Deportiva, eventos sociales y retratos profesionales. Cobertura de torneos, cumpleaños, sesiones de marca y ciclos culturales, con la edición incluida." data-en="Sports, social events and professional portraits. Tournaments, birthdays, brand sessions and cultural events, editing included.">Deportiva, eventos sociales y retratos profesionales. Cobertura de torneos, cumpleaños, sesiones de marca y ciclos culturales, con la edición incluida.</p></article>
+      <article class="servicio"><h3>Community management</h3><p data-es="Un equipo dedicado administra y calendariza tus redes: estrategia de contenido, programación de publicaciones y gestión de la comunidad en Instagram, TikTok y más." data-en="A dedicated team manages and schedules your social media: content strategy, post scheduling and community management on Instagram, TikTok and more.">Un equipo dedicado administra y calendariza tus redes: estrategia de contenido, programación de publicaciones y gestión de la comunidad en Instagram, TikTok y más.</p></article>
+      <article class="servicio"><h3 data-es="Diseño gráfico" data-en="Graphic design">Diseño gráfico</h3><p data-es="Un equipo dedicado a hacer crecer tu marca: identidad y logotipos, piezas para redes, papelería y cartelería para eventos." data-en="A dedicated team to grow your brand: identity and logos, social media pieces, stationery and event signage.">Un equipo dedicado a hacer crecer tu marca: identidad y logotipos, piezas para redes, papelería y cartelería para eventos.</p></article>
+      <article class="servicio"><h3 data-es="Inteligencia artificial" data-en="Artificial intelligence">Inteligencia artificial</h3><p data-es="Combinamos lo analógico y lo digital. Trabajamos con licencias de los modelos más avanzados del mercado, como Seedance 2.0, Kling 3.0 y Gemini Omni." data-en="We combine analog and digital. We work with licenses for the most advanced models on the market, such as Seedance 2.0, Kling 3.0 and Gemini Omni.">Combinamos lo analógico y lo digital. Trabajamos con licencias de los modelos más avanzados del mercado, como Seedance 2.0, Kling 3.0 y Gemini Omni.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="seccion bloque" id="proceso" data-clip-es="Cómo trabajamos" data-clip-en="How we work">
+  <div class="wrap">
+    <h2 class="titulo" data-es="Cómo trabajamos" data-en="How we work">Cómo trabajamos</h2>
+    <p class="intro" data-es="Un proceso simple y claro, para que sepas en todo momento en qué etapa está tu proyecto." data-en="A simple, clear process, so you always know where your project stands.">Un proceso simple y claro, para que sepas en todo momento en qué etapa está tu proyecto.</p>
+    <ol class="pasos">
+      <li class="paso"><span class="paso-n">01</span><h3 data-es="Brief" data-en="Brief">Brief</h3><p data-es="Nos contás qué necesitás en una videollamada sin costo. En 24 hs te mandamos la propuesta y el presupuesto." data-en="Tell us what you need on a free video call. Within 24 hours we send you the proposal and quote.">Nos contás qué necesitás en una videollamada sin costo. En 24 hs te mandamos la propuesta y el presupuesto.</p></li>
+      <li class="paso"><span class="paso-n">02</span><h3 data-es="Preproducción" data-en="Pre-production">Preproducción</h3><p data-es="Bajamos la idea a tierra: guion, referencias y plan de rodaje. Con el 50% de anticipo, arrancamos." data-en="We bring the idea down to earth: script, references and shooting plan. With a 50% deposit, we start.">Bajamos la idea a tierra: guion, referencias y plan de rodaje. Con el 50% de anticipo, arrancamos.</p></li>
+      <li class="paso"><span class="paso-n">03</span><h3 data-es="Producción y edición" data-en="Production &amp; editing">Producción y edición</h3><p data-es="Filmamos, editamos, diseñamos y sumamos IA donde aporta. Ritmo, sonido y color pensados para retener." data-en="We shoot, edit, design and add AI where it helps. Rhythm, sound and color built for retention.">Filmamos, editamos, diseñamos y sumamos IA donde aporta. Ritmo, sonido y color pensados para retener.</p></li>
+      <li class="paso"><span class="paso-n">04</span><h3 data-es="Revisión" data-en="Review">Revisión</h3><p data-es="Te mostramos el corte y lo ajustamos con vos. Incluye una ronda de correcciones." data-en="We show you the cut and refine it with you. One round of revisions included.">Te mostramos el corte y lo ajustamos con vos. Incluye una ronda de correcciones.</p></li>
+      <li class="paso"><span class="paso-n">05</span><h3 data-es="Entrega" data-en="Delivery">Entrega</h3><p data-es="Archivos listos para publicar en cada formato. Alrededor de 5 días según el proyecto; urgentes en 48 hs." data-en="Files ready to post in every format. Around 5 days depending on the project; rush jobs in 48 hours.">Archivos listos para publicar en cada formato. Alrededor de 5 días según el proyecto; urgentes en 48 hs.</p></li>
+    </ol>
+    <div class="datos">
+      <div class="dato"><b data-es="24 hs" data-en="24 h">24 hs</b><span data-es="para cotizar tu proyecto" data-en="to quote your project">para cotizar tu proyecto</span></div>
+      <div class="dato"><b data-es="5 días" data-en="5 days">5 días</b><span data-es="de entrega habitual" data-en="typical delivery">de entrega habitual</span></div>
+      <div class="dato"><b data-es="48 hs" data-en="48 h">48 hs</b><span data-es="en entregas urgentes" data-en="for rush delivery">en entregas urgentes</span></div>
+      <div class="dato"><b data-es="Gratis" data-en="Free">Gratis</b><span data-es="la primera videollamada" data-en="the first video call">la primera videollamada</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="seccion bloque" id="clientes" data-clip-es="Clientes" data-clip-en="Clients">
+  <div class="wrap">
+    <h2 class="titulo" data-es="Lo que dicen nuestros clientes" data-en="What our clients say">Lo que dicen nuestros clientes</h2>
+    <div class="citas">
+      <blockquote class="cita"><p data-es="“Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo.”" data-en="“Luca understood exactly the identity we wanted to project. The institutional reel exceeded all our expectations in reach and professionalism.”">“Luca entendió exactamente la identidad que queríamos proyectar. El reel institucional superó todas nuestras expectativas en alcance y profesionalismo.”</p><footer><strong>UBA Odontología</strong>, <span data-es="Facultad de Odontología, posgrado" data-en="School of Dentistry, postgraduate">Facultad de Odontología, posgrado</span></footer></blockquote>
+      <blockquote class="cita"><p data-es="“El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido.”" data-en="“The content he produced for the club transformed our social media presence. The photo coverage has a cinematic level we had never had.”">“El contenido que produjo para el club transformó nuestra presencia en redes. La cobertura fotográfica tiene un nivel cinematográfico que nunca habíamos tenido.”</p><footer><strong>Club AVL Vóley</strong>, <span data-es="Dirección de Comunicación" data-en="Communications Department">Dirección de Comunicación</span></footer></blockquote>
+      <blockquote class="cita"><p data-es="“No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor.”" data-en="“He doesn't just edit: he understands rhythm, sound and narrative. Every piece has its own identity. He's the editor you send an idea to and get back something better.”">“No solo edita: entiende el ritmo, el sonido y la narrativa. Cada pieza tiene identidad propia. Es el editor al que le mandás una idea y recibís algo mejor.”</p><footer><strong data-es="Músico y creador" data-en="Musician and creator">Músico y creador</strong>, <span data-es="cliente frecuente" data-en="frequent client">cliente frecuente</span></footer></blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="seccion bloque" id="preguntas" data-clip-es="Preguntas" data-clip-en="FAQ">
+  <div class="wrap faq">
+    <div class="faq-cabeza">
+      <h2 class="titulo" data-es="Preguntas frecuentes" data-en="Frequently asked questions">Preguntas frecuentes</h2>
+      <p class="intro" data-es="Si tu duda no está acá, escribinos y te respondemos en el día." data-en="If your question isn't here, write to us and we'll answer the same day.">Si tu duda no está acá, escribinos y te respondemos en el día.</p>
+      <a class="btn btn-sec" href="https://wa.me/5491130203625?text=Hola%20San%20Bao!%20Tengo%20una%20consulta." target="_blank" rel="noopener" data-es="Hacer una consulta" data-en="Ask a question">Hacer una consulta</a>
+    </div>
+    <div>
+      <details class="pregunta"><summary data-es="¿Qué necesito para empezar?" data-en="What do I need to get started?">¿Qué necesito para empezar?</summary><p data-es="Una idea, aunque esté en borrador. Con eso y una videollamada armamos la propuesta." data-en="An idea, even a rough one. With that and a video call we put the proposal together.">Una idea, aunque esté en borrador. Con eso y una videollamada armamos la propuesta.</p></details>
+      <details class="pregunta"><summary data-es="No sé bien qué quiero, ¿me ayudan con la idea?" data-en="I'm not sure what I want. Can you help with the idea?">No sé bien qué quiero, ¿me ayudan con la idea?</summary><p data-es="Sí, es parte del trabajo. Te proponemos formatos, referencias y un guion según tu objetivo." data-en="Yes, it's part of the job. We suggest formats, references and a script based on your goal.">Sí, es parte del trabajo. Te proponemos formatos, referencias y un guion según tu objetivo.</p></details>
+      <details class="pregunta"><summary data-es="¿Puedo grabar yo y mandarles el material?" data-en="Can I shoot it myself and send you the footage?">¿Puedo grabar yo y mandarles el material?</summary><p data-es="Sí. Editamos tu material y, si querés, te damos indicaciones para grabar mejor con el celular." data-en="Yes. We edit your footage and, if you want, we give you tips to shoot better on your phone.">Sí. Editamos tu material y, si querés, te damos indicaciones para grabar mejor con el celular.</p></details>
+      <details class="pregunta"><summary data-es="¿Cuánto tardan?" data-en="How long does it take?">¿Cuánto tardan?</summary><p data-es="Alrededor de 5 días, según el proyecto. Si es urgente, entregamos en 48 hs." data-en="Around 5 days, depending on the project. If it's urgent, we deliver in 48 hours.">Alrededor de 5 días, según el proyecto. Si es urgente, entregamos en 48 hs.</p></details>
+      <details class="pregunta"><summary data-es="¿Cuántas correcciones incluye?" data-en="How many revisions are included?">¿Cuántas correcciones incluye?</summary><p data-es="Una ronda de correcciones. Si necesitás más, se cotizan aparte." data-en="One round of revisions. If you need more, they're quoted separately.">Una ronda de correcciones. Si necesitás más, se cotizan aparte.</p></details>
+      <details class="pregunta"><summary data-es="¿Cuánto cuesta?" data-en="How much does it cost?">¿Cuánto cuesta?</summary><p data-es="Depende del alcance. Contanos el proyecto y te cotizamos en 24 hs, sin compromiso." data-en="It depends on the scope. Tell us about the project and we'll quote it within 24 hours, no strings attached.">Depende del alcance. Contanos el proyecto y te cotizamos en 24 hs, sin compromiso.</p></details>
+      <details class="pregunta"><summary data-es="¿Trabajan con IA? ¿Se va a notar?" data-en="Do you work with AI? Will it show?">¿Trabajan con IA? ¿Se va a notar?</summary><p data-es="Sí, con licencias de Seedance, Kling y Gemini. La usamos como herramienta: se nota solo si querés que se note." data-en="Yes, with licenses for Seedance, Kling and Gemini. We use it as a tool: it only shows if you want it to.">Sí, con licencias de Seedance, Kling y Gemini. La usamos como herramienta: se nota solo si querés que se note.</p></details>
+      <details class="pregunta"><summary data-es="¿Trabajan fuera de Buenos Aires?" data-en="Do you work outside Buenos Aires?">¿Trabajan fuera de Buenos Aires?</summary><p data-es="Sí. Filmamos en Buenos Aires y editamos a distancia para cualquier parte del mundo." data-en="Yes. We shoot in Buenos Aires and edit remotely for anywhere in the world.">Sí. Filmamos en Buenos Aires y editamos a distancia para cualquier parte del mundo.</p></details>
+      <details class="pregunta"><summary data-es="¿Cómo se paga?" data-en="How does payment work?">¿Cómo se paga?</summary><p data-es="50% de anticipo para arrancar y el resto contra entrega." data-en="50% upfront to start and the rest on delivery.">50% de anticipo para arrancar y el resto contra entrega.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="seccion bloque" id="contacto" data-clip-es="Contacto" data-clip-en="Contact">
+  <div class="wrap contacto">
+    <h2 class="contacto-titulo" data-es="Trabajemos juntos" data-en="Let's work together">Trabajemos juntos</h2>
+    <p class="intro" data-es="Contanos qué querés hacer y te cotizamos en 24 hs. Trabajamos en Buenos Aires y a distancia, para todo el mundo." data-en="Tell us what you want to make and we'll quote it within 24 hours. We work in Buenos Aires and remotely, worldwide.">Contanos qué querés hacer y te cotizamos en 24 hs. Trabajamos en Buenos Aires y a distancia, para todo el mundo.</p>
+    <div class="acciones">
+      <a class="btn btn-pri" href="https://wa.me/5491130203625?text=Hola%20San%20Bao!%20Quiero%20contarles%20un%20proyecto." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4c-4.86 0-8.82 3.95-8.82 8.81 0 1.65.44 3.24 1.32 4.64L4 21.4l3.95-1.51a8.79 8.79 0 0 0 4.1 1.02c4.86 0 8.81-3.95 8.81-8.81a8.74 8.74 0 0 0-2.26-5.78zM12.06 19.4c-1.32 0-2.6-.35-3.72-1.02l-.27-.16-2.76 1.06.74-2.7-.18-.28a7.34 7.34 0 0 1-1.13-3.9c0-4.05 3.3-7.35 7.35-7.35a7.35 7.35 0 0 1 7.35 7.35c0 4.06-3.3 7.36-7.35 7.36zm4.03-5.51c-.22-.11-1.3-.64-1.5-.72-.2-.07-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-.22-.1-.94-.34-1.78-1.1-.66-.58-1.1-1.3-1.23-1.52-.13-.22-.01-.34.1-.45.1-.11.22-.27.33-.41.11-.13.15-.22.22-.37.07-.15.04-.27-.02-.39-.07-.11-.6-1.46-.83-1.99-.22-.51-.45-.44-.62-.45h-.52c-.18 0-.46.07-.7.34-.24.27-.93.91-.93 2.21s.94 2.57 1.07 2.75c.13.18 1.8 2.74 4.37 3.74 2.57.99 2.57.66 3.04.62.47-.04 1.51-.62 1.72-1.21.21-.6.21-1.11.15-1.21-.06-.1-.22-.16-.45-.27z"/></svg><span data-es="Escribinos por WhatsApp" data-en="Message us on WhatsApp">Escribinos por WhatsApp</span></a>
+      <a class="btn btn-sec" href="mailto:sanbaoestudio@gmail.com" data-es="Mandanos un email" data-en="Send us an email">Mandanos un email</a>
+    </div>
+    <div class="canales">
+      <div class="canal"><span>Instagram</span><a href="https://instagram.com/sanbaoestudio" target="_blank" rel="noopener">@sanbaoestudio</a></div>
+      <div class="canal"><span>TikTok</span><a href="https://tiktok.com/@sanbaoestudio" target="_blank" rel="noopener">@sanbaoestudio</a></div>
+      <div class="canal"><span>YouTube</span><a href="https://youtube.com/@sanbaoestudio" target="_blank" rel="noopener">San Bao Estudio</a></div>
+      <div class="canal"><span>WhatsApp</span><a href="https://wa.me/5491130203625" target="_blank" rel="noopener">+54 9 11 3020 3625</a></div>
+      <div class="canal"><span>Email</span><a href="mailto:sanbaoestudio@gmail.com">sanbaoestudio@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap pie"><span data-es="© 2026 San Bao Estudio. Buenos Aires, Argentina." data-en="© 2026 San Bao Estudio. Buenos Aires, Argentina.">© 2026 San Bao Estudio. Buenos Aires, Argentina.</span></footer>
+
+<a class="wa" href="https://wa.me/5491130203625?text=Hola%20San%20Bao!%20Quiero%20contarles%20un%20proyecto." target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.6 6.32A8.86 8.86 0 0 0 12.05 4c-4.86 0-8.82 3.95-8.82 8.81 0 1.65.44 3.24 1.32 4.64L4 21.4l3.95-1.51a8.79 8.79 0 0 0 4.1 1.02c4.86 0 8.81-3.95 8.81-8.81a8.74 8.74 0 0 0-2.26-5.78zM12.06 19.4c-1.32 0-2.6-.35-3.72-1.02l-.27-.16-2.76 1.06.74-2.7-.18-.28a7.34 7.34 0 0 1-1.13-3.9c0-4.05 3.3-7.35 7.35-7.35a7.35 7.35 0 0 1 7.35 7.35c0 4.06-3.3 7.36-7.35 7.36zm4.03-5.51c-.22-.11-1.3-.64-1.5-.72-.2-.07-.35-.11-.5.11-.15.22-.57.72-.7.87-.13.15-.26.16-.48.05-.22-.1-.94-.34-1.78-1.1-.66-.58-1.1-1.3-1.23-1.52-.13-.22-.01-.34.1-.45.1-.11.22-.27.33-.41.11-.13.15-.22.22-.37.07-.15.04-.27-.02-.39-.07-.11-.6-1.46-.83-1.99-.22-.51-.45-.44-.62-.45h-.52c-.18 0-.46.07-.7.34-.24.27-.93.91-.93 2.21s.94 2.57 1.07 2.75c.13.18 1.8 2.74 4.37 3.74 2.57.99 2.57.66 3.04.62.47-.04 1.51-.62 1.72-1.21.21-.6.21-1.11.15-1.21-.06-.1-.22-.16-.45-.27z"/></svg></a>
+
+<img class="preview" id="preview" alt="" aria-hidden="true">
+
+<div class="modal" id="modalVideo" role="dialog" aria-modal="true" aria-label="Video" hidden>
+  <button class="cerrar" data-cerrar data-es="Cerrar" data-en="Close">Cerrar</button>
+  <div class="video-caja">
+    <div class="video-marco" id="videoMarco"><iframe id="videoFrame" title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+    <p class="video-titulo" id="videoTitulo"></p>
+  </div>
+</div>
+
+<div class="modal" id="visor" role="dialog" aria-modal="true" aria-label="Fotos" hidden>
+  <button class="cerrar" data-cerrar data-es="Cerrar" data-en="Close">Cerrar</button>
+  <div class="visor">
+    <div class="visor-cabeza"><h3 id="visorTitulo"></h3><div class="visor-tabs" id="visorTabs"></div></div>
+    <div class="visor-cuerpo" id="visorCuerpo"></div>
+  </div>
+</div>
+
+<script>
+/* ======================= DATOS ======================= */
+const ITEMS = [{"cat": "vertical", "id": "1229654511", "fmt": "v", "plat": "vm", "title": "5 Motivos para trabajar en OLGA", "desc": ""}, {"cat": "vertical", "id": "1229653557", "fmt": "v", "plat": "vm", "title": "Argentina vs Inglaterra — Anime", "desc": ""}, {"cat": "vertical", "id": "1229641414", "fmt": "v", "plat": "vm", "title": "Inglés Corporativo BA", "desc": ""}, {"cat": "vertical", "id": "1229641660", "fmt": "v", "plat": "vm", "title": "Reel Promocional Stream", "desc": ""}, {"cat": "vertical", "id": "1229651056", "fmt": "v", "plat": "vm", "title": "Reel Promocional OLGA.STORE", "desc": ""}, {"cat": "vertical", "id": "1181674980", "fmt": "v", "plat": "vm", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/Icorporativo.jpg", "title": "Inglés Corporativo BA — Reel Institucional", "desc": "Reel institucional. Producción completa.", "descEn": "Institutional reel. Full production."}, {"cat": "vertical", "id": "1173295192", "fmt": "v", "plat": "vm", "thumb": "https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/UBA_z2d9oo.jpg", "title": "Reel Posgrado UBA Odontología", "desc": "Video promocional institucional. Producción completa.", "descEn": "Institutional promotional video. Full production."}, {"cat": "vertical", "id": "1173295320", "fmt": "v", "plat": "vm", "thumb": "https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/BAJO_pysjqp.jpg", "title": "Sesión Musical Bajista", "desc": "Sesión en vivo.", "descEn": "Live session."}, {"cat": "vertical", "id": "1163783614", "fmt": "v", "plat": "vm", "thumb": "https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/dia2_jzy2sv.png", "title": "Edición formato Reel 1", "desc": "Compilado del desafío.", "descEn": "Challenge compilation."}, {"cat": "vertical", "id": "1166457016", "fmt": "v", "plat": "vm", "thumb": "https://res.cloudinary.com/dbonws8gx/image/upload/v1773418106/CERVECERIA_ohocuj.jpg", "title": "Reel Cervecería", "desc": "Reel de producto gastronómico.", "descEn": "Gastronomic product reel."}, {"cat": "vertical", "id": "1173318150", "fmt": "v", "plat": "vm", "thumb": "https://res.cloudinary.com/dbonws8gx/image/upload/v1773418107/dia20_qjww4u.jpg", "title": "Edición formato Reel 2", "desc": "Reel musical.", "descEn": "Musical reel."}, {"cat": "vertical", "id": "1177044935", "fmt": "v", "plat": "vm", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/img_003.jpg", "title": "Cómo hablarle a la cámara", "desc": "Consejo para creadores de contenido.", "descEn": "Tip for content creators."}, {"cat": "vertical", "id": "1177045538", "fmt": "v", "plat": "vm", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/img_002.jpg", "title": "Máscaras Edición", "desc": "Técnica de máscaras en edición.", "descEn": "Masks technique in editing."}, {"cat": "vertical", "id": "1177046446", "fmt": "v", "plat": "vm", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/img_005.png", "title": "Vino y Folklore", "desc": "Cobertura de evento cultural.", "descEn": "Cultural event coverage."}, {"cat": "vertical", "id": "1177046092", "fmt": "v", "plat": "vm", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/img_001.jpg", "title": "Foto Local Gastronómico", "desc": "Producción para local gastronómico.", "descEn": "Production for gastronomic venue."}, {"cat": "vertical", "id": "1177043795", "fmt": "v", "plat": "vm", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/img_000.jpg", "title": "Presupuesto Cliente #Humor", "desc": "Contenido de humor para redes.", "descEn": "Humor content for social media."}, {"cat": "horizontal", "id": "0n2GlkwmeE0", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/0n2GlkwmeE0/hqdefault.jpg", "title": "Vlog 01", "desc": "Contenido detrás de cámara.", "descEn": "Behind the scenes content."}, {"cat": "horizontal", "id": "HUOZFaQa2Yo", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/HUOZFaQa2Yo/hqdefault.jpg", "title": "Vlog 02", "desc": "Contenido detrás de cámara.", "descEn": "Behind the scenes content."}, {"cat": "horizontal", "id": "prxTHLrhqEI", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/prxTHLrhqEI/hqdefault.jpg", "title": "Vlog 03", "desc": "Contenido detrás de cámara.", "descEn": "Behind the scenes content."}, {"cat": "horizontal", "id": "II-An2CQ74A", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/II-An2CQ74A/hqdefault.jpg", "title": "Vlog 04", "desc": "Contenido detrás de cámara.", "descEn": "Behind the scenes content."}, {"cat": "horizontal", "id": "OXqCohPg11M", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/OXqCohPg11M/hqdefault.jpg", "title": "Vlog 05", "desc": "Contenido detrás de cámara."}, {"cat": "horizontal", "id": "d1g2jzOzw2c", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/d1g2jzOzw2c/hqdefault.jpg", "title": "Vlog 06", "desc": "Contenido detrás de cámara.", "descEn": "Behind the scenes content."}, {"cat": "film", "id": "1229654538", "fmt": "h", "plat": "vm", "title": "Homero Taisen — En vivo The Roxy", "desc": "Cantante y músico. Filmación y postproducción.", "descEn": "Singer and musician. Filming and post-production."}, {"cat": "film", "id": "UU2kNWNG9BE", "fmt": "h", "plat": "yt", "thumb": "https://img.youtube.com/vi/UU2kNWNG9BE/hqdefault.jpg", "title": "Entrevista @Holasoysaba", "desc": "Creador de contenido e influencer. Entrevista a 2 cámaras (33mm + 24-70mm). Pre y postproducción.", "descEn": "Content creator and influencer. Two-camera interview (33mm + 24-70mm). Pre and post-production."}, {"cat": "ia", "id": "1229639872", "fmt": "h", "plat": "vm", "title": "MediaBus", "desc": "Canal de TV. Pieza visual generada con IA."}, {"cat": "ia", "id": "1229653490", "fmt": "h", "plat": "vm", "title": "@Holasoysaba · Pieza IA 01", "desc": "Creador de contenido e influencer. Pieza visual con IA."}, {"cat": "ia", "id": "1229641262", "fmt": "h", "plat": "vm", "title": "@Holasoysaba · Pieza IA 02", "desc": "Creador de contenido e influencer. Pieza visual con IA."}, {"cat": "ia", "id": "1229641261", "fmt": "h", "plat": "vm", "title": "@Holasoysaba · Pieza IA 03", "desc": "Creador de contenido e influencer. Pieza visual con IA."}, {"cat": "ia", "id": "1229641260", "fmt": "h", "plat": "vm", "title": "@Holasoysaba · Pieza IA 04", "desc": "Creador de contenido e influencer. Pieza visual con IA."}, {"cat": "motion", "id": "1166459428", "fmt": "h", "plat": "vm", "thumb": "https://res.cloudinary.com/dbonws8gx/image/upload/v1773418105/MOTION_meteud.jpg", "title": "Villa Luro Vóley — 2026", "desc": "Reel animado para redes.", "descEn": "Animated reel for social media."}, {"cat": "motion", "grupo": "OLGA, canal de streaming", "id": "1229651747", "fmt": "h", "plat": "vm", "title": "Banner para programa en vivo 01", "desc": "Canal de streaming argentino."}, {"cat": "motion", "grupo": "OLGA, canal de streaming", "id": "1229651414", "fmt": "h", "plat": "vm", "title": "Banner para programa en vivo 02", "desc": "Canal de streaming argentino."}, {"cat": "motion", "grupo": "OLGA, canal de streaming", "id": "1229651329", "fmt": "h", "plat": "vm", "title": "Banner para programa en vivo 03", "desc": "Canal de streaming argentino."}, {"cat": "motion", "grupo": "OLGA, canal de streaming", "id": "1229651155", "fmt": "h", "plat": "vm", "title": "Banner para programa en vivo 04", "desc": "Canal de streaming argentino."}, {"cat": "motion", "grupo": "MediaBus, separador institucional", "id": "1229639481", "fmt": "h", "plat": "vm", "title": "Separador institucional 01", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, separador institucional", "id": "1229639480", "fmt": "h", "plat": "vm", "title": "Separador institucional 02", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, separador institucional", "id": "1229639483", "fmt": "h", "plat": "vm", "title": "Separador institucional 03", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638979", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 01", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638978", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 02", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638981", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 03", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638886", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 04", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638915", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 05", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638885", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 06", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638887", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 07", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "motion", "grupo": "MediaBus, apertura de noticias", "id": "1229638884", "fmt": "h", "plat": "vm", "title": "Apertura de noticias 08", "desc": "Canal de TV en pantallas de colectivos de Argentina, Chile y Uruguay.", "descEn": "TV channel on bus screens in Argentina, Chile and Uruguay."}, {"cat": "foto", "thumb": "https://i.imgur.com/neyhV6v.jpg", "title": "Fotografía Deportiva", "desc": "Vóley femenino y fútsal femenino.", "descEn": "Women's volleyball and futsal.", "albumKey": "deportiva"}, {"cat": "foto", "thumb": "https://i.imgur.com/tszLcVK.jpg", "title": "Fotografía para Eventos", "desc": "Cumpleaños de XV y evento en cervecería.", "descEn": "Sweet 16 party and brewery event.", "albumKey": "eventos"}, {"cat": "foto", "thumb": "https://i.imgur.com/sMafXdN.jpg", "title": "Fotografía profesional", "desc": "Retratos y fotografía corporativa.", "descEn": "Portraits and corporate photography.", "albumKey": "profesionales"}, {"cat": "foto", "thumb": "https://raw.githubusercontent.com/sanbaoestudio/Portfolio/main/portadas/DSC07596.jpg", "title": "Música en Vivo", "desc": "Tinkuy, folklore y grabación de video clip.", "descEn": "Tinkuy, folklore and a music video shoot.", "albumKey": "musica"}];
+const FOTOS_VIDEOCLIP=['https://i.imgur.com/qlGotOm.jpg','https://i.imgur.com/TZMzDIn.jpg','https://i.imgur.com/MQrMJbS.jpg','https://i.imgur.com/7P7klem.jpg','https://i.imgur.com/scBNcwh.jpg','https://i.imgur.com/t5gA9ZJ.jpg','https://i.imgur.com/pQnW8j4.jpg','https://i.imgur.com/uoeB8Up.jpg','https://i.imgur.com/Pkhlv86.jpg','https://i.imgur.com/iv2q5UI.jpg','https://i.imgur.com/tBMmqKF.jpg','https://i.imgur.com/JQ8kmaB.jpg','https://i.imgur.com/y441pnt.jpg','https://i.imgur.com/VMAD2y4.jpg','https://i.imgur.com/EptnBJl.jpg','https://i.imgur.com/NM0JuHb.jpg','https://i.imgur.com/1EBTMRg.jpg','https://i.imgur.com/6bi2GzR.jpg','https://i.imgur.com/vGJMTfw.jpg','https://i.imgur.com/SxhbTmh.jpg','https://i.imgur.com/N0QykwG.jpg','https://i.imgur.com/ISLRB3J.jpg'];
+const FOTOS_FUTSAL=['https://i.imgur.com/lWBEh17.jpg','https://i.imgur.com/ebXlKEn.jpg','https://i.imgur.com/T4TB0Hg.jpg','https://i.imgur.com/7h3rKkK.jpg','https://i.imgur.com/kc8nMbc.jpg','https://i.imgur.com/VAGLmag.jpg','https://i.imgur.com/yKgTJeB.jpg','https://i.imgur.com/IPVbcJb.jpg','https://i.imgur.com/IH06W7E.jpg','https://i.imgur.com/T9g4ziP.jpg','https://i.imgur.com/VNgBHNv.jpg','https://i.imgur.com/BDtloyM.jpg','https://i.imgur.com/OeqxOl8.jpg','https://i.imgur.com/DZbRu5a.jpg','https://i.imgur.com/l0owgIh.jpg','https://i.imgur.com/n6luECJ.jpg','https://i.imgur.com/Rdu6AL5.jpg','https://i.imgur.com/HHQDrdY.jpg','https://i.imgur.com/AKGsMpq.jpg','https://i.imgur.com/cPJX3up.jpg','https://i.imgur.com/HfI9jqZ.jpg','https://i.imgur.com/O7r3qlW.jpg','https://i.imgur.com/neyhV6v.jpg','https://i.imgur.com/jA8Rnnb.jpg','https://i.imgur.com/jpoAhab.jpg','https://i.imgur.com/CNAtc3V.jpg','https://i.imgur.com/MlvpOI0.jpg','https://i.imgur.com/fdGiCJQ.jpg','https://i.imgur.com/YeWyz1M.jpg','https://i.imgur.com/fwhYTfT.jpg','https://i.imgur.com/5VY4JFs.jpg','https://i.imgur.com/2Y6yKQ2.jpg','https://i.imgur.com/tfG12zW.jpg'];
+const FOTOS_VOLEY=['https://i.imgur.com/xAZuMo2.jpg','https://i.imgur.com/U1t032K.jpg','https://i.imgur.com/WReWXcM.jpg','https://i.imgur.com/CziZdqf.jpg','https://i.imgur.com/bYLVCMw.jpg','https://i.imgur.com/RGoUFeS.jpg','https://i.imgur.com/NzT6gUz.jpg','https://i.imgur.com/XcNpmh9.jpg','https://i.imgur.com/1dz7l3l.jpg','https://i.imgur.com/VPS5TR0.jpg','https://i.imgur.com/YYQZorg.jpg','https://i.imgur.com/Y6JW0tq.jpg','https://i.imgur.com/NCPQUmZ.jpg','https://i.imgur.com/E0WBMZT.jpg','https://i.imgur.com/6p76wHh.jpg','https://i.imgur.com/2xVX1AX.jpg','https://i.imgur.com/YqBdRMi.jpg','https://i.imgur.com/R0DPnem.jpg','https://i.imgur.com/F9seHDt.jpg','https://i.imgur.com/kCrRlKJ.jpg','https://i.imgur.com/jXzB4AB.jpg'];
+const FOTOS_XV=['https://i.imgur.com/tszLcVK.jpg','https://i.imgur.com/03AyAyj.jpg','https://i.imgur.com/P71DeJ1.jpg','https://i.imgur.com/FaUCTFl.jpg','https://i.imgur.com/LnPy43d.jpg','https://i.imgur.com/Fdy2vHc.jpg','https://i.imgur.com/7UTIsFQ.jpg','https://i.imgur.com/WSjwUpx.jpg','https://i.imgur.com/14u1uOD.jpg','https://i.imgur.com/KB6qcey.jpg','https://i.imgur.com/E6OSnQZ.jpg'];
+const FOTOS_TINKUY=['https://i.imgur.com/yL5vRRk.jpg','https://i.imgur.com/i0TYy2O.jpg','https://i.imgur.com/Zk46Q8V.jpg','https://i.imgur.com/PMxaaSV.jpg','https://i.imgur.com/kk7600F.jpg','https://i.imgur.com/RHpXkak.jpg','https://i.imgur.com/OA0FUra.jpg','https://i.imgur.com/swXOUpy.jpg','https://i.imgur.com/AXGt0dN.jpg','https://i.imgur.com/RAUqEcE.jpg','https://i.imgur.com/7ZIRdnr.jpg','https://i.imgur.com/EbiqpEj.jpg','https://i.imgur.com/ttodDN7.jpg','https://i.imgur.com/eRiKBdw.jpg','https://i.imgur.com/pBdvpDR.jpg','https://i.imgur.com/E2N0R0t.jpg'];
+const FOTOS_FOLKLORE=['https://i.imgur.com/7b0Xsu2.jpg','https://i.imgur.com/JjNgjmK.jpg','https://i.imgur.com/QB326fN.jpg','https://i.imgur.com/b68tExc.jpg','https://i.imgur.com/1kfkcQ3.jpg','https://i.imgur.com/pSQx5aJ.jpg','https://i.imgur.com/AXYUOPt.jpg','https://i.imgur.com/DfPPgIz.jpg','https://i.imgur.com/pKz8wyb.jpg','https://i.imgur.com/jtET1Vt.jpg','https://i.imgur.com/9iZyGn5.jpg','https://i.imgur.com/YZ9ZAox.jpg','https://i.imgur.com/hGrRax1.jpg','https://i.imgur.com/9dcPvzU.jpg','https://i.imgur.com/m5F8R5o.jpg','https://i.imgur.com/iROY8tz.jpg','https://i.imgur.com/J50WITS.jpg','https://i.imgur.com/n7hNpdN.jpg','https://i.imgur.com/AnS8n9E.jpg','https://i.imgur.com/adFt2EW.jpg','https://i.imgur.com/bOqK9OQ.jpg','https://i.imgur.com/tQoaBSl.jpg','https://i.imgur.com/4gMlq7w.jpg','https://i.imgur.com/IoDLvTR.jpg','https://i.imgur.com/15X2eWG.jpg','https://i.imgur.com/0jrqLeC.jpg','https://i.imgur.com/xTLPTiP.jpg','https://i.imgur.com/TdkKGWW.jpg','https://i.imgur.com/fnzcPUt.jpg','https://i.imgur.com/VRC5mQa.jpg','https://i.imgur.com/zDrggrE.jpg','https://i.imgur.com/IlZKtEB.jpg','https://i.imgur.com/Zrpale4.jpg','https://i.imgur.com/0xfhkoX.jpg','https://i.imgur.com/QzanwIf.jpg','https://i.imgur.com/guxyNTa.jpg','https://i.imgur.com/QHCeN6C.jpg','https://i.imgur.com/azk5iVx.jpg','https://i.imgur.com/BDVgzkW.jpg','https://i.imgur.com/BbUP0Js.jpg','https://i.imgur.com/Pi5Obc9.jpg','https://i.imgur.com/d5SWGCG.jpg','https://i.imgur.com/cqSctC9.jpg','https://i.imgur.com/2KAG0gg.jpg','https://i.imgur.com/TxgyTJM.jpg','https://i.imgur.com/ZcniWXD.jpg','https://i.imgur.com/7LJBjrD.jpg'];
+const FOTOS_CERVECERIA=['https://i.imgur.com/2PYu7DF.jpg','https://i.imgur.com/6ckaaej.jpg','https://i.imgur.com/fc7GxHW.jpg','https://i.imgur.com/oVbRK8I.jpg','https://i.imgur.com/7THHuCx.jpg','https://i.imgur.com/qP7jacn.jpg','https://i.imgur.com/QMS6m9u.jpg','https://i.imgur.com/IoBqBZQ.jpg','https://i.imgur.com/kIw9dtQ.jpg','https://i.imgur.com/KUSAhDX.jpg','https://i.imgur.com/hHVnrAn.jpg','https://i.imgur.com/woQRQQF.jpg','https://i.imgur.com/m8pPMNi.jpg','https://i.imgur.com/HtodOu5.jpg','https://i.imgur.com/AD21Qne.jpg','https://i.imgur.com/006TVR0.jpg','https://i.imgur.com/LOmkVg8.jpg'];
+const FOTOS_PROFESIONALES=['https://i.imgur.com/sMafXdN.jpg','https://i.imgur.com/FB5BD3u.jpg','https://i.imgur.com/sFsIRDM.jpg','https://i.imgur.com/HMj0Wqr.jpg','https://i.imgur.com/yTcZHkC.jpg','https://i.imgur.com/hS5XjFz.jpg','https://i.imgur.com/6I18aCO.jpg','https://i.imgur.com/qPoajAu.jpg','https://i.imgur.com/uNe00Le.jpg','https://i.imgur.com/HRQ7FfR.jpg','https://i.imgur.com/ahqo0MR.jpg','https://i.imgur.com/RXUnQB3.jpg','https://i.imgur.com/NYHlyDl.jpg','https://i.imgur.com/kB84cHv.jpg'];
+const ALBUMES = {
+  deportiva:[{n:'Vóley femenino',s:'Inferiores FMV',f:FOTOS_VOLEY},{n:'Fútsal femenino',s:'Futsala',f:FOTOS_FUTSAL}],
+  eventos:[{n:'XV, cumpleaños',f:FOTOS_XV},{n:'Evento cervecería',f:FOTOS_CERVECERIA}],
+  profesionales:[{n:'Retratos y corporativa',f:FOTOS_PROFESIONALES}],
+  musica:[{n:'Tinkuy',s:'Ciclo de música popular',f:FOTOS_TINKUY},{n:'Folklore',f:FOTOS_FOLKLORE},{n:'Grabación de video clip',s:'Ideo Music',f:FOTOS_VIDEOCLIP}]
+};
+// Horizontal se unió a Filmmaking; las piezas de rodaje (Homero Taisen, @Holasoysaba) van primero
+(function(){
+  const rodaje = ITEMS.filter(it => it.cat === 'film'), i = ITEMS.findIndex(it => it.cat === 'horizontal');
+  if(i >= 0 && rodaje.length){ rodaje.forEach(it => ITEMS.splice(ITEMS.indexOf(it), 1)); ITEMS.splice(ITEMS.findIndex(it => it.cat === 'horizontal'), 0, ...rodaje); }
+  ITEMS.forEach(it => { if(it.cat === 'horizontal') it.cat = 'film'; });
+})();
+const CATS = {
+  vertical:['RR.SS','Social media','RR.SS','Social'],
+  film:['Filmmaking','Filmmaking','Filmmaking','Filmmaking'],
+  ia:['Piezas visuales con IA','AI visual pieces','IA','AI'],
+  motion:['Motion graphics + IA','Motion graphics + AI','Motion','Motion'],
+  foto:['Fotografía','Photography','Fotos','Photos']
+};
+const reducir = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finoPuntero = matchMedia('(pointer: fine)').matches;
+let lang = 'es';
+const L = (es, en) => lang === 'es' ? es : en;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const Timeline = {medir(){}};  // sin timeline en esta versión
+/* ======================= VIMEO (miniatura y proporción reales) ======================= */
+const vmMeta = {};
+function vimeo(id){
+  return vmMeta[id] || (vmMeta[id] = fetch('https://vimeo.com/api/oembed.json?url=' + encodeURIComponent('https://vimeo.com/' + id) + '&width=640')
+    .then(r => r.ok ? r.json() : null).catch(() => null));
+}
+const obsThumb = new IntersectionObserver(entries => entries.forEach(e => {
+  if(!e.isIntersecting) return;
+  obsThumb.unobserve(e.target);
+  const img = e.target;
+  vimeo(img.dataset.vimeo).then(d => { if(d && d.thumbnail_url) img.src = d.thumbnail_url; });
+}), {rootMargin:'500px 0px'});
+/* ======================= ARCHIVO ======================= */
+let filtro = 'todo', vista = 'grilla', colsActuales = 0, verTodo = false;
+const obras = document.getElementById('obras');
+function fmtTxt(it){ return it.albumKey ? (it.nfotos + ' ' + L('fotos','photos')) : (it.fmt === 'h' ? '16:9' : '9:16'); }
+function catTxt(it){ return it.grupo || CATS[it.cat][lang === 'es' ? 0 : 1]; }
+function hrefDe(it){ return it.albumKey ? '#archivo' : (it.plat === 'yt' ? 'https://youtu.be/' + it.id : 'https://vimeo.com/' + it.id); }
+function imgTag(it, cls){
+  if(it.thumb) return '<img' + (cls ? ' class="' + cls + '"' : '') + ' src="' + esc(it.thumb) + '" alt="" loading="lazy" decoding="async">';
+  return '<img' + (cls ? ' class="' + cls + '"' : '') + ' data-vimeo="' + it.id + '" alt="" decoding="async">';
+}
+ITEMS.forEach((it, i) => { it.i = i; if(it.albumKey) it.nfotos = ALBUMES[it.albumKey].reduce((n, a) => n + a.f.length, 0); });
+
+function pintarFiltros(){
+  const cont = document.getElementById('filtros');
+  const claves = ['todo','vertical','film','ia','motion','foto'];
+  cont.innerHTML = claves.map(k => {
+    const n = k === 'todo' ? ITEMS.length : ITEMS.filter(it => it.cat === k).length;
+    const nom = k === 'todo' ? L('Todo','All') : CATS[k][lang === 'es' ? 2 : 3];
+    return '<button class="filtro" data-filtro="' + k + '" aria-pressed="' + (k === filtro) + '">' + nom + '<sup>' + n + '</sup></button>';
+  }).join('');
+  document.getElementById('archivoIntro').textContent = L(
+    ITEMS.length + ' trabajos entre reels, videos largos, motion, piezas con IA y fotografía.',
+    ITEMS.length + ' works across reels, long-form video, motion, AI pieces and photography.');
+  document.getElementById('catDesc').textContent = DESC_CAT[filtro][lang === 'es' ? 0 : 1];
+}
+const DESC_CAT = {
+  todo:['Una selección de nuestros trabajos. Elegí una categoría para ver cada formato completo.','A selection of our work. Pick a category to see each format in full.'],
+  vertical:['Contenido para publicar en redes sociales, en formato vertical: reels, TikToks y shorts con distintos estilos de edición, IA incluida.','Content made for social media in vertical format: reels, TikToks and shorts in different editing styles, AI included.'],
+  film:['Material horizontal 16:9 para YouTube, presentaciones y pantallas: rodaje, edición y postproducción.','Horizontal 16:9 work for YouTube, presentations and screens: shooting, editing and post-production.'],
+  ia:['Piezas realizadas 100% con inteligencia artificial, de la idea al render final.','Pieces made 100% with artificial intelligence, from idea to final render.'],
+  motion:['Piezas visuales para programas en vivo y redes sociales: aperturas, separadores, banners y animaciones de marca.','Visual pieces for live shows and social media: openers, bumpers, banners and brand animations.'],
+  foto:['Coberturas deportivas, eventos sociales y retratos profesionales, con la edición incluida. Tocá un álbum para ver todas las fotos.','Sports coverage, social events and professional portraits, editing included. Tap an album to see every photo.']
+};
+function columnas(){ const w = obras.clientWidth; return w >= 1180 ? 5 : w >= 900 ? 4 : w >= 600 ? 3 : 2; }
+/* Destacados: mezclan categorías y se muestran siempre en 2 filas completas; el resto, con "Ver todo el archivo".
+   Se saltean los banners de OLGA porque su miniatura es casi negra. */
+const DESTACADOS = (function(){
+  const orden = ['vertical','motion','film','ia','foto','vertical','film','motion','ia','vertical'], usados = new Set(), out = [];
+  const apto = x => !usados.has(x) && !/^OLGA/.test(x.grupo || '');
+  orden.forEach(c => { const it = ITEMS.find(x => x.cat === c && apto(x)); if(it){ usados.add(it); out.push(it); } });
+  ITEMS.forEach(it => { if(out.length < 10 && apto(it)){ usados.add(it); out.push(it); } });
+  return out;
+})();
+/* Proporción única por vista: todo vertical → 3:4, todo horizontal → 16:9, mezcla → 1:1 */
+function ratioLista(lista){
+  const v = lista.every(it => it.fmt === 'v' || it.albumKey), h = lista.every(it => it.fmt === 'h');
+  return v ? '3/4' : h ? '16/9' : '1/1';
+}
+function pintarObras(){
+  const recorte = filtro === 'todo' && !verTodo;
+  const n = columnas(); colsActuales = n;
+  const lista = recorte ? DESTACADOS.slice(0, Math.min(DESTACADOS.length, n * 2)) : ITEMS.filter(it => filtro === 'todo' || it.cat === filtro);
+  if(vista === 'grilla'){
+    const r = ratioLista(lista);
+    obras.innerHTML = '<div class="mosaico" style="grid-template-columns:repeat(' + n + ',minmax(0,1fr))">' + lista.map(it =>
+      '<a class="obra" href="' + hrefDe(it) + '" data-i="' + it.i + '">' +
+        '<span class="obra-media" style="aspect-ratio:' + r + '">' + imgTag(it) + '</span>' +
+        '<span class="obra-tit">' + esc(it.title) + '</span>' +
+        '<span class="obra-meta"><span class="fmt">' + fmtTxt(it) + '</span><span>' + esc(catTxt(it)) + '</span></span>' +
+      '</a>').join('') + '</div>';
+  } else {
+    obras.innerHTML = '<ol class="indice">' + lista.map(it =>
+      '<li><a class="fila" href="' + hrefDe(it) + '" data-i="' + it.i + '">' +
+        '<span class="fmt">' + fmtTxt(it) + '</span><span class="f-tit">' + esc(it.title) + '</span>' +
+        '<span class="f-cat">' + esc(catTxt(it)) + '</span><span class="f-desc">' + esc((lang === 'en' && it.descEn) || it.desc || '') + '</span>' +
+      '</a></li>').join('') + '</ol>';
+  }
+  if(recorte) obras.insertAdjacentHTML('beforeend', '<div class="ver-todo"><button class="btn btn-sec" id="btnVerTodo">' +
+    L('Ver todo el archivo', 'See the full archive') + ' <span class="fmt">' + ITEMS.length + '</span></button></div>');
+  obras.querySelectorAll('img[data-vimeo]').forEach(img => {
+    const m = vmMeta[img.dataset.vimeo];
+    if(m) m.then(d => { if(d && d.thumbnail_url) img.src = d.thumbnail_url; }); else obsThumb.observe(img);
+  });
+  Timeline.medir();
+}
+document.getElementById('filtros').addEventListener('click', e => {
+  const b = e.target.closest('[data-filtro]'); if(!b) return;
+  filtro = b.dataset.filtro; pintarFiltros(); pintarObras();
+});
+document.querySelector('.vistas').addEventListener('click', e => {
+  const b = e.target.closest('[data-vista]'); if(!b) return;
+  vista = b.dataset.vista;
+  document.querySelectorAll('.vista-btn').forEach(x => x.setAttribute('aria-pressed', x === b));
+  pintarObras();
+});
+obras.addEventListener('click', e => {
+  if(e.target.closest('#btnVerTodo')){ verTodo = true; pintarObras(); return; }
+  const a = e.target.closest('[data-i]'); if(!a) return;
+  e.preventDefault(); abrirObra(ITEMS[+a.dataset.i], a);
+});
+new ResizeObserver(() => { if(colsActuales && columnas() !== colsActuales) pintarObras(); }).observe(obras);
+
+/* Vista índice: miniatura que sigue al puntero */
+(function(){
+  if(!finoPuntero) return;
+  const pv = document.getElementById('preview'); let x = 0, y = 0, pend = false;
+  function mover(){ pend = false; pv.style.transform = 'translate3d(' + (x + 28) + 'px,' + (y - 70) + 'px,0)'; }
+  obras.addEventListener('pointermove', e => {
+    const f = e.target.closest('.fila'); if(!f){ pv.classList.remove('on'); return; }
+    x = e.clientX; y = e.clientY; if(!pend){ pend = true; requestAnimationFrame(mover); }
+  });
+  obras.addEventListener('pointerover', e => {
+    const f = e.target.closest('.fila'); if(!f) return;
+    const it = ITEMS[+f.dataset.i];
+    pv.style.aspectRatio = it.fmt === 'h' ? '16/9' : '3/4'; pv.style.objectFit = 'cover';
+    if(it.thumb){ pv.src = it.thumb; pv.classList.add('on'); }
+    else vimeo(it.id).then(d => { if(d && d.thumbnail_url && f.matches(':hover')){ pv.src = d.thumbnail_url; pv.classList.add('on'); } });
+  });
+  obras.addEventListener('pointerleave', () => pv.classList.remove('on'));
+})();
+
+/* ======================= MODALES ======================= */
+let modalAbierto = null, opener = null;
+function abrirModal(el, desde){
+  modalAbierto = el; opener = desde || document.activeElement;
+  el.hidden = false; document.body.style.overflow = 'hidden';
+  el.querySelector('[data-cerrar]').focus();
+}
+function cerrarModal(){
+  if(!modalAbierto) return;
+  if(modalAbierto.id === 'modalVideo') document.getElementById('videoFrame').src = 'about:blank';
+  modalAbierto.hidden = true; document.body.style.overflow = ''; modalAbierto = null;
+  if(opener && opener.focus) opener.focus();
+}
+document.querySelectorAll('.modal').forEach(m => {
+  m.addEventListener('click', e => { if(e.target === m || e.target.closest('[data-cerrar]')) cerrarModal(); });
+});
+document.addEventListener('keydown', e => {
+  if(!modalAbierto) return;
+  if(e.key === 'Escape'){ cerrarModal(); return; }
+  if(modalAbierto.id === 'visor' && Visor.modo === 'uno'){
+    if(e.key === 'ArrowRight') Visor.mover(1);
+    if(e.key === 'ArrowLeft') Visor.mover(-1);
+  }
+});
+
+let ratioVideo = 9/16;
+function dimensionarVideo(){
+  const marco = document.getElementById('videoMarco');
+  const maxW = Math.min(window.innerWidth * 0.92, 1200), maxH = window.innerHeight * 0.8;
+  let w = maxW, h = w / ratioVideo; if(h > maxH){ h = maxH; w = h * ratioVideo; }
+  marco.style.width = w + 'px'; marco.style.height = h + 'px';
+}
+window.addEventListener('resize', () => { if(modalAbierto && modalAbierto.id === 'modalVideo') dimensionarVideo(); });
+function abrirObra(it, desde){
+  if(it.albumKey){ Visor.abrir(ALBUMES[it.albumKey], it.title, desde); return; }
+  const modal = document.getElementById('modalVideo');
+  document.getElementById('videoTitulo').textContent = it.title;
+  ratioVideo = it.fmt === 'h' ? 16/9 : 9/16; dimensionarVideo();
+  document.getElementById('videoFrame').src = it.plat === 'yt'
+    ? 'https://www.youtube-nocookie.com/embed/' + it.id + '?autoplay=1&rel=0'
+    : 'https://player.vimeo.com/video/' + it.id + '?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+  abrirModal(modal, desde);
+  if(it.plat !== 'yt') vimeo(it.id).then(d => { if(d && d.width && d.height && modalAbierto === modal){ ratioVideo = d.width / d.height; dimensionarVideo(); } });
+}
+
+const ICONO_IZQ = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>';
+const ICONO_DER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>';
+const Visor = {
+  albumes:[], a:0, f:0, modo:'grilla',
+  abrir(albumes, titulo, desde, indice){
+    this.albumes = albumes; this.a = 0;
+    document.getElementById('visorTitulo').textContent = titulo;
+    if(typeof indice === 'number'){ this.f = indice; this.modo = 'uno'; } else { this.modo = 'grilla'; }
+    this.pintar(); abrirModal(document.getElementById('visor'), desde);
+  },
+  fotos(){ return this.albumes[this.a].f; },
+  pintar(){
+    const tabs = document.getElementById('visorTabs');
+    tabs.innerHTML = this.albumes.length > 1 ? this.albumes.map((al, k) =>
+      '<button class="filtro" data-album="' + k + '" aria-pressed="' + (k === this.a) + '">' + esc(al.n) + '<sup>' + al.f.length + '</sup></button>').join('') : '';
+    const cuerpo = document.getElementById('visorCuerpo'), fotos = this.fotos();
+    if(this.modo === 'grilla'){
+      cuerpo.innerHTML = '<div class="visor-grilla">' + fotos.map((u, k) =>
+        '<button data-foto="' + k + '" aria-label="' + L('Ver foto ','View photo ') + (k+1) + '"><img src="' + esc(u) + '" alt="" loading="lazy" decoding="async"></button>').join('') + '</div>';
+    } else {
+      cuerpo.innerHTML = '<div class="visor-uno"><button class="flecha" data-mover="-1" aria-label="' + L('Anterior','Previous') + '">' + ICONO_IZQ + '</button>' +
+        '<img src="' + esc(fotos[this.f]) + '" alt="">' +
+        '<button class="flecha" data-mover="1" aria-label="' + L('Siguiente','Next') + '">' + ICONO_DER + '</button></div>' +
+        '<div class="visor-pie"><span>' + (this.f + 1) + ' ' + L('de','of') + ' ' + fotos.length + '</span>' +
+        (fotos.length > 1 && !this.sinGrilla ? '<button class="link-btn" data-grilla>' + L('Ver todas','View all') + '</button>' : '') + '</div>';
+    }
+  },
+  mover(d){ const n = this.fotos().length; this.f = (this.f + d + n) % n; this.pintar(); }
+};
+document.getElementById('visor').addEventListener('click', e => {
+  const t = e.target;
+  const al = t.closest('[data-album]'); if(al){ Visor.a = +al.dataset.album; Visor.modo = 'grilla'; Visor.pintar(); return; }
+  const fo = t.closest('[data-foto]'); if(fo){ Visor.f = +fo.dataset.foto; Visor.modo = 'uno'; Visor.pintar(); return; }
+  const mv = t.closest('[data-mover]'); if(mv){ Visor.mover(+mv.dataset.mover); return; }
+  if(t.closest('[data-grilla]')){ Visor.modo = 'grilla'; Visor.pintar(); }
+});
+/* gesto de deslizar en el visor (celular) */
+(function(){
+  let x0 = null;
+  const c = document.getElementById('visorCuerpo');
+  c.addEventListener('touchstart', e => { x0 = Visor.modo === 'uno' ? e.touches[0].clientX : null; }, {passive:true});
+  c.addEventListener('touchend', e => { if(x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if(Math.abs(dx) > 50) Visor.mover(dx < 0 ? 1 : -1); x0 = null; }, {passive:true});
+})();
+
+/* ======================= INSTAGRAM (manual: _dev/instagram.json) ======================= */
+const IG = [{"url": "https://www.instagram.com/p/DfqG6xGHTjc/", "img": "portadas/ig-1.webp", "texto": "El Voley y sus momentos: Preparación 🏹"}, {"url": "https://www.instagram.com/p/Dfk9fGCB8rz/", "img": "portadas/ig-2.webp", "texto": "Cobertura para las pibas de @villalurovoley 🏐"}, {"url": "https://www.instagram.com/p/DfS2hy2hF2C/", "img": "portadas/ig-3.webp", "texto": "Nuestros ojos en la 🍁Expo cannabis 2026 para el ca"}];
+const ICONO_IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>';
+function pintarIG(){
+  const g = document.getElementById('igGrid');
+  const posts = IG.slice(0, 3);
+  let html = posts.map(p => '<a class="ig-post" href="' + esc(p.url) + '" target="_blank" rel="noopener" aria-label="' + esc(p.texto || L('Publicación de Instagram','Instagram post')) + '">' +
+    '<img src="' + esc(p.img) + '" alt="" loading="lazy" decoding="async"><span class="ig-ico">' + ICONO_IG + '</span></a>').join('');
+  for(let k = posts.length; k < 3; k++) html += '<a class="ig-post ig-vacio" href="https://instagram.com/sanbaoestudio" target="_blank" rel="noopener">' + L('Ver en Instagram','See on Instagram') + '</a>';
+  g.innerHTML = html;
+}
+
+/* ======================= RECTÁNGULOS POR CATEGORÍA ======================= */
+const TILES = [
+  {cat:'film', ancho:true, n:3, sub:['Rodaje, edición y postproducción para YouTube y pantallas.','Shooting, editing and post-production for YouTube and screens.']},
+  {cat:'vertical', n:4, sub:['Reels, TikToks y shorts pensados para retener.','Reels, TikToks and shorts built to hold attention.']},
+  {cat:'motion', n:2, sub:['Aperturas, separadores y animaciones de marca.','Openers, bumpers and brand animations.']},
+  {cat:'ia', n:2, sub:['Piezas hechas 100% con inteligencia artificial.','Pieces made 100% with artificial intelligence.']},
+  {cat:'foto', n:3, sub:['Deportes, eventos y retratos, con la edición incluida.','Sports, events and portraits, editing included.']}
+];
+function piezasDe(t){
+  const lista = ITEMS.filter(it => it.cat === t.cat && !/^OLGA/.test(it.grupo || ''));
+  return lista.filter(it => it.thumb).concat(lista.filter(it => !it.thumb)).slice(0, t.n);
+}
+const obsTile = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visto'); obsTile.unobserve(e.target); } }), {threshold:.25});
+function pintarTiles(){
+  const cont = document.getElementById('trabajos');
+  cont.innerHTML = TILES.map(t => {
+    const nom = CATS[t.cat][lang === 'es' ? 0 : 1], n = ITEMS.filter(it => it.cat === t.cat).length;
+    const wa = 'https://wa.me/5491130203625?text=' + encodeURIComponent('Hola San Bao! Quiero cotizar: ' + CATS[t.cat][0]);
+    return '<article class="tile' + (t.ancho ? ' ancho' : '') + '" id="tile-' + t.cat + '">' +
+      '<span class="tile-kicker">' + n + ' ' + L('trabajos','works') + '</span>' +
+      '<h2>' + esc(nom) + '</h2><p class="sub">' + esc(t.sub[lang === 'es' ? 0 : 1]) + '</p>' +
+      '<div class="acciones"><button class="btn btn-pri" data-ver="' + t.cat + '">' + L('Ver trabajos','See work') + '</button>' +
+      '<a class="btn btn-sec" href="' + wa + '" target="_blank" rel="noopener">' + L('Cotizar','Get a quote') + '</a></div>' +
+      '<div class="tira">' + piezasDe(t).map(it =>
+        '<a class="pieza" href="' + hrefDe(it) + '" data-i="' + it.i + '" aria-label="' + esc(it.title) + '" style="aspect-ratio:' + (it.albumKey ? '3/4' : it.fmt === 'h' ? '16/9' : '9/16') + '">' + imgTag(it) + '</a>').join('') +
+      '</div></article>';
+  }).join('');
+  cont.querySelectorAll('img[data-vimeo]').forEach(img => {
+    const m = vmMeta[img.dataset.vimeo];
+    if(m) m.then(d => { if(d && d.thumbnail_url) img.src = d.thumbnail_url; }); else obsThumb.observe(img);
+  });
+  cont.querySelectorAll('.tile').forEach(t => obsTile.observe(t));
+}
+document.getElementById('trabajos').addEventListener('click', e => {
+  const v = e.target.closest('[data-ver]');
+  if(v){ filtro = v.dataset.ver; verTodo = true; pintarFiltros(); pintarObras();
+    document.getElementById('archivo').scrollIntoView({behavior: reducir ? 'auto' : 'smooth'}); return; }
+  const a = e.target.closest('[data-i]'); if(!a) return;
+  e.preventDefault(); abrirObra(ITEMS[+a.dataset.i], a);
+});
+
+/* ======================= MENÚ ======================= */
+(function(){
+  const nav = document.getElementById('nav'), btn = document.getElementById('navMenu'), links = document.getElementById('navLinks');
+  const cerrar = () => { nav.classList.remove('abierto'); btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', () => { const ab = nav.classList.toggle('abierto'); btn.setAttribute('aria-expanded', ab); });
+  links.addEventListener('click', e => { if(e.target.closest('a')) cerrar(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') cerrar(); });
+  // resalta en el menú la sección que se está viendo
+  const mapa = new Map(Array.from(links.querySelectorAll('a')).map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver(es => es.forEach(e => {
+    if(!e.isIntersecting) return;
+    mapa.forEach(a => a.removeAttribute('aria-current'));
+    const a = mapa.get(e.target.id); if(a) a.setAttribute('aria-current', 'true');
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  mapa.forEach((a, id) => { const s = document.getElementById(id); if(s) obs.observe(s); });
+})();
+
+/* ======================= APARICIONES ======================= */
+document.querySelectorAll('.bloque').forEach(b => obsTile.observe(b));
+
+/* ======================= SCROLL FLUIDO (rueda del mouse) =======================
+   El trackpad y el celular ya scrollean suave; la rueda salta de a 100 px.
+   Acá cada giro de rueda mueve un destino y la página lo sigue con inercia (rAF solo mientras se mueve). */
+(function(){
+  if(reducir || !finoPuntero) return;
+  let destino = 0, actual = 0, activo = false;
+  const esRueda = e => e.deltaMode === 1 || (e.deltaX === 0 && Math.abs(e.deltaY) >= 50 && Number.isInteger(e.deltaY));
+  function paso(){
+    actual += (destino - actual) * 0.11;
+    if(Math.abs(destino - actual) < 0.5){ actual = destino; activo = false; }
+    window.scrollTo({top: actual, behavior: 'instant'});
+    if(activo) requestAnimationFrame(paso);
+  }
+  window.addEventListener('wheel', e => {
+    if(e.ctrlKey || modalAbierto || !esRueda(e) || e.target.closest('.visor-cuerpo')) return;
+    e.preventDefault();
+    if(!activo){ actual = destino = window.scrollY; }
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    destino = Math.max(0, Math.min(max, destino + (e.deltaMode === 1 ? e.deltaY * 40 : e.deltaY) * 1.1));
+    if(!activo){ activo = true; requestAnimationFrame(paso); }
+  }, {passive: false});
+  const soltar = () => { activo = false; };
+  ['mousedown','keydown','touchstart'].forEach(ev => window.addEventListener(ev, soltar, {passive: true}));
+})();
+
+/* ======================= IDIOMA ======================= */
+document.getElementById('btnIdioma').addEventListener('click', () => {
+  lang = lang === 'es' ? 'en' : 'es';
+  document.documentElement.lang = lang;
+  const b = document.getElementById('btnIdioma');
+  b.textContent = lang === 'es' ? 'EN' : 'ES';
+  b.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+  document.querySelectorAll('[data-es][data-en]').forEach(el => el.textContent = el.getAttribute('data-' + lang));
+  pintarFiltros(); pintarObras(); pintarTiles(); pintarIG();
+});
+
+/* ======================= INICIO ======================= */
+pintarIG();
+pintarTiles();
+pintarFiltros();
+pintarObras();
+</script>
+</body>
+</html>
