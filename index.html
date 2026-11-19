@@ -82,32 +82,54 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ---------- RECTÁNGULOS ---------- */
 .grilla{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap);padding:var(--gap)}
-.tile{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;min-height:clamp(500px,46vw,640px);padding:clamp(40px,4.6vw,56px) 20px 0;background:var(--tinta);color:var(--fg);border:1px solid var(--borde)}
-.tile.ancho{grid-column:1/-1;min-height:clamp(540px,44vw,700px)}
+.tile{position:relative;display:flex;flex-direction:column;overflow:hidden;background:var(--tinta);color:var(--fg);border:1px solid var(--borde)}
+.tile.ancho{grid-column:1/-1}
+.tile-cab{display:flex;align-items:flex-end;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding:clamp(22px,2.6vw,34px) clamp(20px,2.6vw,34px) clamp(16px,1.8vw,24px)}
+.tile-cab-izq{display:flex;flex-direction:column;gap:6px}
 .tile-kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;color:var(--naranja)}
-.tile h2{font-family:var(--cond);font-weight:600;font-size:clamp(2.3rem,4.6vw,3.8rem);line-height:1;letter-spacing:-.01em;margin-top:8px}
-.tile .sub{font-size:clamp(1.02rem,1.5vw,1.3rem);line-height:1.35;margin-top:10px;max-width:34ch}
-.tile .acciones{margin-top:20px;gap:10px}
+.tile h2{font-family:var(--cond);font-weight:600;font-size:clamp(2rem,3.6vw,3.2rem);line-height:1;letter-spacing:-.01em}
+.tile-cotizar{font-size:.9rem;color:var(--fg2);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+.tile-cotizar:hover{color:var(--fg);border-color:var(--fg)}
+/* previews: llenan el rectángulo. Verticales 4 en fila, horizontales 2x2, el ancho 4 en fila */
+.tile-media{position:relative;flex:1;display:grid;grid-template-columns:repeat(var(--c,4),minmax(0,1fr));grid-auto-rows:1fr;gap:4px;min-height:clamp(300px,30vw,500px);text-decoration:none;color:var(--bruma);overflow:hidden;cursor:pointer}
+.tile.ancho .tile-media{min-height:clamp(220px,16vw,330px)}
+.tile-media .pieza{position:relative;overflow:hidden;background:var(--hover)}
+.tile-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.001);transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+/* entrada al scrollear: las piezas suben de a una (una sola vez) */
+.js .tile-media .pieza{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.js .tile.visto .tile-media .pieza{opacity:1;transform:none}
+.tile-media .pieza:nth-child(2){transition-delay:.07s}.tile-media .pieza:nth-child(3){transition-delay:.14s}.tile-media .pieza:nth-child(4){transition-delay:.21s}
+/* vidrio: al pasar el mouse las previews se desenfocan y aparece el botón a la categoría.
+   El desenfoque es filter sobre las imágenes (no backdrop-filter): solo trabaja mientras hay hover. */
+.vidrio{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .35s ease;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,rgba(13,27,33,.05),rgba(13,27,33,.45))}
+.vidrio-panel{display:flex;flex-direction:column;align-items:center;gap:4px;padding:18px 30px;border-radius:22px;background:linear-gradient(135deg,rgba(244,239,228,.26),rgba(244,239,228,.08) 55%,rgba(244,239,228,.16));border:1px solid rgba(244,239,228,.42);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -1px 0 rgba(255,255,255,.12),0 18px 40px rgba(0,0,0,.35);transform:translateY(10px) scale(.96);transition:transform .45s cubic-bezier(.2,.7,.2,1);text-shadow:0 1px 8px rgba(0,0,0,.35)}
+.vidrio-panel b{font-family:var(--cond);font-weight:600;font-size:clamp(1.5rem,2.4vw,2.1rem);line-height:1.05}
+.vidrio-panel span{font-size:.92rem;display:flex;align-items:center;gap:6px}
+.vidrio-panel svg{width:16px;height:16px}
+/* mientras se scrollea no se activa el vidrio (el desenfoque cuesta; así el scroll queda fluido) */
+.scrolleando .tile-media{pointer-events:none}
+@media (hover:hover){
+  .tile-media:hover img,.tile-media:focus-visible img{filter:blur(14px) saturate(1.35) brightness(.85);transform:scale(1.08)}
+  .tile-media:hover .vidrio,.tile-media:focus-visible .vidrio{opacity:1}
+  .tile-media:hover .vidrio-panel,.tile-media:focus-visible .vidrio-panel{transform:none}
+}
+@media (hover:none){
+  .vidrio{opacity:1;place-items:end center;padding-bottom:14px;background:linear-gradient(transparent 55%,rgba(13,27,33,.55))}
+  .vidrio-panel{transform:none;padding:9px 18px;border-radius:999px;flex-direction:row;gap:10px;background:rgba(13,27,33,.78);border-color:rgba(244,239,228,.35)}
+  .vidrio-panel b{display:none}
+}
 .btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 22px;border-radius:999px;font-weight:500;text-decoration:none;transition:background-color .2s,color .2s,border-color .2s}
 .btn-pri{background:var(--naranja);color:var(--tinta)}
 .btn-pri:hover{background:var(--ambar)}
 .btn-sec{border:1px solid currentColor;color:var(--fg)}
 .btn-sec:hover{background:var(--bruma);border-color:var(--bruma);color:var(--tinta)}
 .btn svg{width:18px;height:18px;flex-shrink:0}
-.tile .btn{min-height:40px;padding:0 20px;font-size:.95rem}
-.tira{margin-top:auto;width:100%;max-width:1100px;display:flex;justify-content:center;align-items:flex-end;gap:10px;padding-top:32px}
-.tira .pieza{flex:1 1 0;min-width:0;border-radius:8px 8px 0 0;overflow:hidden;background:var(--hover);opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-.tira .pieza:nth-child(2){transition-delay:.08s}.tira .pieza:nth-child(3){transition-delay:.16s}.tira .pieza:nth-child(4){transition-delay:.24s}
-.tile.visto .tira .pieza{opacity:1;transform:none}
-.tira .pieza img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
-.tira .pieza:hover img{transform:scale(1.05)}
 
 /* ---------- BLOQUES (secciones de abajo, también en rectángulo) ---------- */
 .bloque{margin:0 var(--gap) var(--gap);padding-block:clamp(72px,9vw,128px);background:var(--tinta);color:var(--fg);border:1px solid var(--borde)}
 /* apariciones al scrollear (solo con JS; una vez, sin animaciones en reposo) */
-.js .tile > :not(.tira),.js .bloque > .wrap{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
-.js .tile.visto > :not(.tira),.js .bloque.visto > .wrap{opacity:1;transform:none}
-.js .tile.visto > h2{transition-delay:.05s}.js .tile.visto > .sub{transition-delay:.1s}.js .tile.visto > .acciones{transition-delay:.15s}
+.js .bloque > .wrap{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.js .bloque.visto > .wrap{opacity:1;transform:none}
 .bloque.seccion{border-top:0}
 
 /* ---------- SECCIONES ---------- */
@@ -254,11 +276,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   :root{--gap:8px}
   body{font-size:16px}
   .grilla{grid-template-columns:1fr}
-  .tile,.tile.ancho{min-height:0}
-  .tira{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-inline:4px}
-  .tira::-webkit-scrollbar{display:none}
-  .tira .pieza{flex:0 0 auto;height:240px;scroll-snap-align:center}
-  .tile.ancho .tira .pieza{height:180px}
+  .tile-media,.tile.ancho .tile-media{flex:none;min-height:0;grid-auto-rows:auto}
+  .tile-media .pieza{aspect-ratio:var(--ar)}
+  .tile.ancho .tile-media{--c:2!important}
   .ig-grid{gap:6px}
   .mosaico{gap:24px 12px}
   .obra-meta{font-size:.8rem}
@@ -269,7 +289,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{transition:none!important;animation:none!important}
-  .tira .pieza,.js .tile > :not(.tira),.js .bloque > .wrap{opacity:1;transform:none}
+  .js .tile-media .pieza,.js .bloque > .wrap{opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
 
@@ -703,43 +723,51 @@ function pintarIG(){
 
 /* ======================= RECTÁNGULOS POR CATEGORÍA ======================= */
 const TILES = [
-  {cat:'film', ancho:true, n:3, sub:['Rodaje, edición y postproducción para YouTube y pantallas.','Shooting, editing and post-production for YouTube and screens.']},
-  {cat:'vertical', n:4, sub:['Reels, TikToks y shorts pensados para retener.','Reels, TikToks and shorts built to hold attention.']},
-  {cat:'motion', n:2, sub:['Aperturas, separadores y animaciones de marca.','Openers, bumpers and brand animations.']},
-  {cat:'ia', n:2, sub:['Piezas hechas 100% con inteligencia artificial.','Pieces made 100% with artificial intelligence.']},
-  {cat:'foto', n:3, sub:['Deportes, eventos y retratos, con la edición incluida.','Sports, events and portraits, editing included.']}
+  {cat:'film', ancho:true, c:4, ar:'16/9'},
+  {cat:'vertical', c:4, ar:'9/16'},
+  {cat:'motion', c:2, ar:'16/9'},
+  {cat:'ia', c:2, ar:'16/9'},
+  {cat:'foto', c:4, ar:'3/4'}
 ];
 function piezasDe(t){
   const lista = ITEMS.filter(it => it.cat === t.cat && !/^OLGA/.test(it.grupo || ''));
-  return lista.filter(it => it.thumb).concat(lista.filter(it => !it.thumb)).slice(0, t.n);
+  return lista.filter(it => it.thumb).concat(lista.filter(it => !it.thumb)).slice(0, 4);
 }
-const obsTile = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visto'); obsTile.unobserve(e.target); } }), {threshold:.25});
+/* YouTube: maxresdefault es 16:9 sin franjas negras; si no existe, mqdefault (también 16:9) */
+function imgTile(it){
+  if(it.plat === 'yt' && it.thumb) return '<img src="https://img.youtube.com/vi/' + it.id + '/maxresdefault.jpg" data-resp="https://img.youtube.com/vi/' + it.id + '/mqdefault.jpg" alt="" loading="lazy" decoding="async">';
+  return imgTag(it);
+}
+const ICONO_FLECHA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const obsTile = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visto'); obsTile.unobserve(e.target); } }), {threshold:.2});
 function pintarTiles(){
   const cont = document.getElementById('trabajos');
   cont.innerHTML = TILES.map(t => {
     const nom = CATS[t.cat][lang === 'es' ? 0 : 1], n = ITEMS.filter(it => it.cat === t.cat).length;
     const wa = 'https://wa.me/5491130203625?text=' + encodeURIComponent('Hola San Bao! Quiero cotizar: ' + CATS[t.cat][0]);
     return '<article class="tile' + (t.ancho ? ' ancho' : '') + '" id="tile-' + t.cat + '">' +
-      '<span class="tile-kicker">' + n + ' ' + L('trabajos','works') + '</span>' +
-      '<h2>' + esc(nom) + '</h2><p class="sub">' + esc(t.sub[lang === 'es' ? 0 : 1]) + '</p>' +
-      '<div class="acciones"><button class="btn btn-pri" data-ver="' + t.cat + '">' + L('Ver trabajos','See work') + '</button>' +
-      '<a class="btn btn-sec" href="' + wa + '" target="_blank" rel="noopener">' + L('Cotizar','Get a quote') + '</a></div>' +
-      '<div class="tira">' + piezasDe(t).map(it =>
-        '<a class="pieza" href="' + hrefDe(it) + '" data-i="' + it.i + '" aria-label="' + esc(it.title) + '" style="aspect-ratio:' + (it.albumKey ? '3/4' : it.fmt === 'h' ? '16/9' : '9/16') + '">' + imgTag(it) + '</a>').join('') +
-      '</div></article>';
+      '<div class="tile-cab"><div class="tile-cab-izq"><span class="tile-kicker">' + n + ' ' + L('trabajos','works') + '</span>' +
+      '<h2>' + esc(nom) + '</h2></div>' +
+      '<a class="tile-cotizar" href="' + wa + '" target="_blank" rel="noopener">' + L('Cotizar','Get a quote') + '</a></div>' +
+      '<a class="tile-media" href="#archivo" data-ver="' + t.cat + '" style="--c:' + t.c + ';--ar:' + t.ar + '" aria-label="' + L('Ver trabajos de ','See work: ') + esc(nom) + '">' +
+        piezasDe(t).map(it => '<span class="pieza">' + imgTile(it) + '</span>').join('') +
+        '<span class="vidrio" aria-hidden="true"><span class="vidrio-panel"><b>' + esc(nom) + '</b><span>' +
+          L('Ver los ' + n + ' trabajos', 'See all ' + n) + ICONO_FLECHA + '</span></span></span>' +
+      '</a></article>';
   }).join('');
   cont.querySelectorAll('img[data-vimeo]').forEach(img => {
     const m = vmMeta[img.dataset.vimeo];
     if(m) m.then(d => { if(d && d.thumbnail_url) img.src = d.thumbnail_url; }); else obsThumb.observe(img);
   });
+  // si una miniatura grande de YouTube no existe, usar la mediana
+  cont.querySelectorAll('img[data-resp]').forEach(img => img.addEventListener('error', () => { if(img.src !== img.dataset.resp) img.src = img.dataset.resp; }, {once:true}));
   cont.querySelectorAll('.tile').forEach(t => obsTile.observe(t));
 }
 document.getElementById('trabajos').addEventListener('click', e => {
-  const v = e.target.closest('[data-ver]');
-  if(v){ filtro = v.dataset.ver; verTodo = true; pintarFiltros(); pintarObras();
-    document.getElementById('archivo').scrollIntoView({behavior: reducir ? 'auto' : 'smooth'}); return; }
-  const a = e.target.closest('[data-i]'); if(!a) return;
-  e.preventDefault(); abrirObra(ITEMS[+a.dataset.i], a);
+  const v = e.target.closest('[data-ver]'); if(!v) return;
+  e.preventDefault();
+  filtro = v.dataset.ver; verTodo = true; pintarFiltros(); pintarObras();
+  document.getElementById('archivo').scrollIntoView({behavior: reducir ? 'auto' : 'smooth'});
 });
 
 /* ======================= MENÚ ======================= */
@@ -760,6 +788,13 @@ document.getElementById('trabajos').addEventListener('click', e => {
 })();
 
 /* ======================= APARICIONES ======================= */
+(function(){
+  let t = 0; const html = document.documentElement;
+  window.addEventListener('scroll', () => {
+    if(!t) html.classList.add('scrolleando');
+    clearTimeout(t); t = setTimeout(() => { html.classList.remove('scrolleando'); t = 0; }, 160);
+  }, {passive:true});
+})();
 document.querySelectorAll('.bloque').forEach(b => obsTile.observe(b));
 
 /* ======================= SCROLL FLUIDO (rueda del mouse) =======================
