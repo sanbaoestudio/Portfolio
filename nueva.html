@@ -711,7 +711,7 @@ document.getElementById('visor').addEventListener('click', e => {
 })();
 
 /* ======================= INSTAGRAM (manual: _dev/instagram.json) ======================= */
-const IG = [{"url": "https://www.instagram.com/p/DfqG6xGHTjc/", "img": "portadas/ig-1.webp", "texto": "El Voley y sus momentos: Preparación 🏹"}, {"url": "https://www.instagram.com/p/Dfk9fGCB8rz/", "img": "portadas/ig-2.webp", "texto": "Cobertura para las pibas de @villalurovoley 🏐"}, {"url": "https://www.instagram.com/p/DfS2hy2hF2C/", "img": "portadas/ig-3.webp", "texto": "Nuestros ojos en la 🍁Expo cannabis 2026 para el ca"}];
+const IG = [{"url": "https://www.instagram.com/p/DfqG6xGHTjc/", "img": "portadas/ig-1.webp?v=2", "texto": "El Voley y sus momentos: Preparación 🏹"}, {"url": "https://www.instagram.com/p/Dfk9fGCB8rz/", "img": "portadas/ig-2.webp", "texto": "Cobertura para las pibas de @villalurovoley 🏐"}, {"url": "https://www.instagram.com/p/DfS2hy2hF2C/", "img": "portadas/ig-3.webp", "texto": "Nuestros ojos en la 🍁Expo cannabis 2026 para el ca"}];
 const ICONO_IG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>';
 function pintarIG(){
   const g = document.getElementById('igGrid');
@@ -726,11 +726,14 @@ function pintarIG(){
 const TILES = [
   {cat:'film', ancho:true, c:4, ar:'16/9'},
   {cat:'vertical', c:4, ar:'9/16'},
-  {cat:'motion', c:2, ar:'16/9'},
-  {cat:'ia', c:2, ar:'16/9'},
+  // Motion: Villa Luro + 1 solo de MediaBus (pedido de Luca, 19/11). Los banners de OLGA son zócalos transparentes: se ven vacíos
+  {cat:'motion', c:2, ar:'16/9', ids:['1166459428','1229638915']},
+  // IA: solo la pieza de MediaBus, a todo el rectángulo
+  {cat:'ia', c:1, ar:'16/9', ids:['1229639872']},
   {cat:'foto', c:4, ar:'3/4'}
 ];
 function piezasDe(t){
+  if(t.ids) return t.ids.map(id => ITEMS.find(it => it.id === id)).filter(Boolean);
   const lista = ITEMS.filter(it => it.cat === t.cat && !/^OLGA/.test(it.grupo || ''));
   return lista.filter(it => it.thumb).concat(lista.filter(it => !it.thumb)).slice(0, 4);
 }
